@@ -1,0 +1,575 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hoxhunt — CyberBalise</title><meta name="description" content="Hoxhunt automatise la formation de vos salariés au repérage de l’hameçonnage grâce à des simulations adaptées au niveau de chacun : voici notre avis, ses…">
+<link rel="canonical" href="https://cyberbalise.fr/offres/formations/hoxhunt/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Hoxhunt"><meta property="og:description" content="Hoxhunt automatise la formation de vos salariés au repérage de l’hameçonnage grâce à des simulations adaptées au niveau de chacun : voici notre avis, ses…"><meta property="og:url" content="https://cyberbalise.fr/offres/formations/hoxhunt/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a> › <a href="/offres/formations/">Comparatif formations cyber pour équipes</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Fiche produit</div>
+<h1>Hoxhunt</h1><p class="lead">Hoxhunt automatise la formation de vos salariés au repérage de l’hameçonnage grâce à des simulations adaptées au niveau de chacun : voici notre avis, ses limites, ce que l’on sait de son prix et ses alternatives.</p>
+<div class="meta"><span class="chip pro">Pros</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Fiche produit — édition d’octobre 2026 · Lecture estimée : 6 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#notre-verdict-en-bref">Notre verdict en bref</a></li>
+<li><a href="#pour-qui-pas-pour-qui">Pour qui, pas pour qui</a></li>
+<li><a href="#caracteristiques-principales">Caractéristiques principales</a></li>
+<li><a href="#points-forts">Points forts</a></li>
+<li><a href="#limites">Limites</a></li>
+<li><a href="#prix-et-pieges-de-renouvellement">Prix et pièges de renouvellement</a></li>
+<li><a href="#alternatives">Alternatives</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="notre-verdict-en-bref">Notre verdict en bref</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Hoxhunt est une plateforme de sensibilisation des équipes centrée sur des simulations d’hameçonnage (phishing) personnalisées et ludiques, envoyées automatiquement à chaque salarié environ tous les 10 jours, avec une difficulté qui s’ajuste à ses progrès. Son grand atout pour une PME est l’automatisation : une fois la plateforme installée, le programme tourne presque seul. Ses limites : un prix uniquement sur devis, et une offre pensée d’abord pour les structures qui ont au moins quelques dizaines de salariés et une messagerie Microsoft 365 ou Google Workspace.</p></div>
+<ul>
+<li><strong>Efficacité pédagogique</strong> : apprentissage par la pratique, répété et adapté à chaque personne.</li>
+<li><strong>Charge de travail</strong> : faible une fois le déploiement terminé, ce qui convient aux petites équipes informatiques.</li>
+<li><strong>Transparence tarifaire</strong> : faible, prix communiqué après un appel de cadrage.</li>
+</ul>
+<p>[LIEN AFFILIÉ — à compléter]</p>
+<h2 id="pour-qui-pas-pour-qui">Pour qui, pas pour qui</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hoxhunt est fait pour vous si…</th>
+<th>Passez votre chemin si…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vous êtes une PME qui veut un programme de sensibilisation continu sans y consacrer une personne à plein temps</td>
+<td>Vous êtes une très petite entreprise de quelques personnes : une sensibilisation gratuite et un atelier suffiront souvent</td>
+</tr>
+<tr class="even">
+<td>Vos salariés utilisent Microsoft 365 ou Google Workspace</td>
+<td>Votre messagerie n’est ni Microsoft 365 ni Google Workspace (compatibilité à vérifier)</td>
+</tr>
+<tr class="odd">
+<td>Vous voulez mesurer les progrès (taux de clic, taux de signalement)</td>
+<td>Vous cherchez seulement un module annuel de conformité à faire valider</td>
+</tr>
+<tr class="even">
+<td>Vous avez des équipes multilingues</td>
+<td>Vous voulez un tarif public et un achat en ligne immédiat</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="caracteristiques-principales">Caractéristiques principales</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Critère</th>
+<th>Hoxhunt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prix</td>
+<td>Sur devis, par salarié, selon l’effectif et les fonctions choisies — [PRIX — à vérifier sur le site de l’éditeur]</td>
+</tr>
+<tr class="even">
+<td>Modalité d’achat</td>
+<td>Devis remis après un appel de cadrage de 30 minutes, selon l’éditeur</td>
+</tr>
+<tr class="odd">
+<td>Type de produit</td>
+<td>Plateforme de gestion du risque humain : simulations d’hameçonnage, modules de sensibilisation, réponse aux incidents de messagerie signalés</td>
+</tr>
+<tr class="even">
+<td>Fréquence</td>
+<td>Simulations ludiques et formation interactive environ tous les 10 jours, selon l’éditeur</td>
+</tr>
+<tr class="odd">
+<td>Personnalisation</td>
+<td>Parcours individuel selon le niveau, le poste, le pays et le comportement passé</td>
+</tr>
+<tr class="even">
+<td>Langues</td>
+<td>Plus de 40 langues pour les simulations et les formations, selon l’éditeur ; disponibilité et qualité en français à vérifier lors de la démonstration</td>
+</tr>
+<tr class="odd">
+<td>Intégrations</td>
+<td>Microsoft 365 et Google Workspace ; bouton de signalement dans Outlook et Gmail (ordinateur, web, Android, iOS)</td>
+</tr>
+<tr class="even">
+<td>Contenus de conformité</td>
+<td>Bibliothèque couvrant notamment le RGPD ; création de contenus personnalisés possible</td>
+</tr>
+<tr class="odd">
+<td>Mise en route</td>
+<td>Accompagnement par une équipe dédiée au déploiement</td>
+</tr>
+<tr class="even">
+<td>Essai / remboursement</td>
+<td>Démonstration en direct lors de l’appel de cadrage ; essai gratuit et conditions de résiliation : [à vérifier sur le site de l’éditeur]</td>
+</tr>
+<tr class="odd">
+<td>Juridiction</td>
+<td>[À vérifier avant publication : pays du siège de l’éditeur et lieu d’hébergement des données]</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="points-forts">Points forts</h2>
+<h3 id="lentrainement-plutot-que-le-cours-magistral">L’entraînement plutôt que le cours magistral</h3>
+<p>Hoxhunt construit automatiquement un parcours pour chaque salarié et choisit les simulations selon son niveau, son poste, sa localisation et ses réactions passées. La difficulté augmente à mesure qu’il progresse. Après une simulation, le salarié reçoit une courte leçon liée à ce qu’il vient de vivre : on apprend au moment où l’erreur ou le bon réflexe se produit.</p>
+<h3 id="un-programme-qui-tourne-sans-vous">Un programme qui tourne sans vous</h3>
+<p>C’est l’argument le plus intéressant pour une PME. L’éditeur décrit cinq tâches récurrentes d’un programme mené à la main (préparer la campagne, mettre à jour les groupes, relancer, suivre les résultats, gérer les cas particuliers) et estime qu’une seule personne qui fait tout manuellement tient environ une campagne par trimestre, soit quatre expositions par an et par salarié. Avec la plateforme, seule la gestion des cas particuliers reste à votre charge. Ces chiffres sont ceux de l’éditeur et méritent d’être confrontés à votre propre situation.</p>
+<h3 id="le-signalement-des-vrais-messages-suspects">Le signalement des vrais messages suspects</h3>
+<p>Le bouton de signalement intégré à Outlook et Gmail sert aussi pour les vrais e-mails douteux. Vos salariés deviennent ainsi un réseau d’alerte : vous apprenez plus vite qu’une campagne d’hameçonnage réelle vise l’entreprise.</p>
+<h3 id="des-equipes-multilingues-couvertes">Des équipes multilingues couvertes</h3>
+<p>Avec plus de 40 langues annoncées, Hoxhunt convient aux entreprises qui ont des salariés ou des filiales à l’étranger.</p>
+<h3 id="une-bonne-reputation-aupres-des-utilisateurs">Une bonne réputation auprès des utilisateurs</h3>
+<p>Hoxhunt met en avant des notes élevées sur les plateformes d’avis professionnels comme G2. Ces notes sont à lire avec prudence : elles sont citées par l’éditeur lui-même et ne remplacent pas un test sur vos propres équipes.</p>
+<h2 id="limites">Limites</h2>
+<ul>
+<li><strong>Pas de prix public</strong> : impossible de comparer sans passer par un appel commercial. Pour une TPE, c’est une vraie barrière.</li>
+<li><strong>Pensé pour des structures déjà organisées</strong> : il faut importer les utilisateurs, définir des groupes, déployer un bouton dans la messagerie. Sans prestataire ou référent informatique, la mise en place peut sembler lourde.</li>
+<li><strong>Dépendance à l’écosystème de messagerie</strong> : l’intégration est décrite pour Microsoft 365 et Google Workspace.</li>
+<li><strong>Le phishing simulé ne suffit pas</strong> : il doit s’accompagner d’une communication claire auprès des salariés (pas de logique punitive), d’une charte et de mesures techniques comme la double authentification.</li>
+<li><strong>Contenus en français</strong> : la plateforme annonce plus de 40 langues, mais la qualité des contenus et leur adaptation au contexte français (organismes, arnaques locales) sont à vérifier en démonstration.</li>
+</ul>
+<h2 id="prix-et-pieges-de-renouvellement">Prix et pièges de renouvellement</h2>
+<p>Selon la page tarifs de l’éditeur consultée le 1er octobre 2026, le prix de Hoxhunt est <strong>calculé par salarié</strong> et dépend de <strong>deux éléments : votre effectif et les fonctions retenues</strong>. Le devis complet est remis après un appel de cadrage de 30 minutes, au cours duquel l’éditeur présente l’expérience salarié et le tableau de bord administrateur. Aucun prix n’est affiché publiquement : [PRIX — à vérifier sur le site de l’éditeur].</p>
+<p>Avant de signer, posez ces questions :</p>
+<ul>
+<li><strong>Durée d’engagement</strong> : contrat annuel ou pluriannuel ? Un engagement plus long réduit parfois le prix unitaire mais vous lie davantage.</li>
+<li><strong>Évolution de l’effectif</strong> : comment sont facturés les salariés qui arrivent en cours de contrat ? Et ceux qui partent ?</li>
+<li><strong>Fonctions incluses</strong> : simulations seules, modules de conformité, traitement des signalements réels ? Chaque option peut modifier le prix.</li>
+<li><strong>Prix de renouvellement</strong> : demandez par écrit le tarif applicable à la deuxième année.</li>
+<li><strong>Réversibilité</strong> : pouvez-vous récupérer vos données et rapports en fin de contrat ?</li>
+</ul>
+<h2 id="alternatives">Alternatives</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Alternative</th>
+<th>Pourquoi la regarder</th>
+<th>Fiche</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>KnowBe4</td>
+<td>Très large bibliothèque de contenus et de modèles de simulation</td>
+<td><a href="/offres/formations/knowbe4/">KnowBe4</a></td>
+</tr>
+<tr class="even">
+<td>SoSafe</td>
+<td>Éditeur européen, approche ludique et micro-apprentissage</td>
+<td><a href="/offres/formations/sosafe/">SoSafe</a></td>
+</tr>
+<tr class="odd">
+<td>Proofpoint</td>
+<td>Pour les entreprises déjà équipées de ses solutions de sécurité de messagerie</td>
+<td><a href="/offres/formations/proofpoint/">Proofpoint</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Les alternatives gratuites existent.</strong> Pour une petite structure, commencez par les ressources de sensibilisation gratuites de Cybermalveillance.gouv.fr et par le diagnostic cyber gratuit MonAideCyber de l’ANSSI, puis organisez vous-même quelques exercices. Notre guide <a href="/pro/sensibilisation/phishing-simule/">Campagnes de phishing simulé</a> explique comment s’y prendre.</p>
+<p>[LIEN AFFILIÉ — à compléter]</p>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="combien-coute-hoxhunt">Combien coûte Hoxhunt ?</h3>
+<p>L’éditeur ne publie pas de tarif : le prix est calculé par salarié selon votre effectif et les fonctions choisies, et communiqué après un appel de cadrage de 30 minutes. Demandez un devis écrit incluant le prix de renouvellement.</p>
+<h3 id="hoxhunt-fonctionne-t-il-en-francais">Hoxhunt fonctionne-t-il en français ?</h3>
+<p>L’éditeur annonce des simulations et des formations dans plus de 40 langues. Vérifiez lors de la démonstration que les contenus en français sont de bonne qualité et adaptés aux arnaques que vos salariés rencontrent réellement.</p>
+<h3 id="mes-salaries-vont-ils-mal-vivre-les-faux-e-mails-dhameconnage">Mes salariés vont-ils mal vivre les faux e-mails d’hameçonnage ?</h3>
+<p>Tout dépend de la manière dont vous présentez le programme. Hoxhunt mise sur une approche ludique et valorisante ; de votre côté, annoncez clairement la démarche, expliquez son objectif et ne sanctionnez pas les erreurs. Notre guide <a href="/pro/sensibilisation/former-ses-equipes/">Former ses équipes</a> détaille les bonnes pratiques.</p>
+<h3 id="hoxhunt-est-il-adapte-a-une-entreprise-de-10-salaries">Hoxhunt est-il adapté à une entreprise de 10 salariés ?</h3>
+<p>C’est possible, mais rarement le meilleur rapport coût-bénéfice. À cette taille, les ressources gratuites et un accompagnement ponctuel suffisent souvent. Hoxhunt prend tout son sens quand l’effectif rend la gestion manuelle des campagnes trop lourde.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/offres/formations/">Comparatif formations cyber pour équipes</a></li>
+<li><a href="/pro/sensibilisation/phishing-simule/">Campagnes de phishing simulé</a></li>
+<li><a href="/pro/sensibilisation/former-ses-equipes/">Former ses équipes</a></li>
+<li><a href="/pro/menaces/spear-phishing/">Phishing ciblé (spear phishing)</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Cette fiche s’appuie sur les pages officielles de l’éditeur, consultées le 1er octobre 2026. Hoxhunt ne publiant pas de prix, aucun tarif n’a pu être relevé.</p>
+<ul>
+<li>Hoxhunt — « Request Hoxhunt pricing » — tarification par salarié selon l’effectif et les fonctions, appel de cadrage de 30 minutes, démonstration : https://hoxhunt.com/pricing</li>
+<li>Hoxhunt — « Phishing Training » — parcours adaptatif, fréquence d’environ 10 jours, plus de 40 langues, intégration Microsoft 365 et Google Workspace, bouton de signalement, contenus de conformité (dont RGPD), équipe de déploiement : https://hoxhunt.com/product/phishing-training</li>
+<li>Hoxhunt — « How can a small IT team run security awareness training? » — tâches récurrentes d’un programme manuel, estimation d’une campagne par trimestre, part du travail restant au responsable informatique : https://hoxhunt.com/blog/security-awareness-training-small-it-team</li>
+<li>ANSSI (MesServicesCyber) — « Le diagnostic cyber gratuit » — alternative gratuite MonAideCyber : https://messervices.cyber.gouv.fr/services/mon-aide-cyber</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

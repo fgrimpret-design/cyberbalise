@@ -1,0 +1,573 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backblaze — CyberBalise</title><meta name="description" content="Backblaze sauvegarde-t-il bien votre ordinateur ? Notre avis sur ce service américain de sauvegarde en ligne illimitée : prix relevé sur le site officiel…">
+<link rel="canonical" href="https://cyberbalise.fr/offres/sauvegardes-cloud/backblaze/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Backblaze"><meta property="og:description" content="Backblaze sauvegarde-t-il bien votre ordinateur ? Notre avis sur ce service américain de sauvegarde en ligne illimitée : prix relevé sur le site officiel…"><meta property="og:url" content="https://cyberbalise.fr/offres/sauvegardes-cloud/backblaze/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a> › <a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Fiche produit</div>
+<h1>Backblaze</h1><p class="lead">Backblaze sauvegarde-t-il bien votre ordinateur ? Notre avis sur ce service américain de sauvegarde en ligne illimitée : prix relevé sur le site officiel, fonctions, limites, pièges et alternatives.</p>
+<div class="meta"><span class="chip both">Les deux</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Fiche produit — édition d’octobre 2026 · Lecture estimée : 6 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#notre-verdict">Notre verdict</a></li>
+<li><a href="#pour-qui-pas-pour-qui">Pour qui, pas pour qui</a></li>
+<li><a href="#caracteristiques-principales">Caractéristiques principales</a></li>
+<li><a href="#points-forts">Points forts</a></li>
+<li><a href="#limites">Limites</a></li>
+<li><a href="#prix-et-pieges-de-renouvellement">Prix et pièges de renouvellement</a></li>
+<li><a href="#alternatives">Alternatives</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="notre-verdict">Notre verdict</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Backblaze Computer Backup est une sauvegarde en ligne « installez et oubliez » : il copie automatiquement et en continu toutes les données de votre ordinateur et des disques externes branchés, sans limite de volume ni de taille de fichier, pour 99 dollars par an et par ordinateur (prix relevé sur le site officiel). C’est une excellente « copie hors site » dans une stratégie 3-2-1. Ses limites : un abonnement par ordinateur, un historique des versions de 30 jours par défaut (à étendre gratuitement à un an dans les réglages), une tarification en dollars et une société soumise au droit américain.</p></div>
+<ul>
+<li><strong>Le plus :</strong> volume illimité et fonctionnement automatique, sans réglage complexe.</li>
+<li><strong>Le moins :</strong> pensé pour sauvegarder des ordinateurs, pas pour synchroniser ou partager des fichiers.</li>
+<li><strong>Pour :</strong> particuliers et petites entreprises qui veulent une sauvegarde externalisée simple de leurs postes.</li>
+</ul>
+<h2 id="pour-qui-pas-pour-qui">Pour qui, pas pour qui</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Backblaze est fait pour vous si…</th>
+<th>Backblaze n’est pas fait pour vous si…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>vous voulez une copie automatique de tout votre ordinateur, sans choisir les dossiers</td>
+<td>vous cherchez un espace de partage ou de synchronisation entre appareils (type Drive)</td>
+</tr>
+<tr class="even">
+<td>vous avez beaucoup de données (photos, vidéos) et ne voulez pas payer au volume</td>
+<td>vous voulez sauvegarder un téléphone ou une tablette en priorité</td>
+</tr>
+<tr class="odd">
+<td>vous avez un ou quelques ordinateurs Windows ou Mac</td>
+<td>vous avez de nombreux ordinateurs et un budget serré (un abonnement par machine)</td>
+</tr>
+<tr class="even">
+<td>vous voulez une copie hors site contre le vol, l’incendie ou le rançongiciel</td>
+<td>vous exigez un hébergeur soumis exclusivement au droit européen</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rappel : une sauvegarde en ligne ne remplace pas une sauvegarde locale. La règle 3-2-1 recommande trois copies, sur deux supports différents, dont une hors site. Voir <a href="/particuliers/appareils/sauvegardes-3-2-1/">Sauvegarder ses données : la règle 3-2-1</a>.</p>
+<h2 id="caracteristiques-principales">Caractéristiques principales</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Critère</th>
+<th>Backblaze Computer Backup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Prix relevé</td>
+<td>99 $ par an et par ordinateur (offre Personal Backup ; même tarif annoncé pour Business Backup) — relevé le 1er octobre 2026 sur backblaze.com ; prix hors taxes éventuelles, à vérifier lors de la commande</td>
+</tr>
+<tr class="even">
+<td>Formules de paiement</td>
+<td>Mensuelle, un an ou deux ans selon l’éditeur — tarifs mensuels et bi-annuels : [PRIX — à vérifier sur le site de l’éditeur]</td>
+</tr>
+<tr class="odd">
+<td>Volume</td>
+<td>Illimité, sans restriction de type ni de taille de fichier</td>
+</tr>
+<tr class="even">
+<td>Données couvertes</td>
+<td>Données utilisateur de l’ordinateur et des disques externes connectés, incluses par défaut</td>
+</tr>
+<tr class="odd">
+<td>Systèmes</td>
+<td>Clients natifs Mac et Windows</td>
+</tr>
+<tr class="even">
+<td>Historique des versions</td>
+<td>30 jours par défaut ; un an en option gratuite ; « Forever » (illimité dans le temps) pour 0,006 $ par Go et par mois</td>
+</tr>
+<tr class="odd">
+<td>Restauration</td>
+<td>Application de restauration dédiée, restauration web en archive zip (jusqu’à 500 Go par demande), envoi d’un disque USB chiffré par courrier</td>
+</tr>
+<tr class="even">
+<td>Sécurité</td>
+<td>Chiffrement des données (AES-128 protégé par clés 2048 bits), option de clé privée personnelle, double authentification (SMS et application TOTP)</td>
+</tr>
+<tr class="odd">
+<td>Juridiction</td>
+<td>Société américaine</td>
+</tr>
+<tr class="even">
+<td>Essai</td>
+<td>Essai gratuit annoncé par l’éditeur — durée : [à vérifier sur le site de l’éditeur]</td>
+</tr>
+<tr class="odd">
+<td>Version entreprise</td>
+<td>Console d’administration web, facturation centralisée, déploiement silencieux (MSI, JAMF, Munki), authentification unique via Google et Microsoft</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="points-forts">Points forts</h2>
+<h3 id="vraiment-illimite-et-sans-tri-a-faire">Vraiment illimité et sans tri à faire</h3>
+<p>Backblaze sauvegarde par défaut toutes les données créées par l’utilisateur, y compris sur les disques externes branchés, sans plafond de volume ni de taille de fichier. Vous n’avez pas à décider quoi protéger : c’est un vrai avantage face aux offres facturées au téraoctet, surtout pour les photographes ou les familles qui accumulent les vidéos.</p>
+<h3 id="une-sauvegarde-automatique-et-continue">Une sauvegarde automatique et continue</h3>
+<p>Une fois installé, le logiciel tourne en arrière-plan et envoie les nouveaux fichiers et les modifications au fil de l’eau. C’est le meilleur antidote à la sauvegarde qu’on « oublie de faire ».</p>
+<h3 id="plusieurs-facons-de-recuperer-ses-fichiers">Plusieurs façons de récupérer ses fichiers</h3>
+<p>Restauration de quelques fichiers depuis l’application ou le navigateur, archive zip à télécharger, ou envoi d’un disque chiffré par courrier pour les gros volumes : la page tarifs indique que ce disque est gratuit s’il est retourné sous 30 jours. Pratique après la perte totale d’un ordinateur.</p>
+<h3 id="des-options-de-securite-serieuses">Des options de sécurité sérieuses</h3>
+<p>Les données sont chiffrées, la double authentification est disponible et vous pouvez ajouter une clé de chiffrement privée que Backblaze ne connaît pas. Activez au minimum la double authentification : un compte de sauvegarde piraté donne accès à toutes vos données.</p>
+<h3 id="une-version-pour-les-tpe-pme">Une version pour les TPE-PME</h3>
+<p>Le même service existe en version Business Backup, au même tarif annuel affiché, avec une console d’administration, une facturation centralisée et un déploiement à distance sur les postes.</p>
+<h2 id="limites">Limites</h2>
+<ul>
+<li><strong>Un abonnement par ordinateur.</strong> Avec trois ordinateurs, vous payez trois fois. Les téléphones ne sont pas le cœur de l’offre.</li>
+<li><strong>Historique de 30 jours par défaut.</strong> Un fichier supprimé ou abîmé au-delà de ce délai n’est plus récupérable. Passez l’historique à un an (gratuit) dès l’installation ; l’option « Forever » est payante selon le volume.</li>
+<li><strong>Ce n’est pas un espace de stockage.</strong> Backblaze reflète ce qu’il y a sur votre ordinateur : ce n’est pas un « disque dans le nuage » pour y ranger des fichiers effacés de la machine (sauf à payer l’historique « Forever »).</li>
+<li><strong>Disques externes à rebrancher.</strong> Un disque externe qui reste débranché trop longtemps risque de voir sa sauvegarde supprimée une fois l’historique écoulé : consultez les règles exactes dans l’aide de l’éditeur.</li>
+<li><strong>Juridiction américaine et prix en dollars.</strong> Pour des données sensibles ou des obligations de localisation, vérifiez où vos données sont hébergées et chiffrez avec une clé privée. Le montant facturé en euros dépend du taux de change.</li>
+<li><strong>Interface et support en anglais</strong> pour l’essentiel.</li>
+</ul>
+<h2 id="prix-et-pieges-de-renouvellement">Prix et pièges de renouvellement</h2>
+<p>Le prix relevé le 1er octobre 2026 sur le site officiel est de <strong>99 $ par an et par ordinateur</strong>, pour la sauvegarde personnelle comme pour la sauvegarde professionnelle. Ce n’est pas un prix promotionnel de première période, mais renouvellement et éventuelles hausses restent à vérifier au moment de la commande.</p>
+<p>Points d’attention :</p>
+<ul>
+<li><strong>les taxes et la conversion</strong> : le prix est affiché en dollars ; vérifiez le montant final en euros sur la page de paiement ;</li>
+<li><strong>l’historique « Forever »</strong> s’ajoute à l’abonnement (0,006 $ par Go et par mois selon l’éditeur) : avec beaucoup de données, la facture grimpe ;</li>
+<li><strong>le renouvellement automatique</strong> : notez la date d’échéance, et ne laissez pas expirer l’abonnement sans avoir récupéré vos données ;</li>
+<li><strong>Backblaze B2</strong>, l’autre produit de la marque, est un stockage objet facturé au volume, destiné aux usages techniques : ne le confondez pas avec la sauvegarde d’ordinateur.</li>
+</ul>
+<p><strong>[LIEN AFFILIÉ — à compléter]</strong></p>
+<h2 id="alternatives">Alternatives</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Alternative</th>
+<th>Pourquoi la considérer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="/offres/sauvegardes-cloud/idrive/">iDrive</a></td>
+<td>Un seul compte pour plusieurs appareils, avec un volume plafonné</td>
+</tr>
+<tr class="even">
+<td><a href="/offres/sauvegardes-cloud/pcloud/">pCloud</a></td>
+<td>Stockage et synchronisation, hébergement possible en Europe</td>
+</tr>
+<tr class="odd">
+<td><a href="/offres/sauvegardes-cloud/google-one/">Google One</a></td>
+<td>Pratique si vous vivez déjà dans l’écosystème Google, notamment pour le téléphone</td>
+</tr>
+<tr class="even">
+<td><a href="/offres/sauvegardes-cloud/microsoft-onedrive/">Microsoft OneDrive</a></td>
+<td>Souvent inclus avec Microsoft 365, intégré à Windows</td>
+</tr>
+</tbody>
+</table></div>
+<p>Alternative gratuite pour la partie locale : les outils intégrés au système (Historique des fichiers sous Windows, Time Machine sur Mac) avec un disque externe. Ils ne remplacent pas une copie hors site, mais la complètent. Voir notre <a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a>.</p>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="backblaze-sauvegarde-t-il-mon-telephone">Backblaze sauvegarde-t-il mon téléphone ?</h3>
+<p>Le service est conçu pour les ordinateurs Mac et Windows et leurs disques externes. Pour un smartphone, la sauvegarde intégrée du système (iCloud, Google) ou un service multi-appareils est plus adaptée.</p>
+<h3 id="que-se-passe-t-il-si-je-supprime-un-fichier-par-erreur">Que se passe-t-il si je supprime un fichier par erreur ?</h3>
+<p>Il reste récupérable pendant la durée de votre historique des versions : 30 jours par défaut, un an si vous activez l’option gratuite, sans limite avec l’option payante « Forever ».</p>
+<h3 id="backblaze-protege-t-il-contre-les-rancongiciels">Backblaze protège-t-il contre les rançongiciels ?</h3>
+<p>Il aide : grâce à l’historique des versions, vous pouvez restaurer vos fichiers tels qu’ils étaient avant le chiffrement, à condition que l’attaque soit repérée dans le délai de conservation. Protégez aussi le compte Backblaze par la double authentification.</p>
+<h3 id="peut-on-lutiliser-pour-une-entreprise">Peut-on l’utiliser pour une entreprise ?</h3>
+<p>Oui, avec l’offre Business Backup, qui ajoute une console d’administration et une facturation centralisée. Vérifiez la conformité RGPD de votre usage (localisation, chiffrement, contrat de sous-traitance) avant d’y placer des données clients. Voir <a href="/pro/fondamentaux/sauvegardes-entreprise/">Sauvegardes en entreprise</a>.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a></li>
+<li><a href="/particuliers/appareils/sauvegardes-3-2-1/">Sauvegarder ses données : la règle 3-2-1</a></li>
+<li><a href="/pro/fondamentaux/sauvegardes-entreprise/">Sauvegardes en entreprise</a></li>
+<li><a href="/offres/sauvegardes-cloud/idrive/">iDrive</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Cette fiche s’appuie sur les pages officielles de l’éditeur, consultées le 1er octobre 2026. Elle peut contenir des liens d’affiliation : cela n’influence ni notre avis ni les limites signalées.</p>
+<ul>
+<li>Backblaze — « Pricing | Backblaze Cloud Backup » — prix annuel Personal et Business Backup, données couvertes (ordinateur et disques externes), absence de restrictions de type et de taille, clients natifs, options de facturation, restaurations (web zip jusqu’à 500 Go, disque par courrier), chiffrement, double authentification, historique « Forever » payant, fonctions entreprise : https://www.backblaze.com/cloud-backup/pricing</li>
+<li>Backblaze — « Extended Version History » — 30 jours par défaut, un an gratuit, « Forever » à 0,006 $ par Go et par mois : https://www.backblaze.com/cloud-backup/features/extended-version-history</li>
+<li>Backblaze — « Unlimited Cloud Backup for Mac &amp; PC » — présentation du service personnel (stockage illimité, application de restauration, chiffrement, double authentification) : https://www.backblaze.com/cloud-backup/personal</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>
