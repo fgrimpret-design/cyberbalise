@@ -1,0 +1,31 @@
+rang;institution;categorie;domaine;note;score;dmarc;sous_domaines;spf;alignement;rapports;mta_sts;tls_rpt;dnssec;date_mesure_utc
+1;ANTAI (amendes);Transport & amendes;antai.gouv.fr;A;90;reject;reject;strict (-all);relâché;oui;non;non;oui;2026-10-02T14:21Z
+2;Assurance Maladie (ameli);Santé;ameli.fr;A;90;reject;reject;strict (-all);strict;oui;non;non;non;2026-10-02T14:21Z
+3;Assurance Maladie (domaine institutionnel);Santé;assurance-maladie.fr;A;90;reject;reject;strict (-all);strict;oui;non;non;non;2026-10-02T14:21Z
+4;Cybermalveillance.gouv.fr;Sécurité;cybermalveillance.gouv.fr;A;90;reject;reject;strict (-all);strict;oui;non;non;non;2026-10-02T14:21Z
+5;Douane;Fiscalité;douane.gouv.fr;A;90;reject;reject;strict (-all);relâché;oui;non;non;oui;2026-10-02T14:21Z
+6;Impôts (DGFiP);Fiscalité;impots.gouv.fr;A;90;reject;reject;strict (-all);strict;oui;non;non;non;2026-10-02T14:21Z
+7;France Travail;Emploi;francetravail.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+8;Info-retraite;Retraite;info-retraite.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+9;MSA;Prestations sociales;msa.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+10;Mes droits sociaux;Prestations sociales;mesdroitssociaux.gouv.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+11;Pôle emploi (ancien domaine);Emploi;pole-emploi.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+12;Urssaf;Prestations sociales;urssaf.fr;B;85;reject;reject;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+13;Ministère de l'Intérieur;Sécurité;interieur.gouv.fr;B;84;reject;reject;souple (~all);strict;oui;non;oui;non;2026-10-02T14:21Z
+14;Ministère de l'Économie;Fiscalité;economie.gouv.fr;B;82;reject;reject;redirect;strict;oui;non;non;non;2026-10-02T14:21Z
+15;Mon Compte Formation (CPF);Emploi;moncompteformation.gouv.fr;C;70;reject;reject;absent;strict;oui;non;non;non;2026-10-02T14:21Z
+16;FranceConnect;Démarches;franceconnect.gouv.fr;C;61;quarantine;quarantine;strict (-all);strict;non;non;non;non;2026-10-02T14:21Z
+17;Mon espace santé;Santé;monespacesante.fr;C;61;quarantine;quarantine;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+18;Justice;Sécurité;justice.fr;D;53;quarantine;quarantine;souple (~all);relâché;oui;non;non;non;2026-10-02T14:21Z
+19;Caisse d'allocations familiales (CAF);Prestations sociales;caf.fr;D;48;quarantine;quarantine;souple (~all);relâché;non;non;non;non;2026-10-02T14:21Z
+20;Agirc-Arrco;Retraite;agirc-arrco.fr;D;42;none;none;strict (-all);strict;oui;non;oui;non;2026-10-02T14:21Z
+21;France Rénov';Énergie & logement;france-renov.gouv.fr;D;40;none;none;strict (-all);strict;oui;non;non;non;2026-10-02T14:21Z
+22;L'Assurance retraite;Retraite;lassuranceretraite.fr;E;35;none;none;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+23;La Poste;Courrier & colis;laposte.fr;E;35;none;none;strict (-all);relâché;oui;non;non;non;2026-10-02T14:21Z
+24;ANTS (titres, permis, carte grise);Démarches;ants.gouv.fr;E;27;none;none;souple (~all);relâché;oui;non;non;non;2026-10-02T14:21Z
+25;Anah;Énergie & logement;anah.gouv.fr;E;27;none;none;souple (~all);relâché;oui;non;non;non;2026-10-02T14:21Z
+26;Crit'Air;Transport & amendes;certificat-air.gouv.fr;E;20;absente;—;strict (-all);relâché;non;non;non;non;2026-10-02T14:21Z
+27;Chèque énergie;Énergie & logement;chequeenergie.gouv.fr;F;15;none;none;absent;relâché;oui;non;non;non;2026-10-02T14:21Z
+28;Service-Public (gouv.fr);Démarches;service-public.gouv.fr;F;12;absente;—;souple (~all);relâché;non;non;non;non;2026-10-02T14:21Z
+29;Service-Public.fr;Démarches;service-public.fr;F;12;absente;—;souple (~all);relâché;non;non;non;non;2026-10-02T14:21Z
+30;Éducation nationale;Éducation;education.gouv.fr;F;12;absente;—;redirect;relâché;non;non;non;non;2026-10-02T14:21Z

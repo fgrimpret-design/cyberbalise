@@ -1,0 +1,533 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indice d'usurpabilité des services publics — CyberBalise</title><meta name="description" content="30 domaines officiels français (impôts, Ameli, CAF, ANTAI…) notés de A à F selon leur protection contre les faux e-mails. Méthode ouverte, données téléchargeables.">
+<link rel="canonical" href="https://cyberbalise.fr/outils/indice-usurpabilite/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Indice d'usurpabilité des services publics"><meta property="og:description" content="30 domaines officiels français (impôts, Ameli, CAF, ANTAI…) notés de A à F selon leur protection contre les faux e-mails. Méthode ouverte, données téléchargeables."><meta property="og:url" content="https://cyberbalise.fr/outils/indice-usurpabilite/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/outils/">Ressources</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Baromètre trimestriel · Édition pilote</div>
+<h1>Indice d'usurpabilité des services publics</h1><p class="lead">Un fraudeur peut-il envoyer un e-mail techniquement au nom des impôts, de la CAF ou de l'ANTAI ? Nous avons testé les protections publiées par 30 domaines officiels.</p>
+<div class="meta"><span class="chip both">Les deux</span> <span class="date">Mesure du 2 octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page">
+<style>
+.ix-kpis{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px;margin:4px 0 8px}
+.ix-kpi{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px}
+.ix-kpi .big{font-family:var(--disp);font-weight:800;font-size:3rem;line-height:1;color:var(--orange-d)}
+.ix-kpi p{margin:.6em 0 0;font-size:.95rem;color:var(--muted)}
+.ix-dist{display:flex;align-items:flex-end;gap:10px;height:120px;margin-top:10px}
+.ix-dist div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:4px}
+.ix-dist i{display:block;width:100%;border-radius:6px 6px 0 0}
+.ix-dist span{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.ix-dist b{font-family:var(--disp);font-size:.95rem}
+.ix-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 12px}
+.ix-tools input,.ix-tools select{font:inherit;font-size:.95rem;padding:.55em .9em;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+.ix-tools input{flex:1;min-width:200px}
+.ix-dl{background:var(--orange);color:#fff!important;text-decoration:none;font-family:var(--disp);font-weight:700;font-size:.9rem;padding:.65em 1.1em;border-radius:10px;white-space:nowrap}
+.ix-dl:hover{background:var(--orange-d)}
+table.ix{margin:0}
+table.ix tr.row{cursor:pointer}
+table.ix tr.row:hover td{background:var(--bg)}
+table.ix tr.row:focus-visible{outline:3px solid var(--orange);outline-offset:-3px}
+table.ix .org{font-weight:600;font-family:var(--disp)}
+table.ix .cat{display:block;font-size:.8rem;color:var(--muted)}
+table.ix .dom{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.grade{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:8px;font-family:var(--disp);font-weight:800;color:#fff}
+.g-A{background:#1F7A45}.g-B{background:#4E8A2E}.g-C{background:#B07D00}.g-D{background:#C2571B}.g-E{background:#B83A1E}.g-F{background:#8E1B1B}
+.meter{height:8px;background:var(--line);border-radius:99px;overflow:hidden;flex:1;min-width:60px}
+.meter i{display:block;height:100%;border-radius:99px}
+.sc{display:flex;align-items:center;gap:10px}.sc span{font-family:var(--mono);font-size:.8rem;width:2em;text-align:right}
+.pol{font-family:var(--mono);font-size:.72rem;padding:.2em .6em;border-radius:99px;white-space:nowrap}
+.pol.ok{background:#E2F2E8;color:#1F6A3D}.pol.mid{background:#FBF0D5;color:#7A5600}.pol.ko{background:var(--orange-soft);color:var(--orange-d)}
+tr.det td{background:var(--bg);padding:18px}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.det-grid .lb{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:4px}
+.det-grid .lb b{font-family:var(--mono);font-weight:500}
+.det-grid .bars>div+div{margin-top:10px}
+.det-grid .chips{display:flex;flex-wrap:wrap;gap:6px}
+.det-grid .fix{font-size:.85rem;color:var(--muted);margin:12px 0 0}
+.ix-grades{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:1em 0}
+.ix-grades div{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border-radius:10px;padding:10px 12px}
+.ix-grades p{margin:0;font-size:.92rem}
+.ix-cite{font-family:var(--mono);font-size:.82rem;background:var(--bg);border-left:3px solid var(--orange);padding:10px 14px}
+.hide-sm{}
+@media (max-width:760px){.ix-kpis,.det-grid,.ix-grades{grid-template-columns:1fr}.hide-sm{display:none}table.ix td,table.ix th{padding:.6em .45em}}
+</style><!-- CB-CONTENU:DEBUT -->
+<div class="ix-kpis" aria-label="Chiffres clés">
+  <div class="ix-kpi"><div class="big" id="k-open">11</div><p>domaines sur 30 ne demandent <strong>pas</strong> aux messageries de bloquer ou d'isoler les faux e-mails à leur nom (DMARC absent ou en mode « observation »).</p></div>
+  <div class="ix-kpi"><span class="mono-label" style="color:var(--muted)">Répartition des notes</span><div class="ix-dist" id="distrib"></div></div>
+</div>
+
+<h2 id="classement">Le classement</h2>
+<p>Cliquez sur une ligne pour voir le détail de la note.</p>
+<div class="ix-tools">
+  <label class="sr-only" for="q">Rechercher un organisme</label><input id="q" type="search" placeholder="Rechercher un organisme (ex. CAF)">
+  <label class="sr-only" for="cat">Catégorie</label><select id="cat"><option value="">Toutes catégories</option></select>
+  <a class="ix-dl" href="/outils/indice-usurpabilite/indice-usurpabilite-2026-T4.csv" download>Télécharger le CSV</a>
+</div>
+<div class="tablewrap" style="margin-top:0"><table class="ix">
+  <thead><tr><th>#</th><th>Organisme</th><th class="hide-sm">Domaine</th><th>Note</th><th class="hide-sm">Score /100</th><th class="hide-sm">DMARC</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table></div>
+<p class="caption">Une note faible ne signifie pas qu'un organisme est piraté, ni que ses e-mails sont dangereux. Elle signifie qu'il ne demande pas, ou pas assez fermement, aux messageries de rejeter les messages qui usurpent son nom de domaine.</p>
+
+<div class="note"><p><strong>Le bon réflexe ne change pas.</strong> Même face à un organisme noté A, un e-mail peut venir d'une adresse sosie. Ne cliquez jamais sur un lien reçu pour payer une amende ou recevoir un remboursement : passez par le site officiel tapé vous-même. Un doute ? Essayez notre <a href="/outils/detecteur-arnaque/">détecteur d'arnaque</a> ou lisez <a href="/particuliers/menaces/phishing-hameconnage/">Phishing et hameçonnage</a>.</p></div>
+
+<h2 id="methodologie">Méthodologie</h2>
+<p>Version 1.0 · applicable à partir de l'édition d'octobre 2026. Toute modification du barème sera documentée et datée ici.</p>
+<h3 id="m-question">La question posée</h3>
+<p>Le protocole de l'e-mail ne vérifie pas, par défaut, l'identité de l'expéditeur&nbsp;: n'importe qui peut écrire <code>From: impots.gouv.fr</code>. Trois mécanismes publiés dans le DNS (l'annuaire public d'Internet) permettent au propriétaire d'un domaine de corriger cela&nbsp;:</p>
+<ul>
+<li><strong>SPF</strong> liste les serveurs autorisés à envoyer pour le domaine.</li>
+<li><strong>DKIM</strong> signe cryptographiquement les messages légitimes.</li>
+<li><strong>DMARC</strong> indique aux messageries (Gmail, Orange, Outlook…) quoi faire d'un message qui échoue à ces contrôles&nbsp;: rien (<code>p=none</code>), le mettre en indésirables (<code>p=quarantine</code>) ou le rejeter (<code>p=reject</code>).</li>
+</ul>
+<p>L'indice mesure donc une chose précise&nbsp;: <strong>dans quelle mesure un organisme a demandé publiquement que les faux e-mails utilisant son domaine exact soient bloqués.</strong></p>
+<h3 id="m-perimetre">Périmètre</h3>
+<ul>
+<li>30 domaines d'administrations, d'organismes de protection sociale et d'entités à mission de service public, choisis parce qu'ils sont <strong>régulièrement imités dans les campagnes d'hameçonnage</strong> visant le grand public en France (amendes, remboursements, allocations, colis, CPF, rénovation énergétique).</li>
+<li>Un organisme utilisant plusieurs domaines visibles du public peut apparaître plusieurs fois (ex. <code>ameli.fr</code> et <code>assurance-maladie.fr</code>), car chacun peut être usurpé séparément.</li>
+<li>La liste est publiée avec les données. Les ajouts sont annoncés à chaque édition&nbsp;; les suggestions sont bienvenues via la page <a href="/contact/">Contact</a>.</li>
+</ul>
+<h3 id="m-collecte">Collecte</h3>
+<ul>
+<li>Lecture exclusive d'enregistrements DNS <strong>publics</strong>&nbsp;: TXT (SPF), <code>_dmarc</code>, <code>_mta-sts</code>, <code>_smtp._tls</code> et DS (DNSSEC). Aucun e-mail n'est envoyé, aucun système n'est sondé ou attaqué.</li>
+<li>Chaque requête est faite auprès de deux résolveurs publics (Cloudflare <code>1.1.1.1</code> et Google <code>8.8.8.8</code>) pour éviter qu'une erreur ponctuelle ne soit comptée comme une absence.</li>
+<li>La date et l'heure (UTC) de la mesure figurent dans le fichier CSV. Les résultats reflètent l'état à cet instant&nbsp;; un organisme peut avoir corrigé sa configuration depuis.</li>
+<li>Le script de mesure est disponible sur demande pour permettre à quiconque de reproduire les résultats.</li>
+</ul>
+<h3 id="m-bareme">Barème (100 points)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Critère</th><th>Ce qui est évalué</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Politique DMARC</td><td><code>reject</code> 50 · <code>quarantine</code> 30 · <code>none</code> 10 · absente ou invalide 0. Si <code>pct</code> &lt; 100, les points sont réduits au prorata.</td><td>50</td></tr>
+<tr><td>Sous-domaines</td><td>Politique appliquée aux sous-domaines (<code>sp</code>, ou <code>p</code> par défaut)&nbsp;: <code>reject</code> 10 · <code>quarantine</code> 6. Empêche les faux du type <code>remboursement.domaine.fr</code>.</td><td>10</td></tr>
+<tr><td>SPF</td><td>Strict <code>-all</code> 20 · souple <code>~all</code> ou <code>redirect</code> 12 · permissif, absent ou multiple 0.</td><td>20</td></tr>
+<tr><td>Alignement strict</td><td><code>adkim=s</code> ou <code>aspf=s</code>&nbsp;: le domaine affiché doit correspondre exactement au domaine authentifié.</td><td>5</td></tr>
+<tr><td>Rapports DMARC</td><td>Présence d'une adresse <code>rua</code>&nbsp;: l'organisme est informé des tentatives d'usurpation.</td><td>5</td></tr>
+<tr><td>Transport chiffré</td><td>MTA-STS 3 · TLS-RPT 2.</td><td>5</td></tr>
+<tr><td>DNSSEC</td><td>Zone signée (enregistrement DS présent)&nbsp;: les réponses DNS ne peuvent pas être falsifiées.</td><td>5</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Règle de plafond.</strong> Sans politique DMARC <code>quarantine</code> ou <code>reject</code>, le score est plafonné à 49 (note D au mieux). Raison&nbsp;: sans cette consigne, les autres protections n'empêchent pas un faux e-mail d'arriver en boîte de réception.</p>
+<p>DKIM n'est pas noté directement&nbsp;: ses clés sont publiées sous des noms («&nbsp;sélecteurs&nbsp;») non devinables de l'extérieur. Son effet est pris en compte via DMARC et l'alignement.</p>
+<h3 id="m-notes">Notes A à F</h3>
+<div class="ix-grades"><div><span class="grade g-A">A</span><p>90–100 · Usurpation directe bloquée, configuration exemplaire.</p></div><div><span class="grade g-B">B</span><p>75–89 · Usurpation directe bloquée, quelques points perfectibles.</p></div><div><span class="grade g-C">C</span><p>60–74 · Protection réelle mais incomplète.</p></div><div><span class="grade g-D">D</span><p>40–59 · Faux e-mails au mieux mis en indésirables, ou protection en mode observation.</p></div><div><span class="grade g-E">E</span><p>20–39 · Aucune consigne de blocage.</p></div><div><span class="grade g-F">F</span><p>0–19 · Pas de DMARC ou configuration lacunaire&nbsp;: usurpation la plus facile.</p></div></div>
+<h3 id="m-limites">Limites</h3>
+<ul>
+<li><strong>L'indice ne couvre que l'usurpation du domaine exact.</strong> Les arnaques utilisent aussi des domaines sosies (<code>ameli-remboursement.com</code>), des SMS ou de simples noms d'affichage. DMARC n'y peut rien&nbsp;: c'est le rôle de la vigilance des usagers — voir notre <a href="/outils/detecteur-arnaque/">détecteur d'arnaque</a>.</li>
+<li>Les grandes messageries appliquent leurs propres filtres. Un domaine noté E n'est donc pas «&nbsp;grand ouvert&nbsp;», mais il dépend entièrement de ces filtres.</li>
+<li>Un domaine qui n'envoie jamais d'e-mail reste usurpable s'il ne publie pas de politique de refus. Il est donc noté comme les autres.</li>
+<li>La mesure est un instantané. Une configuration en cours de déploiement (passage de <code>none</code> à <code>reject</code>) peut être pénalisée temporairement.</li>
+<li>L'indice n'évalue ni la sécurité globale des systèmes d'information, ni la protection des données personnelles des organismes.</li>
+</ul>
+<h3 id="m-deonto">Déontologie</h3>
+<ul>
+<li>Chaque organisme noté C ou moins est informé de ses résultats <strong>avant publication</strong>, avec les corrections recommandées.</li>
+<li><strong>Droit de réponse</strong>&nbsp;: toute contestation ou correction est examinée et, si elle est fondée, la ligne est mise à jour avec mention de la date.</li>
+<li>Les organismes qui corrigent leur configuration entre deux éditions sont signalés comme «&nbsp;en progrès&nbsp;».</li>
+<li>CyberBalise ne vend aucun service de sécurité de la messagerie aux organismes notés. La méthode et les données sont publiques afin que les résultats puissent être vérifiés indépendamment.</li>
+</ul>
+<h3 id="m-citer">Calendrier &amp; citation</h3>
+<p>Publication chaque trimestre (janvier, avril, juillet, octobre). Reprise libre des résultats, à condition de citer la source&nbsp;:</p>
+<p class="ix-cite">Source&nbsp;: CyberBalise, Indice d'usurpabilité des services publics, édition octobre 2026 — cyberbalise.fr/outils/indice-usurpabilite/</p>
+<p>Presse et organismes&nbsp;: <a href="mailto:contact@cyberbalise.fr?subject=Indice%20d%27usurpabilit%C3%A9">contact@cyberbalise.fr</a></p>
+
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<script>
+const DATA = [{"i": "ANTAI (amendes)", "c": "Transport & amendes", "d": "antai.gouv.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 5}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "oui"}, {"i": "Assurance Maladie (ameli)", "c": "Santé", "d": "ameli.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Assurance Maladie (domaine institutionnel)", "c": "Santé", "d": "assurance-maladie.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Cybermalveillance.gouv.fr", "c": "Sécurité", "d": "cybermalveillance.gouv.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Douane", "c": "Fiscalité", "d": "douane.gouv.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 5}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "oui"}, {"i": "Impôts (DGFiP)", "c": "Fiscalité", "d": "impots.gouv.fr", "n": "A", "s": 90, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "France Travail", "c": "Emploi", "d": "francetravail.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Info-retraite", "c": "Retraite", "d": "info-retraite.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "MSA", "c": "Prestations sociales", "d": "msa.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Mes droits sociaux", "c": "Prestations sociales", "d": "mesdroitssociaux.gouv.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Pôle emploi (ancien domaine)", "c": "Emploi", "d": "pole-emploi.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Urssaf", "c": "Prestations sociales", "d": "urssaf.fr", "n": "B", "s": 85, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Ministère de l'Intérieur", "c": "Sécurité", "d": "interieur.gouv.fr", "n": "B", "s": 84, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 12, "alignement": 5, "rapports": 5, "mta_sts": 2, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "souple (~all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "oui", "ds": "non"}, {"i": "Ministère de l'Économie", "c": "Fiscalité", "d": "economie.gouv.fr", "n": "B", "s": 82, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 12, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "redirect", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Mon Compte Formation (CPF)", "c": "Emploi", "d": "moncompteformation.gouv.fr", "n": "C", "s": 70, "p": {"dmarc": 50, "sous_domaines": 10, "spf": 0, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "reject", "sp": "reject", "spf": "absent", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "FranceConnect", "c": "Démarches", "d": "franceconnect.gouv.fr", "n": "C", "s": 61, "p": {"dmarc": 30, "sous_domaines": 6, "spf": 20, "alignement": 5, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "quarantine", "sp": "quarantine", "spf": "strict (-all)", "al": "strict", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Mon espace santé", "c": "Santé", "d": "monespacesante.fr", "n": "C", "s": 61, "p": {"dmarc": 30, "sous_domaines": 6, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "quarantine", "sp": "quarantine", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Justice", "c": "Sécurité", "d": "justice.fr", "n": "D", "s": 53, "p": {"dmarc": 30, "sous_domaines": 6, "spf": 12, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "quarantine", "sp": "quarantine", "spf": "souple (~all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Caisse d'allocations familiales (CAF)", "c": "Prestations sociales", "d": "caf.fr", "n": "D", "s": 48, "p": {"dmarc": 30, "sous_domaines": 6, "spf": 12, "alignement": 0, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "quarantine", "sp": "quarantine", "spf": "souple (~all)", "al": "relâché", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Agirc-Arrco", "c": "Retraite", "d": "agirc-arrco.fr", "n": "D", "s": 42, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 2, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "oui", "ds": "non"}, {"i": "France Rénov'", "c": "Énergie & logement", "d": "france-renov.gouv.fr", "n": "D", "s": 40, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 20, "alignement": 5, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "strict (-all)", "al": "strict", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "L'Assurance retraite", "c": "Retraite", "d": "lassuranceretraite.fr", "n": "E", "s": 35, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "La Poste", "c": "Courrier & colis", "d": "laposte.fr", "n": "E", "s": 35, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 20, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "strict (-all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "ANTS (titres, permis, carte grise)", "c": "Démarches", "d": "ants.gouv.fr", "n": "E", "s": 27, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 12, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "souple (~all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Anah", "c": "Énergie & logement", "d": "anah.gouv.fr", "n": "E", "s": 27, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 12, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "souple (~all)", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Crit'Air", "c": "Transport & amendes", "d": "certificat-air.gouv.fr", "n": "E", "s": 20, "p": {"dmarc": 0, "sous_domaines": 0, "spf": 20, "alignement": 0, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "absente", "sp": "—", "spf": "strict (-all)", "al": "relâché", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Chèque énergie", "c": "Énergie & logement", "d": "chequeenergie.gouv.fr", "n": "F", "s": 15, "p": {"dmarc": 10, "sous_domaines": 0, "spf": 0, "alignement": 0, "rapports": 5, "mta_sts": 0, "dnssec": 0}, "dm": "none", "sp": "none", "spf": "absent", "al": "relâché", "ra": "oui", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Service-Public (gouv.fr)", "c": "Démarches", "d": "service-public.gouv.fr", "n": "F", "s": 12, "p": {"dmarc": 0, "sous_domaines": 0, "spf": 12, "alignement": 0, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "absente", "sp": "—", "spf": "souple (~all)", "al": "relâché", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Service-Public.fr", "c": "Démarches", "d": "service-public.fr", "n": "F", "s": 12, "p": {"dmarc": 0, "sous_domaines": 0, "spf": 12, "alignement": 0, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "absente", "sp": "—", "spf": "souple (~all)", "al": "relâché", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}, {"i": "Éducation nationale", "c": "Éducation", "d": "education.gouv.fr", "n": "F", "s": 12, "p": {"dmarc": 0, "sous_domaines": 0, "spf": 12, "alignement": 0, "rapports": 0, "mta_sts": 0, "dnssec": 0}, "dm": "absente", "sp": "—", "spf": "redirect", "al": "relâché", "ra": "non", "sts": "non", "tls": "non", "ds": "non"}];
+const COL = {A:'#1F7A45',B:'#4E8A2E',C:'#B07D00',D:'#C2571B',E:'#B83A1E',F:'#8E1B1B'};
+const LBL = {dmarc:['Politique DMARC',50],sous_domaines:['Sous-domaines',10],spf:['SPF',20],alignement:['Alignement strict',5],rapports:['Rapports DMARC',5],mta_sts:['MTA-STS / TLS-RPT',5],dnssec:['DNSSEC',5]};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cnt = {}; 'ABCDEF'.split('').forEach(g => cnt[g] = DATA.filter(x => x.n === g).length);
+const mx = Math.max(...Object.values(cnt));
+document.getElementById('distrib').innerHTML = Object.entries(cnt).map(([g,c]) => `<div><span>${c}</span><i style="height:${Math.max(4,c/mx*78)}%;background:${COL[g]}"></i><b style="color:${COL[g]}">${g}</b></div>`).join('');
+const cats = [...new Set(DATA.map(x => x.c))].sort((a,b) => a.localeCompare(b,'fr'));
+document.getElementById('cat').insertAdjacentHTML('beforeend', cats.map(c => `<option>${esc(c)}</option>`).join(''));
+const cls = v => /^(reject|strict|oui)/.test(v) ? 'ok' : /^(quarantine|souple|redirect)/.test(v) ? 'mid' : 'ko';
+function detail(x){
+  const bars = Object.entries(LBL).map(([k,[l,m]]) => `<div><div class="lb"><span>${l}</span><b>${x.p[k]}/${m}</b></div><div class="meter"><i style="width:${x.p[k]/m*100}%;background:${COL[x.n]}"></i></div></div>`).join('');
+  const chips = [['DMARC',x.dm],['Sous-domaines',x.sp],['SPF',x.spf],['Alignement',x.al],['Rapports',x.ra],['MTA-STS',x.sts],['TLS-RPT',x.tls],['DNSSEC',x.ds]].map(([l,v]) => `<span class="pol ${cls(v)}">${l} : ${esc(v)}</span>`).join('');
+  return `<tr class="det"><td colspan="6"><div class="det-grid"><div class="bars">${bars}</div><div><p class="mono-label" style="color:var(--muted);margin:0 0 10px">Valeurs relevées · ${esc(x.d)}</p><div class="chips">${chips}</div>${x.s>=75?'':'<p class="fix">Correctif prioritaire : publier une politique DMARC <code>p=reject</code> (après une phase de surveillance des rapports) et un SPF terminé par <code>-all</code>.</p>'}</div></div></td></tr>`;
+}
+function render(){
+  const q = document.getElementById('q').value.trim().toLowerCase(), c = document.getElementById('cat').value;
+  const list = DATA.map((x,i) => ({...x, r:i+1})).filter(x => (!c || x.c === c) && (!q || (x.i+' '+x.d).toLowerCase().includes(q)));
+  document.getElementById('rows').innerHTML = list.length ? list.map(x => `<tr class="row" tabindex="0" aria-expanded="false" data-d="${esc(x.d)}"><td class="dom">${x.r}</td><td><span class="org">${esc(x.i)}</span><span class="cat">${esc(x.c)}</span></td><td class="dom hide-sm">${esc(x.d)}</td><td><span class="grade g-${x.n}" aria-label="Note ${x.n}">${x.n}</span></td><td class="hide-sm"><div class="sc"><div class="meter"><i style="width:${x.s}%;background:${COL[x.n]}"></i></div><span>${x.s}</span></div></td><td class="hide-sm"><span class="pol ${cls(x.dm)}">${esc(x.dm)}</span></td></tr>`).join('')
+    : '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Aucun organisme ne correspond. Essayez un autre nom ou « Toutes catégories ».</td></tr>';
+}
+function toggle(tr){ if(!tr) return; const n = tr.nextElementSibling;
+  if (n && n.classList.contains('det')) { n.remove(); tr.setAttribute('aria-expanded','false'); return; }
+  tr.insertAdjacentHTML('afterend', detail(DATA.find(x => x.d === tr.dataset.d))); tr.setAttribute('aria-expanded','true'); }
+const rowsEl = document.getElementById('rows');
+rowsEl.addEventListener('click', e => toggle(e.target.closest('tr.row')));
+rowsEl.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e.target.closest('tr.row')); } });
+['q','cat'].forEach(id => document.getElementById(id).addEventListener('input', render));
+render();
+</script>
+
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>
