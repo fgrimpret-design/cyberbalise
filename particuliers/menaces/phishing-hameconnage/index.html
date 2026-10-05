@@ -1,0 +1,507 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phishing et hameçonnage — CyberBalise</title><meta name="description" content="Reconnaître e-mails et sites frauduleux ; les signaux qui ne trompent plus en 2026.">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/menaces/phishing-hameconnage/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Phishing et hameçonnage"><meta property="og:description" content="Reconnaître e-mails et sites frauduleux ; les signaux qui ne trompent plus en 2026."><meta property="og:url" content="https://cyberbalise.fr/particuliers/menaces/phishing-hameconnage/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/menaces/">Comprendre les menaces</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Phishing et hameçonnage</h1><p class="lead">Reconnaître e-mails et sites frauduleux ; les signaux qui ne trompent plus en 2026.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><h2 id="la-menace-n-1-pour-les-particuliers-en-france-comment-elle-fonctionne-comment-la-reconnaitre-et-comment-reagir-sans-perdre-une-minute">La menace n°1 pour les particuliers en France : comment elle fonctionne, comment la reconnaître, et comment réagir sans perdre une minute.</h2>
+<p class="caption">Guide pratique — édition de septembre 2026 · Lecture estimée : 12 minutes · Auteur : [Nom de l'auteur]</p>
+<div class="note"><p>Chiffres issus du rapport d'activité 2025 de Cybermalveillance.gouv.fr, de son communiqué du 26 mars 2026 et du baromètre de septembre 2025.</p></div>
+<h2>Sommaire</h2><ul class="summary-list">
+<li><a href="#qu-est-ce-que-l-hameconnage">Qu'est-ce que l'hameçonnage ?</a></li>
+<li><a href="#les-chiffres-cles-2025-2026">Les chiffres clés (2025-2026)</a></li>
+<li><a href="#les-7-formes-d-hameconnage-a-connaitre">Les 7 formes d'hameçonnage à connaître</a></li>
+<li><a href="#l-anatomie-d-une-attaque-en-4-temps">L'anatomie d'une attaque, en 4 temps</a></li>
+<li><a href="#comment-reconnaitre-un-message-frauduleux-8-signaux-d-alerte">Comment reconnaître un message frauduleux : 8 signaux d'alerte</a></li>
+<li><a href="#les-10-reflexes-de-protection-qui-changent-tout">Les 10 réflexes de protection qui changent tout</a></li>
+<li><a href="#victime-d-hameconnage-la-marche-a-suivre">Victime d'hameçonnage : la marche à suivre</a></li>
+<li><a href="#ou-signaler-precisement">Où signaler, précisément</a></li>
+<li><a href="#tendances-pourquoi-l-hameconnage-va-s-intensifier">Tendances : pourquoi l'hameçonnage va s'intensifier</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="qu-est-ce-que-l-hameconnage">Qu'est-ce que l'hameçonnage ?</h2>
+<h3>Réponse rapide</h3>
+<p>L'hameçonnage — ou phishing — est une technique frauduleuse qui consiste à se faire passer pour un tiers de confiance (banque, impôts, opérateur, transporteur, service de livraison) afin de vous amener à communiquer vos données personnelles ou bancaires, ou à installer un logiciel malveillant. C'est aujourd'hui la menace n°1 pour les particuliers en France : elle représente près d'une demande d'assistance sur trois, et six Français sur dix y ont été confrontés en l'espace de douze mois.</p>
+<p>Trois règles neutralisent la grande majorité des tentatives : ne jamais communiquer d'information sensible par message ni par téléphone, ne jamais cliquer sur un lien reçu sans vérifier son adresse réelle et, en cas de doute, contacter l'organisme par un canal que vous avez choisi vous-même (site tapé à la main, numéro figurant sur votre contrat).</p>
+<p>« Phishing » et « hameçonnage » sont deux mots pour une seule et même chose. Le terme anglais vient de fishing (pêcher) et de phreaking ; le mot français file la même métaphore : l'attaquant lance un hameçon déguisé en message anodin, et attend qu'une proie morde.</p>
+<p>La définition retenue par Cybermalveillance.gouv.fr, le dispositif public d'assistance aux victimes, est précise : il s'agit d'une technique frauduleuse destinée à leurrer l'internaute pour l'inciter à communiquer des données personnelles (comptes, mots de passe) et/ou bancaires en se faisant passer pour un tiers de confiance. Ce tiers peut être un faux message, un SMS ou un appel téléphonique émanant soi-disant d'une banque, d'un réseau social, d'un opérateur, d'un fournisseur d'énergie, d'un site de commerce en ligne ou d'une administration.</p>
+<p>Il est essentiel de comprendre que l'hameçonnage n'est pas une attaque informatique au sens strict : aucune faille technique n'est nécessaire. L'attaquant n'exploite pas votre ordinateur, il exploite votre confiance, votre attention et vos émotions. C'est ce qui en fait la porte d'entrée de la plupart des autres cybermalveillances : un mot de passe récolté mène au piratage de compte, un numéro de carte mène aux débits frauduleux, un identifiant professionnel mène à l'intrusion dans l'entreprise.</p>
+<p>Le vocabulaire varie selon le canal utilisé, et il est utile de les distinguer : smishing pour les SMS, vishing pour les appels vocaux, quishing pour les QR codes. D'après le baromètre publié en septembre 2025, les termes de phishing et de smishing sont de mieux en mieux connus des Français, tandis que celui de quishing reste très peu connu : seulement 6 % des personnes interrogées le reconnaissent — un angle mort d'autant plus problématique que ce vecteur progresse.</p>
+<h2 id="les-chiffres-cles-2025-2026">Les chiffres clés (2025-2026)</h2>
+<p>Les données ci-dessous proviennent des sources institutionnelles françaises : le rapport d'activité 2025 de Cybermalveillance.gouv.fr (publié en mars 2026), son communiqué de presse du 26 mars 2026, et le baromètre réalisé auprès des particuliers et publié en septembre 2025.</p>
+<p class="caption">Table : Hameçonnage et exposition des particuliers aux cybermenaces — chiffres de référence (sources : Cybermalveillance.gouv.fr, rapports 2025 et baromètre 2025).</p>
+<table><tr><td>Indicateur</td><td>Valeur</td><td>Précision</td></tr><tr><td>Part des demandes d&#x27;assistance des particuliers liées à l&#x27;hameçonnage</td><td>≈ 33 %</td><td>+ 71 % en un an</td></tr><tr><td>Rang de l&#x27;hameçonnage, toutes populations confondues</td><td>1er</td><td>+ 70 % en un an</td></tr><tr><td>Français confrontés à un hameçonnage en douze mois</td><td>60 %</td><td>baromètre de septembre 2025</td></tr><tr><td>Français confrontés à une violation de leurs données personnelles</td><td>30 %</td><td>baromètre de septembre 2025</td></tr><tr><td>Français confrontés à un faux conseiller bancaire</td><td>15 %</td><td>baromètre de septembre 2025</td></tr><tr><td>Victimes assistées par le dispositif public en 2025</td><td>504 000</td><td>+ 20 % par rapport à 2024</td></tr><tr><td>Part des demandes d&#x27;assistance émanant de particuliers</td><td>93 %</td><td>répartition stable</td></tr><tr><td>Français connaissant le terme « quishing » (hameçonnage par QR code)</td><td>6 %</td><td>stable entre 2024 et 2025</td></tr></table>
+<p class="caption">Figure : Exposition des Français aux cybermenaces sur douze mois — baromètre de septembre 2025.</p>
+<p>Comment lire ces chiffres. Le premier enseignement est la domination de l'hameçonnage : avec près d'un tiers des demandes d'assistance des particuliers, il devance très largement le piratage de compte, les fuites de données et le faux support technique. Le deuxième est le niveau d'exposition : six personnes sur dix y ont été confrontées en une seule année — l'hameçonnage n'est donc plus un accident, mais une expérience quasi universelle. Le troisième est le décalage entre exposition et connaissance : les formes les plus récentes, comme le QR code frauduleux, restent très mal identifiées.</p>
+<p>Dernier repère de contexte : ces attaques ne surgissent pas de nulle part. Le communiqué de mars 2026 souligne que l'exploitation malveillante des données issues des fuites — violations ayant touché des opérateurs télécoms, des fédérations sportives, des sociétés de livraison, des acteurs de la santé ou de l'assurance — explique directement la progression de l'hameçonnage. Autrement dit : plus il y a de fuites, plus les messages frauduleux sont crédibles.</p>
+<h2 id="les-7-formes-d-hameconnage-a-connaitre">Les 7 formes d'hameçonnage à connaître</h2>
+<h3 id="1-l-hameconnage-par-courriel-phishing">1. L'hameçonnage par courriel (phishing)</h3>
+<p>La forme historique et la plus massive. Un e-mail imite un expéditeur légitime — banque, impôts, transporteur, plateforme de commerce en ligne — et vous pousse à cliquer vers une copie de site. Le message reproduit fidèlement logos, couleurs et formulations officielles.</p>
+<h3 id="2-l-hameconnage-par-sms-smishing">2. L'hameçonnage par SMS (smishing)</h3>
+<p>L'une des tendances les plus fortes de ces dernières années, favorisée par le fait que nous lisons nos SMS immédiatement. Faux colis en attente, faux avis d'infraction routière, fausse amende impayée, faux remboursement d'assurance maladie : le message est court, urgent, et comporte un lien.</p>
+<h3 id="3-l-hameconnage-par-appel-telephonique-vishing">3. L'hameçonnage par appel téléphonique (vishing)</h3>
+<p>Un interlocuteur se fait passer pour un conseiller, un technicien ou un agent d'un organisme. Cette forme est au cœur de la fraude au faux conseiller bancaire, en forte progression (+159 %). Le communiqué de 2026 signale l'apparition d'une variante spécifique : l'hameçonnage au faux numéro d'opposition, où l'escroc se présente comme le service qui est censé vous protéger.</p>
+<h3 id="4-l-hameconnage-par-qr-code-quishing">4. L'hameçonnage par QR code (quishing)</h3>
+<p>Un QR code placé dans un courrier, un e-mail, une affiche ou sur un faux avis vous redirige vers un site frauduleux. C'est la forme la moins bien identifiée par le public, alors qu'elle contourne facilement la méfiance habituelle puisqu'aucune URL n'est visible avant le scan.</p>
+<h3 id="5-l-hameconnage-sur-les-reseaux-sociaux-et-les-messageries">5. L'hameçonnage sur les réseaux sociaux et les messageries</h3>
+<p>Faux profils, faux jeux-concours, faux services de support, mais aussi messages émanant d'un compte piraté d'un proche — une mécanique redoutablement efficace puisque le message vient d'une adresse ou d'un contact de confiance. Le communiqué de mars 2026 note également le recours croissant à WhatsApp pour abuser les victimes, y compris comme canal de rabattage vers des groupes d'investisseurs frauduleux.</p>
+<h3 id="6-l-hameconnage-cible-spear-phishing">6. L'hameçonnage ciblé (spear phishing)</h3>
+<p>Ici, le message est personnalisé avec des informations réelles vous concernant — nom du supérieur hiérarchique, fournisseur habituel, projet en cours, référence de facture. Le niveau de crédibilité est sans comparaison avec l'hameçonnage de masse. Le communiqué de 2026 souligne que la « donnée fraîche » est particulièrement recherchée par les cybercriminels : c'est elle qui permet ce degré de personnalisation.</p>
+<h3 id="7-le-site-clone-et-le-faux-service-d-assistance">7. Le site cloné et le faux service d'assistance</h3>
+<p>Dernière brique : la page de destination. Elle peut être une copie presque parfaite d'un site légitime, un faux formulaire de remboursement, ou une fausse page de support. Les kits d'hameçonnage prêts à l'emploi, commercialisés sur des marketplaces clandestines, ont rendu leur production quasi triviale.</p>
+<h3>À retenir absolument</h3>
+<p>Le point commun de ces sept formes : elles exploitent votre réaction, pas une faille de votre appareil. Aucun antivirus ne détectera un faux conseiller bancaire au téléphone, et aucun filtre ne bloquera un message parfaitement rédigé reprenant des informations issues d'une fuite de données. La vigilance humaine reste la protection décisive.</p>
+<h2 id="l-anatomie-d-une-attaque-en-4-temps">L'anatomie d'une attaque, en 4 temps</h2>
+<p>Un hameçonnage réussi suit presque toujours le même scénario. Savoir le découper aide à repérer l'étape à laquelle on se trouve — et donc le bon réflexe.</p>
+<h3 id="temps-1-le-recit-plausible">Temps 1 — Le récit plausible</h3>
+<p>L'attaquant choisit un prétexte qui s'inscrit dans votre quotidien. Les procédés les plus courants, identifiés par les autorités, sont : la fausse annonce de remboursement, la demande urgente de règlement d'un impayé (dette fiscale, contravention, facture d'énergie), le renforcement de la sécurité d'un compte, le problème d'acheminement d'un colis et le tirage au sort promettant un gain.</p>
+<h3 id="temps-2-la-pression">Temps 2 — La pression</h3>
+<p>Le message ajoute une contrainte de temps ou une menace : pénalités de retard, suspension du compte, saisie, colis renvoyé. Cette pression est le cœur du procédé : elle vise à vous empêcher de vérifier. Un message qui vous presse est, en soi, un signal d'alerte.</p>
+<h3 id="temps-3-la-collecte">Temps 3 — La collecte</h3>
+<p>Trois issues possibles : vous saisissez vos identifiants sur un faux site (les attaquants récupèrent vos accès), vous communiquez vos coordonnées bancaires au téléphone (débits immédiats), ou vous installez un logiciel à la demande d'un faux technicien (prise de contrôle à distance).</p>
+<h3 id="temps-4-l-exploitation-souvent-en-cascade">Temps 4 — L'exploitation, souvent en cascade</h3>
+<p>C'est l'étape la plus sous-estimée. Une boîte e-mail piratée sert ensuite à réinitialiser tous vos autres comptes, à envoyer de nouveaux hameçonnages à vos contacts, ou à tendre un piège plus crédible encore. Le communiqué de 2026 relève aussi que la frontière entre cyber et monde physique s'estompe : des équipes « terrain » sous-traitantes se déplacent parfois pour récupérer des cartes de paiement à domicile, en se présentant comme des coursiers.</p>
+<p>Le bon réflexe correspond à chaque temps : au temps 1, vérifier l'expéditeur ; au temps 2, refuser l'urgence et ralentir ; au temps 3, ne rien saisir et ne rien installer ; au temps 4, agir vite — changer les mots de passe et prévenir la banque.</p>
+<h2 id="comment-reconnaitre-un-message-frauduleux-8-signaux-d-alerte">Comment reconnaître un message frauduleux : 8 signaux d'alerte</h2>
+<p>Les tentatives sont aujourd'hui mieux écrites qu'autrefois : une faute d'orthographe n'est plus un critère fiable. En revanche, huit signaux restent très discriminants.</p>
+<ul>
+<li>L'expéditeur ne correspond pas exactement. Comparez l'adresse complète — pas seulement le nom affiché. Un caractère de différence, un tiret ajouté ou un domaine exotique suffisent à confirmer la fraude.</li>
+<li>L'urgence ou la menace. « Sous 24 heures », « dernier rappel », « pénalités de retard », « saisine de la justice » : la contrainte de temps est un procédé d'ingénierie sociale, pas une pratique administrative normale.</li>
+<li>Un gain ou un remboursement inattendu. Remboursement d'assurance maladie, trop-perçu de votre banque, tirage au sort : l'appât du gain fait baisser la garde.</li>
+<li>Une demande d'information sensible. Mot de passe, identifiant, numéro de carte, code de validation reçu par SMS : aucune organisation sérieuse ne les demande par message ou par téléphone.</li>
+<li>Une pièce jointe inattendue. Facture, convocation ou « justificatif » que vous n'avez jamais sollicité — et susceptible d'abriter un logiciel malveillant.</li>
+<li>Un lien dont l'adresse réelle diffère du texte. Sur ordinateur, positionnez le curseur sur le lien sans cliquer : l'URL de destination réelle s'affiche et peut être comparée à l'adresse officielle.</li>
+<li>Un compte inconnu ou une demande de mise à jour de vos coordonnées. Vous êtes contacté par un service dont vous n'êtes pas client, ou invité à « confirmer » des informations bancaires déjà connues de votre organisme.</li>
+<li>Un canal ou une formule inhabituels. Demande de paiement par carte cadeau ou cryptomonnaie, bascule soudaine vers une messagerie privée, ou interdiction de raccrocher et de parler à votre agence.</li>
+</ul>
+<p>Un rappel important : le « https » et le cadenas ne certifient pas l'honnêteté d'un site, seulement le chiffrement de la connexion. De nombreux sites d'hameçonnage en sont pourvus. Le contrôle déterminant reste le nom de domaine, à lire caractère par caractère.</p>
+<h2 id="les-10-reflexes-de-protection-qui-changent-tout">Les 10 réflexes de protection qui changent tout</h2>
+<p>Aucun de ces gestes n'est technique ni coûteux. Cumulés, ils font échouer l'immense majorité des tentatives.</p>
+<p class="caption">Table : Bonnes pratiques recommandées par Cybermalveillance.gouv.fr, le ministère de l'Économie et le ministère de l'Intérieur.</p>
+<table><tr><td>Réflexe</td><td>Ce que ça bloque</td><td>Comment faire, concrètement</td></tr><tr><td>1. Ne jamais communiquer d&#x27;informations sensibles</td><td>Vol d&#x27;identifiants et de données bancaires</td><td>Ni par message, ni par téléphone : aucune administration ni société sérieuse ne le demande.</td></tr><tr><td>2. Vérifier le lien avant de cliquer</td><td>Redirection vers un faux site</td><td>Positionnez le curseur sur le lien sans cliquer, ou passez par un favori que vous avez créé vous-même.</td></tr><tr><td>3. Vérifier l&#x27;adresse du site affichée</td><td>Site cloné</td><td>Un seul caractère peut changer ; au moindre doute, fermez la page sans rien saisir.</td></tr><tr><td>4. Reconquérir le canal officiel</td><td>Vishing, faux support</td><td>Rappelez l&#x27;organisme au numéro figurant sur votre contrat ou votre carte — jamais celui de l&#x27;appelant.</td></tr><tr><td>5. Un mot de passe unique et complexe par service</td><td>Effet domino après un vol</td><td>Un gestionnaire de mots de passe (type KeePassXC) génère et retient tout à votre place.</td></tr><tr><td>6. Activer la double authentification</td><td>Piratage de compte</td><td>Préférez une application d&#x27;authentification ou une clé à un SMS, en priorité banque et messagerie.</td></tr><tr><td>7. Surveiller les dernières connexions</td><td>Accès illégitime persistant</td><td>Consultez les date et heure de dernière connexion quand le service les affiche.</td></tr><tr><td>8. Ne pas ouvrir les pièces jointes inattendues</td><td>Virus, rançongiciels</td><td>Un document non sollicité ne s&#x27;ouvre pas, même s&#x27;il semble venir d&#x27;un organisme connu.</td></tr><tr><td>9. Filtres anti-spam et antivirus à jour</td><td>Volume de messages et menaces connues</td><td>Activez le classement automatique des indésirables et maintenez les mises à jour.</td></tr><tr><td>10. Vérifier avant d&#x27;acheter ou de payer</td><td>Faux sites marchands, hameçonnage au remboursement</td><td>Comparez l&#x27;URL au site officiel : 68 % des Français déclarent déjà faire systématiquement ces vérifications.</td></tr></table>
+<p class="caption">Figure : Bons réflexes déjà acquis par les Français — baromètre de septembre 2025.</p>
+<h2 id="victime-d-hameconnage-la-marche-a-suivre">Victime d'hameçonnage : la marche à suivre</h2>
+<p>La rapidité est le facteur décisif. Voici la procédure recommandée par les autorités, dans l'ordre.</p>
+<ul>
+<li>Ne cliquez plus, ne répondez pas. Fermez la page suspecte sans saisir d'information et n'ouvrez aucune pièce jointe associée au message.</li>
+<li>Changez le mot de passe compromis — et tous ceux qui lui ressemblent. Le changement doit être effectué immédiatement sur le site concerné, puis sur chaque service où vous utilisiez le même mot de passe.</li>
+<li>Faites opposition immédiatement auprès de votre banque si vous avez communiqué des éléments de paiement ou constaté des débits frauduleux : demandez l'opposition, contestez les opérations et sollicitez le remboursement.</li>
+<li>Conservez les preuves. Message d'origine, capture d'écran du site frauduleux, URL exacte, numéro de téléphone utilisé pour l'appel : ces éléments seront exigés pour tout signalement ou dépôt de plainte.</li>
+<li>Signalez le message et l'URL aux plateformes compétentes (voir le chapitre suivant) : signaler un hameçonnage protège aussi les autres.</li>
+<li>Déposez plainte au commissariat ou à la brigade de gendarmerie dont vous dépendez, ou par écrit au procureur de la République, en particulier si votre identité est usurpée ou si des débits sont constatés. Vous pouvez être accompagné gratuitement par une association de France Victimes au 116 006 (appel et service gratuits, 7 jours sur 7 de 9h à 19h).</li>
+<li>Demandez de l'aide : la plateforme Info Escroqueries du ministère de l'Intérieur, au 0 805 805 817 (appel et service gratuits, du lundi au vendredi de 9h à 18h30), informe, conseille et oriente les victimes ; le guichet unique 17Cyber permet en ligne, 24h/24 et 7j/7, de qualifier la menace et d'obtenir une assistance.</li>
+</ul>
+<p>Un mot sur les suites judiciaires : selon les circonstances, les faits peuvent relever notamment de l'escroquerie (article 313-1 du Code pénal), de l'usurpation d'identité ou d'atteintes aux systèmes de traitement automatisé de données. La plainte n'est donc pas symbolique : elle constitue la base de toute enquête et de toute demande d'indemnisation.</p>
+<h2 id="ou-signaler-precisement">Où signaler, précisément</h2>
+<p>Le bon interlocuteur dépend du support utilisé. Utiliser la mauvaise plateforme revient souvent à ne rien signaler du tout.</p>
+<p class="caption">Table : Plateformes de signalement en France et cas d'usage correspondants.</p>
+<table><tr><td>Plateforme</td><td>Pour quel cas ?</td><td>Comment</td></tr><tr><td>Signal Spam</td><td>Courriel suspect ou spam</td><td>Compte gratuit sur signal-spam.fr ; module de signalement en un clic, ou envoi du code source du message</td></tr><tr><td>33 700</td><td>SMS ou MMS frauduleux</td><td>Par SMS au 33700 ou sur 33700.fr ; l&#x27;émetteur peut être bloqué par les opérateurs</td></tr><tr><td>Phishing Initiative</td><td>URL d&#x27;un site frauduleux</td><td>Signalement sur phishing-initiative.fr ; le site peut être bloqué dans les navigateurs</td></tr><tr><td>PHAROS</td><td>Contenus illicites, certaines escroqueries</td><td>internet-signalement.gouv.fr — par exemple escroquerie à la livraison de colis ou à la loterie</td></tr><tr><td>L&#x27;organisme usurpé</td><td>Faux mail au nom d&#x27;une marque ou d&#x27;une banque</td><td>Adresses dédiées (ex. <a href="mailto:phishing@paypal.com">phishing@paypal.com</a>, <a href="mailto:abuse@orange.fr">abuse@orange.fr</a>) pour faire cesser la campagne</td></tr><tr><td>17Cyber</td><td>Victime ayant besoin d&#x27;assistance</td><td>Service en ligne 24h/24, 7j/7 : qualification de la menace et mise en relation</td></tr><tr><td>Info Escroqueries</td><td>Besoin de conseils sur les démarches</td><td>0 805 805 817 — appel et service gratuits, du lundi au vendredi de 9h à 18h30</td></tr><tr><td>France Victimes</td><td>Accompagnement de la victime</td><td>116 006 — appel et service gratuits, 7 jours sur 7 de 9h à 19h</td></tr></table>
+<p>Ces services sont ouverts aux majeurs comme aux mineurs. Dans tous les cas, conservez le message ou la capture d'écran avant de le supprimer : c'est lui qui rend le signalement exploitable.</p>
+<h2 id="tendances-pourquoi-l-hameconnage-va-s-intensifier">Tendances : pourquoi l'hameçonnage va s'intensifier</h2>
+<p>Trois dynamiques, documentées par les autorités, expliquent pourquoi la menace ne va pas refluer spontanément.</p>
+<ul>
+<li>Un marché de la donnée structuré et industrialisé. Le communiqué de mars 2026 décrit un écosystème mature : acteurs spécialisés, marketplaces dédiées, kits d'hameçonnage et d'arnaques prêts à l'emploi, et même des centres d'appels composés de faux téléconseillers spécialisés dans la manipulation. Une offre pléthorique de données fraîches et de profils clés en main circule sur le web clandestin et les messageries chiffrées.</li>
+<li>La donnée fuitée comme carburant durable. Chaque violation alimente les campagnes des mois suivants, avec des messages qui citent des éléments réels : votre opérateur, votre mutuelle, un colis réellement attendu. Le rapport relève que l'exploitation malveillante des données fuitées conduit à faire figurer l'hameçonnage au premier rang des menaces, tous publics confondus.</li>
+<li>Des messages de mieux en mieux personnalisés. Les vulnérabilités propres aux particuliers se réduisent à mesure que les outils d'écriture assistée se banalisent côté attaquants, tandis que les fuites récentes — des millions de données exposées, notamment via des opérateurs télécoms et des services grand public — fournissent la matière première.</li>
+</ul>
+<p>Le directeur général de Cybermalveillance.gouv.fr résume la perspective : « la perspective de 2026 augure encore de fortes vagues d'hameçonnage de plus en plus personnalisées, de piratages de compte et de violations de données qui vont nourrir des arnaques multiples et variées ». Il souligne également qu'avec un contexte géopolitique instable, « la frontière entre les mondes cyber et physique est devenue très poreuse ».</p>
+<p>La conclusion pratique reste néanmoins encourageante : l'hameçonnage est une attaque à faible technicité qui échoue dès que la cible prend trente secondes pour vérifier. Les traits indiquent aussi une progression des bons réflexes : 68 % des Français déclarent faire systématiquement des vérifications avant un achat en ligne, 55 % utiliser des mots de passe complexes et uniques, et 52 % mettre régulièrement à jour leurs appareils et applications.</p>
+<h3 id="questions-frequentes">Questions fréquentes</h3>
+<p>Quelle est la différence entre phishing et hameçonnage ?</p>
+<p>Aucune : ce sont deux termes pour la même technique. Les variantes portent d'autres noms selon le canal : smishing (SMS), vishing (appel téléphonique), quishing (QR code).</p>
+<p>J'ai cliqué sur un lien de phishing, mais je n'ai rien saisi : que faire ?</p>
+<p>Fermez immédiatement la page et n'installez rien si le site vous y invite. Signalez le message et l'URL aux plateformes dédiées. Sans saisie de données ni téléchargement, le risque reste très faible — mais restez attentif dans les jours suivants, car un simple clic peut confirmer que votre adresse est active et active des relances.</p>
+<p>J'ai saisi mon mot de passe, que faire ?</p>
+<p>Changez-le sans attendre sur le service concerné, puis sur tous les sites où vous utilisiez le même mot de passe. Activez la double authentification, vérifiez les derniers accès et les paramètres du compte (adresse de récupération, appareils connectés, éventuelles règles de transfert automatique des e-mails).</p>
+<p>J'ai communiqué mes informations bancaires, que faire ?</p>
+<p>Contactez votre banque immédiatement pour faire opposition, contester les opérations effectuées et demander un remboursement. Conservez toutes les preuves, puis déposez plainte si des débits frauduleux apparaissent ou si votre identité est utilisée.</p>
+<p>Une banque peut-elle me demander un code par téléphone ?</p>
+<p>Non. Les administrations et les grandes plateformes en ligne ne demandent jamais de renseignements sensibles par message ou par téléphone. Un appel qui vous réclame un mot de passe ou un code de validation reçu par SMS est une tentative de fraude.</p>
+<p>Le « https » et le cadenas garantissent-ils un site légitime ?</p>
+<p>Non : ils indiquent que la connexion est chiffrée, pas que le site est honnête. De nombreux sites d'hameçonnage sont en « https ». La vérification déterminante est le nom de domaine, comparé caractère par caractère à l'adresse officielle.</p>
+<p>L'hameçonnage ne concerne-t-il pas surtout les entreprises ?</p>
+<p>Non, l'inverse est vrai pour les volumes : 93 % des demandes d'assistance traitées par le dispositif public émanent de particuliers, et l'hameçonnage y est la première menace. Le monde professionnel est surtout concerné par les formes ciblées, plus rentables, comme l'hameçonnage au faux fournisseur ou au faux président.</p>
+<h3 id="sources-et-methodologie">Sources et méthodologie</h3>
+<p>Cet article s'appuie exclusivement sur des sources institutionnelles françaises, consultées le 29 septembre 2026 : le rapport d'activité 2025 de Cybermalveillance.gouv.fr et son communiqué de presse du 26 mars 2026, la fiche réflexe consacrée à l'hameçonnage et l'article dédié au signalement des courriels frauduleux, la fiche de service-public.gouv.fr relative au hameçonnage, la page du ministère de l'Économie consacrée à la prévention, ainsi que le baromètre publié en septembre 2025. Les évolutions en pourcentage sont celles publiées par ces sources et comparent 2025 à 2024.</p>
+<ul>
+<li>GIP ACYMA — Rapport d'activité 2025 de Cybermalveillance.gouv.fr, publié en mars 2026 — demandes d'assistance par menace, dont l'hameçonnage.</li>
+<li>Cybermalveillance.gouv.fr — Communiqué de presse : tendances de la menace cyber en France, 26 mars 2026 — hiérarchie des menaces, industrialisation du marché de la donnée, perspectives 2026.</li>
+<li>Cybermalveillance.gouv.fr — fiche réflexe Le phishing ou hameçonnage : définition et article Comment signaler un mail frauduleux ?</li>
+<li>service-public.gouv.fr — Hameçonnage (phishing ou vishing), fiche F34800 — détection, preuves, signalement, plainte.</li>
+<li>Ministère de l'Économie — Comment se prémunir contre l'hameçonnage ? (12 septembre 2025).</li>
+<li>Baromètre sur les cybermenaces, publié le 10 septembre 2025 (relayé par vie-publique.fr) — exposition des Français, connaissances et réflexes.</li>
+<li>Ministère de l'Intérieur — plateformes PHAROS, Info Escroqueries et 17Cyber.</li>
+<li>Signal Spam, 33 700 et Phishing Initiative — signalement des courriels, SMS et sites frauduleux.</li>
+</ul>
+<p>[Nom de l'auteur] — [Fonction / expertise, ex. : consultant en cybersécurité, X années d'expérience].</p>
+<p>[Une à deux phrases précisant les sources d'expérience de l'auteur sur le sujet : certifications, missions, publications.] Ce bloc sert de signal d'expertise (E-E-A-T) pour les moteurs de recherche et les moteurs de réponse IA : remplacez les mentions entre crochets avant publication.</p><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

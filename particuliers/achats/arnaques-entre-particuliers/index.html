@@ -1,0 +1,608 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arnaques entre particuliers — CyberBalise</title><meta name="description" content="Faux acheteur, faux lien de paiement, fausse annonce de location : découvrez comment fonctionnent les arnaques sur les sites de petites annonces, les signaux…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/achats/arnaques-entre-particuliers/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Arnaques entre particuliers"><meta property="og:description" content="Faux acheteur, faux lien de paiement, fausse annonce de location : découvrez comment fonctionnent les arnaques sur les sites de petites annonces, les signaux…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/achats/arnaques-entre-particuliers/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Arnaques entre particuliers</h1><p class="lead">Faux acheteur, faux lien de paiement, fausse annonce de location : découvrez comment fonctionnent les arnaques sur les sites de petites annonces, les signaux qui doivent vous alerter et les démarches à faire si vous êtes piégé.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</a></li>
+<li><a href="#les-arnaques-les-plus-courantes">Les arnaques les plus courantes</a></li>
+<li><a href="#les-signaux-dalerte-a-reperer">Les signaux d’alerte à repérer</a></li>
+<li><a href="#les-reflexes-de-protection">Les réflexes de protection</a></li>
+<li><a href="#que-faire-si-vous-avez-ete-piege">Que faire si vous avez été piégé ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Sur Leboncoin, Vinted, Facebook Marketplace ou les sites de location, des escrocs se font passer pour des acheteurs, des vendeurs ou des propriétaires afin de vous soutirer de l’argent, vos coordonnées bancaires ou des copies de vos papiers d’identité. Leur méthode favorite : vous faire quitter la plateforme, puis vous envoyer un faux lien de paiement ou un faux e-mail de confirmation. Restez sur la messagerie et le système de paiement du site, refusez les moyens de paiement « alternatifs » et ne payez jamais une location avant d’avoir visité le logement et signé le bail. Si vous êtes victime, prévenez votre banque immédiatement et signalez les faits sur THESEE.</p></div>
+<p>Les plateformes de vente entre particuliers sont très populaires parce qu’elles permettent d’acheter et de vendre à des prix avantageux. Mais, comme le rappelle Cybermalveillance.gouv.fr, de faux vendeurs et de faux acheteurs y sont présents et « redoublent d’ingéniosité » pour soutirer de l’argent ou inciter à communiquer des informations personnelles et des copies de documents d’identité.</p>
+<p>Ces arnaques visent autant les vendeurs que les acheteurs. Elles exploitent deux ressorts : l’envie de conclure vite une bonne affaire, et la confiance dans le nom de la plateforme ou d’un transporteur, que les escrocs imitent très bien.</p>
+<h2 id="les-arnaques-les-plus-courantes">Les arnaques les plus courantes</h2>
+<h3 id="le-faux-acheteur-et-le-faux-paiement-securise">Le faux acheteur et le faux « paiement sécurisé »</h3>
+<p>C’est l’arnaque qui vise les vendeurs. L’UFC-Que Choisir en a décrit le déroulé à partir du témoignage d’un vendeur :</p>
+<ol type="1">
+<li>Un « acheteur » vous contacte et accepte tout de suite votre prix, parfois sans négocier, ainsi que les frais d’envoi.</li>
+<li>Il insiste pour utiliser le « paiement sécurisé » de la plateforme, ce qui vous met en confiance.</li>
+<li>Il vous annonce qu’il a payé et que vous allez recevoir une confirmation.</li>
+<li>Vous recevez un e-mail aux couleurs de la plateforme, avec votre nom, le prix et la description de l’objet. Il provient en réalité d’une adresse imitant le site (par exemple un nom de domaine avec un mot ajouté).</li>
+<li>Le message vous demande d’expédier le colis, souvent avec un transporteur imposé, pour « débloquer » votre argent.</li>
+</ol>
+<p>Résultat : vous envoyez l’objet et vous ne recevez jamais rien, car aucun paiement n’a eu lieu. Point clé relevé par l’UFC-Que Choisir : sur Leboncoin, les confirmations de transaction passent obligatoirement par la messagerie interne du site, pas par un e-mail.</p>
+<h3 id="le-faux-lien-pour-recevoir-largent">Le faux lien pour « recevoir l’argent »</h3>
+<p>Variante encore plus dangereuse : l’escroc vous envoie un lien, par messagerie instantanée, SMS ou e-mail, pour « valider la réception du paiement ». La page ressemble à celle de la plateforme ou d’un transporteur et vous demande… votre numéro de carte bancaire, voire un code de validation. Pour <strong>recevoir</strong> de l’argent, on ne vous demande jamais votre carte : ce lien sert à vous <strong>débiter</strong>.</p>
+<h3 id="le-trop-percu-a-rembourser">Le trop-perçu à rembourser</h3>
+<p>L’« acheteur » prétend avoir payé plus que le prix convenu (par erreur ou pour des frais) et vous demande de lui rembourser la différence. Cybermalveillance.gouv.fr conseille de refuser tout remboursement de trop-payé tant que votre banque n’a pas confirmé que le paiement est définitivement validé. Souvent, le paiement initial n’existe pas ou sera annulé.</p>
+<h3 id="le-faux-vendeur">Le faux vendeur</h3>
+<p>Côté acheteur, le piège classique est l’annonce trop alléchante (téléphone récent, console, billet de concert à prix cassé). Le vendeur refuse la remise en main propre, demande un paiement hors plateforme, par virement, mandat ou coupon prépayé, puis disparaît. Autre variante signalée par Cybermalveillance.gouv.fr : on vous propose de payer « directement le transporteur ». C’est toujours une escroquerie, car les sociétés de livraison ne proposent pas de services de transaction financière.</p>
+<h3 id="la-fausse-annonce-de-location">La fausse annonce de location</h3>
+<p>Service-public.gouv.fr définit la fausse annonce de location comme l’offre d’un logement qui n’existe pas ou qui ne peut pas être loué, parce que l’auteur n’en est pas le propriétaire ou que le bien est indisponible. Cela concerne aussi bien les locations saisonnières que les locations de longue durée. Le « propriétaire » est souvent à l’étranger, ne peut pas faire visiter, et demande un acompte ou une caution pour « réserver » le logement, ainsi qu’une copie de vos papiers.</p>
+<h3 id="le-vol-de-documents-didentite">Le vol de documents d’identité</h3>
+<p>Certains escrocs ne cherchent pas votre argent tout de suite, mais vos justificatifs : carte d’identité, avis d’imposition, bulletins de salaire, RIB. Ces documents serviront ensuite à usurper votre identité (ouverture de compte, crédit, abonnement).</p>
+<h2 id="les-signaux-dalerte-a-reperer">Les signaux d’alerte à repérer</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Signal d’alerte</th>
+<th>Exemple typique</th>
+<th>Ce qu’il faut en penser</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Invitation rapide à quitter la plateforme</td>
+<td>« Écrivez-moi plutôt sur WhatsApp »</td>
+<td>Hors de la plateforme, vous perdez ses protections et ses recours</td>
+</tr>
+<tr class="even">
+<td>Prix anormalement bas</td>
+<td>Smartphone récent à moitié prix, studio en centre-ville très bon marché</td>
+<td>L’appât classique du faux vendeur ou du faux propriétaire</td>
+</tr>
+<tr class="odd">
+<td>Paiement « alternatif » exigé</td>
+<td>Coupons PCS, Transcash, Neosurf, mandat, transfert d’argent</td>
+<td>Cybermalveillance.gouv.fr les cite comme souvent utilisés dans les escroqueries</td>
+</tr>
+<tr class="even">
+<td>Lien reçu pour « recevoir » un paiement</td>
+<td>« Cliquez ici pour encaisser vos fonds »</td>
+<td>Faux site destiné à voler votre carte bancaire</td>
+</tr>
+<tr class="odd">
+<td>E-mail de confirmation hors messagerie interne</td>
+<td>Adresse expéditrice imitant le nom de la plateforme</td>
+<td>Faux e-mail : vérifiez directement dans votre compte</td>
+</tr>
+<tr class="even">
+<td>Transporteur imposé</td>
+<td>« Envoyez obligatoirement avec tel service »</td>
+<td>Signal relevé dans les arnaques au faux acheteur</td>
+</tr>
+<tr class="odd">
+<td>Trop-perçu à rembourser</td>
+<td>« J’ai payé 50 € de trop, renvoyez-les-moi »</td>
+<td>Le paiement initial n’existe probablement pas</td>
+</tr>
+<tr class="even">
+<td>Propriétaire impossible à rencontrer</td>
+<td>Il est à l’étranger, la visite est impossible</td>
+<td>Indice de fausse annonce selon service-public.gouv.fr</td>
+</tr>
+<tr class="odd">
+<td>Argent demandé avant le bail ou la visite</td>
+<td>Acompte, caution, frais de dossier</td>
+<td>Ne payez jamais avant d’avoir visité et signé</td>
+</tr>
+<tr class="even">
+<td>Papiers d’identité demandés trop tôt</td>
+<td>Copie de carte d’identité avant toute visite</td>
+<td>Risque d’usurpation d’identité</td>
+</tr>
+<tr class="odd">
+<td>Photos déjà vues ailleurs</td>
+<td>Mêmes photos sur une autre annonce</td>
+<td>Annonce copiée : faites une recherche d’image inversée</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un seul signal suffit à justifier une pause et une vérification.</p>
+<h2 id="les-reflexes-de-protection">Les réflexes de protection</h2>
+<p>Ces réflexes reprennent les conseils de Cybermalveillance.gouv.fr pour les sites de vente entre particuliers et ceux de service-public.gouv.fr pour la location.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rester sur la messagerie de la plateforme</td>
+<td>Faux liens, faux e-mails, disparition de l’interlocuteur</td>
+<td>Refusez de poursuivre sur une messagerie instantanée</td>
+</tr>
+<tr class="even">
+<td>Utiliser le paiement intégré de la plateforme</td>
+<td>Faux paiements et absence de recours</td>
+<td>Lisez les conditions d’utilisation et les modalités de paiement proposées</td>
+</tr>
+<tr class="odd">
+<td>Vérifier toute confirmation dans votre compte</td>
+<td>Faux e-mails de « paiement reçu »</td>
+<td>Connectez-vous vous-même à l’application, sans passer par le lien reçu</td>
+</tr>
+<tr class="even">
+<td>Ne jamais saisir sa carte pour recevoir de l’argent</td>
+<td>Vol de coordonnées bancaires</td>
+<td>Fermez la page immédiatement</td>
+</tr>
+<tr class="odd">
+<td>Refuser les paiements « alternatifs » et le paiement au transporteur</td>
+<td>Argent impossible à récupérer</td>
+<td>Proposez la remise en main propre ou le paiement intégré</td>
+</tr>
+<tr class="even">
+<td>Privilégier la remise en main propre, dans un lieu public fréquenté</td>
+<td>Faux vendeurs, colis jamais envoyés</td>
+<td>Vérifiez l’objet avant de payer, surtout pour les biens de valeur</td>
+</tr>
+<tr class="odd">
+<td>Vérifier l’historique et les avis</td>
+<td>Comptes créés pour l’arnaque</td>
+<td>Regardez l’ancienneté du profil, les notes et les ventes passées</td>
+</tr>
+<tr class="even">
+<td>Rechercher le numéro ou l’e-mail de l’interlocuteur</td>
+<td>Escrocs déjà signalés</td>
+<td>Tapez-les dans un moteur de recherche</td>
+</tr>
+<tr class="odd">
+<td>Marquer vos copies de papiers d’identité</td>
+<td>Réutilisation pour usurper votre identité</td>
+<td>Utilisez le service public Filigrane Facile (filigrane.beta.gouv.fr) : motif, date, destinataire</td>
+</tr>
+<tr class="even">
+<td>Pour une location : visiter, puis signer, puis payer</td>
+<td>Fausses annonces et faux propriétaires</td>
+<td>Ne versez rien avant la signature du bail</td>
+</tr>
+<tr class="odd">
+<td>Sécuriser votre compte sur la plateforme</td>
+<td>Piratage de votre compte vendeur</td>
+<td>Mot de passe unique et double authentification</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="le-reflexe-a-retenir">Le réflexe à retenir</h3>
+<p><strong>Une transaction qui sort de la plateforme sort aussi de sa protection.</strong> Dès qu’on vous propose un autre canal, un autre moyen de paiement ou un lien extérieur, arrêtez-vous et vérifiez dans votre compte.</p>
+<h2 id="que-faire-si-vous-avez-ete-piege">Que faire si vous avez été piégé ?</h2>
+<p>Agissez vite : la rapidité augmente les chances de bloquer un paiement.</p>
+<h3 id="si-vous-avez-donne-votre-carte-bancaire-ou-paye">Si vous avez donné votre carte bancaire ou payé</h3>
+<ol type="1">
+<li><strong>Contactez votre banque immédiatement</strong> pour faire opposition sur votre carte et signaler les opérations frauduleuses. Service-public.gouv.fr précise que, si vous avez payé par virement, vous pouvez aussi contester ce virement auprès de votre banque.</li>
+<li><strong>Changez le mot de passe</strong> de votre compte sur la plateforme si vous l’avez saisi sur un faux site, et activez la double authentification.</li>
+<li><strong>Signalez le compte frauduleux à la plateforme</strong> via son outil de signalement.</li>
+</ol>
+<h3 id="conservez-les-preuves">Conservez les preuves</h3>
+<p>Gardez l’annonce (capture d’écran avec l’adresse de la page), les échanges, le profil de l’escroc, les faux e-mails et liens reçus, les numéros de téléphone, les preuves de paiement et vos relevés bancaires.</p>
+<h3 id="signalez-et-portez-plainte">Signalez et portez plainte</h3>
+<ul>
+<li><strong>THESEE</strong>, la plateforme du ministère de l’Intérieur, permet de signaler une escroquerie en ligne ou de porter plainte. Pour une fausse annonce de location, service-public.gouv.fr indique deux conditions cumulatives : ne pas avoir rencontré physiquement l’auteur, et qu’une somme d’argent vous ait été demandée (même si vous n’avez rien versé). La plainte en ligne n’est pas ouverte aux mineurs.</li>
+<li>Sinon, déposez plainte au commissariat, à la gendarmerie ou par écrit au procureur de la République. Selon service-public.gouv.fr, le délai pour porter plainte pour une escroquerie est de 6 ans à compter du dernier acte d’escroquerie.</li>
+<li><strong>Signalez l’annonce à l’hébergeur</strong> du site, qui doit proposer un dispositif de signalement visible et accessible.</li>
+<li><strong>Info Escroqueries</strong> (ministère de l’Intérieur) peut vous conseiller au 0 805 805 817 (appel gratuit).</li>
+<li>Pour être accompagné, consultez Cybermalveillance.gouv.fr ou 17Cyber (17cyber.gouv.fr).</li>
+</ul>
+<h3 id="si-vous-avez-envoye-vos-papiers-didentite">Si vous avez envoyé vos papiers d’identité</h3>
+<p>Surveillez votre courrier et vos comptes, et suivez la fiche consacrée à l’usurpation d’identité : un signalement rapide limite les dégâts.</p>
+<p>Le remboursement par la banque dépend de chaque situation. En cas de désaccord, rapprochez-vous des dispositifs officiels et, si besoin, d’un professionnel du droit : ce guide ne remplace pas un conseil juridique personnalisé.</p>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="le-paiement-securise-de-la-plateforme-est-il-fiable">Le paiement sécurisé de la plateforme est-il fiable ?</h3>
+<p>Il apporte des protections prévues par les conditions de la plateforme, à condition de l’utiliser vraiment depuis le site ou l’application. Les escrocs imitent ce service par de faux e-mails ou de faux liens. Vérifiez toujours le paiement dans votre compte, jamais depuis un message reçu.</p>
+<h3 id="un-acheteur-me-demande-mon-numero-de-carte-pour-me-payer-est-ce-normal">Un acheteur me demande mon numéro de carte pour me payer : est-ce normal ?</h3>
+<p>Non. Pour recevoir de l’argent, vous n’avez jamais à donner votre numéro de carte, sa date d’expiration, son cryptogramme ni un code reçu par SMS. Cette demande signe une tentative de vol de vos données bancaires.</p>
+<h3 id="peut-on-faire-confiance-a-un-vendeur-qui-envoie-une-photo-de-sa-carte-didentite">Peut-on faire confiance à un vendeur qui envoie une photo de sa carte d’identité ?</h3>
+<p>Non. Une pièce d’identité peut avoir été volée à une autre victime ou falsifiée. Fiez-vous plutôt à l’historique du profil, à la remise en main propre et au paiement intégré de la plateforme.</p>
+<h3 id="je-nai-rien-paye-mais-on-ma-demande-de-largent-pour-une-location-puis-je-signaler">Je n’ai rien payé mais on m’a demandé de l’argent pour une location : puis-je signaler ?</h3>
+<p>Oui. Selon service-public.gouv.fr, il suffit qu’une somme vous ait été demandée par quelqu’un que vous n’avez pas rencontré physiquement pour signaler la fausse annonce sur THESEE. Un versement n’est pas nécessaire.</p>
+<h3 id="je-suis-tombe-dans-le-piege-depuis-plusieurs-semaines-est-il-trop-tard">Je suis tombé dans le piège depuis plusieurs semaines : est-il trop tard ?</h3>
+<p>Non. Prévenez votre banque, conservez vos preuves et déposez plainte : le délai de plainte pour escroquerie est de 6 ans à compter du dernier acte, selon service-public.gouv.fr. Plus vous agissez tôt, plus les chances de récupérer les fonds sont réelles.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/achats/acheter-en-ligne-securise/">Acheter en ligne en sécurité</a></li>
+<li><a href="/particuliers/achats/fraude-aux-paiements/">Banque en ligne et fraude aux paiements</a></li>
+<li><a href="/particuliers/victime/carte-bancaire-debitee/">Ma carte bancaire a été débitée</a></li>
+<li><a href="/particuliers/victime/identite-usurpee/">Mon identité est usurpée</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>Cybermalveillance.gouv.fr — « Sites de vente entre particuliers : 20 conseils pour éviter les arnaques » — conseils aux vendeurs et acheteurs, moyens de paiement alternatifs à refuser, paiement au transporteur, trop-perçu, Filigrane Facile : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/conseils-sites-vente-particuliers</li>
+<li>Service-public.gouv.fr — « Arnaques à la location immobilière sur internet » — définition, indices d’une fausse annonce, contestation du virement, signalement et plainte sur THESEE (conditions), signalement à l’hébergeur, délai de plainte de 6 ans : https://www.service-public.gouv.fr/particuliers/vosdroits/F34092</li>
+<li>UFC-Que Choisir — « Vente entre particuliers – Arnaque au paiement sécurisé sur Le Bon Coin » — déroulé de l’arnaque au faux acheteur, faux e-mails, transporteur imposé, confirmations par la messagerie interne : https://www.quechoisir.org/actualite-vente-entre-particuliers-arnaque-au-paiement-securise-sur-le-bon-coin-n99816/</li>
+<li>Le numéro d’Info Escroqueries est celui relevé sur Cybermalveillance.gouv.fr (fiche smishing) lors de la préparation de nos guides.</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

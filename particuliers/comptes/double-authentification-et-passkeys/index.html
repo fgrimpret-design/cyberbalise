@@ -1,0 +1,580 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Double authentification (2FA) et passkeys — CyberBalise</title><meta name="description" content="Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/comptes/double-authentification-et-passkeys/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Double authentification (2FA) et passkeys"><meta property="og:description" content="Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/comptes/double-authentification-et-passkeys/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Double authentification (2FA) et passkeys</h1><p class="lead">Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes importants et comment l’activer sans risquer de vous bloquer.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</a></li>
+<li><a href="#comment-fonctionne-la-double-authentification">Comment fonctionne la double authentification</a></li>
+<li><a href="#sms-application-cle-physique-quelle-methode-choisir">SMS, application, clé physique : quelle méthode choisir ?</a></li>
+<li><a href="#les-passkeys-expliquees-simplement">Les passkeys expliquées simplement</a></li>
+<li><a href="#les-reflexes-pour-bien-lactiver">Les réflexes pour bien l’activer</a></li>
+<li><a href="#que-faire-si-vous-perdez-votre-telephone-ou-votre-cle">Que faire si vous perdez votre téléphone ou votre clé ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> La double authentification (2FA, pour <em>two-factor authentication</em>) ajoute une deuxième vérification à votre mot de passe : un code reçu par SMS, un code généré par une application, une clé physique ou une validation biométrique. Même si un escroc vole votre mot de passe, il ne peut pas entrer sans ce second facteur. Toutes les méthodes ne se valent pas : le SMS vaut mieux que rien, l’application d’authentification est un bon standard, la clé physique et les passkeys résistent le mieux à l’hameçonnage. Activez-la en priorité sur votre messagerie, votre banque et vos réseaux sociaux.</p></div>
+<p>La double authentification est aussi appelée « validation en deux étapes », « vérification en deux étapes » ou, plus largement, authentification multifacteur (MFA, pour <em>multi-factor authentication</em>). Cybermalveillance.gouv.fr, le dispositif national d’assistance aux victimes, la décrit comme « une mesure pratique et peu contraignante qui augmente considérablement la sécurité de vos comptes » et conseille de l’activer chaque fois que c’est possible. La CNIL fait la même recommandation.</p>
+<p>Pourquoi est-ce si important ? Parce que les identifiants (adresse e-mail et mot de passe) sont la première cible des pirates. Ils les obtiennent par hameçonnage, en récupérant des bases de données volées ou parce que le même mot de passe est réutilisé sur plusieurs sites. Avec un seul facteur, un mot de passe volé suffit à ouvrir le compte. Avec deux, il ne suffit plus.</p>
+<p>Les passkeys (en français « clés d’accès ») vont un cran plus loin : elles remplacent carrément le mot de passe par une clé cryptographique stockée sur votre téléphone, votre ordinateur ou une clé de sécurité, que vous débloquez avec votre empreinte, votre visage ou votre code de déverrouillage.</p>
+<h2 id="comment-fonctionne-la-double-authentification">Comment fonctionne la double authentification</h2>
+<h3 id="deux-facteurs-de-nature-differente">Deux facteurs de nature différente</h3>
+<p>L’idée est de combiner deux types de preuves :</p>
+<ul>
+<li><strong>ce que vous savez</strong> : votre mot de passe ou un code PIN ;</li>
+<li><strong>ce que vous possédez</strong> : votre téléphone, une application, une clé USB de sécurité, une carte à puce ;</li>
+<li><strong>ce que vous êtes</strong> : votre empreinte digitale ou votre visage (biométrie).</li>
+</ul>
+<p>Une fois la fonction activée dans les paramètres de sécurité de votre compte, le service vérifie votre identité deux fois : d’abord avec l’identifiant et le mot de passe, ensuite avec le second facteur. Selon la CNIL, le code envoyé ou généré est confidentiel et n’est valable, en principe, que quelques minutes.</p>
+<h3 id="quand-le-second-facteur-est-il-demande">Quand le second facteur est-il demandé ?</h3>
+<p>Cela dépend du service. Selon Cybermalveillance.gouv.fr, la confirmation peut être demandée à la première connexion, à chaque connexion, à intervalle régulier, et surtout chaque fois qu’un appareil inconnu tente de se connecter. Concrètement, sur votre téléphone habituel, vous ne verrez souvent rien de nouveau ; c’est l’appareil d’un pirate qui sera bloqué.</p>
+<p><em>Exemple réaliste :</em> vous recevez une alerte « Tentative de connexion depuis un nouvel appareil » alors que vous n’avez rien fait. Le pirate connaît votre mot de passe, mais la double authentification l’a arrêté. Le bon réflexe : refuser la demande et changer immédiatement votre mot de passe.</p>
+<h3 id="un-cas-ou-elle-est-obligatoire-la-banque">Un cas où elle est obligatoire : la banque</h3>
+<p>Depuis fin 2019 et l’application de la directive européenne sur les services de paiement (DSP2), les banques et prestataires de paiement doivent mettre en œuvre une authentification forte pour la plupart des paiements à distance, l’accès au compte et les opérations sensibles comme l’ajout d’un bénéficiaire de virement, rappelle la CNIL. C’est pourquoi votre application bancaire vous demande de valider vos achats en ligne.</p>
+<h3 id="ce-que-la-double-authentification-ne-bloque-pas-toujours">Ce que la double authentification ne bloque pas toujours</h3>
+<p>Elle n’est pas infaillible. La CNIL cite l’hameçonnage en temps réel (un faux site relaie instantanément votre code au vrai site), l’interception des SMS et l’arnaque au changement de carte SIM (<em>SIM swapping</em>), où l’escroc obtient une nouvelle carte SIM à votre nom pour recevoir vos codes. Autre piège très courant : le faux conseiller qui vous demande de lui « lire le code » reçu par SMS. Elle réduit néanmoins fortement le risque par rapport à un mot de passe seul.</p>
+<h2 id="sms-application-cle-physique-quelle-methode-choisir">SMS, application, clé physique : quelle méthode choisir ?</h2>
+<p>Tous les seconds facteurs ne se valent pas. Le classement ci-dessous est qualitatif : il compare la résistance de chaque méthode aux attaques décrites plus haut.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Méthode</th>
+<th>Comment ça marche</th>
+<th>Points forts</th>
+<th>Limites</th>
+<th>Pour qui</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code par SMS</td>
+<td>Un code arrive par SMS à chaque connexion sensible</td>
+<td>Simple, aucun outil à installer</td>
+<td>Vulnérable à l’interception des SMS, au changement de SIM et à l’hameçonnage en temps réel</td>
+<td>Mieux que rien, en attendant mieux</td>
+</tr>
+<tr class="even">
+<td>Code par e-mail</td>
+<td>Un code est envoyé sur votre messagerie</td>
+<td>Facile</td>
+<td>Si votre messagerie est piratée, le second facteur l’est aussi</td>
+<td>À éviter pour la messagerie elle-même</td>
+</tr>
+<tr class="odd">
+<td>Application d’authentification</td>
+<td>Une application installée sur votre téléphone génère un code temporaire qui se renouvelle automatiquement</td>
+<td>Fonctionne hors ligne, ne dépend pas de la ligne téléphonique</td>
+<td>Le code peut encore être saisi sur un faux site</td>
+<td>Bon standard pour la plupart des comptes</td>
+</tr>
+<tr class="even">
+<td>Notification à valider</td>
+<td>Le service envoie une demande « Est-ce bien vous ? » sur votre téléphone</td>
+<td>Très pratique</td>
+<td>Risque de valider par réflexe une demande d’un pirate</td>
+<td>Bien, à condition de lire chaque demande</td>
+</tr>
+<tr class="odd">
+<td>Clé de sécurité physique (FIDO)</td>
+<td>Une petite clé USB ou NFC à brancher ou approcher</td>
+<td>Résiste à l’hameçonnage, rien à recopier</td>
+<td>À acheter, à ne pas perdre : prévoir une clé de secours</td>
+<td>Comptes les plus sensibles</td>
+</tr>
+<tr class="even">
+<td>Passkey (clé d’accès)</td>
+<td>Une clé cryptographique sur votre téléphone ou ordinateur, débloquée par biométrie ou code</td>
+<td>Résiste à l’hameçonnage, plus de mot de passe à retenir</td>
+<td>Pas encore proposée partout ; dépend de vos appareils et de leur synchronisation</td>
+<td>Tous, dès que le service le propose</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="notre-conseil-selon-votre-profil">Notre conseil selon votre profil</h3>
+<ul>
+<li><strong>Vous débutez</strong> : activez la 2FA proposée par défaut (souvent le SMS) sur votre messagerie, votre banque et vos réseaux sociaux. C’est déjà un énorme progrès.</li>
+<li><strong>Vous voulez mieux</strong> : passez à une application d’authentification pour vos comptes importants, ou à une passkey quand le service la propose.</li>
+<li><strong>Vous êtes très exposé</strong> (élu, journaliste, personnalité, gestionnaire de comptes d’association) : utilisez des clés de sécurité physiques, avec une clé de secours rangée en lieu sûr.</li>
+</ul>
+<h2 id="les-passkeys-expliquees-simplement">Les passkeys expliquées simplement</h2>
+<h3 id="une-cle-a-la-place-dun-mot-de-passe">Une clé à la place d’un mot de passe</h3>
+<p>Selon la FIDO Alliance, l’organisme qui a défini ce standard, une passkey est un identifiant fondé sur les normes FIDO, stocké sur votre téléphone, votre ordinateur ou une clé de sécurité, qui vous permet de vous connecter avec le même geste que pour déverrouiller votre appareil : empreinte, reconnaissance faciale, code PIN ou schéma.</p>
+<p>Techniquement, une passkey est une paire de clés cryptographiques. La clé privée reste sur votre appareil ; le site ne conserve qu’une clé publique, qui ne permet pas de se connecter à votre place. À chaque connexion, le site envoie un « défi » que seul votre appareil sait signer. Vos données biométriques ne quittent pas votre appareil : elles servent seulement à le déverrouiller.</p>
+<h3 id="pourquoi-cest-plus-sur">Pourquoi c’est plus sûr</h3>
+<ul>
+<li><strong>Rien à voler sur le serveur</strong> : en cas de fuite de données chez le site, il n’y a pas de mot de passe à récupérer.</li>
+<li><strong>Rien à saisir sur un faux site</strong> : la passkey est liée au vrai site. Sur une copie frauduleuse, elle ne fonctionne tout simplement pas. C’est ce qui la rend résistante à l’hameçonnage.</li>
+<li><strong>Pas de réutilisation possible</strong> : chaque site a sa propre clé.</li>
+</ul>
+<h3 id="passkey-synchronisee-ou-liee-a-un-appareil">Passkey synchronisée ou liée à un appareil</h3>
+<p>La FIDO Alliance distingue deux familles :</p>
+<ul>
+<li><strong>les passkeys synchronisées</strong>, copiées entre vos appareils par un service en ligne (le trousseau de votre téléphone ou un gestionnaire de mots de passe) : si vous changez de téléphone, elles vous suivent ;</li>
+<li><strong>les passkeys liées à un appareil</strong>, qui ne quittent jamais un seul support, par exemple une clé de sécurité physique : niveau de sécurité maximal, mais pas de copie automatique.</li>
+</ul>
+<p>Pour un particulier, les passkeys synchronisées sont le meilleur compromis. Leur sécurité dépend alors du compte qui les synchronise : protégez-le lui-même avec un mot de passe robuste et la double authentification.</p>
+<h3 id="comment-creer-une-passkey">Comment créer une passkey</h3>
+<p>Dans les paramètres de sécurité d’un service compatible, cherchez une option du type « Clés d’accès », « Passkeys » ou « Se connecter sans mot de passe ». Le service vous demande de confirmer avec votre empreinte, votre visage ou votre code. C’est tout. Gardez au début votre mot de passe et une autre méthode de secours, le temps de vous habituer.</p>
+<h2 id="les-reflexes-pour-bien-lactiver">Les réflexes pour bien l’activer</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Activer la 2FA d’abord sur la messagerie</td>
+<td>Le piratage en cascade : la messagerie sert à réinitialiser tous vos autres comptes</td>
+<td>Paramètres de sécurité du compte de messagerie, rubrique « validation en deux étapes »</td>
+</tr>
+<tr class="even">
+<td>Puis sur la banque, les réseaux sociaux, les sites marchands et les services publics en ligne</td>
+<td>Usurpation, achats frauduleux, prise de contrôle de vos profils</td>
+<td>Cybermalveillance.gouv.fr liste de nombreux services compatibles, dont impots.gouv.fr, La Poste, Leboncoin, Vinted ou WhatsApp</td>
+</tr>
+<tr class="odd">
+<td>Préférer une application, une clé ou une passkey au SMS quand c’est possible</td>
+<td>Interception de SMS et changement de carte SIM</td>
+<td>Choisissez la méthode dans les options de sécurité du compte</td>
+</tr>
+<tr class="even">
+<td>Enregistrer les codes de secours</td>
+<td>Le blocage du compte en cas de perte du téléphone</td>
+<td>Imprimez-les ou rangez-les dans un gestionnaire de mots de passe</td>
+</tr>
+<tr class="odd">
+<td>Ne jamais communiquer un code ni valider une demande que vous n’avez pas initiée</td>
+<td>Les faux conseillers et l’hameçonnage en temps réel</td>
+<td>Un code de connexion ne se dicte à personne ; refusez toute notification inattendue</td>
+</tr>
+<tr class="even">
+<td>Garder un mot de passe unique et robuste</td>
+<td>Les attaques qui contournent ou visent la récupération du compte</td>
+<td>La 2FA complète un bon mot de passe, elle ne le remplace pas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Si un service ne figure pas dans les listes officielles, regardez dans ses paramètres de sécurité ou son aide en ligne s’il propose la fonction.</p>
+<h2 id="que-faire-si-vous-perdez-votre-telephone-ou-votre-cle">Que faire si vous perdez votre téléphone ou votre clé ?</h2>
+<p>La CNIL le rappelle : une fois activé, le second facteur devient indispensable. En cas de perte, de vol ou de panne du téléphone, l’accès au compte peut devenir temporairement impossible. Anticipez :</p>
+<ol type="1">
+<li><strong>Avant tout problème</strong>, enregistrez les codes de secours fournis par chaque service et ajoutez une deuxième méthode (un second numéro, une deuxième clé de sécurité, une passkey sur un autre appareil).</li>
+<li><strong>En cas de perte du téléphone</strong>, faites bloquer votre ligne auprès de votre opérateur, utilisez vos codes de secours pour vous reconnecter, puis retirez l’ancien appareil de la liste des appareils de confiance.</li>
+<li><strong>Si vous n’avez plus aucun moyen d’accès</strong>, suivez la procédure de récupération officielle du service. Méfiez-vous des « services de récupération de compte » qui vous contactent spontanément : ce sont souvent des escrocs.</li>
+<li><strong>Si vous recevez des demandes de validation que vous n’avez pas faites</strong>, refusez-les, changez votre mot de passe et vérifiez les connexions récentes. Si le compte a été piraté, suivez la fiche dédiée et faites-vous aider sur Cybermalveillance.gouv.fr ou 17Cyber (17cyber.gouv.fr).</li>
+</ol>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="la-double-authentification-par-sms-est-elle-encore-utile">La double authentification par SMS est-elle encore utile ?</h3>
+<p>Oui. Elle protège déjà contre le cas le plus courant : un mot de passe volé ou réutilisé. Elle reste toutefois vulnérable à l’interception des SMS et au changement de carte SIM. Quand une application d’authentification, une clé ou une passkey est proposée, préférez-la pour vos comptes importants.</p>
+<h3 id="une-passkey-peut-elle-etre-volee-comme-un-mot-de-passe">Une passkey peut-elle être volée comme un mot de passe ?</h3>
+<p>La partie secrète d’une passkey reste sur votre appareil ou dans votre trousseau synchronisé, et le site ne conserve qu’une clé publique inutilisable par un pirate. Elle ne peut pas non plus être saisie sur un faux site. Le point à surveiller est donc la sécurité de votre appareil et du compte qui synchronise vos passkeys.</p>
+<h3 id="mes-empreintes-digitales-sont-elles-envoyees-au-site">Mes empreintes digitales sont-elles envoyées au site ?</h3>
+<p>Non. Selon la FIDO Alliance, la biométrie sert uniquement à déverrouiller localement votre appareil ; elle n’est pas transmise au site sur lequel vous vous connectez.</p>
+<h3 id="que-se-passe-t-il-si-je-change-de-telephone">Que se passe-t-il si je change de téléphone ?</h3>
+<p>Avec des passkeys synchronisées et une application d’authentification qui permet le transfert, vous retrouvez vos accès sur le nouvel appareil. Avant de réinitialiser l’ancien téléphone, vérifiez que tout fonctionne sur le nouveau et gardez vos codes de secours à portée de main.</p>
+<h3 id="faut-il-activer-la-2fa-sur-tous-mes-comptes">Faut-il activer la 2FA sur tous mes comptes ?</h3>
+<p>L’idéal, oui, comme le recommandent Cybermalveillance.gouv.fr et la CNIL. Si vous manquez de temps, commencez par la messagerie, la banque, les réseaux sociaux, les sites où votre carte est enregistrée et vos comptes administratifs.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/comptes/mot-de-passe-robuste/">Créer un mot de passe robuste</a></li>
+<li><a href="/particuliers/comptes/gestionnaires-de-mots-de-passe/">Gestionnaires de mots de passe</a></li>
+<li><a href="/particuliers/victime/compte-pirate/">Mon compte a été piraté</a></li>
+<li><a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels (smishing, vishing)</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>Cybermalveillance.gouv.fr — « Comment protéger ses comptes en ligne avec la double authentification » — définition, moments où la confirmation est demandée, recommandation d’activation, liste de services compatibles : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/double-authentification</li>
+<li>CNIL — « Sécurité : utilisez l’authentification multifacteur pour vos comptes en ligne » — facteurs d’authentification, validité limitée des codes, obligation DSP2 pour les banques depuis fin 2019, limites (hameçonnage en temps réel, interception de SMS, SIM swapping), précautions en cas de perte : https://www.cnil.fr/fr/securite-utilisez-lauthentification-multifacteur-pour-vos-comptes-en-ligne</li>
+<li>FIDO Alliance — « Passkeys » — définition des passkeys, cryptographie asymétrique, déverrouillage local, passkeys synchronisées et liées à un appareil, résistance à l’hameçonnage : https://fidoalliance.org/passkeys/</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

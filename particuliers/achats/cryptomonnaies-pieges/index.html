@@ -1,0 +1,625 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cryptomonnaies : les pièges — CyberBalise</title><meta name="description" content="Fausses plateformes, rendements garantis, phrase de récupération réclamée, faux conseillers et « projets » miraculeux : comprendre les arnaques aux…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/achats/cryptomonnaies-pieges/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Cryptomonnaies : les pièges"><meta property="og:description" content="Fausses plateformes, rendements garantis, phrase de récupération réclamée, faux conseillers et « projets » miraculeux : comprendre les arnaques aux…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/achats/cryptomonnaies-pieges/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Cryptomonnaies : les pièges</h1><p class="lead">Fausses plateformes, rendements garantis, phrase de récupération réclamée, faux conseillers et « projets » miraculeux : comprendre les arnaques aux cryptomonnaies, vérifier un prestataire et savoir réagir si vous êtes visé.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : intermédiaire</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 10 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-ou-se-cachent-les-pieges">L’essentiel : où se cachent les pièges ?</a></li>
+<li><a href="#les-bases-a-maitriser-plateforme-portefeuille-et-phrase-de-recuperation">Les bases à maîtriser : plateforme, portefeuille et phrase de récupération</a></li>
+<li><a href="#les-arnaques-les-plus-courantes">Les arnaques les plus courantes</a></li>
+<li><a href="#les-signaux-dalerte">Les signaux d’alerte</a></li>
+<li><a href="#verifier-un-prestataire-listes-blanches-et-listes-noires">Vérifier un prestataire : listes blanches et listes noires</a></li>
+<li><a href="#les-reflexes-de-protection">Les réflexes de protection</a></li>
+<li><a href="#que-faire-si-vous-avez-ete-piege">Que faire si vous avez été piégé ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-ou-se-cachent-les-pieges">L’essentiel : où se cachent les pièges ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Les arnaques aux cryptomonnaies prennent trois formes principales : les fausses plateformes d’investissement qui affichent des gains fictifs puis bloquent les retraits, le vol direct de vos cryptos (phrase de récupération ou codes soutirés par un faux conseiller, un faux support ou un faux policier) et les « projets » promettant des rendements garantis. Règle d’or de l’Autorité des marchés financiers (AMF) : aucune société sérieuse ne peut garantir un rendement sur des crypto-actifs. Depuis le 1er juillet 2026, seuls les prestataires autorisés au titre du règlement européen MiCA peuvent vous proposer leurs services en France : vérifiez toujours la liste blanche de l’AMF avant de déposer le moindre euro.</p></div>
+<p>Bitcoin, ether et autres jetons attirent les épargnants… et les escrocs. L’AMF le résume ainsi : après le Forex, les options binaires et les diamants, les escrocs sont passés aux crypto-actifs. Le terme « cryptomonnaies » est d’ailleurs trompeur : ces actifs n’ont pas cours légal en France.</p>
+<p>Le risque ne se limite pas à la volatilité des cours, déjà considérable. Une transaction en cryptomonnaie est généralement irréversible, les escrocs sont le plus souvent basés à l’étranger et, avec une plateforme illégale, l’AMF prévient que les chances de récupérer votre argent sont très limitées. La prévention est donc votre meilleure protection.</p>
+<h2 id="les-bases-a-maitriser-plateforme-portefeuille-et-phrase-de-recuperation">Les bases à maîtriser : plateforme, portefeuille et phrase de récupération</h2>
+<h3 id="la-plateforme-ou-prestataire">La plateforme (ou prestataire)</h3>
+<p>C’est l’entreprise qui vous permet d’acheter, de vendre, d’échanger ou de conserver des crypto-actifs. En Europe, elle doit disposer du statut de prestataire de services sur crypto-actifs (PSCA, ou CASP en anglais), délivré par l’AMF ou par l’autorité d’un autre pays de l’Union européenne.</p>
+<h3 id="le-portefeuille-wallet">Le portefeuille (wallet)</h3>
+<p>Le portefeuille sert à détenir vos cryptos. Il peut être hébergé par la plateforme (c’est elle qui garde les clés) ou personnel : une application sur votre téléphone ou une clé matérielle (hardware wallet). Dans ce second cas, vous êtes seul responsable de sa sécurité.</p>
+<h3 id="la-phrase-de-recuperation-seed-phrase">La phrase de récupération (seed phrase)</h3>
+<p>Lors de la création d’un portefeuille personnel, une suite de mots vous est remise : c’est la phrase de récupération, aussi appelée « seed ». Elle permet de restaurer le portefeuille sur n’importe quel appareil. <strong>Qui possède cette phrase possède vos cryptos.</strong> Elle ne doit jamais être communiquée, photographiée, stockée dans un e-mail, une note en ligne ou un service de stockage en ligne, ni saisie sur un site. Aucun support, aucune plateforme, aucun policier n’a besoin de la connaître.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Élément</th>
+<th>À quoi il sert</th>
+<th>Ce qu’il ne faut jamais faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identifiants de plateforme</td>
+<td>Se connecter à votre compte chez le prestataire</td>
+<td>Les réutiliser ailleurs ou les saisir après un clic dans un message</td>
+</tr>
+<tr class="even">
+<td>Double authentification</td>
+<td>Bloquer une connexion avec un mot de passe volé</td>
+<td>Communiquer le code reçu à un interlocuteur</td>
+</tr>
+<tr class="odd">
+<td>Portefeuille personnel</td>
+<td>Détenir vous-même vos cryptos</td>
+<td>Installer une application de portefeuille hors des magasins officiels</td>
+</tr>
+<tr class="even">
+<td>Phrase de récupération</td>
+<td>Restaurer votre portefeuille</td>
+<td>La donner, la photographier, la saisir sur un site</td>
+</tr>
+<tr class="odd">
+<td>Clé matérielle</td>
+<td>Protéger vos clés hors ligne</td>
+<td>La remettre à un « coursier » ou à un « agent »</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="les-arnaques-les-plus-courantes">Les arnaques les plus courantes</h2>
+<h3 id="les-fausses-plateformes-dinvestissement">Les fausses plateformes d’investissement</h3>
+<p>C’est le scénario le plus fréquent décrit par l’AMF. L’escroc vous contacte par e-mail, téléphone, réseaux sociaux ou messagerie, souvent après que vous avez laissé vos coordonnées dans un formulaire en ligne. Il est aimable, son discours est rodé, il s’appuie parfois sur un réseau de faux « professionnels ». Vous investissez une petite somme, votre espace client affiche des gains, et un premier retrait vous est même accordé. En confiance, vous versez davantage. Puis plus rien : interlocuteurs injoignables, somme « bloquée », « problème technique », ou demande de payer de fausses « taxes » ou de faux « impôts » pour débloquer les fonds.</p>
+<p>Variante sournoise relevée par l’AMF : l’escroc vous fait d’abord acheter des cryptos chez un prestataire réellement autorisé, puis vous fait transférer ces cryptos vers sa plateforme frauduleuse. Le premier site est légitime ; le piège est au second transfert.</p>
+<p><em>Témoignage publié par l’AMF :</em> une épargnante pensait acheter des cryptomonnaies. Relancée sans cesse, elle a versé 53 000 € au total. Dès qu’elle a demandé à récupérer ses fonds, plus personne n’a répondu.</p>
+<h3 id="le-faux-conseiller-le-faux-support-et-le-faux-policier">Le faux conseiller, le faux support et le faux policier</h3>
+<p>Cybermalveillance.gouv.fr reçoit de nombreux témoignages, via son service 17Cyber, de détenteurs de cryptos contactés par de faux employés d’opérateurs connus ou de faux services anti-fraude de leur banque, qui signalent des « transactions suspectes ». Comme dans la fraude au faux conseiller bancaire, l’objectif est de vous faire transférer vos actifs vers un portefeuille « sécurisé »… qui appartient à l’escroc.</p>
+<p>Certains se font passer pour des policiers, gendarmes, douaniers ou magistrats afin d’obtenir des informations ou des objets sensibles : moyens de paiement, phrase de récupération, clé matérielle. Ces approches s’appuient souvent sur des fuites de données touchant des acteurs du secteur : l’interlocuteur connaît alors votre nom, votre adresse et sait que vous détenez des cryptos. Dans les cas les plus graves, Cybermalveillance.gouv.fr signale des menaces, agressions, enlèvements et séquestrations, encore rapportés aux forces de l’ordre en janvier 2026.</p>
+<h3 id="les-projets-miraculeux-et-les-promesses-de-rendement">Les « projets » miraculeux et les promesses de rendement</h3>
+<p>Nouveau jeton « qui va faire x100 », programme qui « rémunère » le parrainage, robot de trading « infaillible », « staking » garanti à taux très élevé : ces discours trop beaux pour être vrais sont la marque des escroqueries, et les systèmes pyramidaux paient les premiers entrants avec l’argent des suivants. Même pour un crypto-actif réel, l’AMF rappelle que le livre blanc notifié à l’autorité n’est pas approuvé par elle : son émetteur en est seul responsable.</p>
+<h3 id="lusurpation-de-notoriete-et-les-arnaques-sentimentales">L’usurpation de notoriété et les arnaques sentimentales</h3>
+<p>Faux articles de presse, fausses interviews de personnalités, vidéos détournées d’émissions télévisées : les escrocs usurpent des noms connus pour vous attirer vers leurs plateformes. D’autres tissent une relation amoureuse ou amicale en ligne avant d’aborder « l’opportunité » crypto. L’AMF invite à se méfier des personnes jamais rencontrées en vrai et des gens trop bien intentionnés.</p>
+<h3 id="les-formations-pour-devenir-trader">Les formations « pour devenir trader »</h3>
+<p>Payantes, elles promettent de tout vous apprendre en quelques heures et vous orientent souvent vers des plateformes douteuses. L’AMF rappelle qu’on ne devient pas trader en quelques heures.</p>
+<h3 id="larnaque-au-remboursement">L’arnaque au remboursement</h3>
+<p>Après une première escroquerie, un « avocat », une « banque », une « autorité » ou une société de « récupération de cryptos » vous contacte pour récupérer vos fonds… moyennant de nouveaux frais. C’est une seconde arnaque. Selon l’AMF, ni votre banque, ni l’AMF, ni aucune autre autorité ne vous contactera jamais d’elle-même pour vous aider à récupérer des fonds perdus.</p>
+<h2 id="les-signaux-dalerte">Les signaux d’alerte</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Signal d’alerte</th>
+<th>Exemple typique</th>
+<th>Ce qu’il faut en penser</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rendement garanti ou très élevé</td>
+<td>« 10 % par mois sans risque »</td>
+<td>L’AMF juge qu’un rendement élevé garanti n’existe pas : au-delà de 2 à 3 % garantis, méfiance</td>
+</tr>
+<tr class="even">
+<td>Contact non sollicité</td>
+<td>Appel après un formulaire, message sur un réseau social</td>
+<td>Les escrocs démarchent ; un vrai prestataire ne vous relance pas sans cesse</td>
+</tr>
+<tr class="odd">
+<td>Urgence</td>
+<td>« Position à prendre dans l’heure »</td>
+<td>La pression sert à vous empêcher de vérifier</td>
+</tr>
+<tr class="even">
+<td>Retraits bloqués ou soumis à des frais</td>
+<td>« Payez la taxe pour débloquer vos gains »</td>
+<td>Les fonds n’existent probablement plus</td>
+</tr>
+<tr class="odd">
+<td>Demande de phrase de récupération ou de clé matérielle</td>
+<td>« Pour sécuriser votre portefeuille »</td>
+<td>Vol pur et simple, quel que soit l’interlocuteur</td>
+</tr>
+<tr class="even">
+<td>Demande d’installer un logiciel de prise en main à distance</td>
+<td>« Je vais vous aider à configurer »</td>
+<td>L’escroc prendra le contrôle de vos comptes</td>
+</tr>
+<tr class="odd">
+<td>Site sans mentions légales, coordonnées à l’étranger</td>
+<td>Présentation sommaire, contacts vagues</td>
+<td>Signes relevés par l’AMF</td>
+</tr>
+<tr class="even">
+<td>Personnalité célèbre qui « recommande »</td>
+<td>Faux article ou vidéo détournée</td>
+<td>Usurpation de notoriété</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="verifier-un-prestataire-listes-blanches-et-listes-noires">Vérifier un prestataire : listes blanches et listes noires</h2>
+<p>Depuis le 1er juillet 2026, fin de la période transitoire prévue par le règlement européen MiCA (Markets in Crypto-Assets), seules les sociétés autorisées en tant que PSCA peuvent proposer des services sur crypto-actifs en France. Celles qui n’ont pas obtenu cette autorisation doivent cesser leurs activités et informer leurs clients du devenir de leurs cryptos, indique AMF Epargne Info Service.</p>
+<p>Avant tout dépôt :</p>
+<ol type="1">
+<li><strong>Consultez la liste blanche des PSCA</strong> sur le site de l’AMF : elle recense les professionnels autorisés, en France ou dans un autre pays de l’Union, à proposer leurs services aux investisseurs en France.</li>
+<li><strong>Pour les produits dérivés sur cryptos</strong> (comme les CFD), vérifiez que l’intermédiaire est un prestataire de services d’investissement inscrit au registre Regafi.</li>
+<li><strong>Consultez les listes noires</strong> de l’AMF et les informations de l’ESMA, l’Autorité européenne des marchés financiers. Attention : ces listes ne sont pas exhaustives. Un acteur absent de la liste noire n’est pas fiable pour autant ; seule la liste blanche fait foi.</li>
+<li><strong>Vérifiez l’adresse exacte du site</strong> : les escrocs copient les noms et l’apparence de prestataires autorisés.</li>
+<li><strong>En cas de doute</strong>, contactez AMF Epargne Info Service par formulaire ou au 01 53 45 62 00, ou Assurance Banque Epargne Info Service au 34 14.</li>
+</ol>
+<p>À savoir : même chez un prestataire autorisé, les crypto-actifs ne sont pas couverts par le Fonds de garantie des dépôts et de résolution (FGDR) en cas de faillite.</p>
+<h2 id="les-reflexes-de-protection">Les réflexes de protection</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vérifier la liste blanche de l’AMF</td>
+<td>Fausses plateformes, acteurs non autorisés</td>
+<td>Recherchez le nom exact et l’adresse du site sur amf-france.org</td>
+</tr>
+<tr class="even">
+<td>Ne jamais communiquer sa phrase de récupération</td>
+<td>Vol de l’intégralité du portefeuille</td>
+<td>Notez-la sur papier, conservez-la hors ligne en lieu sûr</td>
+</tr>
+<tr class="odd">
+<td>Raccrocher et rappeler soi-même</td>
+<td>Faux conseillers, faux support, faux policiers</td>
+<td>Utilisez les coordonnées officielles du site ou de votre espace client ; en cas d’urgence, le 17</td>
+</tr>
+<tr class="even">
+<td>Activer la double authentification</td>
+<td>Connexion avec un mot de passe volé</td>
+<td>Application d’authentification plutôt que SMS si possible</td>
+</tr>
+<tr class="odd">
+<td>Refuser toute prise en main à distance</td>
+<td>Vol de vos comptes</td>
+<td>Raccrochez si on vous demande d’installer un logiciel</td>
+</tr>
+<tr class="even">
+<td>Ignorer les rendements garantis</td>
+<td>Escroqueries et systèmes pyramidaux</td>
+<td>Aucune société sérieuse ne garantit de rendement sur les cryptos</td>
+</tr>
+<tr class="odd">
+<td>Faire un petit test de retrait… sans en conclure trop vite</td>
+<td>Plateformes qui accordent un premier retrait pour gagner votre confiance</td>
+<td>Un retrait réussi ne prouve rien : vérifiez l’autorisation</td>
+</tr>
+<tr class="even">
+<td>N’investir que ce que vous pouvez perdre</td>
+<td>Ruine en cas de chute des cours ou de fraude</td>
+<td>Fixez un plafond avant d’investir</td>
+</tr>
+<tr class="odd">
+<td>Rester discret</td>
+<td>Ciblage par des escrocs ou des malfaiteurs</td>
+<td>Ne publiez pas le montant de vos avoirs sur les réseaux sociaux</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="que-faire-si-vous-avez-ete-piege">Que faire si vous avez été piégé ?</h2>
+<ol type="1">
+<li><strong>Cessez tout versement</strong>, y compris les « frais de déblocage » ou « taxes » réclamés.</li>
+<li><strong>Si vos accès ou votre phrase de récupération ont été compromis</strong>, transférez immédiatement les cryptos qui restent vers un nouveau portefeuille créé par vous, changez vos mots de passe et activez la double authentification.</li>
+<li><strong>Prévenez votre banque</strong> si vous avez effectué des virements ou des paiements par carte, et demandez ce qui peut être fait.</li>
+<li><strong>Conservez toutes les preuves</strong> : messages, adresse du site, captures d’écran, ordres de virement, identifiants de transactions, adresses de portefeuilles.</li>
+<li><strong>Déposez plainte</strong> au commissariat ou à la gendarmerie, ou par écrit au procureur de la République. Avec une plateforme illégale, c’est votre seul recours selon l’AMF.</li>
+<li><strong>Signalez</strong> la plateforme à AMF Epargne Info Service (01 53 45 62 00).</li>
+<li><strong>Méfiez-vous des offres de récupération</strong> qui suivent : elles sont l’arnaque suivante.</li>
+</ol>
+<p>Si la plateforme est autorisée en France et qu’il s’agit d’un litige (et non d’une escroquerie), le médiateur de l’AMF peut intervenir pour tenter un règlement amiable. Pour un prestataire autorisé dans un autre pays de l’Union, consultez ses conditions générales. Pour être accompagné gratuitement, l’association France Victimes répond au 116 006. Ce guide ne remplace pas un conseil juridique personnalisé.</p>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="une-plateforme-qui-nest-pas-sur-la-liste-noire-de-lamf-est-elle-fiable">Une plateforme qui n’est pas sur la liste noire de l’AMF est-elle fiable ?</h3>
+<p>Non. L’AMF précise que ses listes noires ne sont pas exhaustives. Pour savoir si un acteur est autorisé, il faut consulter la liste blanche des PSCA (ou le registre Regafi pour les produits dérivés sur crypto-actifs).</p>
+<h3 id="mon-prestataire-na-pas-obtenu-lagrement-mica-que-faire">Mon prestataire n’a pas obtenu l’agrément MiCA : que faire ?</h3>
+<p>Depuis le 1er juillet 2026, il doit cesser ses activités en France et vous informer du devenir de vos cryptos. Suivez ses communications officielles, récupérez vos actifs vers un prestataire autorisé ou un portefeuille personnel, et méfiez-vous des messages qui exploitent cette situation pour vous faire cliquer.</p>
+<h3 id="un-policier-mappelle-au-sujet-de-mes-cryptomonnaies-est-ce-possible">Un policier m’appelle au sujet de mes cryptomonnaies : est-ce possible ?</h3>
+<p>Le parquet de Paris, relayé par Cybermalveillance.gouv.fr, est clair : police, gendarmerie, douane ou magistrats ne vous appelleront jamais pour demander votre phrase de récupération ou le montant de vos avoirs, prendre le contrôle de votre appareil ou vous faire effectuer des opérations. Raccrochez et, en cas d’urgence, appelez le 17.</p>
+<h3 id="peut-on-recuperer-des-cryptos-volees">Peut-on récupérer des cryptos volées ?</h3>
+<p>C’est rarement possible : les transactions sont généralement irréversibles et les escrocs souvent à l’étranger. Déposez plainte avec un maximum de preuves, et refusez toute société qui vous promet une récupération contre paiement.</p>
+<h3 id="les-cryptos-sont-elles-garanties-comme-un-livret-bancaire">Les cryptos sont-elles garanties comme un livret bancaire ?</h3>
+<p>Non. Même chez un prestataire autorisé, les crypto-actifs ne sont pas couverts par le FGDR en cas de faillite, rappelle l’AMF.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/menaces/fausses-plateformes-dinvestissement/">Fausses plateformes d’investissement</a></li>
+<li><a href="/particuliers/achats/escroqueries-sentimentales/">Escroqueries sentimentales</a></li>
+<li><a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels (smishing, vishing)</a></li>
+<li><a href="/particuliers/victime/signaler-un-probleme/">Où et comment signaler</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources officielles suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>AMF — « “Crypto-monnaies” (bitcoin, etc.) : attention aux arnaques ! » — statut PSCA, liste blanche, Regafi, listes noires non exhaustives, déroulé des arnaques, arnaque au remboursement, signaux d’alerte, recours, absence de garantie FGDR, témoignages, contacts 01 53 45 62 00 et 34 14 : https://www.amf-france.org/fr/espace-epargnants/proteger-son-epargne/crypto-actifs-bitcoin-etc/crypto-monnaies-bitcoin-etc-attention-aux-arnaques</li>
+<li>Cybermalveillance.gouv.fr — « Violation de données personnelles dans le secteur des crypto-actifs » — faux employés, faux services anti-fraude et faux représentants de l’ordre, demandes de « seeds », agressions signalées en janvier 2026, mises en garde du parquet de Paris : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/violation-de-donnees-secteur-crypto-actifs-202601</li>
+<li>AMF Epargne Info Service — publication « Depuis le 1er juillet 2026, seules les sociétés autorisées au titre du règlement européen MiCA… » — fin de la période transitoire et obligations des prestataires non autorisés : https://www.facebook.com/AmfEpargneInfoService/videos/-depuis-le-1er-juillet-2026-seules-les-soci%C3%A9t%C3%A9s-autoris%C3%A9es-au-titre-du-r%C3%A8glement/1061129659904599/</li>
+<li>Cybermalveillance.gouv.fr — « Que faire en cas de piratage de compte sur les réseaux sociaux ? » — numéro de France Victimes (116 006) : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/que-faire-en-cas-de-piratage-de-compte-sur-les-reseaux-sociaux</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

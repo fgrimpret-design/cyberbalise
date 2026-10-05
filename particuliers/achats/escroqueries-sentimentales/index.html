@@ -1,0 +1,583 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Escroqueries sentimentales — CyberBalise</title><meta name="description" content="Faux profil, déclarations enflammées, puis une urgence qui coûte de l’argent : apprenez à reconnaître une arnaque aux sentiments, à vous en sortir sans honte…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/achats/escroqueries-sentimentales/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Escroqueries sentimentales"><meta property="og:description" content="Faux profil, déclarations enflammées, puis une urgence qui coûte de l’argent : apprenez à reconnaître une arnaque aux sentiments, à vous en sortir sans honte…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/achats/escroqueries-sentimentales/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Escroqueries sentimentales</h1><p class="lead">Faux profil, déclarations enflammées, puis une urgence qui coûte de l’argent : apprenez à reconnaître une arnaque aux sentiments, à vous en sortir sans honte et à savoir qui contacter.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 8 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-quest-ce-quune-escroquerie-sentimentale">L’essentiel : qu’est-ce qu’une escroquerie sentimentale ?</a></li>
+<li><a href="#comment-lescroc-sy-prend-etape-par-etape">Comment l’escroc s’y prend, étape par étape</a></li>
+<li><a href="#les-signaux-dalerte-a-reperer">Les signaux d’alerte à repérer</a></li>
+<li><a href="#les-reflexes-de-protection">Les réflexes de protection</a></li>
+<li><a href="#que-faire-si-vous-etes-victime">Que faire si vous êtes victime ?</a></li>
+<li><a href="#vous-pensez-quun-proche-est-concerne">Vous pensez qu’un proche est concerné ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-quest-ce-quune-escroquerie-sentimentale">L’essentiel : qu’est-ce qu’une escroquerie sentimentale ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Une escroquerie sentimentale (ou « arnaque aux sentiments », « arnaque à la romance ») commence sur un site de rencontre ou un réseau social : une personne vous témoigne des sentiments forts, gagne votre confiance, puis vous demande de l’argent pour une urgence. Elle trouve toujours une excuse pour ne jamais vous rencontrer. Règle d’or : n’envoyez jamais d’argent à quelqu’un que vous n’avez connu qu’en ligne ou par téléphone. Si c’est déjà arrivé, coupez le contact, gardez les preuves et déposez plainte — en ligne sur la plateforme THESEE si la relation est restée virtuelle.</p></div>
+<p>Cybermalveillance.gouv.fr, le dispositif national d’assistance aux victimes, décrit un scénario toujours très proche : l’escroc — souvent surnommé « brouteur » — met sa victime sous emprise affective, puis multiplie les demandes d’argent sous des prétextes d’urgence (administrative, médicale, financière). Les sommes augmentent jusqu’à ce que la victime ne puisse plus payer.</p>
+<p>Une précision importante : <strong>être victime n’a rien à voir avec la naïveté</strong>. Ces escrocs sont organisés, patients et utilisent des techniques de manipulation éprouvées. Ils visent tout le monde, à tout âge. La honte est leur meilleure alliée, car elle retarde le moment où la victime en parle. Ce guide est là pour vous aider à sortir du piège, pas pour juger.</p>
+<h2 id="comment-lescroc-sy-prend-etape-par-etape">Comment l’escroc s’y prend, étape par étape</h2>
+<h3 id="1-le-premier-contact">1. Le premier contact</h3>
+<p>Un message arrive sur une application de rencontre, un réseau social ou même par une messagerie après un « faux numéro ». Le profil est séduisant : photos soignées, métier valorisant qui justifie l’éloignement (militaire en mission, ingénieur sur une plateforme pétrolière, médecin humanitaire, homme ou femme d’affaires à l’étranger). Certains escrocs se font même passer pour des célébrités.</p>
+<h3 id="2-la-mise-en-confiance">2. La mise en confiance</h3>
+<p>Les échanges deviennent quotidiens, attentionnés, très vite intimes. L’escroc parle d’avenir commun, de mariage, de projets. Il propose rapidement de quitter le site de rencontre pour une messagerie privée, où la plateforme ne peut plus repérer son comportement. Il peut chercher à vous isoler de vos proches (« ils ne comprennent pas ce que nous vivons »).</p>
+<h3 id="3-le-rendez-vous-qui-narrive-jamais">3. Le rendez-vous qui n’arrive jamais</h3>
+<p>Une rencontre est promise… puis annulée au dernier moment. La caméra est « cassée », la connexion « trop mauvaise » pour une visio. Selon Cybermalveillance.gouv.fr, la victime ne rencontre jamais physiquement l’escroc, qui invente toujours un prétexte pour l’éviter, parfois pendant des mois.</p>
+<h3 id="4-la-demande-dargent">4. La demande d’argent</h3>
+<p>Vient alors l’urgence : frais d’hospitalisation, billet d’avion pour venir vous voir, douane qui bloque un colis, compte bancaire gelé, avocat à payer. La première somme est souvent modeste. Les suivantes grossissent, avec de nouveaux « imprévus ». Les moyens de paiement demandés sont difficiles à tracer ou à annuler : virement vers un tiers, coupons prépayés, cryptomonnaies, mandats.</p>
+<h3 id="5-les-variantes">5. Les variantes</h3>
+<ul>
+<li><strong>Le faux investissement (« pig butchering »).</strong> L’escroc ne demande pas d’argent pour lui : il vous incite à « investir » avec lui sur une plateforme qui affiche des gains fictifs. Quand vous voulez retirer, on vous réclame des frais… et l’argent est perdu.</li>
+<li><strong>Le chantage.</strong> Si vous refusez de payer, l’escroc peut menacer de diffuser des photos ou vidéos intimes échangées pendant la relation. C’est la sextorsion.</li>
+<li><strong>Le faux sauveur.</strong> Après l’arnaque, un prétendu enquêteur, avocat ou « service de récupération » vous contacte pour récupérer votre argent contre des frais. C’est une seconde escroquerie.</li>
+</ul>
+<h2 id="les-signaux-dalerte-a-reperer">Les signaux d’alerte à repérer</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Signal d’alerte</th>
+<th>Exemple typique</th>
+<th>Ce qu’il faut en penser</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sentiments très forts très vite</td>
+<td>« Je n’ai jamais ressenti ça, tu es la personne de ma vie » au bout de quelques jours</td>
+<td>Accélération typique de la mise sous emprise</td>
+</tr>
+<tr class="even">
+<td>Rencontre toujours repoussée</td>
+<td>Mission prolongée, visa refusé, caméra en panne</td>
+<td>Signal majeur, surtout si cela dure des semaines</td>
+</tr>
+<tr class="odd">
+<td>Profil trop parfait ou métier lointain</td>
+<td>Militaire à l’étranger, médecin humanitaire, expatrié</td>
+<td>Prétexte classique pour justifier l’absence</td>
+</tr>
+<tr class="even">
+<td>Demande de quitter la plateforme</td>
+<td>« Parlons plutôt sur cette messagerie »</td>
+<td>L’escroc échappe à la modération du site</td>
+</tr>
+<tr class="odd">
+<td>Urgence financière</td>
+<td>Hôpital, douane, billet d’avion, compte bloqué</td>
+<td>Le cœur de l’arnaque</td>
+</tr>
+<tr class="even">
+<td>Moyen de paiement inhabituel</td>
+<td>Coupons prépayés, cryptomonnaies, virement à un « ami »</td>
+<td>Paiement difficile à récupérer</td>
+</tr>
+<tr class="odd">
+<td>Proposition d’investissement</td>
+<td>« Je gagne beaucoup sur cette plateforme, je vais t’apprendre »</td>
+<td>Variante du faux placement</td>
+</tr>
+<tr class="even">
+<td>Isolement de vos proches</td>
+<td>« Ne leur dis rien, ils seraient jaloux »</td>
+<td>Technique de manipulation</td>
+</tr>
+<tr class="odd">
+<td>Incohérences dans le récit</td>
+<td>Fuseau horaire, fautes, histoire qui change</td>
+<td>Plusieurs personnes peuvent écrire derrière un même profil</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un seul signal ne prouve rien ; plusieurs, surtout associés à une demande d’argent, doivent vous faire tout arrêter.</p>
+<h2 id="les-reflexes-de-protection">Les réflexes de protection</h2>
+<p>Ces réflexes reprennent les recommandations de Cybermalveillance.gouv.fr.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ne jamais envoyer d’argent à une personne connue uniquement en ligne</td>
+<td>Le cœur de l’escroquerie</td>
+<td>Aucune exception, quelle que soit l’urgence invoquée</td>
+</tr>
+<tr class="even">
+<td>Faire une recherche inversée des photos</td>
+<td>Les faux profils construits avec des photos volées</td>
+<td>Les principaux moteurs de recherche permettent de chercher une image : si elle apparaît sous d’autres noms, c’est un faux</td>
+</tr>
+<tr class="odd">
+<td>Poser beaucoup de questions</td>
+<td>Les récits inventés</td>
+<td>Vérifiez la cohérence des réponses dans le temps</td>
+</tr>
+<tr class="even">
+<td>Demander l’avis d’un proche</td>
+<td>L’isolement et l’aveuglement affectif</td>
+<td>Racontez la situation à une personne de confiance au moindre doute</td>
+</tr>
+<tr class="odd">
+<td>Ne jamais envoyer de photos ou vidéos intimes</td>
+<td>Le chantage et la sextorsion</td>
+<td>Restez prudent tant que vous ne connaissez pas la personne en vrai</td>
+</tr>
+<tr class="even">
+<td>Limiter ce que vous publiez</td>
+<td>Le ciblage sur mesure</td>
+<td>Les escrocs exploitent votre situation (veuvage, solitude, revenus) visible sur vos profils</td>
+</tr>
+<tr class="odd">
+<td>Exiger une rencontre ou une visio réelle</td>
+<td>Les profils fictifs</td>
+<td>Une personne sincère trouvera un moyen ; des refus répétés sont un signal fort</td>
+</tr>
+<tr class="even">
+<td>Rester sur la messagerie de la plateforme au début</td>
+<td>L’échappement à la modération</td>
+<td>Refusez de passer trop vite sur une messagerie privée</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="le-test-des-trois-questions">Le test des trois questions</h3>
+<p>Avant tout envoi d’argent, demandez-vous : <strong>Ai-je déjà vu cette personne en vrai ? Est-ce que je peux en parler librement à un proche ? L’argent serait-il récupérable si je me trompais ?</strong> Un seul « non » suffit à ne pas payer.</p>
+<h2 id="que-faire-si-vous-etes-victime">Que faire si vous êtes victime ?</h2>
+<p>Il n’est jamais trop tard pour agir, même après plusieurs versements. Voici l’ordre recommandé par Cybermalveillance.gouv.fr et Service-public.gouv.fr.</p>
+<ol type="1">
+<li><strong>Coupez immédiatement tout contact</strong>, même si l’escroc devient menaçant, se dit malade ou tente de vous faire chanter. Ne répondez plus, ne payez plus.</li>
+<li><strong>Conservez les preuves</strong> : numéros de téléphone, profils, captures d’écran des conversations, SMS, e-mails, preuves de paiement (ordres de virement, reçus de coupons, adresses de portefeuilles crypto).</li>
+<li><strong>Prévenez votre banque</strong> si vous avez fait des virements ou transmis des informations bancaires : faites opposition si nécessaire et surveillez vos comptes.</li>
+<li><strong>Déposez plainte.</strong> Si la relation est restée virtuelle et qu’une demande d’argent a été faite (même sans paiement), vous pouvez porter plainte ou signaler en ligne sur la plateforme <strong>THESEE</strong>, accessible depuis Service-public.gouv.fr. Sinon, rendez-vous au commissariat ou à la gendarmerie, ou écrivez au procureur de la République.</li>
+<li><strong>Signalez le profil</strong> au site ou à l’application où l’escroc vous a abordé, pour qu’il soit supprimé.</li>
+<li><strong>Faites-vous accompagner gratuitement</strong> :
+<ul>
+<li><strong>France Victimes</strong> au <strong>116 006</strong> (appel gratuit, 7 jours sur 7 de 9 h à 19 h) ;</li>
+<li><strong>Info Escroqueries</strong>, plateforme du ministère de l’Intérieur, au <strong>0 805 805 817</strong> (appel gratuit, du lundi au vendredi de 9 h à 18 h 30).</li>
+</ul></li>
+</ol>
+<h3 id="en-cas-de-chantage-a-la-video-intime">En cas de chantage à la vidéo intime</h3>
+<p>Ne payez pas : payer n’arrête presque jamais le chantage. Conservez les messages de menace, bloquez l’escroc et signalez les faits. Si des contenus sont publiés sans votre consentement, demandez leur retrait à la plateforme qui les héberge. Notre fiche <a href="/particuliers/victime/chantage-recu/">Je reçois un chantage</a> détaille la marche à suivre.</p>
+<h3 id="mefiez-vous-des-recuperateurs-dargent">Méfiez-vous des « récupérateurs » d’argent</h3>
+<p>Après une arnaque, vous pouvez être contacté par des personnes promettant de retrouver vos fonds contre une avance de frais. Les autorités ne vous demanderont jamais de payer pour récupérer votre argent. Ne confiez votre dossier qu’à la police, la gendarmerie, votre banque ou un avocat que vous avez choisi vous-même.</p>
+<h3 id="ce-que-dit-la-loi">Ce que dit la loi</h3>
+<p>Selon les cas, les faits peuvent relever de l’escroquerie (article 313-1 du Code pénal, jusqu’à cinq ans d’emprisonnement et 375 000 euros d’amende), de l’abus de faiblesse (article 223-15-2) ou du chantage (article 312-10, jusqu’à cinq ans d’emprisonnement et 75 000 euros d’amende). Ce guide ne remplace pas un conseil juridique personnalisé ; France Victimes peut vous orienter.</p>
+<h2 id="vous-pensez-quun-proche-est-concerne">Vous pensez qu’un proche est concerné ?</h2>
+<p>Une personne sous emprise défend souvent son interlocuteur. Confronter frontalement (« tu te fais arnaquer ») peut la braquer. Quelques pistes :</p>
+<ul>
+<li>posez des questions ouvertes (« Tu l’as déjà vu en visio ? Pourquoi a-t-il besoin de cet argent ? ») ;</li>
+<li>proposez de faire ensemble une recherche inversée des photos ;</li>
+<li>rappelez qu’il n’y a aucune honte et que ces escrocs sont des professionnels ;</li>
+<li>appelez vous-même, en tant que témoin, France Victimes (116 006) ou Info Escroqueries (0 805 805 817) pour être conseillé.</li>
+</ul>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="puis-je-recuperer-largent-envoye">Puis-je récupérer l’argent envoyé ?</h3>
+<p>C’est difficile, surtout pour les coupons prépayés et les cryptomonnaies, mais pas toujours impossible : un virement récent peut parfois être bloqué si vous prévenez votre banque très vite. Déposez plainte dans tous les cas, c’est indispensable pour toute démarche ultérieure.</p>
+<h3 id="faut-il-porter-plainte-meme-si-je-nai-rien-paye">Faut-il porter plainte même si je n’ai rien payé ?</h3>
+<p>Oui, c’est utile. Sur THESEE, la plainte ou le signalement en ligne est possible dès lors qu’une demande d’argent a été faite, même sans versement. Votre signalement aide les enquêteurs à recouper les dossiers.</p>
+<h3 id="lescroc-connait-mon-adresse-et-menace-de-venir-que-faire">L’escroc connaît mon adresse et menace de venir : que faire ?</h3>
+<p>Les menaces font partie de la pression. Coupez le contact et conservez-les comme preuves pour votre plainte. En cas de danger immédiat, appelez le 17.</p>
+<h3 id="comment-savoir-si-une-photo-de-profil-est-volee">Comment savoir si une photo de profil est volée ?</h3>
+<p>Utilisez la recherche par image des principaux moteurs de recherche. Si la photo apparaît sous un autre nom, sur un site de mannequins ou dans plusieurs profils différents, le profil est faux.</p>
+<h3 id="jai-honte-den-parler-a-ma-famille-est-ce-grave">J’ai honte d’en parler à ma famille. Est-ce grave ?</h3>
+<p>C’est une réaction très fréquente, et c’est exactement ce sur quoi compte l’escroc. Vous pouvez commencer par en parler anonymement et gratuitement à France Victimes au 116 006 : c’est souvent plus simple pour faire le premier pas.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/menaces/chantage-et-sextorsion/">Chantage et sextorsion</a></li>
+<li><a href="/particuliers/menaces/fausses-plateformes-dinvestissement/">Fausses plateformes d’investissement</a></li>
+<li><a href="/particuliers/famille/seniors-anti-arnaques/">Guide anti-arnaques pour les seniors</a></li>
+<li><a href="/particuliers/victime/signaler-un-probleme/">Où et comment signaler</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources officielles suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>Cybermalveillance.gouv.fr — « Comment réagir en cas d’escroquerie sentimentale ? » — définition, mode opératoire (brouteurs, pig butchering, chantage), conseils de prévention (recherche inversée, ne jamais envoyer d’argent), étapes en cas de victime, numéros France Victimes (116 006) et Info Escroqueries (0 805 805 817), infractions et peines : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/comment-reagir-en-cas-descroquerie-sentimentale</li>
+<li>Service-public.gouv.fr — « Arnaque aux sentiments : escroquerie, chantage, sextorsion » — signaux d’alerte, preuves à conserver, conditions de la plainte en ligne sur THESEE, plainte classique, sextorsion et retrait des contenus : https://www.service-public.gouv.fr/particuliers/vosdroits/F34124</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

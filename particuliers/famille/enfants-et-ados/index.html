@@ -1,0 +1,627 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enfants et ados : les règles de base — CyberBalise</title><meta name="description" content="Âges légaux des réseaux sociaux, classification des jeux, achats intégrés, discussions avec les inconnus : les repères essentiels pour accompagner vos…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/famille/enfants-et-ados/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Enfants et ados : les règles de base"><meta property="og:description" content="Âges légaux des réseaux sociaux, classification des jeux, achats intégrés, discussions avec les inconnus : les repères essentiels pour accompagner vos…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/famille/enfants-et-ados/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/famille/">Famille et publics fragiles</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Enfants et ados : les règles de base</h1><p class="lead">Âges légaux des réseaux sociaux, classification des jeux, achats intégrés, discussions avec les inconnus : les repères essentiels pour accompagner vos enfants en ligne, et en parler avec eux sans les effrayer.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-les-regles-a-retenir">L’essentiel : les règles à retenir</a></li>
+<li><a href="#les-ages-a-connaitre-ce-que-dit-vraiment-la-loi">Les âges à connaître : ce que dit vraiment la loi</a></li>
+<li><a href="#jeux-en-ligne-classification-pegi-et-achats-integres">Jeux en ligne : classification PEGI et achats intégrés</a></li>
+<li><a href="#les-principaux-risques-selon-lage">Les principaux risques selon l’âge</a></li>
+<li><a href="#les-reflexes-de-protection-en-famille">Les réflexes de protection en famille</a></li>
+<li><a href="#parler-des-risques-sans-faire-peur">Parler des risques sans faire peur</a></li>
+<li><a href="#que-faire-en-cas-de-probleme">Que faire en cas de problème ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-les-regles-a-retenir">L’essentiel : les règles à retenir</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Il n’existe pas en France d’âge légal unique pour aller sur Internet : les réseaux sociaux imposent en général 13 ans dans leurs conditions d’utilisation, et la loi fixe à 15 ans l’âge à partir duquel un mineur peut consentir seul à l’utilisation de ses données. Pour les jeux vidéo, la classification européenne PEGI indique l’âge recommandé et, depuis juin 2026, tient compte des achats intégrés et des messageries. Les règles de base : des comptes privés, des achats bloqués par défaut, des écrans dans les pièces communes pour les plus jeunes, et surtout un dialogue régulier. En cas de problème, le 3018 aide gratuitement enfants et parents.</p></div>
+<p>L’objectif n’est pas de tout interdire, ni de tout surveiller : c’est d’apprendre progressivement à votre enfant à repérer les pièges, et de lui donner la certitude qu’il peut venir vous parler s’il rencontre un problème, sans être puni.</p>
+<h2 id="les-ages-a-connaitre-ce-que-dit-vraiment-la-loi">Les âges à connaître : ce que dit vraiment la loi</h2>
+<p>Plusieurs âges circulent, et ils ne veulent pas dire la même chose. L’Association e-Enfance, qui gère le 3018, les a clarifiés.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Âge</th>
+<th>D’où vient-il ?</th>
+<th>Ce que ça signifie concrètement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>13 ans</td>
+<td>Conditions d’utilisation des plateformes (Instagram, TikTok, Snapchat, Facebook…), héritées d’une loi américaine</td>
+<td>Une règle contractuelle, pas un âge légal français ; elle se contourne facilement avec une fausse date de naissance</td>
+</tr>
+<tr class="even">
+<td>15 ans</td>
+<td>Article 8 du RGPD et article 45 de la loi Informatique et Libertés</td>
+<td>Avant 15 ans, le consentement à l’utilisation des données doit être donné à la fois par l’enfant et par un parent ; à partir de 15 ans, l’adolescent peut consentir seul</td>
+</tr>
+<tr class="odd">
+<td>15 ans</td>
+<td>Loi dite « Marcangeli » du 7 juillet 2023 (« majorité numérique »)</td>
+<td>Elle prévoyait que les réseaux sociaux refusent l’inscription des moins de 15 ans sans autorisation parentale, mais son dispositif central n’est jamais entré en application</td>
+</tr>
+<tr class="even">
+<td>16 ans</td>
+<td>Seuil de principe du RGPD au niveau européen</td>
+<td>Chaque pays peut l’abaisser (pas en dessous de 13 ans) ; la France a choisi 15 ans</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le sujet évolue. Un panel d’experts constitué par la présidente de la Commission européenne a remis en juillet 2026 un rapport recommandant notamment un accès supervisé pour les moins de 13 ans aux services numériques à risque, et la Commission a annoncé une proposition législative après l’été 2026. Vérifiez donc les règles en vigueur au moment où vous lisez ce guide.</p>
+<p>À retenir : ces âges sont des <strong>minimums</strong>, pas des feux verts. Un enfant de 13 ans peut techniquement ouvrir un compte, mais c’est à vous de juger s’il est prêt.</p>
+<h2 id="jeux-en-ligne-classification-pegi-et-achats-integres">Jeux en ligne : classification PEGI et achats intégrés</h2>
+<h3 id="lire-la-classification-pegi">Lire la classification PEGI</h3>
+<p>PEGI est le système européen de classification des jeux vidéo. Il affiche un âge recommandé (3, 7, 12, 16 ou 18 ans) et des pictogrammes de contenu. Un pictogramme représentant une main tenant une carte bancaire signale la présence d’<strong>achats intégrés</strong>.</p>
+<p>Depuis juin 2026, selon les informations publiées par <em>Le Monde</em>, les jeux nouvellement évalués le sont avec des critères élargis, qui portent aussi sur les fonctionnalités :</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fonctionnalité du jeu</th>
+<th>Classification minimale prévue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mécanismes qui récompensent le retour quotidien (quêtes du jour)</td>
+<td>PEGI 7</td>
+</tr>
+<tr class="even">
+<td>Mécanismes qui pénalisent le joueur s’il ne revient pas</td>
+<td>PEGI 12</td>
+</tr>
+<tr class="odd">
+<td>Offres d’achat limitées dans le temps ou en quantité</td>
+<td>PEGI 12</td>
+</tr>
+<tr class="even">
+<td>Objets numériques uniques à collectionner (NFT)</td>
+<td>PEGI 18</td>
+</tr>
+<tr class="odd">
+<td>Messagerie « non restreinte », sans possibilité de bloquer ou de signaler</td>
+<td>PEGI 18</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les jeux évalués avant cette date gardent en principe leur ancienne classification : regardez aussi les pictogrammes et testez le jeu vous-même.</p>
+<h3 id="les-microtransactions-le-vrai-piege-financier">Les microtransactions : le vrai piège financier</h3>
+<p>De nombreux jeux gratuits se financent par des achats intégrés : tenues, personnages, monnaie virtuelle, « passes » saisonniers. Le problème n’est pas l’achat en soi, mais la façon dont il est présenté :</p>
+<ul>
+<li><strong>La monnaie virtuelle</strong> brouille la notion de prix réel : 1 000 « gemmes » ne parlent pas à un enfant comme 10 euros.</li>
+<li><strong>Les offres limitées</strong> (« plus que 2 heures ! ») créent une urgence artificielle.</li>
+<li><strong>La pression sociale</strong> : ne pas avoir la tenue du moment peut exposer à des moqueries.</li>
+<li><strong>Les arnaques</strong> : faux générateurs de monnaie gratuite, faux « cadeaux » contre identifiants, comptes volés par hameçonnage.</li>
+</ul>
+<p>Le bon réflexe : <strong>désactiver les achats sans autorisation</strong> sur la console, le smartphone et le compte du magasin d’applications, et préférer, si vous acceptez une dépense, une carte prépayée d’un montant fixé à l’avance.</p>
+<h2 id="les-principaux-risques-selon-lage">Les principaux risques selon l’âge</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Âge indicatif</th>
+<th>Usages fréquents</th>
+<th>Risques principaux</th>
+<th>Priorité parentale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Moins de 7 ans</td>
+<td>Vidéos, petits jeux sur tablette</td>
+<td>Contenus inadaptés, achats accidentels</td>
+<td>Usage accompagné, contrôle parental, achats bloqués</td>
+</tr>
+<tr class="even">
+<td>7 – 11 ans</td>
+<td>Jeux en ligne, premières messageries</td>
+<td>Contacts avec des inconnus, arnaques aux « cadeaux », achats intégrés</td>
+<td>Comptes enfants, discussions limitées aux amis, règles écrites ensemble</td>
+</tr>
+<tr class="odd">
+<td>11 – 14 ans</td>
+<td>Premier smartphone, réseaux sociaux, discussions de groupe</td>
+<td>Cyberharcèlement, partage d’images, sollicitations, exposition à des contenus choquants</td>
+<td>Comptes privés, paramètres revus ensemble, dialogue sur ce qu’on publie</td>
+</tr>
+<tr class="even">
+<td>15 – 17 ans</td>
+<td>Autonomie croissante</td>
+<td>Chantage à la webcam, arnaques financières, usurpation de compte</td>
+<td>Mots de passe solides, double authentification, savoir à qui s’adresser</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="les-reflexes-de-protection-en-famille">Les réflexes de protection en famille</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Comptes en mode privé</td>
+<td>Contacts non sollicités, exposition publique</td>
+<td>Dans les paramètres de chaque application : profil privé, messages limités aux amis</td>
+</tr>
+<tr class="even">
+<td>Achats intégrés bloqués ou soumis à validation</td>
+<td>Dépenses imprévues</td>
+<td>Activez la demande d’autorisation dans le compte familial de l’appareil et de la console</td>
+</tr>
+<tr class="odd">
+<td>Contrôle parental adapté à l’âge</td>
+<td>Contenus inadaptés, temps d’écran excessif</td>
+<td>Outils intégrés aux systèmes et consoles ; à alléger progressivement avec l’âge</td>
+</tr>
+<tr class="even">
+<td>Écrans dans les pièces communes pour les plus jeunes</td>
+<td>Situations à risque sans adulte à proximité</td>
+<td>Pas de tablette dans la chambre la nuit, recharge des appareils hors de la chambre</td>
+</tr>
+<tr class="odd">
+<td>Mots de passe propres à chaque compte, jamais partagés avec les copains</td>
+<td>Vol de comptes de jeux et de réseaux sociaux</td>
+<td>Apprenez-lui à créer une phrase de passe ; activez la double authentification</td>
+</tr>
+<tr class="even">
+<td>Ne jamais envoyer de photo intime ni accepter un appel vidéo d’un inconnu</td>
+<td>Chantage, sextorsion</td>
+<td>Expliquez que ce qui est envoyé ne peut plus être récupéré</td>
+</tr>
+<tr class="odd">
+<td>Pas de « monnaie gratuite » ni de « cadeau » contre des identifiants</td>
+<td>Hameçonnage et vol de compte</td>
+<td>Rappelez qu’aucun jeu n’offre de monnaie en échange d’un mot de passe</td>
+</tr>
+<tr class="even">
+<td>Règles écrites ensemble</td>
+<td>Conflits et contournements</td>
+<td>Une charte familiale simple : horaires, applications autorisées, que faire si un problème survient</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le contrôle parental est un filet de sécurité, pas une solution complète : un adolescent motivé trouvera le moyen de le contourner. Le dialogue reste la meilleure protection.</p>
+<h2 id="parler-des-risques-sans-faire-peur">Parler des risques sans faire peur</h2>
+<p>Un enfant qui a peur d’être puni ou privé d’écran ne dira rien s’il lui arrive quelque chose. L’enjeu est donc de devenir la personne à qui il pense en premier.</p>
+<ul>
+<li><strong>Commencez par ses usages, pas par les dangers.</strong> Demandez-lui de vous montrer son jeu préféré, ses créateurs de contenu favoris. Jouez avec lui.</li>
+<li><strong>Utilisez des situations concrètes.</strong> « Si quelqu’un que tu ne connais pas te propose des gemmes gratuites, tu fais quoi ? » vaut mieux qu’un long discours.</li>
+<li><strong>Promettez de ne pas punir la parole.</strong> Dites clairement : « Si quelque chose te met mal à l’aise, viens m’en parler, tu ne seras pas privé de téléphone pour ça. » Et tenez parole.</li>
+<li><strong>Expliquez le « pourquoi ».</strong> Un compte privé n’est pas une punition : c’est comme fermer la porte de sa chambre.</li>
+<li><strong>Rappelez qu’il n’y a jamais d’urgence.</strong> Un message qui presse, menace ou met mal à l’aise peut être ignoré, bloqué et montré à un adulte.</li>
+<li><strong>Montrez l’exemple.</strong> Ce que vous publiez sur vos enfants (photos, lieux, école) compte aussi.</li>
+</ul>
+<p>Pour les 9-12 ans, Cybermalveillance.gouv.fr propose un livret pédagogique gratuit, « Le numérique, pas de panique ! », pratique pour lancer la discussion.</p>
+<h2 id="que-faire-en-cas-de-probleme">Que faire en cas de problème ?</h2>
+<ol type="1">
+<li><strong>Écoutez sans juger</strong> et rassurez votre enfant : il a bien fait de vous en parler.</li>
+<li><strong>Conservez les preuves</strong> : captures d’écran des messages, pseudonymes, liens des profils, dates.</li>
+<li><strong>Bloquez et signalez</strong> le compte ou le contenu directement sur la plateforme.</li>
+<li><strong>Appelez le 3018</strong>, le numéro national contre les violences numériques géré par l’Association e-Enfance : gratuit, anonyme et confidentiel, accessible 7 jours sur 7 de 9 h à 23 h, par téléphone ou par tchat via l’application 3018. L’association peut transmettre des signalements prioritaires aux plateformes.</li>
+<li><strong>En cas de chantage ou de menace</strong>, ne payez pas et ne cédez à aucune demande ; déposez plainte au commissariat ou à la gendarmerie.</li>
+<li><strong>En cas d’achat non autorisé</strong>, contactez le support du magasin d’applications ou de la console pour demander un remboursement et renforcez les réglages.</li>
+</ol>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="a-quel-age-donner-un-premier-smartphone">À quel âge donner un premier smartphone ?</h3>
+<p>Aucune règle légale ne fixe cet âge. L’important est que l’enfant soit capable de respecter des règles d’usage et de venir vous parler en cas de problème. Vous pouvez commencer par un téléphone aux fonctions limitées, puis élargir progressivement.</p>
+<h3 id="mon-enfant-de-11-ans-veut-un-compte-sur-un-reseau-social-que-faire">Mon enfant de 11 ans veut un compte sur un réseau social : que faire ?</h3>
+<p>La plupart des réseaux sociaux exigent au moins 13 ans dans leurs conditions d’utilisation. Avant 15 ans, la loi prévoit que le consentement à l’utilisation de ses données soit donné aussi par un parent. Expliquez votre décision et, si vous acceptez plus tard, configurez le compte ensemble en mode privé.</p>
+<h3 id="comment-eviter-les-achats-integres-non-autorises">Comment éviter les achats intégrés non autorisés ?</h3>
+<p>Activez la validation parentale des achats dans le compte familial du smartphone, de la tablette et de la console, et retirez la carte bancaire enregistrée. Si vous autorisez une dépense, une carte prépayée d’un montant fixé limite les mauvaises surprises.</p>
+<h3 id="le-controle-parental-suffit-il">Le contrôle parental suffit-il ?</h3>
+<p>Non. Il est utile pour les plus jeunes, mais il ne remplace pas le dialogue et peut être contourné par les plus grands. Associez-le à des règles discutées en famille et à une confiance mutuelle.</p>
+<h3 id="mon-ado-est-victime-de-cyberharcelement-qui-contacter">Mon ado est victime de cyberharcèlement : qui contacter ?</h3>
+<p>Le 3018 accompagne gratuitement les enfants, les adolescents et leurs parents, 7 jours sur 7 de 9 h à 23 h. Conservez les preuves, signalez les contenus à la plateforme et, si nécessaire, déposez plainte.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/famille/controle-parental/">Contrôle parental</a></li>
+<li><a href="/particuliers/famille/cyberharcelement/">Cyberharcèlement : reconnaître et agir</a></li>
+<li><a href="/particuliers/menaces/chantage-et-sextorsion/">Chantage et sextorsion</a></li>
+<li><a href="/particuliers/comptes/securiser-ses-reseaux-sociaux/">Sécuriser ses réseaux sociaux</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>Association e-Enfance / 3018 — « Loi et réglementation des réseaux sociaux » — âges de 13, 15 et 16 ans, article 8 du RGPD et article 45 de la loi Informatique et Libertés, loi Marcangeli du 7 juillet 2023 et sa non-application, rapport européen de juillet 2026, lignes directrices du DSA, coordonnées et horaires du 3018 : https://e-enfance.org/informer/reseaux-sociaux/la-reglementation-sur-les-reseaux-sociaux/</li>
+<li>Le Monde (Pixels) — « Jeux vidéo : les recommandations d’âge tiendront désormais compte des achats intégrés » (13 mars 2026) — nouveaux critères PEGI applicables à partir de juin 2026 : https://www.lemonde.fr/pixels/article/2026/03/13/jeux-video-les-recommandations-d-age-tiendront-desormais-compte-des-achats-integres_6671006_4408996.html</li>
+<li>Cybermalveillance.gouv.fr — livret « Le numérique, pas de panique ! » pour les 9-12 ans : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/livret-numerique-pas-de-panique</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

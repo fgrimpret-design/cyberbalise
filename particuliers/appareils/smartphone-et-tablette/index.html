@@ -1,0 +1,588 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smartphone et tablette — CyberBalise</title><meta name="description" content="Verrouillage, applications installées hors boutique, autorisations trop larges, sauvegarde oubliée : voici les réglages simples qui protègent votre téléphone…">
+<link rel="canonical" href="https://cyberbalise.fr/particuliers/appareils/smartphone-et-tablette/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Smartphone et tablette"><meta property="og:description" content="Verrouillage, applications installées hors boutique, autorisations trop larges, sauvegarde oubliée : voici les réglages simples qui protègent votre téléphone…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/appareils/smartphone-et-tablette/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>Smartphone et tablette</h1><p class="lead">Verrouillage, applications installées hors boutique, autorisations trop larges, sauvegarde oubliée : voici les réglages simples qui protègent votre téléphone et votre tablette, et quoi faire en cas de perte ou de vol.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-pourquoi-proteger-son-mobile">L’essentiel : pourquoi protéger son mobile ?</a></li>
+<li><a href="#comment-un-mobile-se-fait-pieger-ou-voler-ses-donnees">Comment un mobile se fait piéger ou voler ses données</a></li>
+<li><a href="#les-signaux-dalerte-a-surveiller">Les signaux d’alerte à surveiller</a></li>
+<li><a href="#les-reflexes-de-protection">Les réflexes de protection</a></li>
+<li><a href="#les-reglages-a-faire-en-15-minutes">Les réglages à faire en 15 minutes</a></li>
+<li><a href="#que-faire-en-cas-de-perte-de-vol-ou-de-piratage">Que faire en cas de perte, de vol ou de piratage ?</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-pourquoi-proteger-son-mobile">L’essentiel : pourquoi protéger son mobile ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Un smartphone contient souvent plus d’informations sensibles qu’un ordinateur — messages, photos, banque, codes de double authentification — et il se perd ou se vole plus facilement. Quatre réglages couvrent l’essentiel : un code de verrouillage solide avec verrouillage automatique, des mises à jour installées sans tarder, des applications uniquement issues des magasins officiels avec des autorisations contrôlées, et une sauvegarde régulière. Ajoutez la fonction de localisation à distance, et notez le numéro IMEI de l’appareil pour pouvoir le faire bloquer en cas de vol.</p></div>
+<p>Cybermalveillance.gouv.fr, le dispositif national d’assistance aux victimes, le résume ainsi : les fonctionnalités des appareils mobiles égalent voire dépassent parfois celles des ordinateurs, mais ils sont généralement bien moins sécurisés par leurs propriétaires. Les cybercriminels le savent et certains se spécialisent dans les attaques visant les mobiles.</p>
+<p>La bonne nouvelle : les systèmes récents (Android et iOS/iPadOS) intègrent déjà la plupart des protections utiles. Il suffit souvent de les activer et de garder de bonnes habitudes. Une tablette familiale mérite les mêmes réglages qu’un téléphone, surtout si elle est connectée aux comptes des parents.</p>
+<h2 id="comment-un-mobile-se-fait-pieger-ou-voler-ses-donnees">Comment un mobile se fait piéger ou voler ses données</h2>
+<h3 id="le-vol-ou-la-perte-de-lappareil">Le vol ou la perte de l’appareil</h3>
+<p>C’est le risque le plus courant. Sans code de verrouillage, n’importe qui peut lire vos messages, accéder à vos comptes ouverts, recevoir vos codes de validation par SMS et réinitialiser vos mots de passe. Sans sauvegarde, vous perdez en plus vos photos et vos contacts.</p>
+<h3 id="lapplication-piegee">L’application piégée</h3>
+<p>Une application installée en dehors des magasins officiels — parce qu’elle promet un jeu payant « gratuit », une « mise à jour » urgente ou le suivi d’un colis — peut être un logiciel malveillant. Cybermalveillance.gouv.fr rappelle que les sites « parallèles » ne contrôlent pas les applications qu’ils proposent et que les applications payantes offertes gratuitement en téléchargement illégal sont généralement piégées.</p>
+<p><em>Exemple réaliste :</em> un SMS annonce un colis en attente et vous invite à installer une application de suivi depuis un lien. Le fichier téléchargé demande l’accès à vos SMS : il pourra intercepter vos codes bancaires.</p>
+<h3 id="lapplication-trop-curieuse">L’application trop curieuse</h3>
+<p>Même téléchargée depuis une boutique officielle, une application peut réclamer des droits sans rapport avec son usage. Cybermalveillance.gouv.fr cite l’exemple d’un simple jeu de cartes « gratuit » qui demande l’accès à votre répertoire, vos messages, votre position GPS ou votre appareil photo : c’est évidemment suspect. Attention aussi, les autorisations peuvent évoluer lors des mises à jour.</p>
+<h3 id="la-faille-non-corrigee">La faille non corrigée</h3>
+<p>Les mises à jour du système et des applications corrigent souvent des failles qui pourraient permettre de prendre le contrôle de l’appareil. Un téléphone qui n’est plus mis à jour reste exposé.</p>
+<h3 id="les-connexions-ouvertes">Les connexions ouvertes</h3>
+<p>Un Wi-Fi public ou inconnu peut être contrôlé par un cybercriminel capable d’intercepter vos connexions. Le Wi-Fi, le Bluetooth et le NFC laissés actifs en permanence sont autant de portes d’entrée supplémentaires.</p>
+<h2 id="les-signaux-dalerte-a-surveiller">Les signaux d’alerte à surveiller</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Signal</th>
+<th>Ce que cela peut indiquer</th>
+<th>Première vérification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Batterie qui se vide anormalement vite, appareil qui chauffe au repos</td>
+<td>Application qui tourne en arrière-plan à votre insu</td>
+<td>Consultez l’utilisation de la batterie par application</td>
+</tr>
+<tr class="even">
+<td>Application inconnue dans la liste</td>
+<td>Installation non souhaitée</td>
+<td>Désinstallez-la et lancez une analyse</td>
+</tr>
+<tr class="odd">
+<td>Publicités envahissantes hors des applications</td>
+<td>Logiciel publicitaire</td>
+<td>Identifiez l’application installée récemment</td>
+</tr>
+<tr class="even">
+<td>SMS envoyés ou appels passés que vous ne reconnaissez pas</td>
+<td>Application malveillante utilisant votre ligne</td>
+<td>Contrôlez votre facture et les autorisations SMS</td>
+</tr>
+<tr class="odd">
+<td>Codes de validation reçus sans avoir rien demandé</td>
+<td>Quelqu’un tente d’accéder à vos comptes</td>
+<td>Changez le mot de passe du compte concerné</td>
+</tr>
+<tr class="even">
+<td>Application qui demande une autorisation sans rapport avec sa fonction</td>
+<td>Collecte abusive de données</td>
+<td>Refusez, ou choisissez une autre application</td>
+</tr>
+<tr class="odd">
+<td>Page web qui vous pousse à télécharger une « mise à jour »</td>
+<td>Tentative d’installation de logiciel malveillant</td>
+<td>Fermez la page ; les mises à jour passent par les réglages du système</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aucun de ces signes n’est une preuve à lui seul, mais plusieurs à la fois justifient une vérification approfondie.</p>
+<h2 id="les-reflexes-de-protection">Les réflexes de protection</h2>
+<p>Ce tableau reprend les dix bonnes pratiques de Cybermalveillance.gouv.fr pour les appareils mobiles, complétées par les outils intégrés présentés par Google pour Android et par Apple pour les sauvegardes.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Réflexe</th>
+<th>Ce que ça bloque</th>
+<th>Comment faire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Code de verrouillage + verrouillage automatique</td>
+<td>L’accès à vos données en cas de perte ou de vol</td>
+<td>Évitez 0000 ou 1234 ; préférez un code long ou la biométrie avec code de secours</td>
+</tr>
+<tr class="even">
+<td>Code PIN de la carte SIM</td>
+<td>L’utilisation de votre ligne dans un autre appareil</td>
+<td>Activez la demande du code PIN dans les réglages</td>
+</tr>
+<tr class="odd">
+<td>Chiffrement des données</td>
+<td>Le contournement du code de verrouillage</td>
+<td>Activé sur la plupart des appareils récents ; vérifiez aussi une éventuelle carte mémoire</td>
+</tr>
+<tr class="even">
+<td>Mises à jour sans tarder</td>
+<td>L’exploitation de failles connues</td>
+<td>Activez les mises à jour automatiques du système et des applications</td>
+</tr>
+<tr class="odd">
+<td>Applications uniquement depuis les magasins officiels</td>
+<td>Les applications piégées</td>
+<td>Consultez les avis et le nombre de téléchargements ; au moindre doute, n’installez pas</td>
+</tr>
+<tr class="even">
+<td>Contrôle des autorisations</td>
+<td>La collecte abusive de vos données</td>
+<td>Vérifiez à l’installation et après les mises à jour ; retirez ce qui est inutile</td>
+</tr>
+<tr class="odd">
+<td>Sauvegarde régulière</td>
+<td>La perte définitive de photos, contacts, messages</td>
+<td>Sauvegarde automatique dans le nuage ou sur ordinateur</td>
+</tr>
+<tr class="even">
+<td>Solution de sécurité</td>
+<td>Virus, rançongiciels, hameçonnage</td>
+<td>Sur Android, gardez Google Play Protect actif ; une solution spécialisée peut compléter</td>
+</tr>
+<tr class="odd">
+<td>Désactiver Wi-Fi, Bluetooth, NFC inutilisés</td>
+<td>Les connexions indésirables</td>
+<td>Coupez-les quand vous ne vous en servez pas, évitez les Wi-Fi publics inconnus</td>
+</tr>
+<tr class="even">
+<td>Ne pas stocker de secrets en clair</td>
+<td>Le vol de mots de passe et de codes bancaires</td>
+<td>Pas de code dans les notes ou les contacts ; utilisez un gestionnaire de mots de passe</td>
+</tr>
+<tr class="odd">
+<td>Ne pas prêter son appareil sans surveillance</td>
+<td>Le piégeage de l’appareil</td>
+<td>Gardez le contrôle physique si quelqu’un doit passer un appel</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="les-reglages-a-faire-en-15-minutes">Les réglages à faire en 15 minutes</h2>
+<h3 id="1-le-verrouillage">1. Le verrouillage</h3>
+<p>Choisissez un code difficile à deviner et un délai de verrouillage automatique court. La biométrie (empreinte, visage) est pratique au quotidien, mais elle repose toujours sur un code de secours : c’est lui qui doit être solide. Google recommande, pour un code PIN Android, six chiffres ou plus.</p>
+<h3 id="2-la-localisation-a-distance">2. La localisation à distance</h3>
+<p>Activez la fonction de localisation de votre appareil (« Localiser » sur Android, « Localiser » chez Apple). Elle permet de retrouver l’appareil, de le verrouiller ou d’effacer ses données à distance. Google présente aussi, sur les versions récentes d’Android, des protections contre le vol, comme le verrouillage automatique lorsqu’un vol est détecté ou lorsque l’appareil est mis hors connexion.</p>
+<h3 id="3-les-autorisations">3. Les autorisations</h3>
+<p>Passez en revue, dans les réglages, la liste des applications ayant accès à votre position, vos contacts, votre micro, votre appareil photo et vos SMS. Retirez tout ce qui n’est pas justifié. Selon Google, Android désactive aussi automatiquement les autorisations des applications inutilisées depuis longtemps ; profitez-en pour désinstaller ce qui ne sert plus.</p>
+<h3 id="4-les-applications-hors-boutique">4. Les applications hors boutique</h3>
+<p>Sur Android, l’installation d’applications provenant de « sources inconnues » doit rester bloquée. Si vous l’avez autorisée un jour pour une application précise, retirez cette permission. Google Play Protect analyse chaque jour les applications à la recherche de logiciels malveillants et avertit ou supprime celles qui paraissent dangereuses : ne le désactivez pas.</p>
+<h3 id="5-la-sauvegarde">5. La sauvegarde</h3>
+<p>Votre mobile contient des informations que vous n’avez nulle part ailleurs. Activez une sauvegarde automatique (service de votre système ou de votre fabricant). Sur iPhone et iPad, si vous sauvegardez sur un ordinateur, Apple propose l’option « Chiffrer la sauvegarde locale », protégée par un mot de passe : elle inclut en plus vos mots de passe enregistrés, vos réglages Wi-Fi, votre historique de navigation, vos données Santé et l’historique des appels. Notez ce mot de passe en lieu sûr : sans lui, Apple indique que les sauvegardes chiffrées existantes sont inutilisables.</p>
+<h3 id="6-le-numero-imei">6. Le numéro IMEI</h3>
+<p>Le code IMEI, de 15 à 17 chiffres, est le numéro de série de votre appareil. Il figure généralement sur la boîte. Vous pouvez aussi l’afficher en tapant <code>*#06#</code>. Notez-le : en cas de vol, il permet de faire bloquer l’appareil sur tous les réseaux.</p>
+<h3 id="7-le-compte-principal">7. Le compte principal</h3>
+<p>Protégez votre compte Google ou Apple par un mot de passe unique et la validation en deux étapes : c’est la clé de vos sauvegardes, de vos achats et de la localisation à distance.</p>
+<h2 id="que-faire-en-cas-de-perte-de-vol-ou-de-piratage">Que faire en cas de perte, de vol ou de piratage ?</h2>
+<h3 id="en-cas-de-perte-ou-de-vol">En cas de perte ou de vol</h3>
+<ol type="1">
+<li><strong>Localisez, verrouillez ou effacez</strong> l’appareil depuis un autre appareil, via la fonction de localisation de votre compte Google ou Apple.</li>
+<li><strong>Faites suspendre votre ligne</strong> auprès de votre opérateur et demandez le blocage de l’appareil grâce à son IMEI.</li>
+<li><strong>Changez les mots de passe</strong> de vos comptes les plus sensibles (messagerie, banque, réseaux sociaux), en commençant par votre compte Google ou Apple.</li>
+<li><strong>Prévenez votre banque</strong> si des applications bancaires ou des moyens de paiement étaient configurés.</li>
+<li><strong>Déclarez le vol</strong> au commissariat ou à la gendarmerie : le récépissé est souvent demandé par l’opérateur et l’assureur.</li>
+</ol>
+<h3 id="si-vous-pensez-que-votre-appareil-est-infecte">Si vous pensez que votre appareil est infecté</h3>
+<ul>
+<li>Désinstallez toute application suspecte ou récemment installée.</li>
+<li>Mettez à jour le système et lancez une analyse (Google Play Protect ou solution de sécurité).</li>
+<li>Changez, depuis un autre appareil sain, les mots de passe des comptes utilisés sur le mobile.</li>
+<li>En dernier recours, restaurez l’appareil à ses paramètres d’usine, puis réinstallez vos données depuis une sauvegarde antérieure à l’infection.</li>
+<li>Faites-vous aider sur Cybermalveillance.gouv.fr ou sur 17Cyber (17cyber.gouv.fr), le service public d’assistance en ligne aux victimes de cybermalveillance.</li>
+</ul>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="un-antivirus-est-il-necessaire-sur-un-smartphone">Un antivirus est-il nécessaire sur un smartphone ?</h3>
+<p>Cybermalveillance.gouv.fr recommande de s’équiper d’une solution de sécurité, les mobiles étant visés par les virus, rançongiciels et hameçonnage. Sur Android, Google Play Protect est intégré et actif par défaut ; une solution complémentaire peut ajouter un filtrage des sites dangereux. Dans tous les cas, l’essentiel reste les mises à jour et l’installation depuis les boutiques officielles.</p>
+<h3 id="le-deverrouillage-par-empreinte-ou-par-visage-est-il-sur">Le déverrouillage par empreinte ou par visage est-il sûr ?</h3>
+<p>Il est pratique et évite de taper son code en public. Mais il s’appuie toujours sur un code de secours : c’est ce code qui doit être difficile à deviner. Ne le communiquez à personne.</p>
+<h3 id="puis-je-installer-une-application-trouvee-sur-un-site-web">Puis-je installer une application trouvée sur un site web ?</h3>
+<p>C’est déconseillé. Seuls les magasins officiels offrent un contrôle des applications, même s’il n’est pas infaillible. Au moindre doute, n’installez pas l’application et choisissez-en une autre.</p>
+<h3 id="mon-telephone-ne-recoit-plus-de-mises-a-jour-que-faire">Mon téléphone ne reçoit plus de mises à jour : que faire ?</h3>
+<p>Il reste utilisable, mais il n’est plus protégé contre les nouvelles failles. Limitez alors les usages sensibles (banque, paiement, messagerie professionnelle) et envisagez son remplacement. Vérifiez la durée de suivi annoncée par le fabricant avant d’acheter un nouvel appareil.</p>
+<h3 id="faut-il-chiffrer-sa-sauvegarde">Faut-il chiffrer sa sauvegarde ?</h3>
+<p>Oui, dès qu’elle est stockée sur un ordinateur ou un support externe. Elle contient vos messages, vos photos et parfois vos mots de passe. Conservez le mot de passe de chiffrement dans un endroit sûr, par exemple un gestionnaire de mots de passe.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/particuliers/appareils/mises-a-jour-et-patchs/">Mises à jour et correctifs</a></li>
+<li><a href="/particuliers/appareils/sauvegardes-3-2-1/">Sauvegarder ses données : la règle 3-2-1</a></li>
+<li><a href="/particuliers/appareils/wi-fi-domicile-et-public/">Wi-Fi à la maison et Wi-Fi public</a></li>
+<li><a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels (smishing, vishing)</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>Cybermalveillance.gouv.fr — « Protéger ses appareils mobiles » — les 10 bonnes pratiques (codes d’accès, PIN, chiffrement, mises à jour, sauvegardes, solution de sécurité, magasins officiels, autorisations, IMEI et <code>*#06#</code>, Wi-Fi publics, informations confidentielles) : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/appareils-mobiles</li>
+<li>Google / Android — « Comment protéger votre téléphone et vos données » — Google Play Protect, Localiser, écran de verrouillage et code de six chiffres ou plus, autorisations désactivées automatiquement, protection contre le vol : https://www.android.com/intl/fr_fr/articles/how-to-secure-android-phone/</li>
+<li>Apple — « À propos des sauvegardes chiffrées sur votre iPhone, iPad… » — contenu supplémentaire des sauvegardes chiffrées, activation, conséquences d’un mot de passe oublié : https://support.apple.com/fr-fr/108353</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>
