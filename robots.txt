@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /backoffice/
+
+Sitemap: https://cyberbalise.fr/sitemap.xml

@@ -1,0 +1,391 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberBalise — Guides, comparatifs et fiches réflexes cybersécurité</title><meta name="description" content="Guides, comparatifs et fiches réflexes cybersécurité pour particuliers et professionnels.">
+<link rel="canonical" href="https://cyberbalise.fr/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="CyberBalise"><meta property="og:description" content="Guides, comparatifs et fiches réflexes cybersécurité pour particuliers et professionnels."><meta property="og:url" content="https://cyberbalise.fr/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style><script>const SEARCH_INDEX=[{"t": "Indice d'usurpabilité des services publics", "u": "/outils/indice-usurpabilite/", "k": "dmarc spf usurpation faux mail impots caf ameli antai barometre classement", "a": "Les deux"}, {"t": "Phishing et hameçonnage", "u": "/particuliers/menaces/phishing-hameconnage/", "k": "email sms arnaque frauduleux lien", "a": "Particuliers"}, {"t": "Créer un mot de passe robuste", "u": "/particuliers/comptes/mot-de-passe-robuste/", "k": "phrase de passe gestionnaire", "a": "Particuliers"}, {"t": "Double authentification et passkeys", "u": "/particuliers/comptes/double-authentification-et-passkeys/", "k": "2fa mfa sms authentificateur clé", "a": "Particuliers"}, {"t": "J'ai été victime : que faire ?", "u": "/particuliers/victime/", "k": "urgence piratage arnaque incident", "a": "Particuliers"}, {"t": "Mon compte a été piraté", "u": "/particuliers/victime/compte-pirate/", "k": "piratage compte", "a": "Particuliers"}, {"t": "Ma carte bancaire a été débitée", "u": "/particuliers/victime/carte-bancaire-debitee/", "k": "opposition fraude contestation", "a": "Particuliers"}, {"t": "Je suis victime d'un rançongiciel", "u": "/particuliers/victime/victime-rancongiciel/", "k": "ransomware fichiers chiffrés rançon", "a": "Particuliers"}, {"t": "Mon identité est usurpée", "u": "/particuliers/victime/identite-usurpee/", "k": "usurpation documents", "a": "Particuliers"}, {"t": "Je reçois un chantage", "u": "/particuliers/victime/chantage-recu/", "k": "sextorsion blackmail", "a": "Particuliers"}, {"t": "Où et comment signaler", "u": "/particuliers/victime/signaler-un-probleme/", "k": "17cyber pharos plainte cybermalveillance", "a": "Particuliers"}, {"t": "Comparatif VPN", "u": "/offres/vpn/", "k": "nordvpn expressvpn surfshark proton mullvad", "a": "Particuliers"}, {"t": "Comparatif antivirus", "u": "/offres/antivirus/", "k": "bitdefender norton eset avast defender", "a": "Particuliers"}, {"t": "Lexique cyber", "u": "/lexique/", "k": "définitions termes glossaire", "a": "Les deux"}, {"t": "Comprendre les menaces", "u": "/particuliers/menaces/", "k": "hub regroupant les 9 menaces grand public les plus fréquentes.", "a": "Particuliers"}, {"t": "Arnaques par SMS et appels (smishing, vishing)", "u": "/particuliers/menaces/arnaques-sms-et-appels/", "k": "faux colis, faux opérateurs, faux fraudes à la cb : réagir sans cliquer.", "a": "Particuliers"}, {"t": "Rançongiciel (ransomware)", "u": "/particuliers/menaces/rancongiciel/", "k": "comment on est infecté, pourquoi ne pas payer, que font les victimes.", "a": "Particuliers"}, {"t": "Virus, malwares et logiciels espions", "u": "/particuliers/menaces/virus-et-malwares/", "k": "panorama des infections, symptômes, nettoyage de base.", "a": "Particuliers"}, {"t": "Vol d'identité numérique", "u": "/particuliers/menaces/vol-didentite-numerique/", "k": "comment les données fuient, ce qui peut être fait avec, signaux d'alerte.", "a": "Particuliers"}, {"t": "Deepfakes et arnaques dopées à l'IA", "u": "/particuliers/menaces/deepfakes-et-arnaques-a-lia/", "k": "voix clonées, faux vidéos de proches, messages parfaits : les nouveaux réflexes de vérification.", "a": "Particuliers"}, {"t": "Chantage et sextorsion", "u": "/particuliers/menaces/chantage-et-sextorsion/", "k": "chantage à la webcam, faux e-mails de piratage : ne pas payer, qui contacter.", "a": "Particuliers"}, {"t": "Fausses plateformes d'investissement", "u": "/particuliers/menaces/fausses-plateformes-dinvestissement/", "k": "promesses de rendement, faux courtiers crypto, retrait impossible : reconnaître l'arnaque.", "a": "Particuliers"}, {"t": "Arnaques au faux support", "u": "/particuliers/menaces/arnaques-au-faux-support/", "k": "fausse banque, faux impôts, faux service client, faux support technique : la technique du faux prétexte.", "a": "Particuliers"}, {"t": "Protéger mes comptes et mon identité", "u": "/particuliers/comptes/", "k": "hub « fondations » : mots de passe, 2fa, vie privée.", "a": "Particuliers"}, {"t": "Gestionnaires de mots de passe", "u": "/particuliers/comptes/gestionnaires-de-mots-de-passe/", "k": "pourquoi, comment choisir, migrer sans casse.", "a": "Particuliers"}, {"t": "Vie privée et données personnelles", "u": "/particuliers/comptes/vie-privee-et-donnees-personnelles/", "k": "ce qui se sait sur vous, réglages à faire, exercer ses droits.", "a": "Particuliers"}, {"t": "Sécuriser ses réseaux sociaux", "u": "/particuliers/comptes/securiser-ses-reseaux-sociaux/", "k": "réglages essentiels, visibilité, faux profils et hameçonnage entre amis.", "a": "Particuliers"}, {"t": "Protéger mes appareils et ma connexion", "u": "/particuliers/appareils/", "k": "hub « matériel » : pc, mobile, box, objets connectés, sauvegardes.", "a": "Particuliers"}, {"t": "Antivirus : encore utile en 2026 ?", "u": "/particuliers/appareils/antivirus-encore-utile/", "k": "ce que l'antivirus système couvre déjà, ce qu'un outil dédié apporte.", "a": "Particuliers"}, {"t": "Mises à jour et correctifs", "u": "/particuliers/appareils/mises-a-jour-et-patchs/", "k": "la mesure la plus efficace et la plus négligée ; automatiser partout.", "a": "Particuliers"}, {"t": "Wi-Fi à la maison et Wi-Fi public", "u": "/particuliers/appareils/wi-fi-domicile-et-public/", "k": "sécuriser sa box, risques des réseaux ouverts, alternatives.", "a": "Particuliers"}, {"t": "Objets connectés (IoT)", "u": "/particuliers/appareils/objets-connectes/", "k": "caméras, enceintes, électroménager : installer, isoler, mettre à jour.", "a": "Particuliers"}, {"t": "Smartphone et tablette", "u": "/particuliers/appareils/smartphone-et-tablette/", "k": "verrouillage, applications hors boutique, autorisations, sauvegarde mobile.", "a": "Particuliers"}, {"t": "Sauvegarder ses données : la règle 3-2-1", "u": "/particuliers/appareils/sauvegardes-3-2-1/", "k": "photos et documents irréplaceables : la seule arme contre le rançongiciel.", "a": "Particuliers"}, {"t": "VPN : à quoi ça sert vraiment", "u": "/particuliers/appareils/vpn-usage-reel/", "k": "ce qu'un vpn protège (et ne protège pas), cas d'usage honnêtes.", "a": "Particuliers"}, {"t": "Acheter, payer et épargner en ligne", "u": "/particuliers/achats/", "k": "hub « argent » : e-commerce, banque, arnaques financières.", "a": "Particuliers"}, {"t": "Acheter en ligne en sécurité", "u": "/particuliers/achats/acheter-en-ligne-securise/", "k": "vérifier un site, moyens de paiement protégés, litiges et recours.", "a": "Particuliers"}, {"t": "Banque en ligne et fraude aux paiements", "u": "/particuliers/achats/fraude-aux-paiements/", "k": "confirmation forte, faux conseillers, virement frauduleux : réflexes et plafonds.", "a": "Particuliers"}, {"t": "Arnaques entre particuliers", "u": "/particuliers/achats/arnaques-entre-particuliers/", "k": "faux acheteurs, fausses annonces de location, liens de paiement piégés.", "a": "Particuliers"}, {"t": "Escroqueries sentimentales", "u": "/particuliers/achats/escroqueries-sentimentales/", "k": "faux profils, mise en confiance, demande d'argent : signaux et sortie sans honte.", "a": "Particuliers"}, {"t": "Cryptomonnaies : les pièges", "u": "/particuliers/achats/cryptomonnaies-pieges/", "k": "wallet, seed phrase, fausses plateformes, « projets » miraculeux.", "a": "Particuliers"}, {"t": "Famille et publics fragiles", "u": "/particuliers/famille/", "k": "hub « entourage » : enfants, ados, seniors, nomades.", "a": "Particuliers"}, {"t": "Enfants et ados : les règles de base", "u": "/particuliers/famille/enfants-et-ados/", "k": "âges, jeux en ligne, microtransactions, parler des risques sans faire peur.", "a": "Particuliers"}, {"t": "Contrôle parental", "u": "/particuliers/famille/controle-parental/", "k": "outils natifs et dédiés, limites de la technique, dialogue.", "a": "Particuliers"}, {"t": "Cyberharcèlement : reconnaître et agir", "u": "/particuliers/famille/cyberharcelement/", "k": "signaux, preuves, signalement, accompagnement des victimes.", "a": "Particuliers"}, {"t": "Guide anti-arnaques pour les seniors", "u": "/particuliers/famille/seniors-anti-arnaques/", "k": "les 10 arnaques ciblant les aînés, à partager en famille.", "a": "Particuliers"}, {"t": "Télétravail et nomadisme sécurisé", "u": "/particuliers/famille/teletravail-et-nomades/", "k": "grand public qui branche son travail à la maison : la zone grise.", "a": "Particuliers"}, {"t": "Particuliers", "u": "/particuliers/", "k": "hub d'entrée grand public : derniers guides, quiz, fiches réflexes en accès direct.", "a": "Particuliers"}, {"t": "Menaces visant les entreprises", "u": "/pro/menaces/", "k": "hub « ce qui nous arrive vraiment » avec cas concrets et chiffres.", "a": "Professionnels"}, {"t": "Rançongiciel et extorsion", "u": "/pro/menaces/rancongiciel-extorsion/", "k": "scénario type d'attaque tpe, double extorsion, impact réel sur l'activité.", "a": "Professionnels"}, {"t": "Fraude au président et faux virements", "u": "/pro/menaces/fraude-au-president/", "k": "usurpation du dirigeant, urgence fabriquée, procédure de double validation.", "a": "Professionnels"}, {"t": "Compromission de messagerie (BEC)", "u": "/pro/menaces/compromission-messagerie-bec/", "k": "règles de transfert cachées, fausses factures, détecter la compromission.", "a": "Professionnels"}, {"t": "Phishing ciblé (spear phishing)", "u": "/pro/menaces/spear-phishing/", "k": "attaques personnalisées sur les fonctions sensibles (rh, compta, achats).", "a": "Professionnels"}, {"t": "Chaîne d'approvisionnement", "u": "/pro/menaces/chaine-dapprovisionnement/", "k": "vos prestataires comme porte d'entrée : logiciels, accès, sous-traitants.", "a": "Professionnels"}, {"t": "Fuite de données clients", "u": "/pro/menaces/fuite-de-donnees-clients/", "k": "obligations de notification, message aux clients, récupérer la confiance.", "a": "Professionnels"}, {"t": "Fondamentaux et hygiène numérique", "u": "/pro/fondamentaux/", "k": "hub « les gestes qui bloquent 80 % des attaques » (d'après le guide d'hygiène informatique de l'anssi).", "a": "Professionnels"}, {"t": "Les mesures essentielles", "u": "/pro/fondamentaux/mesures-essentielles/", "k": "les 10 mesures à coût nul ou faible, classées par efficacité.", "a": "Professionnels"}, {"t": "Sauvegardes en entreprise", "u": "/pro/fondamentaux/sauvegardes-entreprise/", "k": "règle 3-2-1, tests de restauration, stockage hors ligne.", "a": "Professionnels"}, {"t": "Gestion des accès et des départs", "u": "/pro/fondamentaux/acces-et-departs/", "k": "comptes nominatifs, moindre privilège, checklist d'offboarding.", "a": "Professionnels"}, {"t": "MFA généralisé", "u": "/pro/fondamentaux/mfa-generalise/", "k": "prioriser : messagerie, banque, outils d'administration d'abord.", "a": "Professionnels"}, {"t": "Télétravail et mobilité", "u": "/pro/fondamentaux/teletravail-et-mobilite/", "k": "postes nomades, wi-fi externes, séparation vie pro / perso.", "a": "Professionnels"}, {"t": "Sécuriser son site web et sa messagerie", "u": "/pro/fondamentaux/site-web-et-messagerie/", "k": "https, spf/dkim/dmarc, mises à jour du cms, hébergement.", "a": "Professionnels"}, {"t": "Sensibiliser mes équipes", "u": "/pro/sensibilisation/", "k": "hub « facteur humain » : la maillon le plus attaqué.", "a": "Professionnels"}, {"t": "Former ses équipes", "u": "/pro/sensibilisation/former-ses-equipes/", "k": "formats (ateliers, e-learning), fréquence, budget réaliste.", "a": "Professionnels"}, {"t": "Campagnes de phishing simulé", "u": "/pro/sensibilisation/phishing-simule/", "k": "bien les faire : sans blâme, avec pédagogie, indicateurs utiles.", "a": "Professionnels"}, {"t": "Charte informatique", "u": "/pro/sensibilisation/charte-informatique/", "k": "modèle simple à adapter, règles acceptées par tous.", "a": "Professionnels"}, {"t": "Le rôle du dirigeant", "u": "/pro/sensibilisation/role-du-dirigeant/", "k": "pourquoi la sécurité est une décision de direction, pas d'informatique.", "a": "Professionnels"}, {"t": "Conformité et cadre légal", "u": "/pro/conformite/", "k": "hub « obligations » : vulgarisation juridique sans conseils d'avocat.", "a": "Professionnels"}, {"t": "RGPD au quotidien", "u": "/pro/conformite/rgpd-quotidien/", "k": "registre, consentement, durées de conservation : le minimum viable.", "a": "Professionnels"}, {"t": "NIS2 : êtes-vous concerné ?", "u": "/pro/conformite/nis2-concerne/", "k": "échéances françaises 2026, secteurs, taille, premières démarches.", "a": "Professionnels"}, {"t": "Cyber-assurance : à quoi ça sert", "u": "/pro/conformite/cyber-assurance/", "k": "ce qui est couvert, exclusions classiques, articulation avec la prévention.", "a": "Professionnels"}, {"t": "Fournisseurs et sous-traitance", "u": "/pro/conformite/fournisseurs-et-sous-traitance/", "k": "clauses de sécurité, hébergeurs, questions à poser avant de signer.", "a": "Professionnels"}, {"t": "Réagir à un incident", "u": "/pro/incident/", "k": "hub « le jour j » : à lire avant l'incident, imprimable.", "a": "Professionnels"}, {"t": "Plan de réponse simple (TPE/PME)", "u": "/pro/incident/plan-de-reponse/", "k": "modèle d'une page : rôles, contacts, décisions à préparer.", "a": "Professionnels"}, {"t": "Les 6 premières actions en cas d'attaque", "u": "/pro/incident/premieres-actions/", "k": "isoler, préserver les preuves, ne pas éteindre, communiquer.", "a": "Professionnels"}, {"t": "Qui prévenir : contacts utiles", "u": "/pro/incident/qui-prevenir/", "k": "cybermalveillance pro, cert-fr, assurance, clients, autorités.", "a": "Professionnels"}, {"t": "Reconstruire et tirer les leçons", "u": "/pro/incident/reconstruire-apres/", "k": "restauration propre, analyse post-mortem, durcissement.", "a": "Professionnels"}, {"t": "Par métier", "u": "/pro/metiers/", "k": "hub « verticale » : les profils les plus attaqués et les moins outillés.", "a": "Professionnels"}, {"t": "Artisans et commerçants", "u": "/pro/metiers/artisans-commercants/", "k": "encaissement, faux fournisseurs, peu de temps : l'essentiel only.", "a": "Professionnels"}, {"t": "Professions de santé", "u": "/pro/metiers/professions-de-sante/", "k": "données de santé très ciblées, logiciels métiers, continuité de soins.", "a": "Professionnels"}, {"t": "E-commerçants", "u": "/pro/metiers/e-commercants/", "k": "paiement, faux clients, fraude, disponibilité du site.", "a": "Professionnels"}, {"t": "Professions juridiques et immobilières", "u": "/pro/metiers/juridique-immobilier/", "k": "faux virements sur actes, secrets d'affaires, vérifications renforcées.", "a": "Professionnels"}, {"t": "Professionnels", "u": "/pro/", "k": "hub d'entrée tpe/pme (vers eti) : langage dirigeant, pas de jargon rssi.", "a": "Professionnels"}, {"t": "NordVPN", "u": "/offres/vpn/nordvpn/", "k": "fiche produit nordvpn (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "ExpressVPN", "u": "/offres/vpn/expressvpn/", "k": "fiche produit expressvpn (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Surfshark", "u": "/offres/vpn/surfshark/", "k": "fiche produit surfshark (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Proton VPN", "u": "/offres/vpn/proton-vpn/", "k": "fiche produit proton vpn (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "CyberGhost", "u": "/offres/vpn/cyberghost/", "k": "fiche produit cyberghost (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Mullvad VPN", "u": "/offres/vpn/mullvad-vpn/", "k": "fiche produit mullvad vpn (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Bitdefender", "u": "/offres/antivirus/bitdefender/", "k": "fiche produit bitdefender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Norton 360", "u": "/offres/antivirus/norton-360/", "k": "fiche produit norton 360 (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "ESET", "u": "/offres/antivirus/eset/", "k": "fiche produit eset (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Avast One", "u": "/offres/antivirus/avast-one/", "k": "fiche produit avast one (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Microsoft Defender", "u": "/offres/antivirus/microsoft-defender/", "k": "fiche produit microsoft defender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Particuliers"}, {"t": "Comparatif gestionnaires de mots de passe", "u": "/offres/gestionnaires-mots-de-passe/", "k": "sécurité, partage familial, prix ; premier outil recommandé aux débutants.", "a": "Les deux"}, {"t": "Bitwarden", "u": "/offres/gestionnaires-mots-de-passe/bitwarden/", "k": "fiche produit bitwarden (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "1Password", "u": "/offres/gestionnaires-mots-de-passe/1password/", "k": "fiche produit 1password (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Dashlane", "u": "/offres/gestionnaires-mots-de-passe/dashlane/", "k": "fiche produit dashlane (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Proton Pass", "u": "/offres/gestionnaires-mots-de-passe/proton-pass/", "k": "fiche produit proton pass (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "KeePassXC", "u": "/offres/gestionnaires-mots-de-passe/keepassxc/", "k": "fiche produit keepassxc (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Comparatif sauvegardes cloud", "u": "/offres/sauvegardes-cloud/", "k": "particuliers et tpe, chiffrement, volume, restauration.", "a": "Les deux"}, {"t": "Backblaze", "u": "/offres/sauvegardes-cloud/backblaze/", "k": "fiche produit backblaze (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "iDrive", "u": "/offres/sauvegardes-cloud/idrive/", "k": "fiche produit idrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "pCloud", "u": "/offres/sauvegardes-cloud/pcloud/", "k": "fiche produit pcloud (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Google One", "u": "/offres/sauvegardes-cloud/google-one/", "k": "fiche produit google one (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Microsoft OneDrive", "u": "/offres/sauvegardes-cloud/microsoft-onedrive/", "k": "fiche produit microsoft onedrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Les deux"}, {"t": "Comparatif formations cyber pour équipes", "u": "/offres/formations/", "k": "e-learning, phishing simulé, formats courts : pour le pôle sensibilisation.", "a": "Professionnels"}, {"t": "KnowBe4", "u": "/offres/formations/knowbe4/", "k": "fiche produit knowbe4 (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "SoSafe", "u": "/offres/formations/sosafe/", "k": "fiche produit sosafe (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Hoxhunt", "u": "/offres/formations/hoxhunt/", "k": "fiche produit hoxhunt (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Proofpoint", "u": "/offres/formations/proofpoint/", "k": "fiche produit proofpoint (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Comparatif cyber-assurance", "u": "/offres/cyber-assurance/", "k": "tpe/pme : garanties, franchises, questionnaire d'éligibilité.", "a": "Professionnels"}, {"t": "Hiscox", "u": "/offres/cyber-assurance/hiscox/", "k": "fiche produit hiscox (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "AXA", "u": "/offres/cyber-assurance/axa/", "k": "fiche produit axa (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Allianz", "u": "/offres/cyber-assurance/allianz/", "k": "fiche produit allianz (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Generali", "u": "/offres/cyber-assurance/generali/", "k": "fiche produit generali (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.", "a": "Professionnels"}, {"t": "Offres du moment", "u": "/offres/promotions/", "k": "page datée, mise à jour régulière : bons plans vérifiés, sans fausses remises.", "a": "Les deux"}, {"t": "Offres et outils de protection (comparateur)", "u": "/offres/", "k": "comparatifs par catégorie, ventilés par audience : pensés pour les particuliers, pour les deux publics ou pour les professionnels. chaque guide y renvoie depuis sa section « outils recommandés ». bandeau de transparence affiliation présent sur chaque page.", "a": "Les deux"}];</script></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><section class="hero"><div class="wrap">
+  <h1><span class="line">Comprendre la menace.</span><span class="line">Protéger ce qui compte.</span></h1>
+  <p class="sub">Des guides pour les particuliers et les professionnels. Des comparatifs outils qui disent les limites autant que les qualités.</p>
+  <div class="searchbox"><input id="searchinput" type="search" placeholder="Rechercher : phishing, 2FA, carte débitée…" aria-label="Rechercher sur le site"><div class="sresults" id="sresults"></div></div>
+  <div class="audience-toggle" role="group" aria-label="Choisissez votre profil"><button class="on" data-aud="both">Tout le site</button><button data-aud="Particuliers">Particuliers</button><button data-aud="Professionnels">Professionnels</button></div>
+</div></section>
+<div class="wrap hsec"></div>
+<section class="hsec" style="padding-top:8px"><div class="wrap">
+  <div class="hsec-head"><div><h2>Tous vos guides</h2></div></div>
+  <div class="slider-shell"><button class="slider-side" data-dir="-1" aria-label="Précédent">‹</button><div class="slider" data-autoplay="true"><a class="acard" data-audience="Particuliers" href="/particuliers/menaces/phishing-hameconnage/"><img class="thumb" src="/assets/img/guide-phishing.webp" width="960" height="501" loading="lazy" decoding="async" alt="Illustration Phishing et hameçonnage"><div class="cat"><span></span><span class="chip part">Particuliers</span></div><h3>Phishing et hameçonnage</h3><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p></a><a class="acard" data-audience="Particuliers" href="/particuliers/victime/"><img class="thumb" src="/assets/img/guide-victime.webp" width="960" height="918" loading="lazy" decoding="async" alt="Illustration J'ai été victime : que faire ?"><div class="cat"><span></span><span class="chip part">Particuliers</span></div><h3>J'ai été victime : que faire ?</h3><p>Fiches réflexes pas-à-pas : compte piraté, carte débitée, rançongiciel, chantage…</p></a><a class="acard" data-audience="Particuliers" href="/particuliers/comptes/double-authentification-et-passkeys/"><img class="thumb" src="/assets/img/guide-2fa-passkeys.webp" width="960" height="536" loading="lazy" decoding="async" alt="Illustration 2FA et passkeys, simplement"><div class="cat"><span></span><span class="chip part">Particuliers</span></div><h3>2FA et passkeys, simplement</h3><p>Quelle méthode choisir, où l'activer en premier, et pourquoi les passkeys tuent le phishing.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/"><img class="thumb" src="/assets/img/comparatif-vpn.webp" width="960" height="540" loading="lazy" decoding="async" alt="Illustration Comparatif VPN 2026"><div class="cat"><span></span><span class="chip part">Particuliers</span></div><h3>Comparatif VPN 2026</h3><p>Choisir par usage, pas par marketing — avec la méthode en 5 critères.</p></a><a class="acard" data-audience="Particuliers" href="/particuliers/comptes/mot-de-passe-robuste/"><img class="thumb" src="/assets/img/guide-mot-de-passe.webp" width="813" height="762" loading="lazy" decoding="async" alt="Illustration Créer un mot de passe robuste"><div class="cat"><span></span><span class="chip part">Particuliers</span></div><h3>Créer un mot de passe robuste</h3><p>La longueur bat la complexité : la méthode complète, sans y penser ensuite.</p></a></div><button class="slider-side" data-dir="1" aria-label="Suivant">›</button></div>
+  <div class="slider-dots" aria-label="Position du slider"></div>
+</div></section>
+<section class="hsec" style="padding-top:0"><div class="wrap">
+  <div class="hsec-head"><div><h2>Tous vos comparatifs</h2></div></div>
+  <div class="slider-shell"><button class="slider-side" data-dir="-1" aria-label="Précédent">‹</button><div class="slider"><a class="acard ccard" data-audience="Particuliers" href="/offres/vpn/"><div class="cat"><span>Comparatif</span><span class="chip part">Particuliers</span></div><h3>Comparatif VPN</h3><p>Choisir par usage (voyage, télétravail, streaming), avec les pièges de tarification.</p><span class="cmore">Lire le comparatif →</span></a><a class="acard ccard" data-audience="Particuliers" href="/offres/antivirus/"><div class="cat"><span>Comparatif</span><span class="chip part">Particuliers</span></div><h3>Comparatif Antivirus</h3><p>Particulier, famille, multi-appareils : prix par an et alternatives gratuites.</p><span class="cmore">Lire le comparatif →</span></a><a class="acard ccard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/"><div class="cat"><span>Comparatif</span><span class="chip both">Les deux</span></div><h3>Comparatif gestionnaires de mots de passe</h3><p>Sécurité, partage familial, prix : le premier outil à installer.</p><span class="cmore">Lire le comparatif →</span></a><a class="acard ccard" data-audience="Les deux" href="/offres/sauvegardes-cloud/"><div class="cat"><span>Comparatif</span><span class="chip both">Les deux</span></div><h3>Comparatif sauvegardes cloud</h3><p>Particuliers et TPE : chiffrement, volume, facilité de restauration.</p><span class="cmore">Lire le comparatif →</span></a><a class="acard ccard" data-audience="Particuliers" href="/offres/formations-particuliers/"><div class="cat"><span>Comparatif</span><span class="chip part">Particuliers</span></div><h3>Comparatif formations cyber pour particuliers</h3><p>Modules en ligne, ateliers et ressources pour acquérir les bons réflexes.</p><span class="soon">À paraître</span></a><a class="acard ccard" data-audience="Professionnels" href="/offres/formations/"><div class="cat"><span>Comparatif</span><span class="chip pro">Pros</span></div><h3>Comparatif formations cyber pour équipes</h3><p>E-learning, phishing simulé, formats courts pour sensibiliser vos salariés.</p><span class="cmore">Lire le comparatif →</span></a><a class="acard ccard" data-audience="Professionnels" href="/offres/cyber-assurance/"><div class="cat"><span>Comparatif</span><span class="chip pro">Pros</span></div><h3>Comparatif cyber-assurance</h3><p>TPE/PME : garanties, franchises et questionnaire d'éligibilité.</p><span class="cmore">Lire le comparatif →</span></a></div><button class="slider-side" data-dir="1" aria-label="Suivant">›</button></div>
+  <div class="slider-dots" aria-label="Position du slider"></div>
+</div></section>
+<section class="hsec" style="padding-top:0"><div class="wrap"><div class="cta-band">
+  <div><span class="kicker" style="color:#F5A085">Choisir ses protections</span><h2>Comparez avant de payer.</h2><p>VPN, antivirus, gestionnaires de mots de passe : notre méthode de sélection, les limites de chacun, et les prix de renouvellement qu'on ne vous montre pas toujours.</p></div>
+  <a class="btn" href="/offres/">Voir les comparatifs</a>
+</div></div></section></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>

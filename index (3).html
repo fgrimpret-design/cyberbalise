@@ -1,0 +1,635 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RGPD au quotidien — CyberBalise</title><meta name="description" content="Registre des traitements, consentement à la prospection, durées de conservation, demandes des clients : le minimum viable pour qu’une TPE-PME applique le…">
+<link rel="canonical" href="https://cyberbalise.fr/pro/conformite/rgpd-quotidien/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="RGPD au quotidien"><meta property="og:description" content="Registre des traitements, consentement à la prospection, durées de conservation, demandes des clients : le minimum viable pour qu’une TPE-PME applique le…"><meta property="og:url" content="https://cyberbalise.fr/pro/conformite/rgpd-quotidien/">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style></head><body>
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main><div class="pagehead"><div class="wrap">
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/pro/">Professionnels</a> › <a href="/pro/conformite/">Conformité et cadre légal</a></div>
+<div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
+<h1>RGPD au quotidien</h1><p class="lead">Registre des traitements, consentement à la prospection, durées de conservation, demandes des clients : le minimum viable pour qu’une TPE-PME applique le RGPD sans y passer ses journées.</p>
+<div class="meta"><span class="chip pro">Pros</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : intermédiaire</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<ul class="summary-list">
+<li><a href="#lessentiel-le-rgpd-en-cinq-gestes">L’essentiel : le RGPD en cinq gestes</a></li>
+<li><a href="#le-registre-des-traitements-votre-point-de-depart">Le registre des traitements : votre point de départ</a></li>
+<li><a href="#le-consentement-et-la-prospection-commerciale">Le consentement et la prospection commerciale</a></li>
+<li><a href="#les-durees-de-conservation-ne-pas-tout-garder">Les durées de conservation : ne pas tout garder</a></li>
+<li><a href="#repondre-aux-demandes-des-personnes">Répondre aux demandes des personnes</a></li>
+<li><a href="#securite-et-sous-traitants-les-deux-angles-morts">Sécurité et sous-traitants : les deux angles morts</a></li>
+<li><a href="#votre-routine-rgpd-le-tableau-de-bord">Votre routine RGPD : le tableau de bord</a></li>
+<li><a href="#questions-frequentes">Questions fréquentes</a></li>
+<li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
+</ul>
+<h2 id="lessentiel-le-rgpd-en-cinq-gestes">L’essentiel : le RGPD en cinq gestes</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> Le Règlement général sur la protection des données (RGPD) s’applique à toutes les entreprises qui traitent des données personnelles, quelle que soit leur taille. Le minimum viable tient en cinq gestes : 1) tenir un <strong>registre des traitements</strong> écrit (la CNIL fournit un modèle gratuit) ; 2) n’envoyer de <strong>prospection par e-mail ou SMS</strong> aux particuliers qu’avec leur consentement, sauf exception pour vos clients ; 3) fixer une <strong>durée de conservation</strong> pour chaque type de données et supprimer le reste ; 4) répondre aux <strong>demandes des personnes</strong> sous un mois maximum ; 5) <strong>sécuriser</strong> les données et encadrer vos <strong>sous-traitants</strong>.</p></div>
+<p>Pour un dirigeant de TPE-PME, le RGPD fait souvent peur parce qu’il semble abstrait. En pratique, la CNIL rappelle qu’il s’agit d’abord de savoir ce que vous faites des données de vos clients, salariés et prospects, et de vous poser les bonnes questions : ai-je vraiment besoin de cette donnée ? Faut-il la garder aussi longtemps ? Est-elle suffisamment protégée ? Ce guide vous donne les réflexes du quotidien ; il ne remplace pas un conseil juridique personnalisé pour les cas complexes (données de santé, traitements à grande échelle, transferts hors de l’Union européenne).</p>
+<h2 id="le-registre-des-traitements-votre-point-de-depart">Le registre des traitements : votre point de départ</h2>
+<h3 id="qui-doit-en-tenir-un">Qui doit en tenir un ?</h3>
+<p>Selon la CNIL, l’obligation de tenir un registre des traitements, prévue par l’article 30 du RGPD, <strong>concerne tous les organismes, publics comme privés et quelle que soit leur taille</strong>, dès lors qu’ils traitent des données personnelles. Le format est libre : papier ou électronique, l’essentiel est qu’il soit écrit et à jour.</p>
+<p>Le registre est tenu par le responsable du traitement (en pratique, l’entreprise, donc le dirigeant), qui peut en confier la gestion à une personne en interne ou à son délégué à la protection des données (DPO) s’il en a désigné un.</p>
+<h3 id="que-mettre-dedans">Que mettre dedans ?</h3>
+<p>Une fiche par activité de traitement (par exemple : gestion des clients, paie, prospection, vidéosurveillance, recrutement), avec au minimum, d’après la CNIL :</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rubrique</th>
+<th>Exemple pour une fiche « gestion des clients »</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Finalité (à quoi sert le traitement)</td>
+<td>Gérer les commandes, la facturation et le service après-vente</td>
+</tr>
+<tr class="even">
+<td>Personnes concernées</td>
+<td>Clients</td>
+</tr>
+<tr class="odd">
+<td>Catégories de données</td>
+<td>Identité, coordonnées, historique d’achats, données de paiement</td>
+</tr>
+<tr class="even">
+<td>Destinataires, y compris sous-traitants</td>
+<td>Service commercial, comptable, éditeur du logiciel de facturation</td>
+</tr>
+<tr class="odd">
+<td>Transferts hors de l’Union européenne</td>
+<td>Aucun, ou préciser le pays et les garanties</td>
+</tr>
+<tr class="even">
+<td>Durée de conservation</td>
+<td>Durée de la relation commerciale, puis archivage pour les obligations légales</td>
+</tr>
+<tr class="odd">
+<td>Mesures de sécurité</td>
+<td>Accès par mot de passe individuel, double authentification, sauvegardes</td>
+</tr>
+</tbody>
+</table></div>
+<p>La fiche doit aussi mentionner le nom et les coordonnées de votre entreprise et, le cas échéant, de votre DPO. Si vous traitez aussi des données pour le compte de clients (vous êtes alors sous-traitant), la CNIL recommande de tenir un second registre distinct.</p>
+<h3 id="comment-sy-prendre-en-une-demi-journee">Comment s’y prendre en une demi-journée</h3>
+<ol type="1">
+<li><strong>Recenser</strong> : interrogez chaque personne qui manipule des données (commercial, comptabilité, RH) et listez les formulaires de votre site web.</li>
+<li><strong>Lister</strong> : une fiche par activité, à partir du modèle de registre au format ODS proposé par la CNIL, conçu pour les petites structures.</li>
+<li><strong>Analyser</strong> : repérez les données inutiles, les durées trop longues, les accès trop larges, et faites-en un petit plan d’action.</li>
+</ol>
+<h2 id="le-consentement-et-la-prospection-commerciale">Le consentement et la prospection commerciale</h2>
+<h3 id="le-principe-pas-de-mail-ni-de-sms-commercial-sans-accord-prealable">Le principe : pas d’e-mail ni de SMS commercial sans accord préalable</h3>
+<p>Pour la prospection par voie électronique (e-mail, SMS, MMS, automate d’appel) auprès des particuliers, la CNIL pose la règle du <strong>consentement préalable</strong>. Ce consentement doit être <strong>libre, spécifique, éclairé et univoque</strong> : une case à cocher dédiée, <strong>non pré-cochée</strong>. L’acceptation des conditions générales ne suffit pas, et la personne doit pouvoir retirer son accord à tout moment.</p>
+<p><em>Exemple de mention proposée par la CNIL :</em> « J’accepte que mes informations soient utilisées pour de la prospection commerciale par [courrier électronique / SMS-MMS ou automate d’appel] ».</p>
+<h3 id="les-deux-exceptions">Les deux exceptions</h3>
+<ul>
+<li><strong>Vos clients</strong>, pour des produits ou services similaires à ceux qu’ils vous ont déjà achetés. Attention : la CNIL précise que la simple création d’un compte en ligne, sans achat, ne fait pas de la personne un client.</li>
+<li><strong>La prospection non commerciale</strong> (par exemple caritative).</li>
+</ul>
+<p>Dans ces deux cas, la personne doit être informée lors de la collecte de ses coordonnées et pouvoir s’opposer simplement et gratuitement, au moment de la collecte et à chaque envoi (lien de désinscription).</p>
+<h3 id="et-la-prospection-aupres-de-professionnels">Et la prospection auprès de professionnels ?</h3>
+<p>Les règles diffèrent lorsque vous prospectez des professionnels (B2B) sur leur adresse professionnelle. Vérifiez les conditions exactes sur la page « La prospection commerciale » de la CNIL avant de lancer une campagne : à vérifier avant publication pour le détail des règles B2B.</p>
+<h3 id="le-telephone-attention-au-changement-daout-2026">Le téléphone : attention au changement d’août 2026</h3>
+<p>La CNIL signale que les règles de la prospection commerciale par téléphone ont changé à partir du 11 août 2026. Selon Service-public.gouv.fr, un professionnel ne peut en principe plus démarcher un consommateur par téléphone sans son consentement préalable. Si vous pratiquez la prospection téléphonique, revoyez vos fichiers et vos scripts.</p>
+<h2 id="les-durees-de-conservation-ne-pas-tout-garder">Les durées de conservation : ne pas tout garder</h2>
+<p>Le RGPD interdit de conserver des données personnelles indéfiniment : c’est à vous de fixer une durée selon l’objectif poursuivi. La CNIL distingue trois phases dans la vie d’une donnée.</p>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>En pratique</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base active</td>
+<td>Données utilisées au quotidien pour l’objectif initial</td>
+<td>Fichier clients dans votre logiciel de gestion</td>
+</tr>
+<tr class="even">
+<td>Archivage intermédiaire</td>
+<td>Données qui ne servent plus mais doivent être gardées (obligation légale, contentieux), avec accès restreint</td>
+<td>Factures conservées dix ans au titre du Code de commerce</td>
+</tr>
+<tr class="odd">
+<td>Archivage définitif</td>
+<td>Rare dans une TPE-PME : données à valeur patrimoniale ou historique</td>
+<td>Archives historiques de l’entreprise</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="les-reperes-les-plus-utiles">Les repères les plus utiles</h3>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Données</th>
+<th>Durée de référence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Clients (utilisées pour la prospection)</td>
+<td>Durée de la relation commerciale, puis 3 ans à compter de sa fin (dernier achat, fin de garantie ou de contrat, dernier contact émanant du client)</td>
+<td>Référentiel CNIL « gestion des activités commerciales »</td>
+</tr>
+<tr class="even">
+<td>Prospects non clients</td>
+<td>3 ans à compter de la collecte ou du dernier contact émanant du prospect (l’ouverture d’un e-mail ne compte pas)</td>
+<td>Référentiel CNIL « gestion des activités commerciales »</td>
+</tr>
+<tr class="odd">
+<td>Cryptogramme de carte bancaire</td>
+<td>À supprimer dès le paiement finalisé</td>
+<td>Référentiel CNIL « gestion des activités commerciales »</td>
+</tr>
+<tr class="even">
+<td>Factures et données de facturation</td>
+<td>10 ans (archivage intermédiaire)</td>
+<td>CNIL, en application du Code de commerce</td>
+</tr>
+<tr class="odd">
+<td>Candidat non retenu</td>
+<td>2 ans maximum, sauf demande d’effacement</td>
+<td>CNIL</td>
+</tr>
+<tr class="even">
+<td>Double du bulletin de paie (employeur)</td>
+<td>5 ans</td>
+<td>Code du travail, cité par la CNIL</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les durées recommandées par la CNIL sont des points de repère : vous pouvez vous en écarter à condition de documenter votre choix. Les appliquer vaut présomption de conformité.</p>
+<p><strong>Le réflexe concret :</strong> programmez une purge annuelle (une date fixe dans l’agenda) pour supprimer ou archiver les prospects inactifs depuis plus de trois ans et les anciens CV.</p>
+<h2 id="repondre-aux-demandes-des-personnes">Répondre aux demandes des personnes</h2>
+<p>Clients, prospects et salariés peuvent vous demander d’accéder à leurs données, de les corriger, de s’opposer à la prospection ou de les faire effacer. Selon la CNIL, vous devez répondre <strong>sous un mois maximum</strong>, sauf exceptions.</p>
+<p>Organisez-vous simplement :</p>
+<ul>
+<li><strong>une adresse unique</strong> (par exemple une adresse dédiée) indiquée dans vos mentions d’information et vos e-mails ;</li>
+<li><strong>une personne responsable</strong> qui enregistre la date de réception et vérifie l’identité du demandeur en cas de doute raisonnable ;</li>
+<li><strong>une liste d’opposition</strong> : la CNIL recommande de conserver au minimum trois ans les informations permettant de prendre en compte l’opposition d’une personne à la prospection, pour ne pas la recontacter par erreur.</li>
+</ul>
+<p>Une personne qui estime que ses droits ne sont pas respectés peut adresser une plainte à la CNIL.</p>
+<h2 id="securite-et-sous-traitants-les-deux-angles-morts">Sécurité et sous-traitants : les deux angles morts</h2>
+<h3 id="la-securite-fait-partie-du-rgpd">La sécurité fait partie du RGPD</h3>
+<p>Le RGPD impose de protéger les données que vous traitez. Les mesures de base sont les mêmes que pour votre cybersécurité : mots de passe uniques et double authentification, mises à jour, sauvegardes, accès limités au strict nécessaire. En cas de fuite, vous devrez documenter l’incident et, selon le risque, le notifier à la CNIL dans les 72 heures : voir notre guide <a href="/pro/menaces/fuite-de-donnees-clients/">Fuite de données clients</a>.</p>
+<h3 id="vos-prestataires-doivent-aussi-respecter-le-rgpd">Vos prestataires doivent aussi respecter le RGPD</h3>
+<p>Logiciel de facturation, outil d’e-mailing, hébergeur de votre site, cabinet comptable : ce sont des sous-traitants, et ils sont eux aussi tenus de respecter le RGPD, comme le rappelle la CNIL. Faites figurer dans le contrat leurs engagements de sécurité, de confidentialité et d’alerte en cas d’incident, et listez-les comme destinataires dans votre registre.</p>
+<h2 id="votre-routine-rgpd-le-tableau-de-bord">Votre routine RGPD : le tableau de bord</h2>
+<div class="tablewrap"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quand</th>
+<th>Action</th>
+<th>Durée estimée</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Une fois, puis à chaque nouvel outil</td>
+<td>Créer ou mettre à jour la fiche du registre</td>
+<td>30 minutes par fiche</td>
+</tr>
+<tr class="even">
+<td>À chaque formulaire ou campagne</td>
+<td>Vérifier la case de consentement non pré-cochée et le lien de désinscription</td>
+<td>10 minutes</td>
+</tr>
+<tr class="odd">
+<td>À chaque demande reçue</td>
+<td>Enregistrer et répondre sous un mois</td>
+<td>Variable</td>
+</tr>
+<tr class="even">
+<td>Une fois par an</td>
+<td>Purger les données au-delà des durées fixées</td>
+<td>1 à 2 heures</td>
+</tr>
+<tr class="odd">
+<td>Une fois par an</td>
+<td>Relire les contrats des sous-traitants et les accès des salariés</td>
+<td>1 heure</td>
+</tr>
+<tr class="even">
+<td>À chaque incident</td>
+<td>Inscrire l’événement au registre des violations</td>
+<td>15 minutes</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les durées indiquées sont des ordres de grandeur pour une petite structure, à adapter à votre activité.</p>
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+<h3 id="mon-entreprise-compte-trois-salaries-dois-je-vraiment-tenir-un-registre">Mon entreprise compte trois salariés : dois-je vraiment tenir un registre ?</h3>
+<p>Oui. La CNIL indique que l’obligation concerne tous les organismes, quelle que soit leur taille, dès lors qu’ils traitent des données personnelles. Le modèle gratuit de la CNIL, pensé pour les petites structures, permet de le constituer rapidement.</p>
+<h3 id="le-rgpd-sapplique-t-il-a-mes-fichiers-papier">Le RGPD s’applique-t-il à mes fichiers papier ?</h3>
+<p>Oui, le RGPD concerne aussi les fichiers papier organisés (classeurs clients, dossiers du personnel). Appliquez-leur les mêmes règles : accès limité, durée de conservation, destruction sécurisée.</p>
+<h3 id="un-client-a-cree-un-compte-sur-mon-site-sans-rien-acheter-puis-je-lui-envoyer-ma-newsletter">Un client a créé un compte sur mon site sans rien acheter : puis-je lui envoyer ma newsletter ?</h3>
+<p>Seulement s’il y a consenti. La CNIL précise que la création d’un compte sans achat ne permet pas d’utiliser l’exception « client » : sans case cochée de sa part, pas de prospection par e-mail.</p>
+<h3 id="dois-je-designer-un-delegue-a-la-protection-des-donnees-dpo">Dois-je désigner un délégué à la protection des données (DPO) ?</h3>
+<p>Ce n’est pas obligatoire pour toutes les entreprises : cela dépend notamment de la nature et de l’ampleur des traitements. Vérifiez votre situation sur le site de la CNIL ; même sans obligation, désigner un référent interne facilite la gestion quotidienne.</p>
+<h3 id="combien-de-temps-puis-je-garder-mes-prospects">Combien de temps puis-je garder mes prospects ?</h3>
+<p>Selon le référentiel de la CNIL, trois ans à compter de la collecte ou du dernier contact émanant du prospect, comme une demande de documentation ou un clic sur un lien. La simple ouverture d’un e-mail ne prolonge pas ce délai.</p>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<ul>
+<li><a href="/pro/menaces/fuite-de-donnees-clients/">Fuite de données clients</a></li>
+<li><a href="/pro/conformite/fournisseurs-et-sous-traitance/">Fournisseurs et sous-traitance</a></li>
+<li><a href="/pro/fondamentaux/mesures-essentielles/">Les mesures essentielles</a></li>
+<li><a href="/pro/sensibilisation/charte-informatique/">Charte informatique</a></li>
+</ul>
+<h2 id="sources-et-methodologie">Sources et méthodologie</h2>
+<p>Ce guide s’appuie sur les sources officielles suivantes, consultées le 1er octobre 2026.</p>
+<ul>
+<li>CNIL — « Le registre des activités de traitement » — article 30 du RGPD, obligation pour tous les organismes quelle que soit leur taille, contenu minimal d’une fiche, forme écrite libre, modèle ODS, méthode recenser-lister-analyser : https://www.cnil.fr/fr/RGPD-le-registre-des-activites-de-traitement</li>
+<li>CNIL — « La prospection commerciale par courrier électronique, SMS, MMS et automate d’appel » — consentement préalable, exceptions, cas de la création de compte sans achat, droits des personnes et délai de réponse d’un mois : https://www.cnil.fr/fr/la-prospection-commerciale-par-courrier-electronique-sms-mms-et-automate-dappel</li>
+<li>CNIL — « Les durées de conservation des données » — cycle de vie de la donnée, facturation 10 ans, candidat non retenu 2 ans, bulletin de paie 5 ans, valeur des durées recommandées : https://www.cnil.fr/fr/passer-laction/les-durees-de-conservation-des-donnees</li>
+<li>CNIL — « Référentiel relatif aux traitements de données personnelles mis en œuvre aux fins de gestion des activités commerciales » — durées clients et prospects, suppression du cryptogramme : https://www.cnil.fr/sites/cnil/files/atoms/files/referentiel_traitements-donnees-caractere-personnel_gestion-activites-commerciales.pdf</li>
+<li>CNIL — « Appliquer le RGPD dans une TPE ou PME : les questions/réponses de la CNIL » — application à toutes les entreprises, fichiers papier, sous-traitants : https://www.cnil.fr/fr/appliquer-le-rgpd-dans-une-tpe-ou-pme-les-questionsreponses-de-la-cnil</li>
+<li>CNIL — « Questions-réponses sur les référentiels relatifs à la gestion des activités commerciales » — conservation minimale de 3 ans des informations d’opposition : https://www.cnil.fr/fr/questions-reponses-sur-les-referentiels-relatifs-la-gestion-des-activites-commerciales-et-des</li>
+<li>Service-public.gouv.fr — « Démarchage téléphonique abusif, spam vocal ou par SMS » — consentement préalable au démarchage téléphonique depuis le 11 août 2026 : https://www.service-public.gouv.fr/particuliers/vosdroits/F33267</li>
+</ul>
+<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+document.querySelectorAll('.slider').forEach(s=>{
+  const w=s.closest('.hsec')||s.parentElement;
+  const prev=w.querySelector('[data-dir="-1"]'),next=w.querySelector('[data-dir="1"]');
+  const dots=w.querySelector('.slider-dots');
+  const cards=[...s.children];
+  let currentIndex=0;
+  const getStep=()=>{
+    const card=s.firstElementChild;
+    if(!card) return Math.max(280, s.clientWidth);
+    const gap=parseFloat(getComputedStyle(s).gap||'0');
+    return card.getBoundingClientRect().width + gap;
+  };
+  const scrollToIndex=(index,behavior='smooth')=>{
+    if(!cards.length) return;
+    currentIndex=(index+cards.length)%cards.length;
+    s.scrollTo({left:getStep()*currentIndex,behavior});
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  if(dots){
+    dots.innerHTML='';
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+      dot.addEventListener('click',()=>scrollToIndex(i));
+      dots.appendChild(dot);
+    });
+  }
+  const syncIndexFromScroll=()=>{
+    const step=Math.max(1,getStep());
+    currentIndex=Math.max(0, Math.min(cards.length-1, Math.round(s.scrollLeft/step)));
+    if(dots) [...dots.children].forEach((dot,i)=>dot.classList.toggle('active', i===currentIndex));
+  };
+  const slide=(dir=1)=>scrollToIndex(currentIndex + dir);
+  if(prev)prev.addEventListener('click',()=>slide(-1));
+  if(next)next.addEventListener('click',()=>slide(1));
+  s.addEventListener('scroll',()=>window.requestAnimationFrame(syncIndexFromScroll), {passive:true});
+  scrollToIndex(0,'auto');
+  if(s.dataset.autoplay!=='true' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let auto = setInterval(()=>slide(1), 3500);
+  const stop=()=>{ if(auto){ clearInterval(auto); auto=null; } };
+  const restart=()=>{ stop(); auto=setInterval(()=>slide(1), 3500); };
+  s.addEventListener('pointerenter', stop);
+  s.addEventListener('pointerleave', restart);
+  s.addEventListener('touchstart', stop, {passive:true});
+  s.addEventListener('touchend', restart, {passive:true});
+  if(prev) prev.addEventListener('click', restart);
+  if(next) next.addEventListener('click', restart);
+});
+const tg=document.querySelectorAll('.audience-toggle button');
+if(tg.length)tg.forEach(b=>b.addEventListener('click',()=>{
+  tg.forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const mode=b.dataset.aud;
+  document.querySelectorAll('[data-audience]').forEach(el=>{
+    const a=el.dataset.audience;
+    if(mode==='both'){el.style.display='';el.querySelectorAll('.chip').forEach(c=>c.style.visibility='visible')}
+    else{el.style.display=(a===mode||a==='both'||a==='Les deux')?'':'none'}
+  });
+}));
+const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
+if(si){
+  const IDX=SEARCH_INDEX;
+  si.addEventListener('input',()=>{
+    const q=si.value.trim().toLowerCase();
+    if(q.length<2){sr.style.display='none';return}
+    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.style.display='block';
+  });
+  document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
+}
+</script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+</body></html>
