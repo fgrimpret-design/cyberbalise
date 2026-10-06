@@ -1,7 +1,7 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Comparatif VPN — CyberBalise</title><meta name="description" content="Tableau par usage (voyage, télétravail, streaming) + méthode « comment choisir ».">
+<title>Comparatif VPN — CyberBalise</title><meta name="description" content="Comparez les principaux VPN : tarifs, confidentialité et fonctionnalités pour choisir celui qui vous convient.">
 <link rel="canonical" href="https://cyberbalise.fr/offres/vpn/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
-<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Comparatif VPN"><meta property="og:description" content="Tableau par usage (voyage, télétravail, streaming) + méthode « comment choisir »."><meta property="og:url" content="https://cyberbalise.fr/offres/vpn/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Comparatif VPN"><meta property="og:description" content="Comparez les principaux VPN : tarifs, confidentialité et fonctionnalités pour choisir celui qui vous convient."><meta property="og:url" content="https://cyberbalise.fr/offres/vpn/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{
@@ -15,6 +15,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
 h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
 h3{font-size:1.15rem;margin-top:1.6em}
+.price-note{font-family:var(--disp);font-size:.95rem}
+.provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
+.jump-cta{display:inline-block;margin:0 0 1em;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta:hover{background:var(--orange-d);color:#fff}
+.provider-heading{display:flex;align-items:center;gap:12px}
+.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -36,14 +43,16 @@ code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35
 .topbar a{color:#fff}
 header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
 .site .wrap{display:flex;align-items:center;gap:18px;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo{display:flex;align-items:flex-start;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0;flex-direction:column}
 .logo svg{flex:none}
+.logo-image{display:flex;align-items:center;flex:none}
+.logo-image img{display:block;height:34px;width:auto;max-width:100%;object-fit:contain}
 .logo-text{display:flex;flex-direction:column;min-width:0}
 .logo-name{display:block}
 .brand{white-space:nowrap}
 .b-accent{color:var(--orange)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+.logo-baseline{display:block;align-self:flex-start;width:100%;padding-left:.53%;font-family:var(--mono);font-size:.58rem;font-weight:500;line-height:1.2;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:-4px;white-space:nowrap}
 footer.site .logo-baseline{display:none}
 nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item{position:relative}
@@ -174,6 +183,10 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 
 /* page article */
 .pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.78fr);gap:40px;align-items:center;margin-top:22px}
+.pagehead-copy{min-width:0}
+.pagehead h1{margin-top:0}
+.pagehead-visual{display:block;width:100%;max-height:260px;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(255,255,255,.2);border-radius:16px;box-shadow:0 18px 38px rgba(0,0,0,.22)}
 .pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
 .pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
 .pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
@@ -236,6 +249,8 @@ tbody tr:hover{background:#F6F8FA}
   .topbar{display:none}
   .hero{padding:16px 0 42px}
   .pagehead{padding:16px 0 32px}
+  .pagehead-layout{grid-template-columns:1fr;gap:22px;margin-top:18px}
+  .pagehead-visual{height:clamp(180px,56.25vw,260px);max-height:none;max-width:520px}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
@@ -270,7 +285,7 @@ tbody tr:hover{background:#F6F8FA}
 }
 </style></head><body>
 <header class="site"><div class="wrap">
-  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
   <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
   <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
@@ -278,20 +293,19 @@ tbody tr:hover{background:#F6F8FA}
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a></div>
+<div class="pagehead-layout"><div class="pagehead-copy">
 <div class="kicker" style="color:#F5A085;margin-top:18px">Comparatif</div>
-<h1>Comparatif VPN</h1><p class="lead">Tableau par usage (voyage, télétravail, streaming) + méthode « comment choisir ».</p>
-<div class="meta"><span class="chip part">Particuliers</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : débutant</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><h2 id="les-principales-offres-passees-au-crible-ce-qui-compte-vraiment-les-pieges-de-tarification-et-le-detail-des-programmes-d-affiliation-avec-les-emplacements-cta-prets-a-l-emploi">Les principales offres passées au crible : ce qui compte vraiment, les pièges de tarification, et le détail des programmes d'affiliation avec les emplacements CTA prêts à l'emploi.</h2>
-<p class="caption">Guide comparatif — édition du 29 septembre 2026 · Lecture estimée : 13 minutes · Auteur : [Nom de l'auteur]</p>
-<div class="note"><p>Données relevées sur les sites officiels des éditeurs le 29 septembre 2026. Les tarifs et taux de commission évoluent fréquemment.</p></div>
+<h1>Comparatif VPN</h1><p class="lead">Comparez les principaux VPN : tarifs, confidentialité et fonctionnalités pour choisir celui qui vous convient.</p>
+<div class="meta"><span class="chip part">Particuliers</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div><img class="pagehead-visual" src="/assets/img/comparatif-vpn.webp" width="960" height="540" alt="Illustration d'un ordinateur protégé par un VPN"></div></div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><h2 id="les-principales-offres-passees-au-crible-ce-qui-compte-vraiment-les-pieges-de-tarification-et-le-detail-des-programmes-d-affiliation-avec-les-emplacements-cta-prets-a-l-emploi">Les principales offres passées au crible : ce qui compte vraiment et les pièges de tarification.</h2>
+<p class="caption">Guide comparatif — édition du 29 septembre 2026 · Lecture estimée : 13 minutes</p>
+<div class="note"><p>Caractéristiques relevées sur les sites officiels le 29 septembre 2026 ; tarifs d'appel consultés le 6 octobre 2026. Les prix promotionnels varient selon la formule et peuvent changer. Vérifiez le montant total, la durée et le renouvellement sur le site officiel.</p></div>
+<p><a class="jump-cta" href="#les-7-fournisseurs-en-detail">Voir directement les offres</a></p>
 <h2>Sommaire</h2><ul class="summary-list">
 <li><a href="#reponse-rapide-et-methode-de-comparaison">Réponse rapide et méthode de comparaison</a></li>
-<li><a href="#tableau-comparatif-des-offres-2026">Tableau comparatif des offres 2026</a></li>
 <li><a href="#les-7-fournisseurs-en-detail">Les 7 fournisseurs en détail</a></li>
-<li><a href="#programmes-d-affiliation-commissions-cookies-reseaux">Programmes d'affiliation : commissions, cookies, réseaux</a></li>
 <li><a href="#comment-choisir-un-vpn-les-8-criteres-qui-comptent">Comment choisir un VPN : les 8 critères qui comptent</a></li>
 <li><a href="#les-6-pieges-a-eviter">Les 6 pièges à éviter</a></li>
-<li><a href="#inserer-ses-liens-d-affiliation-bonnes-pratiques-cta">Insérer ses liens d'affiliation : bonnes pratiques CTA</a></li>
 <li><a href="#questions-frequentes">Questions fréquentes</a></li>
 <li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
 </ul>
@@ -307,74 +321,48 @@ tbody tr:hover{background:#F6F8FA}
 <h2 id="comment-nous-avons-compare">Comment nous avons comparé</h2>
 <ul>
 <li>Sources : pages officielles des éditeurs (offres, tarifs, fonctionnalités, pages « affiliate »), relevées le 29 septembre 2026. Aucune donnée n'est reprise d'un site tiers.</li>
-<li>Prix : les tarifs dépendent de la durée, de la devise, de la TVA et des promotions en cours — certains éditeurs l'indiquent eux-mêmes explicitement. Nous ne reproduisons donc pas de montant qui serait périmé à la lecture : le tableau renvoie au tarif officiel, seul valable au moment de l'achat.</li>
+<li>Prix : les tarifs d'appel indiqués dans les fiches sont ceux affichés par les éditeurs le 6 octobre 2026. Ils dépendent de la formule, de la durée, de la devise, de la TVA et des promotions ; consultez le montant total et les conditions de renouvellement avant de souscrire.</li>
 <li>Classement : nous présentons d'abord les fournisseurs disposant d'un programme d'affiliation, puis les autres critères (appareils, audit, juridiction) sont détaillés dans les fiches.</li>
 <li>Ce que nous n'avons pas fait : aucun test de vitesse indépendant n'a été réalisé ici. Les débits et performances sont donc cités comme des chiffres annoncés par l'éditeur, jamais comme un résultat mesuré.</li>
 </ul>
-<h2 id="tableau-comparatif-des-offres-2026">Tableau comparatif des offres 2026</h2>
-<p>Les fournisseurs sont classés en mettant en tête ceux qui proposent un programme d'affiliation, ce qui permet d'aligner directement le classement éditorial et les emplacements CTA.</p>
-<p class="caption">Table : Comparatif des principales offres VPN — caractéristiques relevées sur les sites officiels le 29 septembre 2026. « Programme d'affiliation : oui » signifie qu'une page publique dédiée existe ; les taux sont détaillés au chapitre 4.</p>
-<table><tr><td>Fournisseur</td><td>Affiliation</td><td>Connexions simultanées</td><td>Juridiction (annoncée)</td><td>Audit d&#x27;absence de journaux</td><td>Garantie</td></tr><tr><td>NordVPN</td><td>Oui</td><td>10 appareils</td><td>Panama (selon tableau comparatif Proton)</td><td>Audits réalisés, accès réservé aux abonnés</td><td>30 jours</td></tr><tr><td>Surfshark</td><td>Oui</td><td>Illimitées</td><td>Pays-Bas (selon tableau comparatif Proton)</td><td>Certifiée ; rapport accessible sur compte</td><td>30 jours</td></tr><tr><td>ExpressVPN</td><td>Oui</td><td>Non précisé ici</td><td>Îles Vierges britanniques (annoncé par l&#x27;éditeur)</td><td>Audits non publics, sous accord de confidentialité</td><td>30 jours</td></tr><tr><td>Proton VPN</td><td>Oui (Partenaires)</td><td>10 appareils (VPN Plus)</td><td>Suisse</td><td>Audit publié et accessible à tous</td><td>30 jours</td></tr><tr><td>CyberGhost</td><td>Oui</td><td>Non précisé ici</td><td>Roumanie (selon tableau comparatif Proton)</td><td>Audit Deloitte annoncé, non public</td><td>Non précisée ici</td></tr><tr><td>Private Internet Access</td><td>Oui</td><td>Illimitées</td><td>États-Unis (groupe Kape, Royaume-Uni)</td><td>Politique « 100 % no logs », serveurs RAM-only</td><td>30 jours</td></tr><tr><td>PureVPN</td><td>Oui</td><td>Non précisé ici</td><td>Non précisée ici</td><td>Non précisé ici</td><td>Non précisée ici</td></tr></table>
-<p>Comment lire ce tableau. La colonne « Affiliation » est la plus facile à remplir : tous ces fournisseurs en proposent, le vrai discriminant est le taux et la durée du cookie (chapitre 4). Les colonnes « Audit » et « Juridiction » sont, elles, les plus révélatrices : un audit publié et téléchargeable par tous n'a pas la même valeur qu'un audit annoncé mais réservé aux abonnés ou soumis à accord de confidentialité. Nous avons laissé la mention « non précisée ici » plutôt que de compléter de mémoire : vérifiez ces points sur la page officielle avant de recommander un service.</p>
-<h3>Point de vigilance sur la propriété</h3>
-<p>Le tableau comparatif publié par Proton VPN (mis à jour en avril 2026) souligne que plusieurs marques appartiennent aux mêmes groupes : Kape Technologies détiendrait CyberGhost, Private Internet Access et ExpressVPN, tandis que Nord Security détient NordVPN et Surfshark. Ce point est rarement mis en avant dans les comparatifs : il mérite d'être cité lorsque vous parlez de « choix indépendant ».</p>
 <h2 id="les-7-fournisseurs-en-detail">Les 7 fournisseurs en détail</h2>
 <p>Chaque fiche suit le même plan : ce que l'éditeur met en avant, les points à vérifier, puis un emplacement CTA.</p>
-<h3 id="1-nordvpn">1. NordVPN</h3>
+<h3 class="provider-heading" id="1-nordvpn"><img class="provider-logo" src="/assets/img/vpn-providers/nordvpn.svg" width="36" height="36" alt="">1. NordVPN</h3>
 <p>L'éditeur met en avant un chiffrement, la protection contre les logiciels malveillants, un gestionnaire de mots de passe et un cloud chiffré, avec la connexion de 10 appareils. Sa grille s'organise en trois paliers — Basique, Premium et Ultra — sur 12 ou 27 mois, avec des prix de lancement nettement inférieurs aux prix de renouvellement : la page officielle distingue explicitement le prix promotionnel du tarif de reconduction.</p>
-<p>À vérifier : la présence ou non du bloqueur de publicités et de la protection anti-malware selon le palier choisi — Proton VPN note ainsi qu'ils ne sont pas inclus dans l'offre d'entrée de gamme.</p>
-<h3>CTA 1 — NordVPN</h3>
-<h3>Voir l'offre NordVPN →  [LIEN-AFFILIATION-NORDVPN]</h3>
-<p>Emplacement prévu pour votre lien de suivi. Remplacer href par votre URL d'affiliation.</p>
-<p>Lien affilié — l'éditeur du site peut percevoir une commission si vous souscrivez, sans surcoût pour vous.</p>
-<h3 id="2-surfshark">2. Surfshark</h3>
+<p class="price-note"><strong>À partir de 3,49 €/mois</strong> avec la formule Basique sur 24 mois, plus 3 mois offerts (94,23 € pour les 27 premiers mois). Renouvellement annoncé à 139,08 €/an.</p>
+<p><span class="provider-cta">Découvrir l'offre NordVPN →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="2-surfshark"><img class="provider-logo" src="/assets/img/vpn-providers/surfshark.svg" width="36" height="36" alt="">2. Surfshark</h3>
 <p>Argument central : les connexions simultanées illimitées — un seul abonnement pour tout le foyer. La page tarifs cite un réseau de plus de 4 500 serveurs dans 100 pays, une politique de non-journalisation présentée comme certifiée, une garantie de remboursement de 30 jours et une technologie maison (Nexus) permettant un double saut dynamique ou la rotation d'adresse IP. L'éditeur revendique plus de 40 millions de téléchargements et une trentaine de récompenses.</p>
-<p>À vérifier : le rapport d'audit est accessible mais nécessite la création d'un compte, comme le relève Proton VPN. Et comme toujours, le tarif dépend de la devise et des promotions appliquées.</p>
-<h3>CTA 2 — Surfshark</h3>
-<h3>Voir l'offre Surfshark →  [LIEN-AFFILIATION-SURFSHARK]</h3>
-<p>Le programme Surfshark affiche 40 % de revenue share et un cookie de 30 jours : c'est l'un des plus lisibles du marché.</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 id="3-expressvpn">3. ExpressVPN</h3>
+<p class="price-note"><strong>À partir de 2,49 €/mois</strong> avec l'offre VPN sur 24 mois, plus 3 mois offerts (67,23 € pour les 27 premiers mois ; TVA éventuelle en supplément).</p>
+<p><span class="provider-cta">Découvrir l'offre Surfshark →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="3-expressvpn"><img class="provider-logo" src="/assets/img/vpn-providers/expressvpn.svg" width="36" height="36" alt="">3. ExpressVPN</h3>
 <p>Positionnement premium assumé. L'éditeur déclare des milliers de serveurs dans 113 pays, des applications pour Windows, macOS, Android, iOS, Linux, routeurs et consoles, et une politique de confidentialité présentée comme transparente, avec l'indication de ne conserver ni journaux d'activité ni journaux de connexion. La société se présente comme fondée en 2009 et basée aux îles Vierges britanniques.</p>
-<p>À vérifier : ses audits de conformité ne sont pas publics et leur consultation est soumise à la signature d'un accord de confidentialité — un point qui pèse dans un comparatif argumenté sur la transparence.</p>
-<h3>CTA 3 — ExpressVPN</h3>
-<h3>Voir l'offre ExpressVPN →  [LIEN-AFFILIATION-EXPRESSVPN]</h3>
-<p>Les montants de commission ne sont pas publiés sur la page publique ; l'inscription passe par la plateforme Impact.</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 id="4-proton-vpn">4. Proton VPN</h3>
+<p class="price-note"><strong>À partir de 2,49 €/mois</strong> avec la formule Basic sur 24 mois, plus 4 mois offerts (69,72 € pour les 28 premiers mois). Renouvellement annoncé à 79,95 €/an.</p>
+<p><span class="provider-cta">Découvrir l'offre ExpressVPN →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="4-proton-vpn"><img class="provider-logo" src="/assets/img/vpn-providers/protonvpn.svg" width="36" height="36" alt="">4. Proton VPN</h3>
 <p>L'éditeur suisse se distingue sur trois points qu'il met lui-même en avant dans son tableau comparatif : un client open source, un audit d'absence de journaux publié et accessible à tous, et un bloqueur de publicités et de logiciels malveillants intégré (VPN Plus). L'offre gratuite existe, avec un appareil à la fois, une vitesse moyenne et un choix de pays limité ; la formule payante annonce la connexion de 10 appareils simultanés.</p>
+<p class="price-note"><strong>À partir de 3,49 €/mois</strong> avec VPN Plus sur 24 mois (83,76 € pour les 24 premiers mois). Renouvellement annoncé à 83,88 €/an.</p>
 <p>À vérifier : le périmètre exact du réseau selon la source citée, et les différences entre Proton VPN Plus et l'abonnement Proton Unlimited qui inclut les autres produits de l'éditeur.</p>
-<h3>CTA 4 — Proton VPN</h3>
-<h3>Voir l'offre Proton VPN →  [LIEN-AFFILIATION-PROTON]</h3>
-<p>Le programme Partenaires Proton annonce jusqu'à 100 % sur les nouveaux parrainages et une rémunération récurrente sur les renouvellements.</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 id="5-cyberghost">5. CyberGhost</h3>
+<p><span class="provider-cta">Découvrir l'offre Proton VPN →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="5-cyberghost"><img class="provider-logo" src="/assets/img/vpn-providers/cyberghost.png" width="36" height="36" alt="">5. CyberGhost</h3>
 <p>Éditeur fondé en 2011 à Bucarest, il met en avant une base installée de plus de 38 millions d'utilisateurs et une ancienneté qui rassure les lecteurs peu familiers des VPN. Son programme d'affiliation est l'un des plus généreux en surface (jusqu'à 100 % de commission), avec des paiements mis en avant comme rapides.</p>
 <p>À vérifier : l'audit d'absence de journaux est annoncé comme réalisé par Deloitte mais n'est pas accessible publiquement — les utilisateurs doivent en faire la demande. La juridiction annoncée est la Roumanie, au sein du groupe Kape.</p>
-<h3>CTA 5 — CyberGhost</h3>
-<h3>Voir l'offre CyberGhost →  [LIEN-AFFILIATION-CYBERGHOST]</h3>
-<p>Inscription via la plateforme HasOffers du groupe (affiliates.kape.com).</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 id="6-private-internet-access-pia">6. Private Internet Access (PIA)</h3>
+<p><span class="provider-cta">Découvrir l'offre CyberGhost →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="6-private-internet-access-pia"><img class="provider-logo" src="/assets/img/vpn-providers/privateinternetaccess.svg" width="36" height="36" alt="">6. Private Internet Access (PIA)</h3>
 <p>Deux arguments forts pour un public averti : un client 100 % open source et une politique d'absence de journaux appuyée sur des serveurs à mémoire vive (RAM-only), effacés à chaque redémarrage. L'éditeur annonce des serveurs dans 91 pays, un nombre illimité d'appareils, des modules complémentaires (antivirus, IP dédiée) et une assistance 24h/24.</p>
-<p>À vérifier : l'éditeur appartient au groupe Kape — un élément à mentionner pour l'honnêteté du comparatif.</p>
-<h3>CTA 6 — PIA</h3>
-<h3>Voir l'offre PIA →  [LIEN-AFFILIATION-PIA]</h3>
-<p>Programme gratuit à l'inscription, jusqu'à 33 % de commission sur les nouvelles ventes.</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 id="7-purevpn">7. PureVPN</h3>
+<p class="price-note"><strong>À partir de 1,79 €/mois</strong> avec l'offre sur 3 ans, plus 3 mois offerts. Renouvellement annoncé à 70 € tous les 3 ans.</p>
+<p><span class="provider-cta">Découvrir l'offre PIA →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
+<h3 class="provider-heading" id="7-purevpn"><img class="provider-logo" src="/assets/img/vpn-providers/purevpn.png" width="36" height="36" alt="">7. PureVPN</h3>
 <p>Son intérêt principal ici est commercial : son programme affiche l'une des structures les plus agressives du marché (100 % sur la formule mensuelle, 40 % sur les autres formules, plus 35 % de récurrence à vie) et un cookie de 90 jours, le plus long du panel.</p>
-<p>À vérifier : nous n'avons pas retenu de caractéristiques techniques précises faute de les avoir relevées sur une page officielle au moment de la rédaction — complétez cette fiche avant publication si vous le positionnez en tête de classement.</p>
-<h3>CTA 7 — PureVPN</h3>
-<h3>Voir l'offre PureVPN →  [LIEN-AFFILIATION-PUREVPN]</h3>
-<p>Bonus d'inscription annoncé : 300 $ — vérifiez les conditions en vigueur.</p>
-<p>Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h2 id="programmes-d-affiliation-commissions-cookies-reseaux">Programmes d'affiliation : commissions, cookies, réseaux</h2>
-<p>C'est le chapitre à lire avant de construire vos CTA : trois paramètres déterminent la rentabilité réelle d'un comparatif VPN — le taux de commission, la durée du cookie d'attribution, et le seuil de paiement.</p>
-<p class="caption">Table : Programmes d'affiliation VPN — informations publiées sur les pages officielles des éditeurs, relevées le 29 septembre 2026. Les taux annoncés sont des maximums, généralement réservés à certaines formules : demandez la grille exacte à votre gestionnaire de compte.</p>
-<table><tr><td>Fournisseur</td><td>Commission annoncée</td><td>Cookie</td><td>Seuil / paiement</td><td>Réseau</td></tr><tr><td>Surfshark</td><td>40 % de revenue share sur les nouvelles ventes</td><td>30 jours</td><td>100 $ minimum</td><td>Tunes, Impact, CJ, Awin…</td></tr><tr><td>PureVPN</td><td>100 % (mensuel) / 40 % (autres) + 35 % récurrent à vie</td><td>90 jours</td><td>Bonus d&#x27;inscription 300 $</td><td>Propre</td></tr><tr><td>CyberGhost</td><td>Jusqu&#x27;à 100 %</td><td>Non précisé</td><td>Paiements mis en avant comme rapides</td><td>HasOffers (Kape)</td></tr><tr><td>Proton</td><td>Jusqu&#x27;à 100 % sur les nouveaux parrainages + récurrent sur renouvellements</td><td>Non précisé</td><td>Non précisé</td><td>CJ, FlexOffers…</td></tr><tr><td>Private Internet Access</td><td>Jusqu&#x27;à 33 % sur les nouvelles ventes</td><td>Non précisé</td><td>Inscription gratuite</td><td>Propre / legacy</td></tr><tr><td>NordVPN</td><td>Non publié sur la page publique : structure « basée sur l&#x27;abonnement du filleul »</td><td>Non précisé</td><td>Non précisé</td><td>Propre</td></tr><tr><td>ExpressVPN</td><td>Non publié : modèle flexible selon le volume</td><td>Non précisé</td><td>Non précisé</td><td>Impact</td></tr></table>
-<p>Trois enseignements pour votre monétisation. D'abord, le cookie est aussi important que le taux : chez PureVPN, 90 jours laissent beaucoup plus de temps à un lecteur pour se décider que les 30 jours de Surfshark. Ensuite, les taux de 100 % ne concernent en général que les formules les plus courtes : sur une formule de deux ans, la commission passe à 40 % environ, ce qui reste largement supérieur au prix payé par le client la première année. Enfin, chez deux des plus grosses marques (NordVPN, ExpressVPN), les montants ne sont pas publics : il faut candidater et négocier, ce qui favorise les sites ayant déjà un volume de trafic.</p>
-<p>Un point d'attention spécifique : PIA signale sur sa propre page une campagne de fraude visant ses affiliés — usurpation d'identité des équipes, fausses offres de commissions exceptionnelles, tentatives de vol d'identifiants. Ne répondez qu'aux messages émis depuis les domaines officiels de l'éditeur.</p>
+<p class="price-note"><strong>À partir de 2,15 $ US/mois</strong>, selon le tarif d'appel annoncé par PureVPN ; le montant varie selon l'offre et la devise.</p>
+<p><span class="provider-cta">Découvrir l'offre PureVPN →</span></p>
+<p class="affiliate-note">Lien affilié — commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
 <h2 id="comment-choisir-un-vpn-les-8-criteres-qui-comptent">Comment choisir un VPN : les 8 critères qui comptent</h2>
 <ul>
 <li>L'audit d'absence de journaux. Le critère numéro un. Demandez : qui a réalisé l'audit, quand, et le rapport est-il public ? Un rapport accessible sans compte et sans accord de confidentialité vaut bien plus qu'une simple affirmation marketing.</li>
@@ -395,18 +383,6 @@ tbody tr:hover{background:#F6F8FA}
 <li>L'oubli de la propriété des marques. Plusieurs VPN concurrents appartiennent aux mêmes groupes : le signaler renforce votre crédibilité, surtout dans un contenu monétisé.</li>
 <li>Le comparatif sans date de relevé. Tarifs, nombres de serveurs et garanties changent plusieurs fois par an : publiez systématiquement la date de vos relevés et mettez à jour en conséquence.</li>
 </ul>
-<h2 id="inserer-ses-liens-d-affiliation-bonnes-pratiques-cta">Insérer ses liens d'affiliation : bonnes pratiques CTA</h2>
-<p>Ce comparatif est structuré pour la monétisation : sept emplacements CTA sont déjà positionnés, un par fournisseur, dans l'ordre des programmes d'affiliation. Voici comment les exploiter au mieux.</p>
-<h3 id="1-remplacez-les-marqueurs-par-vos-liens-de-suivi">1. Remplacez les marqueurs par vos liens de suivi</h3>
-<p>Chaque bouton contient un marqueur explicite du type . Remplacez-le par votre URL de suivi personnelle — celle fournie par le programme ou la plateforme (Tunes, Impact, CJ, HasOffers, réseau propre). Ne conservez jamais un marqueur dans la version publiée : un lien mort détruit la conversion et la crédibilité.</p>
-<h3 id="2-annoncez-la-nature-commerciale-du-lien">2. Annoncez la nature commerciale du lien</h3>
-<p>La mention « lien affilié » figure sous chaque bouton, et un encadré de transparence ouvre l'article. C'est à la fois une question de confiance et une exigence de transparence : le lecteur doit pouvoir identifier qu'une rémunération est possible avant de cliquer. Adaptez la formulation aux règles applicables à votre publication et à votre pays.</p>
-<h3 id="3-placez-les-cta-aux-points-de-decision">3. Placez les CTA aux points de décision</h3>
-<p>Trois emplacements convertissent mieux que les autres : juste après le tableau comparatif (le lecteur compare), à la fin de la fiche du fournisseur (le lecteur est convaincu), et après la FAQ (le lecteur a levé ses objections). Les boutons de ce document sont déjà à ces endroits.</p>
-<h3 id="4-adaptez-le-libelle-au-fournisseur">4. Adaptez le libellé au fournisseur</h3>
-<p>« Voir l'offre » fonctionne partout ; « Profiter de l'offre Surfshark » convertit mieux sur les marques connues, et « Comparer les tarifs Proton » sur les audiences techniques méfiantes. Testez deux variantes par fournisseur plutôt que d'uniformiser.</p>
-<h3 id="5-mettez-a-jour-les-chiffres-pas-seulement-les-liens">5. Mettez à jour les chiffres, pas seulement les liens</h3>
-<p>Un comparatif affilié qui affiche des prix ou des taux périmés se retourne contre son auteur : on vous reprochera moins un classement discutable qu'un chiffre faux. La date de relevé, présente en couverture et dans les tableaux, est votre garde-fou — actualisez-la à chaque révision.</p>
 <h3 id="questions-frequentes">Questions fréquentes</h3>
 <p>Quel est le meilleur VPN en 2026 ?</p>
 <p>Il n'y a pas de réponse unique : pour un foyer, privilégiez un nombre illimité de connexions ; pour la transparence, un client open source avec audit publié (PIA, Proton VPN en font un argument) ; pour le budget, comparez le prix de renouvellement et pas seulement le tarif de lancement.</p>
@@ -423,7 +399,7 @@ tbody tr:hover{background:#F6F8FA}
 <p>Un VPN rend-il totalement anonyme ?</p>
 <p>Non. Un VPN masque votre adresse IP et chiffre votre trafic, mais il ne vous rend pas anonyme : votre compte, vos cookies et vos identifiants continuent de vous identifier. Il déplace aussi la confiance vers l'éditeur du VPN, d'où l'importance des critères d'audit et de propriété.</p>
 <h3 id="sources-et-methodologie">Sources et méthodologie</h3>
-<p>Toutes les caractéristiques et tous les taux cités proviennent des pages officielles des éditeurs, consultées le 29 septembre 2026 : pages d'accueil et pages tarifaires, pages « affiliate » des programmes, pages produit. Aucun test de vitesse indépendant n'a été réalisé pour ce comparatif : les performances sont donc rapportées comme des chiffres annoncés par les éditeurs, et les mentions « non précisée ici » signalent une information que nous n'avons pas pu relever à la source au moment de la rédaction. Les tarifs, taux de commission, nombres de serveurs et garanties évoluent fréquemment : vérifiez-les avant publication.</p>
+<p>Les caractéristiques et taux de commission proviennent des pages officielles des éditeurs, consultées le 29 septembre 2026 ; les tarifs d'appel ont été relevés le 6 octobre 2026. Les prix évoluent fréquemment : vérifiez le tarif, la durée et les conditions de renouvellement avant publication. Aucun test de vitesse indépendant n'a été réalisé pour ce comparatif ; les performances sont rapportées comme des chiffres annoncés par les éditeurs, et les mentions « non précisée ici » signalent une information que nous n'avons pas pu relever à la source.</p>
 <ul>
 <li>NordVPN — pages officielles (accueil, tarifs, programme d'affiliation).</li>
 <li>Surfshark — pages officielles (accueil, tarifs) et page Surfshark Affiliate Program details (40 % de revenue share, cookie 30 jours, seuil 100 $).</li>
@@ -433,9 +409,7 @@ tbody tr:hover{background:#F6F8FA}
 <li>Private Internet Access — page du programme d'affiliation (jusqu'à 33 %) et page produit (serveurs RAM-only, open source, 91 pays).</li>
 <li>PureVPN — page officielle du programme d'affiliation (100 %/40 %, 35 % récurrent, cookie 90 jours, bonus d'inscription).</li>
 </ul>
-<p>[Nom de l'auteur] — [Fonction / expertise, ex. : journaliste spécialisé en cybersécurité, X années d'expérience].</p>
-<p>[Une à deux phrases précisant les sources d'expérience de l'auteur sur le sujet : certifications, tests réalisés, publications.] Ce bloc sert de signal d'expertise (E-E-A-T) pour les moteurs de recherche et les moteurs de réponse IA : remplacez les mentions entre crochets avant publication.</p>
-<p class="caption">Figure : Taux de commission maximaux annoncés par les éditeurs sur les pages officielles de leurs programmes d'affiliation (relevé du 29 septembre 2026). Les taux de 100 % concernent en général les formules courtes uniquement.</p><h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Particuliers" href="/offres/vpn/nordvpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>NordVPN</h3><p>Fiche produit NordVPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/expressvpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>ExpressVPN</h3><p>Fiche produit ExpressVPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/surfshark/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Surfshark</h3><p>Fiche produit Surfshark (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/proton-vpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Proton VPN</h3><p>Fiche produit Proton VPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/cyberghost/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>CyberGhost</h3><p>Fiche produit CyberGhost (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/mullvad-vpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Mullvad VPN</h3><p>Fiche produit Mullvad VPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Particuliers" href="/offres/vpn/nordvpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>NordVPN</h3><p>Fiche produit NordVPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/expressvpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>ExpressVPN</h3><p>Fiche produit ExpressVPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/surfshark/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Surfshark</h3><p>Fiche produit Surfshark (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/proton-vpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Proton VPN</h3><p>Fiche produit Proton VPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/cyberghost/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>CyberGhost</h3><p>Fiche produit CyberGhost (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/vpn/mullvad-vpn/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Mullvad VPN</h3><p>Fiche produit Mullvad VPN (comparatif vpn) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>

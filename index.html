@@ -168,6 +168,17 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
 .cta-band .btn:hover{background:var(--orange-d)}
 
+/* detector feature */
+.fraud-promo-section{padding-top:0}
+.fraud-promo{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:18px;padding:22px 26px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink);text-decoration:none;box-shadow:0 8px 24px rgba(15,36,56,.06);transition:transform .15s,box-shadow .15s}
+.fraud-promo:hover{color:var(--ink);transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,36,56,.1)}
+.fraud-promo-icon{width:56px;height:56px;display:grid;place-items:center;border-radius:16px;background:var(--navy);color:#F5A085}
+.fraud-promo-copy .kicker{display:block;margin-bottom:4px}
+.fraud-promo-copy h2{font-size:1.25rem;line-height:1.2;margin:0 0 5px}
+.fraud-promo-copy p{margin:0;color:var(--muted);font-size:.96rem;max-width:64ch}
+.fraud-promo-cta{display:inline-flex;align-items:center;gap:10px;padding:.8em 1em;border-radius:9px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;white-space:nowrap}
+.fraud-promo:hover .fraud-promo-cta{background:var(--orange-d)}
+
 /* alerte du moment */
 .alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
 .alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
@@ -272,6 +283,12 @@ tbody tr:hover{background:#F6F8FA}
   .slider-side[data-dir='1']{right:-8px}
   .acard img.thumb{height:96px}
   .cta-band{padding:22px 18px;gap:16px}
+  .fraud-promo{grid-template-columns:44px minmax(0,1fr);gap:12px;padding:16px}
+  .fraud-promo-icon{width:44px;height:44px;border-radius:12px;align-self:start}
+  .fraud-promo-icon svg{width:24px;height:24px}
+  .fraud-promo-copy h2{font-size:1.1rem}
+  .fraud-promo-copy p{font-size:.9rem}
+  .fraud-promo-cta{grid-column:1/-1;justify-content:center}
   footer.site{padding:34px 0 26px}
   .fgrid{grid-template-columns:1fr;gap:0}
   .fgrid > div:first-child{display:none}
@@ -321,7 +338,7 @@ tbody tr:hover{background:#F6F8FA}
       </div><button class="slider-side" type="button" data-dir="1" aria-label="Suivant">›</button></div><div class="slider-dots"></div>
     </div>
   </section>
-  <section class="hsec comparisons-section" style="background:#F6F8FA">
+  <section class="hsec comparisons-section" style="background:#F6D8CC">
     <div class="wrap"><div class="hsec-head"><div><span class="kicker">Choisir ses protections</span><h2>Tous vos comparatifs</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider">
         <a class="acard ccard" data-audience="Particuliers" href="/offres/vpn/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif VPN</h3><p>Choisir par usage, pas par marketing — avec la méthode en 5 critères.</p><span class="cmore">Lire le comparatif →</span></a>
@@ -332,6 +349,13 @@ tbody tr:hover{background:#F6F8FA}
     </div>
   </section>
   <section class="hsec"><div class="wrap"><div class="cta-band"><div><div class="kicker" style="color:#F5A085">Comparer avant de payer</div><h2>Des choix plus clairs pour votre sécurité.</h2><p>VPN, antivirus, gestionnaires de mots de passe : notre méthode de sélection, les limites de chacun, et les prix de renouvellement qu’on ne vous montre pas toujours.</p></div><a class="btn" href="/offres/">Voir les comparatifs</a></div></div></section>
+  <section class="hsec fraud-promo-section">
+    <div class="wrap"><a class="fraud-promo" href="/outils/detecteur-arnaque/">
+      <span class="fraud-promo-icon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 3.5H5.75A1.75 1.75 0 0 0 4 5.25v13.5c0 .97.78 1.75 1.75 1.75h8.5A1.75 1.75 0 0 0 16 18.75V14"/><path d="M8 7h4M8 10h3"/><circle cx="16.5" cy="9.5" r="3.5"/><path d="m19.1 12.1 2.4 2.4"/></svg></span>
+      <span class="fraud-promo-copy"><span class="kicker">Outil gratuit</span><h2>Un message vous semble suspect ?</h2><p>Collez un SMS ou déposez une capture : le détecteur repère les signaux d’arnaque directement dans votre navigateur.</p></span>
+      <span class="fraud-promo-cta">Tester le détecteur <span aria-hidden="true">→</span></span>
+    </a></div>
+  </section>
   <div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/pro/">Professionnels</a> › <a href="/pro/conformite/">Conformité et cadre légal</a></div>
 <div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
