@@ -18,7 +18,7 @@ h3{font-size:1.15rem;margin-top:1.6em}
 .price-note{font-family:var(--disp);font-size:.95rem}
 .provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
 .affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
-.jump-cta{display:inline-block;margin:0 0 1em;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
 .jump-cta:hover{background:var(--orange-d);color:#fff}
 .provider-heading{display:flex;align-items:center;gap:12px}
 .provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
@@ -193,10 +193,15 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 .pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
 .pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
-article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
-article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
-article.page h2:first-of-type{border-top:0;padding-top:0}
-.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:28px clamp(20px,5vw,56px) 32px;max-width:980px;margin:0 auto}
+article.page p{margin-bottom:.65em}
+article.page h2{margin-top:1.3em;border-top:1px solid var(--line);padding-top:.7em}
+article.page h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+article.page h3{margin-top:.9em;margin-bottom:.35em}
+article.page ul,article.page ol{margin:.65em 0}
+article.page .note,article.page .warn{margin:.9em 0}
+article.page .tablewrap,article.page table{margin:1em 0}
+article.page .see-also{margin-top:1.5em;padding-top:1em}
 
 /* fiches réflexes : signature */
 .steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
@@ -283,7 +288,8 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-</style></head><body>
+</style><link rel="stylesheet" href="/assets/site-spacing.css">
+</head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
   <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->

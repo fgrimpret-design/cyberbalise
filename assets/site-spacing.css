@@ -1,0 +1,47 @@
+article.page {
+  padding-top: 28px;
+  padding-bottom: 32px;
+}
+
+article.page > p {
+  margin-bottom: .65em;
+}
+
+article.page > h2 {
+  margin-top: 1.3em;
+  padding-top: .7em;
+}
+
+article.page > h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+article.page > h3 {
+  margin-top: .9em;
+  margin-bottom: .35em;
+}
+
+article.page > ul,
+article.page > ol {
+  margin: .65em 0;
+}
+
+article.page > .note,
+article.page > .warn {
+  margin: .9em 0;
+}
+
+article.page > .tablewrap,
+article.page > table {
+  margin: 1em 0;
+}
+
+article.page > .see-also {
+  margin-top: 1.5em;
+  padding-top: 1em;
+}
+
+article.page .jump-cta {
+  margin: 0;
+}
