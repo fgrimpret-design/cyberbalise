@@ -78,20 +78,21 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .urgence-float:hover{background:var(--orange-d);color:#fff}
 
 /* hero home */
-.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero{background:var(--navy);color:#fff;padding:32px 0 48px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0 0 0 auto;width:57%;background:url("/assets/img/hero-home.jpg?v=1") 54% center/cover no-repeat;pointer-events:none;z-index:0;opacity:.94;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.34) 12%,#000 34%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,36,56,.98) 42%,rgba(15,36,56,.9) 54%,rgba(15,36,56,.34) 68%,rgba(15,36,56,.06) 100%);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
 .hero .kicker{color:#F5A085}
 .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
 .hero h1 .line{display:block;white-space:nowrap}
 .hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
-.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox{margin-top:20px;max-width:min(560px,48vw);position:relative}
 .searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
 .searchbox input::placeholder{color:#7E96A9}
 .sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
 .sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .sresults a:hover{background:var(--bg)}
-.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:18px;gap:4px;flex-wrap:wrap;max-width:100%}
 .audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
 .audience-toggle button.on{background:var(--orange);color:#fff}
 
@@ -102,20 +103,23 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* sections home */
-.hsec{padding:52px 0}
+.hsec{padding:24px 0}
+.guides-section{padding-top:16px}
 .hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.guides-section .hsec-head{margin-bottom:8px}
+.comparisons-section .hsec-head{margin-bottom:8px}
 .hsec-head h2{margin:0;font-size:1.45rem}
 .hsec-head .kicker{margin-bottom:4px;display:block}
 .kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
 
 /* sliders */
-.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
-.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 10px;scrollbar-width:none;-ms-overflow-style:none}
 .slider::-webkit-scrollbar{display:none}
 .slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
 .slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
 .slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
-.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:4px}
 .slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
 .slider-dots button.active{background:var(--orange);transform:scale(1.25)}
 @media (max-width:760px){
@@ -130,6 +134,16 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .acard p{color:var(--muted);font-size:.9rem;margin:0}
 .ccard{display:flex;flex-direction:column;min-height:210px}
 .ccard p{flex:1}
+.comparisons-section .ccard p{flex:0 1 auto}
+.comparisons-section .ccard .cmore,.comparisons-section .ccard .soon{margin-top:8px}
+.comparisons-section .ccard{min-height:0;padding:16px}
+.guides-section .ccard p{flex:0 1 auto}
+.guides-section .ccard p{-webkit-box-orient:vertical;-webkit-line-clamp:2;display:-webkit-box;overflow:hidden}
+.guides-section .ccard .cmore{margin-top:auto}
+.guides-section .ccard{min-height:0;padding:12px 12px 8px}
+.guides-section .ccard h3{margin:.25em 0 .15em}
+.guides-section .slider{padding-bottom:4px}
+.guides-section .slider-dots{margin-top:0}
 .ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
 .ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
 .acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
@@ -148,7 +162,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .aff-note{font-size:.72rem;color:var(--muted);margin:0}
 
 /* CTA final */
-.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:32px 28px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .cta-band h2{margin:8px 0 6px;color:#fff}
 .cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
 .cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
@@ -227,9 +241,12 @@ tbody tr:hover{background:#F6F8FA}
   .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
   .lex{columns:1}
   .marquee{display:none}
+  .hero::before{width:62%;opacity:.82;background-position:54% center}
+  .hero::after{background:linear-gradient(90deg,var(--navy) 0%,rgba(15,36,56,.96) 48%,rgba(15,36,56,.38) 100%)}
 }
 @media (max-width:760px){
   nav.main,.btn-urgence{display:none}
+  .hsec{padding:18px 0}
   .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
   .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
   .logo svg{width:24px;height:24px;margin-top:0}
@@ -237,22 +254,24 @@ tbody tr:hover{background:#F6F8FA}
   .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
   .burger{display:block;flex:none;margin-left:0}
   .topbar{display:none}
-  .hero{padding:16px 0 42px}
+  .hero{padding:14px 0 28px}
+  .hero::before{inset:0;width:100%;height:100%;opacity:.76;background-position:62% center;mask-image:none}
+  .hero::after{background:linear-gradient(180deg,rgba(15,36,56,.88) 0%,rgba(15,36,56,.78) 58%,rgba(15,36,56,.62) 100%)}
   .pagehead{padding:16px 0 32px}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
   .searchbox input{padding:.9em 1em;font-size:.96rem}
-  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px;margin-top:18px}
   .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
   .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
-  .slider{padding:4px 0 18px}
+  .slider{padding:4px 0 10px}
   .slider>*{flex:0 0 100%}
   .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
   .slider-side[data-dir='-1']{left:-8px}
   .slider-side[data-dir='1']{right:-8px}
   .acard img.thumb{height:96px}
-  .cta-band{padding:30px 24px}
+  .cta-band{padding:22px 18px;gap:16px}
   footer.site{padding:34px 0 26px}
   .fgrid{grid-template-columns:1fr;gap:0}
   .fgrid > div:first-child{display:none}
@@ -288,21 +307,21 @@ tbody tr:hover{background:#F6F8FA}
       <div class="audience-toggle"><button class="on" type="button" data-aud="both">Tout le site</button><button type="button" data-aud="Particuliers">Particuliers</button><button type="button" data-aud="Professionnels">Professionnels</button></div>
     </div>
   </section>
-  <section class="hsec">
+  <section class="hsec guides-section">
     <div class="wrap"><div class="hsec-head"><div><span class="kicker">Explorer</span><h2>Tous vos guides</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider" data-audience-filter="guides">
-        <a class="acard" data-audience="Particuliers" data-default="true" href="/particuliers/menaces/phishing-hameconnage/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Phishing et hameçonnage</h3><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p></a>
-        <a class="acard" data-audience="Particuliers" href="/particuliers/victime/"><span class="cat">PARTICULIERS · FICHES RÉFLEXES</span><h3>J’ai été victime : que faire ?</h3><p>Compte piraté, carte débitée, rançongiciel, chantage : les bons réflexes pas à pas.</p></a>
-        <a class="acard" data-audience="Particuliers" data-default="true" href="/particuliers/comptes/double-authentification-et-passkeys/"><span class="cat">PARTICULIERS · GUIDE</span><h3>2FA et passkeys, simplement</h3><p>Quelle méthode choisir, où l’activer en premier, et pourquoi les passkeys tuent le phishing.</p></a>
-        <a class="acard" data-audience="Professionnels" data-default="true" href="/pro/fondamentaux/mesures-essentielles/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Les mesures essentielles</h3><p>Dix mesures de cybersécurité à coût nul ou faible pour une TPE-PME.</p></a>
-        <a class="acard" data-audience="Particuliers" href="/particuliers/comptes/mot-de-passe-robuste/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Créer un mot de passe robuste</h3><p>La longueur bat la complexité : une méthode solide et facile à retenir.</p></a>
-        <a class="acard" data-audience="Professionnels" data-default="true" href="/pro/incident/premieres-actions/"><span class="cat">PROFESSIONNELS · FICHE RÉFLEXE</span><h3>Les 6 premières actions en cas d’attaque</h3><p>Les gestes à faire dans l’ordre pour limiter les dégâts et préserver les preuves.</p></a>
-        <a class="acard" data-audience="Professionnels" href="/pro/menaces/rancongiciel-extorsion/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Rançongiciel et extorsion</h3><p>Comprendre la menace, protéger l’activité et savoir quoi faire le jour de l’attaque.</p></a>
-        <a class="acard" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Le rôle du dirigeant</h3><p>Piloter la sécurité, montrer l’exemple et décider des priorités sans être technicien.</p></a>
+        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/menaces/phishing-hameconnage/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Phishing et hameçonnage</h3><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/victime/"><span class="cat">PARTICULIERS · FICHES RÉFLEXES</span><h3>J’ai été victime : que faire ?</h3><p>Compte piraté, carte débitée, rançongiciel, chantage : les bons réflexes pas à pas.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/comptes/double-authentification-et-passkeys/"><span class="cat">PARTICULIERS · GUIDE</span><h3>2FA et passkeys, simplement</h3><p>Quelle méthode choisir, où l’activer en premier, et pourquoi les passkeys tuent le phishing.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/fondamentaux/mesures-essentielles/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Les mesures essentielles</h3><p>Dix mesures de cybersécurité à coût nul ou faible pour une TPE-PME.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/comptes/mot-de-passe-robuste/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Créer un mot de passe robuste</h3><p>La longueur bat la complexité : une méthode solide et facile à retenir.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/incident/premieres-actions/"><span class="cat">PROFESSIONNELS · FICHE RÉFLEXE</span><h3>Les 6 premières actions en cas d’attaque</h3><p>Les gestes à faire dans l’ordre pour limiter les dégâts et préserver les preuves.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" href="/pro/menaces/rancongiciel-extorsion/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Rançongiciel et extorsion</h3><p>Comprendre la menace, protéger l’activité et savoir quoi faire le jour de l’attaque.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Le rôle du dirigeant</h3><p>Piloter la sécurité, montrer l’exemple et décider des priorités sans être technicien.</p><span class="cmore">Lire le guide →</span></a>
       </div><button class="slider-side" type="button" data-dir="1" aria-label="Suivant">›</button></div><div class="slider-dots"></div>
     </div>
   </section>
-  <section class="hsec" style="background:#F6F8FA">
+  <section class="hsec comparisons-section" style="background:#F6F8FA">
     <div class="wrap"><div class="hsec-head"><div><span class="kicker">Choisir ses protections</span><h2>Tous vos comparatifs</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider">
         <a class="acard ccard" data-audience="Particuliers" href="/offres/vpn/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif VPN</h3><p>Choisir par usage, pas par marketing — avec la méthode en 5 critères.</p><span class="cmore">Lire le comparatif →</span></a>
