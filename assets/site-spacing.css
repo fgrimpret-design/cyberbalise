@@ -367,3 +367,50 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
     gap: 8px;
   }
 }
+
+.pagehead:has(> .pagehead-photo) {
+  position: relative;
+  overflow: hidden;
+}
+
+.pagehead:has(> .pagehead-photo) > .wrap {
+  padding-right: clamp(270px, 30vw, 350px);
+}
+
+.pagehead-photo {
+  position: absolute;
+  top: 50%;
+  right: max(24px, calc((100vw - 1180px) / 2 + 24px));
+  width: clamp(220px, 25vw, 310px);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 18px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .24);
+}
+
+@media (max-width: 760px) {
+  .pagehead:has(> .pagehead-photo) > .wrap {
+    padding-right: 132px;
+  }
+
+  .pagehead-photo {
+    right: 16px;
+    width: 104px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pagehead:has(> .pagehead-photo) > .wrap {
+    padding-right: 112px;
+  }
+
+  .pagehead-photo {
+    width: 88px;
+  }
+}
