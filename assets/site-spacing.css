@@ -521,8 +521,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .urgency-banner {
   background: linear-gradient(135deg, #E4572E 0%, #C7451F 100%);
   color: #fff;
-  padding: 16px 20px;
-  margin: 0 0 32px 0;
+  padding: 32px 20px;
+  margin: 32px 0 32px 0;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(196, 60, 25, .25);
 }
@@ -790,8 +790,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 }
 
 .vpn-card {
-  background: rgba(255, 255, 255, .08);
-  border: 1px solid rgba(255, 255, 255, .15);
+  background: #FFFFFF;
+  border: 2px solid #0D2E4A;
   border-radius: 12px;
   padding: 24px;
   text-decoration: none;
@@ -811,17 +811,17 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 160, 133, .1) 0%, rgba(245, 160, 133, 0) 100%);
+  background: linear-gradient(135deg, rgba(13, 46, 74, .02) 0%, rgba(13, 46, 74, 0) 100%);
   opacity: 0;
   transition: opacity .3s ease;
   z-index: 0;
 }
 
 .vpn-card:hover {
-  background: rgba(255, 255, 255, .12);
-  border-color: #F5A085;
+  background: #F5F7FA;
+  border-color: #0D2E4A;
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, .2);
+  box-shadow: 0 8px 20px rgba(13, 46, 74, .12);
 }
 
 .vpn-card:hover::before {
