@@ -83,6 +83,10 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,36,56,.98) 42%,rgba(15,36,56,.9) 54%,rgba(15,36,56,.34) 68%,rgba(15,36,56,.06) 100%);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
 .hero .kicker{color:#F5A085}
+.protection-proof{display:inline-flex;align-items:center;gap:9px;margin-bottom:2px;padding:7px 11px;border:1px solid rgba(100,220,150,.28);border-radius:999px;background:rgba(16,70,54,.42);color:#DDF8E8;font-family:var(--disp);font-size:.82rem;line-height:1.2}
+.protection-proof-dot{position:relative;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#48D884;box-shadow:0 0 0 0 rgba(72,216,132,.58);animation:protection-heartbeat 1.6s ease-out infinite}
+@keyframes protection-heartbeat{0%{transform:scale(.9);box-shadow:0 0 0 0 rgba(72,216,132,.58)}45%{transform:scale(1.12);box-shadow:0 0 0 7px rgba(72,216,132,0)}100%{transform:scale(.9);box-shadow:0 0 0 0 rgba(72,216,132,0)}}
+.protection-proof-count{font-weight:800;color:#8CF0B3;font-variant-numeric:tabular-nums}
 .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
 .hero h1 .line{display:block;white-space:nowrap}
 .hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
@@ -124,6 +128,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .slider-dots button.active{background:var(--orange);transform:scale(1.25)}
 @media (max-width:760px){
   .slider-dots{display:flex}
+  .guides-section .slider-side,.comparisons-section .slider-side{display:none}
 }
 
 /* cards */
@@ -139,9 +144,15 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .comparisons-section .ccard{min-height:0;padding:16px}
 .guides-section .ccard p{flex:0 1 auto}
 .guides-section .ccard p{-webkit-box-orient:vertical;-webkit-line-clamp:2;display:-webkit-box;overflow:hidden}
+.guides-section .ccard .guide-excerpt{display:flex;align-items:center;gap:10px;margin-top:auto}
+.guides-section .ccard .guide-excerpt p{flex:1;min-width:0;font-size:.78rem;line-height:1.4;-webkit-line-clamp:3}
+.guides-section .ccard .guide-excerpt img{width:72px;height:72px;flex:0 0 72px;object-fit:cover;border-radius:9px}
 .guides-section .ccard .cmore{margin-top:auto}
 .guides-section .ccard{min-height:0;padding:12px 12px 8px}
 .guides-section .ccard h3{margin:.25em 0 .15em}
+.comparisons-section .ccard .compare-excerpt{display:flex;align-items:center;gap:10px}
+.comparisons-section .ccard .compare-excerpt p{flex:1;min-width:0;font-size:.78rem;line-height:1.4}
+.comparisons-section .ccard .compare-excerpt img{width:72px;height:72px;flex:0 0 72px;object-fit:cover;border-radius:9px}
 .guides-section .slider{padding-bottom:4px}
 .guides-section .slider-dots{margin-top:0}
 .ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
@@ -306,6 +317,7 @@ tbody tr:hover{background:#F6F8FA}
   html{scroll-behavior:auto}
   .mq-track{animation:none}
   .acard{transition:none}
+  .protection-proof-dot{animation:none}
 }
 </style><link rel="stylesheet" href="/assets/site-spacing.css">
 </head><body>
@@ -319,6 +331,7 @@ tbody tr:hover{background:#F6F8FA}
 <main>
   <section class="hero">
     <div class="wrap">
+      <div class="protection-proof"><span class="protection-proof-dot" aria-hidden="true"></span><span><span class="protection-proof-count" data-protection-count>25</span> personnes sont en train de se protéger</span></div>
       <h1><span class="line">Comprendre la menace.</span><span class="line">Protéger ce qui compte.</span></h1>
       <p class="sub">Des guides pour les particuliers et les professionnels. Des comparatifs outils qui disent les limites autant que les qualités.</p>
       <div class="searchbox"><label class="sr-only" for="searchinput">Rechercher</label><input id="searchinput" type="search" placeholder="Rechercher un sujet cyber…" autocomplete="off"><div class="sresults" id="sresults"></div></div>
@@ -328,24 +341,24 @@ tbody tr:hover{background:#F6F8FA}
   <section class="hsec guides-section">
     <div class="wrap"><div class="hsec-head"><div><span class="kicker">Explorer</span><h2>Tous vos guides</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider" data-audience-filter="guides">
-        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/menaces/phishing-hameconnage/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Phishing et hameçonnage</h3><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/victime/"><span class="cat">PARTICULIERS · FICHES RÉFLEXES</span><h3>J’ai été victime : que faire ?</h3><p>Compte piraté, carte débitée, rançongiciel, chantage : les bons réflexes pas à pas.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/comptes/double-authentification-et-passkeys/"><span class="cat">PARTICULIERS · GUIDE</span><h3>2FA et passkeys, simplement</h3><p>Quelle méthode choisir, où l’activer en premier, et pourquoi les passkeys tuent le phishing.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/fondamentaux/mesures-essentielles/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Les mesures essentielles</h3><p>Dix mesures de cybersécurité à coût nul ou faible pour une TPE-PME.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/comptes/mot-de-passe-robuste/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Créer un mot de passe robuste</h3><p>La longueur bat la complexité : une méthode solide et facile à retenir.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/incident/premieres-actions/"><span class="cat">PROFESSIONNELS · FICHE RÉFLEXE</span><h3>Les 6 premières actions en cas d’attaque</h3><p>Les gestes à faire dans l’ordre pour limiter les dégâts et préserver les preuves.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Professionnels" href="/pro/menaces/rancongiciel-extorsion/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Rançongiciel et extorsion</h3><p>Comprendre la menace, protéger l’activité et savoir quoi faire le jour de l’attaque.</p><span class="cmore">Lire le guide →</span></a>
-        <a class="acard ccard" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Le rôle du dirigeant</h3><p>Piloter la sécurité, montrer l’exemple et décider des priorités sans être technicien.</p><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/menaces/phishing-hameconnage/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Phishing et hameçonnage</h3><div class="guide-excerpt"><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p><img src="/assets/img/phishing-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/victime/"><span class="cat">PARTICULIERS · FICHES RÉFLEXES</span><h3>J’ai été victime : que faire ?</h3><div class="guide-excerpt"><p>Compte piraté, carte débitée, rançongiciel, chantage : les bons réflexes pas à pas.</p><img src="/assets/img/guide-victime.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/comptes/double-authentification-et-passkeys/"><span class="cat">PARTICULIERS · GUIDE</span><h3>2FA et passkeys, simplement</h3><div class="guide-excerpt"><p>Quelle méthode choisir, où l’activer en premier, et pourquoi les passkeys tuent le phishing.</p><img src="/assets/img/guide-2fa.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/fondamentaux/mesures-essentielles/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Les mesures essentielles</h3><div class="guide-excerpt"><p>Dix mesures de cybersécurité à coût nul ou faible pour une TPE-PME.</p><img src="/assets/img/guide-mesures.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/particuliers/comptes/mot-de-passe-robuste/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Créer un mot de passe robuste</h3><div class="guide-excerpt"><p>La longueur bat la complexité : une méthode solide et facile à retenir.</p><img src="/assets/img/guide-mot-de-passe.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" data-default="true" href="/pro/incident/premieres-actions/"><span class="cat">PROFESSIONNELS · FICHE RÉFLEXE</span><h3>Les 6 premières actions en cas d’attaque</h3><div class="guide-excerpt"><p>Les gestes à faire dans l’ordre pour limiter les dégâts et préserver les preuves.</p><img src="/assets/img/guide-incident.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" href="/pro/menaces/rancongiciel-extorsion/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Rançongiciel et extorsion</h3><div class="guide-excerpt"><p>Comprendre la menace, protéger l’activité et savoir quoi faire le jour de l’attaque.</p><img src="/assets/img/guide-rancongiciel.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><span class="cat">PROFESSIONNELS · GUIDE</span><h3>Le rôle du dirigeant</h3><div class="guide-excerpt"><p>Piloter la sécurité, montrer l’exemple et décider des priorités sans être technicien.</p><img src="/assets/img/guide-dirigeant.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
       </div><button class="slider-side" type="button" data-dir="1" aria-label="Suivant">›</button></div><div class="slider-dots"></div>
     </div>
   </section>
   <section class="hsec comparisons-section" style="background:#F6D8CC">
     <div class="wrap"><div class="hsec-head"><div><span class="kicker">Choisir ses protections</span><h2>Tous vos comparatifs</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider">
-        <a class="acard ccard" data-audience="Particuliers" href="/offres/vpn/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif VPN</h3><p>Choisir par usage, pas par marketing — avec la méthode en 5 critères.</p><span class="cmore">Lire le comparatif →</span></a>
-        <a class="acard ccard" data-audience="Particuliers" href="/offres/antivirus/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif Antivirus</h3><p>Particulier, famille, multi-appareils : prix par an et alternatives gratuites.</p><span class="cmore">Lire le comparatif →</span></a>
-        <a class="acard ccard" data-audience="both" href="/offres/gestionnaires-mots-de-passe/"><span class="cat">COMPARATIF · LES DEUX</span><h3>Gestionnaires de mots de passe</h3><p>Sécurité, partage familial, prix : le premier outil à installer.</p><span class="cmore">Lire le comparatif →</span></a>
-        <a class="acard ccard" data-audience="Professionnels" href="/offres/cyber-assurance/"><span class="cat">COMPARATIF · PROS</span><h3>Comparatif cyber-assurance</h3><p>TPE/PME : garanties, franchises et questionnaire d’éligibilité.</p><span class="cmore">Lire le comparatif →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/offres/vpn/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif VPN</h3><div class="compare-excerpt"><p>Choisir par usage, pas par marketing — avec la méthode en 5 critères.</p><img src="/assets/img/comparatif-vpn-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le comparatif →</span></a>
+        <a class="acard ccard" data-audience="Particuliers" href="/offres/antivirus/"><span class="cat">COMPARATIF · PARTICULIERS</span><h3>Comparatif Antivirus</h3><div class="compare-excerpt"><p>Particulier, famille, multi-appareils : prix par an et alternatives gratuites.</p><img src="/assets/img/comparatif-antivirus-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le comparatif →</span></a>
+        <a class="acard ccard" data-audience="both" href="/offres/gestionnaires-mots-de-passe/"><span class="cat">COMPARATIF · LES DEUX</span><h3>Gestionnaires de mots de passe</h3><div class="compare-excerpt"><p>Sécurité, partage familial, prix : le premier outil à installer.</p><img src="/assets/img/comparatif-mots-de-passe-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le comparatif →</span></a>
+        <a class="acard ccard" data-audience="Professionnels" href="/offres/cyber-assurance/"><span class="cat">COMPARATIF · PROS</span><h3>Comparatif cyber-assurance</h3><div class="compare-excerpt"><p>TPE/PME : garanties, franchises et questionnaire d’éligibilité.</p><img src="/assets/img/comparatif-assurance-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le comparatif →</span></a>
       </div><button class="slider-side" type="button" data-dir="1" aria-label="Suivant">›</button></div><div class="slider-dots"></div>
     </div>
   </section>
@@ -361,8 +374,8 @@ tbody tr:hover{background:#F6F8FA}
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/pro/">Professionnels</a> › <a href="/pro/conformite/">Conformité et cadre légal</a></div>
 <div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
 <h1>Cyber-assurance : à quoi ça sert</h1><p class="lead">Ce que couvre réellement une assurance cyber pour une TPE-PME, les exclusions et conditions qui font refuser une indemnisation, et pourquoi elle complète la prévention sans jamais la remplacer.</p>
-<div class="meta"><span class="chip pro">Pros</span> <span class="chip both" style="background:#E7EBF0;color:var(--muted)">Niveau : intermédiaire</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes · Auteur : [Nom de l’auteur]</p><h2 id="sommaire">Sommaire</h2>
+<div class="meta"><span class="chip pro">Pros</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+</div></div><div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes ·</p><h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#lessentiel-une-assurance-pour-traverser-la-crise">L’essentiel : une assurance pour traverser la crise</a></li>
 <li><a href="#comment-fonctionne-une-cyber-assurance">Comment fonctionne une cyber-assurance</a></li>
@@ -564,7 +577,7 @@ tbody tr:hover{background:#F6F8FA}
 <li>France Assureurs — « TPE/PME — L’assurance cyber » (brochure 2026) — garanties habituelles, points clés à vérifier avant de souscrire, services de prévention, réflexes en cas d’attaque, 49 % des entreprises non préparées : https://www.franceassureurs.fr/wp-content/uploads/2026-assurance-cyber-brochure.pdf</li>
 <li>ANSSI et DGE — « La cybersécurité pour les TPE/PME en 13 questions » — question n° 11 sur l’évaluation de la couverture d’assurance : https://www.entreprises.gouv.fr/files/files/Publications/2022/Guides/la-cybersecurite-en13-questions-pour-les-tpe-pme-ANSII.pdf</li>
 </ul>
-<p><em>[Nom de l’auteur] — [Fonction / expertise]. Remplacez les mentions entre crochets avant publication.</em></p>
+
 <!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
@@ -671,4 +684,19 @@ if(si){
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
 }
 </script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
+<script>
+(() => {
+  const count = document.querySelector('[data-protection-count]');
+  if (!count) return;
+  let previous = Number(count.textContent);
+  window.setInterval(() => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * (256 - 25 + 1)) + 25;
+    } while (next === previous);
+    previous = next;
+    count.textContent = String(next);
+  }, 5000);
+})();
+</script>
 </body></html>
