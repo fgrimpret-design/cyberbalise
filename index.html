@@ -98,7 +98,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .sresults a:hover{background:var(--bg)}
 .audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:18px;gap:4px;flex-wrap:wrap;max-width:100%}
 .audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
-.audience-toggle button.on{background:var(--orange);color:#fff}
+.audience-toggle button.on{background:#49C995;color:#123B39}
 
 /* bandeau promo défilant */
 .marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
@@ -109,7 +109,8 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 /* sections home */
 .hsec{padding:24px 0}
 .guides-section{padding-top:16px}
-.protection-cta-wrap{display:flex;justify-content:center;margin:0 0 18px}
+.protection-cta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 0 18px}
+.protection-cta-label{margin:0 0 8px;color:#111;font-size:.9rem;font-weight:700;text-align:center}
 .protection-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 20px;border-radius:999px;background:var(--orange);color:#fff;font-family:var(--disp);font-size:.95rem;font-weight:800;text-decoration:none;box-shadow:0 6px 16px rgba(196,60,25,.2);transition:background .15s,transform .15s,box-shadow .15s}
 .protection-cta:hover{background:var(--orange-d);color:#fff;transform:translateY(-2px);box-shadow:0 9px 20px rgba(196,60,25,.26)}
 .protection-cta span{font-size:1.15em;line-height:1}
@@ -177,11 +178,13 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .aff-note{font-size:.72rem;color:var(--muted);margin:0}
 
 /* CTA final */
-.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:32px 28px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:center}
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:32px 28px;display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:center}
 .cta-band h2{margin:8px 0 6px;color:#fff}
 .cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
 .cta-band .btn{justify-self:center;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
 .cta-band .btn:hover{background:var(--orange-d)}
+.cta-band-market{grid-column:2;grid-row:1 / span 2;align-self:center;width:100%;max-width:180px}
+.cta-band-market svg{display:block;width:100%;height:auto}
 
 /* detector feature */
 .fraud-promo-section{padding-top:0}
@@ -276,6 +279,8 @@ tbody tr:hover{background:#F6F8FA}
   .hsec{padding:18px 0}
   .protection-cta-wrap{margin-bottom:16px}
   .protection-cta{padding:10px 18px;font-size:.9rem}
+  .cta-band{display:flex;flex-direction:column;align-items:stretch}
+  .cta-band-market,.cta-band .btn{align-self:center}
   .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
   .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
   .logo svg{width:24px;height:24px;margin-top:0}
@@ -301,6 +306,7 @@ tbody tr:hover{background:#F6F8FA}
   .slider-side[data-dir='1']{right:-8px}
   .acard img.thumb{height:96px}
   .cta-band{padding:22px 18px;gap:16px}
+  .cta-band-market{grid-column:1;grid-row:auto;justify-self:center;width:128px}
   .fraud-promo{grid-template-columns:44px minmax(0,1fr);gap:12px;padding:16px}
   .fraud-promo-icon{width:44px;height:44px;border-radius:12px;align-self:start}
   .fraud-promo-icon svg{width:32px;height:32px}
@@ -326,7 +332,7 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
   .protection-proof-dot{animation:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css">
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261007">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
@@ -346,7 +352,7 @@ tbody tr:hover{background:#F6F8FA}
     </div>
   </section>
   <section class="hsec guides-section">
-    <div class="wrap"><div class="protection-cta-wrap"><a class="protection-cta" href="/offres/">Trouver ma protection <span aria-hidden="true">→</span></a></div><div class="hsec-head"><div><span class="kicker">Explorer</span><h2>Tous vos guides</h2></div></div>
+    <div class="wrap"><div class="protection-cta-wrap"><p class="protection-cta-label">VPN, antivirus, mot de passe, cloud...</p><a class="protection-cta" href="/offres/">Trouver ma protection <span aria-hidden="true">→</span></a></div><div class="hsec-head"><div><span class="kicker">Explorer</span><h2>Tous vos guides</h2></div></div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Précédent">‹</button><div class="slider" data-audience-filter="guides">
         <a class="acard ccard" data-audience="Particuliers" data-default="true" href="/particuliers/menaces/phishing-hameconnage/"><span class="cat">PARTICULIERS · GUIDE</span><h3>Phishing et hameçonnage</h3><div class="guide-excerpt"><p>Les signaux qui ne trompent plus en 2026 — et les trois drapeaux rouges universels.</p><img src="/assets/img/phishing-card.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
         <a class="acard ccard" data-audience="Particuliers" href="/particuliers/victime/"><span class="cat">PARTICULIERS · FICHES RÉFLEXES</span><h3>J’ai été victime : que faire ?</h3><div class="guide-excerpt"><p>Compte piraté, carte débitée, rançongiciel, chantage : les bons réflexes pas à pas.</p><img src="/assets/img/guide-victime.jpg" width="320" height="320" loading="lazy" decoding="async" alt=""></div><span class="cmore">Lire le guide →</span></a>
@@ -369,7 +375,7 @@ tbody tr:hover{background:#F6F8FA}
       </div><button class="slider-side" type="button" data-dir="1" aria-label="Suivant">›</button></div><div class="slider-dots"></div>
     </div>
   </section>
-  <section class="hsec"><div class="wrap"><div class="cta-band"><div><div class="kicker" style="color:#F5A085">Comparer avant de payer</div><h2>Des choix plus clairs pour votre sécurité.</h2><p>VPN, antivirus, gestionnaires de mots de passe : notre méthode de sélection, les limites de chacun, et les prix de renouvellement qu’on ne vous montre pas toujours.</p></div><a class="btn" href="/offres/">Voir les comparatifs</a></div></div></section>
+  <section class="hsec"><div class="wrap"><div class="cta-band"><div><div class="kicker" style="color:#F5A085">Comparer avant de payer</div><h2>Des choix plus clairs pour votre sécurité.</h2><p>VPN, antivirus, gestionnaires de mots de passe : notre méthode de sélection, les limites de chacun, et les prix de renouvellement qu’on ne vous montre pas toujours.</p></div><div class="cta-band-market" aria-hidden="true"><svg viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="204" height="144" rx="22" fill="#EAF2F6"/><path d="M55 66h93v68H55z" fill="#fff" stroke="#C7D7E2" stroke-width="3"/><path d="M48 64 60 34h83l13 30H48Z" fill="#EF6947"/><path d="m60 34-5 30h21l5-30H60Zm42 0v30h21l-3-30h-18Zm21 0 3 30h21l-12-30h-12Z" fill="#fff"/><path d="M93 95h19v39H93z" fill="#DCE8EE"/><path d="M66 78h16v17H66zM122 78h16v17h-16z" fill="#B9D7E3"/><rect x="137" y="83" width="61" height="45" rx="12" fill="#16344E"/><path d="M153 96h29l-4 20h-21l-4-20Zm7 0a7 7 0 0 1 14 0" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="159" cy="121" r="3" fill="#EF6947"/><circle cx="176" cy="121" r="3" fill="#EF6947"/><circle cx="177" cy="42" r="19" fill="#49C995"/><path d="m168 42 6 6 12-13" stroke="#123B39" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><a class="btn" href="/offres/">Voir les comparatifs</a></div></div></section>
   <section class="hsec fraud-promo-section">
     <div class="wrap"><a class="fraud-promo" href="/outils/detecteur-arnaque/">
       <span class="fraud-promo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 3.5 41 10v11.2c0 10.7-6.8 18.8-17 23.3C13.8 40 7 31.9 7 21.2V10l17-6.5Z" fill="currentColor"/><circle cx="22" cy="21" r="9" fill="#132232"/><path d="m28.5 27.5 8 8" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><path d="M22 16.5v5.8" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/><circle cx="22" cy="26.1" r="1.5" fill="#fff"/></svg></span>

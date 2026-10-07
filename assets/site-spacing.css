@@ -374,22 +374,21 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 }
 
 .pagehead:has(> .pagehead-photo) > .wrap {
-  padding-right: clamp(270px, 30vw, 350px);
+  padding-right: clamp(210px, 24vw, 250px);
 }
 
 .pagehead-photo {
   position: absolute;
-  top: 50%;
+  top: 100px;
   right: max(24px, calc((100vw - 1180px) / 2 + 24px));
-  width: clamp(220px, 25vw, 310px);
+  width: clamp(160px, 16vw, 200px);
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
-  transform: translateY(-50%);
   border: 1px solid rgba(255, 255, 255, .2);
-  border-radius: 18px;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, .24);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
 }
 
 @media (max-width: 760px) {
@@ -412,5 +411,35 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 
   .pagehead-photo {
     width: 88px;
+  }
+}
+
+.grid.cards-2 .rubric-card {
+  position: relative;
+  min-height: 112px;
+  padding-right: 102px;
+}
+
+.grid.cards-2 .rubric-thumb {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+@media (max-width: 600px) {
+  .grid.cards-2 .rubric-card {
+    min-height: 104px;
+    padding-right: 92px;
+  }
+
+  .grid.cards-2 .rubric-thumb {
+    top: 14px;
+    right: 14px;
+    width: 64px;
+    height: 64px;
   }
 }
