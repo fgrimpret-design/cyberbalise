@@ -539,6 +539,27 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   font-size: 1.5rem;
   flex: none;
   margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flame-icon {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  animation: flame-pulse 2s ease-in-out infinite;
+}
+
+@keyframes flame-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  }
 }
 
 .urgency-content strong {
