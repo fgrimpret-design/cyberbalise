@@ -49,7 +49,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item{position:relative}
 .nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
 .nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
-.nav-item>a::after{content:"â–¾";font-size:.7em;color:var(--muted)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
 .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
 .dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
@@ -278,7 +278,7 @@ tbody tr:hover{background:#F6F8FA}
 <!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
 </header>
 <main><div class="pagehead"><div class="wrap">
-<div class="crumbs"><a href="/">Accueil</a> "º <a href="/outils/">Outils interactifs</a></div>
+<div class="crumbs"><a href="/">Accueil</a> › <a href="/outils/">Outils interactifs</a></div>
 <div class="kicker" style="color:#F5A085;margin-top:18px">Outil interactif</div>
 <h1>Vérificateur de mot de passe</h1><p class="lead">Estimez la robustesse d'un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise.</p>
 <div class="meta"><span class="chip both">Les deux</span> <span class="date">Mise à jour : Octobre 2026</span></div>
@@ -383,10 +383,10 @@ tbody tr:hover{background:#F6F8FA}
 <div class="pw" id="pw">
   <h2 id="tester" style="border:0;padding:0;margin:0 0 4px">Testez un mot de passe</h2>
   <div class="pw-field">
-    <input id="pw-in" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Tapez un mot de passe"¦" aria-label="Mot de passe à tester">
+    <input id="pw-in" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Tapez un mot de passe…" aria-label="Mot de passe à tester">
     <button class="pw-eye" id="pw-eye" type="button">Afficher</button>
   </div>
-  <p class="pw-lock">ðŸ”’ Analyse locale : aucune donnée ne quitte votre appareil.</p>
+  <p class="pw-lock">🔒 Analyse locale : aucune donnée ne quitte votre appareil.</p>
 
   <div class="pw-meter" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
   <div class="pw-verdict"><strong id="pw-level">En attente</strong><span id="pw-len">0 caractère</span></div>
@@ -397,7 +397,7 @@ tbody tr:hover{background:#F6F8FA}
     <div class="pw-stat"><b id="pw-type">—</b><small>Type détecté</small></div>
   </div>
 
-  <div class="pw-cnil" aria-hidden="true"><i id="pw-cnil-bar"></i><b style="left:66.6%"></b><em style="left:66.6%">80 bits Â· CNIL</em></div>
+  <div class="pw-cnil" aria-hidden="true"><i id="pw-cnil-bar"></i><b style="left:66.6%"></b><em style="left:66.6%">80 bits · CNIL</em></div>
   <p class="pw-cnil-l" id="pw-cnil-txt">La CNIL recommande au moins 80 bits d'entropie pour un compte protégé par un simple mot de passe.</p>
 
   <h3 style="margin-bottom:10px">Ce que nous avons vérifié</h3>
@@ -420,7 +420,7 @@ tbody tr:hover{background:#F6F8FA}
 <h2 id="comment-ca-marche">Comment fonctionne ce vérificateur</h2>
 <ul>
   <li><strong>Entropie.</strong> Nous estimons le nombre de combinaisons qu'un attaquant devrait essayer, à partir de la longueur et des familles de caractères utilisées (minuscules, majuscules, chiffres, symboles), ou du nombre de mots pour une phrase de passe.</li>
-  <li><strong>Pénalités.</strong> L'estimation est fortement réduite pour ce que les logiciels d'attaque testent en premier : mots de passe très répandus, suites (Â« 1234 Â», Â« abcd Â»), rangées de clavier (Â« azerty Â»), répétitions, années et dates.</li>
+  <li><strong>Pénalités.</strong> L'estimation est fortement réduite pour ce que les logiciels d'attaque testent en premier : mots de passe très répandus, suites (« 1234 », « abcd »), rangées de clavier (« azerty »), répétitions, années et dates.</li>
   <li><strong>Temps estimé.</strong> Il s'agit d'un ordre de grandeur, calculé pour une attaque hors ligne très puissante (10 milliards d'essais par seconde, hypothèse prudente). Un site qui limite les tentatives est beaucoup plus difficile à attaquer, mais un mot de passe volé lors d'une fuite peut être testé à cette vitesse.</li>
   <li><strong>Ce que l'outil ne sait pas.</strong> Il ne peut pas savoir si ce mot de passe a déjà fuité, ni si vous l'utilisez ailleurs. Un mot de passe robuste mais réutilisé reste dangereux.</li>
 </ul>
@@ -505,7 +505,7 @@ tbody tr:hover{background:#F6F8FA}
     var fam = [lower,upper,digit,sym].filter(Boolean).length;
     r.checks.push({ok: fam >= 3 || r.type.indexOf('Phrase')===0, t: 'Familles de caractères : ' + fam + ' sur 4' + (r.type.indexOf('Phrase')===0 ? ' (sans importance pour une phrase de passe longue)' : '')});
     r.checks.push({ok: !isCommon, t: isCommon ? 'Mot de passe très répandu' : 'Absent de notre liste des mots de passe les plus courants'});
-    r.checks.push({ok: !seq, t: seq ? 'Contient une suite ou une rangée de clavier (1234, azer"¦)' : 'Pas de suite évidente (1234, azerty"¦)'});
+    r.checks.push({ok: !seq, t: seq ? 'Contient une suite ou une rangée de clavier (1234, azer…)' : 'Pas de suite évidente (1234, azerty…)'});
     r.checks.push({ok: !rep, t: rep ? 'Contient un caractère répété plusieurs fois' : 'Pas de répétition de caractères'});
     r.checks.push({ok: !(year||date), t: (year||date) ? 'Contient une année ou une date : facile à deviner si elle vous concerne' : 'Pas d\'année ni de date apparente'});
     r.bits = bits;
@@ -560,7 +560,7 @@ tbody tr:hover{background:#F6F8FA}
 <!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
-  <ul><li><a href="/a-propos/">Ã€ propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
 </div></footer>
 
 <script>
