@@ -521,12 +521,14 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .urgency-banner {
   background: linear-gradient(135deg, #F5D547 0%, #D4A420 100%);
   color: #0D2E4A;
-  padding: 32px 20px 40px;
-  margin: -40px 0 -40px 0;
+  padding: 32px 20px;
+  margin: -50px 0 0 0;
   border-radius: 0;
   box-shadow: none;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10;
 }
 
 .urgency-content {
@@ -781,7 +783,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 
 .vpn-comparator-section {
   background: linear-gradient(135deg, #0D2E4A 0%, #1B4A6B 100%);
-  padding: 0 0 60px 0;
+  padding: 60px 0 60px 0;
   margin: 0;
   border-top: none;
   border-bottom: 3px solid #F5A085;
@@ -791,6 +793,34 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   text-align: center;
   margin-bottom: 48px;
   padding-top: 0;
+}
+
+.exclusive-offer-banner {
+  background: linear-gradient(90deg, #FFD700 0%, #FFC700 50%, #FFD700 100%);
+  padding: 12px 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.exclusive-offer-text {
+  font-family: var(--disp);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #132232;
+  white-space: nowrap;
+  animation: scroll-text 20s linear infinite;
+  display: inline-block;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .comparator-header h2 {
@@ -825,7 +855,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   background: #FFFFFF;
   border: 2px solid #0D2E4A;
   border-radius: 16px;
-  padding: 40px 32px;
+  padding: 16px 14px;
   text-decoration: none;
   color: inherit;
   transition: all .3s ease;
@@ -834,7 +864,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  min-height: 420px;
+  min-height: 300px;
   box-shadow: 0 4px 12px rgba(13, 46, 74, .08);
 }
 
@@ -871,7 +901,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 2px;
 }
 
 .vpn-card-logo {
@@ -880,25 +910,15 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 }
 
 .vpn-rank {
-  display: inline-block;
-  background: #F5A085;
-  color: #0D2E4A;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
+  display: none;
 }
 
 .vpn-card h3 {
-  margin: 16px 0 12px 0;
-  font-size: 1.35rem;
+  margin: 0 0 2px 0;
+  font-size: 1.15rem;
   color: #0D2E4A;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.1;
 }
   color: #fff;
   line-height: 1.2;
@@ -906,26 +926,48 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 
 .vpn-users,
 .vpn-feature {
-  margin: 0 0 12px 0;
-  font-size: .9rem;
+  margin: 0 0 2px 0;
+  font-size: .8rem;
   color: #B9C9D6;
-  min-height: 20px;
+  min-height: 16px;
 }
 
 .vpn-price {
-  margin: 20px 0;
-  font-size: 1.8rem;
+  margin: 4px 0;
+  font-size: 1.6rem;
   color: #E4572E;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
 
+.vpn-features {
+  margin: 4px 0 8px 0;
+  padding: 6px 0;
+  list-style: none;
+  border-top: 1px solid #E8EBF0;
+  border-bottom: 1px solid #E8EBF0;
+}
+
+.vpn-features li {
+  margin: 1px 0;
+  font-size: .75rem;
+  color: #4B5D6F;
+  line-height: 1.2;
+}
+
+.vpn-features li::before {
+  content: '✓ ';
+  color: #E4572E;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
 .vpn-card-cta {
   margin-top: auto;
-  padding: 18px 32px;
+  padding: 10px 16px;
   background: linear-gradient(135deg, #E4572E 0%, #C7451F 100%);
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 700;
   border-radius: 8px;
   text-align: center;
@@ -934,7 +976,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   box-shadow: 0 8px 20px rgba(228, 87, 46, .3);
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.8px;
   text-decoration: none;
 }
 
@@ -943,6 +985,147 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   transform: scale(1.08);
   box-shadow: 0 12px 28px rgba(228, 87, 46, .4);
 }
+
+/* ========== Best Sellers Section ========== */
+
+.best-sellers-section {
+  background: var(--bg);
+  padding: 60px 0;
+}
+
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.best-seller-card {
+  background: #FFFFFF;
+  border: 2px solid #0D2E4A;
+  border-radius: 16px;
+  padding: 12px 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: all .3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 280px;
+  box-shadow: 0 4px 12px rgba(13, 46, 74, .08);
+}
+
+.best-seller-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(13, 46, 74, .02) 0%, rgba(13, 46, 74, 0) 100%);
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+
+.best-seller-card:hover {
+  background: #F0F4F9;
+  border-color: #0D2E4A;
+  transform: translateY(-12px);
+  box-shadow: 0 16px 32px rgba(13, 46, 74, .18);
+}
+
+.best-seller-card:hover::before {
+  opacity: 1;
+}
+
+.best-seller-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.seller-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1px;
+}
+
+.seller-card-logo {
+  height: 50px;
+  width: auto;
+}
+
+.best-seller-card h3 {
+  margin: 0 0 1px 0;
+  font-size: 1rem;
+  color: #0D2E4A;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.seller-feature {
+  margin: 0 0 1px 0;
+  font-size: .7rem;
+  color: #B9C9D6;
+  min-height: 14px;
+}
+
+.seller-price {
+  margin: 2px 0;
+  font-size: 1.3rem;
+  color: #E4572E;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.seller-features {
+  margin: 2px 0 4px 0;
+  padding: 4px 0;
+  list-style: none;
+  border-top: 1px solid #E8EBF0;
+  border-bottom: 1px solid #E8EBF0;
+}
+
+.seller-features li {
+  margin: 0.5px 0;
+  font-size: .65rem;
+  color: #4B5D6F;
+  line-height: 1.1;
+}
+
+.seller-features li::before {
+  content: '✓ ';
+  color: #E4572E;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.seller-card-cta {
+  margin-top: auto;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #E4572E 0%, #C7451F 100%);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-align: center;
+  display: block;
+  transition: all .3s ease;
+  box-shadow: 0 8px 20px rgba(228, 87, 46, .3);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+}
+
+.best-seller-card:hover .seller-card-cta {
+  background: linear-gradient(135deg, #C7451F 0%, #A83718 100%);
+  transform: scale(1.08);
+  box-shadow: 0 12px 28px rgba(228, 87, 46, .4);
+}
+
 
 @media (max-width: 760px) {
   .vpn-comparator-section {

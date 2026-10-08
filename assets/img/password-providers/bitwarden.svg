@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bitwarden Blue Background -->
+  <rect width="200" height="200" fill="#175DFC" rx="20"/>
+  
+  <!-- Shield shape (Bitwarden logo) -->
+  <path d="M 100 40 L 155 70 L 155 115 Q 155 150 100 170 Q 45 150 45 115 L 45 70 Z" fill="white" stroke="white" stroke-width="2"/>
+  
+  <!-- Lock icon inside shield -->
+  <g transform="translate(100, 110)">
+    <!-- Lock body -->
+    <rect x="-20" y="-5" width="40" height="35" fill="#175DFC" rx="4"/>
+    <!-- Lock shackle -->
+    <path d="M -15 -5 Q -15 -25 0 -25 Q 15 -25 15 -5" fill="none" stroke="#175DFC" stroke-width="4" stroke-linecap="round"/>
+    <!-- Lock keyhole -->
+    <circle cx="0" cy="10" r="4" fill="#175DFC"/>
+  </g>
+</svg>
