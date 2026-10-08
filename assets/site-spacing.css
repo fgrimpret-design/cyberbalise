@@ -1098,7 +1098,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .seller-price {
   margin: 2px 0;
   font-size: 1.3rem;
-  color: #2E7D4F;
+  color: #2E7D4F !important;
   font-weight: 800;
   letter-spacing: -0.5px;
   overflow-wrap: break-word;
