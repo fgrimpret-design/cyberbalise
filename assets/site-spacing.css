@@ -1091,7 +1091,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .seller-feature {
   margin: 0 0 1px 0;
   font-size: .7rem;
-  color: #8FA3B3;
+  color: #6B7F91;
   min-height: 14px;
 }
 
@@ -1151,6 +1151,43 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   background: linear-gradient(135deg, #C7451F 0%, #A83718 100%);
   transform: scale(1.08);
   box-shadow: 0 12px 28px rgba(228, 87, 46, .4);
+}
+
+@media (max-width: 480px) {
+  .best-seller-card {
+    padding: 10px 8px;
+    min-height: auto;
+  }
+
+  .best-seller-card h3 {
+    font-size: 0.9rem;
+    margin: 0 0 0.5px 0;
+  }
+
+  .seller-feature {
+    font-size: 0.6rem;
+    margin: 0 0 0.5px 0;
+  }
+
+  .seller-price {
+    font-size: 1rem;
+    margin: 1px 0;
+  }
+
+  .seller-features {
+    margin: 1px 0 2px 0;
+    padding: 2px 0;
+  }
+
+  .seller-features li {
+    font-size: 0.55rem;
+    margin: 0.25px 0;
+  }
+
+  .seller-card-cta {
+    font-size: 0.6rem;
+    padding: 6px 10px;
+  }
 }
 
 
