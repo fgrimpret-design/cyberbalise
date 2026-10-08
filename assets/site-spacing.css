@@ -989,8 +989,10 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 /* ========== Best Sellers Section ========== */
 
 .best-sellers-section {
-  background: var(--bg);
+  background: #FFFFFF;
   padding: 60px 0;
+  border-top: 3px solid #0F2438;
+  border-bottom: 5px solid #6B7280;
 }
 
 .best-sellers-grid {
@@ -1151,6 +1153,19 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   background: linear-gradient(135deg, #C7451F 0%, #A83718 100%);
   transform: scale(1.08);
   box-shadow: 0 12px 28px rgba(228, 87, 46, .4);
+}
+
+.guides-section {
+  background: var(--bg);
+  padding: 60px 0;
+  border-top: 5px solid #6B7280;
+  border-bottom: 3px solid #0F2438;
+}
+
+.comparisons-section {
+  background: #F6D8CC !important;
+  padding: 60px 0;
+  border-top: 3px solid #0F2438;
 }
 
 @media (max-width: 480px) {
