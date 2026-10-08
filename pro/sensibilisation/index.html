@@ -25,7 +25,7 @@ code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35
 
 /* pastilles audience */
 .chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
-.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip::before{content:";width:.55em;height:.55em;border-radius:50%}
 .chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
 .chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
 .chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
@@ -52,7 +52,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item>a::after{content:"â–¾";font-size:.7em;color:var(--muted)}
 .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
-.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dropdown::before{content:";position:absolute;left:0;right:0;top:-12px;height:12px}
 .nav-item.open>a{background:var(--bg);color:var(--orange-d)}
 .dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
 .dropdown a:hover{background:var(--bg);color:var(--orange-d)}
@@ -77,7 +77,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 
 /* hero home */
 .hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero::after{content:";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
 .hero .kicker{color:#F5A085}
 .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
@@ -190,7 +190,7 @@ article.page h2:first-of-type{border-top:0;padding-top:0}
 .steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
 .steps li:last-child{padding-bottom:.2em}
 .steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
-.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps li::after{content:";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
 .steps h3{font-size:1.08rem;margin:0 0 .35em}
 .steps p{margin:0;color:#33475A}
 .warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
@@ -282,7 +282,7 @@ tbody tr:hover{background:#F6F8FA}
 <div class="kicker" style="color:#F5A085;margin-top:18px">Rubrique</div>
 <h1>Sensibiliser mes équipes</h1><p class="lead">Le facteur humain est la cible préférée des attaquants : cette rubrique explique comment former vos collaborateurs, tester leurs réflexes, fixer des règles claires et montrer l"™exemple en tant que dirigeant.</p>
 <div class="meta"><span class="chip pro">Pros</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-pro-sensibilisation.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
+</div><img class="pagehead-photo" src="/assets/img/editorial-pro-sensibilisation.jpg" width="640" height="480" loading="eager" decoding="async" alt=" aria-hidden="true"></div>
   <section class="hsec best-sellers-section">
     <div class="wrap">
       <div class="hsec-head">
@@ -458,7 +458,7 @@ tbody tr:hover{background:#F6F8FA}
 <li>ANSSI "” Â« Le MOOC SecNumacadémie en cours d"™évolution Â» (extrait de résultat de recherche) "” indisponibilité à partir du 28 février 2026 pour refonte : https://cyber.sites.beta.gouv.fr/actualites/le-mooc-secnumacad%C3%A9mie-en-cours-d%C3%A9volution/</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Dans cette rubrique</h2><div class="grid cards-2"><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/former-ses-equipes/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-former-ses-equipes.jpg" width="320" height="240" loading="lazy" decoding="async" alt="" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Former ses équipes</h3><p>Formats (ateliers, e-learning), fréquence, budget réaliste.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/phishing-simule/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-phishing-simule.jpg" width="320" height="240" loading="lazy" decoding="async" alt="" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Campagnes de phishing simulé</h3><p>Bien les faire : sans blâme, avec pédagogie, indicateurs utiles.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/charte-informatique/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-charte-informatique.jpg" width="320" height="240" loading="lazy" decoding="async" alt="" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Charte informatique</h3><p>Modèle simple à adapter, règles acceptées par tous.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-role-du-dirigeant.jpg" width="320" height="240" loading="lazy" decoding="async" alt="" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Le rôle du dirigeant</h3><p>Pourquoi la sécurité est une décision de direction, pas d&#x27;informatique.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Dans cette rubrique</h2><div class="grid cards-2"><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/former-ses-equipes/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-former-ses-equipes.jpg" width="320" height="240" loading="lazy" decoding="async" alt=" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Former ses équipes</h3><p>Formats (ateliers, e-learning), fréquence, budget réaliste.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/phishing-simule/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-phishing-simule.jpg" width="320" height="240" loading="lazy" decoding="async" alt=" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Campagnes de phishing simulé</h3><p>Bien les faire : sans blâme, avec pédagogie, indicateurs utiles.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/charte-informatique/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-charte-informatique.jpg" width="320" height="240" loading="lazy" decoding="async" alt=" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Charte informatique</h3><p>Modèle simple à adapter, règles acceptées par tous.</p></a><a class="acard rubric-card" data-audience="Professionnels" href="/pro/sensibilisation/role-du-dirigeant/"><img class="rubric-thumb" src="/assets/img/editorial-pro-sensibilisation-role-du-dirigeant.jpg" width="320" height="240" loading="lazy" decoding="async" alt=" aria-hidden="true"><div class="cat"><span>guide</span><span class="chip pro">Pros</span></div><h3>Le rôle du dirigeant</h3><p>Pourquoi la sécurité est une décision de direction, pas d&#x27;informatique.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">Ã€ propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>

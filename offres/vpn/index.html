@@ -32,7 +32,7 @@ code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35
 
 /* pastilles audience */
 .chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
-.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip::before{content:";width:.55em;height:.55em;border-radius:50%}
 .chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
 .chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
 .chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
@@ -61,7 +61,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item>a::after{content:"â–¾";font-size:.7em;color:var(--muted)}
 .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
-.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dropdown::before{content:";position:absolute;left:0;right:0;top:-12px;height:12px}
 .nav-item.open>a{background:var(--bg);color:var(--orange-d)}
 .dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
 .dropdown a:hover{background:var(--bg);color:var(--orange-d)}
@@ -86,7 +86,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 
 /* hero home */
 .hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero::after{content:";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
 .hero .kicker{color:#F5A085}
 .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
@@ -208,7 +208,7 @@ article.page .see-also{margin-top:1.5em;padding-top:1em}
 .steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
 .steps li:last-child{padding-bottom:.2em}
 .steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
-.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps li::after{content:";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
 .steps h3{font-size:1.08rem;margin:0 0 .35em}
 .steps p{margin:0;color:#33475A}
 .warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
@@ -454,41 +454,41 @@ tbody tr:hover{background:#F6F8FA}
 </ul>
 <h2 id="les-7-fournisseurs-en-detail">Les 7 fournisseurs en détail</h2>
 <p>Chaque fiche suit le même plan : ce que l'éditeur met en avant, les points à vérifier, puis un emplacement CTA.</p>
-<h3 class="provider-heading" id="1-nordvpn"><img class="provider-logo" src="/assets/img/vpn-providers/nordvpn.svg" width="36" height="36" alt="">1. NordVPN</h3>
+<h3 class="provider-heading" id="1-nordvpn"><img class="provider-logo" src="/assets/img/vpn-providers/nordvpn.svg" width="36" height="36" alt=">1. NordVPN</h3>
 <span class="vpn-badge bestseller">â˜… Bestseller "” Plus de 16 millions d'utilisateurs</span>
 <p>L'éditeur met en avant un chiffrement, la protection contre les logiciels malveillants, un gestionnaire de mots de passe et un cloud chiffré, avec la connexion de 10 appareils. Sa grille s'organise en trois paliers "” Basique, Premium et Ultra "” sur 12 ou 27 mois, avec des prix de lancement nettement inférieurs aux prix de renouvellement : la page officielle distingue explicitement le prix promotionnel du tarif de reconduction.</p>
 <p class="price-note"><strong>Ã€ partir de 3,49 â‚¬/mois</strong> avec la formule Basique sur 24 mois, plus 3 mois offerts (94,23 â‚¬ pour les 27 premiers mois). Renouvellement annoncé à 139,08 â‚¬/an.</p>
 <p><div class="provider-cta-section"><span class="price-highlight">-65% cette semaine</span> <a class="provider-cta" href="#">Protégez-vous maintenant â†’</a></div></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="2-surfshark"><img class="provider-logo" src="/assets/img/vpn-providers/surfshark.svg" width="36" height="36" alt="">2. Surfshark</h3>
+<h3 class="provider-heading" id="2-surfshark"><img class="provider-logo" src="/assets/img/vpn-providers/surfshark.svg" width="36" height="36" alt=">2. Surfshark</h3>
 <span class="vpn-badge bestseller">â˜… Bestseller "” Connexions illimitées</span>
 <p>Argument central : les connexions simultanées illimitées "” un seul abonnement pour tout le foyer. La page tarifs cite un réseau de plus de 4 500 serveurs dans 100 pays, une politique de non-journalisation présentée comme certifiée, une garantie de remboursement de 30 jours et une technologie maison (Nexus) permettant un double saut dynamique ou la rotation d'adresse IP. L'éditeur revendique plus de 40 millions de téléchargements et une trentaine de récompenses.</p>
 <p class="price-note"><strong>Ã€ partir de 2,49 â‚¬/mois</strong> avec l'offre VPN sur 24 mois, plus 3 mois offerts (67,23 â‚¬ pour les 27 premiers mois ; TVA éventuelle en supplément).</p>
 <p><div class="provider-cta-section"><span class="vpn-badge guaranteed">âœ“ Garantie 30 jours</span> <a class="provider-cta" href="#">Essayer gratuitement â†’</a></div></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="3-expressvpn"><img class="provider-logo" src="/assets/img/vpn-providers/expressvpn.svg" width="36" height="36" alt="">3. ExpressVPN</h3>
+<h3 class="provider-heading" id="3-expressvpn"><img class="provider-logo" src="/assets/img/vpn-providers/expressvpn.svg" width="36" height="36" alt=">3. ExpressVPN</h3>
 <span class="vpn-badge bestseller">â˜… Bestseller "” Performance premium</span>
 <p>Positionnement premium assumé. L'éditeur déclare des milliers de serveurs dans 113 pays, des applications pour Windows, macOS, Android, iOS, Linux, routeurs et consoles, et une politique de confidentialité présentée comme transparente, avec l'indication de ne conserver ni journaux d'activité ni journaux de connexion. La société se présente comme fondée en 2009 et basée aux îles Vierges britanniques.</p>
 <p class="price-note"><strong>Ã€ partir de 2,49 â‚¬/mois</strong> avec la formule Basic sur 24 mois, plus 4 mois offerts (69,72 â‚¬ pour les 28 premiers mois). Renouvellement annoncé à 79,95 â‚¬/an.</p>
 <p><div class="provider-cta-section"><span class="vpn-badge guaranteed">âœ“ Garantie 30 jours</span> <a class="provider-cta" href="#">Débuter maintenant â†’</a></div></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="4-proton-vpn"><img class="provider-logo" src="/assets/img/vpn-providers/protonvpn.svg" width="36" height="36" alt="">4. Proton VPN</h3>
+<h3 class="provider-heading" id="4-proton-vpn"><img class="provider-logo" src="/assets/img/vpn-providers/protonvpn.svg" width="36" height="36" alt=">4. Proton VPN</h3>
 <p>L'éditeur suisse se distingue sur trois points qu'il met lui-même en avant dans son tableau comparatif : un client open source, un audit d'absence de journaux publié et accessible à tous, et un bloqueur de publicités et de logiciels malveillants intégré (VPN Plus). L'offre gratuite existe, avec un appareil à la fois, une vitesse moyenne et un choix de pays limité ; la formule payante annonce la connexion de 10 appareils simultanés.</p>
 <p class="price-note"><strong>Ã€ partir de 3,49 â‚¬/mois</strong> avec VPN Plus sur 24 mois (83,76 â‚¬ pour les 24 premiers mois). Renouvellement annoncé à 83,88 â‚¬/an.</p>
 <p>Ã€ vérifier : le périmètre exact du réseau selon la source citée, et les différences entre Proton VPN Plus et l'abonnement Proton Unlimited qui inclut les autres produits de l'éditeur.</p>
 <p><span class="provider-cta">Découvrir l'offre Proton VPN â†’</span></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="5-cyberghost"><img class="provider-logo" src="/assets/img/vpn-providers/cyberghost.png" width="36" height="36" alt="">5. CyberGhost</h3>
+<h3 class="provider-heading" id="5-cyberghost"><img class="provider-logo" src="/assets/img/vpn-providers/cyberghost.png" width="36" height="36" alt=">5. CyberGhost</h3>
 <p>Ã‰diteur fondé en 2011 à Bucarest, il met en avant une base installée de plus de 38 millions d'utilisateurs et une ancienneté qui rassure les lecteurs peu familiers des VPN. Son programme d'affiliation est l'un des plus généreux en surface (jusqu'à 100 % de commission), avec des paiements mis en avant comme rapides.</p>
 <p>Ã€ vérifier : l'audit d'absence de journaux est annoncé comme réalisé par Deloitte mais n'est pas accessible publiquement "” les utilisateurs doivent en faire la demande. La juridiction annoncée est la Roumanie, au sein du groupe Kape.</p>
 <p><span class="provider-cta">Découvrir l'offre CyberGhost â†’</span></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="6-private-internet-access-pia"><img class="provider-logo" src="/assets/img/vpn-providers/privateinternetaccess.svg" width="36" height="36" alt="">6. Private Internet Access (PIA)</h3>
+<h3 class="provider-heading" id="6-private-internet-access-pia"><img class="provider-logo" src="/assets/img/vpn-providers/privateinternetaccess.svg" width="36" height="36" alt=">6. Private Internet Access (PIA)</h3>
 <p>Deux arguments forts pour un public averti : un client 100 % open source et une politique d'absence de journaux appuyée sur des serveurs à mémoire vive (RAM-only), effacés à chaque redémarrage. L'éditeur annonce des serveurs dans 91 pays, un nombre illimité d'appareils, des modules complémentaires (antivirus, IP dédiée) et une assistance 24h/24.</p>
 <p class="price-note"><strong>Ã€ partir de 1,79 â‚¬/mois</strong> avec l'offre sur 3 ans, plus 3 mois offerts. Renouvellement annoncé à 70 â‚¬ tous les 3 ans.</p>
 <p><span class="provider-cta">Découvrir l'offre PIA â†’</span></p>
 <p class="affiliate-note">Lien affilié "” commission possible pour l'éditeur du site, sans surcoût pour vous.</p>
-<h3 class="provider-heading" id="7-purevpn"><img class="provider-logo" src="/assets/img/vpn-providers/purevpn.png" width="36" height="36" alt="">7. PureVPN</h3>
+<h3 class="provider-heading" id="7-purevpn"><img class="provider-logo" src="/assets/img/vpn-providers/purevpn.png" width="36" height="36" alt=">7. PureVPN</h3>
 <p>Son intérêt principal ici est commercial : son programme affiche l'une des structures les plus agressives du marché (100 % sur la formule mensuelle, 40 % sur les autres formules, plus 35 % de récurrence à vie) et un cookie de 90 jours, le plus long du panel.</p>
 <p class="price-note"><strong>Ã€ partir de 2,15 $ US/mois</strong>, selon le tarif d'appel annoncé par PureVPN ; le montant varie selon l'offre et la devise.</p>
 <p><span class="provider-cta">Découvrir l'offre PureVPN â†’</span></p>
