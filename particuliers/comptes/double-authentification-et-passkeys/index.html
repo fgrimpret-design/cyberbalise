@@ -1,7 +1,7 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Double authentification (2FA) et passkeys — CyberBalise</title><meta name="description" content="Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes…">
+﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Double authentification (2FA) et passkeys â€” CyberBalise</title><meta name="description" content="Code par SMS, application dâ€™authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptesâ€¦">
 <link rel="canonical" href="https://cyberbalise.fr/particuliers/comptes/double-authentification-et-passkeys/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
-<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Double authentification (2FA) et passkeys"><meta property="og:description" content="Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes…"><meta property="og:url" content="https://cyberbalise.fr/particuliers/comptes/double-authentification-et-passkeys/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Double authentification (2FA) et passkeys"><meta property="og:description" content="Code par SMS, application dâ€™authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptesâ€¦"><meta property="og:url" content="https://cyberbalise.fr/particuliers/comptes/double-authentification-et-passkeys/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <style>
 :root{
@@ -49,7 +49,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item{position:relative}
 .nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
 .nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
-.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.nav-item>a::after{content:"â–¾";font-size:.7em;color:var(--muted)}
 .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
 .dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
@@ -278,45 +278,101 @@ tbody tr:hover{background:#F6F8FA}
 <!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/formations/">Comparatif formations cyber pour équipes</a><a href="/offres/cyber-assurance/">Comparatif cyber-assurance</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
 </header>
 <main><div class="pagehead"><div class="wrap">
-<div class="crumbs"><a href="/">Accueil</a> › <a href="/particuliers/">Particuliers</a> › <a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a></div>
+<div class="crumbs"><a href="/">Accueil</a> â€º <a href="/particuliers/">Particuliers</a> â€º <a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a></div>
 <div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
-<h1>Double authentification (2FA) et passkeys</h1><p class="lead">Code par SMS, application d’authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes importants et comment l’activer sans risquer de vous bloquer.</p>
+<h1>Double authentification (2FA) et passkeys</h1><p class="lead">Code par SMS, application dâ€™authentification, clé physique ou passkey : comprenez simplement ce que chaque méthode protège, laquelle choisir pour vos comptes importants et comment lâ€™activer sans risquer de vous bloquer.</p>
 <div class="meta"><span class="chip part">Particuliers</span> <span class="date">Mise à jour : Octobre 2026</span></div>
 </div><img class="pagehead-photo" src="/assets/img/editorial-particuliers-comptes-double-authentification-et-passkeys.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
-<section class="site-protection-section" aria-label="Trouver ma protection"><div class="wrap"><div class="protection-cta-wrap"><p class="protection-cta-label">VPN, antivirus, mot de passe, cloud...</p><a class="protection-cta" href="/offres/">Trouver ma protection <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><path d="M3 10h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div></section>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d’octobre 2026 · Lecture estimée : 9 minutes ·</p><h2 id="sommaire">Sommaire</h2>
+  <section class="hsec best-sellers-section">
+    <div class="wrap">
+      <div class="hsec-head">
+        <div>
+          <span class="kicker">Les incontournables</span>
+          <h2>Produits les vendus</h2>
+        </div>
+      </div>
+      
+      <div class="best-sellers-grid">
+        <a href="/offres/vpn/" class="best-seller-card">
+          <div class="seller-card-header">
+            <img src="/assets/img/vpn-providers/nordvpn.svg" alt="NordVPN" class="seller-card-logo" style="height: 60px; width: auto;">
+          </div>
+          <h3>NordVPN</h3>
+          <p class="seller-feature">16M+ utilisateurs</p>
+          <p class="seller-price"><strong>3,49 €/mois</strong></p>
+          <ul class="seller-features">
+            <li>Connexions: 10 appareils</li>
+            <li>Garantie 30 jours</li>
+            <li>Serveurs: 7000+</li>
+          </ul>
+          <span class="seller-card-cta">Voir détails →</span>
+        </a>
+
+        <a href="/offres/antivirus/" class="best-seller-card">
+          <div class="seller-card-header">
+            <img src="/assets/img/antivirus-providers/avg.svg" alt="AVG" class="seller-card-logo" style="height: 60px; width: auto;">
+          </div>
+          <h3>AVG Antivirus</h3>
+          <p class="seller-feature">200M+ utilisateurs</p>
+          <p class="seller-price"><strong>39,99 €/an</strong></p>
+          <ul class="seller-features">
+            <li>Tous les appareils</li>
+            <li>Support français</li>
+            <li>Mises à jour quotidiennes</li>
+          </ul>
+          <span class="seller-card-cta">Voir détails →</span>
+        </a>
+
+        <a href="/offres/gestionnaires-mots-de-passe/" class="best-seller-card">
+          <div class="seller-card-header">
+            <img src="/assets/img/password-providers/bitwarden.svg" alt="Bitwarden" class="seller-card-logo" style="height: 60px; width: auto;">
+          </div>
+          <h3>Bitwarden</h3>
+          <p class="seller-feature">Illimité et gratuit</p>
+          <p class="seller-price"><strong>0 € (premium: 10 €/an)</strong></p>
+          <ul class="seller-features">
+            <li>Synchronisation cloud</li>
+            <li>Partage familial</li>
+            <li>Open source</li>
+          </ul>
+          <span class="seller-card-cta">Voir détails →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique â€” édition dâ€™octobre 2026 Â· Lecture estimée : 9 minutes Â·</p><h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
-<li><a href="#lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</a></li>
+<li><a href="#lessentiel-de-quoi-parle-t-on">Lâ€™essentiel : de quoi parle-t-on ?</a></li>
 <li><a href="#comment-fonctionne-la-double-authentification">Comment fonctionne la double authentification</a></li>
 <li><a href="#sms-application-cle-physique-quelle-methode-choisir">SMS, application, clé physique : quelle méthode choisir ?</a></li>
 <li><a href="#les-passkeys-expliquees-simplement">Les passkeys expliquées simplement</a></li>
-<li><a href="#les-reflexes-pour-bien-lactiver">Les réflexes pour bien l’activer</a></li>
+<li><a href="#les-reflexes-pour-bien-lactiver">Les réflexes pour bien lâ€™activer</a></li>
 <li><a href="#que-faire-si-vous-perdez-votre-telephone-ou-votre-cle">Que faire si vous perdez votre téléphone ou votre clé ?</a></li>
 <li><a href="#questions-frequentes">Questions fréquentes</a></li>
 <li><a href="#pour-aller-plus-loin">Pour aller plus loin</a></li>
 <li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
 </ul>
-<h2 id="lessentiel-de-quoi-parle-t-on">L’essentiel : de quoi parle-t-on ?</h2>
-<div class="note"><p><strong>Réponse rapide.</strong> La double authentification (2FA, pour <em>two-factor authentication</em>) ajoute une deuxième vérification à votre mot de passe : un code reçu par SMS, un code généré par une application, une clé physique ou une validation biométrique. Même si un escroc vole votre mot de passe, il ne peut pas entrer sans ce second facteur. Toutes les méthodes ne se valent pas : le SMS vaut mieux que rien, l’application d’authentification est un bon standard, la clé physique et les passkeys résistent le mieux à l’hameçonnage. Activez-la en priorité sur votre messagerie, votre banque et vos réseaux sociaux.</p></div>
-<p>La double authentification est aussi appelée « validation en deux étapes », « vérification en deux étapes » ou, plus largement, authentification multifacteur (MFA, pour <em>multi-factor authentication</em>). Cybermalveillance.gouv.fr, le dispositif national d’assistance aux victimes, la décrit comme « une mesure pratique et peu contraignante qui augmente considérablement la sécurité de vos comptes » et conseille de l’activer chaque fois que c’est possible. La CNIL fait la même recommandation.</p>
+<h2 id="lessentiel-de-quoi-parle-t-on">Lâ€™essentiel : de quoi parle-t-on ?</h2>
+<div class="note"><p><strong>Réponse rapide.</strong> La double authentification (2FA, pour <em>two-factor authentication</em>) ajoute une deuxième vérification à votre mot de passe : un code reçu par SMS, un code généré par une application, une clé physique ou une validation biométrique. Même si un escroc vole votre mot de passe, il ne peut pas entrer sans ce second facteur. Toutes les méthodes ne se valent pas : le SMS vaut mieux que rien, lâ€™application dâ€™authentification est un bon standard, la clé physique et les passkeys résistent le mieux à lâ€™hameçonnage. Activez-la en priorité sur votre messagerie, votre banque et vos réseaux sociaux.</p></div>
+<p>La double authentification est aussi appelée Â« validation en deux étapes Â», Â« vérification en deux étapes Â» ou, plus largement, authentification multifacteur (MFA, pour <em>multi-factor authentication</em>). Cybermalveillance.gouv.fr, le dispositif national dâ€™assistance aux victimes, la décrit comme Â« une mesure pratique et peu contraignante qui augmente considérablement la sécurité de vos comptes Â» et conseille de lâ€™activer chaque fois que câ€™est possible. La CNIL fait la même recommandation.</p>
 <p>Pourquoi est-ce si important ? Parce que les identifiants (adresse e-mail et mot de passe) sont la première cible des pirates. Ils les obtiennent par hameçonnage, en récupérant des bases de données volées ou parce que le même mot de passe est réutilisé sur plusieurs sites. Avec un seul facteur, un mot de passe volé suffit à ouvrir le compte. Avec deux, il ne suffit plus.</p>
-<p>Les passkeys (en français « clés d’accès ») vont un cran plus loin : elles remplacent carrément le mot de passe par une clé cryptographique stockée sur votre téléphone, votre ordinateur ou une clé de sécurité, que vous débloquez avec votre empreinte, votre visage ou votre code de déverrouillage.</p>
+<p>Les passkeys (en français Â« clés dâ€™accès Â») vont un cran plus loin : elles remplacent carrément le mot de passe par une clé cryptographique stockée sur votre téléphone, votre ordinateur ou une clé de sécurité, que vous débloquez avec votre empreinte, votre visage ou votre code de déverrouillage.</p>
 <h2 id="comment-fonctionne-la-double-authentification">Comment fonctionne la double authentification</h2>
 <h3 id="deux-facteurs-de-nature-differente">Deux facteurs de nature différente</h3>
-<p>L’idée est de combiner deux types de preuves :</p>
+<p>Lâ€™idée est de combiner deux types de preuves :</p>
 <ul>
 <li><strong>ce que vous savez</strong> : votre mot de passe ou un code PIN ;</li>
 <li><strong>ce que vous possédez</strong> : votre téléphone, une application, une clé USB de sécurité, une carte à puce ;</li>
 <li><strong>ce que vous êtes</strong> : votre empreinte digitale ou votre visage (biométrie).</li>
 </ul>
-<p>Une fois la fonction activée dans les paramètres de sécurité de votre compte, le service vérifie votre identité deux fois : d’abord avec l’identifiant et le mot de passe, ensuite avec le second facteur. Selon la CNIL, le code envoyé ou généré est confidentiel et n’est valable, en principe, que quelques minutes.</p>
+<p>Une fois la fonction activée dans les paramètres de sécurité de votre compte, le service vérifie votre identité deux fois : dâ€™abord avec lâ€™identifiant et le mot de passe, ensuite avec le second facteur. Selon la CNIL, le code envoyé ou généré est confidentiel et nâ€™est valable, en principe, que quelques minutes.</p>
 <h3 id="quand-le-second-facteur-est-il-demande">Quand le second facteur est-il demandé ?</h3>
-<p>Cela dépend du service. Selon Cybermalveillance.gouv.fr, la confirmation peut être demandée à la première connexion, à chaque connexion, à intervalle régulier, et surtout chaque fois qu’un appareil inconnu tente de se connecter. Concrètement, sur votre téléphone habituel, vous ne verrez souvent rien de nouveau ; c’est l’appareil d’un pirate qui sera bloqué.</p>
-<p><em>Exemple réaliste :</em> vous recevez une alerte « Tentative de connexion depuis un nouvel appareil » alors que vous n’avez rien fait. Le pirate connaît votre mot de passe, mais la double authentification l’a arrêté. Le bon réflexe : refuser la demande et changer immédiatement votre mot de passe.</p>
+<p>Cela dépend du service. Selon Cybermalveillance.gouv.fr, la confirmation peut être demandée à la première connexion, à chaque connexion, à intervalle régulier, et surtout chaque fois quâ€™un appareil inconnu tente de se connecter. Concrètement, sur votre téléphone habituel, vous ne verrez souvent rien de nouveau ; câ€™est lâ€™appareil dâ€™un pirate qui sera bloqué.</p>
+<p><em>Exemple réaliste :</em> vous recevez une alerte Â« Tentative de connexion depuis un nouvel appareil Â» alors que vous nâ€™avez rien fait. Le pirate connaît votre mot de passe, mais la double authentification lâ€™a arrêté. Le bon réflexe : refuser la demande et changer immédiatement votre mot de passe.</p>
 <h3 id="un-cas-ou-elle-est-obligatoire-la-banque">Un cas où elle est obligatoire : la banque</h3>
-<p>Depuis fin 2019 et l’application de la directive européenne sur les services de paiement (DSP2), les banques et prestataires de paiement doivent mettre en œuvre une authentification forte pour la plupart des paiements à distance, l’accès au compte et les opérations sensibles comme l’ajout d’un bénéficiaire de virement, rappelle la CNIL. C’est pourquoi votre application bancaire vous demande de valider vos achats en ligne.</p>
+<p>Depuis fin 2019 et lâ€™application de la directive européenne sur les services de paiement (DSP2), les banques et prestataires de paiement doivent mettre en Å“uvre une authentification forte pour la plupart des paiements à distance, lâ€™accès au compte et les opérations sensibles comme lâ€™ajout dâ€™un bénéficiaire de virement, rappelle la CNIL. Câ€™est pourquoi votre application bancaire vous demande de valider vos achats en ligne.</p>
 <h3 id="ce-que-la-double-authentification-ne-bloque-pas-toujours">Ce que la double authentification ne bloque pas toujours</h3>
-<p>Elle n’est pas infaillible. La CNIL cite l’hameçonnage en temps réel (un faux site relaie instantanément votre code au vrai site), l’interception des SMS et l’arnaque au changement de carte SIM (<em>SIM swapping</em>), où l’escroc obtient une nouvelle carte SIM à votre nom pour recevoir vos codes. Autre piège très courant : le faux conseiller qui vous demande de lui « lire le code » reçu par SMS. Elle réduit néanmoins fortement le risque par rapport à un mot de passe seul.</p>
+<p>Elle nâ€™est pas infaillible. La CNIL cite lâ€™hameçonnage en temps réel (un faux site relaie instantanément votre code au vrai site), lâ€™interception des SMS et lâ€™arnaque au changement de carte SIM (<em>SIM swapping</em>), où lâ€™escroc obtient une nouvelle carte SIM à votre nom pour recevoir vos codes. Autre piège très courant : le faux conseiller qui vous demande de lui Â« lire le code Â» reçu par SMS. Elle réduit néanmoins fortement le risque par rapport à un mot de passe seul.</p>
 <h2 id="sms-application-cle-physique-quelle-methode-choisir">SMS, application, clé physique : quelle méthode choisir ?</h2>
 <p>Tous les seconds facteurs ne se valent pas. Le classement ci-dessous est qualitatif : il compare la résistance de chaque méthode aux attaques décrites plus haut.</p>
 <div class="tablewrap"><table>
@@ -341,18 +397,18 @@ tbody tr:hover{background:#F6F8FA}
 <td>Code par SMS</td>
 <td>Un code arrive par SMS à chaque connexion sensible</td>
 <td>Simple, aucun outil à installer</td>
-<td>Vulnérable à l’interception des SMS, au changement de SIM et à l’hameçonnage en temps réel</td>
+<td>Vulnérable à lâ€™interception des SMS, au changement de SIM et à lâ€™hameçonnage en temps réel</td>
 <td>Mieux que rien, en attendant mieux</td>
 </tr>
 <tr class="even">
 <td>Code par e-mail</td>
 <td>Un code est envoyé sur votre messagerie</td>
 <td>Facile</td>
-<td>Si votre messagerie est piratée, le second facteur l’est aussi</td>
-<td>À éviter pour la messagerie elle-même</td>
+<td>Si votre messagerie est piratée, le second facteur lâ€™est aussi</td>
+<td>Ã€ éviter pour la messagerie elle-même</td>
 </tr>
 <tr class="odd">
-<td>Application d’authentification</td>
+<td>Application dâ€™authentification</td>
 <td>Une application installée sur votre téléphone génère un code temporaire qui se renouvelle automatiquement</td>
 <td>Fonctionne hors ligne, ne dépend pas de la ligne téléphonique</td>
 <td>Le code peut encore être saisi sur un faux site</td>
@@ -360,22 +416,22 @@ tbody tr:hover{background:#F6F8FA}
 </tr>
 <tr class="even">
 <td>Notification à valider</td>
-<td>Le service envoie une demande « Est-ce bien vous ? » sur votre téléphone</td>
+<td>Le service envoie une demande Â« Est-ce bien vous ? Â» sur votre téléphone</td>
 <td>Très pratique</td>
-<td>Risque de valider par réflexe une demande d’un pirate</td>
+<td>Risque de valider par réflexe une demande dâ€™un pirate</td>
 <td>Bien, à condition de lire chaque demande</td>
 </tr>
 <tr class="odd">
 <td>Clé de sécurité physique (FIDO)</td>
 <td>Une petite clé USB ou NFC à brancher ou approcher</td>
-<td>Résiste à l’hameçonnage, rien à recopier</td>
-<td>À acheter, à ne pas perdre : prévoir une clé de secours</td>
+<td>Résiste à lâ€™hameçonnage, rien à recopier</td>
+<td>Ã€ acheter, à ne pas perdre : prévoir une clé de secours</td>
 <td>Comptes les plus sensibles</td>
 </tr>
 <tr class="even">
-<td>Passkey (clé d’accès)</td>
+<td>Passkey (clé dâ€™accès)</td>
 <td>Une clé cryptographique sur votre téléphone ou ordinateur, débloquée par biométrie ou code</td>
-<td>Résiste à l’hameçonnage, plus de mot de passe à retenir</td>
+<td>Résiste à lâ€™hameçonnage, plus de mot de passe à retenir</td>
 <td>Pas encore proposée partout ; dépend de vos appareils et de leur synchronisation</td>
 <td>Tous, dès que le service le propose</td>
 </tr>
@@ -383,18 +439,18 @@ tbody tr:hover{background:#F6F8FA}
 </table></div>
 <h3 id="notre-conseil-selon-votre-profil">Notre conseil selon votre profil</h3>
 <ul>
-<li><strong>Vous débutez</strong> : activez la 2FA proposée par défaut (souvent le SMS) sur votre messagerie, votre banque et vos réseaux sociaux. C’est déjà un énorme progrès.</li>
-<li><strong>Vous voulez mieux</strong> : passez à une application d’authentification pour vos comptes importants, ou à une passkey quand le service la propose.</li>
-<li><strong>Vous êtes très exposé</strong> (élu, journaliste, personnalité, gestionnaire de comptes d’association) : utilisez des clés de sécurité physiques, avec une clé de secours rangée en lieu sûr.</li>
+<li><strong>Vous débutez</strong> : activez la 2FA proposée par défaut (souvent le SMS) sur votre messagerie, votre banque et vos réseaux sociaux. Câ€™est déjà un énorme progrès.</li>
+<li><strong>Vous voulez mieux</strong> : passez à une application dâ€™authentification pour vos comptes importants, ou à une passkey quand le service la propose.</li>
+<li><strong>Vous êtes très exposé</strong> (élu, journaliste, personnalité, gestionnaire de comptes dâ€™association) : utilisez des clés de sécurité physiques, avec une clé de secours rangée en lieu sÃ»r.</li>
 </ul>
 <h2 id="les-passkeys-expliquees-simplement">Les passkeys expliquées simplement</h2>
-<h3 id="une-cle-a-la-place-dun-mot-de-passe">Une clé à la place d’un mot de passe</h3>
-<p>Selon la FIDO Alliance, l’organisme qui a défini ce standard, une passkey est un identifiant fondé sur les normes FIDO, stocké sur votre téléphone, votre ordinateur ou une clé de sécurité, qui vous permet de vous connecter avec le même geste que pour déverrouiller votre appareil : empreinte, reconnaissance faciale, code PIN ou schéma.</p>
-<p>Techniquement, une passkey est une paire de clés cryptographiques. La clé privée reste sur votre appareil ; le site ne conserve qu’une clé publique, qui ne permet pas de se connecter à votre place. À chaque connexion, le site envoie un « défi » que seul votre appareil sait signer. Vos données biométriques ne quittent pas votre appareil : elles servent seulement à le déverrouiller.</p>
-<h3 id="pourquoi-cest-plus-sur">Pourquoi c’est plus sûr</h3>
+<h3 id="une-cle-a-la-place-dun-mot-de-passe">Une clé à la place dâ€™un mot de passe</h3>
+<p>Selon la FIDO Alliance, lâ€™organisme qui a défini ce standard, une passkey est un identifiant fondé sur les normes FIDO, stocké sur votre téléphone, votre ordinateur ou une clé de sécurité, qui vous permet de vous connecter avec le même geste que pour déverrouiller votre appareil : empreinte, reconnaissance faciale, code PIN ou schéma.</p>
+<p>Techniquement, une passkey est une paire de clés cryptographiques. La clé privée reste sur votre appareil ; le site ne conserve quâ€™une clé publique, qui ne permet pas de se connecter à votre place. Ã€ chaque connexion, le site envoie un Â« défi Â» que seul votre appareil sait signer. Vos données biométriques ne quittent pas votre appareil : elles servent seulement à le déverrouiller.</p>
+<h3 id="pourquoi-cest-plus-sur">Pourquoi câ€™est plus sÃ»r</h3>
 <ul>
-<li><strong>Rien à voler sur le serveur</strong> : en cas de fuite de données chez le site, il n’y a pas de mot de passe à récupérer.</li>
-<li><strong>Rien à saisir sur un faux site</strong> : la passkey est liée au vrai site. Sur une copie frauduleuse, elle ne fonctionne tout simplement pas. C’est ce qui la rend résistante à l’hameçonnage.</li>
+<li><strong>Rien à voler sur le serveur</strong> : en cas de fuite de données chez le site, il nâ€™y a pas de mot de passe à récupérer.</li>
+<li><strong>Rien à saisir sur un faux site</strong> : la passkey est liée au vrai site. Sur une copie frauduleuse, elle ne fonctionne tout simplement pas. Câ€™est ce qui la rend résistante à lâ€™hameçonnage.</li>
 <li><strong>Pas de réutilisation possible</strong> : chaque site a sa propre clé.</li>
 </ul>
 <h3 id="passkey-synchronisee-ou-liee-a-un-appareil">Passkey synchronisée ou liée à un appareil</h3>
@@ -405,8 +461,8 @@ tbody tr:hover{background:#F6F8FA}
 </ul>
 <p>Pour un particulier, les passkeys synchronisées sont le meilleur compromis. Leur sécurité dépend alors du compte qui les synchronise : protégez-le lui-même avec un <a href="/particuliers/comptes/mot-de-passe-robuste/">mot de passe robuste</a> et la double authentification.</p>
 <h3 id="comment-creer-une-passkey">Comment créer une passkey</h3>
-<p>Dans les paramètres de sécurité d’un service compatible, cherchez une option du type « Clés d’accès », « Passkeys » ou « Se connecter sans mot de passe ». Le service vous demande de confirmer avec votre empreinte, votre visage ou votre code. C’est tout. Gardez au début votre mot de passe et une autre méthode de secours, le temps de vous habituer.</p>
-<h2 id="les-reflexes-pour-bien-lactiver">Les réflexes pour bien l’activer</h2>
+<p>Dans les paramètres de sécurité dâ€™un service compatible, cherchez une option du type Â« Clés dâ€™accès Â», Â« Passkeys Â» ou Â« Se connecter sans mot de passe Â». Le service vous demande de confirmer avec votre empreinte, votre visage ou votre code. Câ€™est tout. Gardez au début votre mot de passe et une autre méthode de secours, le temps de vous habituer.</p>
+<h2 id="les-reflexes-pour-bien-lactiver">Les réflexes pour bien lâ€™activer</h2>
 <div class="tablewrap"><table>
 <colgroup>
 <col style="width: 33%" />
@@ -422,9 +478,9 @@ tbody tr:hover{background:#F6F8FA}
 </thead>
 <tbody>
 <tr class="odd">
-<td>Activer la 2FA d’abord sur la messagerie</td>
+<td>Activer la 2FA dâ€™abord sur la messagerie</td>
 <td>Le piratage en cascade : la messagerie sert à réinitialiser tous vos autres comptes</td>
-<td>Paramètres de sécurité du compte de messagerie, rubrique « validation en deux étapes »</td>
+<td>Paramètres de sécurité du compte de messagerie, rubrique Â« validation en deux étapes Â»</td>
 </tr>
 <tr class="even">
 <td>Puis sur la banque, les réseaux sociaux, les sites marchands et les services publics en ligne</td>
@@ -432,7 +488,7 @@ tbody tr:hover{background:#F6F8FA}
 <td>Cybermalveillance.gouv.fr liste de nombreux services compatibles, dont impots.gouv.fr, La Poste, Leboncoin, Vinted ou WhatsApp</td>
 </tr>
 <tr class="odd">
-<td>Préférer une application, une clé ou une passkey au SMS quand c’est possible</td>
+<td>Préférer une application, une clé ou une passkey au SMS quand câ€™est possible</td>
 <td>Interception de SMS et changement de carte SIM</td>
 <td>Choisissez la méthode dans les options de sécurité du compte</td>
 </tr>
@@ -442,8 +498,8 @@ tbody tr:hover{background:#F6F8FA}
 <td>Imprimez-les ou rangez-les dans un gestionnaire de mots de passe</td>
 </tr>
 <tr class="odd">
-<td>Ne jamais communiquer un code ni valider une demande que vous n’avez pas initiée</td>
-<td>Les faux conseillers et l’hameçonnage en temps réel</td>
+<td>Ne jamais communiquer un code ni valider une demande que vous nâ€™avez pas initiée</td>
+<td>Les faux conseillers et lâ€™hameçonnage en temps réel</td>
 <td>Un code de connexion ne se dicte à personne ; refusez toute notification inattendue</td>
 </tr>
 <tr class="even">
@@ -453,26 +509,26 @@ tbody tr:hover{background:#F6F8FA}
 </tr>
 </tbody>
 </table></div>
-<p>Si un service ne figure pas dans les listes officielles, regardez dans ses paramètres de sécurité ou son aide en ligne s’il propose la fonction.</p>
+<p>Si un service ne figure pas dans les listes officielles, regardez dans ses paramètres de sécurité ou son aide en ligne sâ€™il propose la fonction.</p>
 <h2 id="que-faire-si-vous-perdez-votre-telephone-ou-votre-cle">Que faire si vous perdez votre téléphone ou votre clé ?</h2>
-<p>La CNIL le rappelle : une fois activé, le second facteur devient indispensable. En cas de perte, de vol ou de panne du téléphone, l’accès au compte peut devenir temporairement impossible. Anticipez :</p>
+<p>La CNIL le rappelle : une fois activé, le second facteur devient indispensable. En cas de perte, de vol ou de panne du téléphone, lâ€™accès au compte peut devenir temporairement impossible. Anticipez :</p>
 <ol type="1">
 <li><strong>Avant tout problème</strong>, enregistrez les codes de secours fournis par chaque service et ajoutez une deuxième méthode (un second numéro, une deuxième clé de sécurité, une passkey sur un autre appareil).</li>
-<li><strong>En cas de perte du téléphone</strong>, faites bloquer votre ligne auprès de votre opérateur, utilisez vos codes de secours pour vous reconnecter, puis retirez l’ancien appareil de la liste des appareils de confiance.</li>
-<li><strong>Si vous n’avez plus aucun moyen d’accès</strong>, suivez la procédure de récupération officielle du service. Méfiez-vous des « services de récupération de compte » qui vous contactent spontanément : ce sont souvent des escrocs.</li>
-<li><strong>Si vous recevez des demandes de validation que vous n’avez pas faites</strong>, refusez-les, changez votre mot de passe et vérifiez les connexions récentes. Si le compte a été piraté, suivez la fiche dédiée et faites-vous aider sur Cybermalveillance.gouv.fr ou 17Cyber (17cyber.gouv.fr).</li>
+<li><strong>En cas de perte du téléphone</strong>, faites bloquer votre ligne auprès de votre opérateur, utilisez vos codes de secours pour vous reconnecter, puis retirez lâ€™ancien appareil de la liste des appareils de confiance.</li>
+<li><strong>Si vous nâ€™avez plus aucun moyen dâ€™accès</strong>, suivez la procédure de récupération officielle du service. Méfiez-vous des Â« services de récupération de compte Â» qui vous contactent spontanément : ce sont souvent des escrocs.</li>
+<li><strong>Si vous recevez des demandes de validation que vous nâ€™avez pas faites</strong>, refusez-les, changez votre mot de passe et vérifiez les connexions récentes. Si le compte a été piraté, suivez la fiche dédiée et faites-vous aider sur Cybermalveillance.gouv.fr ou 17Cyber (17cyber.gouv.fr).</li>
 </ol>
 <h2 id="questions-frequentes">Questions fréquentes</h2>
 <h3 id="la-double-authentification-par-sms-est-elle-encore-utile">La double authentification par SMS est-elle encore utile ?</h3>
-<p>Oui. Elle protège déjà contre le cas le plus courant : un mot de passe volé ou réutilisé. Elle reste toutefois vulnérable à l’interception des SMS et au changement de carte SIM. Quand une application d’authentification, une clé ou une passkey est proposée, préférez-la pour vos comptes importants.</p>
+<p>Oui. Elle protège déjà contre le cas le plus courant : un mot de passe volé ou réutilisé. Elle reste toutefois vulnérable à lâ€™interception des SMS et au changement de carte SIM. Quand une application dâ€™authentification, une clé ou une passkey est proposée, préférez-la pour vos comptes importants.</p>
 <h3 id="une-passkey-peut-elle-etre-volee-comme-un-mot-de-passe">Une passkey peut-elle être volée comme un mot de passe ?</h3>
-<p>La partie secrète d’une passkey reste sur votre appareil ou dans votre trousseau synchronisé, et le site ne conserve qu’une clé publique inutilisable par un pirate. Elle ne peut pas non plus être saisie sur un faux site. Le point à surveiller est donc la sécurité de votre appareil et du compte qui synchronise vos passkeys.</p>
+<p>La partie secrète dâ€™une passkey reste sur votre appareil ou dans votre trousseau synchronisé, et le site ne conserve quâ€™une clé publique inutilisable par un pirate. Elle ne peut pas non plus être saisie sur un faux site. Le point à surveiller est donc la sécurité de votre appareil et du compte qui synchronise vos passkeys.</p>
 <h3 id="mes-empreintes-digitales-sont-elles-envoyees-au-site">Mes empreintes digitales sont-elles envoyées au site ?</h3>
-<p>Non. Selon la FIDO Alliance, la biométrie sert uniquement à déverrouiller localement votre appareil ; elle n’est pas transmise au site sur lequel vous vous connectez.</p>
+<p>Non. Selon la FIDO Alliance, la biométrie sert uniquement à déverrouiller localement votre appareil ; elle nâ€™est pas transmise au site sur lequel vous vous connectez.</p>
 <h3 id="que-se-passe-t-il-si-je-change-de-telephone">Que se passe-t-il si je change de téléphone ?</h3>
-<p>Avec des passkeys synchronisées et une application d’authentification qui permet le transfert, vous retrouvez vos accès sur le nouvel appareil. Avant de réinitialiser l’ancien téléphone, vérifiez que tout fonctionne sur le nouveau et gardez vos codes de secours à portée de main.</p>
+<p>Avec des passkeys synchronisées et une application dâ€™authentification qui permet le transfert, vous retrouvez vos accès sur le nouvel appareil. Avant de réinitialiser lâ€™ancien téléphone, vérifiez que tout fonctionne sur le nouveau et gardez vos codes de secours à portée de main.</p>
 <h3 id="faut-il-activer-la-2fa-sur-tous-mes-comptes">Faut-il activer la 2FA sur tous mes comptes ?</h3>
-<p>L’idéal, oui, comme le recommandent Cybermalveillance.gouv.fr et la CNIL. Si vous manquez de temps, commencez par la messagerie, la banque, les réseaux sociaux, les sites où votre carte est enregistrée et vos comptes administratifs.</p>
+<p>Lâ€™idéal, oui, comme le recommandent Cybermalveillance.gouv.fr et la CNIL. Si vous manquez de temps, commencez par la messagerie, la banque, les réseaux sociaux, les sites où votre carte est enregistrée et vos comptes administratifs.</p>
 <h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <ul>
 <li><a href="/particuliers/comptes/mot-de-passe-robuste/">Créer un mot de passe robuste</a></li>
@@ -481,17 +537,17 @@ tbody tr:hover{background:#F6F8FA}
 <li><a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels (smishing, vishing)</a></li>
 </ul>
 <h2 id="sources-et-methodologie">Sources et méthodologie</h2>
-<p>Ce guide s’appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
+<p>Ce guide sâ€™appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
 <ul>
-<li>Cybermalveillance.gouv.fr — « Comment protéger ses comptes en ligne avec la double authentification » — définition, moments où la confirmation est demandée, recommandation d’activation, liste de services compatibles : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/double-authentification</li>
-<li>CNIL — « Sécurité : utilisez l’authentification multifacteur pour vos comptes en ligne » — facteurs d’authentification, validité limitée des codes, obligation DSP2 pour les banques depuis fin 2019, limites (hameçonnage en temps réel, interception de SMS, SIM swapping), précautions en cas de perte : https://www.cnil.fr/fr/securite-utilisez-lauthentification-multifacteur-pour-vos-comptes-en-ligne</li>
-<li>FIDO Alliance — « Passkeys » — définition des passkeys, cryptographie asymétrique, déverrouillage local, passkeys synchronisées et liées à un appareil, résistance à l’hameçonnage : https://fidoalliance.org/passkeys/</li>
+<li>Cybermalveillance.gouv.fr â€” Â« Comment protéger ses comptes en ligne avec la double authentification Â» â€” définition, moments où la confirmation est demandée, recommandation dâ€™activation, liste de services compatibles : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/double-authentification</li>
+<li>CNIL â€” Â« Sécurité : utilisez lâ€™authentification multifacteur pour vos comptes en ligne Â» â€” facteurs dâ€™authentification, validité limitée des codes, obligation DSP2 pour les banques depuis fin 2019, limites (hameçonnage en temps réel, interception de SMS, SIM swapping), précautions en cas de perte : https://www.cnil.fr/fr/securite-utilisez-lauthentification-multifacteur-pour-vos-comptes-en-ligne</li>
+<li>FIDO Alliance â€” Â« Passkeys Â» â€” définition des passkeys, cryptographie asymétrique, déverrouillage local, passkeys synchronisées et liées à un appareil, résistance à lâ€™hameçonnage : https://fidoalliance.org/passkeys/</li>
 </ul>
 
 <!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
-  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+  <ul><li><a href="/a-propos/">Ã€ propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
 </div></footer>
 
 <script>
@@ -574,7 +630,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat â€” le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
