@@ -1004,8 +1004,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   border: 2px solid #0D2E4A;
   border-radius: 16px;
   padding: 12px 10px;
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: inherit !important;
   transition: all .3s ease;
   display: flex;
   flex-direction: column;
@@ -1014,6 +1014,29 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   cursor: pointer;
   min-height: 280px;
   box-shadow: 0 4px 12px rgba(13, 46, 74, .08);
+}
+
+.best-seller-card h3,
+.best-seller-card p,
+.best-seller-card li {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.best-seller-card h3 {
+  color: #0D2E4A !important;
+}
+
+.best-seller-card .seller-feature {
+  color: #B9C9D6 !important;
+}
+
+.best-seller-card .seller-price {
+  color: #E4572E !important;
+}
+
+.best-seller-card .seller-features li {
+  color: #4B5D6F !important;
 }
 
 .best-seller-card::before {
