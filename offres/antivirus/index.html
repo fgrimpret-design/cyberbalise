@@ -15,6 +15,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
 h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
 h3{font-size:1.15rem;margin-top:1.6em}
+.price-note{font-family:var(--disp);font-size:.95rem}
+.provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
+.jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta:hover{background:var(--orange-d);color:#fff}
+.provider-heading{display:flex;align-items:center;gap:12px}
+.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -174,16 +181,25 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 
 /* page article */
 .pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,200px);gap:32px;align-items:start;margin-top:22px}
+.pagehead-copy{min-width:0}
+.pagehead h1{margin-top:0}
+.pagehead-visual{display:block;width:100%;height:auto;max-height:150px;aspect-ratio:4/3;object-fit:cover;margin-top:54px;border:1px solid rgba(255,255,255,.2);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 .pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
 .pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
 .pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
 .pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
 .pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
-article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
-article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
-article.page h2:first-of-type{border-top:0;padding-top:0}
-.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:28px clamp(20px,5vw,56px) 32px;max-width:980px;margin:0 auto}
+article.page p{margin-bottom:.65em}
+article.page h2{margin-top:1.3em;border-top:1px solid var(--line);padding-top:.7em}
+article.page h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+article.page h3{margin-top:.9em;margin-bottom:.35em}
+article.page ul,article.page ol{margin:.65em 0}
+article.page .note,article.page .warn{margin:.9em 0}
+article.page .tablewrap,article.page table{margin:1em 0}
+article.page .see-also{margin-top:1.5em;padding-top:1em}
 
 /* fiches réflexes : signature */
 .steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
@@ -236,6 +252,8 @@ tbody tr:hover{background:#F6F8FA}
   .topbar{display:none}
   .hero{padding:16px 0 42px}
   .pagehead{padding:16px 0 32px}
+  .pagehead-layout{grid-template-columns:minmax(0,1fr) 88px;gap:12px;align-items:center;margin-top:18px}
+  .pagehead-visual{width:88px;height:88px;aspect-ratio:1;max-height:none;max-width:none;margin-top:0}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
@@ -268,7 +286,11 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-green">
+.provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
+.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
+@media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
+@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-blue">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
@@ -279,11 +301,103 @@ tbody tr:hover{background:#F6F8FA}
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a></div>
+<div class="pagehead-layout"><div class="pagehead-copy">
 <div class="kicker" style="color:#F5A085;margin-top:18px">Comparatif</div>
 <h1>Comparatif antivirus</h1><p class="lead">Bitdefender, Norton 360, ESET, Avast ou Microsoft Defender : quel antivirus choisir en octobre 2026 selon votre usage (seul, en famille, multi-appareils), combien il coûte vraiment après la première année, et quand la solution gratuite suffit.</p>
 <div class="meta"><span class="chip part">Particuliers</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-offres-antivirus.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><h2 id="sommaire">Sommaire</h2>
+</div><img class="pagehead-visual" src="/assets/img/editorial-offres-antivirus.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div></div></div>
+
+<section class="vpn-comparator-section">
+  <div class="wrap">
+    <div class="comparator-header">
+      <div class="exclusive-offer-banner">
+        <div class="exclusive-offer-text">🔎 Prix relevés le 1er octobre 2026 — vérifiez toujours le tarif de renouvellement avant de souscrire 🔎</div>
+      </div>
+      <h2>Choisissez votre antivirus</h2>
+      <p>Les 5 solutions comparées, avec prix relevés le 1er octobre 2026 sur les sites officiels</p>
+    </div>
+
+    <div class="vpn-grid-showcase grid-5">
+      <a href="#1-bitdefender" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">B</span>
+        </div>
+        <h3>Bitdefender</h3>
+        <p class="vpn-feature">Meilleur score de protection testé</p>
+        <p class="vpn-price"><strong>Prix à vérifier</strong></p>
+        <ul class="vpn-features">
+          <li>Protection : 99,5 % (AV-Comparatives)</li>
+          <li>5 appareils (Individuel) ou 25 (Famille)</li>
+          <li>Remboursement sous 30 jours</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#2-norton-360" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">N</span>
+        </div>
+        <h3>Norton 360</h3>
+        <p class="vpn-feature">Tout-en-un, 5 appareils</p>
+        <p class="vpn-price"><strong>39,99 €</strong></p>
+        <ul class="vpn-features">
+          <li>Prix de la 1re année (Deluxe)</li>
+          <li>VPN et 50 Go de sauvegarde inclus</li>
+          <li>Renouvellement : 109,99 €/an</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#3-eset" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">E</span>
+        </div>
+        <h3>ESET</h3>
+        <p class="vpn-feature">Léger, peu de fausses alertes</p>
+        <p class="vpn-price"><strong>Prix à vérifier</strong></p>
+        <ul class="vpn-features">
+          <li>Seulement 2 faux positifs</li>
+          <li>Protection : 98,5 %</li>
+          <li>Windows, macOS, Android, iOS</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#4-avast-one" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">A</span>
+        </div>
+        <h3>Avast One</h3>
+        <p class="vpn-feature">Version gratuite disponible</p>
+        <p class="vpn-price"><strong>54,04 €</strong></p>
+        <ul class="vpn-features">
+          <li>Premium Security, 10 appareils</li>
+          <li>1re année · puis 99,99 €/an</li>
+          <li>Protection : 99,3 %</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#5-microsoft-defender" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">M</span>
+        </div>
+        <h3>Microsoft Defender</h3>
+        <p class="vpn-feature">Intégré à Windows</p>
+        <p class="vpn-price"><strong>Gratuit</strong></p>
+        <ul class="vpn-features">
+          <li>Protection : 99,0 %</li>
+          <li>Aucun faux positif dans le test cité</li>
+          <li>Windows (protection de base)</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><p><a class="jump-cta" href="#les-cinq-solutions-en-detail">Voir directement les offres</a></p>
+<h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#reponse-rapide-le-meilleur-choix-selon-votre-usage">Réponse rapide : le meilleur choix selon votre usage</a></li>
 <li><a href="#notre-methode-et-nos-criteres">Notre méthode et nos critères</a></li>
@@ -424,40 +538,40 @@ tbody tr:hover{background:#F6F8FA}
 <p><em>Prix relevés le 1er octobre 2026 sur les sites officiels des éditeurs, TVA incluse — prix promotionnels de première période, renouvellement à vérifier. Les résultats de test portent sur la protection Windows des produits grand public des éditeurs, pas sur une formule précise.</em></p>
 <p>Lecture : les écarts de protection entre ces solutions sont faibles (moins d’un point et demi). AV-Comparatives classe d’ailleurs Bitdefender, Avast, Norton et Microsoft dans le même premier groupe (cluster 1), et ESET dans le deuxième. Le choix se joue donc surtout sur les fonctions, le nombre d’appareils, les faux positifs et le prix dans la durée.</p>
 <h2 id="les-cinq-solutions-en-detail">Les cinq solutions en détail</h2>
-<h3 id="bitdefender">Bitdefender</h3>
+<h3 class="provider-heading" id="1-bitdefender"><span class="provider-monogram" aria-hidden="true">B</span>1. Bitdefender</h3>
 <p><strong>Points forts.</strong> Meilleur taux de protection des cinq solutions comparées dans le test AV-Comparatives de février-mai 2026 (99,5 %, 398 attaques bloquées sur 400). Gamme claire : Antivirus Plus (jusqu’à 3 appareils), Total Security (5 appareils en Individuel, 5 comptes et 25 appareils en Famille), Premium Security (ajoute notamment un VPN illimité et une protection anti-arnaques renforcée) et Ultimate Security (ajoute la surveillance du dark web et des alertes de fuite de données). Couverture Windows, macOS, Android et iOS. Remboursement possible dans les 30 jours suivant l’achat initial ou le renouvellement automatique, selon le site de l’éditeur.</p>
 <p><strong>Limites.</strong> Cinq faux positifs dans le test cité, plus que Microsoft Defender et ESET. Les abonnements se renouvellent automatiquement au tarif de renouvellement applicable, sensiblement plus élevé que l’offre de bienvenue. Les fonctions disponibles varient d’un système à l’autre (les versions iOS sont plus limitées, comme chez tous les éditeurs).</p>
 <p><strong>Pour qui.</strong> Les foyers qui veulent une protection de haut niveau sur des appareils variés, et les familles grâce à l’offre 25 appareils.</p>
 <p><strong>Prix relevé.</strong>  — les montants n’ont pas pu être lus de manière fiable sur la page officielle lors de notre relevé.</p>
 
-<p>Notre fiche complète : <a href="/offres/antivirus/bitdefender/">Bitdefender</a>.</p>
-<h3 id="norton-360">Norton 360</h3>
+<p><a class="provider-cta" href="/offres/antivirus/bitdefender/">Voir la fiche Bitdefender →</a></p>
+<h3 class="provider-heading" id="2-norton-360"><span class="provider-monogram" aria-hidden="true">N</span>2. Norton 360</h3>
 <p><strong>Points forts.</strong> 99,3 % de protection dans le test cité. Norton 360 Deluxe protège 5 appareils (PC Intel et ARM, Mac, smartphones, tablettes) et inclut VPN, protection contre les escroqueries et 50 Go de sauvegarde cloud. Garantie de remboursement complet dans les 60 jours suivant le paiement pour un abonnement annuel (14 jours pour un abonnement mensuel), selon l’éditeur. Norton publie une grille tarifaire de renouvellement, ce qui est rare et appréciable.</p>
 <p><strong>Limites.</strong> L’écart entre prix d’appel et renouvellement est important : 39,99 € la première année pour Deluxe, puis 109,99 € par an selon la grille de renouvellement en vigueur depuis février 2026. Cinq faux positifs dans le test. Beaucoup de fonctions annexes, qui peuvent faire doublon si vous avez déjà un VPN ou un gestionnaire de mots de passe.</p>
 <p><strong>Pour qui.</strong> Ceux qui veulent un tout-en-un sans multiplier les abonnements.</p>
 <p><strong>Prix relevé.</strong> Norton 360 Deluxe : 39,99 € la première année, relevé le 1er octobre 2026 — prix promotionnel de première période ; renouvellement affiché par l’éditeur : 109,99 €/an. Autres formules au renouvellement : Standard (1 appareil, 10 Go) 79,99 €/an, Premium (10 appareils, 75 Go) 119,99 €/an, Advanced (10 appareils, 200 Go) 139,99 €/an.</p>
 
-<p>Notre fiche complète : <a href="/offres/antivirus/norton-360/">Norton 360</a>.</p>
-<h3 id="eset">ESET</h3>
+<p><a class="provider-cta" href="/offres/antivirus/norton-360/">Voir la fiche Norton 360 →</a></p>
+<h3 class="provider-heading" id="3-eset"><span class="provider-monogram" aria-hidden="true">E</span>3. ESET</h3>
 <p><strong>Points forts.</strong> Seulement 2 faux positifs dans le test AV-Comparatives cité, contre 5 pour la plupart des concurrents payants. Gamme ESET HOME Security en trois niveaux (Essential, Premium, Ultimate), disponible sur Windows, macOS, Android et iOS. Réputation de logiciel léger et discret.</p>
 <p><strong>Limites.</strong> Taux de protection de 98,5 % dans ce test (394 attaques bloquées sur 400), qui le place dans le deuxième groupe d’AV-Comparatives, légèrement derrière les autres solutions comparées. Les prix n’étaient pas affichés de façon lisible sur la page officielle consultée.</p>
 <p><strong>Pour qui.</strong> Les utilisateurs avertis qui veulent une protection sobre, avec peu d’alertes intempestives.</p>
 <p><strong>Prix relevé.</strong> </p>
 
-<p>Notre fiche complète : <a href="/offres/antivirus/eset/">ESET</a>.</p>
-<h3 id="avast-one">Avast One</h3>
+<p><a class="provider-cta" href="/offres/antivirus/eset/">Voir la fiche ESET →</a></p>
+<h3 class="provider-heading" id="4-avast-one"><span class="provider-monogram" aria-hidden="true">A</span>4. Avast One</h3>
 <p><strong>Points forts.</strong> 99,3 % de protection dans le test cité (score commun à Avast et AVG, qui partagent la même technologie). Avast propose une version gratuite, ce qui permet de tester l’interface sans payer. En payant, Premium Security couvre 10 appareils pour 54,04 € la première année, selon la boutique officielle.</p>
 <p><strong>Limites.</strong> Cinq faux positifs dans le test. La gamme est touffue : Avast One, Premium Security, Ultimate… les noms et contenus des formules évoluent, ce qui complique la comparaison. Lors de notre relevé, la boutique française affichait les prix de Premium Security et d’Ultimate, mais pas ceux des formules Avast One proprement dites. La version gratuite incite régulièrement à passer à l’offre payante.</p>
 <p><strong>Pour qui.</strong> Ceux qui cherchent une solution gratuite multiplateforme, ou une couverture 10 appareils à prix d’appel modéré.</p>
 <p><strong>Prix relevé.</strong> Premium Security 10 appareils : 54,04 € la première année (renouvellement affiché : 99,99 €/an) ; Premium Security 1 PC + 1 mobile : 41,88 € (renouvellement : 72,99 €/an) — relevés le 1er octobre 2026, prix promotionnels de première période. Le tarif d’Avast One dépend de la formule et de la région ; vérifiez le montant actuel sur le site de l’éditeur.</p>
 
-<p>Notre fiche complète : <a href="/offres/antivirus/avast-one/">Avast One</a>.</p>
-<h3 id="microsoft-defender">Microsoft Defender</h3>
+<p><a class="provider-cta" href="/offres/antivirus/avast-one/">Voir la fiche Avast One →</a></p>
+<h3 class="provider-heading" id="5-microsoft-defender"><span class="provider-monogram" aria-hidden="true">M</span>5. Microsoft Defender</h3>
 <p><strong>Points forts.</strong> Intégré à Windows, activé par défaut, gratuit et mis à jour avec le système. Dans le test AV-Comparatives de février-mai 2026, il bloque 396 attaques sur 400 (99,0 %) et ne génère <strong>aucun</strong> faux positif, le meilleur résultat du test sur ce critère. Aucun risque de renouvellement surprise.</p>
 <p><strong>Limites.</strong> Il protège Windows ; pour un Mac ou un smartphone, il faut d’autres solutions. Il ne fournit pas les fonctions annexes des suites payantes (VPN complet, sauvegarde, contrôle parental avancé) — même si certaines existent par ailleurs dans l’écosystème Microsoft. Il exige que vous laissiez Windows Update faire son travail.</p>
 <p><strong>Pour qui.</strong> La plupart des utilisateurs d’un PC Windows à jour, prudents, qui n’ont pas besoin de fonctions supplémentaires.</p>
 <p><strong>Prix.</strong> Gratuit, inclus dans Windows.</p>
-<p>Notre fiche complète : <a href="/offres/antivirus/microsoft-defender/">Microsoft Defender</a>.</p>
+<p><a class="provider-cta" href="/offres/antivirus/microsoft-defender/">Voir la fiche Microsoft Defender →</a></p>
 <h2 id="comment-choisir-son-antivirus">Comment choisir son antivirus</h2>
 <ol type="1">
 <li><strong>Faites l’inventaire de vos appareils.</strong> Combien de PC, de Mac, de téléphones, de tablettes ? Sous quels systèmes ? Une offre 5 appareils peut suffire à un couple, une famille avec adolescents en demandera plus.</li>
@@ -544,7 +658,34 @@ tbody tr:hover{background:#F6F8FA}
 <li>ESET — « Offres sécurité ESET HOME » — formules Essential, Premium, Ultimate et systèmes couverts (prix non affichés lors du relevé) : https://www.eset.com/fr/home/offres-securite/</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Particuliers" href="/offres/antivirus/bitdefender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Bitdefender</h3><p>Fiche produit Bitdefender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/norton-360/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Norton 360</h3><p>Fiche produit Norton 360 (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/eset/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>ESET</h3><p>Fiche produit ESET (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/avast-one/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Avast One</h3><p>Fiche produit Avast One (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/microsoft-defender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Microsoft Defender</h3><p>Fiche produit Microsoft Defender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Particuliers" href="/offres/antivirus/bitdefender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Bitdefender</h3><p>Fiche produit Bitdefender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/norton-360/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Norton 360</h3><p>Fiche produit Norton 360 (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/eset/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>ESET</h3><p>Fiche produit ESET (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/avast-one/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Avast One</h3><p>Fiche produit Avast One (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/microsoft-defender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Microsoft Defender</h3><p>Fiche produit Microsoft Defender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+
+<section class="final-cta-section">
+  <div class="wrap">
+    <h2>Prêt à choisir votre antivirus ?</h2>
+    <p class="subtext">Des tests indépendants cités, des prix relevés à la source et des alternatives gratuites quand elles suffisent.</p>
+
+    <div class="final-cta-grid">
+      <div class="guarantee-card">
+        <strong>✓ Tests indépendants cités</strong>
+        <p>Taux de protection et faux positifs issus d’AV-Comparatives (février-mai 2026).</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Prix relevés le 1er octobre 2026</strong>
+        <p>Prix de première année et de renouvellement lus sur les sites officiels quand ils sont affichés.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Gratuit si cela suffit</strong>
+        <p>Microsoft Defender et la version gratuite d’Avast sont présentés sans détour.</p>
+      </div>
+    </div>
+
+    <div class="final-cta-buttons">
+      <a href="#les-cinq-solutions-en-detail" class="btn-primary-aggressive">Voir les solutions en détail</a>
+      <a href="/offres/" class="btn-secondary-aggressive">Comparer tous les produits</a>
+    </div>
+  </div>
+</section></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>

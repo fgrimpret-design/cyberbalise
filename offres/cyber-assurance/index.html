@@ -15,6 +15,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
 h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
 h3{font-size:1.15rem;margin-top:1.6em}
+.price-note{font-family:var(--disp);font-size:.95rem}
+.provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
+.jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta:hover{background:var(--orange-d);color:#fff}
+.provider-heading{display:flex;align-items:center;gap:12px}
+.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -174,16 +181,25 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 
 /* page article */
 .pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,200px);gap:32px;align-items:start;margin-top:22px}
+.pagehead-copy{min-width:0}
+.pagehead h1{margin-top:0}
+.pagehead-visual{display:block;width:100%;height:auto;max-height:150px;aspect-ratio:4/3;object-fit:cover;margin-top:54px;border:1px solid rgba(255,255,255,.2);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 .pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
 .pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
 .pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
 .pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
 .pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
-article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
-article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
-article.page h2:first-of-type{border-top:0;padding-top:0}
-.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:28px clamp(20px,5vw,56px) 32px;max-width:980px;margin:0 auto}
+article.page p{margin-bottom:.65em}
+article.page h2{margin-top:1.3em;border-top:1px solid var(--line);padding-top:.7em}
+article.page h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+article.page h3{margin-top:.9em;margin-bottom:.35em}
+article.page ul,article.page ol{margin:.65em 0}
+article.page .note,article.page .warn{margin:.9em 0}
+article.page .tablewrap,article.page table{margin:1em 0}
+article.page .see-also{margin-top:1.5em;padding-top:1em}
 
 /* fiches réflexes : signature */
 .steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
@@ -236,6 +252,8 @@ tbody tr:hover{background:#F6F8FA}
   .topbar{display:none}
   .hero{padding:16px 0 42px}
   .pagehead{padding:16px 0 32px}
+  .pagehead-layout{grid-template-columns:minmax(0,1fr) 88px;gap:12px;align-items:center;margin-top:18px}
+  .pagehead-visual{width:88px;height:88px;aspect-ratio:1;max-height:none;max-width:none;margin-top:0}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
@@ -268,7 +286,11 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-green">
+.provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
+.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
+@media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
+@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-blue">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
@@ -279,11 +301,88 @@ tbody tr:hover{background:#F6F8FA}
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a></div>
+<div class="pagehead-layout"><div class="pagehead-copy">
 <div class="kicker" style="color:#F5A085;margin-top:18px">Comparatif</div>
 <h1>Comparatif cyber-assurance</h1><p class="lead">Hiscox, AXA, Allianz, Generali : nous avons comparé les garanties, l’assistance, les services de prévention et les conditions de souscription des offres cyber destinées aux TPE et PME, pour vous aider à choisir et à éviter les mauvaises surprises.</p>
 <div class="meta"><span class="chip pro">Pros</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-offres-cyber-assurance.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 11 minutes ·</p><h2 id="sommaire">Sommaire</h2>
+</div><img class="pagehead-visual" src="/assets/img/editorial-offres-cyber-assurance.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div></div></div>
+
+<section class="vpn-comparator-section">
+  <div class="wrap">
+    <div class="comparator-header">
+      <div class="exclusive-offer-banner">
+        <div class="exclusive-offer-text">🔎 Aucun assureur ne publie de grille tarifaire : demandez plusieurs devis sur un périmètre identique 🔎</div>
+      </div>
+      <h2>Choisissez votre cyber-assurance</h2>
+      <p>Les 4 offres comparées d’après les pages officielles des assureurs, consultées le 1er octobre 2026</p>
+    </div>
+
+    <div class="vpn-grid-showcase grid-4">
+      <a href="#1-hiscox-cyberclear" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">H</span>
+        </div>
+        <h3>Hiscox CyberClear</h3>
+        <p class="vpn-feature">Assistance 7 j/7 et 24 h/24</p>
+        <p class="vpn-price"><strong>Sur devis</strong></p>
+        <ul class="vpn-features">
+          <li>Garanties financières et litiges clients</li>
+          <li>Services de prévention et de formation</li>
+          <li>Indépendants et TPE</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#2-axa-cyber-secure" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">A</span>
+        </div>
+        <h3>AXA Cyber Secure</h3>
+        <p class="vpn-feature">Service Crise Majeure 24/7</p>
+        <p class="vpn-price"><strong>Sur devis</strong></p>
+        <ul class="vpn-features">
+          <li>Blocage du SI, rançonnage, vol de données</li>
+          <li>Conseil en communication de crise</li>
+          <li>Interlocuteur local</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#3-allianz-assurance-cyber-risques" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">A</span>
+        </div>
+        <h3>Allianz</h3>
+        <p class="vpn-feature">Offre lisible, évolutive</p>
+        <p class="vpn-price"><strong>Sur devis</strong></p>
+        <ul class="vpn-features">
+          <li>Professionnels sous 25 M€ de chiffre d’affaires</li>
+          <li>Sur-mesure jusqu’à 250 M€</li>
+          <li>Responsabilité civile et pertes d’exploitation</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#4-generali-protection-numerique" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">G</span>
+        </div>
+        <h3>Generali</h3>
+        <p class="vpn-feature">Prévention et faux virement</p>
+        <p class="vpn-price"><strong>Sur devis</strong></p>
+        <ul class="vpn-features">
+          <li>Conçue pour les TPE et PME</li>
+          <li>Acte malveillant ou erreur humaine</li>
+          <li>Accompagnement en prévention</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 11 minutes ·</p><p><a class="jump-cta" href="#les-offres-en-detail">Voir directement les offres</a></p>
+<h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#reponse-rapide-quelle-offre-pour-quel-profil">Réponse rapide : quelle offre pour quel profil</a></li>
 <li><a href="#notre-methode-et-nos-criteres">Notre méthode et nos critères</a></li>
@@ -438,7 +537,7 @@ tbody tr:hover{background:#F6F8FA}
 </table></div>
 <p>Lecture : les quatre offres couvrent l’essentiel ; les différences tiennent à la fraude, à la prévention incluse et au mode de souscription. « Non précisé » signifie que l’information ne figurait pas sur la page publique lue, pas que la garantie est absente.</p>
 <h2 id="les-offres-en-detail">Les offres en détail</h2>
-<h3 id="hiscox-cyberclear">Hiscox CyberClear</h3>
+<h3 class="provider-heading" id="1-hiscox-cyberclear"><span class="provider-monogram" aria-hidden="true">H</span>1. Hiscox CyberClear</h3>
 <p>Hiscox présente CyberClear comme une offre complète de services : assistance 7 j/7 et 24 h/24 en cas de cyber-incident, couverture financière, garanties en cas de litiges avec vos clients, ainsi que des services de prévention et de formation. L’assureur indique que ses garanties couvrent aussi la fraude et les pertes d’exploitation consécutives à un cyber-incident, et qu’il mobilise un réseau d’experts : avocats spécialisés, experts en sécurité informatique, en récupération de données et en communication de crise.</p>
 <p><strong>Points forts</strong></p>
 <ul>
@@ -454,8 +553,8 @@ tbody tr:hover{background:#F6F8FA}
 <p><strong>Pour qui</strong> : indépendants et TPE déjà clients Hiscox en RC Pro, entreprises qui veulent former leurs équipes sans outil supplémentaire.</p>
 <p><strong>Prix relevé</strong> : </p>
 
-<p>Fiche détaillée : <a href="/offres/cyber-assurance/hiscox/">Hiscox</a></p>
-<h3 id="axa-cyber-secure">AXA Cyber Secure</h3>
+<p><a class="provider-cta" href="/offres/cyber-assurance/hiscox/">Voir la fiche Hiscox CyberClear →</a></p>
+<h3 class="provider-heading" id="2-axa-cyber-secure"><span class="provider-monogram" aria-hidden="true">A</span>2. AXA Cyber Secure</h3>
 <p>Sur sa page professionnelle consacrée aux cyber-risques, AXA met en avant son <strong>Service Crise Majeure</strong>, disponible 24/7 : conseil en communication de crise par une agence spécialisée, plateforme téléphonique dédiée pour gérer les appels de vos clients, informations juridiques (droit social, relation client-fournisseur) et soutien psychologique. AXA précise que l’activation de ce service n’emporte pas acquisition de la garantie.</p>
 <p>Le contrat cyber lui-même, AXA Cyber Secure, est décrit par un agent AXA (CyberPartner) comme couvrant le blocage du système d’information (logiciel malveillant, attaque par déni de service, erreur humaine), le rançonnage (mesures d’urgence, expertise informatique, reconstitution des données) et le vol de données personnelles (assistance, notification RGPD, surveillance), avec prise en charge des pertes d’exploitation et une hotline 24/7.</p>
 <p><strong>Points forts</strong></p>
@@ -472,8 +571,8 @@ tbody tr:hover{background:#F6F8FA}
 <p><strong>Pour qui</strong> : entreprises qui privilégient un interlocuteur local et un accompagnement humain.</p>
 <p><strong>Prix relevé</strong> : </p>
 
-<p>Fiche détaillée : <a href="/offres/cyber-assurance/axa/">AXA</a></p>
-<h3 id="allianz-assurance-cyber-risques">Allianz — assurance cyber risques</h3>
+<p><a class="provider-cta" href="/offres/cyber-assurance/axa/">Voir la fiche AXA Cyber Secure →</a></p>
+<h3 class="provider-heading" id="3-allianz-assurance-cyber-risques"><span class="provider-monogram" aria-hidden="true">A</span>3. Allianz — assurance cyber risques</h3>
 <p>Allianz destine sa solution cyber aux professionnels et entreprises dont le chiffre d’affaires est inférieur à 25 millions d’euros, et propose du sur-mesure pour les entreprises jusqu’à 250 millions. La page détaille trois blocs : <strong>responsabilité civile</strong> (réclamations de tiers pour atteinte aux données, frais de défense), <strong>pertes d’exploitation</strong> et <strong>frais engagés</strong> (expert informatique pour sécuriser et redémarrer le système, avocat, notification, consultants en communication de crise, restauration du site web, frais supplémentaires d’exploitation). En cas d’attaque, une hotline 24/7 développée avec une société spécialisée en remédiation pose un premier diagnostic et lance le nettoyage et la restauration des données.</p>
 <p><strong>Points forts</strong></p>
 <ul>
@@ -489,8 +588,8 @@ tbody tr:hover{background:#F6F8FA}
 <p><strong>Pour qui</strong> : PME structurées qui veulent une offre lisible, avec possibilité d’évoluer vers du sur-mesure.</p>
 <p><strong>Prix relevé</strong> : </p>
 
-<p>Fiche détaillée : <a href="/offres/cyber-assurance/allianz/">Allianz</a></p>
-<h3 id="generali-protection-numerique">Generali Protection Numérique</h3>
+<p><a class="provider-cta" href="/offres/cyber-assurance/allianz/">Voir la fiche Allianz →</a></p>
+<h3 class="provider-heading" id="4-generali-protection-numerique"><span class="provider-monogram" aria-hidden="true">G</span>4. Generali Protection Numérique</h3>
 <p>Generali présente une solution conçue pour les TPE et PME, couvrant les risques numériques issus d’un acte malveillant <strong>ou d’une erreur humaine</strong>. Les garanties annoncées se répartissent en trois blocs : <strong>dommages et pertes</strong> (résolution de l’incident, reconstitution des données, frais liés aux obligations RGPD, surveillance des données exposées, conseil en relations publiques, accompagnement et négociation, interruption d’activité), <strong>responsabilité civile</strong> (réclamations de tiers, avocat en cas d’enquête administrative) et une <strong>option Fraude</strong> (surconsommation téléphonique, fonds dérobés, fonds versés à la suite de l’usurpation d’un mandataire social — le scénario de la fraude au président).</p>
 <p><strong>Points forts</strong></p>
 <ul>
@@ -506,7 +605,7 @@ tbody tr:hover{background:#F6F8FA}
 <p><strong>Pour qui</strong> : TPE-PME qui veulent un accompagnement en prévention et une protection contre le faux virement.</p>
 <p><strong>Prix relevé</strong> : </p>
 
-<p>Fiche détaillée : <a href="/offres/cyber-assurance/generali/">Generali</a></p>
+<p><a class="provider-cta" href="/offres/cyber-assurance/generali/">Voir la fiche Generali →</a></p>
 <h2 id="comment-choisir-sa-cyber-assurance">Comment choisir sa cyber-assurance</h2>
 <h3 id="1-partir-de-vos-scenarios-de-crise">1. Partir de vos scénarios de crise</h3>
 <p>Listez les trois incidents qui vous feraient le plus mal : rançongiciel qui bloque la production, faux virement, fuite des données clients. Vérifiez ensuite, poste par poste, ce que chaque devis couvre pour ces scénarios.</p>
@@ -560,7 +659,34 @@ tbody tr:hover{background:#F6F8FA}
 <li>Légifrance — Code des assurances, article L12-10-1 — plainte sous 72 heures : https://www.legifrance.gouv.fr/codes/id/LEGISCTA000047048148</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/hiscox/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Hiscox</h3><p>Fiche produit Hiscox (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/axa/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>AXA</h3><p>Fiche produit AXA (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/allianz/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Allianz</h3><p>Fiche produit Allianz (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/generali/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Generali</h3><p>Fiche produit Generali (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/hiscox/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Hiscox</h3><p>Fiche produit Hiscox (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/axa/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>AXA</h3><p>Fiche produit AXA (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/allianz/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Allianz</h3><p>Fiche produit Allianz (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/cyber-assurance/generali/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Generali</h3><p>Fiche produit Generali (comparatif cyber-assurance) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+
+<section class="final-cta-section">
+  <div class="wrap">
+    <h2>Prêt à comparer des devis ?</h2>
+    <p class="subtext">Les garanties décrites sont celles que les assureurs annoncent publiquement : confrontez-les à votre activité avant de signer.</p>
+
+    <div class="final-cta-grid">
+      <div class="guarantee-card">
+        <strong>✓ Sources officielles citées</strong>
+        <p>Chaque offre est décrite d’après les pages des assureurs, consultées le 1er octobre 2026.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Méthode alignée sur France Assureurs</strong>
+        <p>Les points de vigilance de la brochure 2026 pour TPE-PME servent de grille de lecture.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Devis à périmètre égal</strong>
+        <p>Nos conseils pour comparer plusieurs devis sur les mêmes garanties.</p>
+      </div>
+    </div>
+
+    <div class="final-cta-buttons">
+      <a href="#les-offres-en-detail" class="btn-primary-aggressive">Voir les offres en détail</a>
+      <a href="/offres/" class="btn-secondary-aggressive">Comparer tous les produits</a>
+    </div>
+  </div>
+</section></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>

@@ -15,6 +15,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
 h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
 h3{font-size:1.15rem;margin-top:1.6em}
+.price-note{font-family:var(--disp);font-size:.95rem}
+.provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
+.jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta:hover{background:var(--orange-d);color:#fff}
+.provider-heading{display:flex;align-items:center;gap:12px}
+.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -174,16 +181,25 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 
 /* page article */
 .pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,200px);gap:32px;align-items:start;margin-top:22px}
+.pagehead-copy{min-width:0}
+.pagehead h1{margin-top:0}
+.pagehead-visual{display:block;width:100%;height:auto;max-height:150px;aspect-ratio:4/3;object-fit:cover;margin-top:54px;border:1px solid rgba(255,255,255,.2);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 .pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
 .pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
 .pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
 .pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
 .pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
-article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
-article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
-article.page h2:first-of-type{border-top:0;padding-top:0}
-.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:28px clamp(20px,5vw,56px) 32px;max-width:980px;margin:0 auto}
+article.page p{margin-bottom:.65em}
+article.page h2{margin-top:1.3em;border-top:1px solid var(--line);padding-top:.7em}
+article.page h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+article.page h3{margin-top:.9em;margin-bottom:.35em}
+article.page ul,article.page ol{margin:.65em 0}
+article.page .note,article.page .warn{margin:.9em 0}
+article.page .tablewrap,article.page table{margin:1em 0}
+article.page .see-also{margin-top:1.5em;padding-top:1em}
 
 /* fiches réflexes : signature */
 .steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
@@ -236,6 +252,8 @@ tbody tr:hover{background:#F6F8FA}
   .topbar{display:none}
   .hero{padding:16px 0 42px}
   .pagehead{padding:16px 0 32px}
+  .pagehead-layout{grid-template-columns:minmax(0,1fr) 88px;gap:12px;align-items:center;margin-top:18px}
+  .pagehead-visual{width:88px;height:88px;aspect-ratio:1;max-height:none;max-width:none;margin-top:0}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
@@ -268,7 +286,11 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-green">
+.provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
+.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
+@media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
+@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-blue">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
@@ -279,11 +301,103 @@ tbody tr:hover{background:#F6F8FA}
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a></div>
+<div class="pagehead-layout"><div class="pagehead-copy">
 <div class="kicker" style="color:#F5A085;margin-top:18px">Comparatif</div>
 <h1>Comparatif gestionnaires de mots de passe</h1><p class="lead">Bitwarden, 1Password, Dashlane, Proton Pass ou KeePassXC : comparez sécurité, partage familial, simplicité et prix relevés sur les sites des éditeurs pour choisir votre premier gestionnaire de mots de passe sans vous tromper.</p>
 <div class="meta"><span class="chip both">Les deux</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-offres-gestionnaires-mots-de-passe.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><h2 id="sommaire">Sommaire</h2>
+</div><img class="pagehead-visual" src="/assets/img/editorial-offres-gestionnaires-mots-de-passe.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div></div></div>
+
+<section class="vpn-comparator-section">
+  <div class="wrap">
+    <div class="comparator-header">
+      <div class="exclusive-offer-banner">
+        <div class="exclusive-offer-text">🔎 Prix relevés le 1er octobre 2026 — plusieurs éditeurs affichent en dollars, taxes non comprises 🔎</div>
+      </div>
+      <h2>Choisissez votre gestionnaire de mots de passe</h2>
+      <p>Les 5 gestionnaires comparés, avec prix relevés le 1er octobre 2026 sur les sites des éditeurs</p>
+    </div>
+
+    <div class="vpn-grid-showcase grid-5">
+      <a href="#1-bitwarden" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">B</span>
+        </div>
+        <h3>Bitwarden</h3>
+        <p class="vpn-feature">Le premier choix du débutant</p>
+        <p class="vpn-price"><strong>Dès 1,65 $/mois</strong></p>
+        <ul class="vpn-features">
+          <li>Code ouvert, version gratuite</li>
+          <li>Appareils et mots de passe illimités</li>
+          <li>Familles : 6 comptes, 47,88 $/an</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#2-1password" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">1</span>
+        </div>
+        <h3>1Password</h3>
+        <p class="vpn-feature">L’expérience la plus fluide</p>
+        <p class="vpn-price"><strong>Dès 3,99 $/mois</strong></p>
+        <ul class="vpn-features">
+          <li>Clé secrète + chiffrement de bout en bout</li>
+          <li>Essai gratuit de 14 jours</li>
+          <li>Familles dès 5,99 $/mois (5 membres)</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#3-dashlane" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">D</span>
+        </div>
+        <h3>Dashlane</h3>
+        <p class="vpn-feature">Tout-en-un, simple</p>
+        <p class="vpn-price"><strong>5,42 $/mois</strong></p>
+        <ul class="vpn-features">
+          <li>VPN inclus dans Premium</li>
+          <li>Friends &amp; Family : 10 membres</li>
+          <li>Pas de version gratuite</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#4-proton-pass" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">P</span>
+        </div>
+        <h3>Proton Pass</h3>
+        <p class="vpn-feature">Confidentialité suisse</p>
+        <p class="vpn-price"><strong>Version gratuite</strong></p>
+        <ul class="vpn-features">
+          <li>Chiffrement de bout en bout</li>
+          <li>Version gratuite généreuse</li>
+          <li>Partage et 2FA : offres payantes</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#5-keepassxc" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">K</span>
+        </div>
+        <h3>KeePassXC</h3>
+        <p class="vpn-feature">Maîtrise totale, hors ligne</p>
+        <p class="vpn-price"><strong>Gratuit</strong></p>
+        <ul class="vpn-features">
+          <li>Code ouvert (GPLv3)</li>
+          <li>Sans nuage ni abonnement</li>
+          <li>Visa de sécurité ANSSI (v2.7.9)</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><p><a class="jump-cta" href="#les-cinq-gestionnaires-en-detail">Voir directement les offres</a></p>
+<h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#reponse-rapide-quel-gestionnaire-choisir">Réponse rapide : quel gestionnaire choisir ?</a></li>
 <li><a href="#pourquoi-un-gestionnaire-de-mots-de-passe">Pourquoi un gestionnaire de mots de passe ?</a></li>
@@ -442,40 +556,40 @@ tbody tr:hover{background:#F6F8FA}
 </table></div>
 <p>Retenez une idée : les cinq outils sont des choix sérieux. Les différences tiennent surtout au prix, au partage et à la place que vous accordez au nuage.</p>
 <h2 id="les-cinq-gestionnaires-en-detail">Les cinq gestionnaires en détail</h2>
-<h3 id="bitwarden">Bitwarden</h3>
+<h3 class="provider-heading" id="1-bitwarden"><span class="provider-monogram" aria-hidden="true">B</span>1. Bitwarden</h3>
 <p><strong>Points forts.</strong> Selon le site de l’éditeur, tout compte Bitwarden, y compris gratuit, comprend le chiffrement « à connaissance nulle » (<em>zero-knowledge</em>), un code ouvert, un nombre illimité d’appareils et de mots de passe, des applications pour navigateur, mobile et ordinateur, la gestion des clés d’accès, un générateur de mots de passe et le partage gratuit avec un autre utilisateur. L’offre payante ajoute notamment l’authentificateur intégré (codes à usage unique), les rapports de santé du coffre, l’accès d’urgence et des pièces jointes chiffrées. Les utilisateurs avancés peuvent même héberger le serveur eux-mêmes.</p>
 <p><strong>Limites.</strong> L’interface est fonctionnelle mais moins léchée que celle de 1Password ou Dashlane. Le prix de l’offre Premium a augmenté ces dernières années : vérifiez le tarif au moment du renouvellement.</p>
 <p><strong>Pour qui ?</strong> Le premier choix du débutant, et des familles à petit budget.</p>
 <p><strong>Prix relevé.</strong> Premium : 1,65 $ par mois ; Familles : 3,99 $ par mois, facturés 47,88 $ par an pour six comptes premium (relevé le 1er octobre 2026 sur bitwarden.com, en dollars américains, taxes non comprises — prix en euros et renouvellement à vérifier).</p>
 
-<p>Lire la fiche complète : <a href="/offres/gestionnaires-mots-de-passe/bitwarden/">Bitwarden</a></p>
-<h3 id="1password">1Password</h3>
+<p><a class="provider-cta" href="/offres/gestionnaires-mots-de-passe/bitwarden/">Voir la fiche Bitwarden →</a></p>
+<h3 class="provider-heading" id="2-1password"><span class="provider-monogram" aria-hidden="true">1</span>2. 1Password</h3>
 <p><strong>Points forts.</strong> 1Password chiffre de bout en bout l’ensemble des informations du coffre, y compris les adresses et titres des éléments, et ajoute à votre mot de passe une « clé secrète » (<em>Secret Key</em>) qui renforce la protection. L’éditeur met en avant Watchtower (alertes sur les mots de passe faibles, réutilisés ou exposés dans des fuites), le partage sécurisé, même avec des personnes sans compte, un « mode Voyage » pour masquer des coffres lors d’un passage de frontière, et des audits menés par des experts indépendants. L’offre Familles inclut cinq membres et des comptes invités.</p>
 <p><strong>Limites.</strong> Pas de version gratuite, seulement un essai. Le code n’est pas ouvert. L’éditeur précise que ses prix promotionnels sont réservés aux nouveaux clients s’abonnant directement sur son site, pour la première année en facturation annuelle : le prix de renouvellement est donc plus élevé.</p>
 <p><strong>Pour qui ?</strong> Les familles qui veulent l’expérience la plus fluide et sont prêtes à payer.</p>
 <p><strong>Prix relevé.</strong> Individuel à partir de 3,99 $ par mois ; Familles à partir de 5,99 $ par mois pour cinq membres, avec essai gratuit de 14 jours (relevé le 1er octobre 2026 sur 1password.com — prix promotionnel de première période, renouvellement à vérifier).</p>
 
-<p>Lire la fiche complète : <a href="/offres/gestionnaires-mots-de-passe/1password/">1Password</a></p>
-<h3 id="dashlane">Dashlane</h3>
+<p><a class="provider-cta" href="/offres/gestionnaires-mots-de-passe/1password/">Voir la fiche 1Password →</a></p>
+<h3 class="provider-heading" id="3-dashlane"><span class="provider-monogram" aria-hidden="true">D</span>3. Dashlane</h3>
 <p><strong>Points forts.</strong> Dashlane mise sur la simplicité : remplissage automatique, partage sécurisé illimité, surveillance du web clandestin (<em>dark web</em>), alertes d’hameçonnage en temps réel et, selon sa page tarifaire, une nouvelle protection anti-arnaque assistée par intelligence artificielle. L’offre Premium inclut un VPN pour protéger les connexions sur les Wi-Fi publics. L’offre Friends &amp; Family couvre jusqu’à dix comptes, chacun avec son coffre privé.</p>
 <p><strong>Limites.</strong> Pas de version gratuite. Le code n’est pas ouvert. Dans l’offre Friends &amp; Family, seul le gestionnaire du plan dispose de toutes les fonctions Premium : les autres membres n’ont pas le VPN. C’est l’offre individuelle la plus chère de ce comparatif.</p>
 <p><strong>Pour qui ?</strong> Ceux qui veulent un outil « tout-en-un » simple, ou une grande famille élargie (jusqu’à dix personnes).</p>
 <p><strong>Prix relevé.</strong> Premium : 5,42 $ par mois ; Friends &amp; Family : 8,13 $ par mois pour dix membres, facturation annuelle (relevé le 1er octobre 2026 sur dashlane.com — prix promotionnel possible, renouvellement à vérifier).</p>
 
-<p>Lire la fiche complète : <a href="/offres/gestionnaires-mots-de-passe/dashlane/">Dashlane</a></p>
-<h3 id="proton-pass">Proton Pass</h3>
+<p><a class="provider-cta" href="/offres/gestionnaires-mots-de-passe/dashlane/">Voir la fiche Dashlane →</a></p>
+<h3 class="provider-heading" id="4-proton-pass"><span class="provider-monogram" aria-hidden="true">P</span>4. Proton Pass</h3>
 <p><strong>Points forts.</strong> Édité par la société suisse Proton, Proton Pass applique un chiffrement de bout en bout et met en avant la juridiction suisse. Sa version gratuite est particulièrement généreuse : entrées et appareils illimités, applications pour navigateur, mobile et ordinateur, générateur, alertes sur les mots de passe faibles et réutilisés, clés d’accès, jusqu’à trois éléments de double authentification et dix alias e-mail (« hide-my-email ») pour ne pas donner votre vraie adresse. L’offre Pass Plus ajoute alias illimités, authentificateur intégré, partage de coffres, surveillance du web clandestin, pièces jointes et accès d’urgence ; Pass Family étend ces fonctions à six utilisateurs avec un panneau d’administration.</p>
 <p><strong>Limites.</strong> Service plus récent que ses concurrents. Les fonctions de partage et l’authentificateur intégré sont réservés aux offres payantes.</p>
 <p><strong>Pour qui ?</strong> Les débutants soucieux de confidentialité, et ceux qui utilisent déjà d’autres services Proton.</p>
 <p><strong>Prix relevé.</strong>  Nous n’avons pas pu relever de prix fiable sur la page tarifaire officielle lors de notre consultation.</p>
 
-<p>Lire la fiche complète : <a href="/offres/gestionnaires-mots-de-passe/proton-pass/">Proton Pass</a></p>
-<h3 id="keepassxc">KeePassXC</h3>
+<p><a class="provider-cta" href="/offres/gestionnaires-mots-de-passe/proton-pass/">Voir la fiche Proton Pass →</a></p>
+<h3 class="provider-heading" id="5-keepassxc"><span class="provider-monogram" aria-hidden="true">K</span>5. KeePassXC</h3>
 <p><strong>Points forts.</strong> KeePassXC est gratuit, sans publicité, sans abonnement et sans nuage. Son code est ouvert sous licence GPLv3. Vos mots de passe sont stockés dans un fichier chiffré, hors ligne, que vous pouvez placer où vous voulez. Selon le site du projet, la version 2.7.9 a obtenu un visa de sécurité de l’ANSSI, à l’issue d’une Certification de sécurité de premier niveau (CSPN).</p>
 <p><strong>Limites.</strong> Il n’y a pas de synchronisation intégrée : c’est à vous de copier ou de synchroniser le fichier entre vos appareils (par exemple via un service de stockage), et de le sauvegarder. Les applications officielles visent Windows, macOS et Linux ; sur smartphone, il faut passer par des applications tierces compatibles avec le format KeePass. Pas de partage familial simple.</p>
 <p><strong>Pour qui ?</strong> Les utilisateurs avertis et les professionnels qui exigent de garder la maîtrise totale de leurs données.</p>
 <p><strong>Prix relevé.</strong> Gratuit (relevé le 1er octobre 2026 sur keepassxc.org).</p>
-<p>Lire la fiche complète : <a href="/offres/gestionnaires-mots-de-passe/keepassxc/">KeePassXC</a></p>
+<p><a class="provider-cta" href="/offres/gestionnaires-mots-de-passe/keepassxc/">Voir la fiche KeePassXC →</a></p>
 <h2 id="comment-choisir-selon-votre-situation">Comment choisir selon votre situation</h2>
 <h3 id="vous-debutez-et-vous-etes-seul">Vous débutez et vous êtes seul</h3>
 <p>Commencez par une version gratuite : <strong>Bitwarden</strong> ou <strong>Proton Pass</strong>. Installez l’extension sur votre navigateur et l’application sur votre téléphone, importez les mots de passe enregistrés dans votre navigateur, puis changez en priorité ceux de votre messagerie et de votre banque. Vous passerez à une offre payante plus tard si vous en ressentez le besoin.</p>
@@ -525,7 +639,34 @@ tbody tr:hover{background:#F6F8FA}
 <li>Cybermalveillance.gouv.fr — « Apprendre à séparer ses usages pro-perso » — risque de la réutilisation des mots de passe : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/bonnes-pratiques/securite-usages-pro-perso</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/bitwarden/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Bitwarden</h3><p>Fiche produit Bitwarden (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/1password/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>1Password</h3><p>Fiche produit 1Password (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/dashlane/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Dashlane</h3><p>Fiche produit Dashlane (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/proton-pass/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Proton Pass</h3><p>Fiche produit Proton Pass (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/keepassxc/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>KeePassXC</h3><p>Fiche produit KeePassXC (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/bitwarden/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Bitwarden</h3><p>Fiche produit Bitwarden (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/1password/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>1Password</h3><p>Fiche produit 1Password (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/dashlane/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Dashlane</h3><p>Fiche produit Dashlane (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/proton-pass/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Proton Pass</h3><p>Fiche produit Proton Pass (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/gestionnaires-mots-de-passe/keepassxc/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>KeePassXC</h3><p>Fiche produit KeePassXC (comparatif gestionnaires de mots de passe) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+
+<section class="final-cta-section">
+  <div class="wrap">
+    <h2>Prêt à sécuriser vos mots de passe ?</h2>
+    <p class="subtext">Un gestionnaire protège tous vos comptes à la fois : choisissez-en un adapté à votre situation, seul ou en famille.</p>
+
+    <div class="final-cta-grid">
+      <div class="guarantee-card">
+        <strong>✓ Des options gratuites sûres</strong>
+        <p>Bitwarden, Proton Pass et KeePassXC proposent un accès gratuit.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Prix relevés le 1er octobre 2026</strong>
+        <p>Lus sur les sites officiels ; vérifiez le renouvellement avant de souscrire.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Solo ou en famille</strong>
+        <p>Des offres de 1 à 10 membres pour couvrir tout le foyer.</p>
+      </div>
+    </div>
+
+    <div class="final-cta-buttons">
+      <a href="#les-cinq-gestionnaires-en-detail" class="btn-primary-aggressive">Voir les gestionnaires en détail</a>
+      <a href="/offres/" class="btn-secondary-aggressive">Comparer tous les produits</a>
+    </div>
+  </div>
+</section></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
