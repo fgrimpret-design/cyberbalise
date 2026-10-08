@@ -1091,7 +1091,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .seller-feature {
   margin: 0 0 1px 0;
   font-size: .7rem;
-  color: #B9C9D6;
+  color: #8FA3B3;
   min-height: 14px;
 }
 
@@ -1101,6 +1101,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   color: #E4572E;
   font-weight: 800;
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 
 .seller-features {
@@ -1116,6 +1117,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   font-size: .65rem;
   color: #4B5D6F;
   line-height: 1.1;
+  display: flex;
+  align-items: center;
 }
 
 .seller-features li::before {
@@ -1123,6 +1126,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   color: #E4572E;
   font-weight: 700;
   margin-right: 6px;
+  flex-shrink: 0;
 }
 
 .seller-card-cta {
