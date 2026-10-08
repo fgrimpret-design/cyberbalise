@@ -522,7 +522,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   background: linear-gradient(135deg, #F5D547 0%, #D4A420 100%);
   color: #0D2E4A;
   padding: 32px 20px;
-  margin: 0;
+  margin: -40px 0 40px 0;
   border-radius: 0;
   box-shadow: 0 8px 20px rgba(212, 164, 32, .2);
 }
@@ -580,7 +580,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 @media (max-width: 760px) {
   .urgency-banner {
     padding: 14px 16px;
-    margin: 0;
+    margin: -32px 0 32px 0;
   }
 
   .urgency-content {
@@ -779,8 +779,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 
 .vpn-comparator-section {
   background: linear-gradient(135deg, #0D2E4A 0%, #1B4A6B 100%);
-  padding: 60px 0;
-  margin: 40px 0;
+  padding: 60px 0 60px 0;
+  margin: 0;
   border-top: 3px solid #F5A085;
   border-bottom: 3px solid #F5A085;
 }
