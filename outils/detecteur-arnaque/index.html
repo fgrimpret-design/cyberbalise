@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Détecteur d'arnaque par capture d'écran "” CyberBalise</title><meta name="description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran.">
+<title>Détecteur d'arnaque par capture d'écran • CyberBalise</title><meta name="description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran.">
 <link rel="canonical" href="https://cyberbalise.fr/outils/detecteur-arnaque/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Détecteur d&#x27;arnaque par capture d&#x27;écran"><meta property="og:description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran."><meta property="og:url" content="https://cyberbalise.fr/outils/detecteur-arnaque/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -418,7 +418,7 @@ tbody tr:hover{background:#F6F8FA}
 </ul>
 
 <h2 id="signaler">Où signaler</h2>
-<div class="tablewrap"><table><thead><tr><th>Situation</th><th>Que faire</th></tr></thead><tbody><tr><td>SMS ou appel frauduleux</td><td>Transférez le SMS au 33700 (gratuit) ou signalez-le sur 33700.fr "” <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>E-mail d'hameçonnage</td><td>Signalez-le sur Signal Spam (signal-spam.fr) "” <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>Vous avez payé ou donné vos coordonnées bancaires</td><td>Faites opposition auprès de votre banque sans attendre "” <a href="/particuliers/victime/carte-bancaire-debitee/">voir la fiche</a></td></tr><tr><td>Vous ne savez pas à qui vous adresser</td><td>17Cyber (17cyber.gouv.fr) vous oriente 24 h/24 et 7 j/7 "” <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Situation</th><th>Que faire</th></tr></thead><tbody><tr><td>SMS ou appel frauduleux</td><td>Transférez le SMS au 33700 (gratuit) ou signalez-le sur 33700.fr • <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>E-mail d'hameçonnage</td><td>Signalez-le sur Signal Spam (signal-spam.fr) • <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>Vous avez payé ou donné vos coordonnées bancaires</td><td>Faites opposition auprès de votre banque sans attendre • <a href="/particuliers/victime/carte-bancaire-debitee/">voir la fiche</a></td></tr><tr><td>Vous ne savez pas à qui vous adresser</td><td>17Cyber (17cyber.gouv.fr) vous oriente 24 h/24 et 7 j/7 • <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr></tbody></table></div>
 <p class="caption">Services de signalement repris de notre fiche <a href="/particuliers/victime/signaler-un-probleme/">Où et comment signaler</a>. Signaux d'alerte détaillés dans <a href="/particuliers/menaces/phishing-hameconnage/">Phishing et hameçonnage</a> et <a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels</a>.</p>
 
 <script>
@@ -500,7 +500,7 @@ tbody tr:hover{background:#F6F8FA}
       }).join('') + '</ul>';
     }
     h += '<div class="sd-todo"><h3>Que faire maintenant ?</h3><ol>'
-      + (level >= 2 ? '<li><strong>Ne cliquez sur aucun lien</strong> et ne rappelez pas le numéro indiqué.</li><li><strong>Vérifiez par vous-même</strong> : ouvrez l\'application ou le site officiel, ou appelez l\'organisme au numéro habituel.</li><li><strong>Signalez</strong> le message : SMS au 33700, e-mail sur Signal Spam, et 17Cyber si vous avez un doute "” <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a>.</li><li><strong>Vous avez déjà cliqué, payé ou donné un code ?</strong> Appelez votre banque pour faire opposition et suivez <a href="/particuliers/victime/">nos fiches réflexes</a>.</li>'
+      + (level >= 2 ? '<li><strong>Ne cliquez sur aucun lien</strong> et ne rappelez pas le numéro indiqué.</li><li><strong>Vérifiez par vous-même</strong> : ouvrez l\'application ou le site officiel, ou appelez l\'organisme au numéro habituel.</li><li><strong>Signalez</strong> le message : SMS au 33700, e-mail sur Signal Spam, et 17Cyber si vous avez un doute • <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a>.</li><li><strong>Vous avez déjà cliqué, payé ou donné un code ?</strong> Appelez votre banque pour faire opposition et suivez <a href="/particuliers/victime/">nos fiches réflexes</a>.</li>'
                     : '<li>En cas de doute, vérifiez auprès de l\'expéditeur par un autre moyen que ce message.</li><li>Ne communiquez jamais un code, un mot de passe ou vos coordonnées bancaires en réponse à un message.</li>')
       + '</ol></div><div class="sd-actions"><button class="sd-link" type="button" id="sd-again">Analyser un autre message</button></div>';
     var r = el('sd-res'); r.innerHTML = h; r.style.display = 'block';
@@ -634,7 +634,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat "” le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat • le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});

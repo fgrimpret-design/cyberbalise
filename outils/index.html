@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Outils interactifs "” CyberBalise</title><meta name="description" content="Quatre outils gratuits pour tester vos réflexes, faire le point sur votre protection, vérifier un mot de passe et repérer un message frauduleux. Tout se"¦">
+<title>Outils interactifs • CyberBalise</title><meta name="description" content="Quatre outils gratuits pour tester vos réflexes, faire le point sur votre protection, vérifier un mot de passe et repérer un message frauduleux. Tout se"¦">
 <link rel="canonical" href="https://cyberbalise.fr/outils/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Outils interactifs"><meta property="og:description" content="Quatre outils gratuits pour tester vos réflexes, faire le point sur votre protection, vérifier un mot de passe et repérer un message frauduleux. Tout se"¦"><meta property="og:url" content="https://cyberbalise.fr/outils/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -473,7 +473,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat "” le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat • le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});

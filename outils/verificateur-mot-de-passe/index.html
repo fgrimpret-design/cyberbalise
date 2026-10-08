@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vérificateur de mot de passe "” CyberBalise</title><meta name="description" content="Estimez la robustesse d&#x27;un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise.">
+<title>Vérificateur de mot de passe • CyberBalise</title><meta name="description" content="Estimez la robustesse d&#x27;un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise.">
 <link rel="canonical" href="https://cyberbalise.fr/outils/verificateur-mot-de-passe/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Vérificateur de mot de passe"><meta property="og:description" content="Estimez la robustesse d&#x27;un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise."><meta property="og:url" content="https://cyberbalise.fr/outils/verificateur-mot-de-passe/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -393,8 +393,8 @@ tbody tr:hover{background:#F6F8FA}
 
   <div class="pw-stats">
     <div class="pw-stat"><b id="pw-bits">0 bit</b><small>Entropie estimée (imprévisibilité)</small></div>
-    <div class="pw-stat"><b id="pw-time">"”</b><small>Temps estimé pour le deviner, attaque massive hors ligne*</small></div>
-    <div class="pw-stat"><b id="pw-type">"”</b><small>Type détecté</small></div>
+    <div class="pw-stat"><b id="pw-time">•</b><small>Temps estimé pour le deviner, attaque massive hors ligne*</small></div>
+    <div class="pw-stat"><b id="pw-type">•</b><small>Type détecté</small></div>
   </div>
 
   <div class="pw-cnil" aria-hidden="true"><i id="pw-cnil-bar"></i><b style="left:66.6%"></b><em style="left:66.6%">80 bits Â· CNIL</em></div>
@@ -407,7 +407,7 @@ tbody tr:hover{background:#F6F8FA}
   <div class="pw-gen">
     <h2 id="generer" style="border:0;padding:0;margin:0 0 4px">Besoin d'idée ? Générez une phrase de passe</h2>
     <p style="margin:0;color:var(--muted)">Des mots tirés au hasard dans votre navigateur, facile à retenir et longue à deviner. Notre liste compte 4 096 mots : chaque mot ajoute 12 bits, soit 84 bits pour 7 mots. La CNIL recommande au moins 7 mots tirés au hasard pour une phrase de passe.</p>
-    <div class="pw-gen-out" id="pw-gen-out">"”</div>
+    <div class="pw-gen-out" id="pw-gen-out">•</div>
     <div class="pw-row">
       <button class="pw-btn" id="pw-gen-btn" type="button">Générer</button>
       <button class="pw-btn alt" id="pw-gen-test" type="button">Tester cette phrase</button>
@@ -516,7 +516,7 @@ tbody tr:hover{background:#F6F8FA}
     if(!r){
       bars.forEach(function(b){ b.style.background=''; });
       el('pw-level').textContent='En attente'; el('pw-level').style.color='';
-      el('pw-len').textContent='0 caractère'; el('pw-bits').textContent='0 bit'; el('pw-time').textContent='"”'; el('pw-type').textContent='"”';
+      el('pw-len').textContent='0 caractère'; el('pw-bits').textContent='0 bit'; el('pw-time').textContent='•'; el('pw-type').textContent='•';
       el('pw-cnil-bar').style.width='0'; el('pw-checks').innerHTML=''; el('pw-warn').style.display='none';
       el('pw-cnil-txt').textContent = 'La CNIL recommande au moins 80 bits d\'entropie pour un compte protégé par un simple mot de passe.';
       return;
@@ -550,7 +550,7 @@ tbody tr:hover{background:#F6F8FA}
   el('pw-gen-n').addEventListener('change', gen);
   el('pw-gen-sep').addEventListener('change', gen);
   el('pw-gen-test').addEventListener('click', function(){
-    var t = el('pw-gen-out').textContent; if(t === '"”'){ gen(); t = el('pw-gen-out').textContent; }
+    var t = el('pw-gen-out').textContent; if(t === '•'){ gen(); t = el('pw-gen-out').textContent; }
     input.value = t; input.type = 'text'; el('pw-eye').textContent = 'Masquer'; render();
     el('pw').scrollIntoView({behavior:'smooth', block:'start'});
   });
@@ -643,7 +643,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat "” le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat • le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
