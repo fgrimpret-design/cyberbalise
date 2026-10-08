@@ -15,6 +15,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font
 h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
 h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
 h3{font-size:1.15rem;margin-top:1.6em}
+.price-note{font-family:var(--disp);font-size:.95rem}
+.provider-cta{display:inline-block;padding:.75em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.affiliate-note{font-size:.75rem;line-height:1.4;color:var(--muted);margin-top:-.5em}
+.jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
+.jump-cta:hover{background:var(--orange-d);color:#fff}
+.provider-heading{display:flex;align-items:center;gap:12px}
+.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -174,16 +181,25 @@ footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
 
 /* page article */
 .pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,200px);gap:32px;align-items:start;margin-top:22px}
+.pagehead-copy{min-width:0}
+.pagehead h1{margin-top:0}
+.pagehead-visual{display:block;width:100%;height:auto;max-height:150px;aspect-ratio:4/3;object-fit:cover;margin-top:54px;border:1px solid rgba(255,255,255,.2);border-radius:14px;box-shadow:0 10px 24px rgba(0,0,0,.2)}
 .pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
 .pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
 .pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
 .pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
 .pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
-article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
-article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
-article.page h2:first-of-type{border-top:0;padding-top:0}
-.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:28px clamp(20px,5vw,56px) 32px;max-width:980px;margin:0 auto}
+article.page p{margin-bottom:.65em}
+article.page h2{margin-top:1.3em;border-top:1px solid var(--line);padding-top:.7em}
+article.page h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+article.page h3{margin-top:.9em;margin-bottom:.35em}
+article.page ul,article.page ol{margin:.65em 0}
+article.page .note,article.page .warn{margin:.9em 0}
+article.page .tablewrap,article.page table{margin:1em 0}
+article.page .see-also{margin-top:1.5em;padding-top:1em}
 
 /* fiches réflexes : signature */
 .steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
@@ -236,6 +252,8 @@ tbody tr:hover{background:#F6F8FA}
   .topbar{display:none}
   .hero{padding:16px 0 42px}
   .pagehead{padding:16px 0 32px}
+  .pagehead-layout{grid-template-columns:minmax(0,1fr) 88px;gap:12px;align-items:center;margin-top:18px}
+  .pagehead-visual{width:88px;height:88px;aspect-ratio:1;max-height:none;max-width:none;margin-top:0}
   .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
@@ -268,6 +286,10 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
+.provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
+.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
+@media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
+@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
 </style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-bestsellers-blue">
 </head><body>
 <header class="site"><div class="wrap">
@@ -279,11 +301,88 @@ tbody tr:hover{background:#F6F8FA}
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/offres/">Offres &amp; outils</a></div>
+<div class="pagehead-layout"><div class="pagehead-copy">
 <div class="kicker" style="color:#F5A085;margin-top:18px">Comparatif</div>
 <h1>Comparatif formations cyber pour équipes</h1><p class="lead">E-learning, campagnes de phishing simulé, formats courts : nous comparons KnowBe4, SoSafe, Hoxhunt et Proofpoint ZenGuide, ainsi que les dispositifs publics gratuits, pour aider une TPE-PME à choisir la sensibilisation adaptée à ses équipes.</p>
 <div class="meta"><span class="chip pro">Pros</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-offres-formations.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><h2 id="sommaire">Sommaire</h2>
+</div><img class="pagehead-visual" src="/assets/img/editorial-offres-formations.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div></div></div>
+
+<section class="vpn-comparator-section">
+  <div class="wrap">
+    <div class="comparator-header">
+      <div class="exclusive-offer-banner">
+        <div class="exclusive-offer-text">🔎 Peu de tarifs sont publics : demandez des devis à périmètre égal avant de choisir 🔎</div>
+      </div>
+      <h2>Choisissez votre formation cyber</h2>
+      <p>Les 4 plateformes comparées, avec les tarifs publics relevés le 1er octobre 2026</p>
+    </div>
+
+    <div class="vpn-grid-showcase grid-4">
+      <a href="#1-knowbe4" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">K</span>
+        </div>
+        <h3>KnowBe4</h3>
+        <p class="vpn-feature">Bibliothèque très étendue</p>
+        <p class="vpn-price"><strong>Prix à vérifier</strong></p>
+        <ul class="vpn-features">
+          <li>200+ contenus en base, 1 000+ en avancé</li>
+          <li>Simulations : e-mail, appel, QR code, USB</li>
+          <li>Campagnes très automatisées</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#2-sosafe" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">S</span>
+        </div>
+        <h3>SoSafe</h3>
+        <p class="vpn-feature">Hébergement dans l’UE</p>
+        <p class="vpn-price"><strong>Dès 625 €/mois</strong></p>
+        <ul class="vpn-features">
+          <li>Tarif d’entrée pour 50 utilisateurs</li>
+          <li>Disponible en 34 langues, dont le français</li>
+          <li>4 formules, montée en gamme progressive</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#3-hoxhunt" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">H</span>
+        </div>
+        <h3>Hoxhunt</h3>
+        <p class="vpn-feature">Format court, gamifié</p>
+        <p class="vpn-price"><strong>Sur devis</strong></p>
+        <ul class="vpn-features">
+          <li>Étoiles et classements pour le signalement</li>
+          <li>Prix par salarié, après appel de cadrage</li>
+          <li>Forte automatisation</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+
+      <a href="#4-proofpoint-zenguide" class="vpn-card">
+        <div class="vpn-card-header">
+          <span class="vpn-card-monogram" aria-hidden="true">P</span>
+        </div>
+        <h3>Proofpoint ZenGuide</h3>
+        <p class="vpn-feature">Pilotage par le risque</p>
+        <p class="vpn-price"><strong>Tarif non public</strong></p>
+        <ul class="vpn-features">
+          <li>Simulations ciblées sur vos menaces</li>
+          <li>Pensé pour les organisations structurées</li>
+          <li>Idéal si vous utilisez déjà Proofpoint</li>
+        </ul>
+        <span class="vpn-card-cta">Voir détails →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide comparatif — édition d’octobre 2026 · Lecture estimée : 12 minutes ·</p><p><a class="jump-cta" href="#les-solutions-en-detail">Voir directement les offres</a></p>
+<h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#reponse-rapide-quelle-formation-choisir">Réponse rapide : quelle formation choisir ?</a></li>
 <li><a href="#notre-methode-et-nos-criteres">Notre méthode et nos critères</a></li>
@@ -417,15 +516,15 @@ tbody tr:hover{background:#F6F8FA}
 </table></div>
 <p>Le tableau montre surtout une chose : les prix sont rarement publics. Seul SoSafe affiche un tarif d’entrée sur son site ; pour les autres, prévoyez une demande de devis et comparez à périmètre égal.</p>
 <h2 id="les-solutions-en-detail">Les solutions en détail</h2>
-<h3 id="knowbe4">KnowBe4</h3>
+<h3 class="provider-heading" id="1-knowbe4"><span class="provider-monogram" aria-hidden="true">K</span>1. KnowBe4</h3>
 <p>KnowBe4 est l’une des plateformes de sensibilisation les plus connues. Sa page tarifaire officielle détaille une offre très riche : simulations de phishing illimitées toute l’année, bouton de signalement « Phish Alert Button », suivi des réponses aux faux e-mails (pour reproduire le fonctionnement d’une fraude par compromission de messagerie), indicateurs pédagogiques qui montrent au salarié les signaux qu’il a manqués, campagnes de formation automatisées et évaluations du niveau et de la culture de sécurité.</p>
 <p>La bibliothèque est son point fort : plus de 200 contenus dans la bibliothèque de base, dont des micro-modules de 5 minutes, et plus de 1 000 dans la bibliothèque avancée (séries vidéo, jeux, affiches, lettres d’information). L’éditeur propose aussi des tests originaux : appels frauduleux simulés, faux rappels téléphoniques, QR codes physiques et clés USB « trouvées ». Côté IA, KnowBe4 met en avant ses agents AIDA, qui choisissent les modèles de phishing et recommandent les formations selon l’historique de chacun, et annonce des contenus dans plus de 47 langues.</p>
 <p><strong>Points forts</strong> - Bibliothèque de contenus très étendue, formats courts disponibles. - Simulations très variées (e-mail, appel, QR code, clé USB). - Automatisation poussée des campagnes.</p>
 <p><strong>Limites</strong> - La richesse de l’offre demande du temps de paramétrage : il faut quelqu’un pour piloter. - Tarifs non lisibles sur la page officielle consultée ; certaines fonctions dépendent du niveau d’abonnement. - Hébergement des données à vérifier avant signature si c’est un critère pour vous.</p>
 <p><strong>Pour qui</strong> : PME disposant d’un référent informatique ou d’un prestataire prêt à animer le programme.</p>
 <p><strong>Prix relevé</strong> : </p>
-
-<h3 id="sosafe">SoSafe</h3>
+<p><a class="provider-cta" href="/offres/formations/knowbe4/">Voir la fiche KnowBe4 →</a></p>
+<h3 class="provider-heading" id="2-sosafe"><span class="provider-monogram" aria-hidden="true">S</span>2. SoSafe</h3>
 <p>SoSafe se présente comme une plateforme de gestion du risque humain, « conçue en Allemagne », hébergée dans l’Union européenne et conforme au RGPD selon l’éditeur. Elle combine formation adaptative et ludique, simulations de phishing multicanal, signalement des menaces en un clic et indicateurs de risque présentables à la direction.</p>
 <p>C’est l’un des rares éditeurs à publier une grille claire. Quatre formules sont proposées :</p>
 <div class="tablewrap"><table>
@@ -469,21 +568,21 @@ tbody tr:hover{background:#F6F8FA}
 <p><strong>Limites</strong> - Le ticket d’entrée affiché (625 € par mois pour 50 utilisateurs) dépasse le budget de beaucoup de TPE. - Les simulations par SMS et téléphone sont réservées aux formules supérieures. - La formule Essential reste basique.</p>
 <p><strong>Pour qui</strong> : PME et ETI européennes d’au moins quelques dizaines de salariés, attentives à la localisation des données.</p>
 <p><strong>Prix relevé</strong> : à partir de 625 € par mois, facturé annuellement, pour 50 utilisateurs (relevé le 1er octobre 2026 sur le site officiel — tarif d’entrée, prix de renouvellement et formules supérieures à vérifier sur devis).</p>
-
-<h3 id="hoxhunt">Hoxhunt</h3>
+<p><a class="provider-cta" href="/offres/formations/sosafe/">Voir la fiche SoSafe →</a></p>
+<h3 class="provider-heading" id="3-hoxhunt"><span class="provider-monogram" aria-hidden="true">H</span>3. Hoxhunt</h3>
 <p>Hoxhunt mise sur l’engagement. Sa plateforme repose sur la gamification (étoiles, classements) — l’éditeur annonce plus de 90 % de satisfaction des utilisateurs — et sur des leçons courtes envoyées régulièrement plutôt qu’une formation annuelle vite oubliée. Les simulations de phishing sont adaptatives : la plateforme crée un parcours individuel selon le niveau, le métier et la localisation de chaque salarié. Les modules, quiz et notifications peuvent être traduits dans plus de 40 langues, et l’éditeur propose de générer des formations à partir de vos propres politiques internes.</p>
 <p><strong>Points forts</strong> - Format court et fréquent, bien adapté aux équipes qui fuient les longues formations. - Gamification qui encourage le signalement des messages suspects. - Forte automatisation : peu de gestion manuelle des campagnes.</p>
 <p><strong>Limites</strong> - Aucun tarif public : prix par salarié, communiqué après un appel de cadrage de 30 minutes. - La gamification ne convient pas à toutes les cultures d’entreprise. - Hébergement des données à vérifier avant signature.</p>
 <p><strong>Pour qui</strong> : entreprises qui veulent installer un réflexe durable de signalement, avec un budget prévu pour un outil spécialisé.</p>
 <p><strong>Prix relevé</strong> :  (sur devis selon l’éditeur).</p>
-
-<h3 id="proofpoint-zenguide">Proofpoint ZenGuide</h3>
+<p><a class="provider-cta" href="/offres/formations/hoxhunt/">Voir la fiche Hoxhunt →</a></p>
+<h3 class="provider-heading" id="4-proofpoint-zenguide"><span class="provider-monogram" aria-hidden="true">P</span>4. Proofpoint ZenGuide</h3>
 <p>Proofpoint, spécialiste de la sécurité de la messagerie, propose ZenGuide pour la sensibilisation. Son approche est « fondée sur le risque » : la plateforme évalue chaque utilisateur selon son comportement, son rôle, ses accès et son exposition aux menaces, puis lui attribue automatiquement des formations ciblées. Une fonction transforme les vraies attaques détectées dans votre messagerie en modèles de simulation sans danger, en un clic. Un bouton « Report Suspicious » permet de signaler un message sur ordinateur et sur mobile, et des tableaux de bord suivent l’évolution des comportements et la comparaison avec le secteur.</p>
 <p><strong>Points forts</strong> - Simulations alignées sur les attaques qui ciblent réellement votre entreprise. - Intérêt maximal si vous utilisez déjà la protection de messagerie Proofpoint. - Pilotage par le risque individuel.</p>
 <p><strong>Limites</strong> - Pensé pour des organisations structurées : surdimensionné pour une TPE. - Tarifs non publics. - Une partie de la valeur dépend de l’écosystème Proofpoint.</p>
 <p><strong>Pour qui</strong> : entreprises de taille moyenne à grande, déjà clientes de Proofpoint ou avec une équipe sécurité.</p>
 <p><strong>Prix relevé</strong> : </p>
-
+<p><a class="provider-cta" href="/offres/formations/proofpoint/">Voir la fiche Proofpoint ZenGuide →</a></p>
 <h2 id="les-alternatives-gratuites">Les alternatives gratuites</h2>
 <p>Avant d’investir, sachez que l’État propose des ressources de qualité.</p>
 <div class="tablewrap"><table>
@@ -572,7 +671,34 @@ tbody tr:hover{background:#F6F8FA}
 <li>ANSSI — « Le MOOC SecNumacadémie en cours d’évolution » — fermeture le 28 février 2026 et refonte annoncée : https://cyber.sites.beta.gouv.fr/actualites/le-mooc-secnumacad%C3%A9mie-en-cours-d%C3%A9volution/</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Professionnels" href="/offres/formations/knowbe4/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>KnowBe4</h3><p>Fiche produit KnowBe4 (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/sosafe/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>SoSafe</h3><p>Fiche produit SoSafe (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/hoxhunt/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Hoxhunt</h3><p>Fiche produit Hoxhunt (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/proofpoint/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Proofpoint</h3><p>Fiche produit Proofpoint (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Professionnels" href="/offres/formations/knowbe4/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>KnowBe4</h3><p>Fiche produit KnowBe4 (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/sosafe/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>SoSafe</h3><p>Fiche produit SoSafe (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/hoxhunt/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Hoxhunt</h3><p>Fiche produit Hoxhunt (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Professionnels" href="/offres/formations/proofpoint/"><div class="cat"><span>fiche produit</span><span class="chip pro">Pros</span></div><h3>Proofpoint</h3><p>Fiche produit Proofpoint (comparatif formations cyber pour équipes) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+
+<section class="final-cta-section">
+  <div class="wrap">
+    <h2>Prêt à former vos équipes ?</h2>
+    <p class="subtext">Choisissez une plateforme adaptée à votre taille, à votre budget et au temps que vous pouvez consacrer à l’animation.</p>
+
+    <div class="final-cta-grid">
+      <div class="guarantee-card">
+        <strong>✓ Alternatives gratuites présentées</strong>
+        <p>Les dispositifs publics gratuits pour TPE-PME sont détaillés plus bas.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ Prix relevés le 1er octobre 2026</strong>
+        <p>Seuls les tarifs réellement publics sont affichés ; les autres sont sur devis.</p>
+      </div>
+      <div class="guarantee-card">
+        <strong>✓ 5 critères pour décider</strong>
+        <p>Objectif, effort d’animation, langue, conformité et devis à périmètre égal.</p>
+      </div>
+    </div>
+
+    <div class="final-cta-buttons">
+      <a href="#les-solutions-en-detail" class="btn-primary-aggressive">Voir les solutions en détail</a>
+      <a href="/offres/" class="btn-secondary-aggressive">Comparer tous les produits</a>
+    </div>
+  </div>
+</section></main>
 <footer class="site"><div class="wrap fsimple">
   <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
   <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
