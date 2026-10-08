@@ -1,4 +1,4 @@
-﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Reconstruire et tirer les leçons â€” CyberBalise</title><meta name="description" content="Après une cyberattaque, redémarrer vite ne suffit pas : ce guide explique comment restaurer proprement votre informatique, mener une analyse post-mortemâ€¦">
 <link rel="canonical" href="https://cyberbalise.fr/pro/incident/reconstruire-apres/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Reconstruire et tirer les leçons"><meta property="og:description" content="Après une cyberattaque, redémarrer vite ne suffit pas : ce guide explique comment restaurer proprement votre informatique, mener une analyse post-mortemâ€¦"><meta property="og:url" content="https://cyberbalise.fr/pro/incident/reconstruire-apres/">
@@ -361,13 +361,13 @@ tbody tr:hover{background:#F6F8FA}
 <h2 id="comment-se-deroule-une-remediation">Comment se déroule une remédiation</h2>
 <p>Le corpus de guides de lâ€™ANSSI consacré au pilotage de la remédiation, publié à partir de décembre 2023 et enrichi depuis, propose une démarche structurée. Elle sâ€™adresse en premier lieu aux responsables de la sécurité et des systèmes dâ€™information, mais ses principes valent pour toute organisation.</p>
 <h3 id="partir-des-priorites-metier-pas-de-la-technique">Partir des priorités métier, pas de la technique</h3>
-<p>Le plan de remédiation décline des <strong>objectifs stratégiques</strong> (peu nombreux, alignés sur lâ€™activité) en <strong>objectifs opérationnels</strong>, puis en <strong>actions techniques</strong>. Lâ€™ANSSI donne cet exemple : lâ€™objectif stratégique Â« verser la paie à la fin du mois Â» se traduit par des objectifs comme Â« restaurer les sauvegardes de lâ€™application RH dans la semaine Â» ou Â« mettre en place des postes pour la saisie des temps Â», eux-mêmes découpés en tÃ¢ches techniques.</p>
+<p>Le plan de remédiation décline des <strong>objectifs stratégiques</strong> (peu nombreux, alignés sur lâ€™activité) en <strong>objectifs opérationnels</strong>, puis en <strong>actions techniques</strong>. Lâ€™ANSSI donne cet exemple : lâ€™objectif stratégique Â« verser la paie à la fin du mois Â» se traduit par des objectifs comme Â« restaurer les sauvegardes de lâ€™application RH dans la semaine Â» ou Â« mettre en place des postes pour la saisie des temps Â», eux-mêmes découpés en tâches techniques.</p>
 <p>La réussite se mesure au fait que les métiers valident que le service fonctionne, et pas seulement au redémarrage des serveurs.</p>
 <p><em>Exemple réaliste pour une PME :</em> un négoce de matériaux définit trois priorités â€” reprendre la facturation, honorer les commandes en cours, payer les salaires. Tout le reste (intranet, archives anciennes, outils secondaires) attendra.</p>
 <h3 id="les-trois-phases-de-lanssi">Les trois phases de lâ€™ANSSI</h3>
 <ol type="1">
 <li><strong>Lâ€™endiguement.</strong> Limiter au plus tôt la progression de lâ€™attaquant, préserver les traces utiles à lâ€™enquête et mettre les sauvegardes à lâ€™abri. Exemples cités : couper lâ€™accès Internet par filtrage, déconnecter les sauvegardes du réseau, segmenter le réseau, éteindre les machines sensibles.</li>
-<li><strong>Lâ€™éviction.</strong> Recréer un espace sÃ»r, appelé Â« cÅ“ur de confiance Â», dâ€™où lâ€™attaquant est exclu avec certitude : gestion des identités, outils dâ€™administration, supervision de sécurité, hyperviseurs. Lâ€™ANSSI recommande de planifier un moment de bascule brutale de lâ€™ancien système vers le nouveau, afin de limiter les occasions pour lâ€™attaquant de compromettre le nouveau socle.</li>
+<li><strong>Lâ€™éviction.</strong> Recréer un espace sûr, appelé Â« cÅ“ur de confiance Â», dâ€™où lâ€™attaquant est exclu avec certitude : gestion des identités, outils dâ€™administration, supervision de sécurité, hyperviseurs. Lâ€™ANSSI recommande de planifier un moment de bascule brutale de lâ€™ancien système vers le nouveau, afin de limiter les occasions pour lâ€™attaquant de compromettre le nouveau socle.</li>
 <li><strong>Lâ€™éradication.</strong> Rechercher et supprimer toute persistance de lâ€™attaquant, fermer ses voies de retour et se doter dâ€™une visibilité sur ses tentatives. Lâ€™ANSSI est claire : on ne peut jamais avoir la certitude dâ€™une éradication totale, dâ€™où lâ€™importance de la supervision.</li>
 </ol>
 <h3 id="travailler-hors-du-systeme-compromis">Travailler hors du système compromis</h3>
@@ -432,7 +432,7 @@ tbody tr:hover{background:#F6F8FA}
 </ul>
 <p>Si vous reconnaissez lâ€™une de ces situations, faites une pause et réorganisez le pilotage avant dâ€™aller plus loin.</p>
 <h2 id="mener-lanalyse-post-mortem-retour-dexperience">Mener lâ€™analyse post-mortem (retour dâ€™expérience)</h2>
-<p>Le retour dâ€™expérience (RETEX) consiste à revenir à froid sur lâ€™incident pour en tirer des enseignements. Le guide de lâ€™ANSSI et du Club des directeurs de sécurité et de sÃ»reté des entreprises (CDSE), Â« Crise dâ€™origine cyber : les clés dâ€™une gestion opérationnelle et stratégique Â», sâ€™appuie dâ€™ailleurs sur des retours dâ€™expérience dâ€™organisations victimes.</p>
+<p>Le retour dâ€™expérience (RETEX) consiste à revenir à froid sur lâ€™incident pour en tirer des enseignements. Le guide de lâ€™ANSSI et du Club des directeurs de sécurité et de sûreté des entreprises (CDSE), Â« Crise dâ€™origine cyber : les clés dâ€™une gestion opérationnelle et stratégique Â», sâ€™appuie dâ€™ailleurs sur des retours dâ€™expérience dâ€™organisations victimes.</p>
 <h3 id="quand-et-avec-qui">Quand et avec qui</h3>
 <p>Organisez-le une fois lâ€™activité stabilisée, pendant que les souvenirs sont encore frais. Réunissez la direction, le responsable informatique ou le prestataire, les métiers touchés et, si possible, lâ€™intervenant en réponse à incident.</p>
 <h3 id="les-questions-a-poser">Les questions à poser</h3>
@@ -441,11 +441,11 @@ tbody tr:hover{background:#F6F8FA}
 <li><strong>Combien de temps est-il resté sans être détecté</strong>, et pourquoi ?</li>
 <li><strong>Quâ€™est-ce qui a bien fonctionné ?</strong> Sauvegardes, contacts dâ€™urgence, communication interne.</li>
 <li><strong>Quâ€™est-ce qui a manqué ?</strong> Liste de contacts, inventaire des systèmes, procédures papier, droits dâ€™accès trop larges.</li>
-<li><strong>Quel a été lâ€™impact réel ?</strong> Jours dâ€™arrêt, données touchées, clients concernés, coÃ»ts directs.</li>
-<li><strong>Quelles décisions ont été difficiles à prendre</strong>, et qui aurait dÃ» les prendre ?</li>
+<li><strong>Quel a été lâ€™impact réel ?</strong> Jours dâ€™arrêt, données touchées, clients concernés, coûts directs.</li>
+<li><strong>Quelles décisions ont été difficiles à prendre</strong>, et qui aurait dû les prendre ?</li>
 </ol>
 <h3 id="le-principe-chercher-des-causes-pas-des-coupables">Le principe : chercher des causes, pas des coupables</h3>
-<p>Un retour dâ€™expérience qui désigne un salarié fautif produit surtout du silence lors du prochain incident. Concentrez-vous sur les processus et les protections qui auraient dÃ» arrêter lâ€™erreur humaine.</p>
+<p>Un retour dâ€™expérience qui désigne un salarié fautif produit surtout du silence lors du prochain incident. Concentrez-vous sur les processus et les protections qui auraient dû arrêter lâ€™erreur humaine.</p>
 <h3 id="le-livrable">Le livrable</h3>
 <p>Un document court : chronologie, cause dâ€™entrée, ce qui a fonctionné, ce qui a manqué, et un <strong>plan dâ€™action</strong> daté avec un responsable par action. Mettez aussi à jour votre <a href="/pro/incident/plan-de-reponse/">Plan de réponse simple (TPE/PME)</a>.</p>
 <h2 id="durcir-le-systeme-dinformation-les-reflexes">Durcir le système dâ€™information : les réflexes</h2>
@@ -511,7 +511,7 @@ tbody tr:hover{background:#F6F8FA}
 </tr>
 </tbody>
 </table></div>
-<p>Pour une PME, lâ€™essentiel est de ne pas tout vouloir faire en même temps : traitez dâ€™abord la cause de lâ€™incident, puis les mesures qui auraient le plus limité les dégÃ¢ts.</p>
+<p>Pour une PME, lâ€™essentiel est de ne pas tout vouloir faire en même temps : traitez dâ€™abord la cause de lâ€™incident, puis les mesures qui auraient le plus limité les dégâts.</p>
 <h2 id="ce-quil-faut-faire-si-lattaquant-revient">Ce quâ€™il faut faire si lâ€™attaquant revient</h2>
 <p>Lâ€™ANSSI le rappelle : lâ€™éradication totale nâ€™est jamais certaine. Si des signes réapparaissent (comptes inconnus, connexions suspectes, alertes de lâ€™antivirus), ne relancez pas seul une restauration :</p>
 <ol type="1">

@@ -1,4 +1,4 @@
-﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vérificateur de mot de passe â€” CyberBalise</title><meta name="description" content="Estimez la robustesse d&#x27;un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise.">
 <link rel="canonical" href="https://cyberbalise.fr/outils/verificateur-mot-de-passe/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Vérificateur de mot de passe"><meta property="og:description" content="Estimez la robustesse d&#x27;un mot de passe directement dans votre navigateur : aucune saisie ne sera transmise."><meta property="og:url" content="https://cyberbalise.fr/outils/verificateur-mot-de-passe/">
@@ -445,7 +445,7 @@ tbody tr:hover{background:#F6F8FA}
   function norm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
   function leet(s){ return s.replace(/@/g,'a').replace(/0/g,'o').replace(/1/g,'i').replace(/3/g,'e').replace(/\$/g,'s').replace(/5/g,'s').replace(/7/g,'t').replace(/4/g,'a'); }
   function fmtTime(sec){
-    if(!isFinite(sec) || sec > 1e15*31557600) return 'plus que l\'Ã¢ge de l\'univers';
+    if(!isFinite(sec) || sec > 1e15*31557600) return 'plus que l\'âge de l\'univers';
     var u=[['seconde',1],['minute',60],['heure',3600],['jour',86400],['mois',2629800],['an',31557600]];
     if(sec < 1) return 'instantané';
     var best=u[0]; for(var i=0;i<u.length;i++){ if(sec>=u[i][1]) best=u[i]; }
