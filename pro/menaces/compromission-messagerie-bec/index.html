@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Compromission de messagerie (BEC) • CyberBalise</title><meta name="description" content="Une boîte mail piratée suffit pour détourner le paiement d"™une facture : comprenez comment fonctionne la compromission de messagerie, repérez ses traces"¦">
+<title>Compromission de messagerie (BEC) — CyberBalise</title><meta name="description" content="Une boîte mail piratée suffit pour détourner le paiement d"™une facture : comprenez comment fonctionne la compromission de messagerie, repérez ses traces"¦">
 <link rel="canonical" href="https://cyberbalise.fr/pro/menaces/compromission-messagerie-bec/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Compromission de messagerie (BEC)"><meta property="og:description" content="Une boîte mail piratée suffit pour détourner le paiement d"™une facture : comprenez comment fonctionne la compromission de messagerie, repérez ses traces"¦"><meta property="og:url" content="https://cyberbalise.fr/pro/menaces/compromission-messagerie-bec/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -25,7 +25,7 @@ code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35
 
 /* pastilles audience */
 .chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
-.chip::before{content:";width:.55em;height:.55em;border-radius:50%}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
 .chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
 .chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
 .chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
@@ -52,7 +52,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .nav-item>a::after{content:"â–¾";font-size:.7em;color:var(--muted)}
 .dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
 .nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
-.dropdown::before{content:";position:absolute;left:0;right:0;top:-12px;height:12px}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
 .nav-item.open>a{background:var(--bg);color:var(--orange-d)}
 .dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
 .dropdown a:hover{background:var(--bg);color:var(--orange-d)}
@@ -77,7 +77,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 
 /* hero home */
 .hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
-.hero::after{content:";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
 .hero .kicker{color:#F5A085}
 .hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
@@ -190,7 +190,7 @@ article.page h2:first-of-type{border-top:0;padding-top:0}
 .steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
 .steps li:last-child{padding-bottom:.2em}
 .steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
-.steps li::after{content:";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
 .steps h3{font-size:1.08rem;margin:0 0 .35em}
 .steps p{margin:0;color:#33475A}
 .warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
@@ -282,7 +282,7 @@ tbody tr:hover{background:#F6F8FA}
 <div class="kicker" style="color:#F5A085;margin-top:18px">Guide pratique</div>
 <h1>Compromission de messagerie (BEC)</h1><p class="lead">Une boîte mail piratée suffit pour détourner le paiement d"™une facture : comprenez comment fonctionne la compromission de messagerie, repérez ses traces (règles de transfert cachées, faux RIB) et organisez votre PME pour la bloquer.</p>
 <div class="meta"><span class="chip pro">Pros</span> <span class="date">Mise à jour : Octobre 2026</span></div>
-</div><img class="pagehead-photo" src="/assets/img/editorial-pro-menaces-compromission-messagerie-bec.jpg" width="640" height="480" loading="eager" decoding="async" alt=" aria-hidden="true"></div>
+</div><img class="pagehead-photo" src="/assets/img/editorial-pro-menaces-compromission-messagerie-bec.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
   <section class="hsec best-sellers-section">
     <div class="wrap">
       <div class="hsec-head">
@@ -340,7 +340,7 @@ tbody tr:hover{background:#F6F8FA}
       </div>
     </div>
   </section>
-<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique • édition d"™octobre 2026 Â· Lecture estimée : 10 minutes Â·</p><h2 id="sommaire">Sommaire</h2>
+<div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Guide pratique — édition d"™octobre 2026 Â· Lecture estimée : 10 minutes Â·</p><h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#lessentiel-quest-ce-quune-compromission-de-messagerie">L"™essentiel : qu"™est-ce qu"™une compromission de messagerie ?</a></li>
 <li><a href="#comment-se-deroule-lattaque-etape-par-etape">Comment se déroule l"™attaque, étape par étape</a></li>
@@ -352,7 +352,7 @@ tbody tr:hover{background:#F6F8FA}
 <li><a href="#sources-et-methodologie">Sources et méthodologie</a></li>
 </ul>
 <h2 id="lessentiel-quest-ce-quune-compromission-de-messagerie">L"™essentiel : qu"™est-ce qu"™une compromission de messagerie ?</h2>
-<div class="note"><p><strong>Réponse rapide.</strong> La compromission de messagerie d"™entreprise (en anglais <em>Business Email Compromise</em>, BEC) consiste pour un escroc à prendre le contrôle d"™une boîte mail professionnelle • la vôtre ou celle d"™un fournisseur • pour s"™immiscer dans de vrais échanges et détourner des paiements, le plus souvent via une facture au RIB modifié. L"™attaquant installe souvent des règles de transfert ou de tri cachées pour lire vos messages et masquer les réponses gênantes. Les parades décisives sont organisationnelles autant que techniques : double authentification sur toutes les messageries, vérification par téléphone de tout changement de coordonnées bancaires, contrôle régulier des règles de messagerie.</p></div>
+<div class="note"><p><strong>Réponse rapide.</strong> La compromission de messagerie d"™entreprise (en anglais <em>Business Email Compromise</em>, BEC) consiste pour un escroc à prendre le contrôle d"™une boîte mail professionnelle — la vôtre ou celle d"™un fournisseur — pour s"™immiscer dans de vrais échanges et détourner des paiements, le plus souvent via une facture au RIB modifié. L"™attaquant installe souvent des règles de transfert ou de tri cachées pour lire vos messages et masquer les réponses gênantes. Les parades décisives sont organisationnelles autant que techniques : double authentification sur toutes les messageries, vérification par téléphone de tout changement de coordonnées bancaires, contrôle régulier des règles de messagerie.</p></div>
 <p>Pour Cybermalveillance.gouv.fr, la fraude au virement ou au faux RIB consiste à usurper l"™identité d"™un créancier (artisan, notaire, avocat, bailleur"¦) pour faire réaliser un virement vers un compte de l"™escroc, et elle est Â« souvent consécutive au piratage d"™un compte de messagerie Â». Le piratage peut concerner la boîte du créancier ou celle de la victime.</p>
 <p>L"™enjeu financier est considérable. Aux Ã‰tats-Unis, le centre de plaintes du FBI (IC3) a recensé en 2025 24 768 plaintes pour BEC et plus de 3 milliards de dollars de pertes déclarées, ce qui en fait l"™une des premières causes de pertes financières liées à la cybercriminalité. Ces chiffres ne couvrent que les plaintes déposées auprès de l"™IC3, mais ils donnent un ordre de grandeur.</p>
 <h3 id="bec-fraude-au-president-faux-rib-quelles-differences">BEC, fraude au président, faux RIB : quelles différences ?</h3>
@@ -539,22 +539,22 @@ tbody tr:hover{background:#F6F8FA}
 <p>La double authentification est incluse dans les principales suites de messagerie professionnelle, et la procédure de contre-appel ne coûte que quelques minutes par changement de fournisseur. Ã€ comparer au montant d"™un seul virement détourné, souvent irrécupérable.</p>
 <h2 id="que-faire-en-cas-de-compromission-ou-de-virement-detourne">Que faire en cas de compromission ou de virement détourné ?</h2>
 <p>Agissez dans l"™heure : les chances de récupérer les fonds diminuent très vite. Voici l"™ordre recommandé par Cybermalveillance.gouv.fr, complété par les étapes techniques de Microsoft.</p>
-<h3 id="etape-1-bloquer-le-virement">Ã‰tape 1 • Bloquer le virement</h3>
+<h3 id="etape-1-bloquer-le-virement">Ã‰tape 1 — Bloquer le virement</h3>
 <p>Alertez <strong>immédiatement</strong> votre banque pour tenter de suspendre le virement ou, s"™il est parti, demander le retour des fonds. Elle pourra exiger une copie de votre plainte.</p>
-<h3 id="etape-2-reprendre-le-controle-de-la-boite">Ã‰tape 2 • Reprendre le contrôle de la boîte</h3>
+<h3 id="etape-2-reprendre-le-controle-de-la-boite">Ã‰tape 2 — Reprendre le contrôle de la boîte</h3>
 <ul>
 <li>Désactivez temporairement le compte ou, à défaut, changez son mot de passe pour un mot de passe fort et unique. Microsoft souligne de <strong>ne pas envoyer le nouveau mot de passe par e-mail</strong>, l"™attaquant pouvant encore lire la boîte.</li>
 <li>Activez la double authentification.</li>
 <li>Recherchez les règles de transfert et de filtrage : <strong>capturez-les à l"™écran avant de les supprimer</strong>, ce sont des preuves.</li>
 <li>Vérifiez les messages envoyés et supprimés, la signature, les applications connectées au compte.</li>
 </ul>
-<h3 id="etape-3-prevenir-les-tiers">Ã‰tape 3 • Prévenir les tiers</h3>
+<h3 id="etape-3-prevenir-les-tiers">Ã‰tape 3 — Prévenir les tiers</h3>
 <p>Informez le créancier dont l"™identité a été usurpée : sa propre messagerie est peut-être compromise. Si c"™est votre boîte qui l"™a été, prévenez vos clients et partenaires que des messages frauduleux ont pu partir en votre nom.</p>
-<h3 id="etape-4-conserver-les-preuves">Ã‰tape 4 • Conserver les preuves</h3>
+<h3 id="etape-4-conserver-les-preuves">Ã‰tape 4 — Conserver les preuves</h3>
 <p>Messages reçus (avec leurs en-têtes si possible), factures, RIB frauduleux, relevés bancaires, captures des règles de messagerie, journaux de connexion.</p>
-<h3 id="etape-5-deposer-plainte">Ã‰tape 5 • Déposer plainte</h3>
+<h3 id="etape-5-deposer-plainte">Ã‰tape 5 — Déposer plainte</h3>
 <p>Au commissariat, à la gendarmerie ou par écrit au procureur de la République, dans les plus brefs délais. Si vous pensez qu"™une messagerie a été piratée, la plainte peut être déposée en ligne sur la plateforme THESEE du ministère de l"™Intérieur.</p>
-<h3 id="etape-6-se-faire-accompagner">Ã‰tape 6 • Se faire accompagner</h3>
+<h3 id="etape-6-se-faire-accompagner">Ã‰tape 6 — Se faire accompagner</h3>
 <ul>
 <li>Info Escroqueries (ministère de l"™Intérieur) : 0 805 805 817, appel gratuit, du lundi au vendredi de 9 h à 18 h 30.</li>
 <li>France Victimes : 116 006, appel gratuit, 7 jours sur 7 de 9 h à 19 h.</li>
@@ -583,9 +583,9 @@ tbody tr:hover{background:#F6F8FA}
 <h2 id="sources-et-methodologie">Sources et méthodologie</h2>
 <p>Ce guide s"™appuie sur les sources suivantes, consultées le 1er octobre 2026.</p>
 <ul>
-<li>Cybermalveillance.gouv.fr • Â« Que faire en cas de fraude au virement ou au faux RIB ? Â» (mis à jour le 7 mai 2026) • mécanisme de la fraude, lien avec le piratage de messagerie, prévention, étapes pour les victimes (banque, créancier, règles de redirection, plainte, THESEE, Info Escroqueries, France Victimes) : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/que-faire-en-cas-de-fraude-au-virement-ou-au-faux-rib</li>
-<li>Microsoft Learn • Â« Répondre à un compte de messagerie cloud compromis Â» • symptômes d"™une boîte compromise (règles de transfert et de déplacement, transfert externe, messages suspects), étapes de reprise de contrôle : https://learn.microsoft.com/fr-fr/defender-office-365/responding-to-a-compromised-email-account</li>
-<li>FBI, Internet Crime Complaint Center • Â« 2025 IC3 Annual Report Â» • nombre de plaintes (24 768) et pertes déclarées (plus de 3 milliards de dollars) pour le BEC en 2025 : https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf</li>
+<li>Cybermalveillance.gouv.fr — Â« Que faire en cas de fraude au virement ou au faux RIB ? Â» (mis à jour le 7 mai 2026) — mécanisme de la fraude, lien avec le piratage de messagerie, prévention, étapes pour les victimes (banque, créancier, règles de redirection, plainte, THESEE, Info Escroqueries, France Victimes) : https://www.cybermalveillance.gouv.fr/tous-nos-contenus/fiches-reflexes/que-faire-en-cas-de-fraude-au-virement-ou-au-faux-rib</li>
+<li>Microsoft Learn — Â« Répondre à un compte de messagerie cloud compromis Â» — symptômes d"™une boîte compromise (règles de transfert et de déplacement, transfert externe, messages suspects), étapes de reprise de contrôle : https://learn.microsoft.com/fr-fr/defender-office-365/responding-to-a-compromised-email-account</li>
+<li>FBI, Internet Crime Complaint Center — Â« 2025 IC3 Annual Report Â» — nombre de plaintes (24 768) et pertes déclarées (plus de 3 milliards de dollars) pour le BEC en 2025 : https://www.ic3.gov/AnnualReport/Reports/2025_IC3Report.pdf</li>
 </ul>
 
 <!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div></main>
@@ -674,7 +674,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat • le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
