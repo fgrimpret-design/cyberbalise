@@ -1029,6 +1029,11 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   margin-left: 0 !important;
 }
 
+.highlight-orange {
+  color: #FF7A00 !important;
+  font-weight: 600;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #E4572E 0%, #C7451F 100%) !important;
   color: #fff !important;
