@@ -1086,6 +1086,24 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
   color: inherit !important;
 }
 
+.seller-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.product-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E4572E;
+  display: block;
+}
+
 .best-seller-card h3 {
   color: #0D2E4A !important;
 }
