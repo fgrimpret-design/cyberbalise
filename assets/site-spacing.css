@@ -1016,11 +1016,8 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .hero-bracket {
   color: #E4572E !important;
   font-weight: 900 !important;
-  font-family: Arial, sans-serif !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  line-height: 1 !important;
+  font-family: 'Courier New', monospace !important;
+  letter-spacing: 0.05em !important;
 }
 
 .btn-primary {
