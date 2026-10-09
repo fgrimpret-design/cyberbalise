@@ -87,9 +87,9 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .protection-proof-dot{position:relative;width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#48D884;box-shadow:0 0 0 0 rgba(72,216,132,.58);animation:protection-heartbeat 1.6s ease-out infinite}
 @keyframes protection-heartbeat{0%{transform:scale(.9);box-shadow:0 0 0 0 rgba(72,216,132,.58)}45%{transform:scale(1.12);box-shadow:0 0 0 7px rgba(72,216,132,0)}100%{transform:scale(.9);box-shadow:0 0 0 0 rgba(72,216,132,0)}}
 .protection-proof-count{font-weight:800;color:#8CF0B3;font-variant-numeric:tabular-nums}
-.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);font-weight:900;letter-spacing:-.02em;max-width:none;margin:14px 0 16px;color:#fff;background:linear-gradient(135deg,#fff 0%,#F5A085 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero h1 .line{display:block;white-space:nowrap}
-.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.hero p.sub{color:#DDF8E8;max-width:52ch;font-size:1.15rem;font-weight:500;line-height:1.5}
 .searchbox{margin-top:20px;max-width:min(560px,48vw);position:relative}
 .searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
 .searchbox input::placeholder{color:#7E96A9}
@@ -325,7 +325,7 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
   .protection-proof-dot{animation:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261008-subtle-backgrounds">
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261009-aggressive-homepage">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
@@ -338,19 +338,21 @@ tbody tr:hover{background:#F6F8FA}
   <section class="hero">
     <div class="wrap">
       <div class="protection-proof"><span class="protection-proof-dot" aria-hidden="true"></span><span><span class="protection-proof-count" data-protection-count>25</span> personnes sont en train de se protéger</span></div>
-      <h1><span class="line">Comprendre la menace.</span><span class="line">Protéger ce qui compte.</span></h1>
-      <p class="sub">Des guides pour les particuliers et les professionnels. Des comparatifs outils qui disent les limites autant que les qualités.</p>
+      <h1><span class="line">🛡️ Votre vie numérique</span><span class="line">n'attend pas</span></h1>
+      <p class="sub"><strong>Guides d'experts, comparatifs honnêtes, outils testés.</strong> Découvrez les meilleurs solutions de cybersécurité pour vous protéger dès maintenant.</p>
       <div class="searchbox"><label class="sr-only" for="searchinput">Rechercher</label><input id="searchinput" type="search" placeholder="Rechercher un sujet cyber…" autocomplete="off"><div class="sresults" id="sresults"></div></div>
       <div class="audience-toggle"><button class="on" type="button" data-aud="both">Tout le site</button><button type="button" data-aud="Particuliers">Particuliers</button><button type="button" data-aud="Professionnels">Professionnels</button></div>
+      <div class="hero-cta-primary"><a href="#best-sellers-top" class="btn btn-primary">⭐ Découvrir nos recommandations</a></div>
     </div>
   </section>
 
-  <section class="hsec best-sellers-section">
+  <section class="hsec best-sellers-section" id="best-sellers-top">
     <div class="wrap">
       <div class="hsec-head">
         <div>
-          <span class="kicker">Les incontournables</span>
-          <h2>Produits les plus vendus</h2>
+          <span class="kicker">🔥 AVANT TOUT — Solutions incontournables</span>
+          <h2>Nos 3 meilleures recommandations 2026</h2>
+          <p style="font-size: 1.1rem; margin-top: 0.5rem;">Sélectionnées par nos experts, testées et approuvées. Commencez ici.</p>
         </div>
       </div>
       
