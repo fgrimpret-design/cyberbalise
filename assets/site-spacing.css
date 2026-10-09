@@ -1016,6 +1016,7 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
 .hero-bracket {
   color: #E4572E !important;
   font-weight: 900 !important;
+  font-family: Arial, sans-serif !important;
 }
 
 .btn-primary {
