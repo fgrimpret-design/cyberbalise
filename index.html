@@ -78,7 +78,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .urgence-float:hover{background:var(--orange-d);color:#fff}
 
 /* hero home */
-.hero{background:var(--navy);color:#fff;padding:32px 0 48px;position:relative;overflow:hidden}
+.hero{background:var(--navy);color:#fff;padding:32px 0 24px;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0 0 0 auto;width:57%;background:url("/assets/img/hero-home.jpg?v=1") 54% center/cover no-repeat;pointer-events:none;z-index:0;opacity:.94;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.34) 12%,#000 34%)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,36,56,.98) 42%,rgba(15,36,56,.9) 54%,rgba(15,36,56,.34) 68%,rgba(15,36,56,.06) 100%);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
@@ -107,7 +107,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* sections home */
-.hsec{padding:24px 0}
+.hsec{padding:14px 0}
 .guides-section{padding-top:16px}
 .hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
 .guides-section .hsec-head{margin-bottom:8px}
@@ -325,7 +325,7 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
   .protection-proof-dot{animation:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261010-logo-orange-header">
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261010-compact-sections">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
@@ -766,6 +766,7 @@ if(si){
 })();
 </script>
 </body></html>
+
 
 
 
