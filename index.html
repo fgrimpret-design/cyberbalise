@@ -96,10 +96,6 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
 .sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .sresults a:hover{background:var(--bg)}
-.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:18px;gap:4px;flex-wrap:wrap;max-width:100%}
-.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
-.audience-toggle button.on{background:#FFFFFF;color:#132232}
-
 /* bandeau promo défilant */
 .marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
 .marquee a{color:#fff;font-weight:600}
@@ -290,8 +286,6 @@ tbody tr:hover{background:#F6F8FA}
   .hero p.sub{font-size:.98rem;max-width:100%}
   .searchbox{margin-top:20px;max-width:100%}
   .searchbox input{padding:.9em 1em;font-size:.96rem}
-  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px;margin-top:18px}
-  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
   .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
   .slider{padding:4px 0 10px}
   .slider>*{flex:0 0 100%}
@@ -326,10 +320,10 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
   .protection-proof-dot{animation:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261010-best-sellers-compact">
-</head><body>
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261010-brackets-detector"><link rel="stylesheet" href="/assets/home-refresh.css?v=20261010-blue-38">
+</head><body class="home-refresh">
 <header class="site"><div class="wrap">
-  <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><img src="/assets/img/logo-cyberbalise.png?v=2" alt="CyberBalise"></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
+  <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><span class="home-logo-wordmark">CYBER<span>BALISE</span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
   <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations/"><div><strong>Comparatif formations cyber pour équipes</strong></div><span class="chip pro">Pros</span></a><a href="/offres/cyber-assurance/"><div><strong>Comparatif cyber-assurance</strong></div><span class="chip pro">Pros</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
   <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
@@ -338,11 +332,34 @@ tbody tr:hover{background:#F6F8FA}
 <main>
   <section class="hero">
     <div class="wrap">
-      <div class="protection-proof"><span class="protection-proof-dot" aria-hidden="true"></span><span><span class="protection-proof-count" data-protection-count>25</span> personnes sont en train de se protéger</span></div>
-      <h1><span class="line"><img src="/assets/logo-brackets.svg" alt="CyberBalise" class="hero-logo"> Votre vie numérique</span><span class="line">n'attend pas</span></h1>
-      <p class="sub"><strong>Guides d'experts, comparatifs honnêtes, outils testés.</strong> Découvrez les <span class="highlight-orange">meilleures solutions de cybersécurité</span> pour vous protéger dès maintenant.</p>
-      <div class="searchbox"><label class="sr-only" for="searchinput">Rechercher</label><input id="searchinput" type="search" placeholder="Rechercher un sujet cyber…" autocomplete="off"><div class="sresults" id="sresults"></div></div>
-      <div class="audience-toggle"><button class="on" type="button" data-aud="both">Tout le site</button><button type="button" data-aud="Particuliers">Particuliers</button><button type="button" data-aud="Professionnels">Professionnels</button></div>
+      <div class="hero-copy">
+        <div class="hero-eyebrow"><img src="/assets/logo-brackets.svg" alt="" width="24" height="24"><span>La cybersécurité, sans jargon</span></div>
+        <h1><span class="line">Trouvez la bonne</span><span class="line">protection, au <span class="hero-word-accent">meilleur prix</span></span></h1>
+        <p class="sub">Comprendre les menaces, choisir les bons outils et adopter les bons réflexes — avec des conseils clairs, utiles et indépendants.</p>
+        <div class="searchbox"><label class="sr-only" for="searchinput">Rechercher</label><input id="searchinput" type="search" placeholder="Que souhaitez-vous protéger ?" autocomplete="off"><div class="sresults" id="sresults"></div></div>
+        <div class="hero-actions"><a class="hero-action-primary" href="#best-sellers-top">Trouver ma protection <span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-categories-section" aria-labelledby="home-categories-title">
+    <div class="wrap home-categories-grid">
+      <h2 class="home-categories-title" id="home-categories-title">Top catégories</h2>
+      <a class="home-category-card" href="/offres/">
+        <span class="home-category-index" aria-hidden="true">01</span>
+        <span><strong>Protéger mes appareils</strong><small>Antivirus et sécurité au quotidien</small></span>
+        <span class="home-category-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="home-category-card" href="/offres/">
+        <span class="home-category-index" aria-hidden="true">02</span>
+        <span><strong>Sécuriser mes comptes</strong><small>Mots de passe et accès en ligne</small></span>
+        <span class="home-category-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="home-category-card" href="/offres/">
+        <span class="home-category-index" aria-hidden="true">03</span>
+        <span><strong>Choisir mes outils</strong><small>VPN, sauvegardes et solutions cyber</small></span>
+        <span class="home-category-arrow" aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
 
@@ -350,60 +367,146 @@ tbody tr:hover{background:#F6F8FA}
     <div class="wrap">
       <div class="hsec-head">
         <div>
-          <span class="kicker">🔥 AVANT TOUT — Solutions incontournables</span>
-          <h2>Nos 3 meilleures recommandations 2026</h2>
-          <p style="font-size: 1.1rem; margin-top: 0.5rem;">Sélectionnées par nos experts, testées et approuvées. Commencez ici.</p>
+          <span class="kicker">La sélection CyberBalise</span>
+          <h2>Top protections</h2>
         </div>
       </div>
-      
-      <div class="best-sellers-grid">
-        <a href="/offres/vpn/" class="best-seller-card">
-          <div class="seller-card-header">
-            <span class="product-label">VPN</span>
-            <img src="/assets/img/vpn-providers/nordvpn.svg" alt="NordVPN" class="seller-card-logo" style="height: 60px; width: auto;">
-          </div>
-          <h3>NordVPN</h3>
-          <p class="seller-feature">16M+ utilisateurs</p>
-          <p class="seller-price"><strong>3,49 €/mois</strong></p>
-          <ul class="seller-features">
-            <li>Connexions: 10 appareils</li>
-            <li>Garantie 30 jours</li>
-            <li>Serveurs: 7000+</li>
-          </ul>
-          <span class="seller-card-cta">Voir détails →</span>
-        </a>
 
-        <a href="/offres/antivirus/" class="best-seller-card">
-          <div class="seller-card-header">
-            <span class="product-label">Antivirus</span>
-            <img src="/assets/img/antivirus-providers/avg.svg" alt="AVG" class="seller-card-logo" style="height: 60px; width: auto;">
-          </div>
-          <h3>AVG Antivirus</h3>
-          <p class="seller-feature">200M+ utilisateurs</p>
-          <p class="seller-price"><strong>39,99 €/an</strong></p>
-          <ul class="seller-features">
-            <li>Tous les appareils</li>
-            <li>Support français</li>
-            <li>Mises à jour quotidiennes</li>
-          </ul>
-          <span class="seller-card-cta">Voir détails →</span>
-        </a>
+      <div class="home-category-picker">
+        <div class="home-category-tabs" role="tablist" aria-label="Catégories de protections et d’outils">
+          <button class="home-category-tab" id="tab-vpn" type="button" role="tab" aria-selected="true" aria-controls="panel-vpn" tabindex="0">VPN</button>
+          <button class="home-category-tab" id="tab-antivirus" type="button" role="tab" aria-selected="false" aria-controls="panel-antivirus" tabindex="-1">Antivirus</button>
+          <button class="home-category-tab" id="tab-passwords" type="button" role="tab" aria-selected="false" aria-controls="panel-passwords" tabindex="-1">Gestionnaires de mots de passe</button>
+          <button class="home-category-tab" id="tab-backup" type="button" role="tab" aria-selected="false" aria-controls="panel-backup" tabindex="-1">Sauvegardes cloud</button>
+          <button class="home-category-tab" id="tab-training" type="button" role="tab" aria-selected="false" aria-controls="panel-training" tabindex="-1">Formations équipes</button>
+          <button class="home-category-tab" id="tab-insurance" type="button" role="tab" aria-selected="false" aria-controls="panel-insurance" tabindex="-1">Cyber-assurance</button>
+        </div>
+        <div class="home-price-switch" role="group" aria-label="Période d’affichage des prix">
+          <span>Afficher les prix :</span>
+          <button class="home-price-option" type="button" data-price-period="month" aria-pressed="true">Par mois</button>
+          <button class="home-price-option" type="button" data-price-period="year" aria-pressed="false">Par an</button>
+        </div>
+        <p class="home-price-note">Les montants sur 12 mois sont des équivalents arithmétiques ; le rythme de facturation réel peut différer.</p>
+      </div>
 
-        <a href="/offres/gestionnaires-mots-de-passe/" class="best-seller-card">
-          <div class="seller-card-header">
-            <span class="product-label">Gestionnaire MDP</span>
-            <img src="/assets/img/password-providers/bitwarden.svg" alt="Bitwarden" class="seller-card-logo" style="height: 60px; width: auto;">
-          </div>
-          <h3>Bitwarden</h3>
-          <p class="seller-feature">Illimité et gratuit</p>
-          <p class="seller-price"><strong>10 €/an</strong></p>
-          <ul class="seller-features">
-            <li>Synchronisation cloud</li>
-            <li>Partage familial</li>
-            <li>Open source</li>
-          </ul>
-          <span class="seller-card-cta">Voir détails →</span>
-        </a>
+      <div class="home-category-panel" id="panel-vpn" role="tabpanel" aria-labelledby="tab-vpn">
+        <div class="best-sellers-grid">
+          <a href="/offres/vpn/nordvpn/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">VPN</span><span class="seller-card-mark" aria-hidden="true">N</span></div>
+            <h3>NordVPN</h3><p class="seller-feature">16M+ utilisateurs</p><p class="seller-price"><strong data-price-month="3,49 €/mois" data-price-year="41,88 €/an">3,49 €/mois</strong></p>
+            <ul class="seller-features"><li>10 appareils simultanément</li><li>Garantie 30 jours</li><li>Plus de 7 000 serveurs</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/vpn/surfshark/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">VPN</span><span class="seller-card-mark" aria-hidden="true">S</span></div>
+            <h3>Surfshark</h3><p class="seller-feature">Connexions illimitées</p><p class="seller-price"><strong data-price-month="2,49 €/mois" data-price-year="29,88 €/an">2,49 €/mois</strong></p>
+            <ul class="seller-features"><li>Appareils illimités</li><li>Garantie 30 jours</li><li>Plus de 3 200 serveurs</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/vpn/expressvpn/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">VPN</span><span class="seller-card-mark" aria-hidden="true">E</span></div>
+            <h3>ExpressVPN</h3><p class="seller-feature">Performance premium</p><p class="seller-price"><strong data-price-month="2,49 €/mois" data-price-year="29,88 €/an">2,49 €/mois</strong></p>
+            <ul class="seller-features"><li>8 appareils simultanément</li><li>Garantie 30 jours</li><li>Plus de 3 000 serveurs</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-category-panel" id="panel-antivirus" role="tabpanel" aria-labelledby="tab-antivirus" hidden>
+        <div class="best-sellers-grid">
+          <a href="/offres/antivirus/bitdefender/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Antivirus</span><span class="seller-card-mark" aria-hidden="true">B</span></div>
+            <h3>Bitdefender</h3><p class="seller-feature">Meilleur score de protection testé</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Protection : 99,5 % (AV-Comparatives)</li><li>5 appareils ou 25 en famille</li><li>Remboursement sous 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/antivirus/norton-360/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Antivirus</span><span class="seller-card-mark" aria-hidden="true">N</span></div>
+            <h3>Norton 360</h3><p class="seller-feature">Protection tout-en-un</p><p class="seller-price"><strong data-price-month="3,33 €/mois" data-price-year="39,99 €/an">3,33 €/mois</strong></p>
+            <ul class="seller-features"><li>Formule Deluxe, 5 appareils</li><li>VPN et 50 Go de sauvegarde inclus</li><li>Renouvellement : 109,99 €/an</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/antivirus/eset/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Antivirus</span><span class="seller-card-mark" aria-hidden="true">E</span></div>
+            <h3>ESET</h3><p class="seller-feature">Léger, peu de fausses alertes</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Seulement 2 faux positifs</li><li>Protection : 98,5 %</li><li>Windows, macOS, Android et iOS</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-category-panel" id="panel-passwords" role="tabpanel" aria-labelledby="tab-passwords" hidden>
+        <div class="best-sellers-grid">
+          <a href="/offres/gestionnaires-mots-de-passe/bitwarden/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><span class="seller-card-mark" aria-hidden="true">B</span></div>
+            <h3>Bitwarden</h3><p class="seller-feature">Le premier choix du débutant</p><p class="seller-price"><strong data-price-month="Dès 1,52 €/mois" data-price-year="Dès 18,24 €/an">Dès 1,52 €/mois</strong></p>
+            <ul class="seller-features"><li>Code ouvert, version gratuite</li><li>Mots de passe et appareils illimités</li><li>Familles : 6 comptes, 44,05 €/an</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/gestionnaires-mots-de-passe/1password/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><span class="seller-card-mark" aria-hidden="true">1</span></div>
+            <h3>1Password</h3><p class="seller-feature">L’expérience la plus fluide</p><p class="seller-price"><strong data-price-month="Dès 3,67 €/mois" data-price-year="Dès 44,04 €/an">Dès 3,67 €/mois</strong></p>
+            <ul class="seller-features"><li>Clé secrète et chiffrement de bout en bout</li><li>Essai gratuit de 14 jours</li><li>Familles dès 5,51 €/mois</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/gestionnaires-mots-de-passe/dashlane/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><span class="seller-card-mark" aria-hidden="true">D</span></div>
+            <h3>Dashlane</h3><p class="seller-feature">Tout-en-un, simple</p><p class="seller-price"><strong data-price-month="4,99 €/mois" data-price-year="59,88 €/an">4,99 €/mois</strong></p>
+            <ul class="seller-features"><li>VPN inclus dans Premium</li><li>Offre Friends &amp; Family : 10 membres</li><li>Pas de version gratuite</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-category-panel" id="panel-backup" role="tabpanel" aria-labelledby="tab-backup" hidden>
+        <div class="best-sellers-grid">
+          <a href="/offres/sauvegardes-cloud/backblaze/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><span class="seller-card-mark" aria-hidden="true">B</span></div>
+            <h3>Backblaze</h3><p class="seller-feature">Installer et oublier</p><p class="seller-price"><strong data-price-month="7,59 €/mois" data-price-year="91,08 €/an">7,59 €/mois</strong></p>
+            <ul class="seller-features"><li>Sauvegarde automatique et continue</li><li>Stockage illimité par ordinateur</li><li>Licence par ordinateur</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/sauvegardes-cloud/idrive/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><span class="seller-card-mark" aria-hidden="true">i</span></div>
+            <h3>iDrive</h3><p class="seller-feature">Un compte, plusieurs appareils</p><p class="seller-price"><strong data-price-month="6,43 €/mois" data-price-year="77,16 €/an">6,43 €/mois</strong></p>
+            <ul class="seller-features"><li>PC, Mac, mobiles, disques externes et NAS</li><li>Personal 5 To, première année</li><li>Remise valable un an</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/sauvegardes-cloud/pcloud/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><span class="seller-card-mark" aria-hidden="true">p</span></div>
+            <h3>pCloud</h3><p class="seller-feature">Stockage européen, droit suisse</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Chiffrement AES 256 bits</li><li>Restauration des versions</li><li>Chiffrement côté client en option</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-category-panel" id="panel-training" role="tabpanel" aria-labelledby="tab-training" hidden>
+        <div class="best-sellers-grid">
+          <a href="/offres/formations/knowbe4/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Formation équipes</span><span class="seller-card-mark" aria-hidden="true">K</span></div>
+            <h3>KnowBe4</h3><p class="seller-feature">Bibliothèque très étendue</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>200+ contenus en base</li><li>Simulations par e-mail, appel, QR code et USB</li><li>Campagnes automatisées</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/formations/sosafe/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Formation équipes</span><span class="seller-card-mark" aria-hidden="true">S</span></div>
+            <h3>SoSafe</h3><p class="seller-feature">Hébergement dans l’UE</p><p class="seller-price"><strong data-price-month="Dès 625 €/mois" data-price-year="Dès 7 500 €/an">Dès 625 €/mois</strong></p>
+            <ul class="seller-features"><li>Tarif d’entrée pour 50 utilisateurs</li><li>34 langues, dont le français</li><li>4 formules disponibles</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/formations/hoxhunt/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Formation équipes</span><span class="seller-card-mark" aria-hidden="true">H</span></div>
+            <h3>Hoxhunt</h3><p class="seller-feature">Format court et gamifié</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Étoiles et classements pour signaler</li><li>Prix par salarié</li><li>Forte automatisation</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="home-category-panel" id="panel-insurance" role="tabpanel" aria-labelledby="tab-insurance" hidden>
+        <div class="best-sellers-grid">
+          <a href="/offres/cyber-assurance/hiscox/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Cyber-assurance</span><span class="seller-card-mark" aria-hidden="true">H</span></div>
+            <h3>Hiscox CyberClear</h3><p class="seller-feature">Assistance 7 j/7 et 24 h/24</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Garanties financières et litiges clients</li><li>Prévention et formation</li><li>Indépendants et TPE</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/cyber-assurance/axa/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Cyber-assurance</span><span class="seller-card-mark" aria-hidden="true">A</span></div>
+            <h3>AXA Cyber Secure</h3><p class="seller-feature">Service Crise Majeure 24/7</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Blocage du SI, rançonnage et vol de données</li><li>Conseil en communication de crise</li><li>Interlocuteur local</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="/offres/cyber-assurance/allianz/" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Cyber-assurance</span><span class="seller-card-mark" aria-hidden="true">A</span></div>
+            <h3>Allianz</h3><p class="seller-feature">Offre lisible et évolutive</p><p class="seller-price"><strong data-price-month="Sur devis" data-price-year="Sur devis">Sur devis</strong></p>
+            <ul class="seller-features"><li>Professionnels sous 25 M€ de CA</li><li>Sur-mesure jusqu’à 250 M€</li><li>Responsabilité civile et pertes d’exploitation</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -435,7 +538,7 @@ tbody tr:hover{background:#F6F8FA}
   <section class="hsec"><div class="wrap"><div class="cta-band"><div><div class="kicker" style="color:#F5A085">Comparer avant de payer</div><h2>Des choix plus clairs pour votre sécurité.</h2><p>VPN, antivirus, gestionnaires de mots de passe : notre méthode de sélection, les limites de chacun, et les prix de renouvellement qu’on ne vous montre pas toujours.</p></div><div class="cta-band-market" aria-hidden="true"><svg viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="204" height="144" rx="22" fill="#EAF2F6"/><path d="M55 66h93v68H55z" fill="#fff" stroke="#C7D7E2" stroke-width="3"/><path d="M48 64 60 34h83l13 30H48Z" fill="#EF6947"/><path d="m60 34-5 30h21l5-30H60Zm42 0v30h21l-3-30h-18Zm21 0 3 30h21l-12-30h-12Z" fill="#fff"/><path d="M93 95h19v39H93z" fill="#DCE8EE"/><path d="M66 78h16v17H66zM122 78h16v17h-16z" fill="#B9D7E3"/><rect x="137" y="83" width="61" height="45" rx="12" fill="#16344E"/><path d="M153 96h29l-4 20h-21l-4-20Zm7 0a7 7 0 0 1 14 0" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="159" cy="121" r="3" fill="#EF6947"/><circle cx="176" cy="121" r="3" fill="#EF6947"/><circle cx="177" cy="42" r="19" fill="#49C995"/><path d="m168 42 6 6 12-13" stroke="#123B39" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><a class="btn" href="/offres/">Voir les comparatifs</a></div></div></section>
   <section class="hsec fraud-promo-section">
     <div class="wrap"><a class="fraud-promo" href="/outils/detecteur-arnaque/">
-      <span class="fraud-promo-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 3.5 41 10v11.2c0 10.7-6.8 18.8-17 23.3C13.8 40 7 31.9 7 21.2V10l17-6.5Z" fill="currentColor"/><circle cx="22" cy="21" r="9" fill="#132232"/><path d="m28.5 27.5 8 8" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/><path d="M22 16.5v5.8" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/><circle cx="22" cy="26.1" r="1.5" fill="#fff"/></svg></span>
+      <span class="fraud-promo-icon" aria-hidden="true"><img src="/assets/logo-brackets.svg" alt="" style="width: 38px; height: 38px;"></span>
       <span class="fraud-promo-copy"><span class="kicker">Outil gratuit</span><h2>Un message vous semble suspect ?</h2><p>Collez un SMS ou déposez une capture : le détecteur repère les signaux d’arnaque directement dans votre navigateur.</p></span>
       <span class="fraud-promo-cta">Tester le détecteur <span aria-hidden="true">→</span></span>
     </a></div>
@@ -657,6 +760,41 @@ tbody tr:hover{background:#F6F8FA}
 <script>
 const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
 if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+const categoryTabs=[...document.querySelectorAll('.home-category-tab')];
+const selectCategory=(tab,focus=false)=>{
+  categoryTabs.forEach(item=>{
+    const selected=item===tab;
+    item.setAttribute('aria-selected',String(selected));
+    item.tabIndex=selected?0:-1;
+    const panel=document.getElementById(item.getAttribute('aria-controls'));
+    if(panel)panel.hidden=!selected;
+  });
+  if(focus)tab.focus();
+};
+categoryTabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>selectCategory(tab));
+  tab.addEventListener('keydown',event=>{
+    let nextIndex;
+    if(event.key==='ArrowRight')nextIndex=(index+1)%categoryTabs.length;
+    else if(event.key==='ArrowLeft')nextIndex=(index-1+categoryTabs.length)%categoryTabs.length;
+    else if(event.key==='Home')nextIndex=0;
+    else if(event.key==='End')nextIndex=categoryTabs.length-1;
+    else return;
+    event.preventDefault();
+    selectCategory(categoryTabs[nextIndex],true);
+  });
+});
+const priceOptions=[...document.querySelectorAll('.home-price-option')];
+const productPrices=[...document.querySelectorAll('.home-category-panel .seller-price strong[data-price-month]')];
+priceOptions.forEach(option=>{
+  option.addEventListener('click',()=>{
+    const period=option.dataset.pricePeriod;
+    productPrices.forEach(price=>{
+      price.textContent=period==='year'?price.dataset.priceYear:price.dataset.priceMonth;
+    });
+    priceOptions.forEach(item=>item.setAttribute('aria-pressed',String(item===option)));
+  });
+});
 /* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
 const navItems=document.querySelectorAll('nav.main .nav-item');
 const touch=window.matchMedia('(hover: none)');
@@ -716,13 +854,7 @@ document.querySelectorAll('.slider').forEach(s=>{
   sliderRefreshers.push(refresh);
   refresh();
 });
-const audienceButtons=document.querySelectorAll('.audience-toggle button');
 const setAudience=mode=>{
-  audienceButtons.forEach(button=>{
-    const selected=button.dataset.aud===mode;
-    button.classList.toggle('on',selected);
-    button.setAttribute('aria-pressed',String(selected));
-  });
   document.querySelectorAll('.slider .acard[data-audience]').forEach(card=>{
     const isGuideSlider=card.closest('.slider')?.dataset.audienceFilter==='guides';
     const audience=card.dataset.audience;
@@ -730,8 +862,7 @@ const setAudience=mode=>{
   });
   sliderRefreshers.forEach(refresh=>refresh());
 };
-audienceButtons.forEach(button=>button.addEventListener('click',()=>setAudience(button.dataset.aud)));
-setAudience(document.querySelector('.audience-toggle button.on')?.dataset.aud||'both');
+setAudience('both');
 const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
 if(si){
   const IDX=[
@@ -770,11 +901,3 @@ if(si){
 })();
 </script>
 </body></html>
-
-
-
-
-
-
-
-
