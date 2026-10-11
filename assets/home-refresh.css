@@ -230,7 +230,7 @@ body.home-refresh {
 
 .home-refresh .home-category-card {
   display: grid;
-  grid-template-columns: 27px minmax(0, 1fr) 16px;
+  grid-template-columns: 46px minmax(0, 1fr) 16px;
   align-items: center;
   gap: 10px;
   min-height: 82px;
@@ -250,11 +250,32 @@ body.home-refresh {
   box-shadow: 0 11px 23px rgba(30,83,153,.12);
 }
 
+.home-refresh .home-category-thumb {
+  position: relative;
+  display: block;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eaf2ff;
+}
+
+.home-refresh .home-category-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .home-refresh .home-category-index {
-  align-self: start;
-  padding-top: 2px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  padding: 3px 4px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.94);
   color: var(--home-blue);
-  font: 600 .64rem/1 var(--mono);
+  font: 700 .56rem/1 var(--mono);
 }
 
 .home-refresh .home-category-card strong,
@@ -441,21 +462,26 @@ body.home-refresh {
 }
 
 .home-refresh .seller-card-header {
+  flex-direction: row;
+  align-items: center;
   min-height: 68px;
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: 12px;
   margin-bottom: 9px;
 }
 
-.home-refresh .seller-card-mark {
-  display: grid;
-  width: 60px;
-  height: 60px;
-  place-items: center;
-  border-radius: 10px;
-  background: linear-gradient(145deg, #438dff, #0c3e9b);
-  color: #fff;
-  font: 800 1.8rem/1 var(--disp);
-  box-shadow: 0 7px 16px rgba(12,62,155,.18);
+.home-refresh .seller-card-brand-logo {
+  box-sizing: border-box;
+  flex: 0 1 120px;
+  min-width: 72px;
+  width: 120px;
+  height: 44px;
+  padding: 5px 7px;
+  border: 1px solid #e0e9f6;
+  border-radius: 8px;
+  background: #fff;
+  object-fit: contain;
+  object-position: center;
 }
 
 .home-refresh .best-seller-card .seller-card-logo {
@@ -808,8 +834,8 @@ body.home-refresh {
     min-height: 56px;
   }
 
-  .home-refresh .best-seller-card .seller-card-logo {
-    height: 48px !important;
+  .home-refresh .seller-card-brand-logo {
+    height: 40px;
   }
 
   .home-refresh .cta-band {
