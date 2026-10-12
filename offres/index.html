@@ -217,6 +217,49 @@ tbody tr:hover{background:#F6F8FA}
 .lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
 .lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
 
+.offers-mini-panel{
+  margin:14px 0 18px;
+  padding:20px;
+  border:1px solid #25425A;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--navy),var(--navy2));
+  box-shadow:0 10px 26px rgba(15,36,56,.12);
+}
+.offers-mini-heading h2{
+  margin:0;
+  color:#fff;
+  font-size:clamp(1.25rem,2.4vw,1.65rem);
+  letter-spacing:-.02em;
+}
+.offers-mini-menu{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:8px;
+  margin:16px 0 0;
+}
+.offers-mini-menu a{
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  padding:.45em .78em;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  font-family:var(--disp);
+  font-size:.8rem;
+  font-weight:700;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.offers-mini-menu a:hover{
+  background:var(--orange);
+  border-color:var(--orange);
+  color:#fff;
+}
+
 /* hub "à paraître" */
 .soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
 
@@ -228,6 +271,9 @@ tbody tr:hover{background:#F6F8FA}
 @media (max-width:760px){
   nav.main,.btn-urgence{display:none}
   .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .offers-mini-panel{margin:12px 0 16px;padding:16px}
+  .offers-mini-menu{justify-content:flex-start;gap:6px}
+  .offers-mini-menu a{font-size:.76rem;padding:.42em .65em}
   .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
   .logo svg{width:24px;height:24px;margin-top:0}
   .logo-text{min-width:0;max-width:100%}
@@ -283,6 +329,19 @@ tbody tr:hover{background:#F6F8FA}
 <h1>Offres et outils de protection (comparateur)</h1><p class="lead">VPN, antivirus, gestionnaires de mots de passe, sauvegardes, formations et cyber-assurance : retrouvez nos comparatifs classés par public, notre méthode de sélection et les pièges tarifaires à connaître avant de payer.</p>
 <div class="meta"><span class="chip both">Les deux</span> <span class="date">Mise à jour : Octobre 2026</span></div>
 </div><img class="pagehead-photo" src="/assets/img/editorial-offres.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
+<div class="wrap"><section class="offers-mini-panel" aria-labelledby="offers-mini-title">
+<div class="offers-mini-heading"><h2 id="offers-mini-title">Accès rapide</h2></div>
+<nav class="offers-mini-menu" aria-label="Accès rapide à nos offres">
+<a href="/offres/vpn/">VPN</a>
+<a href="/offres/antivirus/">Antivirus</a>
+<a href="/offres/gestionnaires-mots-de-passe/">Gestionnaires de mots de passe</a>
+<a href="/offres/sauvegardes-cloud/">Sauvegardes cloud</a>
+<a href="/offres/formations-particuliers/">Formations pour particuliers</a>
+<a href="/offres/formations/">Formations pour équipes</a>
+<a href="/offres/cyber-assurance/">Cyber-assurance</a>
+<a href="/offres/promotions/">Offres du moment</a>
+</nav>
+</section></div>
 <div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><p class="caption">Rubrique — édition d’octobre 2026 · Lecture estimée : 5 minutes ·</p><h2 id="sommaire">Sommaire</h2>
 <ul class="summary-list">
 <li><a href="#lessentiel-a-quoi-sert-ce-comparateur">L’essentiel : à quoi sert ce comparateur ?</a></li>
@@ -515,10 +574,6 @@ if(si){
 }
 </script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
 </body></html>
-
-
-
-
 
 
 
