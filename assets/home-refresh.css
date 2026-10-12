@@ -1,10 +1,13 @@
-body.home-refresh {
+.home-refresh {
   --home-blue: #1769f5;
   --home-blue-deep: #0c3e9b;
   --home-blue-soft: #edf4ff;
   --home-ink: #10243d;
   --home-muted: #62758c;
   --home-line: #dce6f4;
+}
+
+body.home-refresh {
   background: #fff;
   color: var(--home-ink);
 }

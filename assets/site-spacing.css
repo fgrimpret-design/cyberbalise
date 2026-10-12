@@ -1383,3 +1383,191 @@ body:has(.pagehead .crumbs a[href^="/pro/"]) article.page blockquote {
     gap: 10px;
   }
 }
+
+/* Palette partagée inspirée de la page d’accueil */
+body:not(.home-refresh) {
+  --bg: #f5f8fc;
+  --paper: #fff;
+  --ink: #10243d;
+  --muted: #62758c;
+  --line: #dce6f4;
+  --navy: #0c3e9b;
+  --navy2: #1769f5;
+  --teal: #1769f5;
+  --teal-d: #0c3e9b;
+  --teal-soft: #edf4ff;
+  background: #fff;
+  color: var(--ink);
+}
+
+body:not(.home-refresh) header.site {
+  background: rgba(255, 255, 255, .97);
+  border-bottom-color: #e7eef8;
+  box-shadow: 0 5px 22px rgba(16, 52, 103, .06);
+  backdrop-filter: blur(14px);
+}
+
+body:not(.home-refresh) .site .wrap {
+  max-width: 1280px;
+}
+
+body:not(.home-refresh) nav.main .nav-item > a:hover,
+body:not(.home-refresh) nav.main .nav-item > a:focus-visible,
+body:not(.home-refresh) nav.main .nav-item.open > a {
+  color: #0c3e9b;
+}
+
+body:not(.home-refresh) .pagehead {
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(145, 194, 255, .28), transparent 42%),
+    linear-gradient(118deg, #0c3e9b 0%, #1769f5 68%, #438dff 100%);
+}
+
+body:not(.home-refresh) .pagehead h1 {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+body:not(.home-refresh) .pagehead .lead {
+  color: #e2edff;
+  font-family: var(--disp);
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.6;
+}
+
+body:not(.home-refresh) .pagehead .crumbs {
+  color: #c8dcff;
+}
+
+body:not(.home-refresh) .pagehead .crumbs a {
+  color: #e2edff;
+}
+
+body:not(.home-refresh) .pagehead .crumbs a:hover {
+  color: #fff;
+}
+
+body:not(.home-refresh) article.page {
+  --article-tint: #edf4ff !important;
+  border-color: #e4ecf7;
+  box-shadow: 0 10px 30px rgba(16, 52, 103, .045);
+}
+
+body:not(.home-refresh) article.page > h2:not(:first-of-type) {
+  border-left-color: #1769f5 !important;
+}
+
+body:not(.home-refresh) article.page .note {
+  border-color: #c8daf7 !important;
+  border-left-color: #1769f5 !important;
+  background: linear-gradient(135deg, #edf4ff, #f8fbff 74%) !important;
+}
+
+body:not(.home-refresh) article.page .note::before {
+  color: #0c3e9b !important;
+}
+
+body:not(.home-refresh) article.page th {
+  background: #edf4ff;
+}
+
+body:not(.home-refresh) article.page tbody tr:nth-child(even) {
+  background: #f7faff;
+}
+
+body:not(.home-refresh) .provider-cta,
+body:not(.home-refresh) .vpn-card-cta,
+body:not(.home-refresh) .btn-primary,
+body:not(.home-refresh) .protection-cta {
+  border-radius: 9px;
+  background: #1769f5 !important;
+  box-shadow: 0 8px 18px rgba(23, 105, 245, .2) !important;
+}
+
+body:not(.home-refresh) .provider-cta:hover,
+body:not(.home-refresh) .vpn-card-cta:hover,
+body:not(.home-refresh) .btn-primary:hover,
+body:not(.home-refresh) .protection-cta:hover {
+  background: #0c3e9b !important;
+  box-shadow: 0 10px 20px rgba(12, 62, 155, .24) !important;
+}
+
+body:not(.home-refresh) .cta-band .btn,
+body:not(.home-refresh) .btn-primary-aggressive {
+  background: #1769f5;
+  border-color: #1769f5;
+  box-shadow: 0 8px 18px rgba(23, 105, 245, .2);
+}
+
+body:not(.home-refresh) .cta-band .btn:hover,
+body:not(.home-refresh) .btn-primary-aggressive:hover {
+  background: #0c3e9b;
+  border-color: #0c3e9b;
+  box-shadow: 0 10px 20px rgba(12, 62, 155, .24);
+}
+
+body:not(.home-refresh) .provider-cta-section .price-highlight {
+  color: #0c3e9b;
+}
+
+body:not(.home-refresh) .vpn-card {
+  border-color: #c7daf8;
+  border-radius: 14px;
+  background: #f0f6ff;
+  box-shadow: 0 8px 22px rgba(30, 83, 153, .065);
+}
+
+body:not(.home-refresh) .vpn-comparator-section {
+  border-bottom: 1px solid #e8eff9;
+  background: linear-gradient(180deg, #f4f8ff, #fff 72%);
+}
+
+body:not(.home-refresh) .comparator-header h2 {
+  color: #10243d;
+}
+
+body:not(.home-refresh) .comparator-header p {
+  color: #62758c;
+}
+
+body:not(.home-refresh) .vpn-card:hover {
+  border-color: #1769f5;
+  background: #eaf2ff;
+  box-shadow: 0 18px 36px rgba(30, 83, 153, .15);
+}
+
+body:not(.home-refresh) .vpn-card h3 {
+  color: #10243d;
+}
+
+body:not(.home-refresh) .vpn-rank {
+  background: #1769f5;
+}
+
+body:not(.home-refresh) .exclusive-offer-banner {
+  border-color: #b8cef2;
+  background: #edf4ff;
+  color: #0c3e9b;
+  box-shadow: 0 4px 12px rgba(23, 105, 245, .12);
+}
+
+body:not(.home-refresh) .acard {
+  border-color: #dce6f4;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(30, 83, 153, .06);
+}
+
+body:not(.home-refresh) .acard:hover {
+  border-color: #9cbdff;
+  box-shadow: 0 15px 30px rgba(30, 83, 153, .12);
+}
+
+body:not(.home-refresh) .comparisons-section {
+  background: #edf4ff !important;
+}
+
+body:not(.home-refresh) a:focus-visible,
+body:not(.home-refresh) button:focus-visible {
+  outline-color: rgba(23, 105, 245, .55);
+}

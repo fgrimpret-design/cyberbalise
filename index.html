@@ -1,4 +1,4 @@
-﻿<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CyberBalise — Guides, comparatifs et fiches réflexes cybersécurité</title><meta name="description" content="Des guides, comparatifs et fiches réflexes pour comprendre les menaces et protéger votre vie numérique.">
 <link rel="canonical" href="https://cyberbalise.fr/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="CyberBalise — Guides, comparatifs et fiches réflexes cybersécurité"><meta property="og:description" content="Des guides, comparatifs et fiches réflexes pour comprendre les menaces et protéger votre vie numérique."><meta property="og:url" content="https://cyberbalise.fr/">
@@ -320,7 +320,7 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
   .protection-proof-dot{animation:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261010-brackets-detector"><link rel="stylesheet" href="/assets/home-refresh.css?v=20261011-category-photos">
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261012-homepage-theme"><link rel="stylesheet" href="/assets/home-refresh.css?v=20261012-top-protections">
 </head><body class="home-refresh">
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="CyberBalise"><span class="logo-image"><span class="home-logo-wordmark">CYBER<span>BALISE</span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></a>
@@ -769,41 +769,6 @@ tbody tr:hover{background:#F6F8FA}
 <script>
 const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
 if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
-const categoryTabs=[...document.querySelectorAll('.home-category-tab')];
-const selectCategory=(tab,focus=false)=>{
-  categoryTabs.forEach(item=>{
-    const selected=item===tab;
-    item.setAttribute('aria-selected',String(selected));
-    item.tabIndex=selected?0:-1;
-    const panel=document.getElementById(item.getAttribute('aria-controls'));
-    if(panel)panel.hidden=!selected;
-  });
-  if(focus)tab.focus();
-};
-categoryTabs.forEach((tab,index)=>{
-  tab.addEventListener('click',()=>selectCategory(tab));
-  tab.addEventListener('keydown',event=>{
-    let nextIndex;
-    if(event.key==='ArrowRight')nextIndex=(index+1)%categoryTabs.length;
-    else if(event.key==='ArrowLeft')nextIndex=(index-1+categoryTabs.length)%categoryTabs.length;
-    else if(event.key==='Home')nextIndex=0;
-    else if(event.key==='End')nextIndex=categoryTabs.length-1;
-    else return;
-    event.preventDefault();
-    selectCategory(categoryTabs[nextIndex],true);
-  });
-});
-const priceOptions=[...document.querySelectorAll('.home-price-option')];
-const productPrices=[...document.querySelectorAll('.home-category-panel .seller-price strong[data-price-month]')];
-priceOptions.forEach(option=>{
-  option.addEventListener('click',()=>{
-    const period=option.dataset.pricePeriod;
-    productPrices.forEach(price=>{
-      price.textContent=period==='year'?price.dataset.priceYear:price.dataset.priceMonth;
-    });
-    priceOptions.forEach(item=>item.setAttribute('aria-pressed',String(item===option)));
-  });
-});
 /* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
 const navItems=document.querySelectorAll('nav.main .nav-item');
 const touch=window.matchMedia('(hover: none)');
@@ -909,4 +874,4 @@ if(si){
   }, 5000);
 })();
 </script>
-</body></html>
+<script src="/assets/top-protections.js?v=20261012-top-protections"></script></body></html>
