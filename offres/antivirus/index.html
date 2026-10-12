@@ -131,6 +131,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
 .acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
 .acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard-brand-logo{display:block;width:auto;height:auto;max-width:190px;max-height:36px;object-fit:contain;object-position:left center;margin:12px 0 10px}
 .acard h3{font-size:1.02rem;margin:.55em 0 .3em}
 .acard p{color:var(--muted);font-size:.9rem;margin:0}
 .ccard{display:flex;flex-direction:column;min-height:210px}
@@ -287,10 +288,16 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
 }
 .provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
-.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
 @media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
 @media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
 </style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261012-tight-spacing">
+<style>
+.vpn-comparator-section .vpn-price{color:#1769F5;display:flex;flex-direction:column;gap:.15rem;line-height:1.1}
+.vpn-comparator-section .vpn-price span{font-size:.58em;letter-spacing:normal}
+.vpn-comparator-section .vpn-card-logo{height:44px;max-width:100%;object-fit:contain;object-position:left center}
+.vpn-comparator-section .vpn-card-logo.vpn-card-logo--bitdefender{height:28px;width:190px}
+@media(max-width:760px){.vpn-comparator-section .vpn-card-logo{height:36px}}
+</style>
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
@@ -320,11 +327,10 @@ tbody tr:hover{background:#F6F8FA}
     <div class="vpn-grid-showcase grid-5">
       <a href="#1-bitdefender" class="vpn-card">
         <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">B</span>
+          <img src="/assets/img/provider-logos/bitdefender.webp" alt="Bitdefender" class="vpn-card-logo vpn-card-logo--bitdefender" width="190" height="28">
         </div>
-        <h3>Bitdefender</h3>
         <p class="vpn-feature">Meilleur score de protection testé</p>
-        <p class="vpn-price"><strong>Prix à vérifier</strong></p>
+        <p class="vpn-price"><strong>Mensuel : à vérifier</strong><span>Annuel : à vérifier</span></p>
         <ul class="vpn-features">
           <li>Protection : 99,5 % (AV-Comparatives)</li>
           <li>5 appareils (Individuel) ou 25 (Famille)</li>
@@ -335,11 +341,10 @@ tbody tr:hover{background:#F6F8FA}
 
       <a href="#2-norton-360" class="vpn-card">
         <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">N</span>
+          <img src="/assets/img/provider-logos/norton.svg" alt="Norton" class="vpn-card-logo">
         </div>
-        <h3>Norton 360</h3>
         <p class="vpn-feature">Tout-en-un, 5 appareils</p>
-        <p class="vpn-price"><strong>39,99 €</strong></p>
+        <p class="vpn-price"><strong>3,33 €/mois</strong><span>39,99 €/an · 1re année</span></p>
         <ul class="vpn-features">
           <li>Prix de la 1re année (Deluxe)</li>
           <li>VPN et 50 Go de sauvegarde inclus</li>
@@ -350,11 +355,10 @@ tbody tr:hover{background:#F6F8FA}
 
       <a href="#3-eset" class="vpn-card">
         <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">E</span>
+          <img src="/assets/img/provider-logos/eset.svg" alt="ESET" class="vpn-card-logo">
         </div>
-        <h3>ESET</h3>
         <p class="vpn-feature">Léger, peu de fausses alertes</p>
-        <p class="vpn-price"><strong>Prix à vérifier</strong></p>
+        <p class="vpn-price"><strong>Mensuel : à vérifier</strong><span>Annuel : à vérifier</span></p>
         <ul class="vpn-features">
           <li>Seulement 2 faux positifs</li>
           <li>Protection : 98,5 %</li>
@@ -365,11 +369,10 @@ tbody tr:hover{background:#F6F8FA}
 
       <a href="#4-avast-one" class="vpn-card">
         <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">A</span>
+          <img src="/assets/img/provider-logos/avast.svg" alt="Avast" class="vpn-card-logo">
         </div>
-        <h3>Avast One</h3>
         <p class="vpn-feature">Version gratuite disponible</p>
-        <p class="vpn-price"><strong>54,04 €</strong></p>
+        <p class="vpn-price"><strong>4,50 €/mois</strong><span>54,04 €/an · 1re année</span></p>
         <ul class="vpn-features">
           <li>Premium Security, 10 appareils</li>
           <li>1re année · puis 99,99 €/an</li>
@@ -380,11 +383,10 @@ tbody tr:hover{background:#F6F8FA}
 
       <a href="#5-microsoft-defender" class="vpn-card">
         <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">M</span>
+          <img src="/assets/img/provider-logos/microsoft.png" alt="Microsoft" class="vpn-card-logo">
         </div>
-        <h3>Microsoft Defender</h3>
         <p class="vpn-feature">Intégré à Windows</p>
-        <p class="vpn-price"><strong>Gratuit</strong></p>
+        <p class="vpn-price"><strong>0 €/mois</strong><span>0 €/an · gratuit</span></p>
         <ul class="vpn-features">
           <li>Protection : 99,0 %</li>
           <li>Aucun faux positif dans le test cité</li>
@@ -658,7 +660,14 @@ tbody tr:hover{background:#F6F8FA}
 <li>ESET — « Offres sécurité ESET HOME » — formules Essential, Premium, Ultimate et systèmes couverts (prix non affichés lors du relevé) : https://www.eset.com/fr/home/offres-securite/</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Particuliers" href="/offres/antivirus/bitdefender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Bitdefender</h3><p>Fiche produit Bitdefender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/norton-360/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Norton 360</h3><p>Fiche produit Norton 360 (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/eset/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>ESET</h3><p>Fiche produit ESET (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/avast-one/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Avast One</h3><p>Fiche produit Avast One (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Particuliers" href="/offres/antivirus/microsoft-defender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><h3>Microsoft Defender</h3><p>Fiche produit Microsoft Defender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2>
+<div class="grid cards-2">
+<a class="acard" data-audience="Particuliers" href="/offres/antivirus/bitdefender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><img class="acard-brand-logo" src="/assets/img/provider-logos/bitdefender.webp" alt="" aria-hidden="true" width="190" height="28" loading="lazy" decoding="async"><h3>Bitdefender</h3><p>Fiche produit Bitdefender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Particuliers" href="/offres/antivirus/norton-360/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><img class="acard-brand-logo" src="/assets/img/provider-logos/norton.svg" alt="" aria-hidden="true" width="137" height="32" loading="lazy" decoding="async"><h3>Norton 360</h3><p>Fiche produit Norton 360 (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Particuliers" href="/offres/antivirus/eset/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><img class="acard-brand-logo" src="/assets/img/provider-logos/eset.svg" alt="" aria-hidden="true" width="215" height="36" loading="lazy" decoding="async"><h3>ESET</h3><p>Fiche produit ESET (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Particuliers" href="/offres/antivirus/avast-one/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><img class="acard-brand-logo" src="/assets/img/provider-logos/avast.svg" alt="" aria-hidden="true" width="116" height="36" loading="lazy" decoding="async"><h3>Avast One</h3><p>Fiche produit Avast One (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Particuliers" href="/offres/antivirus/microsoft-defender/"><div class="cat"><span>fiche produit</span><span class="chip part">Particuliers</span></div><img class="acard-brand-logo" src="/assets/img/provider-logos/microsoft.png" alt="" aria-hidden="true" width="216" height="46" loading="lazy" decoding="async"><h3>Microsoft Defender</h3><p>Fiche produit Microsoft Defender (comparatif antivirus) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+</div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
 
 <section class="final-cta-section">
   <div class="wrap">
@@ -778,12 +787,6 @@ if(si){
 }
 </script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
 </body></html>
-
-
-
-
-
-
 
 
 
