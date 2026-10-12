@@ -1571,3 +1571,191 @@ body:not(.home-refresh) a:focus-visible,
 body:not(.home-refresh) button:focus-visible {
   outline-color: rgba(23, 105, 245, .55);
 }
+
+/* Resserre les blocs et les transitions entre sections */
+body:not(.home-refresh) main > section {
+  margin-block: 0 !important;
+  padding-block: clamp(24px, 2.8vw, 36px) !important;
+}
+
+body:not(.home-refresh) main > section + section {
+  padding-top: clamp(18px, 2.2vw, 28px) !important;
+}
+
+body:not(.home-refresh) .pagehead {
+  padding: 28px 0;
+}
+
+body:not(.home-refresh) .pagehead-layout {
+  gap: 22px;
+  margin-top: 14px;
+}
+
+body:not(.home-refresh) .pagehead-visual {
+  margin-top: 36px;
+}
+
+body:not(.home-refresh) .pagehead .meta {
+  margin-top: 12px;
+}
+
+body:not(.home-refresh) article.page {
+  padding: 20px clamp(18px, 4vw, 40px) 24px;
+}
+
+body:not(.home-refresh) article.page > p {
+  margin-bottom: .5em;
+}
+
+body:not(.home-refresh) article.page > h2 {
+  margin-top: 1em;
+  padding-top: .45em;
+}
+
+body:not(.home-refresh) article.page > h2:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body:not(.home-refresh) article.page > h2:not(:first-of-type) {
+  margin-top: .9em;
+  padding-top: .4em !important;
+}
+
+body:not(.home-refresh) article.page > h3 {
+  margin-top: .7em;
+  margin-bottom: .25em;
+}
+
+body:not(.home-refresh) article.page > ul,
+body:not(.home-refresh) article.page > ol {
+  margin: .5em 0;
+}
+
+body:not(.home-refresh) article.page > .note,
+body:not(.home-refresh) article.page > .warn {
+  margin: .65em 0;
+}
+
+body:not(.home-refresh) article.page .note,
+body:not(.home-refresh) article.page .warn {
+  padding: 34px 18px 16px !important;
+}
+
+body:not(.home-refresh) article.page > .tablewrap,
+body:not(.home-refresh) article.page > table {
+  margin: .8em 0;
+}
+
+body:not(.home-refresh) article.page > .see-also {
+  margin-top: .9em;
+  padding-top: .55em;
+}
+
+body:not(.home-refresh) .comparator-header {
+  margin-bottom: 24px;
+}
+
+body:not(.home-refresh) .exclusive-offer-banner {
+  margin-bottom: 14px;
+}
+
+body:not(.home-refresh) .vpn-grid-showcase {
+  gap: 20px;
+}
+
+body:not(.home-refresh) .guides-section,
+body:not(.home-refresh) .comparisons-section {
+  padding: 32px 0;
+}
+
+body:not(.home-refresh) .grid {
+  gap: 14px;
+}
+
+body:not(.home-refresh) .slider {
+  gap: 14px;
+}
+
+body:not(.home-refresh) .cta-band {
+  gap: 18px;
+  padding: 28px clamp(20px, 3vw, 32px);
+}
+
+body:not(.home-refresh) .final-cta-section {
+  margin-top: 32px;
+  padding: 28px clamp(20px, 4vw, 36px);
+}
+
+body:not(.home-refresh) .site-protection-section {
+  padding: 12px 0 4px;
+}
+
+body:not(.home-refresh) .provider-cta-section {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+body:not(.home-refresh) footer.site {
+  margin-top: 32px;
+  padding: 36px 0 28px;
+}
+
+@media (max-width: 760px) {
+  body:not(.home-refresh) main > section {
+    padding-block: 20px !important;
+  }
+
+  body:not(.home-refresh) main > section + section {
+    padding-top: 16px !important;
+  }
+
+  body:not(.home-refresh) .pagehead {
+    padding: 12px 0 20px;
+  }
+
+  body:not(.home-refresh) .pagehead-layout {
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  body:not(.home-refresh) .pagehead-visual {
+    margin-top: 0;
+  }
+
+  body:not(.home-refresh) article.page {
+    padding: 16px 18px 20px;
+  }
+
+  body:not(.home-refresh) article.page > h2 {
+    margin-top: .85em;
+  }
+
+  body:not(.home-refresh) article.page .note,
+  body:not(.home-refresh) article.page .warn {
+    padding: 32px 16px 14px !important;
+  }
+
+  body:not(.home-refresh) .comparator-header {
+    margin-bottom: 18px;
+  }
+
+  body:not(.home-refresh) .vpn-grid-showcase {
+    gap: 12px;
+  }
+
+  body:not(.home-refresh) .cta-band {
+    gap: 14px;
+    padding: 22px 18px;
+  }
+
+  body:not(.home-refresh) .final-cta-section {
+    margin-top: 24px;
+    padding: 22px 18px;
+  }
+
+  body:not(.home-refresh) footer.site {
+    margin-top: 24px;
+    padding: 30px 0 24px;
+  }
+}
