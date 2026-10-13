@@ -21,7 +21,11 @@ h3{font-size:1.15rem;margin-top:1.6em}
 .jump-cta{display:inline-block;margin:0;padding:.7em 1.1em;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none}
 .jump-cta:hover{background:var(--orange-d);color:#fff}
 .provider-heading{display:flex;align-items:center;gap:12px}
-.provider-logo{width:36px;height:36px;object-fit:contain;flex:none}
+.provider-logo{width:auto;height:auto;max-width:150px;max-height:36px;object-fit:contain;flex:none}
+.provider-detail + .provider-detail{padding-top:2.5em}
+.vpn-comparator-section .vpn-price{color:#1769F5}
+.vpn-comparator-section .vpn-card-logo{display:block;height:44px;width:auto;max-width:100%;object-fit:contain;object-position:left center;margin:.35rem 0 .65rem}
+.acard-brand-logo{display:block;width:auto;height:auto;max-width:150px;max-height:44px;object-fit:contain;margin:0 0 10px}
 p{margin:0 0 1em}
 a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
 a:hover{color:var(--orange-d)}
@@ -286,10 +290,8 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-.provider-monogram{width:36px;height:36px;border-radius:9px;background:var(--navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1rem;flex:none}
-.vpn-card-monogram{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:1.5rem}
 @media(min-width:761px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n){grid-column:span 3}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n+4){grid-column:span 4}.vpn-grid-showcase.grid-5 .vpn-card:nth-child(4){grid-column:3 / span 4}}
-@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}}
+@media(max-width:760px){.vpn-grid-showcase.grid-4 .vpn-card:nth-child(n),.vpn-grid-showcase.grid-5 .vpn-card:nth-child(n){grid-column:auto}.vpn-comparator-section .vpn-card-logo{height:36px}}
 </style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261012-tight-spacing">
 </head><body>
 <header class="site"><div class="wrap">
@@ -319,10 +321,8 @@ tbody tr:hover{background:#F6F8FA}
 
     <div class="vpn-grid-showcase grid-5">
       <a href="#1-backblaze" class="vpn-card">
-        <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">B</span>
-        </div>
         <h3>Backblaze</h3>
+        <img src="/assets/img/provider-logos/backblaze.svg" alt="" aria-hidden="true" class="vpn-card-logo" width="136" height="33">
         <p class="vpn-feature">Installer et oublier</p>
         <p class="vpn-price"><strong>91,08 €/an</strong></p>
         <ul class="vpn-features">
@@ -334,10 +334,8 @@ tbody tr:hover{background:#F6F8FA}
       </a>
 
       <a href="#2-idrive" class="vpn-card">
-        <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">i</span>
-        </div>
         <h3>iDrive</h3>
+        <img src="/assets/img/provider-logos/idrive.ico" alt="" aria-hidden="true" class="vpn-card-logo" width="64" height="64">
         <p class="vpn-feature">Un compte, plusieurs appareils</p>
         <p class="vpn-price"><strong>6,43 €/mois</strong></p>
         <ul class="vpn-features">
@@ -349,10 +347,8 @@ tbody tr:hover{background:#F6F8FA}
       </a>
 
       <a href="#3-pcloud" class="vpn-card">
-        <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">p</span>
-        </div>
         <h3>pCloud</h3>
+        <img src="/assets/img/provider-logos/pcloud.svg" alt="" aria-hidden="true" class="vpn-card-logo" width="120" height="32">
         <p class="vpn-feature">Stockage européen, droit suisse</p>
         <p class="vpn-price"><strong>Prix à vérifier</strong></p>
         <ul class="vpn-features">
@@ -364,10 +360,8 @@ tbody tr:hover{background:#F6F8FA}
       </a>
 
       <a href="#4-google-one" class="vpn-card">
-        <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">G</span>
-        </div>
         <h3>Google One</h3>
+        <img src="/assets/img/provider-logos/google-one.png" alt="" aria-hidden="true" class="vpn-card-logo" width="512" height="512">
         <p class="vpn-feature">Photos et documents Android</p>
         <p class="vpn-price"><strong>1,83 €/mois</strong></p>
         <ul class="vpn-features">
@@ -379,10 +373,8 @@ tbody tr:hover{background:#F6F8FA}
       </a>
 
       <a href="#5-microsoft-onedrive-microsoft-365" class="vpn-card">
-        <div class="vpn-card-header">
-          <span class="vpn-card-monogram" aria-hidden="true">O</span>
-        </div>
         <h3>Microsoft OneDrive</h3>
+        <img src="/assets/img/provider-logos/onedrive.svg" alt="" aria-hidden="true" class="vpn-card-logo" width="120" height="32">
         <p class="vpn-feature">Pour les utilisateurs d’Office</p>
         <p class="vpn-price"><strong>99 €/an</strong></p>
         <ul class="vpn-features">
@@ -555,36 +547,46 @@ tbody tr:hover{background:#F6F8FA}
 <p>Prix relevés le 1er octobre 2026 sur les sites officiels — prix promotionnels de première période le cas échéant, renouvellement à vérifier. Certains sites affichaient lors de notre relevé des prix en dollars américains ; le prix et la devise affichés depuis la France peuvent différer, TVA éventuelle en sus.</p>
 <p>Lecture du tableau : les deux « vrais » services de sauvegarde (Backblaze et iDrive) sont les plus adaptés à la restauration complète d’un ordinateur, tandis que Google One et OneDrive sont surtout intéressants si vous payez déjà pour l’écosystème correspondant.</p>
 <h2 id="les-cinq-solutions-en-detail">Les cinq solutions en détail</h2>
-<h3 class="provider-heading" id="1-backblaze"><span class="provider-monogram" aria-hidden="true">B</span>1. Backblaze</h3>
+<section class="provider-detail" aria-labelledby="1-backblaze">
+<h3 class="provider-heading" id="1-backblaze"><span>1. Backblaze</span><img class="provider-logo" src="/assets/img/provider-logos/backblaze.svg" alt="" aria-hidden="true" width="136" height="33"></h3>
 <p><strong>Points forts.</strong> Backblaze Computer Backup sauvegarde automatiquement et en continu toutes les données créées par l’utilisateur sur l’ordinateur et les disques externes connectés, sans restriction de type ni de taille de fichier. Le stockage est illimité. Les données sont chiffrées (clés publique/privée de 2 048 bits protégeant une clé symétrique AES-128), avec l’option d’ajouter une clé privée personnelle. La double authentification par SMS ou par application est disponible. Côté restauration, l’éditeur propose une application dédiée, des restaurations web par archive ZIP jusqu’à 500 Go par demande et, pour les comptes professionnels, l’envoi gratuit d’un disque USB chiffré si vous le retournez sous 30 jours.</p>
 <p><strong>Limites.</strong> C’est une sauvegarde d’ordinateur, pas un espace de partage ni de synchronisation. La conservation illimitée des anciennes versions est une option payante. L’interface et l’assistance sont principalement en anglais . La licence est prévue par ordinateur : avec plusieurs machines, le coût se multiplie.</p>
 <p><strong>Pour qui.</strong> Particuliers et indépendants qui veulent « installer et oublier » la sauvegarde de leur ordinateur principal ; TPE souhaitant une sauvegarde de postes gérée depuis une console web.</p>
 <p><strong>Prix relevé.</strong> 91,08 € par an pour les formules Personal Backup et Business Backup, relevé le 1er octobre 2026 sur backblaze.com — renouvellement à vérifier.</p>
-<p><a class="provider-cta" href="/offres/sauvegardes-cloud/backblaze/">Voir la fiche Backblaze →</a></p>
-<h3 class="provider-heading" id="2-idrive"><span class="provider-monogram" aria-hidden="true">i</span>2. iDrive</h3>
+<p><a class="provider-cta" href="/offres/sauvegardes-cloud/backblaze/">En savoir plus →</a></p>
+</section>
+<section class="provider-detail" aria-labelledby="2-idrive">
+<h3 class="provider-heading" id="2-idrive"><span>2. iDrive</span><img class="provider-logo" src="/assets/img/provider-logos/idrive.ico" alt="" aria-hidden="true" width="64" height="64"></h3>
 <p><strong>Points forts.</strong> Un seul compte iDrive Personal sauvegarde plusieurs ordinateurs (Windows, Mac, Linux) et appareils mobiles, ainsi que des disques externes et des NAS (Synology, QNAP, etc.). La sauvegarde est continue : les modifications sont détectées et envoyées quasiment en temps réel. Le service ajoute une fonction de synchronisation (Cloud Drive), le partage de fichiers et iDrive Express, qui permet de sauvegarder ou récupérer de gros volumes par expédition d’un support physique (une fois par an gratuitement en formule Personal). Une offre gratuite de 10 Go existe. Pour les TPE, les formules Team et Business ajoutent la gestion des utilisateurs depuis une console web et l’authentification unique.</p>
 <p><strong>Limites.</strong> La remise affichée ne vaut que pour la première année : l’éditeur précise que le tarif standard s’applique à partir de la deuxième année. En cas de dépassement du quota, des frais de dépassement de 0,23 € par Go et par mois peuvent s’appliquer en formule Personal (0,46 € en Team et Business). Les formules Personal sont réservées à un usage personnel : une entreprise doit souscrire une formule Team ou Business. L’interface est riche, donc moins intuitive pour un débutant.</p>
 <p><strong>Pour qui.</strong> Familles et TPE avec plusieurs ordinateurs et téléphones à protéger dans un même compte.</p>
 <p><strong>Prix relevé.</strong> iDrive Personal 5 To : 6,43 € par mois en facturation annuelle la première année, au lieu de 9,19 € ; 10 To : 9,65 € au lieu de 13,79 € — relevé le 1er octobre 2026 sur idrive.com, prix en dollars américains — prix promotionnel de première période, renouvellement au tarif standard.</p>
-<p><a class="provider-cta" href="/offres/sauvegardes-cloud/idrive/">Voir la fiche iDrive →</a></p>
-<h3 class="provider-heading" id="3-pcloud"><span class="provider-monogram" aria-hidden="true">p</span>3. pCloud</h3>
+<p><a class="provider-cta" href="/offres/sauvegardes-cloud/idrive/">En savoir plus →</a></p>
+</section>
+<section class="provider-detail" aria-labelledby="3-pcloud">
+<h3 class="provider-heading" id="3-pcloud"><span>3. pCloud</span><img class="provider-logo" src="/assets/img/provider-logos/pcloud.svg" alt="" aria-hidden="true" width="120" height="32"></h3>
 <p><strong>Points forts.</strong> pCloud indique protéger les fichiers conformément aux lois suisses sur la protection de la vie privée, dans des centres de données certifiés, avec une protection TLS/SSL et un chiffrement AES 256 bits. Le service permet de restaurer les versions précédentes des fichiers et de récupérer des données jusqu’à 30 jours en arrière, de sauvegarder la galerie du téléphone et les fichiers de l’ordinateur, de travailler sur des fichiers sans occuper d’espace local et de partager des liens protégés par mot de passe. pCloud est connu pour proposer des formules « à vie » en paiement unique, ainsi qu’une option de chiffrement côté client (pCloud Encryption) pour les fichiers les plus sensibles.</p>
 <p><strong>Limites.</strong> C’est avant tout un espace de stockage synchronisé, pas un logiciel de sauvegarde complète du système : il faut choisir les dossiers à protéger. Une formule « à vie » est un pari sur la pérennité de l’éditeur. Le chiffrement côté client est une option à part, payante. Nous n’avons pas pu relever les prix sur le site officiel lors de notre passage.</p>
 <p><strong>Pour qui.</strong> Particuliers attentifs à la confidentialité, qui veulent un espace de stockage européen et préfèrent éventuellement un paiement unique.</p>
 <p><strong>Prix relevé.</strong> </p>
-<p><a class="provider-cta" href="/offres/sauvegardes-cloud/pcloud/">Voir la fiche pCloud →</a></p>
-<h3 class="provider-heading" id="4-google-one"><span class="provider-monogram" aria-hidden="true">G</span>4. Google One</h3>
+<p><a class="provider-cta" href="/offres/sauvegardes-cloud/pcloud/">En savoir plus →</a></p>
+</section>
+<section class="provider-detail" aria-labelledby="4-google-one">
+<h3 class="provider-heading" id="4-google-one"><span>4. Google One</span><img class="provider-logo" src="/assets/img/provider-logos/google-one.png" alt="" aria-hidden="true" width="512" height="512"></h3>
 <p><strong>Points forts.</strong> Tous les comptes Google incluent jusqu’à 15 Go d’espace gratuit, partagé entre Google Photos, Drive et Gmail. Les formules payantes augmentent cet espace et permettent de le partager avec cinq personnes au maximum. L’abonnement est résiliable à tout moment. L’intégration avec Android et Google Photos rend la sauvegarde des photos du téléphone quasi automatique.</p>
 <p><strong>Limites.</strong> Google One est un espace de stockage, pas un logiciel de sauvegarde d’ordinateur : il protège surtout ce qui est déjà dans Drive, Photos et Gmail. Les formules de plus grande capacité sont désormais groupées avec des fonctions d’intelligence artificielle, ce qui augmente le prix si vous n’avez besoin que d’espace. Vos données restent liées à votre compte Google : s’il est piraté ou bloqué, l’accès à vos sauvegardes l’est aussi. Activez la double authentification.</p>
 <p><strong>Pour qui.</strong> Utilisateurs d’Android et de Gmail qui veulent surtout protéger leurs photos et quelques documents, éventuellement en famille.</p>
 <p><strong>Prix relevé.</strong> Basic (100 Go) : 1,83 € US par mois ; Google AI Plus (2 To) : 9,19 € US par mois — relevé le 1er octobre 2026 sur one.google.com, affichage en dollars américains lors de notre relevé ; le prix en euros affiché depuis un compte français peut différer.</p>
-<p><a class="provider-cta" href="/offres/sauvegardes-cloud/google-one/">Voir la fiche Google One →</a></p>
-<h3 class="provider-heading" id="5-microsoft-onedrive-microsoft-365"><span class="provider-monogram" aria-hidden="true">O</span>5. Microsoft OneDrive (Microsoft 365)</h3>
+<p><a class="provider-cta" href="/offres/sauvegardes-cloud/google-one/">En savoir plus →</a></p>
+</section>
+<section class="provider-detail" aria-labelledby="5-microsoft-onedrive-microsoft-365">
+<h3 class="provider-heading" id="5-microsoft-onedrive-microsoft-365"><span>5. Microsoft OneDrive (Microsoft 365)</span><img class="provider-logo" src="/assets/img/provider-logos/onedrive.svg" alt="" aria-hidden="true" width="120" height="32"></h3>
 <p><strong>Points forts.</strong> L’abonnement Microsoft 365 Personnel inclut 1 To de stockage OneDrive pour une personne, jusqu’à 5 appareils connectés simultanément et les logiciels Office. OneDrive propose un coffre personnel pour les fichiers sensibles, des liens de partage protégés par mot de passe ou à expiration, l’historique des versions, la sauvegarde de la pellicule photo, la sauvegarde Windows et la détection des rançongiciels avec restauration des fichiers. La formule Famille partage l’abonnement jusqu’à six personnes, avec 1 To chacune.</p>
 <p><strong>Limites.</strong> Comme Google One, c’est un service de synchronisation : il couvre les dossiers synchronisés, pas tout le système. Il est surtout intéressant si vous utilisez déjà Office ; payer uniquement pour l’espace revient plus cher. Les abonnements incluent désormais des fonctions d’intelligence artificielle dont vous n’avez pas forcément besoin. Pour une entreprise, il faut passer par les formules Microsoft 365 Business, avec console d’administration.</p>
 <p><strong>Pour qui.</strong> Particuliers et indépendants sous Windows qui utilisent déjà Word, Excel et Outlook.</p>
 <p><strong>Prix relevé.</strong> Microsoft 365 Personnel : 99 € par an ou 10 € par mois ; Microsoft 365 Famille : 129 € par an ou 13 € par mois — relevé le 1er octobre 2026 sur microsoft.com/fr-fr — renouvellement à vérifier.</p>
-<p><a class="provider-cta" href="/offres/sauvegardes-cloud/microsoft-onedrive/">Voir la fiche Microsoft OneDrive →</a></p>
+<p><a class="provider-cta" href="/offres/sauvegardes-cloud/microsoft-onedrive/">En savoir plus →</a></p>
+</section>
 <h2 id="comment-choisir">Comment choisir</h2>
 <p>Posez-vous quatre questions :</p>
 <ol type="1">
@@ -640,7 +642,13 @@ tbody tr:hover{background:#F6F8FA}
 <li>Microsoft — comparatif des offres Microsoft 365 et des formules OneDrive — prix, 1 To par personne, fonctions de sécurité de OneDrive : https://www.microsoft.com/fr-fr/microsoft-365/buy/compare-all-microsoft-365-products et https://www.microsoft.com/fr-fr/microsoft-365/onedrive/compare-onedrive-plans</li>
 </ul>
 
-<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2"><a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/backblaze/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Backblaze</h3><p>Fiche produit Backblaze (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/idrive/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>iDrive</h3><p>Fiche produit iDrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/pcloud/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>pCloud</h3><p>Fiche produit pCloud (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/google-one/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Google One</h3><p>Fiche produit Google One (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a><a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/microsoft-onedrive/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Microsoft OneDrive</h3><p>Fiche produit Microsoft OneDrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a></div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+<h2 id="dans-cette-rubrique">Les fiches produit de ce comparatif</h2><div class="grid cards-2">
+<a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/backblaze/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Backblaze</h3><img class="acard-brand-logo" src="/assets/img/provider-logos/backblaze.svg" alt="" aria-hidden="true" width="136" height="33" loading="lazy" decoding="async"><p>Fiche produit Backblaze (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/idrive/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>iDrive</h3><img class="acard-brand-logo" src="/assets/img/provider-logos/idrive.ico" alt="" aria-hidden="true" width="64" height="64" loading="lazy" decoding="async"><p>Fiche produit iDrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/pcloud/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>pCloud</h3><img class="acard-brand-logo" src="/assets/img/provider-logos/pcloud.svg" alt="" aria-hidden="true" width="120" height="32" loading="lazy" decoding="async"><p>Fiche produit pCloud (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/google-one/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Google One</h3><img class="acard-brand-logo" src="/assets/img/provider-logos/google-one.png" alt="" aria-hidden="true" width="512" height="512" loading="lazy" decoding="async"><p>Fiche produit Google One (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+<a class="acard" data-audience="Les deux" href="/offres/sauvegardes-cloud/microsoft-onedrive/"><div class="cat"><span>fiche produit</span><span class="chip both">Les deux</span></div><h3>Microsoft OneDrive</h3><img class="acard-brand-logo" src="/assets/img/provider-logos/onedrive.svg" alt="" aria-hidden="true" width="120" height="32" loading="lazy" decoding="async"><p>Fiche produit Microsoft OneDrive (comparatif sauvegardes cloud) : notre avis, points forts, limites, prix vérifiés, alternatives — gabarit identique à toutes les fiches.</p></a>
+</div><!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
 
 <section class="final-cta-section">
   <div class="wrap">
@@ -760,8 +768,6 @@ if(si){
 }
 </script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
 </body></html>
-
-
 
 
 
