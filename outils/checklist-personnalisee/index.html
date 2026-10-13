@@ -438,6 +438,7 @@ tbody tr:hover{background:#F6F8FA}
 .ck-profiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 6px}
 .ck-prof{text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:18px;font:inherit;color:var(--ink);cursor:pointer;transition:border-color .15s,transform .15s}
 .ck-prof:hover{border-color:var(--teal);transform:translateY(-2px)}
+.ck-prof-image{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;margin:0 0 14px}
 .ck-prof strong{display:block;font-family:var(--disp);font-size:1.05rem;margin-bottom:4px}
 .ck-prof span{color:var(--muted);font-size:.9rem;line-height:1.4}
 .ck-prof .ico{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:8px}
@@ -502,9 +503,14 @@ tbody tr:hover{background:#F6F8FA}
   function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
   var cur = null, ans = {};
   var LBL = {1:'À faire en priorité', 2:'Important', 3:'Recommandé'};
+  var profilePhotos = {
+    'Particulier': '/assets/img/editorial-particuliers-appareils-smartphone-et-tablette.jpg',
+    'Famille': '/assets/img/editorial-particuliers-famille.jpg',
+    'Professionnel (TPE-PME)': '/assets/img/editorial-pro.jpg'
+  };
   Object.keys(P).forEach(function(key){
     var p = P[key], b = document.createElement('button'); b.type='button'; b.className='ck-prof';
-    b.innerHTML = '<span class="ico">' + p.items.length + ' questions</span><strong>' + esc(p.label) + '</strong><span>' + esc(p.desc) + '</span>';
+    b.innerHTML = '<img class="ck-prof-image" src="' + profilePhotos[p.label] + '" alt="" aria-hidden="true" loading="lazy" decoding="async"><span class="ico">' + p.items.length + ' questions</span><strong>' + esc(p.label) + '</strong><span>' + esc(p.desc) + '</span>';
     b.addEventListener('click', function(){ start(key); });
     el('ck-profiles').appendChild(b);
   });
@@ -656,7 +662,6 @@ if(si){
 }
 </script><script defer src="/backoffice/t.js" data-cr-mesure data-dnt="1"></script>
 <script src="/assets/top-protections.js?v=20261012-top-protections"></script></body></html>
-
 
 
 
