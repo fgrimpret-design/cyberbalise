@@ -1,0 +1,150 @@
+.cb-cookie-banner,
+.cb-cookie-trigger {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.cb-cookie-banner[hidden],
+.cb-cookie-trigger[hidden],
+.cb-cookie-settings[hidden] {
+  display: none !important;
+}
+
+.cb-cookie-banner {
+  position: fixed;
+  z-index: 200;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  color: #132232;
+  background: #fff;
+  border: 1px solid #d7dfe8;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(15, 36, 56, .24);
+}
+
+.cb-cookie-banner h2 {
+  margin: 0 0 .45rem;
+  font: 700 1.2rem/1.25 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.cb-cookie-banner p {
+  margin: 0 0 .8rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.cb-cookie-banner a {
+  color: #0b545c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cb-cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: .85rem;
+}
+
+.cb-cookie-banner button,
+.cb-cookie-trigger {
+  min-height: 44px;
+  padding: .65rem 1rem;
+  border: 1px solid #0f2438;
+  border-radius: 8px;
+  color: #0f2438;
+  background: #fff;
+  font: 650 .92rem/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.cb-cookie-banner button:hover,
+.cb-cookie-trigger:hover {
+  background: #edf1f6;
+}
+
+.cb-cookie-banner .cb-cookie-accept {
+  color: #fff;
+  background: #c7451f;
+  border-color: #c7451f;
+}
+
+.cb-cookie-banner .cb-cookie-accept:hover {
+  background: #a93819;
+}
+
+.cb-cookie-settings {
+  display: grid;
+  gap: .7rem;
+  margin-top: 1rem;
+  padding: .85rem;
+  background: #edf1f6;
+  border-radius: 10px;
+}
+
+.cb-cookie-settings label {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  font-size: .92rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.cb-cookie-settings input {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  margin: .15rem 0 0;
+  accent-color: #0f6b76;
+}
+
+.cb-cookie-settings .cb-cookie-required {
+  color: #4d6377;
+}
+
+.cb-cookie-status {
+  margin-top: .7rem !important;
+  color: #a12f17;
+  font-weight: 600;
+}
+
+.cb-cookie-trigger {
+  position: fixed;
+  z-index: 100;
+  bottom: 1rem;
+  left: 1rem;
+  min-height: 40px;
+  padding: .5rem .8rem;
+  color: #fff;
+  background: #0f2438;
+  border-color: #0f2438;
+  box-shadow: 0 4px 12px rgba(15, 36, 56, .2);
+  font-size: .82rem;
+}
+
+.cb-cookie-trigger:hover {
+  color: #fff;
+  background: #16344e;
+}
+
+@media (max-width: 600px) {
+  .cb-cookie-banner {
+    right: .5rem;
+    bottom: .5rem;
+    left: .5rem;
+    max-height: min(85dvh, 650px);
+    overflow: auto;
+  }
+
+  .cb-cookie-actions {
+    display: grid;
+  }
+
+  .cb-cookie-actions button {
+    width: 100%;
+  }
+}
