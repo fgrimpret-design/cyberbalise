@@ -1,10 +1,8 @@
-.cb-cookie-banner,
-.cb-cookie-trigger {
+.cb-cookie-banner {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .cb-cookie-banner[hidden],
-.cb-cookie-trigger[hidden],
 .cb-cookie-settings[hidden] {
   display: none !important;
 }
@@ -50,7 +48,7 @@
 }
 
 .cb-cookie-banner button,
-.cb-cookie-trigger {
+.cb-cookie-policy-settings {
   min-height: 44px;
   padding: .65rem 1rem;
   border: 1px solid #0f2438;
@@ -62,7 +60,7 @@
 }
 
 .cb-cookie-banner button:hover,
-.cb-cookie-trigger:hover {
+.cb-cookie-policy-settings:hover {
   background: #edf1f6;
 }
 
@@ -112,21 +110,14 @@
   font-weight: 600;
 }
 
-.cb-cookie-trigger {
-  position: fixed;
-  z-index: 100;
-  bottom: 1rem;
-  left: 1rem;
-  min-height: 40px;
-  padding: .5rem .8rem;
+.cb-cookie-policy-settings {
+  margin: .25rem 0 1rem;
   color: #fff;
   background: #0f2438;
   border-color: #0f2438;
-  box-shadow: 0 4px 12px rgba(15, 36, 56, .2);
-  font-size: .82rem;
 }
 
-.cb-cookie-trigger:hover {
+.cb-cookie-policy-settings:hover {
   color: #fff;
   background: #16344e;
 }

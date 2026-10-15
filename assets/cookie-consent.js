@@ -6,7 +6,6 @@
   var impactUrl = 'https://utt.impactcdn.com/P-A7968179-ba51-44bd-8582-e6f556d001341.js';
   var consent = readConsent();
   var banner = document.createElement('section');
-  var trigger = document.createElement('button');
   var analyticsToggle;
   var affiliateToggle;
   var status;
@@ -35,15 +34,8 @@
     '</div>' +
     '<p class="cb-cookie-status" role="status" aria-live="polite" hidden></p>';
 
-  trigger.className = 'cb-cookie-trigger';
-  trigger.type = 'button';
-  trigger.textContent = 'Gérer les cookies';
-  trigger.setAttribute('aria-controls', 'cb-cookie-banner');
-  trigger.setAttribute('aria-expanded', 'false');
-  trigger.hidden = !consent;
   banner.id = 'cb-cookie-banner';
   document.body.appendChild(banner);
-  document.body.appendChild(trigger);
 
   analyticsToggle = banner.querySelector('[data-cookie-toggle="analytics"]');
   affiliateToggle = banner.querySelector('[data-cookie-toggle="affiliate"]');
@@ -71,16 +63,17 @@
     if (action === 'save') saveConsent(analyticsToggle.checked, affiliateToggle.checked);
   });
 
-  trigger.addEventListener('click', function () {
-    banner.hidden = false;
-    trigger.hidden = true;
-    trigger.setAttribute('aria-expanded', 'true');
-    settings.hidden = false;
-    analyticsToggle.checked = Boolean(consent && consent.analytics);
-    affiliateToggle.checked = Boolean(consent && consent.affiliate);
-    banner.querySelector('[data-cookie-action="customize"]').setAttribute('aria-expanded', 'true');
-    analyticsToggle.focus();
-  });
+  var policySettingsButton = document.querySelector('[data-cookie-open-settings]');
+  if (policySettingsButton) {
+    policySettingsButton.addEventListener('click', function () {
+      banner.hidden = false;
+      settings.hidden = false;
+      analyticsToggle.checked = Boolean(consent && consent.analytics);
+      affiliateToggle.checked = Boolean(consent && consent.affiliate);
+      banner.querySelector('[data-cookie-action="customize"]').setAttribute('aria-expanded', 'true');
+      analyticsToggle.focus();
+    });
+  }
 
   function readConsent() {
     var raw;
@@ -132,8 +125,6 @@
     consent = next;
     status.hidden = true;
     banner.hidden = true;
-    trigger.hidden = false;
-    trigger.setAttribute('aria-expanded', 'false');
 
     if (previous && (previous.analytics !== next.analytics || previous.affiliate !== next.affiliate)) {
       window.location.reload();
