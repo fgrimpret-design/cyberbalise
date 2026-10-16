@@ -12,10 +12,13 @@ DirectorySlash On
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
-# 3. Page d'erreur
+# 3. Catégorie supprimée
+Redirect gone /offres/formations/
+
+# 4. Page d'erreur
 ErrorDocument 404 /404.html
 
-# 4. Sécurité
+# 5. Sécurité
 Options -Indexes
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
@@ -28,7 +31,7 @@ Options -Indexes
   Require all denied
 </FilesMatch>
 
-# 5. Cache navigateur (polices et images : 1 an ; pages : revalidation)
+# 6. Cache navigateur (polices et images : 1 an ; pages : revalidation)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType font/woff2 "access plus 1 year"

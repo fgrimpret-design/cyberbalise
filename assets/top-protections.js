@@ -1,8 +1,6 @@
 document.querySelectorAll('.best-sellers-section').forEach(section => {
   const tabs = [...section.querySelectorAll('.home-category-tab')];
   const panels = [...section.querySelectorAll('.home-category-panel')];
-  const priceOptions = [...section.querySelectorAll('.home-price-option')];
-  const productPrices = [...section.querySelectorAll('.home-category-panel .seller-price strong[data-price-month]')];
 
   const selectCategory = (tab, focus = false) => {
     tabs.forEach(item => {
@@ -37,13 +35,4 @@ document.querySelectorAll('.best-sellers-section').forEach(section => {
     });
   }
 
-  priceOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const period = option.dataset.pricePeriod;
-      productPrices.forEach(price => {
-        price.textContent = period === 'year' ? price.dataset.priceYear : price.dataset.priceMonth;
-      });
-      priceOptions.forEach(item => item.setAttribute('aria-pressed', String(item === option)));
-    });
-  });
 });
