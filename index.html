@@ -78,7 +78,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .urgence-float:hover{background:var(--orange-d);color:#fff}
 
 /* hero home */
-.hero{background:var(--navy);color:#fff;padding:32px 0 24px;position:relative;overflow:hidden}
+.hero{background:var(--navy);color:#fff;padding:32px 0 24px;position:relative;overflow:visible;z-index:2}
 .hero::before{content:"";position:absolute;inset:0 0 0 auto;width:57%;background:url("/assets/img/hero-home.jpg?v=1") 54% center/cover no-repeat;pointer-events:none;z-index:0;opacity:.94;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.34) 12%,#000 34%)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(15,36,56,.98) 42%,rgba(15,36,56,.9) 54%,rgba(15,36,56,.34) 68%,rgba(15,36,56,.06) 100%);pointer-events:none;z-index:0}
 .hero>.wrap{position:relative;z-index:1}
@@ -93,7 +93,7 @@ nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
 .searchbox{margin-top:20px;max-width:min(560px,48vw);position:relative}
 .searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
 .searchbox input::placeholder{color:#7E96A9}
-.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults{position:absolute;top:110%;left:0;right:0;max-height:420px;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;display:none;z-index:10}
 .sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .sresults a:hover{background:var(--bg)}
 /* bandeau promo défilant */
@@ -826,21 +826,753 @@ setAudience('both');
 const si=document.querySelector('#searchinput'),sr=document.querySelector('#sresults');
 if(si){
   const IDX=[
-    {t:'Phishing et hameçonnage',k:'phishing hameçonnage menace',u:'/particuliers/menaces/phishing-hameconnage/',a:'Particuliers'},
-    {t:'J’ai été victime : que faire ?',k:'victime compte piraté rançongiciel',u:'/particuliers/victime/',a:'Particuliers'},
-    {t:'2FA et passkeys, simplement',k:'authentification passkeys comptes',u:'/particuliers/comptes/double-authentification-et-passkeys/',a:'Particuliers'},
-    {t:'Les mesures essentielles',k:'sécurité entreprise professionnels',u:'/pro/fondamentaux/mesures-essentielles/',a:'Professionnels'},
-    {t:'Comparatif VPN',k:'vpn comparatif',u:'/offres/vpn/',a:'Particuliers'},
-    {t:'Comparatif Antivirus',k:'antivirus comparatif',u:'/offres/antivirus/',a:'Particuliers'},
-    {t:'Gestionnaires de mots de passe',k:'mots de passe comparatif',u:'/offres/gestionnaires-mots-de-passe/',a:'Les deux'},
-    {t:'Comparatif cyber-assurance',k:'cyber assurance professionnels',u:'/offres/cyber-assurance/',a:'Professionnels'}
-  ];
-  si.addEventListener('input',()=>{
-    const q=si.value.trim().toLowerCase();
-    if(q.length<2){sr.style.display='none';return}
-    const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
+  {
+    "t": "Avast One",
+    "k": "Avast One offres antivirus avast one Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/avast-one/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Bitdefender",
+    "k": "Bitdefender offres antivirus bitdefender Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/bitdefender/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "ESET",
+    "k": "ESET offres antivirus eset Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/eset/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Comparatif antivirus",
+    "k": "Comparatif antivirus offres antivirus Offres et outils de protection (comparateur) antivirus comparatif",
+    "u": "/offres/antivirus/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Intego ONE pour Mac",
+    "k": "Intego ONE pour Mac - CyberBalise offres antivirus intego Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/intego/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Microsoft Defender",
+    "k": "Microsoft Defender offres antivirus microsoft defender Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/microsoft-defender/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Norton 360",
+    "k": "Norton 360 offres antivirus norton 360 Offres et outils de protection (comparateur) Comparatif antivirus",
+    "u": "/offres/antivirus/norton-360/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Allianz",
+    "k": "Allianz offres cyber assurance allianz Offres et outils de protection (comparateur) Comparatif cyber-assurance",
+    "u": "/offres/cyber-assurance/allianz/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "AXA",
+    "k": "AXA offres cyber assurance axa Offres et outils de protection (comparateur) Comparatif cyber-assurance",
+    "u": "/offres/cyber-assurance/axa/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Generali",
+    "k": "Generali offres cyber assurance generali Offres et outils de protection (comparateur) Comparatif cyber-assurance",
+    "u": "/offres/cyber-assurance/generali/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Hiscox",
+    "k": "Hiscox offres cyber assurance hiscox Offres et outils de protection (comparateur) Comparatif cyber-assurance",
+    "u": "/offres/cyber-assurance/hiscox/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Comparatif cyber-assurance",
+    "k": "Comparatif cyber-assurance offres cyber assurance Offres et outils de protection (comparateur) cyber assurance professionnels",
+    "u": "/offres/cyber-assurance/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Comparatif formations cyber pour particuliers",
+    "k": "Comparatif formations cyber pour particuliers offres formations particuliers Offres et outils de protection (comparateur)",
+    "u": "/offres/formations-particuliers/",
+    "a": "Les deux"
+  },
+  {
+    "t": "1Password",
+    "k": "1Password offres gestionnaires mots de passe 1password Offres et outils de protection (comparateur) Comparatif gestionnaires de mots de passe",
+    "u": "/offres/gestionnaires-mots-de-passe/1password/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Bitwarden",
+    "k": "Bitwarden offres gestionnaires mots de passe bitwarden Offres et outils de protection (comparateur) Comparatif gestionnaires de mots de passe",
+    "u": "/offres/gestionnaires-mots-de-passe/bitwarden/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Dashlane",
+    "k": "Dashlane offres gestionnaires mots de passe dashlane Offres et outils de protection (comparateur) Comparatif gestionnaires de mots de passe",
+    "u": "/offres/gestionnaires-mots-de-passe/dashlane/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Comparatif gestionnaires de mots de passe",
+    "k": "Comparatif gestionnaires de mots de passe offres gestionnaires mots de passe Offres et outils de protection (comparateur) mots de passe comparatif",
+    "u": "/offres/gestionnaires-mots-de-passe/",
+    "a": "Les deux"
+  },
+  {
+    "t": "KeePassXC",
+    "k": "KeePassXC offres gestionnaires mots de passe keepassxc Offres et outils de protection (comparateur) Comparatif gestionnaires de mots de passe",
+    "u": "/offres/gestionnaires-mots-de-passe/keepassxc/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Proton Pass",
+    "k": "Proton Pass offres gestionnaires mots de passe proton pass Offres et outils de protection (comparateur) Comparatif gestionnaires de mots de passe",
+    "u": "/offres/gestionnaires-mots-de-passe/proton-pass/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Offres et outils de protection (comparateur)",
+    "k": "Offres et outils de protection (comparateur) offres choisir mes outils",
+    "u": "/offres/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Offres du moment",
+    "k": "Offres du moment offres promotions Offres et outils de protection (comparateur)",
+    "u": "/offres/promotions/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Backblaze",
+    "k": "Backblaze offres sauvegardes cloud backblaze Offres et outils de protection (comparateur) Comparatif sauvegardes cloud",
+    "u": "/offres/sauvegardes-cloud/backblaze/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Google One",
+    "k": "Google One offres sauvegardes cloud google one Offres et outils de protection (comparateur) Comparatif sauvegardes cloud",
+    "u": "/offres/sauvegardes-cloud/google-one/",
+    "a": "Les deux"
+  },
+  {
+    "t": "iDrive",
+    "k": "iDrive offres sauvegardes cloud idrive Offres et outils de protection (comparateur) Comparatif sauvegardes cloud",
+    "u": "/offres/sauvegardes-cloud/idrive/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Comparatif sauvegardes cloud",
+    "k": "Comparatif sauvegardes cloud offres sauvegardes cloud Offres et outils de protection (comparateur)",
+    "u": "/offres/sauvegardes-cloud/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Microsoft OneDrive",
+    "k": "Microsoft OneDrive offres sauvegardes cloud microsoft onedrive Offres et outils de protection (comparateur) Comparatif sauvegardes cloud",
+    "u": "/offres/sauvegardes-cloud/microsoft-onedrive/",
+    "a": "Les deux"
+  },
+  {
+    "t": "pCloud",
+    "k": "pCloud offres sauvegardes cloud pcloud Offres et outils de protection (comparateur) Comparatif sauvegardes cloud",
+    "u": "/offres/sauvegardes-cloud/pcloud/",
+    "a": "Les deux"
+  },
+  {
+    "t": "CyberGhost",
+    "k": "CyberGhost offres vpn cyberghost Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/cyberghost/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "ExpressVPN",
+    "k": "ExpressVPN offres vpn expressvpn Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/expressvpn/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Comparatif VPN",
+    "k": "Comparatif VPN offres vpn Offres et outils de protection (comparateur) vpn comparatif",
+    "u": "/offres/vpn/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Mullvad VPN",
+    "k": "Mullvad VPN offres vpn mullvad vpn Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/mullvad-vpn/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "NordVPN",
+    "k": "NordVPN offres vpn nordvpn Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/nordvpn/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Proton VPN",
+    "k": "Proton VPN offres vpn proton vpn Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/proton-vpn/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Surfshark",
+    "k": "Surfshark offres vpn surfshark Offres et outils de protection (comparateur) Comparatif VPN",
+    "u": "/offres/vpn/surfshark/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Checklist personnalis\u00e9e",
+    "k": "Checklist personnalis\u00e9e outils checklist personnalisee Outils interactifs",
+    "u": "/outils/checklist-personnalisee/",
+    "a": "Les deux"
+  },
+  {
+    "t": "D\u00e9tecteur d'arnaque par capture d'\u00e9cran",
+    "k": "D\u00e9tecteur d'arnaque par capture d'\u00e9cran outils detecteur arnaque Outils interactifs",
+    "u": "/outils/detecteur-arnaque/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Outils interactifs",
+    "k": "Outils interactifs outils",
+    "u": "/outils/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Indice d'usurpabilit\u00e9 des services publics",
+    "k": "Indice d'usurpabilit\u00e9 des services publics outils indice usurpabilite Outils interactifs",
+    "u": "/outils/indice-usurpabilite/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Quiz : testez votre niveau cyber",
+    "k": "Quiz : testez votre niveau cyber outils quiz niveau cyber Outils interactifs",
+    "u": "/outils/quiz-niveau-cyber/",
+    "a": "Les deux"
+  },
+  {
+    "t": "V\u00e9rificateur de mot de passe",
+    "k": "V\u00e9rificateur de mot de passe outils verificateur mot de passe Outils interactifs",
+    "u": "/outils/verificateur-mot-de-passe/",
+    "a": "Les deux"
+  },
+  {
+    "t": "Acheter en ligne en s\u00e9curit\u00e9",
+    "k": "Acheter en ligne en s\u00e9curit\u00e9 particuliers achats acheter en ligne securise Particuliers Acheter, payer et \u00e9pargner en ligne",
+    "u": "/particuliers/achats/acheter-en-ligne-securise/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Arnaques entre particuliers",
+    "k": "Arnaques entre particuliers particuliers achats arnaques entre particuliers Particuliers Acheter, payer et \u00e9pargner en ligne",
+    "u": "/particuliers/achats/arnaques-entre-particuliers/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Cryptomonnaies : les pi\u00e8ges",
+    "k": "Cryptomonnaies : les pi\u00e8ges particuliers achats cryptomonnaies pieges Particuliers Acheter, payer et \u00e9pargner en ligne",
+    "u": "/particuliers/achats/cryptomonnaies-pieges/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Escroqueries sentimentales",
+    "k": "Escroqueries sentimentales particuliers achats escroqueries sentimentales Particuliers Acheter, payer et \u00e9pargner en ligne",
+    "u": "/particuliers/achats/escroqueries-sentimentales/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Banque en ligne et fraude aux paiements",
+    "k": "Banque en ligne et fraude aux paiements particuliers achats fraude aux paiements Particuliers Acheter, payer et \u00e9pargner en ligne",
+    "u": "/particuliers/achats/fraude-aux-paiements/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Acheter, payer et \u00e9pargner en ligne",
+    "k": "Acheter, payer et \u00e9pargner en ligne particuliers achats Particuliers",
+    "u": "/particuliers/achats/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Antivirus : encore utile en 2026 ?",
+    "k": "Antivirus : encore utile en 2026 ? particuliers appareils antivirus encore utile Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/antivirus-encore-utile/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Prot\u00e9ger mes appareils et ma connexion",
+    "k": "Prot\u00e9ger mes appareils et ma connexion particuliers appareils Particuliers proteger mes appareils",
+    "u": "/particuliers/appareils/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Mises \u00e0 jour et correctifs",
+    "k": "Mises \u00e0 jour et correctifs particuliers appareils mises a jour et patchs Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/mises-a-jour-et-patchs/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Objets connect\u00e9s (IoT)",
+    "k": "Objets connect\u00e9s (IoT) particuliers appareils objets connectes Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/objets-connectes/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Sauvegarder ses donn\u00e9es : la r\u00e8gle 3-2-1",
+    "k": "Sauvegarder ses donn\u00e9es : la r\u00e8gle 3-2-1 particuliers appareils sauvegardes 3 2 1 Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/sauvegardes-3-2-1/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Smartphone et tablette",
+    "k": "Smartphone et tablette particuliers appareils smartphone et tablette Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/smartphone-et-tablette/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "VPN : \u00e0 quoi \u00e7a sert vraiment",
+    "k": "VPN : \u00e0 quoi \u00e7a sert vraiment particuliers appareils vpn usage reel Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/vpn-usage-reel/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Wi-Fi \u00e0 la maison et Wi-Fi public",
+    "k": "Wi-Fi \u00e0 la maison et Wi-Fi public particuliers appareils wi fi domicile et public Particuliers Prot\u00e9ger mes appareils et ma connexion",
+    "u": "/particuliers/appareils/wi-fi-domicile-et-public/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Double authentification (2FA) et passkeys",
+    "k": "Double authentification (2FA) et passkeys particuliers comptes double authentification et passkeys Particuliers Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "u": "/particuliers/comptes/double-authentification-et-passkeys/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Gestionnaires de mots de passe",
+    "k": "Gestionnaires de mots de passe particuliers comptes gestionnaires de mots de passe Particuliers Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "u": "/particuliers/comptes/gestionnaires-de-mots-de-passe/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "k": "Prot\u00e9ger mes comptes et mon identit\u00e9 particuliers comptes Particuliers securiser mes comptes",
+    "u": "/particuliers/comptes/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Cr\u00e9er un mot de passe robuste",
+    "k": "Cr\u00e9er un mot de passe robuste particuliers comptes mot de passe robuste Particuliers Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "u": "/particuliers/comptes/mot-de-passe-robuste/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "S\u00e9curiser ses r\u00e9seaux sociaux",
+    "k": "S\u00e9curiser ses r\u00e9seaux sociaux particuliers comptes securiser ses reseaux sociaux Particuliers Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "u": "/particuliers/comptes/securiser-ses-reseaux-sociaux/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Vie priv\u00e9e et donn\u00e9es personnelles",
+    "k": "Vie priv\u00e9e et donn\u00e9es personnelles particuliers comptes vie privee et donnees personnelles Particuliers Prot\u00e9ger mes comptes et mon identit\u00e9",
+    "u": "/particuliers/comptes/vie-privee-et-donnees-personnelles/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Contr\u00f4le parental",
+    "k": "Contr\u00f4le parental particuliers famille controle parental Particuliers Famille et publics fragiles",
+    "u": "/particuliers/famille/controle-parental/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Cyberharc\u00e8lement : reconna\u00eetre et agir",
+    "k": "Cyberharc\u00e8lement : reconna\u00eetre et agir particuliers famille cyberharcelement Particuliers Famille et publics fragiles",
+    "u": "/particuliers/famille/cyberharcelement/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Enfants et ados : les r\u00e8gles de base",
+    "k": "Enfants et ados : les r\u00e8gles de base particuliers famille enfants et ados Particuliers Famille et publics fragiles",
+    "u": "/particuliers/famille/enfants-et-ados/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Famille et publics fragiles",
+    "k": "Famille et publics fragiles particuliers famille Particuliers",
+    "u": "/particuliers/famille/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Guide anti-arnaques pour les seniors",
+    "k": "Guide anti-arnaques pour les seniors particuliers famille seniors anti arnaques Particuliers Famille et publics fragiles",
+    "u": "/particuliers/famille/seniors-anti-arnaques/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "T\u00e9l\u00e9travail et nomadisme s\u00e9curis\u00e9",
+    "k": "T\u00e9l\u00e9travail et nomadisme s\u00e9curis\u00e9 particuliers famille teletravail et nomades Particuliers Famille et publics fragiles",
+    "u": "/particuliers/famille/teletravail-et-nomades/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Particuliers",
+    "k": "Particuliers particuliers",
+    "u": "/particuliers/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Arnaques au faux support",
+    "k": "Arnaques au faux support particuliers menaces arnaques au faux support Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/arnaques-au-faux-support/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Arnaques par SMS et appels (smishing, vishing)",
+    "k": "Arnaques par SMS et appels (smishing, vishing) particuliers menaces arnaques sms et appels Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/arnaques-sms-et-appels/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Chantage et sextorsion",
+    "k": "Chantage et sextorsion particuliers menaces chantage et sextorsion Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/chantage-et-sextorsion/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Deepfakes et arnaques dop\u00e9es \u00e0 l'IA",
+    "k": "Deepfakes et arnaques dop\u00e9es \u00e0 l'IA particuliers menaces deepfakes et arnaques a lia Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/deepfakes-et-arnaques-a-lia/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Fausses plateformes d'investissement",
+    "k": "Fausses plateformes d'investissement particuliers menaces fausses plateformes dinvestissement Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/fausses-plateformes-dinvestissement/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Comprendre les menaces",
+    "k": "Comprendre les menaces particuliers menaces Particuliers",
+    "u": "/particuliers/menaces/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Phishing et hame\u00e7onnage",
+    "k": "Phishing et hame\u00e7onnage particuliers menaces phishing hameconnage Particuliers Comprendre les menaces phishing hame\u00e7onnage menace",
+    "u": "/particuliers/menaces/phishing-hameconnage/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Ran\u00e7ongiciel (ransomware)",
+    "k": "Ran\u00e7ongiciel (ransomware) particuliers menaces rancongiciel Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/rancongiciel/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Virus, malwares et logiciels espions",
+    "k": "Virus, malwares et logiciels espions particuliers menaces virus et malwares Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/virus-et-malwares/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Vol d'identit\u00e9 num\u00e9rique",
+    "k": "Vol d'identit\u00e9 num\u00e9rique particuliers menaces vol didentite numerique Particuliers Comprendre les menaces",
+    "u": "/particuliers/menaces/vol-didentite-numerique/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Ma carte bancaire a \u00e9t\u00e9 d\u00e9bit\u00e9e",
+    "k": "Ma carte bancaire a \u00e9t\u00e9 d\u00e9bit\u00e9e particuliers victime carte bancaire debitee Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/carte-bancaire-debitee/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Je re\u00e7ois un chantage",
+    "k": "Je re\u00e7ois un chantage particuliers victime chantage recu Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/chantage-recu/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Mon compte a \u00e9t\u00e9 pirat\u00e9",
+    "k": "Mon compte a \u00e9t\u00e9 pirat\u00e9 particuliers victime compte pirate Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/compte-pirate/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Mon identit\u00e9 est usurp\u00e9e",
+    "k": "Mon identit\u00e9 est usurp\u00e9e particuliers victime identite usurpee Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/identite-usurpee/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "J'ai \u00e9t\u00e9 victime : que faire ?",
+    "k": "J'ai \u00e9t\u00e9 victime : que faire ? particuliers victime Particuliers victime compte pirat\u00e9 ran\u00e7ongiciel",
+    "u": "/particuliers/victime/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "O\u00f9 et comment signaler",
+    "k": "O\u00f9 et comment signaler particuliers victime signaler un probleme Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/signaler-un-probleme/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Je suis victime d'un ran\u00e7ongiciel",
+    "k": "Je suis victime d'un ran\u00e7ongiciel particuliers victime victime rancongiciel Particuliers J'ai \u00e9t\u00e9 victime : que faire ?",
+    "u": "/particuliers/victime/victime-rancongiciel/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Cyber-assurance : \u00e0 quoi \u00e7a sert",
+    "k": "Cyber-assurance : \u00e0 quoi \u00e7a sert pro conformite cyber assurance Professionnels Conformit\u00e9 et cadre l\u00e9gal",
+    "u": "/pro/conformite/cyber-assurance/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Fournisseurs et sous-traitance",
+    "k": "Fournisseurs et sous-traitance pro conformite fournisseurs et sous traitance Professionnels Conformit\u00e9 et cadre l\u00e9gal",
+    "u": "/pro/conformite/fournisseurs-et-sous-traitance/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Conformit\u00e9 et cadre l\u00e9gal",
+    "k": "Conformit\u00e9 et cadre l\u00e9gal pro conformite Professionnels",
+    "u": "/pro/conformite/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "NIS2 : \u00eates-vous concern\u00e9 ?",
+    "k": "NIS2 : \u00eates-vous concern\u00e9 ? pro conformite nis2 concerne Professionnels Conformit\u00e9 et cadre l\u00e9gal",
+    "u": "/pro/conformite/nis2-concerne/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "RGPD au quotidien",
+    "k": "RGPD au quotidien pro conformite rgpd quotidien Professionnels Conformit\u00e9 et cadre l\u00e9gal",
+    "u": "/pro/conformite/rgpd-quotidien/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Gestion des acc\u00e8s et des d\u00e9parts",
+    "k": "Gestion des acc\u00e8s et des d\u00e9parts pro fondamentaux acces et departs Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "u": "/pro/fondamentaux/acces-et-departs/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "k": "Fondamentaux et hygi\u00e8ne num\u00e9rique pro fondamentaux Professionnels",
+    "u": "/pro/fondamentaux/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Les mesures essentielles",
+    "k": "Les mesures essentielles pro fondamentaux mesures essentielles Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique s\u00e9curit\u00e9 entreprise professionnels",
+    "u": "/pro/fondamentaux/mesures-essentielles/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "MFA g\u00e9n\u00e9ralis\u00e9",
+    "k": "MFA g\u00e9n\u00e9ralis\u00e9 pro fondamentaux mfa generalise Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "u": "/pro/fondamentaux/mfa-generalise/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Sauvegardes en entreprise",
+    "k": "Sauvegardes en entreprise pro fondamentaux sauvegardes entreprise Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "u": "/pro/fondamentaux/sauvegardes-entreprise/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "S\u00e9curiser son site web et sa messagerie",
+    "k": "S\u00e9curiser son site web et sa messagerie pro fondamentaux site web et messagerie Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "u": "/pro/fondamentaux/site-web-et-messagerie/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "T\u00e9l\u00e9travail et mobilit\u00e9",
+    "k": "T\u00e9l\u00e9travail et mobilit\u00e9 pro fondamentaux teletravail et mobilite Professionnels Fondamentaux et hygi\u00e8ne num\u00e9rique",
+    "u": "/pro/fondamentaux/teletravail-et-mobilite/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "R\u00e9agir \u00e0 un incident",
+    "k": "R\u00e9agir \u00e0 un incident pro incident Professionnels",
+    "u": "/pro/incident/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Plan de r\u00e9ponse simple (TPE/PME)",
+    "k": "Plan de r\u00e9ponse simple (TPE/PME) pro incident plan de reponse Professionnels R\u00e9agir \u00e0 un incident",
+    "u": "/pro/incident/plan-de-reponse/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Les 6 premi\u00e8res actions en cas d'attaque",
+    "k": "Les 6 premi\u00e8res actions en cas d'attaque pro incident premieres actions Professionnels R\u00e9agir \u00e0 un incident",
+    "u": "/pro/incident/premieres-actions/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Qui pr\u00e9venir : contacts utiles",
+    "k": "Qui pr\u00e9venir : contacts utiles pro incident qui prevenir Professionnels R\u00e9agir \u00e0 un incident",
+    "u": "/pro/incident/qui-prevenir/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Reconstruire et tirer les le\u00e7ons",
+    "k": "Reconstruire et tirer les le\u00e7ons pro incident reconstruire apres Professionnels R\u00e9agir \u00e0 un incident",
+    "u": "/pro/incident/reconstruire-apres/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Professionnels",
+    "k": "Professionnels pro",
+    "u": "/pro/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Cha\u00eene d'approvisionnement",
+    "k": "Cha\u00eene d'approvisionnement pro menaces chaine dapprovisionnement Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/chaine-dapprovisionnement/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Compromission de messagerie (BEC)",
+    "k": "Compromission de messagerie (BEC) pro menaces compromission messagerie bec Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/compromission-messagerie-bec/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Fraude au pr\u00e9sident et faux virements",
+    "k": "Fraude au pr\u00e9sident et faux virements pro menaces fraude au president Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/fraude-au-president/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Fuite de donn\u00e9es clients",
+    "k": "Fuite de donn\u00e9es clients pro menaces fuite de donnees clients Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/fuite-de-donnees-clients/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Menaces visant les entreprises",
+    "k": "Menaces visant les entreprises pro menaces Professionnels",
+    "u": "/pro/menaces/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Ran\u00e7ongiciel et extorsion",
+    "k": "Ran\u00e7ongiciel et extorsion pro menaces rancongiciel extorsion Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/rancongiciel-extorsion/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Phishing cibl\u00e9 (spear phishing)",
+    "k": "Phishing cibl\u00e9 (spear phishing) pro menaces spear phishing Professionnels Menaces visant les entreprises",
+    "u": "/pro/menaces/spear-phishing/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Artisans et commer\u00e7ants",
+    "k": "Artisans et commer\u00e7ants pro metiers artisans commercants Professionnels Par m\u00e9tier",
+    "u": "/pro/metiers/artisans-commercants/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "E-commer\u00e7ants",
+    "k": "E-commer\u00e7ants pro metiers e commercants Professionnels Par m\u00e9tier",
+    "u": "/pro/metiers/e-commercants/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Par m\u00e9tier",
+    "k": "Par m\u00e9tier pro metiers Professionnels",
+    "u": "/pro/metiers/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Professions juridiques et immobili\u00e8res",
+    "k": "Professions juridiques et immobili\u00e8res pro metiers juridique immobilier Professionnels Par m\u00e9tier",
+    "u": "/pro/metiers/juridique-immobilier/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Professions de sant\u00e9",
+    "k": "Professions de sant\u00e9 pro metiers professions de sante Professionnels Par m\u00e9tier",
+    "u": "/pro/metiers/professions-de-sante/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Charte informatique",
+    "k": "Charte informatique pro sensibilisation charte informatique Professionnels Sensibiliser mes \u00e9quipes",
+    "u": "/pro/sensibilisation/charte-informatique/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Former ses \u00e9quipes",
+    "k": "Former ses \u00e9quipes pro sensibilisation former ses equipes Professionnels Sensibiliser mes \u00e9quipes",
+    "u": "/pro/sensibilisation/former-ses-equipes/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Sensibiliser mes \u00e9quipes",
+    "k": "Sensibiliser mes \u00e9quipes pro sensibilisation Professionnels",
+    "u": "/pro/sensibilisation/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Campagnes de phishing simul\u00e9",
+    "k": "Campagnes de phishing simul\u00e9 pro sensibilisation phishing simule Professionnels Sensibiliser mes \u00e9quipes",
+    "u": "/pro/sensibilisation/phishing-simule/",
+    "a": "Professionnels"
+  },
+  {
+    "t": "Le r\u00f4le du dirigeant",
+    "k": "Le r\u00f4le du dirigeant pro sensibilisation role du dirigeant Professionnels Sensibiliser mes \u00e9quipes",
+    "u": "/pro/sensibilisation/role-du-dirigeant/",
+    "a": "Professionnels"
+  }
+];
+  const normalizeSearch=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/œ/g,'oe').replace(/æ/g,'ae').replace(/[^a-z0-9]+/g,' ').trim();
+  const searchTermMatches=(term,token)=>token===term||token.startsWith(term)||(term.startsWith('secur')&&token.startsWith('secur'));
+const fitSearchResults=()=>{
+  if(sr.style.display!=='block')return;
+  const inputRect=si.getBoundingClientRect();
+  const viewportHeight=window.visualViewport?window.visualViewport.height:window.innerHeight;
+  const spaceBelow=Math.max(0,viewportHeight-inputRect.bottom-12);
+  const spaceAbove=Math.max(0,inputRect.top-12);
+  sr.style.maxHeight='none';
+  const contentHeight=sr.scrollHeight;
+  const openAbove=spaceBelow<contentHeight&&spaceAbove>spaceBelow+80;
+  sr.style.top=openAbove?'auto':'110%';
+  sr.style.bottom=openAbove?'110%':'auto';
+  sr.style.maxHeight=Math.min(420,openAbove?spaceAbove:spaceBelow)+'px';
+};
+window.addEventListener('resize',fitSearchResults);
+window.addEventListener('scroll',fitSearchResults,{passive:true});
+if(window.visualViewport)window.visualViewport.addEventListener('resize',fitSearchResults);
+si.addEventListener('input',()=>{
+    const q=normalizeSearch(si.value);
+    const terms=q.split(/\s+/).filter(Boolean);
+    if(q.length<2||!terms.length){sr.style.display='none';return}
+    const hits=IDX.map(p=>{
+      const titleTokens=normalizeSearch(p.t).split(/\s+/);
+      const searchTokens=normalizeSearch(p.t+' '+p.k).split(/\s+/);
+      const matches=terms.every(term=>searchTokens.some(token=>searchTermMatches(term,token)));
+      const score=terms.reduce((total,term)=>total+(titleTokens.includes(term)?3:titleTokens.some(token=>searchTermMatches(term,token))?2:1),0);
+      return {p,matches,score};
+    }).filter(result=>result.matches).sort((first,second)=>second.score-first.score||first.p.t.localeCompare(second.p.t,'fr')).slice(0,7).map(result=>result.p);
     sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
     sr.style.display='block';
+    fitSearchResults();
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
 }
