@@ -436,6 +436,12 @@ body.home-refresh {
   margin-top: 20px;
 }
 
+@media (min-width: 761px) {
+  .home-refresh #panel-vpn .best-seller-card:nth-child(7) {
+    grid-column: 2;
+  }
+}
+
 .home-refresh .best-seller-card {
   min-height: 330px;
   padding: 24px;
