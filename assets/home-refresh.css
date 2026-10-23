@@ -221,6 +221,7 @@ body.home-refresh {
   color: #fff;
   font: 600 .82rem/1.25 var(--disp);
   text-decoration: none;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   transition: transform .18s ease, background .18s ease, border-color .18s ease;
 }
@@ -251,19 +252,33 @@ body.home-refresh {
 
 @media (max-width: 760px) {
   .home-refresh .hero-gamer-pill {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 10px;
     width: 100%;
+    box-sizing: border-box;
     padding: 14px 16px 15px;
     border-radius: 18px;
+    text-align: left;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(6,28,78,.78);
+  }
+
+  .home-refresh .hero-gamer-tag,
+  .home-refresh .hero-gamer-text,
+  .home-refresh .hero-gamer-aff {
+    display: block;
+    margin: 0;
+    text-align: left;
   }
 
   .home-refresh .hero-gamer-text {
     font-size: .86rem;
     line-height: 1.35;
-    text-align: left;
   }
 }
 
