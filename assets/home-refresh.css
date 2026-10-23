@@ -512,6 +512,22 @@ body.home-refresh {
   .home-refresh #panel-vpn .best-seller-card:nth-child(8) {
     grid-column: 4 / span 2;
   }
+
+  .home-refresh #panel-passwords .best-sellers-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .home-refresh #panel-passwords .best-seller-card {
+    grid-column: span 2;
+  }
+
+  .home-refresh #panel-passwords .best-seller-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .home-refresh #panel-passwords .best-seller-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
 }
 
 .home-refresh .best-seller-card {
