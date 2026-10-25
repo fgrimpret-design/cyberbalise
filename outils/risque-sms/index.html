@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vérifier un SMS suspect — CyberBalise</title>
+  <meta name="description" content="Évaluez les signaux de vigilance d'un SMS suspect à partir de son expéditeur et de son contenu. Analyse locale et signalement gratuit au 33700.">
+  <link rel="canonical" href="https://cyberbalise.fr/outils/risque-sms/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0F2438">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CyberBalise">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Vérifier un SMS suspect">
+  <meta property="og:description" content="Évaluez les signaux de vigilance d'un SMS suspect. Analyse locale et signalement gratuit au 33700.">
+  <meta property="og:url" content="https://cyberbalise.fr/outils/risque-sms/">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/assets/site-spacing.css?v=20261012-tight-spacing">
+  <link rel="stylesheet" href="/assets/cookie-consent.css">
+  <style>
+    :root{--bg:#EDF1F6;--paper:#fff;--ink:#132232;--muted:#4D6377;--line:#D7DFE8;--navy:#0F2438;--orange:#E4572E;--orange-d:#C7451F;--orange-soft:#FBEAE3;--teal:#0F6B76;--teal-soft:#E3F0F1;--disp:'Archivo',system-ui,sans-serif;--body:'Source Serif 4',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--body)}a{color:#0B545C;text-underline-offset:3px}a:hover{color:var(--orange-d)}:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    .wrap{width:min(1080px,100% - 40px);margin:auto}header.site{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}header .wrap{height:66px;display:flex;align-items:center;gap:14px}
+    .logo{display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font:800 1.2rem var(--disp);white-space:nowrap}.logo svg{width:30px;height:30px}.logo .accent{color:var(--orange)}nav.main{display:flex;gap:4px;margin-left:auto}nav.main .nav-item{position:relative}nav.main .nav-item>a{display:block;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--ink);font:700 .9rem var(--disp)}nav.main .nav-item>a:hover{background:var(--bg)}
+    .dropdown{display:none;position:absolute;top:100%;left:0;z-index:6;min-width:290px;padding:8px;background:white;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 25px #13223220}.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}.dropdown a{display:block;padding:8px 10px;color:var(--ink);text-decoration:none;font:600 .9rem var(--disp);border-radius:7px}.dropdown a:hover{background:var(--bg)}
+    .burger{display:none;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px}.mnav{display:none}.mnav-section{padding:8px 0;border-bottom:1px solid var(--line)}.mnav-top{font:700 1rem var(--disp);color:var(--ink);text-decoration:none}.mnav-children{display:grid;padding:5px 0 0 14px}.mnav-children a{padding:5px 0;color:var(--muted);text-decoration:none;font:600 .9rem var(--disp)}
+    .pagehead{padding:35px 0;background:var(--navy);color:white}.crumbs{font:600 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#B9C9D6}.crumbs a{color:white}.pagehead h1{margin:.5em 0 .3em;font:800 clamp(1.8rem,4vw,2.7rem)/1.15 var(--disp)}.pagehead p{max-width:66ch;margin:0;color:#D0DCE6}
+    article{max-width:900px;margin:0 auto;background:#fff;padding:clamp(20px,5vw,52px);border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px}h2,h3{font-family:var(--disp);line-height:1.2}h2{margin:2em 0 .65em;font-size:1.5rem}h2:first-child{margin-top:0}h3{margin:1.5em 0 .5em;font-size:1.12rem}p{margin:.5em 0 1em}.note,.warn{padding:15px 18px;border-radius:10px;margin:1em 0 1.5em}.note{background:var(--teal-soft);border:1px solid #BFD9DC}.warn{background:var(--orange-soft);border:1px solid #F0C4B3}.note p,.warn p{margin:0}
+    .tool{padding:clamp(18px,4vw,30px);border:1px solid var(--line);border-radius:14px;background:#F8FAFC}.field-label{display:block;margin-bottom:6px;font:700 1rem var(--disp)}.sender{width:100%;max-width:520px;padding:12px 14px;border:1.5px solid #AAB8C5;border-radius:8px;background:#fff;color:var(--ink);font:1rem var(--body)}.hint{margin:.45em 0 1.2em;color:var(--muted);font-size:.85rem}.signals{display:grid;gap:10px;margin:16px 0}.signal{display:flex;gap:12px;align-items:flex-start;padding:13px;background:#fff;border:1px solid var(--line);border-radius:9px;cursor:pointer}.signal input{flex:none;width:19px;height:19px;margin:3px 0 0;accent-color:var(--orange)}.signal strong{display:block;font:700 .98rem var(--disp)}.signal small{display:block;color:var(--muted);font-size:.86rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 17px;border:0;border-radius:8px;background:var(--orange);color:#fff;text-decoration:none;font:700 .96rem var(--disp);cursor:pointer}.btn:hover{background:var(--orange-d);color:#fff}.btn.secondary{background:var(--navy)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .result{margin-top:20px;padding:18px;border:2px solid var(--line);border-radius:12px;background:#fff}.result[hidden]{display:none}.result h3{margin:0 0 4px}.result .score{font:800 1.8rem var(--disp)}.result.r-caution{border-color:#E2A33B;background:#FFF9EB}.result.r-high{border-color:#D87A22;background:#FFF4E9}.result.r-critical{border-color:var(--orange);background:var(--orange-soft)}
+    .tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.94rem}th,td{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid var(--line)}th{font:700 .72rem var(--mono);text-transform:uppercase;color:var(--muted)}
+    .report{padding:18px;border:1px solid var(--line);border-radius:12px;background:#F8FAFC}.report h3{margin:0 0 6px}.report p{margin-bottom:.5em}ul li{margin:.4em 0}.caption{font-size:.85rem;color:var(--muted)}
+    footer{margin-top:42px;padding:26px 0;background:var(--navy);color:#D0DCE6;font:600 .85rem var(--disp)}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}footer a{color:white}
+    @media(max-width:760px){.wrap{width:min(100% - 30px,1080px)}nav.main{display:none}.burger{display:block;margin-left:auto}.mnav.open{display:block;position:fixed;inset:66px 0 0;z-index:4;overflow:auto;padding:18px max(15px,calc((100vw - 1080px)/2));background:#fff}.pagehead{padding:24px 0}.actions .btn{width:100%}}
+  </style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="CyberBalise, accueil"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 28 6.5V15c0 7.4-4.9 12.2-12 14.5C8.9 27.2 4 22.4 4 15V6.5Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span>CYBER<span class="accent">BALISE</span></span></a>
+    <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/risque-sms/"><div><strong>V&#xE9;rifier un SMS suspect</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+    <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+  </div>
+  <!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main>
+  <section class="pagehead"><div class="wrap">
+    <div class="crumbs"><a href="/">Accueil</a> / <a href="/outils/">Outils</a></div>
+    <h1>Un SMS vous semble suspect ?</h1>
+    <p>Évaluez les signaux de vigilance, puis trouvez le bon service officiel pour le signaler. Gratuit, sans inscription et sans envoyer votre numéro ni le SMS à CyberBalise.</p>
+  </div></section>
+  <article>
+    <div class="note"><p><strong>À savoir avant de commencer :</strong> saisir un numéro seul ne permet pas de vérifier son historique ni son propriétaire. Un expéditeur peut être usurpé. L’indice ci-dessous porte donc sur les signaux du message que vous avez observés : ce n’est ni une probabilité de fraude ni une vérification de réputation.</p></div>
+
+    <h2 id="analyser">Évaluer le SMS</h2>
+    <form class="tool" id="sms-check">
+      <label class="field-label" for="sender">Numéro ou nom affiché comme expéditeur</label>
+      <input class="sender" id="sender" name="sender" type="text" maxlength="30" autocomplete="off" placeholder="Ex. 06 12 34 56 78, +33…, 36 000 ou LaPoste" required>
+      <p class="hint">Le format est accepté à titre indicatif. Il ne permet pas d’authentifier l’expéditeur ; les identifiants courts et les noms de service sont possibles.</p>
+
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="field-label">Cochez les éléments présents dans le SMS</legend>
+        <div class="signals">
+          <label class="signal"><input type="checkbox" name="signal" value="2"><span><strong>Le message contient un lien</strong><small>Notamment un lien de connexion, de paiement ou de suivi.</small></span></label>
+          <label class="signal"><input type="checkbox" name="signal" value="2"><span><strong>Il met la pression ou menace d’une conséquence rapide</strong><small>Compte bloqué, amende, colis détruit, délai très court, etc.</small></span></label>
+          <label class="signal"><input type="checkbox" name="signal" value="4"><span><strong>Il demande de l’argent, des données personnelles, un code, un mot de passe ou l’installation d’une application</strong><small>Ne communiquez jamais un code reçu par SMS à la suite d’une sollicitation.</small></span></label>
+          <label class="signal"><input type="checkbox" name="signal" value="1"><span><strong>Il prétend venir d’une entreprise, d’une banque ou d’un service public</strong><small>Sans que vous puissiez confirmer cette demande depuis son site ou son application habituels.</small></span></label>
+          <label class="signal"><input type="checkbox" name="signal" value="1"><span><strong>Il vous demande de répondre ou de rappeler un numéro inhabituel</strong><small>Vérifiez les coordonnées par un canal officiel, sans utiliser celles du SMS.</small></span></label>
+        </div>
+      </fieldset>
+      <div class="actions"><button class="btn" type="submit">Calculer mon indice de vigilance</button><button class="btn secondary" type="reset">Effacer</button></div>
+      <div class="result" id="result" role="status" aria-live="polite" hidden></div>
+    </form>
+    <noscript><p class="warn"><strong>JavaScript est désactivé :</strong> le calcul ne peut pas s’afficher. Vous pouvez tout de même signaler le SMS gratuitement sur <a href="https://www.33700.fr/signaler-form-pc/">le formulaire officiel du 33700</a>.</p></noscript>
+
+    <h2 id="methode">Méthode de calcul</h2>
+    <p>L’indice additionne les points des cases cochées. Les poids reflètent la gravité indicative du comportement décrit, et non une mesure validée statistiquement. Le total est plafonné à 10.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Signal observé</th><th>Points</th></tr></thead>
+      <tbody>
+        <tr><td>Le SMS contient un lien</td><td>+2</td></tr>
+        <tr><td>Urgence, pression ou menace de conséquence rapide</td><td>+2</td></tr>
+        <tr><td>Demande d’argent, de données personnelles, de code, de mot de passe ou d’installation</td><td>+4</td></tr>
+        <tr><td>Usurpation apparente d’une organisation, à confirmer par un canal indépendant</td><td>+1</td></tr>
+        <tr><td>Demande de réponse ou de rappel vers un numéro inhabituel</td><td>+1</td></tr>
+      </tbody>
+    </table></div>
+    <p>Interprétation : <strong>aucune case cochée</strong> signifie « menace indéterminée » ; de 1 à 2, peu d’indices identifiés ; de 3 à 5, vigilance recommandée ; de 6 à 8, vigilance élevée ; de 9 à 10, vigilance très élevée. À chaque niveau, vérifiez le message par un moyen indépendant. Le score est un repère pédagogique, pas un verdict.</p>
+
+    <h2 id="signaler">Signaler ou demander de l’aide</h2>
+    <div class="report">
+      <h3>SMS indésirable ou frauduleux : 33700</h3>
+      <p>Transférez le SMS au <strong>33700</strong> ou utilisez son <a href="https://www.33700.fr/signaler-form-pc/" target="_blank" rel="noopener noreferrer">formulaire officiel de signalement en ligne</a>. Consultez les consignes du service, qui peuvent varier selon la situation.</p>
+      <div class="actions"><a class="btn" href="https://www.33700.fr/signaler-form-pc/" target="_blank" rel="noopener noreferrer">Signaler sur 33700.fr</a></div>
+    </div>
+    <div class="report" style="margin-top:12px">
+      <h3>Vous avez cliqué, communiqué un code ou subi une fraude ?</h3>
+      <p>Contactez immédiatement votre banque si un paiement ou des données bancaires sont en jeu. <a href="https://17cyber.gouv.fr/" target="_blank" rel="noopener noreferrer">17Cyber</a>, le service public d’assistance, vous oriente selon votre situation.</p>
+      <div class="actions"><a class="btn secondary" href="https://17cyber.gouv.fr/" target="_blank" rel="noopener noreferrer">Obtenir de l’aide sur 17Cyber</a></div>
+    </div>
+
+    <h2 id="limites">Limites à connaître</h2>
+    <ul>
+      <li><strong>Pas de recherche de réputation :</strong> aucune liste de numéros signalés ni donnée d’opérateur n’est consultée. Le numéro ou nom saisi n’est pas un score et ne prouve pas l’identité de l’expéditeur.</li>
+      <li><strong>Pas de verdict automatique :</strong> les réponses décrivent des indices courants, pas une analyse du texte ou des liens. Un SMS frauduleux peut n’en présenter aucun ; un SMS légitime peut en présenter.</li>
+      <li><strong>Résultat non probabiliste :</strong> les points et seuils servent à structurer la vigilance. Ils ne sont pas issus d’une étude de fréquence et ne donnent pas un pourcentage de risque.</li>
+      <li><strong>Usurpation possible :</strong> l’apparence d’un numéro connu, d’un nom de marque ou d’un identifiant court n’authentifie pas le message. Un numéro ordinaire n’est pas, à lui seul, une preuve de fraude.</li>
+    </ul>
+    <p>Dans le doute, ne cliquez pas, ne répondez pas et ne rappelez pas le numéro fourni. Ouvrez vous-même le site ou l’application officielle de l’organisme.</p>
+    <p class="caption">En savoir plus : <a href="/outils/detecteur-arnaque/">analyser les signaux d’un SMS ou d’un e-mail</a> · <a href="/particuliers/menaces/arnaques-sms-et-appels/">arnaques par SMS et appels</a> · <a href="/particuliers/victime/signaler-un-probleme/">où signaler un problème</a>.</p>
+  </article>
+</main>
+<footer><div class="wrap"><span>© CyberBalise 2026</span><span><a href="/mentions-legales/">Mentions légales</a> · <a href="/politique-de-confidentialite/">Confidentialité</a> · <a href="/contact/">Contact</a></span></div></footer>
+<script>
+(function(){
+  var form=document.getElementById('sms-check');
+  var result=document.getElementById('result');
+  var burger=document.querySelector('.burger');
+  var mobileMenu=document.querySelector('.mnav');
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    if(!form.reportValidity()) return;
+    var checked=Array.prototype.slice.call(form.querySelectorAll('input[name="signal"]:checked'));
+    var score=checked.reduce(function(total,box){return total+Number(box.value)},0);
+    result.className='result';
+    if(!checked.length){
+      result.innerHTML='<h3>Menace indéterminée — aucun indice coché</h3><p>Un score de 0 ne confirme pas que le SMS est sûr. Le numéro seul ne permet pas d’évaluer sa réputation : vérifiez l’expéditeur par un canal officiel.</p>';
+    }else{
+      var level,title,advice;
+      if(score<=2){level='r-caution';title='Peu d’indices identifiés';advice='Cela ne garantit pas que le message soit légitime. Vérifiez-le indépendamment avant d’agir.';}
+      else if(score<=5){level='r-caution';title='Vigilance recommandée';advice='Ne suivez pas les instructions du SMS avant d’avoir confirmé la demande auprès de l’organisme.';}
+      else if(score<=8){level='r-high';title='Vigilance élevée';advice='Ne cliquez pas, ne répondez pas et ne transmettez aucune information. Vérifiez la situation depuis un canal officiel.';}
+      else{level='r-critical';title='Vigilance très élevée';advice='N’effectuez aucune action demandée par ce message. Signalez-le et contactez votre banque sans attendre si vous avez payé ou partagé des données.';}
+      result.className='result '+level;
+      result.innerHTML='<div class="score">'+score+'/10</div><h3>'+title+'</h3><p>'+advice+'</p><p class="caption">Indice indicatif calculé à partir des cases cochées, pas une probabilité de fraude.</p>';
+    }
+    result.hidden=false;
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+  form.addEventListener('reset',function(){result.hidden=true;result.textContent='';result.className='result';});
+  burger.addEventListener('click',function(){
+    var open=mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',String(open));
+    burger.setAttribute('aria-label',open?'Fermer le menu':'Ouvrir le menu');
+  });
+  var navItems=document.querySelectorAll('nav.main .nav-item');
+  navItems.forEach(function(item){
+    var link=item.querySelector(':scope>a');
+    if(!link||!item.querySelector('.dropdown'))return;
+    link.addEventListener('click',function(event){
+      if(!window.matchMedia('(hover: none)').matches&&event.detail!==0)return;
+      if(item.classList.contains('open'))return;
+      event.preventDefault();
+      navItems.forEach(function(other){other.classList.remove('open')});
+      item.classList.add('open');
+    });
+  });
+})();
+</script>
+<script src="/assets/cookie-consent.js"></script>
+</body>
+</html>
