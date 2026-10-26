@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
+  <defs>
+    <linearGradient id="bg" x2="960" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#0F2438"/><stop offset="1" stop-color="#324E65"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#fff" stroke-opacity=".04"/></pattern>
+  </defs>
+  <rect width="960" height="640" rx="24" fill="url(#bg)"/>
+  <rect width="960" height="640" rx="24" fill="url(#grid)"/>
+  <circle cx="741" cy="164" r="180" fill="#E4572E" fill-opacity=".07"/>
+  <rect x="111" y="150" width="423" height="292" rx="18" fill="#0A1B2A" stroke="#7795A5" stroke-width="3"/>
+  <rect x="130" y="170" width="385" height="246" rx="7" fill="#204356"/>
+  <rect x="161" y="201" width="174" height="15" rx="6" fill="#B6CDD8" fill-opacity=".7"/>
+  <rect x="161" y="234" width="307" height="8" rx="4" fill="#B6CDD8" fill-opacity=".25"/>
+  <rect x="161" y="259" width="260" height="8" rx="4" fill="#B6CDD8" fill-opacity=".25"/>
+  <rect x="161" y="284" width="283" height="8" rx="4" fill="#B6CDD8" fill-opacity=".25"/>
+  <rect x="161" y="321" width="125" height="63" rx="8" fill="#32657A"/>
+  <rect x="302" y="321" width="166" height="63" rx="8" fill="#183448"/>
+  <path d="m286 443-11 44h95l-11-44M245 490h155" stroke="#7795A5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M543 298h65" stroke="#E89778" stroke-width="4" stroke-dasharray="8 8"/>
+  <path d="m598 285 14 13-14 13" stroke="#E89778" stroke-width="4" stroke-linecap="round"/>
+  <rect x="632" y="183" width="200" height="281" rx="17" fill="#142C40" stroke="#8AA8B8" stroke-width="3"/>
+  <path d="M653 218h157M653 251h157M653 284h157" stroke="#668998" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="665" cy="416" r="5" fill="#E4572E"/>
+  <circle cx="686" cy="416" r="5" fill="#8AA8B8"/>
+  <rect x="667" y="335" width="130" height="48" rx="7" fill="#213F52"/>
+  <path d="M708 329v-21a24 24 0 0 1 48 0v21" stroke="#FFB293" stroke-width="6"/>
+  <rect x="698" y="326" width="68" height="59" rx="9" fill="#E4572E"/>
+  <circle cx="732" cy="350" r="6" fill="#FFF1EB"/>
+  <path d="M732 354v10" stroke="#FFF1EB" stroke-width="4" stroke-linecap="round"/>
+  <rect x="190" y="93" width="256" height="47" rx="10" fill="#FBEAE3"/>
+  <text x="318" y="123" text-anchor="middle" fill="#83351F" font-family="monospace" font-size="17" font-weight="700">REVENDICATION A VERIFIER</text>
+  <text x="480" y="565" text-anchor="middle" fill="#BCD2DD" font-family="sans-serif" font-size="22" font-weight="700">DONNEES CLIENTS ET EXTORSION</text>
+  <text x="480" y="597" text-anchor="middle" fill="#90AFBF" font-family="monospace" font-size="13">ILLUSTRATION CYBERBALISE - AUCUNE DONNEE REELLE</text>
+</svg>

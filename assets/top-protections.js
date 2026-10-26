@@ -2,6 +2,32 @@ document.querySelectorAll('.best-sellers-section').forEach(section => {
   const tabs = [...section.querySelectorAll('.home-category-tab')];
   const panels = [...section.querySelectorAll('.home-category-panel')];
 
+  panels.forEach(panel => {
+    const grid = panel.querySelector('.best-sellers-grid');
+    const cards = [...panel.querySelectorAll('.best-seller-card')];
+    if (!grid || cards.length <= 3) return;
+
+    if (!grid.id) grid.id = `${panel.id}-results`;
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'best-sellers-toggle';
+    toggle.setAttribute('aria-controls', grid.id);
+
+    const setExpanded = expanded => {
+      cards.slice(3).forEach(card => { card.hidden = !expanded; });
+      toggle.setAttribute('aria-expanded', String(expanded));
+      toggle.textContent = expanded
+        ? 'R\u00e9duire la liste'
+        : `Voir tous les r\u00e9sultats (${cards.length})`;
+    };
+
+    setExpanded(false);
+    toggle.addEventListener('click', () => {
+      setExpanded(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    grid.after(toggle);
+  });
+
   const selectCategory = (tab, focus = false) => {
     tabs.forEach(item => {
       const selected = item === tab;

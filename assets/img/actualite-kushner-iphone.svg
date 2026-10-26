@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
+  <defs>
+    <linearGradient id="background" x2="960" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#0F2438"/><stop offset="1" stop-color="#244F66"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#fff" stroke-opacity=".04"/></pattern>
+  </defs>
+  <rect width="960" height="640" rx="24" fill="url(#background)"/>
+  <rect width="960" height="640" rx="24" fill="url(#grid)"/>
+  <circle cx="480" cy="320" r="235" stroke="#7198AA" stroke-opacity=".25" stroke-dasharray="6 12"/>
+  <circle cx="480" cy="320" r="170" stroke="#7198AA" stroke-opacity=".18"/>
+  <path d="M189 214h139l61 70M772 198H654l-69 83M196 438h140l57-56M773 446H637l-59-62" stroke="#7198AA" stroke-width="3" stroke-dasharray="8 8"/>
+  <rect x="357" y="97" width="246" height="447" rx="32" fill="#091925" stroke="#90AEBB" stroke-width="4"/>
+  <rect x="374" y="116" width="212" height="410" rx="20" fill="#21475C"/>
+  <rect x="430" y="115" width="100" height="20" rx="10" fill="#091925"/>
+  <rect x="397" y="169" width="165" height="11" rx="5" fill="#A9C6D2" fill-opacity=".5"/>
+  <rect x="397" y="193" width="115" height="7" rx="3" fill="#A9C6D2" fill-opacity=".25"/>
+  <rect x="397" y="222" width="165" height="132" rx="12" fill="#142E41"/>
+  <path d="M421 287s22-32 59-32 59 32 59 32-22 32-59 32-59-32-59-32Z" stroke="#FFAE94" stroke-width="4"/>
+  <circle cx="480" cy="287" r="17" fill="#E4572E"/>
+  <circle cx="485" cy="282" r="5" fill="#fff"/>
+  <rect x="397" y="374" width="165" height="10" rx="5" fill="#A9C6D2" fill-opacity=".4"/>
+  <rect x="397" y="397" width="128" height="7" rx="3" fill="#A9C6D2" fill-opacity=".25"/>
+  <rect x="397" y="429" width="165" height="50" rx="9" fill="#32657A"/>
+  <path d="M449 504h62" stroke="#A9C6D2" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="189" cy="214" r="43" fill="#17384D" stroke="#80A3B3" stroke-width="2"/>
+  <path d="M174 214h30m-15-15v30" stroke="#A9C6D2" stroke-width="3"/>
+  <circle cx="772" cy="198" r="43" fill="#17384D" stroke="#80A3B3" stroke-width="2"/>
+  <path d="m752 203 13-18 13 21 12-11" stroke="#A9C6D2" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="196" cy="438" r="43" fill="#17384D" stroke="#80A3B3" stroke-width="2"/>
+  <rect x="179" y="424" width="34" height="27" rx="4" stroke="#A9C6D2" stroke-width="3"/>
+  <path d="m180 428 16 12 16-12" stroke="#A9C6D2" stroke-width="2"/>
+  <circle cx="773" cy="446" r="43" fill="#17384D" stroke="#E4572E" stroke-width="2"/>
+  <path d="M762 443v-9a11 11 0 0 1 22 0v9" stroke="#FFAE94" stroke-width="3"/>
+  <rect x="756" y="441" width="34" height="25" rx="5" fill="#E4572E"/>
+  <text x="480" y="591" text-anchor="middle" fill="#A9C6D2" font-family="monospace" font-size="15">ILLUSTRATION CYBERBALISE - SURVEILLANCE NUMERIQUE</text>
+</svg>

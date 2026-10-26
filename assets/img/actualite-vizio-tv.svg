@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#0F2438"/><stop offset="1" stop-color="#1C4B60"/></linearGradient>
+    <linearGradient id="screen" x1="230" y1="140" x2="700" y2="470" gradientUnits="userSpaceOnUse"><stop stop-color="#1A435A"/><stop offset="1" stop-color="#0C1B2A"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" stroke="#fff" stroke-opacity=".035"/></pattern>
+  </defs>
+  <rect width="960" height="640" rx="24" fill="url(#bg)"/>
+  <rect width="960" height="640" rx="24" fill="url(#grid)"/>
+  <circle cx="782" cy="92" r="155" fill="#2D7981" fill-opacity=".16"/>
+  <circle cx="105" cy="595" r="230" fill="#E4572E" fill-opacity=".08"/>
+  <path d="M112 495H848" stroke="#6697A3" stroke-opacity=".4"/>
+  <rect x="160" y="123" width="640" height="370" rx="22" fill="#081723" stroke="#57788B" stroke-width="3"/>
+  <rect x="177" y="140" width="606" height="329" rx="10" fill="url(#screen)"/>
+  <path d="m433 494-15 43h124l-15-43M383 541h194" stroke="#7E9CAA" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="480" cy="482" r="3" fill="#E4572E"/>
+  <rect x="211" y="172" width="136" height="15" rx="7.5" fill="#BCD1D8" fill-opacity=".6"/>
+  <rect x="211" y="202" width="214" height="8" rx="4" fill="#BCD1D8" fill-opacity=".2"/>
+  <rect x="211" y="230" width="122" height="139" rx="10" fill="#2A5D70"/>
+  <path d="m259 273 34 25-34 25v-50Z" fill="#DCEBEF"/>
+  <rect x="211" y="384" width="87" height="8" rx="4" fill="#BCD1D8" fill-opacity=".5"/>
+  <rect x="211" y="402" width="111" height="6" rx="3" fill="#BCD1D8" fill-opacity=".2"/>
+  <rect x="350" y="230" width="122" height="139" rx="10" fill="#244A60"/>
+  <path d="m390 295 17-25 29 45h-58l12-20Z" fill="#89B2C0"/>
+  <rect x="350" y="384" width="87" height="8" rx="4" fill="#BCD1D8" fill-opacity=".5"/>
+  <rect x="350" y="402" width="111" height="6" rx="3" fill="#BCD1D8" fill-opacity=".2"/>
+  <circle cx="619" cy="296" r="99" fill="#E4572E" fill-opacity=".12" stroke="#E4572E" stroke-opacity=".5" stroke-dasharray="4 8"/>
+  <path d="M550 296s26-42 69-42 69 42 69 42-26 42-69 42-69-42-69-42Z" stroke="#FFAD91" stroke-width="5"/>
+  <circle cx="619" cy="296" r="22" fill="#E4572E"/>
+  <circle cx="626" cy="289" r="6" fill="#FFF0E9"/>
+  <path d="M619 197v-26M718 296h28M619 395v26M520 296h-22" stroke="#E4572E" stroke-width="2"/>
+  <rect x="657" y="71" width="195" height="55" rx="12" fill="#FBEAE3"/>
+  <circle cx="686" cy="98" r="8" fill="#E4572E"/>
+  <text x="705" y="104" fill="#83351F" font-family="monospace" font-size="17" font-weight="700">VIE PRIVEE</text>
+  <rect x="89" y="425" width="218" height="83" rx="14" fill="#F0F5F7"/>
+  <text x="109" y="459" fill="#0F2438" font-family="sans-serif" font-size="20" font-weight="700">11 millions</text>
+  <text x="109" y="485" fill="#4D6377" font-family="sans-serif" font-size="16">de TV concernees</text>
+  <text x="797" y="592" fill="#93B1BD" font-family="monospace" font-size="14" text-anchor="end">ILLUSTRATION CYBERBALISE</text>
+</svg>

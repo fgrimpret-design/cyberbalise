@@ -490,6 +490,7 @@ body.home-refresh {
 }
 
 .home-refresh .best-sellers-section .wrap,
+.home-refresh .news-section .wrap,
 .home-refresh .guides-section .wrap,
 .home-refresh .comparisons-section .wrap {
   max-width: 1200px;
