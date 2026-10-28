@@ -1,5 +1,5 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Détecteur d'arnaque par capture d'écran — CyberBalise</title><meta name="description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran.">
+<title>Détecteur d'arnaque SMS/Email — CyberBalise</title><meta name="description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran.">
 <link rel="canonical" href="https://cyberbalise.fr/outils/detecteur-arnaque/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#0F2438">
 <meta property="og:type" content="website"><meta property="og:site_name" content="CyberBalise"><meta property="og:locale" content="fr_FR"><meta property="og:title" content="Détecteur d&#x27;arnaque par capture d&#x27;écran"><meta property="og:description" content="Repérez les signaux classiques d&#x27;un SMS ou d&#x27;un e-mail suspect à partir d&#x27;une capture d&#x27;écran."><meta property="og:url" content="https://cyberbalise.fr/outils/detecteur-arnaque/">
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
@@ -269,24 +269,268 @@ tbody tr:hover{background:#F6F8FA}
   .acard{transition:none}
 }
 </style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261026-expand">
-<link rel="stylesheet" href="/assets/home-refresh.css?v=20261023-gaming-cta">
+<link rel="stylesheet" href="/assets/home-refresh.css?v=20261028-adguard-vpn">
 
 <meta name="mitgo-verification" content="ca64a633-dbfa-410b-9ed3-35613074ebdb" />
 <link rel="stylesheet" href="/assets/cookie-consent.css">
 </head><body>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
-  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/actualites/">Actualit&#xE9;s</a></div><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div><span class="chip part">Particuliers</span></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div><span class="chip part">Particuliers</span></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div><span class="chip pro">Pros</span></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div><span class="chip pro">Pros</span></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div><span class="chip pro">Pros</span></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div><span class="chip pro">Pros</span></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div><span class="chip pro">Pros</span></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div><span class="chip pro">Pros</span></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div><span class="chip part">Particuliers</span></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div><span class="chip both">Les deux</span></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div><span class="chip both">Les deux</span></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div><span class="chip both">Les deux</span></a><a href="/offres/promotions/"><div><strong>Offres du moment</strong></div><span class="chip both">Les deux</span></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div><span class="chip both">Les deux</span></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div><span class="chip both">Les deux</span></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div><span class="chip both">Les deux</span></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div><span class="chip both">Les deux</span></a><a href="/outils/risque-sms/"><div><strong>V&#xE9;rifier un SMS suspect</strong></div><span class="chip both">Les deux</span></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div><span class="chip both">Les deux</span></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div><span class="chip both">Les deux</span></a></div></div></nav><!-- CB-MENU:FIN -->
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/actualites/">Actualit&#xE9;s</a></div><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div></a><a href="/outils/risque-sms/"><div><strong>V&#xE9;rifier un SMS suspect</strong></div></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div></a></div></div></nav><!-- CB-MENU:FIN -->
   <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
-<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/actualites/">Actualit&#xE9;s</a><div class="mnav-children"></div></div><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a><a href="/offres/promotions/">Offres du moment</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/actualites/">Actualit&#xE9;s</a><div class="mnav-children"></div></div><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
 </header>
 <main><div class="pagehead"><div class="wrap">
 <div class="crumbs"><a href="/">Accueil</a> › <a href="/outils/">Outils interactifs</a></div>
 <div class="kicker" style="color:#F5A085;margin-top:18px">Outil interactif</div>
-<h1>Détecteur d'arnaque par capture d'écran</h1><p class="lead">Repérez les signaux classiques d'un SMS ou d'un e-mail suspect à partir d'une capture d'écran.</p>
-<div class="meta"><span class="chip both">Les deux</span> <span class="date">Mise à jour : Octobre 2026</span></div>
+<h1>Détecteur d'arnaque SMS/Email</h1><p class="lead">Repérez les signaux classiques d'un SMS ou d'un e-mail suspect à partir d'une capture d'écran.</p>
+<div class="meta"><span class="date">Mise à jour : Octobre 2026</span></div>
 </div><img class="pagehead-photo" src="/assets/img/editorial-outils-detecteur-arnaque.jpg" width="640" height="480" loading="eager" decoding="async" alt="" aria-hidden="true"></div>
+<div class="wrap"><article class="page">
+<style>
+.sd{max-width:780px;margin:0 auto;scroll-margin-top:90px}
+.sd-tabs{display:flex;gap:8px;margin:6px 0 14px;flex-wrap:wrap}
+.sd-tab{border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:.5em 1.1em;font:inherit;font-size:.92rem;cursor:pointer;color:var(--ink)}
+.sd-tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.sd textarea{width:100%;box-sizing:border-box;min-height:150px;font:inherit;font-size:1rem;line-height:1.5;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);resize:vertical}
+.sd textarea:focus{outline:none;border-color:var(--teal)}
+.sd-drop{display:block;width:100%;font:inherit;color:var(--ink);border:2px dashed var(--line);border-radius:14px;padding:28px 18px;text-align:center;background:var(--paper);cursor:pointer;transition:border-color .15s}
+.sd-drop:hover,.sd-drop.over{border-color:var(--teal)}
+.sd-drop strong{display:block;font-family:var(--disp);font-size:1.05rem;margin-bottom:4px}
+.sd-drop span{color:var(--muted);font-size:.9rem}
+.sd-prev{max-width:100%;max-height:260px;border-radius:10px;margin-top:12px;display:none}
+.sd-ocr{font-size:.88rem;color:var(--muted);margin-top:10px;min-height:1.2em}
+.sd-ex{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 0;font-size:.88rem;color:var(--muted)}
+.sd-ex button{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:.32em .75em;font:inherit;font-size:.84rem;cursor:pointer;color:var(--ink)}
+.sd-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+.sd-btn{background:#187343;color:#fff;border:0;border-radius:10px;padding:.85em 1.4em;font-family:var(--disp);font-weight:700;font-size:1rem;cursor:pointer}
+.sd-btn:hover{background:#105632}.sd-btn[disabled]{opacity:.45;cursor:not-allowed}
+.sd-scale{margin:0 0 20px}
+.sd-scale ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:10px 0}
+.sd-scale li{padding:10px;border:2px solid var(--line);border-radius:8px;font-size:.85rem}
+.sd-scale li[aria-current="step"]{border-color:var(--ink);font-weight:700;background:var(--paper)}
+.sd-scale p{font-size:.88rem}
+.sd [hidden]{display:none}
+.sd-link{background:none;border:0;color:var(--teal-d);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.sd-res{display:none;margin-top:26px}
+.sd-head{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;border-radius:16px;padding:20px 22px;margin-bottom:18px}
+.sd-head.r3{background:var(--orange-soft);border:1.5px solid var(--orange)}
+.sd-head.r2{background:#FFF4E0;border:1.5px solid #E2A33B}
+.sd-head.r1{background:var(--teal-soft);border:1.5px solid var(--teal)}
+.sd-badge{width:84px;height:84px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:var(--disp);font-weight:800;font-size:1.5rem;line-height:1}
+.sd-badge small{font-size:.62rem;font-family:var(--mono);letter-spacing:.08em;font-weight:500;margin-top:4px;text-transform:uppercase}
+.r3 .sd-badge{background:var(--orange)}.r2 .sd-badge{background:#C9831B}.r1 .sd-badge{background:var(--teal)}
+.sd-head h2{border:0;padding:0;margin:0 0 .25em;font-size:1.3rem}
+.sd-head p{margin:0;font-size:.95rem}
+.sd-sigs{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.sd-sig{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:13px 16px}
+.sd-sig.w2{border-left-color:#E2A33B}
+.sd-sig b{display:block;font-family:var(--disp);margin-bottom:3px}
+.sd-sig p{margin:0 0 6px;font-size:.93rem;line-height:1.45}
+.sd-sig q{display:inline-block;font-family:var(--mono);font-size:.78rem;background:var(--bg);border-radius:6px;padding:.1em .45em;margin:0 4px 4px 0;quotes:none}
+.sd-sig a{font-size:.86rem;font-weight:600}
+.sd-todo{margin-top:22px}
+.sd-todo ol{margin:.4em 0 0;padding-left:1.2em}.sd-todo li{margin:.35em 0}
+@media (max-width:760px){.sd-head{grid-template-columns:1fr;justify-items:center;text-align:center}.sd textarea{font-size:.95rem}}
+</style><!-- CB-CONTENU:DEBUT -->
+
+<div class="note"><p><strong>Comment ça marche.</strong> Importez une capture d'écran ou un fichier texte (.txt), ou collez le texte d'un message. Relisez le texte importé, puis lancez l'analyse. L'outil repère les signaux classiques d'une arnaque et vous dit quoi faire. L'analyse se fait <strong>dans votre navigateur</strong> : le fichier et le message ne sont pas envoyés à un serveur d'analyse. Pour lire une capture, le navigateur télécharge un module de reconnaissance de caractères depuis un serveur public, sans y envoyer votre image.</p></div>
+<div class="sd" id="sd">
+  <h2 id="analyser" style="border:0;padding:0;margin:0 0 4px">Analysez un message suspect</h2>
+  <div class="sd-tabs" role="tablist" aria-label="Choisir le mode de saisie">
+    <button class="sd-tab on" id="sd-tab-img" role="tab" aria-selected="true" aria-controls="sd-img" type="button" data-t="img">Importer une capture ou un fichier</button>
+    <button class="sd-tab" id="sd-tab-txt" role="tab" aria-selected="false" aria-controls="sd-txt" type="button" data-t="txt">Coller le texte</button>
+  </div>
+  <div id="sd-txt" role="tabpanel" aria-labelledby="sd-tab-txt" hidden>
+    <textarea id="sd-in" placeholder="Collez ici le texte du SMS, de l'e-mail ou du message reçu…" aria-label="Texte du message à analyser"></textarea>
+    <div class="sd-ex"><span>Essayer un exemple :</span><span id="sd-ex"></span></div>
+  </div>
+  <div id="sd-img" role="tabpanel" aria-labelledby="sd-tab-img">
+    <input type="file" id="sd-file" accept="image/png,image/jpeg,image/webp,.txt,text/plain" hidden>
+    <button class="sd-drop" id="sd-drop" type="button">
+      <strong>Déposez une capture ou choisissez un fichier</strong>
+      <span>PNG, JPG, WebP ou fichier texte .txt · 10 Mo maximum · PDF et documents Office non pris en charge</span>
+    </button>
+    <img id="sd-prev" class="sd-prev" alt="Aperçu de la capture">
+  </div>
+  <p class="sd-ocr" id="sd-ocr" role="status" aria-live="polite"></p>
+  <div class="sd-actions">
+    <button class="sd-btn" id="sd-go" type="button" disabled>Analyser le message</button>
+    <button class="sd-link" id="sd-clear" type="button">Effacer</button>
+  </div>
+  <div class="sd-res" id="sd-res"></div>
+</div>
+
+<h2 id="limites">Ce que l'outil peut et ne peut pas faire</h2>
+<ul>
+  <li><strong>Il repère des signaux</strong> fréquents dans les arnaques : urgence, menace, demande de code ou de paiement, lien suspect, usurpation d'un organisme connu, faux proche, chantage…</li>
+  <li><strong>Il ne vérifie pas les liens en ligne</strong> et ne consulte aucune base de données : il ne peut pas garantir qu'un message est sans danger. Un message sans signal peut quand même être une arnaque.</li>
+  <li><strong>La lecture des captures</strong> peut faire des erreurs sur les images floues ou petites : relisez le texte extrait avant l'analyse.</li>
+  <li><strong>Dans le doute, la règle reste la même :</strong> n'agissez jamais depuis le message reçu. Ouvrez vous-même le site ou l'application de l'organisme, ou appelez-le au numéro habituel.</li>
+</ul>
+
+<h2 id="signaler">Où signaler</h2>
+<div class="tablewrap"><table><thead><tr><th>Situation</th><th>Que faire</th></tr></thead><tbody><tr><td>SMS ou appel frauduleux</td><td>Transférez le SMS au 33700 (gratuit) ou signalez-le sur 33700.fr — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>E-mail d'hameçonnage</td><td>Signalez-le sur Signal Spam (signal-spam.fr) — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>Vous avez payé ou donné vos coordonnées bancaires</td><td>Faites opposition auprès de votre banque sans attendre — <a href="/particuliers/victime/carte-bancaire-debitee/">voir la fiche</a></td></tr><tr><td>Vous ne savez pas à qui vous adresser</td><td>17Cyber (17cyber.gouv.fr) vous oriente 24 h/24 et 7 j/7 — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr></tbody></table></div>
+<p class="caption">Services de signalement repris de notre fiche <a href="/particuliers/victime/signaler-un-probleme/">Où et comment signaler</a>. Signaux d'alerte détaillés dans <a href="/particuliers/menaces/phishing-hameconnage/">Phishing et hameçonnage</a> et <a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels</a>.</p>
+
+<script>
+(function(){
+  var D = {"signals": [{"id": "urgence", "w": 2, "label": "Urgence ou menace de délai", "re": ["\\burgent", "imm[ée]diat", "sous 24 ?h", "sous 48 ?h", "dans les 24", "avant ce soir", "dernier (rappel|avertissement|d[ée]lai)", "sans r[ée]ponse de votre part", "d[ée]lai (de|d')", "expire", "aujourd'hui (m[eê]me|avant)", "au plus vite", "rapidement"], "e": "Créer l'urgence empêche de réfléchir : c'est le ressort numéro un des arnaques. Un vrai organisme laisse le temps de vérifier.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "menace", "w": 2, "label": "Menace de blocage, de suspension ou de poursuites", "re": ["bloqu[ée]", "suspen(du|due|sion)", "d[ée]sactiv", "r[ée]sili", "poursuites?", "huissier", "amende", "majoration", "p[ée]nalit[ée]", "plainte (sera|va)", "convocation", "gendarmerie|police nationale|brigade"], "e": "Faire peur (compte bloqué, amende, convocation) pousse à agir sans vérifier. Les administrations ne menacent pas par SMS avec un lien de paiement.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}, {"id": "colis", "w": 2, "label": "Colis en attente ou frais de livraison", "re": ["colis", "livraison", "livreur", "frais (de port|d'affranchissement|de r[ée]exp[ée]dition|de douane)", "reprogrammer", "point relais", "douane"], "e": "Le faux colis avec de petits frais à régler est l'un des SMS frauduleux les plus répandus : le but est de récupérer votre numéro de carte.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}, {"id": "paiement", "w": 3, "label": "Demande de paiement ou de données bancaires", "re": ["(num[ée]ro|coordonn[ée]es) (de )?(carte|bancaire)", "cryptogramme", "\\bcvv\\b", "date d'expiration", "\\biban\\b", "\\brib\\b", "r[ée]gler", "payer", "paiement", "virement", "1[,.]99 ?€|2[,.]99 ?€|0[,.]99 ?€", "\\d+[,.]\\d{2} ?(€|eur)"], "e": "Un message non sollicité qui demande de payer ou de saisir vos données de carte est suspect par principe. Payez uniquement depuis le site ou l'application officiels, ouverts par vous-même.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "code", "w": 5, "label": "Demande de code, de mot de passe ou de validation", "re": ["code (de )?(confirmation|validation|s[ée]curit[ée]|re[çc]u|sms|à 6 chiffres)", "mot de passe", "identifiants?", "valider (l'|une |cette )?op[ée]ration", "confirmer (votre|l')identit", "authentifi", "code secret", "communiquez.*code", "donnez.*code"], "e": "Votre banque, un service client ou l'administration ne vous demanderont jamais un code, un mot de passe ou la validation d'une opération par message ou par téléphone.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "conseiller", "w": 3, "label": "Faux conseiller ou « opération suspecte » à annuler", "re": ["op[ée]ration suspecte", "service (des )?fraudes?", "conseiller", "tentative de (paiement|connexion)", "activit[ée] inhabituelle", "s[ée]curiser (votre|vos) (compte|fonds|argent)", "compte (de )?s[ée]curit[ée]", "virement de s[ée]curit[ée]"], "e": "Le faux conseiller bancaire signale une « opération suspecte » pour vous faire valider… une opération frauduleuse. Raccrochez et rappelez votre banque au numéro habituel.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "remboursement", "w": 2, "label": "Remboursement, gain ou cadeau inattendu", "re": ["rembours", "trop[- ]per[çc]u", "vous avez gagn", "gagnant", "cadeau", "lot (à|a) retirer", "r[ée]compense", "offert", "gratuit", "cr[ée]dit d'imp[ôo]t", "aide (de l'[ée]tat|exceptionnelle)", "prime"], "e": "Un remboursement ou un gain que vous n'attendiez pas sert d'appât pour obtenir vos coordonnées bancaires.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "admin", "w": 2, "label": "Usurpation d'un organisme connu", "re": ["\\bameli\\b|assurance maladie|carte vitale", "\\bcaf\\b", "imp[ôo]ts|dgfip|tr[ée]sor public", "\\bants\\b|permis|carte grise|amende", "chronopost|colissimo|la poste|dhl|ups|mondial relay", "\\bedf\\b|engie", "france travail|p[ôo]le emploi", "\\bcpf\\b|compte formation", "netflix|amazon|apple|microsoft|google"], "e": "Les escrocs imitent les organismes que tout le monde connaît. Leur nom dans un message ne prouve rien : allez vérifier sur votre espace officiel, sans passer par le lien.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "support", "w": 3, "label": "Fausse alerte virus ou support technique", "re": ["(ordinateur|appareil|t[ée]l[ée]phone) (est )?(infect|bloqu|pirat|compromis)", "virus (d[ée]tect|trouv)", "support (technique|microsoft|apple|windows)", "appelez (imm[ée]diatement|ce num[ée]ro|le support)", "ne (pas )?(fermer|[ée]teindre)", "anydesk|teamviewer|prise en main"], "e": "Aucun éditeur ne vous demande d'appeler un numéro depuis une alerte. Ne rappelez pas et n'installez aucun logiciel de prise en main à distance.", "l": ["Arnaques au faux support", "/particuliers/menaces/arnaques-au-faux-support/"]}, {"id": "chantage", "w": 3, "label": "Chantage ou menace de divulgation", "re": ["vid[ée]o (intime|compromettante)", "webcam", "vos contacts (recevront|vont recevoir)", "bitcoin|\\bbtc\\b", "divulg", "sites? (pour adultes|pornographique)", "j'ai (pirat|acc[eè]s)"], "e": "Les mails de chantage (« je vous ai filmé via votre webcam ») sont presque toujours du bluff envoyé en masse. Ne payez pas et ne répondez pas.", "l": ["Chantage et sextorsion", "/particuliers/menaces/chantage-et-sextorsion/"]}, {"id": "invest", "w": 5, "label": "Investissement miracle ou cryptomonnaie", "re": ["rendement", "investi", "placement (s[ûu]r|garanti)", "crypto", "trading", "doubl(er|ez) (votre|vos)", "\\d{2,3} ?% (par|en) (mois|semaine|an)", "sans risque", "opportunit[ée] unique"], "e": "Un rendement élevé « sans risque » est le signe le plus sûr d'une arnaque. Vérifiez toujours que la plateforme figure sur les listes de l'AMF.", "l": ["Fausses plateformes d'investissement", "/particuliers/menaces/fausses-plateformes-dinvestissement/"]}, {"id": "proche", "w": 3, "label": "Proche en difficulté qui change de numéro", "re": ["(maman|papa|mamie|papi)", "nouveau num[ée]ro", "(mon|j'ai) (t[ée]l[ée]phone|portable) (est )?(cass|perdu|tomb)", "c'est moi", "peux[- ]tu (me )?(faire|envoyer|avancer)", "j'ai besoin d'argent"], "e": "« Maman, j'ai cassé mon téléphone, voici mon nouveau numéro » : l'arnaque au proche est très répandue. Rappelez votre proche sur son numéro habituel avant tout virement.", "l": ["Deepfakes et arnaques dopées à l'IA", "/particuliers/menaces/deepfakes-et-arnaques-a-lia/"]}, {"id": "president", "w": 3, "label": "Virement urgent et confidentiel (entreprise)", "re": ["virement (urgent|confidentiel|exceptionnel)", "(nouveau|changement de) (rib|iban|coordonn[ée]es bancaires)", "op[ée]ration confidentielle", "ne (pas )?en parler", "discr[ée]tion", "acquisition", "pdg|directeur g[ée]n[ée]ral|pr[ée]sident"], "e": "Une demande de virement urgent et confidentiel, ou un changement de RIB fournisseur, doit toujours être vérifiée par un contre-appel sur un numéro connu.", "l": ["Fraude au président et faux virements", "/pro/menaces/fraude-au-president/"]}, {"id": "lien", "w": 2, "label": "Lien à cliquer", "re": ["https?://", "\\bwww\\.", "\\b[a-z0-9-]+\\.(com|fr|net|info|xyz|top|online|site|live|click|shop|app|link|io|co|ly|me|cc|ru|cn)\\b", "cliquez|cliquer|appuyez sur le lien|suivez (ce|le) lien"], "e": "Ne cliquez pas : ouvrez vous-même le site ou l'application officiels. Un lien peut afficher une adresse rassurante et mener ailleurs.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "rappel", "w": 2, "label": "Numéro à rappeler", "re": ["(appelez|rappelez|contactez)[^.\\n]{0,40}(0[1-9]|\\+33|08)", "\\b0[89]\\d{2}[ .]?\\d{2}[ .]?\\d{2}[ .]?\\d{2}\\b"], "e": "Rappeler le numéro indiqué dans un message suspect vous met en contact avec l'escroc. Utilisez le numéro figurant sur votre carte, votre contrat ou le site officiel.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}], "hints": {"shorteners": ["bit.ly", "tinyurl", "t.co", "goo.gl", "cutt.ly", "is.gd", "rebrand.ly", "ow.ly", "shorturl", "t.ly", "rb.gy"], "risky_tlds": ["xyz", "top", "online", "site", "live", "click", "shop", "info", "icu", "buzz", "ru", "cn", "tk", "cc", "link", "app"], "brands": ["ameli", "caf", "impots", "ants", "laposte", "colissimo", "chronopost", "edf", "engie", "amazon", "netflix", "paypal", "apple", "microsoft", "google", "credit-agricole", "creditagricole", "boursorama", "societegenerale", "bnp", "lcl", "banquepopulaire", "caisse-epargne", "labanquepostale", "francetravail", "moncompteformation", "antai", "service-public"]}, "examples": [["Faux colis", "Colissimo : votre colis n'a pas pu être livré faute de frais d'affranchissement (1,99 €). Réglez-les sous 24h pour reprogrammer la livraison : https://colissimo-suivi-livraison.top/fr"], ["Faux conseiller", "Bonjour, ici le service fraude de votre banque. Une opération suspecte de 1 450 € est en cours sur votre compte. Pour l'annuler, communiquez-nous le code de confirmation que vous allez recevoir par SMS."], ["Faux proche", "Coucou maman, mon téléphone est cassé, c'est mon nouveau numéro. Tu peux me faire un virement de 850 € aujourd'hui ? C'est urgent, je t'explique après."], ["Message légitime", "Bonjour, votre rendez-vous chez le dentiste est confirmé pour mardi 14 h. Pour toute modification, appelez le cabinet. Bonne journée."]]};
+  var el = function(id){ return document.getElementById(id); };
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  var SIG = D.signals.map(function(s){ return {s:s, re:s.re.map(function(r){ return new RegExp(r, 'gi'); })}; });
+  var input = el('sd-in'), go = el('sd-go');
+  function upd(){ go.disabled = input.value.trim().length < 8; }
+  input.addEventListener('input', upd);
+  D.examples.forEach(function(ex){
+    var b = document.createElement('button'); b.type='button'; b.textContent = ex[0];
+    b.addEventListener('click', function(){ input.value = ex[1]; upd(); analyse(); });
+    el('sd-ex').appendChild(b);
+  });
+  document.querySelectorAll('.sd-tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      document.querySelectorAll('.sd-tab').forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-selected', String(x === t)); }); t.classList.add('on');
+      var img = t.dataset.t === 'img';
+      el('sd-img').hidden = !img;
+      el('sd-txt').hidden = img;
+    });
+  });
+  function linkCheck(text){
+    var out = [], urls = text.match(/(https?:\/\/[^\s]+|www\.[^\s]+|\b[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}(\/[^\s]*)?)/gi) || [];
+    urls.forEach(function(u){
+      var host = u.replace(/^https?:\/\//i,'').replace(/^www\./i,'').split(/[\/?#]/)[0].toLowerCase().replace(/[.,;:!)]+$/,'');
+      if(!host || host.indexOf('.') < 0) return;
+      var tld = host.split('.').pop(), reasons = [];
+      if(D.hints.shorteners.some(function(s){ return host === s || host.endsWith('.'+s); })) reasons.push('lien raccourci qui cache la vraie destination');
+      if(D.hints.risky_tlds.indexOf(tld) >= 0) reasons.push('extension « .' + tld + ' » très utilisée par les sites frauduleux');
+      var brand = D.hints.brands.filter(function(b){ return host.indexOf(b) >= 0; })[0];
+      if(brand){
+        var core = host.split('.').slice(-2).join('.');
+        if(core.indexOf(brand) < 0 || /-/.test(core) || host.split('.').length > 3) reasons.push('le nom « ' + brand + ' » apparaît dans une adresse qui n\'est pas l\'adresse officielle habituelle');
+      }
+      if(/\d+\.\d+\.\d+\.\d+/.test(host)) reasons.push('adresse IP au lieu d\'un nom de site');
+      if((host.match(/-/g)||[]).length >= 2) reasons.push('nom de domaine à rallonge avec plusieurs tirets');
+      if(reasons.length) out.push({host:host, reasons:reasons});
+    });
+    return out;
+  }
+  function analyse(){
+    var text = input.value.trim(); if(!text) return;
+    var found = [], score = 0;
+    SIG.forEach(function(x){
+      var hits = [];
+      x.re.forEach(function(r){ r.lastIndex = 0; var m; while((m = r.exec(text)) && hits.length < 3){ var h = m[0].trim(); if(h && hits.indexOf(h) < 0) hits.push(h); if(!r.global) break; } });
+      if(hits.length){ found.push({s:x.s, hits:hits}); score += x.s.w + Math.min(hits.length-1, 2); }
+    });
+    var links = linkCheck(text);
+    if(links.length){ score += 3; }
+    // combinaisons qui aggravent
+    var ids = found.map(function(f){ return f.s.id; });
+    var has = function(i){ return ids.indexOf(i) >= 0; };
+    if(has('lien') && (has('paiement') || has('code'))) score += 2;
+    if(has('urgence') && (has('paiement') || has('code') || has('menace'))) score += 2;
+    if(has('proche') && has('paiement')) score += 3;
+    if(has('president') && has('urgence')) score += 3;
+    if(has('conseiller') && has('code')) score += 2;
+    var level = score >= 8 ? 3 : score >= 4 ? 2 : 1;
+    if(level === 1 && found.some(function(f){ return f.s.w >= 4; })) level = 2;
+    var L = {
+      3:{t:'Très probablement une arnaque', p:'Plusieurs signaux typiques sont réunis. Ne cliquez pas, ne répondez pas, ne payez pas et ne communiquez aucun code.', b:'Risque élevé'},
+      2:{t:'Message suspect : prudence', p:'Certains signaux sont fréquents dans les arnaques. Vérifiez par vous-même, sans utiliser le lien ni le numéro du message.', b:'À vérifier'},
+      1:{t:'Peu de signaux d\'arnaque détectés', p:'Les signaux repérés ne suffisent pas à atteindre un niveau supérieur. Cela ne garantit pas que le message est sûr : restez prudent si quelque chose vous semble inhabituel.', b:'Risque faible'}
+    }[level];
+    var h = '<div class="sd-head r' + level + '"><div class="sd-badge">' + found.length + '<small>signal' + (found.length>1?'s':'') + '</small></div><div><h2>' + L.t + '</h2><p>' + L.p + '</p></div></div>';
+    h += '<section class="sd-scale" aria-label="Échelle de vigilance"><strong>Niveau ' + level + ' sur 3 : ' + ['faible', 'modéré', 'élevé'][level-1] + '</strong><ol>'
+      + ['1 · Faible', '2 · Modéré', '3 · Élevé'].map(function(label, index){
+        return '<li' + (index + 1 === level ? ' aria-current="step"' : '') + '>' + label + (index + 1 === level ? ' — votre résultat' : '') + '</li>';
+      }).join('') + '</ol><p>Échelle indicative, pas une probabilité de fraude. Score pondéré : <strong>' + score + ' points</strong>. Faible : 0 à 3 points ; modéré : 4 à 7 ; élevé : 8 ou plus. Un signal de poids 4 ou plus impose au minimum le niveau modéré. Le nombre de signaux n’est pas le score.</p><p>Un niveau faible ne garantit jamais qu’un message est sûr.</p></section>';
+    if(links.length){
+      h += '<h3>Lien' + (links.length>1?'s':'') + ' à risque</h3><ul class="sd-sigs">' + links.map(function(k){
+        return '<li class="sd-sig"><b>' + esc(k.host) + '</b><p>' + esc(k.reasons.join(' ; ')) + '.</p><a href="/particuliers/menaces/phishing-hameconnage/">→ Reconnaître un faux site</a></li>';
+      }).join('') + '</ul>';
+    }
+    if(found.length){
+      found.sort(function(a,b){ return b.s.w - a.s.w; });
+      h += '<h3>Signaux repérés</h3><ul class="sd-sigs">' + found.map(function(f){
+        return '<li class="sd-sig' + (f.s.w <= 2 ? ' w2' : '') + '"><b>' + esc(f.s.label) + '</b><p>' + esc(f.s.e) + '</p><div>' + f.hits.map(function(x){ return '<q>' + esc(x) + '</q>'; }).join('') + '</div><a href="' + f.s.l[1] + '">→ ' + esc(f.s.l[0]) + '</a></li>';
+      }).join('') + '</ul>';
+    }
+    h += '<div class="sd-todo"><h3>Que faire maintenant ?</h3><ol>'
+      + (level >= 2 ? '<li><strong>Ne cliquez sur aucun lien</strong> et ne rappelez pas le numéro indiqué.</li><li><strong>Vérifiez par vous-même</strong> : ouvrez l\'application ou le site officiel, ou appelez l\'organisme au numéro habituel.</li><li><strong>Signalez</strong> le message : SMS au 33700, e-mail sur Signal Spam, et 17Cyber si vous avez un doute — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a>.</li><li><strong>Vous avez déjà cliqué, payé ou donné un code ?</strong> Appelez votre banque pour faire opposition et suivez <a href="/particuliers/victime/">nos fiches réflexes</a>.</li>'
+                    : '<li>En cas de doute, vérifiez auprès de l\'expéditeur par un autre moyen que ce message.</li><li>Ne communiquez jamais un code, un mot de passe ou vos coordonnées bancaires en réponse à un message.</li>')
+      + '</ol></div><div class="sd-actions"><button class="sd-link" type="button" id="sd-again">Analyser un autre message</button></div>';
+    var r = el('sd-res'); r.innerHTML = h; r.style.display = 'block';
+    el('sd-again').addEventListener('click', function(){ reset(); el('sd-drop').focus(); });
+    r.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  go.addEventListener('click', analyse);
+  var importVersion = 0, previewUrl = null;
+  function reset(){
+    importVersion++;
+    input.value=''; upd(); el('sd-file').value='';
+    el('sd-res').style.display='none'; el('sd-prev').style.display='none'; el('sd-prev').removeAttribute('src'); el('sd-ocr').textContent='';
+    if(previewUrl){ URL.revokeObjectURL(previewUrl); previewUrl=null; }
+    el('sd-tab-img').click();
+  }
+  el('sd-clear').addEventListener('click', reset);
+  // --- capture d'écran : OCR local avec Tesseract.js, chargé à la demande
+  var tessLoading = null;
+  function loadTess(){
+    if(window.Tesseract) return Promise.resolve();
+    if(tessLoading) return tessLoading;
+    tessLoading = new Promise(function(ok, ko){
+      var s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+      s.onload = ok; s.onerror = function(){ tessLoading=null; s.remove(); ko(new Error('load')); }; document.head.appendChild(s);
+    });
+    return tessLoading;
+  }
+  function handle(file){
+    if(!file) return;
+    reset();
+    var version = importVersion, st = el('sd-ocr');
+    var isText = file.type === 'text/plain' || /\.txt$/i.test(file.name);
+    var isImage = /^(image\/png|image\/jpeg|image\/webp)$/.test(file.type);
+    if(!isText && !isImage){ st.textContent='Format non pris en charge. Choisissez une image PNG, JPG, WebP ou un fichier .txt.'; return; }
+    if(file.size > 10 * 1024 * 1024){ st.textContent='Fichier trop volumineux : la limite est de 10 Mo.'; return; }
+    st.textContent = isText ? 'Lecture du fichier texte…' : 'Préparation de la lecture du texte…';
+    var reading;
+    if(isText){ reading = file.text(); }
+    else {
+      previewUrl = URL.createObjectURL(file);
+      el('sd-prev').src = previewUrl; el('sd-prev').style.display = 'block';
+      reading = loadTess().then(function(){
+        return Tesseract.recognize(file, 'fra', { logger: function(m){ if(version === importVersion && m.status === 'recognizing text'){ st.textContent = 'Lecture du texte… ' + Math.round(m.progress*100) + ' %'; } } });
+      }).then(function(res){ return res.data.text || ''; });
+    }
+    reading.then(function(text){
+      if(version !== importVersion) return;
+      var t = text.trim();
+      if(!t){ st.textContent = 'Aucun texte lisible trouvé. Essayez une capture plus nette, un fichier texte ou collez le texte.'; return; }
+      input.value = t; upd();
+      document.querySelector('.sd-tab[data-t="txt"]').click();
+      st.textContent = 'Texte importé. Relisez-le et corrigez-le si nécessaire, puis cliquez sur « Analyser le message ».';
+      input.focus();
+    }).catch(function(error){
+      console.error('CyberBalise : échec de lecture du fichier.', error);
+      if(version !== importVersion) return;
+      st.textContent = 'Impossible de lire ce fichier. Essayez un autre fichier ou utilisez « Coller le texte ».';
+    });
+  }
+  el('sd-drop').addEventListener('click', function(){ el('sd-file').click(); });
+  el('sd-file').addEventListener('change', function(){ handle(this.files[0]); });
+  var drop = el('sd-drop');
+  ['dragenter','dragover'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(ev){ handle(ev.dataTransfer.files[0]); });
+  document.addEventListener('paste', function(ev){
+    var it = ev.clipboardData && [].slice.call(ev.clipboardData.items).filter(function(i){ return /^image\//.test(i.type); })[0];
+    if(it){ ev.preventDefault(); document.querySelector('.sd-tab[data-t="img"]').click(); handle(it.getAsFile()); }
+  });
+})();
+</script>
+<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
+
   <div class="home-refresh"><section class="hsec best-sellers-section" id="best-sellers-top">
     <div class="wrap">
       <div class="hsec-head">
@@ -349,6 +593,11 @@ tbody tr:hover{background:#F6F8FA}
             <p class="seller-feature">-88 % + 3 mois offerts (Black Friday)</p>
             <ul class="seller-features"><li>Dès 2,49 € par mois (67,23 € les 27 premiers mois, hors taxes)</li><li>Appareils illimités</li><li>Garantie 30 jours · antivirus et alerte fuites avec One</li></ul><span class="seller-card-cta">En savoir plus →</span>
           </a>
+          <a href="https://dhwnh.com/g/xc497owldv7c685e2c99a9584d7a686701e76ad0/?subid=adguard-vpn" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/adguard-vpn.svg" width="142" height="24" loading="lazy" decoding="async" alt="AdGuard VPN"></div>
+            <p class="seller-feature">−80 % sur 2 ans — Halloween</p>
+            <ul class="seller-features"><li>2,16 €/mois, facturés sur 2 ans · TVA éventuelle</li><li>10 appareils · gratuit : 3 Go/mois</li><li>Garantie 30 jours sur 1 an ou plus · promo jusqu’au 1er novembre</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
         </div>
       </div>
 
@@ -384,6 +633,16 @@ tbody tr:hover{background:#F6F8FA}
             <p class="seller-feature">-53 % + 3 mois offerts (Black Friday)</p>
             <ul class="seller-features"><li>Premium dès 1,39 € par mois (37,53 € les 27 premiers mois, hors taxes)</li><li>Family : 2,49 € par mois pour 6 comptes</li><li>Garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
           </a>
+          <a href="https://proton.me/fr/l/bf-pass-offers-2026?visitorId=ho-102889ab501a182746abfaee562853-42&amp;hfp=false&amp;spl=21481&amp;aap=21481&amp;offer_id=42" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-pass-logo-light.svg" width="179" height="36" loading="lazy" decoding="async" alt="Proton Pass"></div>
+            <p class="seller-feature">−60 % sur un an (Black Friday)</p>
+            <ul class="seller-features"><li>Pass Plus : 1,99 €/mois, facturé 23,88 € la première année, puis 35,88 €/an</li><li>Alias illimités, 2FA et partage sécurisé</li><li>Garantie satisfait ou remboursé de 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
+          <a href="https://www.stickypassword.com/fr/lp/cyberbalise?utm_source=cyberbalise&amp;utm_medium=website&amp;utm_term=mva&amp;utm_content=lp-sp&amp;utm_campaign=cyberbalise&amp;campaign_affid=d-cyberb-lp" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/sticky-password.png" width="280" height="38" loading="lazy" decoding="async" alt="Sticky Password"></div>
+            <p class="seller-feature">Licence Premium à vie, paiement unique</p>
+            <ul class="seller-features"><li>Synchronisation cloud, Wi-Fi local ou aucune</li><li>Partage sécurisé, 2FA et accès d’urgence</li><li>Page partenaire en attente d’activation</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
           <a href="/offres/gestionnaires-mots-de-passe/bitwarden/" class="best-seller-card">
             <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/bitwarden.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
             <h3>Bitwarden</h3><p class="seller-feature">Le premier choix du débutant</p>
@@ -404,6 +663,11 @@ tbody tr:hover{background:#F6F8FA}
 
       <div class="home-category-panel" id="panel-backup" role="tabpanel" aria-labelledby="tab-backup" hidden>
         <div class="best-sellers-grid">
+          <a href="https://zmgig.com/g/b2bp0q8e0l7c685e2c99ce230d48cb611901adfd/?subid=protondrive-cyberbalise" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+            <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-drive-logo-light.svg" width="142" height="24" loading="lazy" decoding="async" alt="Proton Drive"></div>
+            <p class="seller-feature">−60 % sur Drive Plus — 200 Go</p>
+            <ul class="seller-features"><li>1,99 €/mois, soit 23,88 € la première année</li><li>Puis 47,88 €/an · chiffrement de bout en bout</li><li>Versions sur 10 ans · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+          </a>
           <a href="/offres/sauvegardes-cloud/backblaze/" class="best-seller-card">
             <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/backblaze.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
             <h3>Backblaze</h3><p class="seller-feature">Installer et oublier</p>
@@ -423,216 +687,6 @@ tbody tr:hover{background:#F6F8FA}
       </div>
     </div>
   </section></div>
-<div class="wrap"><article class="page">
-<style>
-.sd{max-width:780px;margin:0 auto;scroll-margin-top:90px}
-.sd-tabs{display:flex;gap:8px;margin:6px 0 14px;flex-wrap:wrap}
-.sd-tab{border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:.5em 1.1em;font:inherit;font-size:.92rem;cursor:pointer;color:var(--ink)}
-.sd-tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.sd textarea{width:100%;box-sizing:border-box;min-height:150px;font:inherit;font-size:1rem;line-height:1.5;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);resize:vertical}
-.sd textarea:focus{outline:none;border-color:var(--teal)}
-.sd-drop{border:2px dashed var(--line);border-radius:14px;padding:28px 18px;text-align:center;background:var(--paper);cursor:pointer;transition:border-color .15s}
-.sd-drop:hover,.sd-drop.over{border-color:var(--teal)}
-.sd-drop strong{display:block;font-family:var(--disp);font-size:1.05rem;margin-bottom:4px}
-.sd-drop span{color:var(--muted);font-size:.9rem}
-.sd-prev{max-width:100%;max-height:260px;border-radius:10px;margin-top:12px;display:none}
-.sd-ocr{font-size:.88rem;color:var(--muted);margin-top:10px;min-height:1.2em}
-.sd-ex{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 0;font-size:.88rem;color:var(--muted)}
-.sd-ex button{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:.32em .75em;font:inherit;font-size:.84rem;cursor:pointer;color:var(--ink)}
-.sd-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
-.sd-btn{background:var(--orange);color:#fff;border:0;border-radius:10px;padding:.85em 1.4em;font-family:var(--disp);font-weight:700;font-size:1rem;cursor:pointer}
-.sd-btn:hover{background:var(--orange-d)}.sd-btn[disabled]{opacity:.45;cursor:not-allowed}
-.sd-link{background:none;border:0;color:var(--teal-d);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
-.sd-res{display:none;margin-top:26px}
-.sd-head{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;border-radius:16px;padding:20px 22px;margin-bottom:18px}
-.sd-head.r3{background:var(--orange-soft);border:1.5px solid var(--orange)}
-.sd-head.r2{background:#FFF4E0;border:1.5px solid #E2A33B}
-.sd-head.r1{background:var(--teal-soft);border:1.5px solid var(--teal)}
-.sd-badge{width:84px;height:84px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:var(--disp);font-weight:800;font-size:1.5rem;line-height:1}
-.sd-badge small{font-size:.62rem;font-family:var(--mono);letter-spacing:.08em;font-weight:500;margin-top:4px;text-transform:uppercase}
-.r3 .sd-badge{background:var(--orange)}.r2 .sd-badge{background:#C9831B}.r1 .sd-badge{background:var(--teal)}
-.sd-head h2{border:0;padding:0;margin:0 0 .25em;font-size:1.3rem}
-.sd-head p{margin:0;font-size:.95rem}
-.sd-sigs{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.sd-sig{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:12px;padding:13px 16px}
-.sd-sig.w2{border-left-color:#E2A33B}
-.sd-sig b{display:block;font-family:var(--disp);margin-bottom:3px}
-.sd-sig p{margin:0 0 6px;font-size:.93rem;line-height:1.45}
-.sd-sig q{display:inline-block;font-family:var(--mono);font-size:.78rem;background:var(--bg);border-radius:6px;padding:.1em .45em;margin:0 4px 4px 0;quotes:none}
-.sd-sig a{font-size:.86rem;font-weight:600}
-.sd-todo{margin-top:22px}
-.sd-todo ol{margin:.4em 0 0;padding-left:1.2em}.sd-todo li{margin:.35em 0}
-@media (max-width:760px){.sd-head{grid-template-columns:1fr;justify-items:center;text-align:center}.sd textarea{font-size:.95rem}}
-</style><!-- CB-CONTENU:DEBUT -->
-
-<div class="note"><p><strong>Comment ça marche.</strong> Collez le texte d'un SMS, d'un e-mail ou d'un message, ou déposez une capture d'écran : l'outil repère les signaux classiques d'une arnaque et vous dit quoi faire. L'analyse se fait <strong>dans votre navigateur</strong> : le message et l'image ne sont envoyés à personne. Pour lire le texte d'une capture, le navigateur télécharge une fois un module de reconnaissance de caractères depuis un serveur public, sans y envoyer votre image.</p></div>
-<div class="sd" id="sd">
-  <h2 id="analyser" style="border:0;padding:0;margin:0 0 4px">Analysez un message suspect</h2>
-  <div class="sd-tabs" role="tablist">
-    <button class="sd-tab on" type="button" data-t="txt">Coller le texte</button>
-    <button class="sd-tab" type="button" data-t="img">Capture d'écran</button>
-  </div>
-  <div id="sd-txt">
-    <textarea id="sd-in" placeholder="Collez ici le texte du SMS, de l'e-mail ou du message reçu…" aria-label="Texte du message à analyser"></textarea>
-    <div class="sd-ex"><span>Essayer un exemple :</span><span id="sd-ex"></span></div>
-  </div>
-  <div id="sd-img" style="display:none">
-    <label class="sd-drop" id="sd-drop">
-      <input type="file" id="sd-file" accept="image/*" hidden>
-      <strong>Déposez une capture d'écran ou cliquez pour la choisir</strong>
-      <span>PNG ou JPG · le texte est lu dans votre navigateur, puis vous pouvez le corriger</span>
-      <img id="sd-prev" class="sd-prev" alt="Aperçu de la capture">
-    </label>
-    <p class="sd-ocr" id="sd-ocr"></p>
-  </div>
-  <div class="sd-actions">
-    <button class="sd-btn" id="sd-go" type="button" disabled>Analyser le message</button>
-    <button class="sd-link" id="sd-clear" type="button">Effacer</button>
-  </div>
-  <div class="sd-res" id="sd-res"></div>
-</div>
-
-<h2 id="limites">Ce que l'outil peut et ne peut pas faire</h2>
-<ul>
-  <li><strong>Il repère des signaux</strong> fréquents dans les arnaques : urgence, menace, demande de code ou de paiement, lien suspect, usurpation d'un organisme connu, faux proche, chantage…</li>
-  <li><strong>Il ne vérifie pas les liens en ligne</strong> et ne consulte aucune base de données : il ne peut pas garantir qu'un message est sans danger. Un message sans signal peut quand même être une arnaque.</li>
-  <li><strong>La lecture des captures</strong> peut faire des erreurs sur les images floues ou petites : relisez le texte extrait avant l'analyse.</li>
-  <li><strong>Dans le doute, la règle reste la même :</strong> n'agissez jamais depuis le message reçu. Ouvrez vous-même le site ou l'application de l'organisme, ou appelez-le au numéro habituel.</li>
-</ul>
-
-<h2 id="signaler">Où signaler</h2>
-<div class="tablewrap"><table><thead><tr><th>Situation</th><th>Que faire</th></tr></thead><tbody><tr><td>SMS ou appel frauduleux</td><td>Transférez le SMS au 33700 (gratuit) ou signalez-le sur 33700.fr — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>E-mail d'hameçonnage</td><td>Signalez-le sur Signal Spam (signal-spam.fr) — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr><tr><td>Vous avez payé ou donné vos coordonnées bancaires</td><td>Faites opposition auprès de votre banque sans attendre — <a href="/particuliers/victime/carte-bancaire-debitee/">voir la fiche</a></td></tr><tr><td>Vous ne savez pas à qui vous adresser</td><td>17Cyber (17cyber.gouv.fr) vous oriente 24 h/24 et 7 j/7 — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a></td></tr></tbody></table></div>
-<p class="caption">Services de signalement repris de notre fiche <a href="/particuliers/victime/signaler-un-probleme/">Où et comment signaler</a>. Signaux d'alerte détaillés dans <a href="/particuliers/menaces/phishing-hameconnage/">Phishing et hameçonnage</a> et <a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels</a>.</p>
-
-<script>
-(function(){
-  var D = {"signals": [{"id": "urgence", "w": 2, "label": "Urgence ou menace de délai", "re": ["\\burgent", "imm[ée]diat", "sous 24 ?h", "sous 48 ?h", "dans les 24", "avant ce soir", "dernier (rappel|avertissement|d[ée]lai)", "sans r[ée]ponse de votre part", "d[ée]lai (de|d')", "expire", "aujourd'hui (m[eê]me|avant)", "au plus vite", "rapidement"], "e": "Créer l'urgence empêche de réfléchir : c'est le ressort numéro un des arnaques. Un vrai organisme laisse le temps de vérifier.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "menace", "w": 2, "label": "Menace de blocage, de suspension ou de poursuites", "re": ["bloqu[ée]", "suspen(du|due|sion)", "d[ée]sactiv", "r[ée]sili", "poursuites?", "huissier", "amende", "majoration", "p[ée]nalit[ée]", "plainte (sera|va)", "convocation", "gendarmerie|police nationale|brigade"], "e": "Faire peur (compte bloqué, amende, convocation) pousse à agir sans vérifier. Les administrations ne menacent pas par SMS avec un lien de paiement.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}, {"id": "colis", "w": 2, "label": "Colis en attente ou frais de livraison", "re": ["colis", "livraison", "livreur", "frais (de port|d'affranchissement|de r[ée]exp[ée]dition|de douane)", "reprogrammer", "point relais", "douane"], "e": "Le faux colis avec de petits frais à régler est l'un des SMS frauduleux les plus répandus : le but est de récupérer votre numéro de carte.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}, {"id": "paiement", "w": 3, "label": "Demande de paiement ou de données bancaires", "re": ["(num[ée]ro|coordonn[ée]es) (de )?(carte|bancaire)", "cryptogramme", "\\bcvv\\b", "date d'expiration", "\\biban\\b", "\\brib\\b", "r[ée]gler", "payer", "paiement", "virement", "1[,.]99 ?€|2[,.]99 ?€|0[,.]99 ?€", "\\d+[,.]\\d{2} ?(€|eur)"], "e": "Un message non sollicité qui demande de payer ou de saisir vos données de carte est suspect par principe. Payez uniquement depuis le site ou l'application officiels, ouverts par vous-même.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "code", "w": 5, "label": "Demande de code, de mot de passe ou de validation", "re": ["code (de )?(confirmation|validation|s[ée]curit[ée]|re[çc]u|sms|à 6 chiffres)", "mot de passe", "identifiants?", "valider (l'|une |cette )?op[ée]ration", "confirmer (votre|l')identit", "authentifi", "code secret", "communiquez.*code", "donnez.*code"], "e": "Votre banque, un service client ou l'administration ne vous demanderont jamais un code, un mot de passe ou la validation d'une opération par message ou par téléphone.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "conseiller", "w": 3, "label": "Faux conseiller ou « opération suspecte » à annuler", "re": ["op[ée]ration suspecte", "service (des )?fraudes?", "conseiller", "tentative de (paiement|connexion)", "activit[ée] inhabituelle", "s[ée]curiser (votre|vos) (compte|fonds|argent)", "compte (de )?s[ée]curit[ée]", "virement de s[ée]curit[ée]"], "e": "Le faux conseiller bancaire signale une « opération suspecte » pour vous faire valider… une opération frauduleuse. Raccrochez et rappelez votre banque au numéro habituel.", "l": ["Banque en ligne et fraude aux paiements", "/particuliers/achats/fraude-aux-paiements/"]}, {"id": "remboursement", "w": 2, "label": "Remboursement, gain ou cadeau inattendu", "re": ["rembours", "trop[- ]per[çc]u", "vous avez gagn", "gagnant", "cadeau", "lot (à|a) retirer", "r[ée]compense", "offert", "gratuit", "cr[ée]dit d'imp[ôo]t", "aide (de l'[ée]tat|exceptionnelle)", "prime"], "e": "Un remboursement ou un gain que vous n'attendiez pas sert d'appât pour obtenir vos coordonnées bancaires.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "admin", "w": 2, "label": "Usurpation d'un organisme connu", "re": ["\\bameli\\b|assurance maladie|carte vitale", "\\bcaf\\b", "imp[ôo]ts|dgfip|tr[ée]sor public", "\\bants\\b|permis|carte grise|amende", "chronopost|colissimo|la poste|dhl|ups|mondial relay", "\\bedf\\b|engie", "france travail|p[ôo]le emploi", "\\bcpf\\b|compte formation", "netflix|amazon|apple|microsoft|google"], "e": "Les escrocs imitent les organismes que tout le monde connaît. Leur nom dans un message ne prouve rien : allez vérifier sur votre espace officiel, sans passer par le lien.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "support", "w": 3, "label": "Fausse alerte virus ou support technique", "re": ["(ordinateur|appareil|t[ée]l[ée]phone) (est )?(infect|bloqu|pirat|compromis)", "virus (d[ée]tect|trouv)", "support (technique|microsoft|apple|windows)", "appelez (imm[ée]diatement|ce num[ée]ro|le support)", "ne (pas )?(fermer|[ée]teindre)", "anydesk|teamviewer|prise en main"], "e": "Aucun éditeur ne vous demande d'appeler un numéro depuis une alerte. Ne rappelez pas et n'installez aucun logiciel de prise en main à distance.", "l": ["Arnaques au faux support", "/particuliers/menaces/arnaques-au-faux-support/"]}, {"id": "chantage", "w": 3, "label": "Chantage ou menace de divulgation", "re": ["vid[ée]o (intime|compromettante)", "webcam", "vos contacts (recevront|vont recevoir)", "bitcoin|\\bbtc\\b", "divulg", "sites? (pour adultes|pornographique)", "j'ai (pirat|acc[eè]s)"], "e": "Les mails de chantage (« je vous ai filmé via votre webcam ») sont presque toujours du bluff envoyé en masse. Ne payez pas et ne répondez pas.", "l": ["Chantage et sextorsion", "/particuliers/menaces/chantage-et-sextorsion/"]}, {"id": "invest", "w": 5, "label": "Investissement miracle ou cryptomonnaie", "re": ["rendement", "investi", "placement (s[ûu]r|garanti)", "crypto", "trading", "doubl(er|ez) (votre|vos)", "\\d{2,3} ?% (par|en) (mois|semaine|an)", "sans risque", "opportunit[ée] unique"], "e": "Un rendement élevé « sans risque » est le signe le plus sûr d'une arnaque. Vérifiez toujours que la plateforme figure sur les listes de l'AMF.", "l": ["Fausses plateformes d'investissement", "/particuliers/menaces/fausses-plateformes-dinvestissement/"]}, {"id": "proche", "w": 3, "label": "Proche en difficulté qui change de numéro", "re": ["(maman|papa|mamie|papi)", "nouveau num[ée]ro", "(mon|j'ai) (t[ée]l[ée]phone|portable) (est )?(cass|perdu|tomb)", "c'est moi", "peux[- ]tu (me )?(faire|envoyer|avancer)", "j'ai besoin d'argent"], "e": "« Maman, j'ai cassé mon téléphone, voici mon nouveau numéro » : l'arnaque au proche est très répandue. Rappelez votre proche sur son numéro habituel avant tout virement.", "l": ["Deepfakes et arnaques dopées à l'IA", "/particuliers/menaces/deepfakes-et-arnaques-a-lia/"]}, {"id": "president", "w": 3, "label": "Virement urgent et confidentiel (entreprise)", "re": ["virement (urgent|confidentiel|exceptionnel)", "(nouveau|changement de) (rib|iban|coordonn[ée]es bancaires)", "op[ée]ration confidentielle", "ne (pas )?en parler", "discr[ée]tion", "acquisition", "pdg|directeur g[ée]n[ée]ral|pr[ée]sident"], "e": "Une demande de virement urgent et confidentiel, ou un changement de RIB fournisseur, doit toujours être vérifiée par un contre-appel sur un numéro connu.", "l": ["Fraude au président et faux virements", "/pro/menaces/fraude-au-president/"]}, {"id": "lien", "w": 2, "label": "Lien à cliquer", "re": ["https?://", "\\bwww\\.", "\\b[a-z0-9-]+\\.(com|fr|net|info|xyz|top|online|site|live|click|shop|app|link|io|co|ly|me|cc|ru|cn)\\b", "cliquez|cliquer|appuyez sur le lien|suivez (ce|le) lien"], "e": "Ne cliquez pas : ouvrez vous-même le site ou l'application officiels. Un lien peut afficher une adresse rassurante et mener ailleurs.", "l": ["Phishing et hameçonnage", "/particuliers/menaces/phishing-hameconnage/"]}, {"id": "rappel", "w": 2, "label": "Numéro à rappeler", "re": ["(appelez|rappelez|contactez)[^.\\n]{0,40}(0[1-9]|\\+33|08)", "\\b0[89]\\d{2}[ .]?\\d{2}[ .]?\\d{2}[ .]?\\d{2}\\b"], "e": "Rappeler le numéro indiqué dans un message suspect vous met en contact avec l'escroc. Utilisez le numéro figurant sur votre carte, votre contrat ou le site officiel.", "l": ["Arnaques par SMS et appels", "/particuliers/menaces/arnaques-sms-et-appels/"]}], "hints": {"shorteners": ["bit.ly", "tinyurl", "t.co", "goo.gl", "cutt.ly", "is.gd", "rebrand.ly", "ow.ly", "shorturl", "t.ly", "rb.gy"], "risky_tlds": ["xyz", "top", "online", "site", "live", "click", "shop", "info", "icu", "buzz", "ru", "cn", "tk", "cc", "link", "app"], "brands": ["ameli", "caf", "impots", "ants", "laposte", "colissimo", "chronopost", "edf", "engie", "amazon", "netflix", "paypal", "apple", "microsoft", "google", "credit-agricole", "creditagricole", "boursorama", "societegenerale", "bnp", "lcl", "banquepopulaire", "caisse-epargne", "labanquepostale", "francetravail", "moncompteformation", "antai", "service-public"]}, "examples": [["Faux colis", "Colissimo : votre colis n'a pas pu être livré faute de frais d'affranchissement (1,99 €). Réglez-les sous 24h pour reprogrammer la livraison : https://colissimo-suivi-livraison.top/fr"], ["Faux conseiller", "Bonjour, ici le service fraude de votre banque. Une opération suspecte de 1 450 € est en cours sur votre compte. Pour l'annuler, communiquez-nous le code de confirmation que vous allez recevoir par SMS."], ["Faux proche", "Coucou maman, mon téléphone est cassé, c'est mon nouveau numéro. Tu peux me faire un virement de 850 € aujourd'hui ? C'est urgent, je t'explique après."], ["Message légitime", "Bonjour, votre rendez-vous chez le dentiste est confirmé pour mardi 14 h. Pour toute modification, appelez le cabinet. Bonne journée."]]};
-  var el = function(id){ return document.getElementById(id); };
-  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
-  var SIG = D.signals.map(function(s){ return {s:s, re:s.re.map(function(r){ return new RegExp(r, 'gi'); })}; });
-  var input = el('sd-in'), go = el('sd-go');
-  function upd(){ go.disabled = input.value.trim().length < 8; }
-  input.addEventListener('input', upd);
-  D.examples.forEach(function(ex){
-    var b = document.createElement('button'); b.type='button'; b.textContent = ex[0];
-    b.addEventListener('click', function(){ input.value = ex[1]; upd(); analyse(); });
-    el('sd-ex').appendChild(b);
-  });
-  document.querySelectorAll('.sd-tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.sd-tab').forEach(function(x){ x.classList.remove('on'); }); t.classList.add('on');
-      var img = t.dataset.t === 'img';
-      el('sd-img').style.display = img ? 'block' : 'none';
-      if(!img){ el('sd-txt').style.display='block'; }
-    });
-  });
-  function linkCheck(text){
-    var out = [], urls = text.match(/(https?:\/\/[^\s]+|www\.[^\s]+|\b[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}(\/[^\s]*)?)/gi) || [];
-    urls.forEach(function(u){
-      var host = u.replace(/^https?:\/\//i,'').replace(/^www\./i,'').split(/[\/?#]/)[0].toLowerCase().replace(/[.,;:!)]+$/,'');
-      if(!host || host.indexOf('.') < 0) return;
-      var tld = host.split('.').pop(), reasons = [];
-      if(D.hints.shorteners.some(function(s){ return host === s || host.endsWith('.'+s); })) reasons.push('lien raccourci qui cache la vraie destination');
-      if(D.hints.risky_tlds.indexOf(tld) >= 0) reasons.push('extension « .' + tld + ' » très utilisée par les sites frauduleux');
-      var brand = D.hints.brands.filter(function(b){ return host.indexOf(b) >= 0; })[0];
-      if(brand){
-        var core = host.split('.').slice(-2).join('.');
-        if(core.indexOf(brand) < 0 || /-/.test(core) || host.split('.').length > 3) reasons.push('le nom « ' + brand + ' » apparaît dans une adresse qui n\'est pas l\'adresse officielle habituelle');
-      }
-      if(/\d+\.\d+\.\d+\.\d+/.test(host)) reasons.push('adresse IP au lieu d\'un nom de site');
-      if((host.match(/-/g)||[]).length >= 2) reasons.push('nom de domaine à rallonge avec plusieurs tirets');
-      if(reasons.length) out.push({host:host, reasons:reasons});
-    });
-    return out;
-  }
-  function analyse(){
-    var text = input.value.trim(); if(!text) return;
-    var found = [], score = 0;
-    SIG.forEach(function(x){
-      var hits = [];
-      x.re.forEach(function(r){ r.lastIndex = 0; var m; while((m = r.exec(text)) && hits.length < 3){ var h = m[0].trim(); if(h && hits.indexOf(h) < 0) hits.push(h); if(!r.global) break; } });
-      if(hits.length){ found.push({s:x.s, hits:hits}); score += x.s.w + Math.min(hits.length-1, 2); }
-    });
-    var links = linkCheck(text);
-    if(links.length){ score += 3; }
-    // combinaisons qui aggravent
-    var ids = found.map(function(f){ return f.s.id; });
-    var has = function(i){ return ids.indexOf(i) >= 0; };
-    if(has('lien') && (has('paiement') || has('code'))) score += 2;
-    if(has('urgence') && (has('paiement') || has('code') || has('menace'))) score += 2;
-    if(has('proche') && has('paiement')) score += 3;
-    if(has('president') && has('urgence')) score += 3;
-    if(has('conseiller') && has('code')) score += 2;
-    var level = score >= 8 ? 3 : score >= 4 ? 2 : 1;
-    if(level === 1 && found.some(function(f){ return f.s.w >= 4; })) level = 2;
-    var L = {
-      3:{t:'Très probablement une arnaque', p:'Plusieurs signaux typiques sont réunis. Ne cliquez pas, ne répondez pas, ne payez pas et ne communiquez aucun code.', b:'Risque élevé'},
-      2:{t:'Message suspect : prudence', p:'Certains signaux sont fréquents dans les arnaques. Vérifiez par vous-même, sans utiliser le lien ni le numéro du message.', b:'À vérifier'},
-      1:{t:'Peu de signaux d\'arnaque détectés', p:'Nous n\'avons pas repéré de signal classique. Cela ne garantit pas que le message est sûr : restez prudent si quelque chose vous semble inhabituel.', b:'Risque faible'}
-    }[level];
-    var h = '<div class="sd-head r' + level + '"><div class="sd-badge">' + found.length + '<small>signal' + (found.length>1?'s':'') + '</small></div><div><h2>' + L.t + '</h2><p>' + L.p + '</p></div></div>';
-    if(links.length){
-      h += '<h3>Lien' + (links.length>1?'s':'') + ' à risque</h3><ul class="sd-sigs">' + links.map(function(k){
-        return '<li class="sd-sig"><b>' + esc(k.host) + '</b><p>' + esc(k.reasons.join(' ; ')) + '.</p><a href="/particuliers/menaces/phishing-hameconnage/">→ Reconnaître un faux site</a></li>';
-      }).join('') + '</ul>';
-    }
-    if(found.length){
-      found.sort(function(a,b){ return b.s.w - a.s.w; });
-      h += '<h3>Signaux repérés</h3><ul class="sd-sigs">' + found.map(function(f){
-        return '<li class="sd-sig' + (f.s.w <= 2 ? ' w2' : '') + '"><b>' + esc(f.s.label) + '</b><p>' + esc(f.s.e) + '</p><div>' + f.hits.map(function(x){ return '<q>' + esc(x) + '</q>'; }).join('') + '</div><a href="' + f.s.l[1] + '">→ ' + esc(f.s.l[0]) + '</a></li>';
-      }).join('') + '</ul>';
-    }
-    h += '<div class="sd-todo"><h3>Que faire maintenant ?</h3><ol>'
-      + (level >= 2 ? '<li><strong>Ne cliquez sur aucun lien</strong> et ne rappelez pas le numéro indiqué.</li><li><strong>Vérifiez par vous-même</strong> : ouvrez l\'application ou le site officiel, ou appelez l\'organisme au numéro habituel.</li><li><strong>Signalez</strong> le message : SMS au 33700, e-mail sur Signal Spam, et 17Cyber si vous avez un doute — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a>.</li><li><strong>Vous avez déjà cliqué, payé ou donné un code ?</strong> Appelez votre banque pour faire opposition et suivez <a href="/particuliers/victime/">nos fiches réflexes</a>.</li>'
-                    : '<li>En cas de doute, vérifiez auprès de l\'expéditeur par un autre moyen que ce message.</li><li>Ne communiquez jamais un code, un mot de passe ou vos coordonnées bancaires en réponse à un message.</li>')
-      + '</ol></div><div class="sd-actions"><button class="sd-link" type="button" id="sd-again">Analyser un autre message</button></div>';
-    var r = el('sd-res'); r.innerHTML = h; r.style.display = 'block';
-    el('sd-again').addEventListener('click', function(){ input.value=''; upd(); r.style.display='none'; document.querySelector('.sd-tab[data-t="txt"]').click(); input.focus(); });
-    r.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-  go.addEventListener('click', analyse);
-  el('sd-clear').addEventListener('click', function(){ input.value=''; upd(); el('sd-res').style.display='none'; el('sd-prev').style.display='none'; el('sd-ocr').textContent=''; });
-  // --- capture d'écran : OCR local avec Tesseract.js, chargé à la demande
-  var tessLoading = null;
-  function loadTess(){
-    if(window.Tesseract) return Promise.resolve();
-    if(tessLoading) return tessLoading;
-    tessLoading = new Promise(function(ok, ko){
-      var s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
-      s.onload = ok; s.onerror = function(){ ko(new Error('load')); }; document.head.appendChild(s);
-    });
-    return tessLoading;
-  }
-  function handle(file){
-    if(!file || !/^image\//.test(file.type)) return;
-    var url = URL.createObjectURL(file), prev = el('sd-prev'); prev.src = url; prev.style.display = 'block';
-    var st = el('sd-ocr'); st.textContent = 'Préparation de la lecture du texte…';
-    loadTess().then(function(){
-      return Tesseract.recognize(file, 'fra', { logger: function(m){ if(m.status === 'recognizing text'){ st.textContent = 'Lecture du texte… ' + Math.round(m.progress*100) + ' %'; } } });
-    }).then(function(res){
-      var t = (res.data.text || '').trim();
-      if(!t){ st.textContent = 'Aucun texte lisible trouvé. Essayez une capture plus nette, ou collez le texte.'; return; }
-      input.value = t; upd();
-      document.querySelector('.sd-tab[data-t="txt"]').click();
-      st.textContent = '';
-      analyse();
-    }).catch(function(){
-      st.textContent = 'La lecture de l\'image n\'a pas pu démarrer (connexion bloquée ?). Copiez le texte du message dans l\'onglet « Coller le texte ».';
-    });
-  }
-  el('sd-file').addEventListener('change', function(){ handle(this.files[0]); });
-  var drop = el('sd-drop');
-  ['dragenter','dragover'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add('over'); }); });
-  ['dragleave','drop'].forEach(function(e){ drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove('over'); }); });
-  drop.addEventListener('drop', function(ev){ handle(ev.dataTransfer.files[0]); });
-  document.addEventListener('paste', function(ev){
-    var it = ev.clipboardData && [].slice.call(ev.clipboardData.items).filter(function(i){ return /^image\//.test(i.type); })[0];
-    if(it){ ev.preventDefault(); document.querySelector('.sd-tab[data-t="img"]').click(); handle(it.getAsFile()); }
-  });
-})();
-</script>
-<!-- CB-CONTENU:FIN --><div class="see-also" id="also"></div></article></div>
-
 <section class="final-cta-section">
   <div class="wrap">
     <h2>Prêt à vous protéger dès aujourd'hui ?</h2>
@@ -744,7 +798,7 @@ if(si){
     const q=si.value.trim().toLowerCase();
     if(q.length<2){sr.style.display='none';return}
     const hits=IDX.filter(p=>(p.t+' '+p.k).toLowerCase().includes(q)).slice(0,7);
-    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}<span class="chip ${p.a==='Particuliers'?'part':p.a==='Professionnels'?'pro':'both'}">${p.a==='Professionnels'?'Pros':p.a==='Particuliers'?'Particuliers':'Les deux'}</span></a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
+    sr.innerHTML=hits.length?hits.map(p=>`<a href="${p.u}"><span>${p.t}</span>${''&&''}</a>`).join(''):'<a><span>Aucun résultat — le lexique peut aider.</span></a>';
     sr.style.display='block';
   });
   document.addEventListener('click',e=>{if(!sr.contains(e.target)&&e.target!==si)sr.style.display='none'});
@@ -752,11 +806,6 @@ if(si){
 </script>
 <script src="/assets/top-protections.js?v=20261026-expand"></script><script src="/assets/cookie-consent.js"></script>
 </body></html>
-
-
-
-
-
 
 
 

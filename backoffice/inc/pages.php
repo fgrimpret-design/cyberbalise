@@ -11,6 +11,7 @@ const CB_MENU_START = '<!-- CB-MENU:DEBUT -->';
 const CB_MENU_END   = '<!-- CB-MENU:FIN -->';
 const CB_MNAV_START = '<!-- CB-MNAV:DEBUT -->';
 const CB_MNAV_END   = '<!-- CB-MNAV:FIN -->';
+const CB_CONSTRUCTION = '<!-- CB-PAGE:EN-CONSTRUCTION -->';
 const CB_SKIP_DIRS  = ['backoffice', 'assets', 'uploads', 'cdn-cgi', '.well-known'];
 
 function tracking_tag(): string {
@@ -208,7 +209,9 @@ function remove_empty_dirs(string $file, string $root): void {
 /* ---------- Brouillon / publication : un brouillon est rangé hors du site (il n'existe pas pour le public) ---------- */
 function publish_page(string $f): void {
     if (!is_draft($f)) return;
-    if (is_file(site_path($f))) throw new RuntimeException("Une page en ligne existe déjà à l'adresse " . page_url_path($f) . '.');
+    if (is_file(site_path($f)) && !str_contains((string)file_get_contents(site_path($f)), CB_CONSTRUCTION)) {
+        throw new RuntimeException("Une page en ligne existe déjà à l'adresse " . page_url_path($f) . '.');
+    }
     $src = (string)file_get_contents(draft_path($f));
     write_page($f, $src, 'Publication', 'site', false);
     @unlink(draft_path($f));
@@ -307,8 +310,7 @@ function menu_html(array $sections): array {
         if (!empty($s['items'])) {
             $nav .= '<div class="dropdown">';
             foreach ($s['items'] as $i) {
-                $chip = CB_CHIPS[$i['chip'] ?? ''] ?? '';
-                $nav .= '<a href="' . e($i['href']) . '"><div><strong>' . mtxt($i['label']) . '</strong></div>' . ($chip !== '' ? '<span class="chip ' . e($i['chip']) . '">' . mtxt($chip) . '</span>' : '') . '</a>';
+                $nav .= '<a href="' . e($i['href']) . '"><div><strong>' . mtxt($i['label']) . '</strong></div></a>';
                 $mnav .= '<a href="' . e($i['href']) . '">' . mtxt($i['label']) . '</a>';
             }
             $nav .= '</div>';
@@ -380,6 +382,7 @@ function build_sitemap(): int {
     $n = 0;
     foreach (scan_html(SITE_ROOT) as $f) {
         if (in_array($f, cfg('sitemap_exclude', []), true)) continue;
+        if (str_contains((string)file_get_contents(site_path($f)), CB_CONSTRUCTION)) continue;
         $x .= '  <url><loc>' . htmlspecialchars($base . page_url_path($f)) . '</loc><lastmod>' . date('Y-m-d', (int)filemtime(site_path($f))) . "</lastmod></url>\n";
         $n++;
     }
@@ -403,7 +406,6 @@ function crumbs_html(string $f): string {
 }
 function new_page_source(string $f, string $title, string $desc, string $lead, string $aud, string $content): string {
     $tpl = (string)file_get_contents(BO_DIR . '/templates/page-modele.html');
-    $chip = ['part' => '<span class="chip part">Particuliers</span>', 'pro' => '<span class="chip pro">Pros</span>'][$aud] ?? '<span class="chip both">Les deux</span>';
     $src = strtr($tpl, [
         '{{TITRE_ONGLET}}' => e($title . ' — ' . cfg('site_name')),
         '{{TITRE}}' => e($title),
@@ -411,7 +413,7 @@ function new_page_source(string $f, string $title, string $desc, string $lead, s
         '{{CHAPO}}' => e($lead),
         '{{URL}}' => e(rtrim(cfg('site_url'), '/') . page_url_path($f)),
         '{{FIL}}' => crumbs_html($f),
-        '{{PUBLIC}}' => $chip,
+        '{{PUBLIC}}' => '',
         '{{DATE}}' => fr_month_year(),
         '{{CONTENU}}' => $content,
     ]);

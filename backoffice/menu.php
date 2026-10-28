@@ -49,7 +49,7 @@ layout_start('Menu du site', 'menu.php');
     <h2>Mode d'emploi</h2>
     <ul class="small muted" style="padding-left:18px;line-height:1.7">
       <li><strong>Rubrique</strong> : entrée du menu principal (4 ou 5 au maximum pour rester lisible).</li>
-      <li><strong>Sous-menu</strong> : liens du menu déroulant, avec la pastille de public (Particuliers, Pros, Les deux).</li>
+      <li><strong>Sous-menu</strong> : liens du menu déroulant. Le public reste une information interne ; aucune pastille n'est affichée sur le site.</li>
       <li>Les adresses commencent par « / » et finissent par « / », par ex. <span class="mono">/pro/menaces/</span>. Commencez à taper : la liste propose les pages existantes.</li>
       <li>Retirer un lien du menu ne supprime pas la page.</li>
     </ul>
@@ -61,7 +61,7 @@ $js = json_encode($sections, JSON_UNESCAPED_UNICODE | JSON_HEX_TAG);
 layout_end(<<<HTML
 <script>
 var S = $js, box = document.getElementById('secs');
-var CH = {'':'Sans pastille', part:'Particuliers', pro:'Pros', both:'Les deux'};
+var CH = {'':'Public non précisé', part:'Particuliers', pro:'Pros', both:'Les deux'};
 function el(h){var d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild}
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function itemRow(i){i=i||{};return el('<li draggable="true" class="mi"><span class="grip" aria-hidden="true">⋮⋮</span><input type="text" class="il" placeholder="Libellé" value="'+esc(i.label)+'" aria-label="Libellé"><input type="text" class="ih mono" list="urls" placeholder="/rubrique/page/" value="'+esc(i.href)+'" aria-label="Adresse"><select class="ic" aria-label="Pastille">'+Object.keys(CH).map(function(k){return '<option value="'+k+'"'+((i.chip||'')===k?' selected':'')+'>'+CH[k]+'</option>'}).join('')+'</select><button type="button" class="btn sm ghost" data-del aria-label="Retirer">×</button></li>')}
