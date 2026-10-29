@@ -1,7 +1,5 @@
 # Déploiement automatique de cyberbalise.fr vers l'espace web IONOS
 # Déclenché à chaque push sur la branche main.
-# Le robot se connecte en SFTP avec les secrets IONOS_SFTP_USER et IONOS_SFTP_PASSWORD
-# et synchronise le contenu du site vers le dossier /Newpublic de l'hébergement.
 
 name: "Déploiement cyberbalise.fr vers IONOS"
 
@@ -38,7 +36,3 @@ jobs:
           remote_path: /Newpublic
           sftp_only: true
           delete_remote_files: true
-          rsyncArgs: >-
-            --exclude=.git
-            --exclude=.github
-
