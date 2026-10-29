@@ -35,4 +35,3 @@ jobs:
           local_path: ./*
           remote_path: /Newpublic
           sftp_only: true
-          delete_remote_files: true
