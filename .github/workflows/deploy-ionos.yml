@@ -1,0 +1,44 @@
+# Déploiement automatique de cyberbalise.fr vers l'espace web IONOS
+# Déclenché à chaque push sur la branche main.
+# Le robot se connecte en SFTP avec les secrets IONOS_SFTP_USER et IONOS_SFTP_PASSWORD
+# et synchronise le contenu du site vers le dossier /Newpublic de l'hébergement.
+
+name: "Déploiement cyberbalise.fr vers IONOS"
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-ionos
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Synchroniser le site via SFTP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Nettoyage des fichiers non destinés au site
+        run: |
+          rm -rf .git .github backoffice/data/brouillons domaines.csv \
+                 urls_cyberbalise_categorisees.xls installer*.php desktop.ini || true
+
+      - name: Synchronisation SFTP vers IONOS
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.IONOS_SFTP_HOST }}
+          username: ${{ secrets.IONOS_SFTP_USER }}
+          password: ${{ secrets.IONOS_SFTP_PASSWORD }}
+          port: 22
+          local_path: ./*
+          remote_path: /Newpublic
+          sftp_only: true
+          delete_remote_files: true
+          rsyncArgs: >-
+            --exclude=.git
+            --exclude=.github
+
