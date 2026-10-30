@@ -91,6 +91,24 @@ Le lien affilié complet a été conservé à la demande du responsable du site 
 sa réponse 404 initiale. Vérifier son activation annoncée pour le 28 octobre 2026,
 puis mettre à jour les mentions d'attente et les conditions propres à cette offre.
 
+## Panda Dome (antivirus)
+
+La fiche `offres/antivirus/panda-dome/`, la carte du comparatif antivirus et la carte
+« Antivirus » du module Top protections (quatrième carte, visible après « Voir tous
+les résultats ») utilisent le lien affilié
+`https://www.tkqlhce.com/click-101904907-15329858?sid=panda-security`, qui redirige vers
+la page de promotion `https://www.pandasecurity.com/security-promotion/` de Panda Security
+(une marque de WatchGuard). Arguments, systèmes pris en charge, distinctions et prix
+proviennent de cette page, relevés le 30 octobre 2026 : prix de première année affichés
+par défaut, −60 % sur Essential (15,98 €), Advanced (21,98 €), Complete (33,98 €) et
+Premium (55,98 €), qui varient selon le nombre d'appareils et la durée.
+Le logo est le logo officiel « panda, a WatchGuard brand » de l'en-tête de cette page
+(`assets/img/provider-logos/panda-security.svg`). À revérifier : la promesse de
+« renouvellement au même prix » (affichée en anglais sur la page), la durée et les
+conditions de l'évaluation de 30 jours, et les distinctions AV-Comparatives annoncées
+par l'éditeur, non vérifiées sur le site du laboratoire. La page affiche aussi des bandeaux
+de saison (Black Friday −70 % sur Premium 10 appareils) susceptibles de changer.
+
 ## Actualités
 
 La rubrique statique est accessible depuis `/actualites/`. Les pages utilisent
@@ -127,9 +145,70 @@ Photos intégrées :
 - Vizio : logo de la marque, utilisé à défaut de photographie pertinente,
   [source](https://commons.wikimedia.org/wiki/File:VIZIO_logo.svg).
   Graphisme indiqué dans le domaine public ; la marque reste la propriété de Vizio.
+- Assemblée nationale (Palais Bourbon, 2014) : DXR,
+  [source](https://commons.wikimedia.org/wiki/File:Palais_Bourbon,_Paris_7e,_NW_View_140402_1.jpg),
+  domaine public. Photo de contexte de l'article sur les données de partis politiques.
+- Siège de la NSA (2013) : Trevor Paglen,
+  [source](https://commons.wikimedia.org/wiki/File:National_Security_Agency,_2013.jpg),
+  CC0. Photo de contexte du dossier spécial sur l'écoute des téléphones.
 
 Les articles proposent des vignettes pour les guides liés et des liens de
 partage Facebook, X et LinkedIn utilisant son URL publique canonique. Pour
 Instagram, qui ne fournit pas de partage web direct, le bouton copie le lien ;
 un champ permet la copie manuelle si le presse-papiers est indisponible.
 Les logos SVG sont servis localement depuis les fichiers `assets/img/social-*.svg`.
+
+### Dossier spécial
+
+Un contenu long, documentaire, porte la mention « Dossier spécial » : surtitre et
+fil d'Ariane de l'article, encart dédié au-dessus de « À la une » dans la rubrique
+(`see-also-card--special`) et mention « Dossier spécial » sur la carte de l'accueil.
+Le sommaire en tête d'article (`news-toc`), les schémas (`news-figure`) et les
+numéros de section (`news-num`) sont définis dans `assets/actualites.css`.
+
+## Partage des articles sur Facebook
+
+Le script `scripts/facebook_share.py` publie un article sur la **Page** Facebook
+(l'API ne permet pas de publier sur un profil personnel). Il lit le titre, la
+description, l'image et l'URL canonique dans les balises `og:*` de l'article, vérifie
+que la page est en ligne, demande à Facebook d'actualiser son aperçu, puis publie le
+lien avec le texte d'accroche fourni. Il n'a besoin d'aucune dépendance Python.
+Le dossier `scripts/` n'est pas déployé sur le site.
+
+### Mise en place (une seule fois)
+
+1. Sur <https://developers.facebook.com>, créer une application de type « Entreprise »
+   et ajouter le produit « Facebook Login for Business » (ou utiliser le Graph API Explorer).
+2. Dans le Graph API Explorer, choisir l'application, demander les autorisations
+   `pages_show_list`, `pages_read_engagement` et `pages_manage_posts`, puis générer un
+   jeton utilisateur en sélectionnant la Page.
+3. Échanger ce jeton contre un jeton longue durée, puis appeler `/me/accounts` pour
+   récupérer le **jeton de Page** (qui n'expire pas lorsqu'il vient d'un jeton longue
+   durée) et l'**identifiant de la Page**.
+4. Copier `scripts/.env.facebook.example` en `scripts/.env.facebook` et renseigner
+   `FB_PAGE_ID` et `FB_PAGE_ACCESS_TOKEN`. Ce fichier est ignoré par Git : ne jamais
+   le versionner ni communiquer le jeton.
+5. Vérifier : `python scripts/facebook_share.py check`.
+
+Tant que l'application reste en mode développement, seuls ses administrateurs et
+testeurs peuvent publier : c'est suffisant pour la Page du site, sans validation Meta.
+
+### Utilisation
+
+```
+python scripts/facebook_share.py share <slug> --message "Accroche"            # aperçu seul
+python scripts/facebook_share.py share <slug> --message "Accroche" --publish  # publication
+python scripts/facebook_share.py share <slug> --message "..." --schedule "2026-11-03 09:00" --publish
+```
+
+Options : `--hashtags`, `--schedule` (10 minutes à 30 jours à l'avance), `--force`
+(repartager un article déjà publié), `--no-utm`. Les partages sont consignés dans
+`scripts/facebook-posts.log.jsonl` (ignoré par Git) pour éviter les doublons.
+L'article doit d'abord être publié sur le site : Facebook lit la page en ligne.
+
+### À partir d'une simple demande
+
+Dans VS Code, la commande `/partager-facebook` (fichier
+`.github/prompts/partager-facebook.prompt.md`) ou une demande du type « partage
+l'article X sur Facebook » déclenche le processus : l'assistant rédige l'accroche
+à partir de l'article, affiche l'aperçu, demande confirmation, puis publie.

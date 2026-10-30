@@ -1,0 +1,8 @@
+# Identifiants et journaux locaux : ne jamais versionner
+scripts/.env.facebook
+scripts/facebook-posts.log.jsonl
+.env
+.env.*
+!.env.example
+!scripts/.env.facebook.example
+__pycache__/

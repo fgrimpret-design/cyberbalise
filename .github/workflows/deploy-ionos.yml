@@ -22,7 +22,7 @@ jobs:
 
       - name: Nettoyage des fichiers non destinés au site
         run: |
-          rm -rf .git .github backoffice/data/brouillons domaines.csv \
+          rm -rf .git .github scripts backoffice/data/brouillons domaines.csv \
                  urls_cyberbalise_categorisees.xls installer*.php desktop.ini || true
 
       - name: Synchronisation SFTP vers IONOS
