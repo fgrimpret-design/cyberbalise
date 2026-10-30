@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comment les services de renseignement écoutent les téléphones — Dossier spécial — CyberBalise</title>
+<meta name="description" content="SS7, IMSI catchers, câbles sous-marins, spyware zero-click : comment les services de renseignement écoutent les téléphones, et comment se défendre.">
+<link rel="canonical" href="https://cyberbalise.fr/actualites/espionnage-telephones-services-renseignement/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CyberBalise">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Dossier spécial : comment les services de renseignement écoutent les téléphones">
+<meta property="og:description" content="SS7, faux relais, câbles sous-marins, logiciels espions zero-click : les techniques documentées, ce qu’elles permettent réellement et ce qu’elles ne permettent pas.">
+<meta property="og:url" content="https://cyberbalise.fr/actualites/espionnage-telephones-services-renseignement/">
+<meta property="og:image" content="https://cyberbalise.fr/assets/img/dossier-espionnage-telephones-nsa.jpg">
+<meta property="article:published_time" content="2026-10-30">
+<meta property="article:section" content="Dossier spécial">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style>
+<link rel="stylesheet" href="/assets/site-spacing.css?v=20261026-expand">
+<link rel="stylesheet" href="/assets/home-refresh.css?v=20261028-adguard-vpn">
+<link rel="stylesheet" href="/assets/cookie-consent.css">
+<link rel="stylesheet" href="/assets/actualites.css?v=20261030-dossier-special">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Comment les services de renseignement écoutent les téléphones","alternativeHeadline":"Dossier spécial : SS7, IMSI catchers, câbles sous-marins et logiciels espions zero-click","datePublished":"2026-10-30","dateModified":"2026-10-30","inLanguage":"fr-FR","author":{"@type":"Organization","name":"CyberBalise","url":"https://cyberbalise.fr/a-propos/"},"publisher":{"@type":"Organization","name":"CyberBalise","url":"https://cyberbalise.fr/"},"mainEntityOfPage":"https://cyberbalise.fr/actualites/espionnage-telephones-services-renseignement/","image":"https://cyberbalise.fr/assets/img/dossier-espionnage-telephones-nsa.jpg","articleSection":"Dossier spécial"}
+</script>
+</head>
+<body class="news-page">
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/actualites/">Actualit&#xE9;s</a></div><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div></a><a href="/outils/risque-sms/"><div><strong>V&#xE9;rifier un SMS suspect</strong></div></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/actualites/">Actualit&#xE9;s</a><div class="mnav-children"></div></div><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main>
+  <section class="pagehead news-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Accueil</a> / <a href="/actualites/">Actualités</a> / Dossier spécial</div>
+      <div class="news-intro">
+        <div>
+          <span class="news-eyebrow">Dossier spécial · Renseignement &amp; cyber</span>
+          <h1>Comment les services de renseignement écoutent les téléphones</h1>
+          <p class="news-deck">SS7, faux relais téléphoniques, câbles sous-marins, logiciels espions zero-click : derrière la question que tout le monde se pose — « comment la DGSE, la CIA ou le Mossad peuvent-ils écouter une conversation ? » — se cache une batterie de techniques documentées depuis plus de dix ans. Voici comment elles fonctionnent, ce qu’elles permettent réellement, et ce qu’elles ne permettent pas.</p>
+          <div class="news-meta"><span>Par CyberBalise</span><time datetime="2026-10-30">30 octobre 2026</time><span>Lecture : 20 min</span></div>
+        </div>
+        <figure class="news-visual">
+          <img src="/assets/img/dossier-espionnage-telephones-nsa.jpg" width="1280" height="853" decoding="async" alt="Siège de la National Security Agency, à Fort Meade, photographié de nuit.">
+          <figcaption>Siège de la National Security Agency (NSA), Fort Meade (Maryland), photographié de nuit en novembre 2013. Photo de contexte, sans lien avec une opération précise. Photo : <a href="https://commons.wikimedia.org/wiki/File:National_Security_Agency,_2013.jpg">Trevor Paglen / Wikimedia Commons</a> — CC0.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <div class="wrap news-layout">
+    <article class="page">
+      <!-- CB-CONTENU:DEBUT -->
+      <div class="news-history"><span><strong>Un dossier de synthèse documentaire</strong><br>Ce dossier est fondé sur des sources publiques : Citizen Lab, EFF, Amnesty International, le Guardian, Le Monde, le Congressional Research Service, WikiLeaks. Les capacités décrites l’ont été uniquement à partir de rapports de recherche, de presse d’investigation et de documents judiciaires et parlementaires ; il ne contient aucune instruction opérationnelle. Les responsabilités attribuées à tel ou tel État le sont au vu des évaluations publiques disponibles, qui peuvent évoluer. Dernière mise à jour : octobre 2026.</span></div>
+
+      <nav class="news-toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">Sommaire</h2>
+        <ol>
+          <li><a href="#carte-du-terrain">La carte du terrain : trois façons d’écouter</a></li>
+          <li><a href="#ss7">SS7 : le talon d’Achille de la téléphonie mondiale</a></li>
+          <li><a href="#imsi-catchers">IMSI catchers : la fausse antenne</a></li>
+          <li><a href="#cables-operateurs">Les câbles et les opérateurs : Tempora, la DGSE, Salt Typhoon</a></li>
+          <li><a href="#pirater-le-telephone">Hacker le téléphone : Pegasus, Paragon et les exploits zero-click</a></li>
+          <li><a href="#cia-vault-7">La CIA et Vault 7 : pirater les objets du quotidien</a></li>
+          <li><a href="#qui-fait-quoi">Qui fait quoi : cartographie des acteurs</a></li>
+          <li><a href="#se-defendre">Se défendre : ce qui marche vraiment</a></li>
+          <li><a href="#chronologie">Chronologie des révélations</a></li>
+          <li><a href="#glossaire">Glossaire</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="carte-du-terrain"><span class="news-num">1</span> La carte du terrain : trois façons d’écouter</h2>
+      <p>La première chose à comprendre, c’est qu’il n’existe pas <em>une</em> technique d’écoute, mais une véritable chaîne industrielle. Un service de renseignement comme la NSA, la DGSE ou le Mossad ne choisit pas « le » piratage du téléphone : il choisit, pour chaque cible, le maillon le plus fragile de la chaîne qui relie deux personnes qui parlent. Cette chaîne comporte trois maillons, et chacun a ses propres failles.</p>
+      <p><strong>Le réseau.</strong> Quand vous passez un appel, votre voix quitte votre téléphone, traverse l’antenne de votre opérateur, un réseau de signalisation mondial, parfois un câble sous-marin, puis l’opérateur de votre interlocuteur. Chaque étape est une porte d’entrée : on peut attaquer le protocole de signalisation (SS7), se faire passer pour une antenne (IMSI catcher), ou brancher une sonde sur un câble. L’appelant et l’appelé, eux, ne voient rien — leur téléphone fonctionne parfaitement. C’est le mode d’interception préféré des agences de <em>signals intelligence</em> (SIGINT) : massif, discret, et sans contact avec l’appareil de la cible.</p>
+      <p><strong>Le terminal.</strong> Deuxième voie : ne pas se fatiguer à intercepter le trafic, et aller chercher l’information à la source — dans le téléphone lui-même. C’est le terrain des <a href="/particuliers/menaces/virus-et-malwares/">logiciels espions</a> (<em>spyware</em>) comme Pegasus ou Graphite, et des outils de la CIA révélés par Vault 7. L’intérêt est considérable : quand vous utilisez Signal ou WhatsApp, vos messages sont chiffrés de bout en bout, mais à un moment, ils doivent apparaître <em>en clair sur votre écran</em> et passer par votre micro et vos pouces. Un implant qui contrôle le téléphone voit tout ce que vous voyez, <em>avant</em> chiffrement et <em>après</em> déchiffrement. Le chiffrement de bout en bout ne protège pas contre un téléphone compromis.</p>
+      <p><strong>L’infrastructure et les comptes.</strong> Troisième voie, souvent oubliée : attaquer ce qui entoure la conversation — les serveurs des opérateurs et des messageries, les sauvegardes dans le cloud, les systèmes d’interception légale que les États eux-mêmes ont imposés aux télécoms. C’est exactement ce que les hackers chinois de Salt Typhoon ont fait en 2024 aux États-Unis : au lieu de construire leur propre outil d’écoute, ils ont piraté <em>celui</em> du gouvernement américain.</p>
+
+      <figure class="news-figure">
+        <svg viewBox="0 0 800 330" role="img" aria-labelledby="fig1-title fig1-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="fig1-title">La chaîne de la conversation et les trois vecteurs d’interception</title>
+          <desc id="fig1-desc">Cinq maillons alignés : téléphone cible, antenne de l’opérateur, réseau SS7 et câbles, opérateur destinataire, téléphone du correspondant. Le vecteur 1 vise le lien radio, le vecteur 2 le réseau cœur, le vecteur 3 les terminaux.</desc>
+          <text x="400" y="24" text-anchor="middle" font-size="15" font-weight="700" fill="#B83A28">Vecteur 3 · les terminaux</text>
+          <text x="400" y="44" text-anchor="middle" font-size="12.5" fill="#4D6377">Spyware zero-click (Pegasus, Graphite), implants CIA : le chiffrement de bout en bout est contourné</text>
+          <path d="M80 130 V70 H720 V130" fill="none" stroke="#B83A28" stroke-width="2.5" stroke-dasharray="7 6"/>
+          <circle cx="80" cy="130" r="5" fill="#B83A28"/><circle cx="720" cy="130" r="5" fill="#B83A28"/>
+          <path d="M140 160 H180 M300 160 H340 M460 160 H500 M620 160 H660" stroke="#0F2438" stroke-width="3"/>
+          <rect x="20" y="130" width="120" height="60" rx="10" fill="#0F2438"/>
+          <rect x="180" y="130" width="120" height="60" rx="10" fill="#3E5C8A"/>
+          <rect x="340" y="130" width="120" height="60" rx="10" fill="#3E5C8A"/>
+          <rect x="500" y="130" width="120" height="60" rx="10" fill="#3E5C8A"/>
+          <rect x="660" y="130" width="120" height="60" rx="10" fill="#0F2438"/>
+          <g fill="#fff" font-size="14" font-weight="700" text-anchor="middle">
+            <text x="80" y="156">Téléphone</text><text x="80" y="174">cible</text>
+            <text x="240" y="156">Antenne</text><text x="240" y="174">opérateur</text>
+            <text x="400" y="156">Réseau SS7</text><text x="400" y="174">et câbles</text>
+            <text x="560" y="156">Opérateur</text><text x="560" y="174">destinataire</text>
+            <text x="720" y="156">Téléphone du</text><text x="720" y="174">correspondant</text>
+          </g>
+          <path d="M180 214 H300" stroke="#B83A28" stroke-width="5" stroke-linecap="round"/>
+          <path d="M340 214 H620" stroke="#B83A28" stroke-width="5" stroke-linecap="round"/>
+          <g text-anchor="middle">
+            <text x="240" y="248" font-size="14" font-weight="700" fill="#B83A28">Vecteur 1 · le lien radio</text>
+            <text x="240" y="268" font-size="12.5" fill="#4D6377">IMSI catcher, fausse antenne,</text>
+            <text x="240" y="285" font-size="12.5" fill="#4D6377">rétrogradation vers la 2G</text>
+            <text x="480" y="248" font-size="14" font-weight="700" fill="#B83A28">Vecteur 2 · le réseau cœur</text>
+            <text x="480" y="268" font-size="12.5" fill="#4D6377">SS7 détourné, sondes sur câbles,</text>
+            <text x="480" y="285" font-size="12.5" fill="#4D6377">systèmes d’interception légale piratés</text>
+          </g>
+        </svg>
+        <figcaption>Les trois vecteurs d’interception : le lien radio, le réseau cœur, et les terminaux eux-mêmes. Un service professionnel combine souvent les trois.</figcaption>
+      </figure>
+
+      <blockquote class="news-definition"><p><strong>À retenir</strong>Les services de renseignement préfèrent généralement les failles du <strong>réseau</strong> (massives, invisibles, sans risque de détection sur l’appareil) aux piratages de <strong>terminaux</strong> (plus invasifs, mais coûteux et réservés à des cibles précises). Le chiffrement de bout en bout repousse les attaquants vers les extrémités : c’est ce qu’on appelle « frapper là où le chiffrement n’existe pas ».</p></blockquote>
+
+      <h2 id="ss7"><span class="news-num">2</span> SS7 : le talon d’Achille de la téléphonie mondiale</h2>
+      <p>Chaque appel passé dans le monde est précédé d’une conversation secrète entre opérateurs : « tel numéro veut joindre tel numéro, route-le vers telle antenne, puis vers tel pays ». Cette conversation d’organisation, c’est la <em>signalisation</em>, et elle emprunte depuis 1980 un protocole normalisé par l’Union internationale des télécommunications : <strong>SS7</strong> (Signalling System No. 7). SS7 a été conçu à une époque où le réseau téléphonique mondial était un club fermé de grandes compagnies d’État. Les messages de signalisation y circulaient sur des canaux séparés de la voix, entre opérateurs qui se faisaient mutuellement confiance.</p>
+      <p>C’est précisément ce modèle de confiance qui est devenu une faille. Le consortium 3GPP, qui établit les normes mobiles, tire la sonnette d’alarme dès 1999-2000 : « Le problème du système SS7 actuel est que les messages peuvent être altérés, injectés ou supprimés dans les réseaux mondiaux de manière incontrôlée », puis conclut, sans détour : « <em>Il ne reste aucune sécurité adéquate dans SS7.</em> » La raison : avec l’explosion de la téléphonie mobile et d’Internet, le club fermé est devenu une auberge espagnole où des centaines de milliers de petits opérateurs, de fournisseurs d’accès et de passerelles se raccordent au réseau cœur — souvent avec des protections défaillantes, parfois sous la coupe d’États peu regardants.</p>
+      <p>Concrètement, il existe trois façons d’accéder à SS7, décrites dès 2014 par le chercheur allemand Tobias Engel au Chaos Communication Congress : pirater l’équipement d’un opérateur connecté à Internet, passer par une petite station cellulaire personnelle (femtocell), ou… <em>acheter</em> un accès auprès d’un opérateur complice ou négligent. Une fois à l’intérieur, un attaquant peut envoyer au réseau les mêmes commandes qu’un opérateur légitime, et le réseau obéit :</p>
+      <ul>
+        <li><strong>Localiser un téléphone</strong> en interrogeant le réseau sur la position de sa carte SIM (pays, opérateur, et même la cellule-antenne la plus proche, donc un rayon de quelques centaines de mètres en ville) — même GPS désactivé ;</li>
+        <li><strong>Intercepter des SMS et les rediriger</strong> vers un serveur tiers : c’est la technique qui a ruiné la fiabilité de l’<a href="/particuliers/comptes/double-authentification-et-passkeys/">authentification à deux facteurs par SMS</a> ;</li>
+        <li><strong>Détourner des appels</strong> en réécrivant la signalisation, par exemple pour faire transiter une communication par un relais contrôlé par l’attaquant ;</li>
+        <li><strong>Couper le service</strong> d’un numéro ciblé.</li>
+      </ul>
+      <p>Ces attaques ne relèvent pas du théorique. En 2008, Tobias Engel montre au CCC comment localiser n’importe quel téléphone via SS7. En 2014, la crainte devient géopolitique : l’appel de Victoria Nuland, secrétaire d’État adjointe américaine, avec l’ambassadeur des États-Unis en Ukraine — au cours duquel elle fustige l’Union européenne — est intercepté sur le réseau téléphonique ukrainien et redirigé vers… une ligne fixe de Saint-Pétersbourg, comme l’a établi l’autorité ukrainienne des télécommunications. En avril 2016, l’émission américaine <em>60 Minutes</em> en offre une démonstration grand public : deux hackers allemands, avec l’accord du congressiste démocrate Ted Lieu, écoutent en direct un appel qu’il passe sur son iPhone standard, et retrouvent jusqu’à l’hôtel où il a dormi la veille, GPS pourtant désactivé. Le Congrès s’en émeut, le régulateur américain (FCC) rend un rapport en 2017, le département de la Sécurité intérieure (DHS) classe SS7 parmi les menaces majeures pesant sur les communications gouvernementales — y compris, selon le <em>New York Times</em>, pour le téléphone personnel de Donald Trump, que les services chinois seraient parvenus à écouter grâce à ces failles.</p>
+      <p>Pourquoi rien n’est-il corrigé ? Parce que SS7 est le ciment de la facturation et de l’itinérance (<em>roaming</em>) mondiales : le remplacer reviendrait à refaire le réseau téléphonique planétaire. Une évolution plus robuste (Diameter, en 4G/5G) a bien été déployée, mais des chercheurs y ont démontré des attaques similaires. Les opérateurs ont bien ajouté des filtres (« cercles de confiance ») contre les messages de signalisation venant de l’étranger et prétendant provenir de leur propre réseau, mais l’attaque par un opérateur d’un pays tiers — précisément ce que fait un service de renseignement qui a acheté ou piraté un accès — reste très difficile à bloquer à l’échelle mondiale.</p>
+      <blockquote class="news-definition"><p><strong>Ce que SS7 permet à un État</strong>Localisation globale d’un numéro, interception des SMS (donc des codes de vérification bancaires et des comptes en ligne), détournement d’appels et de messages vers un relais. Le contenu des appels mobiles modernes est chiffré sur la partie radio (entre le téléphone et l’antenne), mais circule en clair (ou chiffré « en tunnel » par l’opérateur) dans le réseau cœur : un attaquant qui détourne la signalisation peut capter la communication à un point où elle n’est plus protégée.</p></blockquote>
+
+      <h2 id="imsi-catchers"><span class="news-num">3</span> IMSI catchers : la fausse antenne</h2>
+      <p>Deuxième famille d’outils, plus « brute » : l’IMSI catcher, connu aux États-Unis sous le nom de marque <strong>StingRay</strong>, ou « simulateur de station de base » (<em>cell-site simulator</em>). Le principe est d’une simplicité désarmante : votre téléphone cherche en permanence l’antenne la plus proche et la plus forte pour s’y raccorder. L’IMSI catcher se fait donc passer pour une antenne, en émettant un signal plus puissant que celui des vraies antennes, ou en exploitant les failles des protocoles mobiles qui forcent le téléphone à basculer. Les téléphones du voisinage s’y raccordent — jusqu’à <strong>10 000</strong> à la fois, selon le catalogue interne du gouvernement américain publié par <em>The Intercept</em>.</p>
+      <p>Une fois le téléphone connecté, la fausse antenne peut :</p>
+      <ul>
+        <li><strong>Identifier</strong> chaque appareil en captant son IMSI — l’identifiant unique de la carte SIM — et son IMEI (l’identifiant de l’appareil lui-même) ;</li>
+        <li><strong>Localiser</strong> avec une précision qu’aucun opérateur ne peut fournir à la police, au mètre près dans un immeuble ;</li>
+        <li><strong>Intercepter les communications</strong> en forçant le téléphone à rétrograder vers le GSM (2G), dont le chiffrement est cassé depuis longtemps : appels non chiffrés, SMS, métadonnées (numéros composés, durées) ;</li>
+        <li>Bloquer des communications, détourner des appels, voire usurper l’identité d’un appelant sur les anciens réseaux.</li>
+      </ul>
+
+      <figure class="news-figure">
+        <svg viewBox="0 0 800 290" role="img" aria-labelledby="fig2-title fig2-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="fig2-title">Principe d’un IMSI catcher actif</title>
+          <desc id="fig2-desc">Une vraie antenne émet un signal normal. Une fausse antenne, l’IMSI catcher, émet un signal artificiellement plus puissant : deux téléphones s’y raccordent, leur identifiant et leur localisation sont captés et leurs appels 2G sont interceptables.</desc>
+          <g stroke="#3E5C8A" stroke-width="3" stroke-linecap="round" fill="none">
+            <path d="M80 60 V170"/><path d="M52 78 L80 62 L108 78"/>
+          </g>
+          <text x="80" y="200" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2438">Vraie antenne</text>
+          <text x="80" y="219" text-anchor="middle" font-size="12.5" fill="#4D6377">signal normal</text>
+          <circle cx="330" cy="125" r="108" fill="none" stroke="#E4B7AB" stroke-width="2"/>
+          <circle cx="330" cy="125" r="72" fill="none" stroke="#E4B7AB" stroke-width="2"/>
+          <rect x="265" y="98" width="130" height="54" rx="10" fill="#B83A28"/>
+          <text x="330" y="121" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">IMSI CATCHER</text>
+          <text x="330" y="139" text-anchor="middle" font-size="12.5" fill="#fff">« antenne » fictive</text>
+          <text x="330" y="262" text-anchor="middle" font-size="12.5" fill="#4D6377">signal artificiellement plus puissant</text>
+          <rect x="520" y="48" width="38" height="70" rx="7" fill="#0F2438"/>
+          <rect x="520" y="138" width="38" height="70" rx="7" fill="#0F2438"/>
+          <path d="M395 112 L520 84" stroke="#B83A28" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <path d="M395 138 L520 172" stroke="#B83A28" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <text x="539" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2438">Téléphone 1</text>
+          <text x="539" y="228" text-anchor="middle" font-size="14" font-weight="700" fill="#0F2438">Téléphone 2</text>
+          <text x="574" y="88" font-size="12.5" fill="#4D6377">IMSI et localisation captés</text>
+          <text x="574" y="178" font-size="12.5" fill="#4D6377">appels 2G interceptables</text>
+        </svg>
+        <figcaption>Principe d’un IMSI catcher actif : le téléphone choisit toujours le signal le plus fort, l’attaquant le sait et en profite. La fausse antenne force tous les téléphones du rayon à s’y raccorder, indépendamment de la vraie couverture.</figcaption>
+      </figure>
+
+      <p>Il existe aussi des variantes <em>passives</em>, qui n’émettent rien : elles se contentent d’écouter les ondes ambiantes, comme une radio, et d’en extraire les identifiants — indétectables, mais moins fiables. Les variantes actives, elles, s’achètent : l’américain Harris Corporation (StingRay, Hailstorm, KingFish), la division Boeing Digital Receiver Technology (« dirtboxes » accrochées aux avions), Gamma Group au Royaume-Uni, Rohde &amp; Schwarz en Allemagne, et une longue liste de fournisseurs israéliens, chinois ou russes. Vendus à l’origine aux polices pour traquer kidnappeurs et gangsters — l’usage documenté par l’EFF aux États-Unis va de l’enquête antiterroriste à… un vol de sandwiches —, ces boîtiers se retrouvent aussi dans l’arsenal des armées et des services de renseignement : montés sur des véhicules, des drones, ou installés à poste fixe près d’une ambassade ou d’un point de passage frontalier pour cartographier qui entre, qui sort, qui appelle qui.</p>
+      <p>Les réseaux 3G, 4G et 5G chiffrent mieux la partie radio que le GSM, mais les IMSI catchers modernes s’adaptent : en forçant la rétrogradation vers 2G quand c’est possible, ou en exploitant le fait que les téléphones acceptent encore les anciennes technologies — et que des milliards d’objets connectés (compteurs, alarmes, trackers) ne parlent encore que GSM. Les États peuvent aussi obtenir légalement de leur opérateur national l’accès à la localisation et aux métadonnées, ce qui rend le boîtier physique inutile… sauf quand la cible se trouve hors de juridiction.</p>
+      <blockquote class="news-definition"><p><strong>Limite pratique</strong>Un IMSI catcher est un outil <strong>de proximité</strong> : il faut être à quelques centaines de mètres, voire quelques kilomètres, de la cible. C’est parfait pour retrouver un activiste en fuite ou surveiller un point de passage, mais inadapté à l’écoute permanente d’un dirigeant étranger à des milliers de kilomètres. Pour cela, les services préfèrent SS7, les câbles — ou le piratage du téléphone.</p></blockquote>
+
+      <h2 id="cables-operateurs"><span class="news-num">4</span> Les câbles et les opérateurs : Tempora, la DGSE, Salt Typhoon</h2>
+      <p>Quand une conversation quitte votre ville, elle emprunte des autoroutes de verre : les câbles en fibre optique, terrestres et sous-marins, qui portent l’essentiel du trafic mondial de voix (sous forme de données VoIP) et d’Internet. Les révélations d’Edward Snowden, à partir de juin 2013, ont montré que les services occidentaux y ont branché des sondes d’interception à une échelle qui dépasse l’entendement.</p>
+      <p>Le programme britannique <strong>Tempora</strong>, révélé par le <em>Guardian</em>, consiste à poser des sondes d’interception sur les câbles transatlantiques là où ils atterrissent sur les côtes britanniques, en vertu d’accords secrets avec les opérateurs — désignés dans les documents comme « partenaires d’interception », et légalement obligés de coopérer. En 2012, le GCHQ disposait de sondes raccordées à plus de 200 câbles, traitait au moins 46 flux simultanément et gérait 600 millions d’« événements téléphoniques » par jour. Les données sont stockées dans des tampons — trois jours pour le <em>contenu</em> (appels enregistrés, courriels), trente jours pour les <em>métadonnées</em> (qui contacte qui, quand, depuis où) — puis filtrées par des millions de critères de recherche (« sélecteurs ») : 40 000 choisis par le GCHQ, 31 000 par la NSA, à laquelle 850 000 employés américains habilités avaient accès aux bases. Le tout au nom d’une lutte contre le terrorisme et la criminalité organisée, sous un régime de contrôle que les juristes du GCHQ résumaient eux-mêmes en ces mots : « Nous avons un régime de surveillance plus léger que celui des États-Unis. »</p>
+      <p>La France n’est pas spectatrice : dès octobre 2013, <em>Le Monde</em> révélait que la <strong>DGSE</strong> pratique une surveillance de masse comparable, centrée sur les <em>métadonnées</em> — qui parle à qui, quand, depuis où — plutôt que sur le contenu des communications, et qu’elle transmet une partie de ses données à la NSA. Ses points d’interception sont connus : les câbles sous-marins par lesquels transitent la plupart des données venant d’Afrique et d’Asie atterrissent notamment à Marseille et à Penmarc’h, sur la côte bretonne. Contrairement à ce que montrent les films, une agence comme la DGSE n’écoute donc pas « vos appels » un par un : elle capte en masse des flux de signalisation et de données, stocke, trie, et ne « regarde » qu’une infime partie — les aiguilles dans la botte de foin.</p>
+      <p class="caption">Les métadonnées suffisent à reconstituer une vie : pour savoir ce que les organisations collectent sur vous et comment limiter la collecte, voir notre guide <a href="/particuliers/comptes/vie-privee-et-donnees-personnelles/">Vie privée et données personnelles</a>.</p>
+      <h3 id="salt-typhoon">Salt Typhoon : quand l’ennemi pirate la machine à écouter de l’État</h3>
+      <p>L’ironie la plus mordante de cette décennie vient de Chine. En octobre 2024, le gouvernement américain révèle que des hackers liés aux services chinois — baptisés <strong>Salt Typhoon</strong> par Microsoft — ont pénétré en profondeur les réseaux de grands opérateurs américains, dont AT&amp;T, Verizon et Lumen. Leur cible, selon le Congressional Research Service et la presse (WSJ) : les <strong>systèmes d’interception légale</strong> — ces portes dérobées que le droit américain (CALEA) impose aux opérateurs pour permettre aux enquêteurs, sur décision de justice, de mettre des lignes sur écoute. En piratant ces systèmes, l’adversaire n’a pas besoin de reconstruire un outil d’espionnage : il a utilisé <em>celui</em> de l’État américain, capable de récupérer des appels et des SMS <strong>non chiffrés</strong>, y compris, vraisemblablement, des communications de responsables politiques et de candidats à l’élection présidentielle. Washington a sanctionné en janvier 2025 une entreprise de cybersécurité chinoise et un individu liés à l’opération.</p>
+      <blockquote class="news-quote"><p>La faille n’est pas seulement technique : elle est architecturale. Tout système d’interception universel installé « pour les bons » finit tôt ou tard par être utilisé par les autres. Les systèmes d’écoute légale sont, par construction, un point de capture centralisé du trafic d’un opérateur.</p></blockquote>
+      <p>Cette affaire a relancé le débat sur la « porte dérobée » : des sénateurs américains ont exigé des explications sur la compromission des systèmes d’écoute, et une partie de la communauté sécurité souligne que le chiffrement de bout en bout (Signal, iMessage, WhatsApp) est précisément ce qui protège le contenu quand — pas <em>si</em> — le réseau est compromis. Car Salt Typhoon l’a démontré : SMS et appels vocaux classiques circulent largement sans chiffrement de bout en bout ; ils sont capturables par quiconque tient l’infrastructure.</p>
+
+      <h2 id="pirater-le-telephone"><span class="news-num">5</span> Hacker le téléphone : Pegasus, Paragon et les exploits zero-click</h2>
+      <p>Reste la voie royale : compromettre le téléphone lui-même. Car même sur un réseau propre, même avec un chiffrement parfait, le téléphone héberge tout — messages, micro, caméra, position, contacts, photos, mots de passe enregistrés. Et contrairement à un ordinateur, il est allumé en permanence, toujours connecté, et toujours à côté de son propriétaire.</p>
+      <h3 id="zero-day-zero-click">Zero-day, zero-click : le vocabulaire du piratage d’État</h3>
+      <p>Un <strong>zero-day</strong> est une faille logicielle inconnue de l’éditeur — donc non corrigée. Un exploit <strong>one-click</strong> exige que la cible clique sur un lien piégé (hameçonnage ciblé, ou <em>spearphishing</em>) ; un exploit <strong>zero-click</strong> ne demande <em>aucune action</em> de la victime : le message malveillant s’exécute seul, souvent sans même s’afficher. Ce sont les joyaux de la couronne du marché de l’espionnage, dont le prix se compte en millions de dollars l’exemplaire.</p>
+      <h3 id="pegasus-forcedentry">Pegasus et FORCEDENTRY : l’anatomie d’une infection invisible</h3>
+      <p>Le plus célèbre de ces outils est <strong>Pegasus</strong>, du groupe israélien NSO, vendu sous licence à des États (Mexique, Arabie saoudite, Émirats, Maroc, Hongrie…), et documenté depuis 2016 par le Citizen Lab (université de Toronto) et Amnesty International. Son exploit le plus redoutable, <strong>FORCEDENTRY</strong>, a été décortiqué en septembre 2021 : des fichiers déguisés en GIF, envoyés par iMessage, contenaient en réalité un PDF au format image JBIG2 ; celui-ci exploitait un dépassement d’entier (CVE-2021-30860) dans la bibliothèque graphique d’Apple, contournait la protection BlastDoor qu’Apple avait justement ajoutée à iOS 14 pour parer les attaques zero-click, et ouvrait la porte à l’installation de Pegasus — sur iOS, macOS et watchOS. La victime ne voyait <em>rien</em> : pas de notification, pas de lien à cliquer, pas de message. Selon Citizen Lab, l’exploit était en service depuis au moins février 2021.</p>
+      <p>C’est ce dossier qui, en juillet 2021, secoue Paris : l’enquête du <em>Pegasus Project</em> (Amnesty, Forbidden Stories, dix-sept rédactions dont <em>Le Monde</em>) révèle une base de 50 000 numéros sélectionnés par les clients de NSO, dont environ 180 journalistes et le numéro d’Emmanuel Macron — « saisi en mars 2019 par un opérateur au sein » du Maroc selon <em>Le Monde</em>. Nuance importante, souvent perdue dans les titres : figurer dans la base signifie avoir été <em>ciblé</em>, pas nécessairement <em>infecté</em> ; aucune infection confirmée du téléphone du président français n’a été établie publiquement, et le parquet de Paris a ouvert une enquête. Des dizaines de dirigeants, journalistes et militants, en revanche, ont vu leurs téléphones analysés et confirmés infectés.</p>
+      <h3 id="graphite">Graphite : l’affaire italienne, et la preuve judiciaire</h3>
+      <p>La mécanique s’est répétée en 2025 avec <strong>Graphite</strong>, le produit de la société israélo-américaine Paragon Solutions, utilisé par des États occidentaux — dont l’Italie, comme sa commission parlementaire de contrôle (COPASIR) l’a reconnu. En janvier 2025, WhatsApp (Meta) alerte qu’une centaine de journalistes et militants d’Europe, dont des Italiens, ont été ciblés par un exploit zero-click. En avril, Apple envoie des notifications de menace à plusieurs personnalités. Le Citizen Lab confirme ensuite par analyse judiciaire (<em>forensics</em>) que le journaliste napolitain Ciro Pellegrino (<em>Fanpage.it</em>) et un « journaliste européen de premier plan » ont bien été infectés par Graphite via un exploit zero-click iMessage (CVE-2025-43200, corrigé dans iOS 18.3.1), et identifie le même compte d’attaque iMessage pour les deux victimes — donc le même client de Paragon. C’est un précédent majeur : pour la première fois, un État démocratique reconnaît utiliser un tel outil, et l’infection de journalistes européens est prouvée techniquement — sans qu’aucun responsable n’en rende compte publiquement.</p>
+      <p class="caption">Un autre récit d’espionnage d’iPhone, contesté par l’intéressé, est détaillé dans notre article <a href="/actualites/kushner-iphone-espionnage/">Le téléphone de Jared Kushner espionné par les Russes, puis par les Néerlandais ?</a></p>
+      <h3 id="telephone-infecte">Que fait le téléphone une fois infecté ?</h3>
+      <p>Un implant de type Pegasus/Graphite tourne avec des privilèges maximaux (root). Il peut : activer le micro et la caméra à distance ; lire les messages avant leur chiffrement ; capter les messages chiffrés au moment où ils s’affichent ; suivre la position GPS et les réseaux Wi-Fi ; lire les applications de messagerie et de banque ; copier les mots de passe et fichiers ; s’auto-effacer en partie pour ne pas être trouvé. La conversation cesse alors d’être sur le réseau : elle est capturée <em>dans la pièce</em> — micro allumé, écran miroité. C’est la raison pour laquelle une cible de ce niveau change de téléphone et de numéros au moindre doute, et pourquoi les agences combinent : espionnage du réseau pour la masse, spyware pour les cibles d’exception.</p>
+      <blockquote class="news-definition"><p><strong>Le marché « mercenaire »</strong>Pegasus (NSO Group) et Graphite (Paragon) sont des produits <strong>commerciaux</strong>. Des dizaines d’entreprises — israéliennes pour l’essentiel — développent et vendent ces capacités à des gouvernements, moyennant des contrats qui se comptent en dizaines de millions de dollars. Citizen Lab parle de « despotisme-as-a-service ». Les clients documentés incluent des démocraties (Mexique, Inde, Pologne, Espagne, Italie…) et des autocraties (Arabie saoudite, Émirats, Azerbaïdjan, Maroc, Hongrie…). Cette industrie prospère sur une matière première : les failles zero-day des systèmes d’exploitation.</p></blockquote>
+
+      <h2 id="cia-vault-7"><span class="news-num">6</span> La CIA et Vault 7 : pirater les objets du quotidien</h2>
+      <p>En mars 2017, WikiLeaks commence la publication de <strong>Vault 7</strong> : 7 818 pages de documents internes de la CIA (datés de 2013 à 2016) décrivant un arsenal de piratage. Le leaker, l’ingénieur de la CIA Joshua Schulte, sera condamné en 2022 à quarante ans de prison. Au-delà du côté spectaculaire, Vault 7 documente une doctrine d’emploi.</p>
+      <p>Les outils publiés couvrent l’essentiel des systèmes : Windows (framework <em>Grasshopper</em> pour créer des implants indétectables par les antivirus), macOS et iPhone (malware <em>Sonic Screwdriver</em> capable de s’installer via l’interface Thunderbolt), Android, routeurs et navigateurs. D’autres éléments décrivent l’infrastructure de commande : la plateforme <em>HIVE</em>, qui fait dialoguer les appareils infectés avec la CIA via des domaines Internet d’apparence banale, et <em>Marble</em>, une bibliothèque d’obfuscation destinée à rendre le code espion — selon WikiLeaks — attribuable à d’autres pays (traces de russe, de chinois, d’arabe laissées volontairement dans le code).</p>
+      <p>L’outil le plus emblématique reste <strong>Weeping Angel</strong>, développé avec le MI5 britannique contre certaines télévisions connectées Samsung : l’appareil, éteint — du moins en apparence — continue d’enregistrer la pièce avec son micro, et éventuellement sa caméra, puis transmet les enregistrements à la CIA via le Wi-Fi du domicile. La télévision devient un micro sur pied au milieu du salon. C’est l’illustration parfaite du principe que WikiLeaks résumait ainsi : plutôt que de casser le chiffrement de Signal ou WhatsApp — ce qui est souvent impossible —, la CIA préfère infecter le téléphone ou les objets voisins, et capter l’information <em>avant</em> qu’elle ne soit chiffrée ou <em>après</em> qu’elle a été déchiffrée : « casser les extrémités plutôt que la tuyauterie ».</p>
+      <p class="caption">Sur les téléviseurs connectés et ce qu’ils savent de vous : notre article <a href="/actualites/televiseurs-connectes-vizio-donnees-personnelles/">L’affaire Vizio</a> et notre guide <a href="/particuliers/appareils/objets-connectes/">Objets connectés</a>.</p>
+      <p>Vault 7 a surtout une valeur de preuve : les grandes agences ne se contentent pas d’exploits « chirurgicaux » contre des cibles individuelles ; elles maintiennent des <em>catalogues</em> d’armes numériques couvrant toute la gamme, des téléphones aux téléviseurs, aux automobiles (les documents évoquent aussi la compromission de véhicules) et aux passerelles Internet. Et, ironie encore, des centaines de ces outils — volés puis publiés — ont fini entre les mains d’autres États et de criminels, faute de notification rapide des éditeurs concernés.</p>
+
+      <h2 id="qui-fait-quoi"><span class="news-num">7</span> Qui fait quoi : cartographie des acteurs</h2>
+      <p>Les services n’ont ni les mêmes missions, ni les mêmes techniques privilégiées. Le tableau ci-dessous synthétise ce que les sources publiques (révélations Snowden et Vault 7, enquêtes du Citizen Lab, rapports parlementaires et judiciaires) ont établi. Il faut y lire des <em>orientations</em>, pas des frontières étanches.</p>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Acteur</th><th>Techniques documentées</th><th>Ce qu’on lui attribue publiquement</th></tr></thead>
+        <tbody>
+          <tr><td><strong>NSA</strong> (États-Unis)</td><td>Interception massive des câbles et satellites (programmes <em>Upstream</em>), accès aux données des grandes plateformes (<em>PRISM</em>), cryptanalyse</td><td>Programmes Snowden (2013) ; réception des métadonnées de la DGSE ; écoutes visant des dirigeants alliés (y compris l’Élysée, selon des documents déclassifiés)</td></tr>
+          <tr><td><strong>CIA</strong> (États-Unis)</td><td>Intrusion, implants, boîtes à outils de piratage sur tous les systèmes d’exploitation</td><td>Arsenal Vault 7 (2017) : Weeping Angel, HIVE, Grasshopper, Marble…</td></tr>
+          <tr><td><strong>GCHQ</strong> (Royaume-Uni)</td><td>Interception de masse des câbles transatlantiques (<em>Tempora</em>), partenariats d’interception avec les télécoms</td><td>600 M d’« événements téléphoniques » par jour, 200 câbles raccordés (révélations Snowden, 2013)</td></tr>
+          <tr><td><strong>DGSE</strong> (France)</td><td>Interception des métadonnées sur les câbles sous-marins atterrissant en France, coopération SIGINT avec la NSA</td><td>Révélations du <em>Monde</em> (octobre 2013) ; la France n’admet pas officiellement ses opérations offensives</td></tr>
+          <tr><td><strong>Unité 8200 / Mossad</strong> (Israël)</td><td>Cyberespionnage militaire (8200), opérations d’influence et de renseignement (Mossad)</td><td>Industrie israélienne du spyware : NSO (Pegasus) et Paragon (Graphite) ont été fondées par d’anciens de l’unité 8200 et fonctionnent sous licence d’exportation du ministère israélien de la Défense</td></tr>
+          <tr><td><strong>Services chinois</strong></td><td>Piratage d’infrastructures télécoms à grande échelle</td><td>Salt Typhoon (2024) : compromission des systèmes d’interception légale d’opérateurs américains (AT&amp;T, Verizon, Lumen)</td></tr>
+          <tr><td><strong>Services russes</strong></td><td>Exploitation de SS7, interception d’appels sur les réseaux tiers</td><td>Détournement de l’appel Nuland (2014) vers un relais de Saint-Pétersbourg, établi par l’autorité télécom ukrainienne</td></tr>
+          <tr><td><strong>Marché « mercenaire »</strong> (NSO, Paragon, Candiru…)</td><td>Spyware zero-click clé en main vendu aux États</td><td>Pegasus Project (2021) : 50 000 numéros ciblés, dont dirigeants, journalistes, avocats ; Paragon/Graphite (2025) : infections de journalistes confirmées en Italie et en Europe</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="se-defendre"><span class="news-num">8</span> Se défendre : ce qui marche vraiment</h2>
+      <p>Un point d’honnêteté d’abord : l’immense majorité des gens n’a jamais été et ne sera jamais la cible d’un service de renseignement. Les capacités décrites ici sont coûteuses et rares ; elles visent des journalistes, des militants, des avocats, des diplomates, des militaires, des dirigeants d’entreprise stratégiques. Pour le grand public, les menaces réelles restent la cybercriminalité de droit commun (<a href="/particuliers/menaces/phishing-hameconnage/">hameçonnage</a>, <a href="/particuliers/victime/compte-pirate/">vols de comptes</a>), qui utilise d’ailleurs parfois les mêmes failles SS7 pour intercepter des codes SMS : voir aussi nos conseils sur les <a href="/particuliers/menaces/arnaques-sms-et-appels/">arnaques par SMS et appels</a>. Cela dit, voici ce que les chercheurs en sécurité et les organismes publics recommandent à ceux qui ont de bonnes raisons de se méfier :</p>
+      <ul>
+        <li><strong>Chiffrer de bout en bout par défaut.</strong> Signal (recommandé par la FCC américaine dès 2017 après les attaques SS7), iMessage, WhatsApp : si le réseau est espionné — via SS7 ou un câble —, l’attaquant n’obtient que des données chiffrées. C’est la parade n°1 contre Salt Typhoon comme contre Tempora.</li>
+        <li><strong>Bannir la double authentification par SMS</strong> (cible prioritaire des attaques SS7) au profit d’applications d’authentification ou de clés de sécurité physiques : voir notre guide <a href="/particuliers/comptes/double-authentification-et-passkeys/">Double authentification et passkeys</a>.</li>
+        <li><strong>Mettre à jour</strong> son système et ses applications sans attendre : chaque faille zero-day découverte est un zero-day de moins. Les exploits comme FORCEDENTRY ou CVE-2025-43200 ont été neutralisés par des mises à jour en quelques jours. Voir <a href="/particuliers/appareils/mises-a-jour-et-patchs/">Mises à jour et correctifs</a>.</li>
+        <li><strong>Activer les modes durcis.</strong> Le « mode verrouillage » d’Apple (Lockdown Mode) désactive précisément les mécanismes (rendu d’images, prévisualisations) exploités par les attaques zero-click ; Android propose des protections analogues pour les profils à risque. Les réglages courants sont détaillés dans <a href="/particuliers/appareils/smartphone-et-tablette/">Smartphone et tablette</a>.</li>
+        <li><strong>Prendre au sérieux les alertes de piratage.</strong> Apple, Google, WhatsApp et Meta notifient directement les cibles qu’ils détectent (c’est ainsi que l’affaire Paragon a été révélée). Ces alertes sont rares et vérifiées — elles doivent déclencher une analyse spécialisée, pas être ignorées.</li>
+        <li><strong>Protéger la carte SIM</strong> avec un code PIN (bloquer l’extraction IMSI et le <em>SIM swapping</em>), et se méfier du « téléphone de prêt » : un appareil recyclé peut être pré-infecté.</li>
+        <li><strong>Réduire la surface d’écoute ambiante</strong> : téléviseurs connectés et assistants vocaux dans les pièces sensibles, permissions du micro et de la caméra, <a href="/particuliers/appareils/objets-connectes/">objets connectés</a> sur un réseau séparé.</li>
+      </ul>
+      <p>Reste la limite de tous ces conseils : contre un adversaire capable de payer plusieurs millions de dollars un exploit zero-click, aucune protection individuelle n’est garantie. C’est pour cela que la vraie réponse est collective — régulation du marché mercenaire du spyware, responsabilité des éditeurs, et transparence des États sur leurs propres outils d’écoute.</p>
+
+      <h2 id="chronologie"><span class="news-num">9</span> Chronologie des révélations</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Année</th><th>Événement</th></tr></thead>
+        <tbody>
+          <tr><td>1980</td><td>SS7 devient la norme mondiale de signalisation téléphonique, conçue pour un réseau « de confiance »</td></tr>
+          <tr><td>1999–2000</td><td>Le consortium 3GPP alerte : « il ne reste aucune sécurité adéquate dans SS7 »</td></tr>
+          <tr><td>2008</td><td>Tobias Engel démontre au CCC la localisation de n’importe quel téléphone via SS7</td></tr>
+          <tr><td>2013</td><td>Snowden : Tempora (GCHQ), PRISM (NSA) ; <em>Le Monde</em> révèle la surveillance de masse des métadonnées par la DGSE</td></tr>
+          <tr><td>2014</td><td>Appel Nuland intercepté et redirigé vers Saint-Pétersbourg ; Engel présente l’attaque complète SS7 (localiser, suivre, manipuler)</td></tr>
+          <tr><td>2016</td><td>Démonstration SS7 en direct sur le congressiste Ted Lieu (<em>60 Minutes</em>) ; premières analyses du Citizen Lab sur Pegasus</td></tr>
+          <tr><td>2017</td><td>Vault 7 : WikiLeaks publie l’arsenal de la CIA (Weeping Angel, HIVE, Marble…) ; rapport de la FCC sur SS7</td></tr>
+          <tr><td>2019</td><td>WhatsApp corrige une faille zero-click (CVE-2019-3568) exploitée par NSO contre 1 400 téléphones en deux semaines</td></tr>
+          <tr><td>2021</td><td>Pegasus Project (50 000 numéros, dont Emmanuel Macron) ; Citizen Lab publie FORCEDENTRY (CVE-2021-30860), premier contournement de BlastDoor</td></tr>
+          <tr><td>2024</td><td>Salt Typhoon : piratage des systèmes d’interception légale des opérateurs américains par des hackers liés à la Chine</td></tr>
+          <tr><td>2025</td><td>Affaire Paragon : WhatsApp alerte une centaine de cibles ; le Citizen Lab confirme des infections zero-click de journalistes italiens et européens (CVE-2025-43200) ; l’Italie reconnaît l’usage de Graphite</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="glossaire"><span class="news-num">10</span> Glossaire</h2>
+      <div class="tablewrap"><table>
+        <thead><tr><th>Terme</th><th>Définition</th></tr></thead>
+        <tbody>
+          <tr><td><strong>SS7</strong></td><td>Protocole mondial de signalisation téléphonique (normalisé en 1980) qui route appels et SMS entre opérateurs ; sa conception « de confiance » le rend détournable par quiconque y accède</td></tr>
+          <tr><td><strong>IMSI / IMEI</strong></td><td>Identifiant unique d’une carte SIM (IMSI) et d’un appareil (IMEI) — la « plaque d’immatriculation » que capte un IMSI catcher</td></tr>
+          <tr><td><strong>IMSI catcher</strong></td><td>Fausse antenne qui force les téléphones voisins à s’y connecter pour les identifier, les localiser, voire intercepter leurs communications (marque connue : StingRay)</td></tr>
+          <tr><td><strong>Zero-day</strong></td><td>Faille logicielle inconnue de l’éditeur, donc encore sans correctif au moment de son exploitation</td></tr>
+          <tr><td><strong>Zero-click</strong></td><td>Exploit qui s’exécute sans aucune interaction de la victime (pas de lien à cliquer, pas de pièce jointe à ouvrir)</td></tr>
+          <tr><td><strong>Spyware mercenaire</strong></td><td>Logiciel espion développé par une entreprise privée et fourni (avec exploit et infrastructure) à des États clients : Pegasus (NSO), Graphite (Paragon)</td></tr>
+          <tr><td><strong>E2EE</strong></td><td>Chiffrement de bout en bout : seuls les deux interlocuteurs peuvent lire le message ; protège du réseau mais pas d’un téléphone infecté</td></tr>
+          <tr><td><strong>Lawful intercept</strong></td><td>Systèmes d’interception imposés par la loi aux opérateurs pour les enquêtes judiciaires (CALEA aux États-Unis, normes ETSI en Europe) — cible de choix pour les hackers d’État</td></tr>
+          <tr><td><strong>SIGINT</strong></td><td>Renseignement d’origine électromagnétique : interception des signaux radio, téléphoniques et Internet</td></tr>
+          <tr><td><strong>Métadonnées</strong></td><td>Données sur la communication (qui, quand, où, durée, fréquence) par opposition à son contenu — suffisent à reconstituer la vie d’une personne</td></tr>
+        </tbody>
+      </table></div>
+      <p class="caption">D’autres termes sont expliqués dans notre <a href="/lexique/">Lexique cyber</a>.</p>
+
+      <section class="news-source" id="sources" aria-labelledby="source-title">
+        <h2 id="source-title"><span class="news-num">11</span> Sources</h2>
+        <ol>
+          <li>Citizen Lab, « FORCEDENTRY: NSO Group iMessage Zero-Click Exploit Captured in the Wild », 13 septembre 2021 — <a href="https://citizenlab.ca/" target="_blank" rel="noopener noreferrer">citizenlab.ca</a></li>
+          <li>Citizen Lab, « Graphite Caught: First Forensic Confirmation of Paragon’s iOS Mercenary Spyware Finds Journalists Targeted », 2025 — <a href="https://citizenlab.ca/" target="_blank" rel="noopener noreferrer">citizenlab.ca</a></li>
+          <li>EFF, « Cell-Site Simulators / IMSI Catchers », Street Level Surveillance — <a href="https://sls.eff.org/" target="_blank" rel="noopener noreferrer">sls.eff.org</a></li>
+          <li>Congressional Research Service, « Salt Typhoon Hacks of Telecommunications Companies and Federal Response Implications » (IF12798) — <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">congress.gov</a></li>
+          <li>Repr. Ted Lieu / <em>New York Times</em>, « What is SS7 and is China Using It to Spy on Trump’s Cell Phone? » — <a href="https://lieu.house.gov/" target="_blank" rel="noopener noreferrer">lieu.house.gov</a></li>
+          <li><em>The Guardian</em>, « GCHQ taps fibre-optic cables for secret access to world’s communications », 21 juin 2013 — <a href="https://www.theguardian.com/" target="_blank" rel="noopener noreferrer">theguardian.com</a></li>
+          <li><em>Le Monde</em>, « Surveillance : la DGSE a transmis des données à la NSA américaine », 30 octobre 2013 — <a href="https://www.lemonde.fr/" target="_blank" rel="noopener noreferrer">lemonde.fr</a></li>
+          <li><em>Le Monde</em>, « Projet Pegasus : un téléphone portable d’Emmanuel Macron dans le viseur du Maroc », 20 juillet 2021 — <a href="https://www.lemonde.fr/" target="_blank" rel="noopener noreferrer">lemonde.fr</a></li>
+          <li>Amnesty International, « Projet Pegasus : des dirigeants mondiaux potentiellement ciblés par le logiciel espion de NSO Group », juillet 2021 — <a href="https://www.amnesty.org/" target="_blank" rel="noopener noreferrer">amnesty.org</a></li>
+          <li><em>The Wall Street Journal</em>, « U.S. Wiretap Systems Targeted in China-Linked Hack », 2024 — <a href="https://www.wsj.com/" target="_blank" rel="noopener noreferrer">wsj.com</a></li>
+          <li>WikiLeaks, « Vault 7: CIA Hacking Tools Revealed », 2017 — <a href="https://wikileaks.org/" target="_blank" rel="noopener noreferrer">wikileaks.org</a> · <a href="https://fr.wikipedia.org/wiki/Vault_7" target="_blank" rel="noopener noreferrer">synthèse Wikipédia</a></li>
+          <li><em>The Guardian</em> (rapporté par Reuters), « WhatsApp says journalists and civil society members targeted by Paragon spyware », 31 janvier 2025 — <a href="https://www.theguardian.com/" target="_blank" rel="noopener noreferrer">theguardian.com</a></li>
+        </ol>
+        <p>Dossier de synthèse documentaire. Les liens renvoient vers la page d’accueil des publications citées. Les capacités décrites l’ont été uniquement à partir de sources publiques ; les responsabilités attribuées à tel ou tel État le sont au vu des évaluations publiques disponibles, qui peuvent évoluer.</p>
+      </section>
+      <section class="news-share" aria-labelledby="share-title">
+        <h2 id="share-title">Partager cet article</h2>
+        <div class="news-share-actions">
+          <a class="news-share-action facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fespionnage-telephones-services-renseignement%2F" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur Facebook (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-facebook.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">Facebook</a>
+          <a class="news-share-action" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fespionnage-telephones-services-renseignement%2F&amp;text=Comment%20les%20services%20de%20renseignement%20%C3%A9coutent%20les%20t%C3%A9l%C3%A9phones%20-%20CyberBalise" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur X (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-x.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">X</a>
+          <button class="news-share-action instagram" id="share-instagram" type="button" aria-describedby="instagram-hint" hidden><img class="news-share-icon" src="/assets/img/social-instagram.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">Instagram · copier le lien</button>
+          <a class="news-share-action linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fespionnage-telephones-services-renseignement%2F" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur LinkedIn (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-linkedin.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">LinkedIn</a>
+        </div>
+        <p class="news-share-hint" id="instagram-hint">Instagram ne propose pas de partage direct depuis une page web : copiez le lien pour le coller dans un message ou un sticker Lien de story.</p>
+        <p class="news-share-status" id="share-status" role="status" aria-live="polite"></p>
+        <div class="news-share-fallback" id="share-fallback">
+          <label for="share-url">Lien de l’article à copier</label>
+          <input id="share-url" type="text" readonly value="https://cyberbalise.fr/actualites/espionnage-telephones-services-renseignement/">
+        </div>
+      </section>
+      <section class="news-more" aria-labelledby="aller-plus-loin">
+        <h2 id="aller-plus-loin">Pour passer à l’action</h2>
+        <p class="caption">Ces guides donnent des conseils généraux de protection. Ils ne garantissent pas une protection contre une opération de renseignement ciblée.</p>
+        <div class="news-link-grid">
+          <a class="news-guide-link" href="/particuliers/appareils/smartphone-et-tablette/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-appareils-smartphone-et-tablette.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Appareils</small><strong>Smartphone et tablette</strong><span>Les réglages pour protéger votre mobile, vos applications et vos données.</span></a>
+          <a class="news-guide-link" href="/particuliers/appareils/mises-a-jour-et-patchs/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-appareils-mises-a-jour-et-patchs.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Protection</small><strong>Mises à jour et correctifs</strong><span>Comprendre pourquoi les correctifs sont essentiels et comment les automatiser.</span></a>
+          <a class="news-guide-link" href="/particuliers/comptes/double-authentification-et-passkeys/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-comptes-double-authentification-et-passkeys.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Comptes</small><strong>Double authentification et passkeys</strong><span>Renforcer vos connexions sans dépendre des codes reçus par SMS.</span></a>
+          <a class="news-guide-link" href="/particuliers/appareils/objets-connectes/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-appareils-objets-connectes.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Appareils</small><strong>Objets connectés</strong><span>Téléviseurs, enceintes, caméras : limiter ce qui écoute et enregistre chez vous.</span></a>
+        </div>
+      </section>
+      <p class="news-bottom-nav"><a href="/actualites/">← Toutes les actualités</a></p>
+      <!-- CB-CONTENU:FIN -->
+    </article>
+    <aside class="news-sidebar" aria-label="Sommaire et guides complémentaires">
+      <nav aria-labelledby="sommaire-title">
+        <h2 id="sommaire-title">Dans ce dossier</h2>
+        <ol>
+          <li><a href="#carte-du-terrain">Trois façons d’écouter</a></li>
+          <li><a href="#ss7">SS7</a></li>
+          <li><a href="#imsi-catchers">IMSI catchers</a></li>
+          <li><a href="#cables-operateurs">Câbles et opérateurs</a></li>
+          <li><a href="#pirater-le-telephone">Pegasus, Paragon et zero-click</a></li>
+          <li><a href="#cia-vault-7">La CIA et Vault 7</a></li>
+          <li><a href="#qui-fait-quoi">Qui fait quoi</a></li>
+          <li><a href="#se-defendre">Se défendre</a></li>
+          <li><a href="#chronologie">Chronologie</a></li>
+          <li><a href="#glossaire">Glossaire</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </nav>
+      <section aria-labelledby="rubriques-title">
+        <h2 id="rubriques-title">Explorer le sujet</h2>
+        <a class="news-side-link" href="/particuliers/appareils/smartphone-et-tablette/"><small>Guide pratique</small>Smartphone et tablette →</a>
+        <a class="news-side-link" href="/particuliers/menaces/virus-et-malwares/"><small>Rubrique</small>Virus et logiciels malveillants →</a>
+        <a class="news-side-link" href="/actualites/kushner-iphone-espionnage/"><small>Actualité</small>L’iPhone de Jared Kushner espionné ? →</a>
+        <a class="news-side-link" href="/lexique/"><small>Ressource</small>Lexique cyber →</a>
+      </section>
+      <section>
+        <h2>Le point de vigilance</h2>
+        <p>L’immense majorité des gens n’a jamais été la cible d’un service de renseignement : ces capacités sont coûteuses et rares.</p>
+        <a href="#se-defendre">Lire les conseils →</a>
+      </section>
+    </aside>
+  </div>
+  <div class="home-refresh">
+  <section class="hsec best-sellers-section" id="best-sellers-top">
+      <div class="wrap">
+        <div class="hsec-head">
+          <div>
+            <span class="kicker">La sélection CyberBalise</span>
+            <h2>Top protections</h2>
+          </div>
+        </div>
+
+        <div class="home-category-picker">
+          <div class="home-category-tabs" role="tablist" aria-label="Catégories de protections et d’outils">
+            <button class="home-category-tab" id="tab-vpn" type="button" role="tab" aria-selected="true" aria-controls="panel-vpn" tabindex="0">VPN</button>
+            <button class="home-category-tab" id="tab-antivirus" type="button" role="tab" aria-selected="false" aria-controls="panel-antivirus" tabindex="-1">Antivirus</button>
+            <button class="home-category-tab" id="tab-passwords" type="button" role="tab" aria-selected="false" aria-controls="panel-passwords" tabindex="-1">Gestionnaires de mots de passe</button>
+            <button class="home-category-tab" id="tab-backup" type="button" role="tab" aria-selected="false" aria-controls="panel-backup" tabindex="-1">Sauvegardes cloud</button>
+          </div>
+
+
+        </div>
+
+        <div class="home-category-panel" id="panel-vpn" role="tabpanel" aria-labelledby="tab-vpn">
+          <div class="best-sellers-grid">
+            <a href="https://www.dpbolvw.net/click-101904907-12814529?sid=comparatif-vpn" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/nordvpn.svg" width="128" height="44" loading="lazy" decoding="async" alt="NordVPN"></div>
+              <p class="seller-feature">-78 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 3,49 € par mois (au lieu de 11,59 €)</li><li>10 appareils simultanément</li><li>Garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://ntzgd.com/g/px9exodsjk7c685e2c9908612d8f27/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/protonvpn.svg?v=20261021" width="128" height="44" loading="lazy" decoding="async" alt="Proton VPN"></div>
+              <p class="seller-feature">-70 % sur l’offre 2 ans</p>
+              <ul class="seller-features"><li>2,67 € par mois (64,04 € les 24 premiers mois)</li><li>Renouvellement à 74,86 € par an</li><li>10 appareils · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://plrvq.com/g/ayvzzawv407c685e2c99dd63dd688c/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/purevpn.png" width="128" height="44" loading="lazy" decoding="async" alt="PureVPN"></div>
+              <p class="seller-feature">-82 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 1,92 € par mois (Standard, 27 mois)</li><li>Puis 42,79 € par an au renouvellement</li><li>10 connexions · garantie 31 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://hide.me/fr/?friend=cyberbalise" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/hideme.svg" width="128" height="44" loading="lazy" decoding="async" alt="hide.me VPN"></div>
+              <p class="seller-feature">Offre gratuite et prix garanti au renouvellement</p>
+              <ul class="seller-features"><li>Dès 2,69 € par mois (24 mois + 2 mois offerts)</li><li>Renouvellement au même prix</li><li>10 appareils (payant) · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://privadovpn.com/getprivadovpn/#a_aid=cyberbalise" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/privadovpn.svg" width="128" height="44" loading="lazy" decoding="async" alt="Privado VPN"></div>
+              <p class="seller-feature">-87 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 1,32 € par mois sur 24 mois</li><li>Offre gratuite : 10 Go par mois</li><li>10 connexions · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://fststvpn.com/8sga8u7q1w1np/121e5f53" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/fastestvpn.png" width="128" height="44" loading="lazy" decoding="async" alt="FastestVPN"></div>
+              <p class="seller-feature">Offre spéciale -93 %</p>
+              <ul class="seller-features"><li>35,70 € au lieu de 535,48 €</li><li>10 connexions · gestionnaire de mots de passe offert</li><li>Garantie 31 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://grfpr.com/g/exe221unkp7c685e2c99ddf84d4c0b/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/turbovpn.png" width="128" height="44" loading="lazy" decoding="async" alt="Turbo VPN"></div>
+              <p class="seller-feature">-72 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>2,97 € par mois (80,31 € pour 27 mois)</li><li>10 appareils (Gold) ou 20 (Platinum)</li><li>Garantie 30 jours · offre gratuite avec publicités</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.jdoqocy.com/click-101904907-15554461" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/surfshark-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Surfshark"></div>
+              <p class="seller-feature">-88 % + 3 mois offerts (Black Friday)</p>
+              <ul class="seller-features"><li>Dès 2,49 € par mois (67,23 € les 27 premiers mois, hors taxes)</li><li>Appareils illimités</li><li>Garantie 30 jours · antivirus et alerte fuites avec One</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://dhwnh.com/g/xc497owldv7c685e2c99a9584d7a686701e76ad0/?subid=adguard-vpn" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/adguard-vpn.svg" width="142" height="24" loading="lazy" decoding="async" alt="AdGuard VPN"></div>
+              <p class="seller-feature">−80 % sur 2 ans — Halloween</p>
+              <ul class="seller-features"><li>2,16 €/mois, facturés sur 2 ans · TVA éventuelle</li><li>10 appareils · gratuit : 3 Go/mois</li><li>Garantie 30 jours sur 1 an ou plus · promo jusqu’au 1er novembre</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-antivirus" role="tabpanel" aria-labelledby="tab-antivirus" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://www.intego.com/fr/products/intego-one-mac?utm_source=CJ&amp;utm_medium=affiliate&amp;utm_term=101904907&amp;CID=7001&amp;AID=101904907&amp;cjevent=b6cf9e31cb3911f1813105c20a1981fd&amp;media_source=cj_affiliates" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus Mac</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/intego.svg" width="106" height="30" loading="lazy" decoding="async" alt="Intego ONE"></div>
+              <p class="seller-feature">-25 % à -35 % sur 2 ans</p>
+              <ul class="seller-features"><li>Dès 2,03 € par mois (2 ans)</li><li>Renouvellement tous les 2 ans à 64,99 €</li><li>Support Mac 24 h/24 · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.anrdoezrs.net/click-101904907-14452255?sid=malwarebytes-cyberbalise-antivirus" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/malwarebytes.png" width="128" height="44" loading="lazy" decoding="async" alt="Malwarebytes"></div>
+              <p class="seller-feature">-25 % sur 2 ans</p>
+              <ul class="seller-features"><li>60,22 € les 2 ans pour 1 appareil (au lieu de 80,30 €)</li><li>Windows, macOS, Android et iOS</li><li>Garantie 60 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.anrdoezrs.net/click-101904907-15449492?sid=surfshark-antivirus" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/surfshark-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Surfshark Antivirus"></div>
+              <p class="seller-feature">-88 % + 3 mois offerts (pack One)</p>
+              <ul class="seller-features"><li>Dès 2,49 € par mois (67,23 € les 27 premiers mois, hors taxes)</li><li>Antivirus, VPN et alerte fuites de données</li><li>Windows, macOS, Android · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-passwords" role="tabpanel" aria-labelledby="tab-passwords" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://click.linksynergy.com/fs-bin/click?id=XG%2fyuRdqDg0&amp;offerid=2065364.2&amp;type=3&amp;subid=0" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/keeper-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Keeper"></div>
+              <p class="seller-feature">-50 % la première année</p>
+              <ul class="seller-features"><li>Personal : 1,92 € par mois (au lieu de 3,84 €)</li><li>Family : 4,11 € par mois pour 5 utilisateurs</li><li>Appareils et mots de passe illimités</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.kqzyfj.com/click-101904907-17262576?sid=nordpass" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/nordpass-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="NordPass"></div>
+              <p class="seller-feature">-53 % + 3 mois offerts (Black Friday)</p>
+              <ul class="seller-features"><li>Premium dès 1,39 € par mois (37,53 € les 27 premiers mois, hors taxes)</li><li>Family : 2,49 € par mois pour 6 comptes</li><li>Garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://proton.me/fr/l/bf-pass-offers-2026?visitorId=ho-102889ab501a182746abfaee562853-42&amp;hfp=false&amp;spl=21481&amp;aap=21481&amp;offer_id=42" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-pass-logo-light.svg" width="179" height="36" loading="lazy" decoding="async" alt="Proton Pass"></div>
+              <p class="seller-feature">−60 % sur un an (Black Friday)</p>
+              <ul class="seller-features"><li>Pass Plus : 1,99 €/mois, facturé 23,88 € la première année, puis 35,88 €/an</li><li>Alias illimités, 2FA et partage sécurisé</li><li>Garantie satisfait ou remboursé de 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.stickypassword.com/fr/lp/cyberbalise?utm_source=cyberbalise&amp;utm_medium=website&amp;utm_term=mva&amp;utm_content=lp-sp&amp;utm_campaign=cyberbalise&amp;campaign_affid=d-cyberb-lp" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/sticky-password.png" width="280" height="38" loading="lazy" decoding="async" alt="Sticky Password"></div>
+              <p class="seller-feature">Licence Premium à vie, paiement unique</p>
+              <ul class="seller-features"><li>Synchronisation cloud, Wi-Fi local ou aucune</li><li>Partage sécurisé, 2FA et accès d’urgence</li><li>Page partenaire en attente d’activation</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-backup" role="tabpanel" aria-labelledby="tab-backup" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://zmgig.com/g/b2bp0q8e0l7c685e2c99ce230d48cb611901adfd/?subid=protondrive-cyberbalise" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-drive-logo-light.svg" width="142" height="24" loading="lazy" decoding="async" alt="Proton Drive"></div>
+              <p class="seller-feature">−60 % sur Drive Plus — 200 Go</p>
+              <ul class="seller-features"><li>1,99 €/mois, soit 23,88 € la première année</li><li>Puis 47,88 €/an · chiffrement de bout en bout</li><li>Versions sur 10 ans · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/backblaze/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/backblaze.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>Backblaze</h3><p class="seller-feature">Installer et oublier</p>
+              <ul class="seller-features"><li>Sauvegarde automatique et continue</li><li>Stockage illimité par ordinateur</li><li>Licence par ordinateur</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/idrive/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/idrive.ico" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>iDrive</h3><p class="seller-feature">Un compte, plusieurs appareils</p>
+              <ul class="seller-features"><li>PC, Mac, mobiles, disques externes et NAS</li><li>Personal 5 To, première année</li><li>Remise valable un an</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/pcloud/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/pcloud.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>pCloud</h3><p class="seller-feature">Stockage européen, droit suisse</p>
+              <ul class="seller-features"><li>Chiffrement AES 256 bits</li><li>Restauration des versions</li><li>Chiffrement côté client en option</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+</script>
+<script src="/assets/cookie-consent.js"></script>
+<script>
+(function(){
+  const button=document.getElementById('share-instagram');
+  const status=document.getElementById('share-status');
+  const fallback=document.getElementById('share-fallback');
+  const input=document.getElementById('share-url');
+  button.hidden=false;
+  fallback.hidden=true;
+  button.addEventListener('click',async function(){
+    status.textContent='';
+    if(!navigator.clipboard||!navigator.clipboard.writeText){
+      showManualCopy('La copie automatique n’est pas disponible dans ce navigateur.');
+      return;
+    }
+    try{
+      await navigator.clipboard.writeText(input.value);
+      fallback.hidden=true;
+      status.textContent='Lien copié. Ouvrez Instagram pour le coller dans un message ou un sticker Lien de story.';
+    }catch(error){
+      console.error('CyberBalise : impossible de copier le lien de l’article.',error);
+      showManualCopy('La copie automatique a été refusée.');
+    }
+  });
+  function showManualCopy(reason){
+    fallback.hidden=false;
+    input.focus();
+    input.select();
+    status.textContent=reason+' Copiez manuellement le lien sélectionné ci-dessous.';
+  }
+})();
+</script>
+
+<script src="/assets/top-protections.js?v=20261026-expand"></script>
+</body>
+</html>

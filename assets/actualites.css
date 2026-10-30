@@ -24,7 +24,8 @@
 .news-history strong{font-family:var(--disp);color:var(--teal-d)}
 .news-definition{margin:26px 0;padding:22px;border-left:4px solid var(--teal);border-radius:0 10px 10px 0;background:var(--teal-soft)}
 .news-definition p{margin:0}
-.news-definition strong{display:block;margin-bottom:7px;font-family:var(--disp)}
+.news-definition strong{font-family:inherit}
+.news-definition p>strong:first-child{display:block;margin-bottom:7px;font-family:var(--disp)}
 .news-checklist{padding:22px;border:1px solid #edc7b8;background:#fff4ee;border-radius:12px;margin:24px 0}
 .news-checklist h3{margin:0 0 12px;font-size:1.12rem}
 .news-checklist ul{padding-left:22px;margin:0}
@@ -77,6 +78,29 @@
 .news-feed .see-also-card--featured p{font-size:1.02rem;line-height:1.6}
 .news-feed .see-also-card--featured .see-also-card__link{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--navy);color:#fff}
 .news-feed .see-also-card--featured:hover .see-also-card__link{background:var(--orange-d)}
+.news-special-tag{display:inline-block;margin:0 0 .75rem;padding:5px 10px;border-radius:4px;background:var(--orange);color:#fff;font:700 .66rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.news-feed .see-also-card--special{background:var(--navy);border-color:var(--navy);border-top-color:var(--orange);color:#fff}
+.news-feed .see-also-card--special:hover{background:var(--navy2);border-color:var(--orange);color:#fff}
+.news-feed .see-also-card--special .see-also-card__image{background:var(--navy)}
+.news-feed .see-also-card--special .news-card-meta{color:#ffb397}
+.news-feed .see-also-card--special h3{color:#fff}
+.news-feed .see-also-card--special p{color:#c9d6e2}
+.news-feed .see-also-card--special .see-also-card__link{background:var(--orange);color:#fff}
+.news-feed .see-also-card--special:hover .see-also-card__link{background:#fff;color:var(--navy)}
+.news-page article.page>h2 .news-num,.news-source h2 .news-num{display:inline-block;margin-right:.35em;color:var(--orange-d)}
+.news-page article.page>h2 .news-num::after,.news-source h2 .news-num::after{content:"\00B7";margin-left:.4em;color:var(--muted);font-weight:400}
+.news-toc{margin:0 0 1.6em;padding:20px 24px;border:1px solid var(--line);border-radius:12px;background:#f7f9fb}
+.news-page article.page>.news-toc h2{margin:0 0 .6em;padding:0;font:700 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d)}
+.news-toc ol{margin:0;padding-left:1.4em;columns:2;column-gap:32px;font:500 .92rem/1.45 var(--disp)}
+.news-toc li{margin:.3em 0;break-inside:avoid}
+.news-toc a{text-decoration:none}
+.news-figure{margin:1.8em 0}
+.news-figure svg{display:block;width:100%;height:auto;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-family:var(--disp)}
+.news-figure figcaption{margin-top:8px;color:var(--muted);font-size:.8rem;line-height:1.5}
+.news-quote{margin:1.8em 0;padding:4px 0 4px 22px;border-left:4px solid var(--orange)}
+.news-quote p{margin:0;font-style:italic;font-size:1.08rem;line-height:1.6;color:var(--ink)}
+.news-source ol{margin:0 0 1em;padding-left:1.4em}
+.news-source li{margin:.4em 0}
 .home-refresh .news-section{background:var(--home-blue-soft)}
 .home-refresh .news-section .hsec-head>a{font:700 .85rem var(--disp)}
 .news-section #actus-title{scroll-margin-top:85px}
@@ -94,6 +118,7 @@
   .news-sidebar{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}
   .news-sidebar nav{grid-column:1/-1}
   .news-feed .see-also-card--featured{grid-template-columns:1fr}
+  .news-toc ol{columns:1}
   .news-link-grid{grid-template-columns:1fr}
   .news-archive{padding-top:24px}
 }
