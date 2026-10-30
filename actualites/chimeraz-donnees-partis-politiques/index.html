@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Données de trois partis politiques français : les annonces de Chimeraz — CyberBalise</title>
+<meta name="description" content="Sous le pseudonyme Chimeraz, un pirate dit détenir des données liées à Renaissance, LFI et au PCF. Des chiffres non vérifiés : le point.">
+<link rel="canonical" href="https://cyberbalise.fr/actualites/chimeraz-donnees-partis-politiques/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0F2438">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CyberBalise">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Un pirate met en vente et en ligne des données liées à trois partis politiques français">
+<meta property="og:description" content="Chimeraz annonce des fichiers liés à Renaissance, à La France insoumise et au PCF. Les volumes sont ceux du vendeur ; rien n’est confirmé à ce stade.">
+<meta property="og:url" content="https://cyberbalise.fr/actualites/chimeraz-donnees-partis-politiques/">
+<meta property="og:image" content="https://cyberbalise.fr/assets/img/actualite-chimeraz-assemblee-nationale.jpg">
+<meta property="article:published_time" content="2026-10-30">
+<meta property="article:section" content="Cybercriminalité">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --bg:#EDF1F6; --paper:#FFFFFF; --ink:#132232; --muted:#4D6377; --line:#D7DFE8;
+  --navy:#0F2438; --navy2:#16344E; --orange:#E4572E; --orange-d:#C7451F; --orange-soft:#FBEAE3;
+  --teal:#0F6B76; --teal-d:#0B545C; --teal-soft:#E3F0F1; --ok:#2E7D4F;
+  --disp:'Archivo',system-ui,sans-serif; --body:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--disp);line-height:1.15;margin:0 0 .5em}
+h2{font-size:1.5rem;margin-top:2.2em;letter-spacing:-.01em}
+h3{font-size:1.15rem;margin-top:1.6em}
+p{margin:0 0 1em}
+a{color:var(--teal-d);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:hover{color:var(--orange-d)}
+code{font-family:var(--mono);font-size:.85em;background:#E6EBF1;padding:.1em .35em;border-radius:4px}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.mono-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+
+/* pastilles audience */
+.chip{display:inline-flex;align-items:center;gap:.4em;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.28em .7em;border-radius:99px;white-space:nowrap}
+.chip::before{content:"";width:.55em;height:.55em;border-radius:50%}
+.chip.part{background:var(--teal-soft);color:var(--teal-d)}.chip.part::before{background:var(--teal)}
+.chip.pro{background:var(--orange-soft);color:var(--orange-d)}.chip.pro::before{background:var(--orange)}
+.chip.both{background:#E7EBF0;color:var(--muted)}.chip.both::before{background:linear-gradient(90deg,var(--teal) 50%,var(--orange) 50%)}
+
+/* header */
+.topbar{background:var(--navy);color:#C8D6E2;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:.45em 20px}
+.topbar a{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
+.site .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:1.22rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;min-width:0}
+.logo svg{flex:none}
+.logo-text{display:flex;flex-direction:column;min-width:0}
+.logo-name{display:block}
+.brand{white-space:nowrap}
+.b-accent{color:var(--orange)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.logo-baseline{display:block;font-family:var(--mono);font-size:.58rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;white-space:normal}
+footer.site .logo-baseline{display:none}
+nav.main{display:flex;gap:2px;margin-left:auto;align-items:stretch}
+.nav-item{position:relative}
+.nav-item>a{display:flex;align-items:center;gap:.45em;font-family:var(--disp);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:.55em .85em;border-radius:10px}
+.nav-item>a:hover,.nav-item:focus-within>a{background:var(--bg);color:var(--orange-d)}
+.nav-item>a::after{content:"▾";font-size:.7em;color:var(--muted)}
+.dropdown{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:340px;background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 34px rgba(15,36,56,.14);padding:12px;z-index:70}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown,.nav-item.open .dropdown{display:block}
+.dropdown::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-item.open>a{background:var(--bg);color:var(--orange-d)}
+.dropdown a{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:.78em .85em;border-radius:10px;color:var(--ink);text-decoration:none}
+.dropdown a:hover{background:var(--bg);color:var(--orange-d)}
+.dropdown strong{display:block;font-family:var(--disp);font-size:.98rem;line-height:1.2}
+.dropdown small{display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35em}
+.btn-urgence{font-family:var(--disp);font-weight:700;font-size:.9rem;background:var(--orange);color:#fff;text-decoration:none;padding:.55em 1em;border-radius:8px;white-space:nowrap}
+.btn-urgence:hover{background:var(--orange-d);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:8px;padding:.5em .7em;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px 0}
+.mnav{display:none;position:fixed;inset:64px 0 0 0;background:var(--paper);z-index:49;padding:24px 20px 110px;overflow:auto}
+.mnav.open{display:block}
+.mnav-section{padding:.15em 0 1rem;border-bottom:1px solid var(--line)}
+.mnav-section+.mnav-section{margin-top:.35rem}
+.mnav-top{display:block;font-family:var(--disp);font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;padding:.55em 0}
+.mnav-children{display:grid;gap:2px;padding-left:14px}
+.mnav-children a{display:block;font-family:var(--disp);font-weight:600;font-size:.98rem;color:var(--muted);text-decoration:none;padding:.45em 0;border-bottom:0}
+.mnav-children a:hover{color:var(--orange-d)}
+
+/* bouton urgence persistant */
+.urgence-float{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--orange);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.75em 1.1em;border-radius:99px;box-shadow:0 6px 18px rgba(196,60,25,.35);display:flex;gap:.5em;align-items:center}
+.urgence-float:hover{background:var(--orange-d);color:#fff}
+
+/* hero home */
+.hero{background:var(--navy);color:#fff;padding:38px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(228,87,46,.28),transparent);pointer-events:none;z-index:0}
+.hero>.wrap{position:relative;z-index:1}
+.hero .kicker{color:#F5A085}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;letter-spacing:-.02em;max-width:none;margin:14px 0 16px}
+.hero h1 .line{display:block;white-space:nowrap}
+.hero p.sub{color:#B9C9D6;max-width:52ch;font-size:1.06rem}
+.searchbox{margin-top:28px;max-width:560px;position:relative}
+.searchbox input{width:100%;padding:.95em 1.1em;border-radius:10px;border:1.5px solid #2C4A64;background:#16344E;color:#fff;font-family:var(--disp);font-size:1rem}
+.searchbox input::placeholder{color:#7E96A9}
+.sresults{position:absolute;top:110%;left:0;right:0;background:var(--paper);border-radius:10px;box-shadow:0 12px 30px rgba(10,25,40,.25);overflow:hidden;display:none;z-index:10}
+.sresults a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:.7em 1em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.sresults a:hover{background:var(--bg)}
+.audience-toggle{display:inline-flex;background:#16344E;border-radius:12px;padding:5px;margin-top:26px;gap:4px;flex-wrap:wrap;max-width:100%}
+.audience-toggle button{font-family:var(--disp);font-weight:700;font-size:.9rem;border:0;background:transparent;color:#9DB2C4;padding:.6em 1.1em;border-radius:8px;cursor:pointer;flex:0 1 auto}
+.audience-toggle button.on{background:var(--orange);color:#fff}
+
+/* bandeau promo défilant */
+.marquee{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;padding:.55em 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em}
+.marquee a{color:#fff;font-weight:600}
+.mq-track{display:inline-block;animation:mq 28s linear infinite}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections home */
+.hsec{padding:52px 0}
+.hsec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.hsec-head h2{margin:0;font-size:1.45rem}
+.hsec-head .kicker{margin-bottom:4px;display:block}
+.kicker{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-d)}
+
+/* sliders */
+.slider-shell{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center}
+.slider{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 18px;scrollbar-width:none;-ms-overflow-style:none}
+.slider::-webkit-scrollbar{display:none}
+.slider>*{scroll-snap-align:start;flex:0 0 min(320px,78vw)}
+.slider-side{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;width:44px;height:44px;font-size:1.35rem;line-height:1;cursor:pointer;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 16px rgba(15,36,56,.08);z-index:2}
+.slider-side:hover{border-color:var(--orange);color:var(--orange-d);transform:translateY(-1px)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.slider-dots button{width:8px;height:8px;border-radius:999px;border:0;background:#C9D3DE;padding:0;cursor:pointer;transition:transform .15s,background .15s}
+.slider-dots button.active{background:var(--orange);transform:scale(1.25)}
+@media (max-width:760px){
+  .slider-dots{display:flex}
+}
+
+/* cards */
+.acard{display:block;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.acard:hover{box-shadow:0 10px 24px rgba(15,36,56,.10);transform:translateY(-2px)}
+.acard img.thumb{width:100%;height:120px;object-fit:cover;border-radius:10px;display:block;margin:0 0 14px}
+.acard h3{font-size:1.02rem;margin:.55em 0 .3em}
+.acard p{color:var(--muted);font-size:.9rem;margin:0}
+.ccard{display:flex;flex-direction:column;min-height:210px}
+.ccard p{flex:1}
+.ccard .cmore,.ccard .soon{margin-top:14px;align-self:flex-start}
+.ccard .cmore{font-family:var(--disp);font-weight:700;font-size:.88rem;color:var(--orange-d)}
+.acard .cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.grid{display:grid;gap:18px}
+.grid.cards-2{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.grid.cards-3{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+
+/* encarts produit */
+.pcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.pcard .top{display:flex;justify-content:space-between;align-items:center}
+.pcard h3{margin:.2em 0 0;font-size:1.05rem}
+.pcard .for{font-size:.86rem;color:var(--muted);margin:0}
+.pcard .price{font-family:var(--mono);font-size:.8rem;color:var(--teal-d);font-weight:600}
+.pcard .cta{margin-top:auto;display:inline-block;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;text-decoration:none;padding:.6em 1em;border-radius:8px;text-align:center}
+.pcard .cta:hover{background:var(--orange-d)}
+.aff-note{font-size:.72rem;color:var(--muted);margin:0}
+
+/* CTA final */
+.cta-band{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:44px 40px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band h2{margin:8px 0 6px;color:#fff}
+.cta-band p{color:#B9C9D6;margin:0;max-width:52ch}
+.cta-band .btn{background:var(--orange);color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;padding:.9em 1.5em;border-radius:10px;white-space:nowrap}
+.cta-band .btn:hover{background:var(--orange-d)}
+
+/* alerte du moment */
+.alert-card{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.alert-card .tag{background:var(--orange);color:#fff;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.4em .8em;border-radius:6px;flex:none}
+.alert-card p{margin:.3em 0 0;font-size:.95rem}
+.alert-card a{margin-left:auto;align-self:center;white-space:nowrap}
+
+/* footer */
+footer.site{background:var(--navy);color:#A9BDCC;margin-top:64px;padding:56px 0 44px;overflow:visible}
+footer.site a{color:#E4ECF2;text-decoration:none;display:inline-block;white-space:normal}
+footer.site a:hover{color:var(--orange)}
+.fgrid{display:grid;grid-template-columns:minmax(240px,1.6fr) repeat(4,minmax(120px,1fr));gap:32px;align-items:start;padding-bottom:10px}
+.fgrid h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#93AABB;margin:0 0 .9em}
+.fgrid ul{list-style:none;margin:0;padding:0}
+.fgrid li{margin:.48em 0;font-size:.9rem;line-height:1.35}
+.fbottom{border-top:1px solid #24405A;margin-top:42px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#7E96A9;line-height:1.45}
+footer.site .wrap.fsimple{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px;height:auto;min-height:0;padding-top:0;padding-bottom:0}
+footer.site .fsimple h4{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#93AABB;margin:0;line-height:1.4}
+footer.site .fsimple ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site .fsimple li{margin:0;font-size:.9rem;line-height:1.4}
+
+/* page article */
+.pagehead{background:var(--navy);color:#fff;padding:38px 0 40px}
+.pagehead .crumbs{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#8FA8BC}
+.pagehead .crumbs a{color:#C8D6E2;text-decoration:none}
+.pagehead h1{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin:.45em 0 .35em;max-width:22ch}
+.pagehead .lead{color:#B9C9D6;max-width:60ch;margin:0}
+.pagehead .meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pagehead .meta .date{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#8FA8BC;text-transform:uppercase}
+article.page{background:var(--paper);border:1px solid var(--line);border-radius:0 0 16px 16px;padding:36px clamp(20px,5vw,56px) 48px;max-width:980px;margin:0 auto}
+article.page h2{border-top:1px solid var(--line);padding-top:1.4em}
+article.page h2:first-of-type{border-top:0;padding-top:0}
+.see-also{margin-top:40px;border-top:1px solid var(--line);padding-top:28px}
+
+/* fiches réflexes : signature */
+.steps{list-style:none;counter-reset:step;margin:2em 0;padding:0}
+.steps li{counter-increment:step;position:relative;padding:0 0 1.6em 64px;border-left:3px solid var(--orange);margin-left:22px}
+.steps li:last-child{padding-bottom:.2em}
+.steps li::before{content:"0" counter(step);position:absolute;left:-22px;top:-2px;transform:translateX(-100%);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--orange-d);white-space:nowrap}
+.steps li::after{content:"";position:absolute;left:-9.5px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--orange)}
+.steps h3{font-size:1.08rem;margin:0 0 .35em}
+.steps p{margin:0;color:#33475A}
+.warn{background:var(--orange-soft);border:1px solid #F0C4B3;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.warn p{margin:0}
+.note{background:var(--teal-soft);border:1px solid #BFD9DC;border-radius:10px;padding:14px 18px;margin:1.6em 0}
+.note p{margin:0}
+.keypoints li{margin:.5em 0}
+.caption{font-size:.78rem;color:var(--muted)}
+
+/* tableaux */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.tablewrap table{margin:0;min-width:520px}
+table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.92rem}
+th{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.6em .7em}
+td{border-bottom:1px solid var(--line);padding:.7em;vertical-align:top}
+tbody tr:hover{background:#F6F8FA}
+
+/* lexique */
+.lex{columns:2;column-gap:44px}
+.lex dt{font-family:var(--disp);font-weight:700;break-inside:avoid;margin-top:1.1em}
+.lex dd{margin:.2em 0 0;color:#33475A;font-size:.93rem}
+.lexletter{font-size:1.3rem;margin-top:1.4em}
+.lex dd a{white-space:nowrap}
+.lexnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6em}
+.lexnav a{font-family:var(--mono);font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:.25em .6em;text-decoration:none}
+
+/* hub "à paraître" */
+.soon{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:99px;padding:.3em .7em}
+
+@media (max-width:900px){
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 18px}
+  .lex{columns:1}
+  .marquee{display:none}
+}
+@media (max-width:760px){
+  nav.main,.btn-urgence{display:none}
+  .site .wrap{height:auto;min-height:64px;padding-top:10px;padding-bottom:10px;justify-content:space-between}
+  .logo{font-size:1.02rem;gap:8px;max-width:calc(100% - 58px);line-height:1.05;align-items:center}
+  .logo svg{width:24px;height:24px;margin-top:0}
+  .logo-text{min-width:0;max-width:100%}
+  .logo-baseline{display:block;font-size:.49rem;letter-spacing:.03em;white-space:nowrap}
+  .burger{display:block;flex:none;margin-left:0}
+  .topbar{display:none}
+  .hero{padding:16px 0 42px}
+  .pagehead{padding:16px 0 32px}
+  .hero h1{font-size:clamp(1.5rem,7.3vw,2rem);max-width:none}
+  .hero p.sub{font-size:.98rem;max-width:100%}
+  .searchbox{margin-top:20px;max-width:100%}
+  .searchbox input{padding:.9em 1em;font-size:.96rem}
+  .audience-toggle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:6px}
+  .audience-toggle button{width:100%;text-align:center;padding:.72em .35em;font-size:.8rem;letter-spacing:-.01em}
+  .slider-shell{grid-template-columns:minmax(0,1fr);position:relative}
+  .slider{padding:4px 0 18px}
+  .slider>*{flex:0 0 100%}
+  .slider-side{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;font-size:1rem}
+  .slider-side[data-dir='-1']{left:-8px}
+  .slider-side[data-dir='1']{right:-8px}
+  .acard img.thumb{height:96px}
+  .cta-band{padding:30px 24px}
+  footer.site{padding:34px 0 26px}
+  .fgrid{grid-template-columns:1fr;gap:0}
+  .fgrid > div:first-child{display:none}
+  .fgrid > div:last-child{max-width:260px}
+  .fgrid li{margin:.42em 0}
+  .fbottom{display:none}
+  .urgence-float{right:12px;bottom:12px}
+}
+@media (max-width:420px){
+  .wrap{padding:0 16px}
+  .logo{font-size:.95rem}
+  .hero h1{font-size:1.42rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mq-track{animation:none}
+  .acard{transition:none}
+}
+</style>
+<link rel="stylesheet" href="/assets/site-spacing.css?v=20261026-expand">
+<link rel="stylesheet" href="/assets/home-refresh.css?v=20261028-adguard-vpn">
+<link rel="stylesheet" href="/assets/cookie-consent.css">
+<link rel="stylesheet" href="/assets/actualites.css?v=20261026-vizio-logo">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Un pirate met en vente et en ligne des données liées à trois partis politiques français","datePublished":"2026-10-30","dateModified":"2026-10-30","inLanguage":"fr-FR","author":{"@type":"Organization","name":"CyberBalise","url":"https://cyberbalise.fr/a-propos/"},"publisher":{"@type":"Organization","name":"CyberBalise","url":"https://cyberbalise.fr/"},"mainEntityOfPage":"https://cyberbalise.fr/actualites/chimeraz-donnees-partis-politiques/","image":"https://cyberbalise.fr/assets/img/actualite-chimeraz-assemblee-nationale.jpg","articleSection":"Cybercriminalité"}
+</script>
+</head>
+<body class="news-page">
+<header class="site"><div class="wrap">
+  <a class="logo" href="/"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg><span class="logo-text"><span class="logo-name"><span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span></span><span class="logo-baseline">Guides, comparatifs et fiches réflexes</span></span></a>
+  <!-- CB-MENU:DEBUT --><nav class="main" aria-label="Navigation principale"><div class="nav-item"><a href="/actualites/">Actualit&#xE9;s</a></div><div class="nav-item"><a href="/particuliers/">Particuliers</a><div class="dropdown"><a href="/particuliers/menaces/"><div><strong>Comprendre les menaces</strong></div></a><a href="/particuliers/comptes/"><div><strong>Protéger mes comptes et mon identité</strong></div></a><a href="/particuliers/appareils/"><div><strong>Protéger mes appareils et ma connexion</strong></div></a><a href="/particuliers/achats/"><div><strong>Acheter, payer et épargner en ligne</strong></div></a><a href="/particuliers/famille/"><div><strong>Famille et publics fragiles</strong></div></a><a href="/particuliers/victime/"><div><strong>J'ai été victime : que faire ?</strong></div></a></div></div><div class="nav-item"><a href="/pro/">Professionnels</a><div class="dropdown"><a href="/pro/menaces/"><div><strong>Menaces visant les entreprises</strong></div></a><a href="/pro/fondamentaux/"><div><strong>Fondamentaux et hygiène numérique</strong></div></a><a href="/pro/sensibilisation/"><div><strong>Sensibiliser mes équipes</strong></div></a><a href="/pro/conformite/"><div><strong>Conformité et cadre légal</strong></div></a><a href="/pro/incident/"><div><strong>Réagir à un incident</strong></div></a><a href="/pro/metiers/"><div><strong>Par métier</strong></div></a></div></div><div class="nav-item"><a href="/offres/">Offres &amp; outils</a><div class="dropdown"><a href="/offres/vpn/"><div><strong>Comparatif VPN</strong></div></a><a href="/offres/antivirus/"><div><strong>Comparatif Antivirus</strong></div></a><a href="/offres/gestionnaires-mots-de-passe/"><div><strong>Comparatif gestionnaires de mots de passe</strong></div></a><a href="/offres/sauvegardes-cloud/"><div><strong>Comparatif sauvegardes cloud</strong></div></a><a href="/offres/formations-particuliers/"><div><strong>Comparatif formations cyber pour particuliers</strong></div></a></div></div><div class="nav-item"><a href="/outils/">Ressources</a><div class="dropdown"><a href="/outils/quiz-niveau-cyber/"><div><strong>Quiz : votre niveau cyber</strong></div></a><a href="/outils/checklist-personnalisee/"><div><strong>Checklist personnalisée</strong></div></a><a href="/outils/verificateur-mot-de-passe/"><div><strong>Vérificateur de mot de passe</strong></div></a><a href="/outils/detecteur-arnaque/"><div><strong>Détecteur d'arnaque</strong></div></a><a href="/outils/risque-sms/"><div><strong>V&#xE9;rifier un SMS suspect</strong></div></a><a href="/outils/indice-usurpabilite/"><div><strong>Indice d'usurpabilité</strong></div></a><a href="/lexique/"><div><strong>Lexique cyber</strong></div></a></div></div></nav><!-- CB-MENU:FIN -->
+  <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+<!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/actualites/">Actualit&#xE9;s</a><div class="mnav-children"></div></div><div class="mnav-section"><a class="mnav-top" href="/particuliers/">Particuliers</a><div class="mnav-children"><a href="/particuliers/menaces/">Comprendre les menaces</a><a href="/particuliers/comptes/">Protéger mes comptes et mon identité</a><a href="/particuliers/appareils/">Protéger mes appareils et ma connexion</a><a href="/particuliers/achats/">Acheter, payer et épargner en ligne</a><a href="/particuliers/famille/">Famille et publics fragiles</a><a href="/particuliers/victime/">J'ai été victime : que faire ?</a></div></div><div class="mnav-section"><a class="mnav-top" href="/pro/">Professionnels</a><div class="mnav-children"><a href="/pro/menaces/">Menaces visant les entreprises</a><a href="/pro/fondamentaux/">Fondamentaux et hygiène numérique</a><a href="/pro/sensibilisation/">Sensibiliser mes équipes</a><a href="/pro/conformite/">Conformité et cadre légal</a><a href="/pro/incident/">Réagir à un incident</a><a href="/pro/metiers/">Par métier</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Offres &amp; outils</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a><a href="/offres/formations-particuliers/">Comparatif formations cyber pour particuliers</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
+</header>
+<main>
+  <section class="pagehead news-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Accueil</a> / <a href="/actualites/">Actualités</a> / Cybercriminalité</div>
+      <div class="news-intro">
+        <div>
+          <span class="news-eyebrow">Cybercriminalité · Fuite de données</span>
+          <h1>Un pirate met en vente et en ligne des données liées à trois partis politiques français</h1>
+          <p class="news-deck">Sous le pseudonyme Chimeraz, un acteur annonce sur un forum cybercriminel des fichiers liés à Renaissance, à La France insoumise et au Parti communiste français. Les volumes avancés sont ceux du vendeur : rien n’est confirmé à ce stade.</p>
+          <div class="news-meta"><span>Par CyberBalise</span><time datetime="2026-10-30">30 octobre 2026</time><span>Lecture : 4 min</span></div>
+        </div>
+        <figure class="news-visual">
+          <img src="/assets/img/actualite-chimeraz-assemblee-nationale.jpg" width="1280" height="853" decoding="async" alt="Façade de l’Assemblée nationale, à Paris.">
+          <figcaption>Façade de l’Assemblée nationale (Palais Bourbon), Paris, avril 2014. Photo de contexte, sans lien avec les systèmes visés par les annonces. Photo : <a href="https://commons.wikimedia.org/wiki/File:Palais_Bourbon,_Paris_7e,_NW_View_140402_1.jpg">DXR / Wikimedia Commons</a> — domaine public.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <div class="wrap news-layout">
+    <article class="page">
+      <!-- CB-CONTENU:DEBUT -->
+      <div class="news-history"><span><strong>Des annonces de vendeur, pas des confirmations</strong><br>Les informations de cet article reposent uniquement sur les déclarations de l’auteur des annonces. Les chiffres et l’origine des données restent à confirmer par les partis concernés.</span></div>
+      <p>Trois grandes formations politiques — Renaissance, La France insoumise et le Parti communiste français — seraient touchées par une série de fuites de données, selon des annonces diffusées ces derniers jours par un individu ou un groupe opérant sous le pseudonyme de Chimeraz.</p>
+      <p>Ce n’est pas la première incursion de cet acteur sur la scène française : il s’était fait connaître ces derniers mois par des revendications visant des armuriers. Cette fois, c’est le secteur politique qu’il met en avant, en publiant sur un forum cybercriminel des extraits de fichiers qu’il présente comme issus des systèmes de trois partis.</p>
+
+      <h2 id="trois-partis">Trois partis, trois traitements différents</h2>
+      <p>La méthode varie selon la cible. Renaissance et La France insoumise verraient une partie de leurs données mises en ligne gratuitement, tandis que le fichier attribué au PCF serait proposé à la vente. Précision importante : ces annonces décrivent une offre commerciale ou de diffusion, et rien n’établit à ce stade ce qui a réellement été rendu accessible.</p>
+      <p>Les volumes revendiqués sont imposants :</p>
+      <ul>
+        <li><strong>Renaissance :</strong> 4 157 404 lignes (dont 4 157 403 uniques), 373 906 adresses postales, un compteur affichant 9 617 987 électeurs et 1 547 personnes qualifiées d’employés.</li>
+        <li><strong>La France insoumise :</strong> 1 270 096 lignes (dont 1 165 256 uniques), plus un fichier de 54 838 « portes ouvertes » et 208 personnes chargées du porte-à-porte.</li>
+        <li><strong>PCF :</strong> 194 641 lignes, 183 363 personnes, 113 971 numéros de téléphone et 77 076 adresses électroniques.</li>
+      </ul>
+      <p>Ces compteurs appellent la plus grande prudence. Ce sont les chiffres du vendeur, pas un audit : une même personne peut apparaître avec plusieurs coordonnées, une ligne ne vaut pas un individu, et additionner ces totaux donnerait une image faussée du nombre réel de personnes concernées. La mention d’« employés » ou de « frappeurs » ne dit rien, non plus, de leur statut réel — militant, bénévole, prestataire ou salarié — ni de la façon dont les passages et les réponses du porte-à-porte ont été comptabilisés.</p>
+      <p class="caption">Autre revendication cybercriminelle non confirmée, visant cette fois un industriel : notre article <a href="/actualites/hisense-whitearmor-rancongiciel/">Hisense visé par un rançongiciel</a>.</p>
+
+      <h2 id="fichiers-jumeaux">Un détail intrigant : des fichiers presque jumeaux</h2>
+      <p>Élément qui a retenu l’attention des observateurs : les fichiers attribués à Renaissance et à La France insoumise portent des noms quasi identiques, partageant la même séquence, seule la taille indiquée diffère. Faute de mieux, on pourrait y voir la trace d’un même outil ou d’un même prestataire de collecte utilisé par les deux partis.</p>
+      <p>C’est pourtant une hypothèse qu’il ne faut pas creuser trop vite. Un nom de fichier se modifie en quelques secondes : il peut s’agir d’une simple convention de nommage répandue, d’un retravail après récupération des données, ou d’un classement opéré par le diffuseur lui-même. Ce parallèle dit tout au plus que des exports ont été présentés de façon similaire — pas qu’ils partagent la même origine technique.</p>
+
+      <h2 id="adresses-engagements">Des adresses ne sont pas des engagements politiques</h2>
+      <p>Au-delà des chiffres, la vraie question est ce que ces fichiers révèlent des personnes qui y figurent. Une adresse présente dans un outil de prospection électorale ne signifie ni adhésion ni sympathie pour le parti concerné : il peut s’agir d’un simple logement visité lors d’une campagne de porte-à-porte. Présenter chaque contact comme un militant serait une lecture abusive et potentiellement dangereuse.</p>
+      <p>Le risque change de nature si des coordonnées sont couplées à des réponses ou à des observations de campagne — mais les annonces ne détaillent pas suffisamment les champs présents pour le savoir. Les scénarios redoutés sont connus : <a href="/particuliers/menaces/phishing-hameconnage/">sollicitations frauduleuses sur mesure</a>, tentatives d’<a href="/particuliers/menaces/vol-didentite-numerique/">usurpation d’identité</a> exploitant un prétexte politique. Pour l’heure, rien dans les éléments publiés n’atteste de tels usages.</p>
+      <p class="caption">Pour savoir ce que les organisations conservent sur vous et comment exercer vos droits : notre guide <a href="/particuliers/comptes/vie-privee-et-donnees-personnelles/">Vie privée et données personnelles</a>. Pour reconnaître un message ou un appel suspect : <a href="/particuliers/menaces/arnaques-sms-et-appels/">Arnaques par SMS et appels</a>.</p>
+      <p>Ce n’est d’ailleurs pas la première fois que des données de partis français ressortent sur ce type de forums : dès juillet 2026, des bases attribuées à La France insoumise et au Rassemblement National avaient déjà refait surface sur le web.</p>
+
+      <section class="news-source" id="source" aria-labelledby="source-title">
+        <h2 id="source-title">Source</h2>
+        <p>Annonces publiées par l’auteur sous le pseudonyme Chimeraz sur un forum cybercriminel. Ces informations reposent uniquement sur les déclarations de l’auteur des annonces ; les chiffres et l’origine des données restent à confirmer par les partis concernés.</p>
+      </section>
+      <section class="news-share" aria-labelledby="share-title">
+        <h2 id="share-title">Partager cet article</h2>
+        <div class="news-share-actions">
+          <a class="news-share-action facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fchimeraz-donnees-partis-politiques%2F" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur Facebook (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-facebook.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">Facebook</a>
+          <a class="news-share-action" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fchimeraz-donnees-partis-politiques%2F&amp;text=Un%20pirate%20met%20en%20vente%20et%20en%20ligne%20des%20donn%C3%A9es%20li%C3%A9es%20%C3%A0%20trois%20partis%20politiques%20fran%C3%A7ais%20-%20CyberBalise" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur X (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-x.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">X</a>
+          <button class="news-share-action instagram" id="share-instagram" type="button" aria-describedby="instagram-hint" hidden><img class="news-share-icon" src="/assets/img/social-instagram.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">Instagram · copier le lien</button>
+          <a class="news-share-action linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcyberbalise.fr%2Factualites%2Fchimeraz-donnees-partis-politiques%2F" target="_blank" rel="noopener noreferrer" aria-label="Partager l’article sur LinkedIn (nouvel onglet)"><img class="news-share-icon" src="/assets/img/social-linkedin.svg?v=20261026-logos" width="24" height="24" alt="" decoding="async">LinkedIn</a>
+        </div>
+        <p class="news-share-hint" id="instagram-hint">Instagram ne propose pas de partage direct depuis une page web : copiez le lien pour le coller dans un message ou un sticker Lien de story.</p>
+        <p class="news-share-status" id="share-status" role="status" aria-live="polite"></p>
+        <div class="news-share-fallback" id="share-fallback">
+          <label for="share-url">Lien de l’article à copier</label>
+          <input id="share-url" type="text" readonly value="https://cyberbalise.fr/actualites/chimeraz-donnees-partis-politiques/">
+        </div>
+      </section>
+      <section class="news-more" aria-labelledby="aller-plus-loin">
+        <h2 id="aller-plus-loin">Pour passer à l’action</h2>
+        <p class="caption">Ces guides donnent des conseils généraux de protection. Ils ne permettent pas de confirmer les annonces de Chimeraz.</p>
+        <div class="news-link-grid">
+          <a class="news-guide-link" href="/particuliers/menaces/phishing-hameconnage/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-menaces-phishing-hameconnage.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Particuliers</small><strong>Repérer l’hameçonnage</strong><span>Reconnaître les messages qui exploitent vos informations pour gagner votre confiance.</span></a>
+          <a class="news-guide-link" href="/particuliers/menaces/vol-didentite-numerique/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-menaces-vol-didentite-numerique.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Identité</small><strong>Vol d’identité numérique</strong><span>Les signaux à surveiller et les démarches en cas d’utilisation de vos données.</span></a>
+          <a class="news-guide-link" href="/particuliers/comptes/vie-privee-et-donnees-personnelles/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-comptes-vie-privee-et-donnees-personnelles.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Guide · Vie privée</small><strong>Vie privée et données personnelles</strong><span>Ce que les organisations savent de vous et les réglages et droits pour reprendre la main.</span></a>
+          <a class="news-guide-link" href="/particuliers/victime/identite-usurpee/"><img class="news-guide-photo" src="/assets/img/editorial-particuliers-victime-identite-usurpee.jpg" width="76" height="76" loading="lazy" decoding="async" alt=""><small>Fiche réflexe</small><strong>Mon identité est usurpée</strong><span>Les démarches, dans l’ordre, pour signaler l’usurpation et limiter les dégâts.</span></a>
+        </div>
+      </section>
+      <p class="news-bottom-nav"><a href="/actualites/">← Toutes les actualités</a></p>
+      <!-- CB-CONTENU:FIN -->
+    </article>
+    <aside class="news-sidebar" aria-label="Sommaire et guides complémentaires">
+      <nav aria-labelledby="sommaire-title">
+        <h2 id="sommaire-title">Dans cet article</h2>
+        <ol>
+          <li><a href="#trois-partis">Trois partis, trois traitements</a></li>
+          <li><a href="#fichiers-jumeaux">Des fichiers presque jumeaux</a></li>
+          <li><a href="#adresses-engagements">Adresses et engagements politiques</a></li>
+        </ol>
+      </nav>
+      <section aria-labelledby="rubriques-title">
+        <h2 id="rubriques-title">Explorer le sujet</h2>
+        <a class="news-side-link" href="/particuliers/menaces/"><small>Rubrique</small>Comprendre les menaces →</a>
+        <a class="news-side-link" href="/particuliers/comptes/vie-privee-et-donnees-personnelles/"><small>Guide pratique</small>Vie privée et données personnelles →</a>
+        <a class="news-side-link" href="/outils/detecteur-arnaque/"><small>Outil</small>Détecteur d’arnaque SMS/e-mail →</a>
+        <a class="news-side-link" href="/particuliers/victime/signaler-un-probleme/"><small>Fiches réflexes</small>Où et comment signaler →</a>
+      </section>
+      <section>
+        <h2>Le point de vigilance</h2>
+        <p>Les chiffres sont ceux du vendeur : une ligne ne vaut pas un individu, et une adresse n’est pas un engagement politique.</p>
+        <a href="#source">Consulter la source →</a>
+      </section>
+    </aside>
+  </div>
+  <div class="home-refresh">
+  <section class="hsec best-sellers-section" id="best-sellers-top">
+      <div class="wrap">
+        <div class="hsec-head">
+          <div>
+            <span class="kicker">La sélection CyberBalise</span>
+            <h2>Top protections</h2>
+          </div>
+        </div>
+
+        <div class="home-category-picker">
+          <div class="home-category-tabs" role="tablist" aria-label="Catégories de protections et d’outils">
+            <button class="home-category-tab" id="tab-vpn" type="button" role="tab" aria-selected="true" aria-controls="panel-vpn" tabindex="0">VPN</button>
+            <button class="home-category-tab" id="tab-antivirus" type="button" role="tab" aria-selected="false" aria-controls="panel-antivirus" tabindex="-1">Antivirus</button>
+            <button class="home-category-tab" id="tab-passwords" type="button" role="tab" aria-selected="false" aria-controls="panel-passwords" tabindex="-1">Gestionnaires de mots de passe</button>
+            <button class="home-category-tab" id="tab-backup" type="button" role="tab" aria-selected="false" aria-controls="panel-backup" tabindex="-1">Sauvegardes cloud</button>
+          </div>
+
+
+        </div>
+
+        <div class="home-category-panel" id="panel-vpn" role="tabpanel" aria-labelledby="tab-vpn">
+          <div class="best-sellers-grid">
+            <a href="https://www.dpbolvw.net/click-101904907-12814529?sid=comparatif-vpn" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/nordvpn.svg" width="128" height="44" loading="lazy" decoding="async" alt="NordVPN"></div>
+              <p class="seller-feature">-78 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 3,49 € par mois (au lieu de 11,59 €)</li><li>10 appareils simultanément</li><li>Garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://ntzgd.com/g/px9exodsjk7c685e2c9908612d8f27/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/protonvpn.svg?v=20261021" width="128" height="44" loading="lazy" decoding="async" alt="Proton VPN"></div>
+              <p class="seller-feature">-70 % sur l’offre 2 ans</p>
+              <ul class="seller-features"><li>2,67 € par mois (64,04 € les 24 premiers mois)</li><li>Renouvellement à 74,86 € par an</li><li>10 appareils · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://plrvq.com/g/ayvzzawv407c685e2c99dd63dd688c/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/purevpn.png" width="128" height="44" loading="lazy" decoding="async" alt="PureVPN"></div>
+              <p class="seller-feature">-82 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 1,92 € par mois (Standard, 27 mois)</li><li>Puis 42,79 € par an au renouvellement</li><li>10 connexions · garantie 31 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://hide.me/fr/?friend=cyberbalise" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/hideme.svg" width="128" height="44" loading="lazy" decoding="async" alt="hide.me VPN"></div>
+              <p class="seller-feature">Offre gratuite et prix garanti au renouvellement</p>
+              <ul class="seller-features"><li>Dès 2,69 € par mois (24 mois + 2 mois offerts)</li><li>Renouvellement au même prix</li><li>10 appareils (payant) · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://privadovpn.com/getprivadovpn/#a_aid=cyberbalise" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/privadovpn.svg" width="128" height="44" loading="lazy" decoding="async" alt="Privado VPN"></div>
+              <p class="seller-feature">-87 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>Dès 1,32 € par mois sur 24 mois</li><li>Offre gratuite : 10 Go par mois</li><li>10 connexions · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://fststvpn.com/8sga8u7q1w1np/121e5f53" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/fastestvpn.png" width="128" height="44" loading="lazy" decoding="async" alt="FastestVPN"></div>
+              <p class="seller-feature">Offre spéciale -93 %</p>
+              <ul class="seller-features"><li>35,70 € au lieu de 535,48 €</li><li>10 connexions · gestionnaire de mots de passe offert</li><li>Garantie 31 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://grfpr.com/g/exe221unkp7c685e2c99ddf84d4c0b/" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/turbovpn.png" width="128" height="44" loading="lazy" decoding="async" alt="Turbo VPN"></div>
+              <p class="seller-feature">-72 % + 3 mois offerts</p>
+              <ul class="seller-features"><li>2,97 € par mois (80,31 € pour 27 mois)</li><li>10 appareils (Gold) ou 20 (Platinum)</li><li>Garantie 30 jours · offre gratuite avec publicités</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.jdoqocy.com/click-101904907-15554461" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/surfshark-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Surfshark"></div>
+              <p class="seller-feature">-88 % + 3 mois offerts (Black Friday)</p>
+              <ul class="seller-features"><li>Dès 2,49 € par mois (67,23 € les 27 premiers mois, hors taxes)</li><li>Appareils illimités</li><li>Garantie 30 jours · antivirus et alerte fuites avec One</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://dhwnh.com/g/xc497owldv7c685e2c99a9584d7a686701e76ad0/?subid=adguard-vpn" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">VPN</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/adguard-vpn.svg" width="142" height="24" loading="lazy" decoding="async" alt="AdGuard VPN"></div>
+              <p class="seller-feature">−80 % sur 2 ans — Halloween</p>
+              <ul class="seller-features"><li>2,16 €/mois, facturés sur 2 ans · TVA éventuelle</li><li>10 appareils · gratuit : 3 Go/mois</li><li>Garantie 30 jours sur 1 an ou plus · promo jusqu’au 1er novembre</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-antivirus" role="tabpanel" aria-labelledby="tab-antivirus" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://www.intego.com/fr/products/intego-one-mac?utm_source=CJ&amp;utm_medium=affiliate&amp;utm_term=101904907&amp;CID=7001&amp;AID=101904907&amp;cjevent=b6cf9e31cb3911f1813105c20a1981fd&amp;media_source=cj_affiliates" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus Mac</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/intego.svg" width="106" height="30" loading="lazy" decoding="async" alt="Intego ONE"></div>
+              <p class="seller-feature">-25 % à -35 % sur 2 ans</p>
+              <ul class="seller-features"><li>Dès 2,03 € par mois (2 ans)</li><li>Renouvellement tous les 2 ans à 64,99 €</li><li>Support Mac 24 h/24 · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.anrdoezrs.net/click-101904907-14452255?sid=malwarebytes-cyberbalise-antivirus" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/malwarebytes.png" width="128" height="44" loading="lazy" decoding="async" alt="Malwarebytes"></div>
+              <p class="seller-feature">-25 % sur 2 ans</p>
+              <ul class="seller-features"><li>60,22 € les 2 ans pour 1 appareil (au lieu de 80,30 €)</li><li>Windows, macOS, Android et iOS</li><li>Garantie 60 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.anrdoezrs.net/click-101904907-15449492?sid=surfshark-antivirus" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Antivirus</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/surfshark-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Surfshark Antivirus"></div>
+              <p class="seller-feature">-88 % + 3 mois offerts (pack One)</p>
+              <ul class="seller-features"><li>Dès 2,49 € par mois (67,23 € les 27 premiers mois, hors taxes)</li><li>Antivirus, VPN et alerte fuites de données</li><li>Windows, macOS, Android · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-passwords" role="tabpanel" aria-labelledby="tab-passwords" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://click.linksynergy.com/fs-bin/click?id=XG%2fyuRdqDg0&amp;offerid=2065364.2&amp;type=3&amp;subid=0" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/keeper-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="Keeper"></div>
+              <p class="seller-feature">-50 % la première année</p>
+              <ul class="seller-features"><li>Personal : 1,92 € par mois (au lieu de 3,84 €)</li><li>Family : 4,11 € par mois pour 5 utilisateurs</li><li>Appareils et mots de passe illimités</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.kqzyfj.com/click-101904907-17262576?sid=nordpass" target="_blank" rel="sponsored noopener" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/nordpass-logo.svg" width="128" height="44" loading="lazy" decoding="async" alt="NordPass"></div>
+              <p class="seller-feature">-53 % + 3 mois offerts (Black Friday)</p>
+              <ul class="seller-features"><li>Premium dès 1,39 € par mois (37,53 € les 27 premiers mois, hors taxes)</li><li>Family : 2,49 € par mois pour 6 comptes</li><li>Garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://proton.me/fr/l/bf-pass-offers-2026?visitorId=ho-102889ab501a182746abfaee562853-42&amp;hfp=false&amp;spl=21481&amp;aap=21481&amp;offer_id=42" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-pass-logo-light.svg" width="179" height="36" loading="lazy" decoding="async" alt="Proton Pass"></div>
+              <p class="seller-feature">−60 % sur un an (Black Friday)</p>
+              <ul class="seller-features"><li>Pass Plus : 1,99 €/mois, facturé 23,88 € la première année, puis 35,88 €/an</li><li>Alias illimités, 2FA et partage sécurisé</li><li>Garantie satisfait ou remboursé de 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="https://www.stickypassword.com/fr/lp/cyberbalise?utm_source=cyberbalise&amp;utm_medium=website&amp;utm_term=mva&amp;utm_content=lp-sp&amp;utm_campaign=cyberbalise&amp;campaign_affid=d-cyberb-lp" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Gestionnaire MDP</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/sticky-password.png" width="280" height="38" loading="lazy" decoding="async" alt="Sticky Password"></div>
+              <p class="seller-feature">Licence Premium à vie, paiement unique</p>
+              <ul class="seller-features"><li>Synchronisation cloud, Wi-Fi local ou aucune</li><li>Partage sécurisé, 2FA et accès d’urgence</li><li>Page partenaire en attente d’activation</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="home-category-panel" id="panel-backup" role="tabpanel" aria-labelledby="tab-backup" hidden>
+          <div class="best-sellers-grid">
+            <a href="https://zmgig.com/g/b2bp0q8e0l7c685e2c99ce230d48cb611901adfd/?subid=protondrive-cyberbalise" target="_blank" rel="sponsored noopener noreferrer" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/proton-drive-logo-light.svg" width="142" height="24" loading="lazy" decoding="async" alt="Proton Drive"></div>
+              <p class="seller-feature">−60 % sur Drive Plus — 200 Go</p>
+              <ul class="seller-features"><li>1,99 €/mois, soit 23,88 € la première année</li><li>Puis 47,88 €/an · chiffrement de bout en bout</li><li>Versions sur 10 ans · garantie 30 jours</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/backblaze/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/backblaze.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>Backblaze</h3><p class="seller-feature">Installer et oublier</p>
+              <ul class="seller-features"><li>Sauvegarde automatique et continue</li><li>Stockage illimité par ordinateur</li><li>Licence par ordinateur</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/idrive/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/idrive.ico" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>iDrive</h3><p class="seller-feature">Un compte, plusieurs appareils</p>
+              <ul class="seller-features"><li>PC, Mac, mobiles, disques externes et NAS</li><li>Personal 5 To, première année</li><li>Remise valable un an</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+            <a href="/offres/sauvegardes-cloud/pcloud/" class="best-seller-card">
+              <div class="seller-card-header"><span class="product-label">Sauvegarde cloud</span><img class="seller-card-brand-logo" src="/assets/img/provider-logos/pcloud.svg" width="128" height="44" loading="lazy" decoding="async" alt="" aria-hidden="true"></div>
+              <h3>pCloud</h3><p class="seller-feature">Stockage européen, droit suisse</p>
+              <ul class="seller-features"><li>Chiffrement AES 256 bits</li><li>Restauration des versions</li><li>Chiffrement côté client en option</li></ul><span class="seller-card-cta">En savoir plus →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site"><div class="wrap fsimple">
+  <h4>Copyright <span class="brand"><span class="sr-only">CyberBalise</span><span aria-hidden="true">CYBER<span class="b-accent">BALISE</span></span></span> 2026</h4>
+  <ul><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li><li><a href="/lexique/">Lexique cyber</a></li><li><a href="/transparence-affiliation/">Notre modèle</a></li><li><a href="/mentions-legales/">Mentions légales</a></li></ul>
+</div></footer>
+<script>
+const burger=document.querySelector('.burger'),mnav=document.querySelector('.mnav');
+if(burger)burger.addEventListener('click',()=>{const o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+/* Menu déroulant : au toucher (tablette) ou au clic, le 1er appui ouvre le sous-menu au lieu de quitter la page */
+const navItems=document.querySelectorAll('nav.main .nav-item');
+const touch=window.matchMedia('(hover: none)');
+navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelector('.dropdown'))return;
+  a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');
+  a.addEventListener('click',e=>{if(!touch.matches&&e.detail!==0)return;if(it.classList.contains('open'))return;
+    e.preventDefault();navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')});
+    it.classList.add('open');a.setAttribute('aria-expanded','true')});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+</script>
+<script src="/assets/cookie-consent.js"></script>
+<script>
+(function(){
+  const button=document.getElementById('share-instagram');
+  const status=document.getElementById('share-status');
+  const fallback=document.getElementById('share-fallback');
+  const input=document.getElementById('share-url');
+  button.hidden=false;
+  fallback.hidden=true;
+  button.addEventListener('click',async function(){
+    status.textContent='';
+    if(!navigator.clipboard||!navigator.clipboard.writeText){
+      showManualCopy('La copie automatique n’est pas disponible dans ce navigateur.');
+      return;
+    }
+    try{
+      await navigator.clipboard.writeText(input.value);
+      fallback.hidden=true;
+      status.textContent='Lien copié. Ouvrez Instagram pour le coller dans un message ou un sticker Lien de story.';
+    }catch(error){
+      console.error('CyberBalise : impossible de copier le lien de l’article.',error);
+      showManualCopy('La copie automatique a été refusée.');
+    }
+  });
+  function showManualCopy(reason){
+    fallback.hidden=false;
+    input.focus();
+    input.select();
+    status.textContent=reason+' Copiez manuellement le lien sélectionné ci-dessous.';
+  }
+})();
+</script>
+
+<script src="/assets/top-protections.js?v=20261026-expand"></script>
+</body>
+</html>
