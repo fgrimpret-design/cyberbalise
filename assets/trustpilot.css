@@ -1,0 +1,9 @@
+.tp-line{margin:0 0 .7rem;font:600 .82rem/1.4 var(--disp,system-ui,sans-serif);color:#1d2f3f}
+.tp-line strong{font-weight:800}
+.tp-star{color:#00b67a;font-size:1.05em}
+.tp-count{color:#5b6f82;font-weight:500}
+.tp-hero{margin:.7rem 0 0;font:500 .86rem/1.5 var(--disp,system-ui,sans-serif);color:#dbe7f3}
+.tp-hero strong{color:#fff}
+.tp-hero a{color:#fff}
+td[data-tp] strong{font-weight:800}
+.tp-note{margin:.6rem 0 1.4rem;color:var(--muted,#4d6377);font-size:.8rem;line-height:1.5}

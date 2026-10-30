@@ -1,0 +1,16 @@
+{
+  "source": "fr.trustpilot.com",
+  "releve": "2026-10-30",
+  "note": "Notes de l'entreprise (éditeur) affichées sur sa page Trustpilot, relevées à la main dans un navigateur. À mettre à jour chaque mois puis lancer : python scripts/trustpilot_apply.py",
+  "produits": {
+    "nordvpn":  {"entite": "NordVPN",    "domaine": "nordvpn.com",     "note": 4.2, "avis": 51428},
+    "protonvpn": {"entite": "Proton VPN", "domaine": "protonvpn.com",   "note": 2.1, "avis": 1025},
+    "purevpn":  {"entite": "PureVPN",    "domaine": "purevpn.com",     "note": 4.4, "avis": 17972},
+    "hideme":   {"entite": "hide.me VPN", "domaine": "hide.me",        "note": 4.2, "avis": 1025},
+    "privado":  {"entite": "PrivadoVPN", "domaine": "privadovpn.com",  "note": 4.1, "avis": 2438},
+    "fastestvpn": {"entite": "FastestVPN", "domaine": "fastestvpn.com", "note": 4.1, "avis": 774},
+    "turbovpn": {"entite": "Turbo VPN",  "domaine": "turbovpn.com",    "note": 3.8, "avis": 388},
+    "surfshark": {"entite": "Surfshark", "domaine": "surfshark.com",   "note": 4.3, "avis": 31728},
+    "adguard":  {"entite": "AdGuard",    "domaine": "adguard.com",     "note": 4.7, "avis": 9799}
+  }
+}

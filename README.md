@@ -91,6 +91,23 @@ Le lien affilié complet a été conservé à la demande du responsable du site 
 sa réponse 404 initiale. Vérifier son activation annoncée pour le 28 octobre 2026,
 puis mettre à jour les mentions d'attente et les conditions propres à cette offre.
 
+## Notes Trustpilot
+
+Les notes Trustpilot s'affichent pour chaque VPN (carte du comparatif, colonne du
+tableau récapitulatif, en-tête, tableau « Caractéristiques » et sources des fiches).
+Trustpilot note l'entreprise, pas le produit : la mention « note de l'éditeur » est donc
+conservée partout, avec la date de relevé, le nombre d'avis et un lien vers la page
+Trustpilot. Aucune donnée structurée `aggregateRating` n'est ajoutée (les avis tiers n'y
+ont pas leur place), et le logo Trustpilot n'est pas utilisé.
+
+Les accès automatisés à Trustpilot sont bloqués et ses conditions interdisent
+l'extraction : relever les notes à la main sur `fr.trustpilot.com/review/<domaine>`,
+les saisir dans `scripts/trustpilot.json` (note, nombre d'avis, date de relevé), puis
+lancer `python scripts/trustpilot_apply.py` (`--dry-run` pour simuler). Le script met à
+jour les pages de manière idempotente à partir de ce fichier. Relevé initial :
+30 octobre 2026. Pour étendre à une autre catégorie, ajouter ses produits au fichier JSON
+et sa configuration (comparatif, correspondances de noms, fiches) dans `CATEGORIES`.
+
 ## Panda Dome (antivirus)
 
 La fiche `offres/antivirus/panda-dome/`, la carte du comparatif antivirus et la carte
