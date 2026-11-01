@@ -73,7 +73,7 @@ layout_start('Pages', 'pages.php');
 <div class="row" style="margin:-8px 0 18px">
   <div class="seg"><a href="pages.php" class="<?= $filtre === '' ? 'on' : '' ?>">Toutes</a><a href="?filtre=brouillons" class="<?= $filtre === 'brouillons' ? 'on' : '' ?>">Brouillons</a></div>
   <input type="search" id="q" placeholder="Filtrer par titre ou adresse" style="max-width:280px" aria-label="Filtrer les pages">
-  <select id="rub" aria-label="Rubrique" style="max-width:200px"><option value="">Toutes les rubriques</option><?php foreach (['particuliers' => 'Particuliers', 'pro' => 'Professionnels', 'offres' => 'Offres & outils', 'outils' => 'Ressources', 'autres' => 'Pages générales'] as $k => $l): ?><option value="<?= $k ?>"><?= $l ?></option><?php endforeach; ?></select>
+  <select id="rub" aria-label="Rubrique" style="max-width:200px"><option value="">Toutes les rubriques</option><?php foreach (['particuliers' => 'Particuliers', 'pro' => 'Professionnels', 'offres' => 'Comparatifs', 'outils' => 'Ressources', 'autres' => 'Pages générales'] as $k => $l): ?><option value="<?= $k ?>"><?= $l ?></option><?php endforeach; ?></select>
   <span class="spacer"></span>
   <?php if (is_admin()): ?><form method="post" style="display:inline"><?= csrf_field() ?><input type="hidden" name="action" value="sitemap"><button class="btn sm" title="<?= ($l = settings()['sitemap_last']) ? 'Dernière génération : ' . e(fr_date((int)$l)) : 'Jamais généré' ?>">Régénérer sitemap.xml</button></form><?php endif; ?>
   <a class="btn pri" href="<?= e(url('edit.php?nouveau=1')) ?>">+ Nouvelle page</a>

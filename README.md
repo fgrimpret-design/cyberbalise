@@ -91,6 +91,16 @@ Le lien affilié complet a été conservé à la demande du responsable du site 
 sa réponse 404 initiale. Vérifier son activation annoncée pour le 28 octobre 2026,
 puis mettre à jour les mentions d'attente et les conditions propres à cette offre.
 
+## Menu principal
+
+Le menu (bureau et mobile) est le même sur toutes les pages, entre les repères
+`CB-MENU` et `CB-MNAV`, et géré depuis le backoffice (Menu). Entrées actuelles :
+Actualités · Guides (sous-menu Particuliers et Professionnels, page d'accueil de la
+rubrique `/guides/`) · Comparatifs (anciennement « Offres & outils », toujours sous
+`/offres/` pour ne pas casser les adresses) · Ressources (`/outils/` et le lexique).
+Les pages `/particuliers/` et `/pro/` restent les espaces détaillés ; `/guides/`
+les présente côte à côte.
+
 ## Notes Trustpilot
 
 Les notes Trustpilot s'affichent pour chaque VPN (carte du comparatif, colonne du
