@@ -530,6 +530,12 @@ tbody tr:hover{background:#F6F8FA}
         <a href="/actualites/">Voir toutes les actualités →</a>
       </div>
       <div class="slider-shell"><button class="slider-side" type="button" data-dir="-1" aria-label="Actualité précédente">‹</button><div class="slider">
+      <a class="acard ccard" href="/actualites/cortege-application-manifestations-etudiantes/">
+          <span class="cat">Vie privée · Application</span>
+          <h3>Un père développe une application pour protéger son fils dans les manifestations étudiantes</h3>
+          <div class="guide-excerpt"><p>Neru, de Montpellier, a lancé Cortège, une application web libre pour signaler en temps réel la situation aux abords des lycées.</p><img src="/assets/img/actualite-cortege-lycee-louis-le-grand.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Lycéenne tenant un mégaphone devant le lycée Louis-le-Grand, à Paris ; les visages sont masqués."></div>
+          <span class="cmore">Lire le décryptage →</span>
+      </a>
       <a class="acard ccard" href="/actualites/espionnage-telephones-services-renseignement/">
           <span class="cat">Dossier spécial · Renseignement &amp; cyber</span>
           <h3>Comment les services de renseignement écoutent les téléphones</h3>
@@ -677,7 +683,14 @@ const si=document.querySelector('#searchinput'),sr=document.querySelector('#sres
 if(si){
   const IDX=[
   {"t": "Sticky Password", "u": "/offres/gestionnaires-mots-de-passe/sticky-password/", "a": "Les deux", "k": "StickyPassword gestionnaire mots de passe licence vie lifetime wifi local partage urgence"},
-  {"t": "Dossier spécial : comment les services de renseignement écoutent les téléphones", "u": "/actualites/espionnage-telephones-services-renseignement/", "a": "Particuliers", "k": "actualites dossier special espionnage ecoutes telephones renseignement SS7 IMSI catcher StingRay Pegasus Paragon Graphite zero-click NSA CIA DGSE Mossad Vault 7 Salt Typhoon Tempora spyware surveillance"},
+  {
+    "t": "Un père développe une application pour protéger son fils dans les manifestations étudiantes",
+    "k": "actualites Cortege application Neru manifestations etudiantes lyceens blocages carte signalements OpenStreetMap logiciel libre anonymat vie privee Montpellier",
+    "u": "/actualites/cortege-application-manifestations-etudiantes/",
+    "a": "Particuliers"
+  },
+  {
+    "t": "Dossier spécial : comment les services de renseignement écoutent les téléphones", "u": "/actualites/espionnage-telephones-services-renseignement/", "a": "Particuliers", "k": "actualites dossier special espionnage ecoutes telephones renseignement SS7 IMSI catcher StingRay Pegasus Paragon Graphite zero-click NSA CIA DGSE Mossad Vault 7 Salt Typhoon Tempora spyware surveillance"},
   {"t": "Un pirate met en vente et en ligne des données liées à trois partis politiques français", "u": "/actualites/chimeraz-donnees-partis-politiques/", "a": "Particuliers", "k": "actualites Chimeraz fuite donnees partis politiques Renaissance France insoumise LFI PCF forum cybercriminel porte-a-porte electeurs vie privee"},
   {"t": "Hisense visé par un rançongiciel : 19 Go de données revendiqués, 5 millions de dollars exigés", "u": "/actualites/hisense-whitearmor-rancongiciel/", "a": "Les deux", "k": "actualites Hisense WhiteArmor rancongiciel extorsion fuite donnees garantie Malaisie Singapour cybercriminalite"},
   {"t": "Le téléphone de Jared Kushner espionné par les Russes, puis par les Néerlandais ? Ce qu'affirme un livre, ce qu'il dément", "u": "/actualites/kushner-iphone-espionnage/", "a": "Particuliers", "k": "actualites Kushner iPhone espionnage Russie Pays-Bas GRU MIVD smartphone piratage geopolitique"},

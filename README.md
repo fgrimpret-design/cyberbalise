@@ -178,6 +178,10 @@ Photos intégrées :
 - Siège de la NSA (2013) : Trevor Paglen,
   [source](https://commons.wikimedia.org/wiki/File:National_Security_Agency,_2013.jpg),
   CC0. Photo de contexte du dossier spécial sur l'écoute des téléphones.
+- Blocage du lycée Louis-le-Grand, Paris (2 octobre 2026) : Wyslijp16,
+  [source](https://commons.wikimedia.org/wiki/File:2026_high_school_student_movement_and_blockades_at_Lyc%C3%A9e_Louis-le-Grand_in_Paris_%E2%80%94_102.jpg),
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), image redimensionnée.
+  Choisie car les visages y sont masqués ; illustre l'article sur l'application Cortège.
 
 Les articles proposent des vignettes pour les guides liés et des liens de
 partage Facebook, X et LinkedIn utilisant son URL publique canonique. Pour
