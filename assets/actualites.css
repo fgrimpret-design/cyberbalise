@@ -99,6 +99,11 @@
 .news-figure figcaption{margin-top:8px;color:var(--muted);font-size:.8rem;line-height:1.5}
 .news-quote{margin:1.8em 0;padding:4px 0 4px 22px;border-left:4px solid var(--orange)}
 .news-quote p{margin:0;font-style:italic;font-size:1.08rem;line-height:1.6;color:var(--ink)}
+.news-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:1.6em 0 .6em}
+.news-stat{padding:16px 18px;border:1px solid var(--line);border-top:4px solid var(--orange);border-radius:10px;background:#fff}
+.news-stat strong{display:block;font:800 1.8rem/1.1 var(--disp);color:var(--navy)}
+.news-stat span{display:block;margin-top:6px;font:500 .84rem/1.4 var(--disp);color:var(--muted)}
+.news-source sup,.news-page article.page sup{font-size:.7em;line-height:0}
 .news-source ol{margin:0 0 1em;padding-left:1.4em}
 .news-source li{margin:.4em 0}
 .home-refresh .news-section{background:var(--home-blue-soft)}
@@ -119,6 +124,7 @@
   .news-sidebar nav{grid-column:1/-1}
   .news-feed .see-also-card--featured{grid-template-columns:1fr}
   .news-toc ol{columns:1}
+  .news-stats{grid-template-columns:1fr}
   .news-link-grid{grid-template-columns:1fr}
   .news-archive{padding-top:24px}
 }

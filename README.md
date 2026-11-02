@@ -182,6 +182,9 @@ Photos intégrées :
   [source](https://commons.wikimedia.org/wiki/File:2026_high_school_student_movement_and_blockades_at_Lyc%C3%A9e_Louis-le-Grand_in_Paris_%E2%80%94_102.jpg),
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), image redimensionnée.
   Choisie car les visages y sont masqués ; illustre l'article sur l'application Cortège.
+- Main tenant un smartphone : bohed (Pixabay), via
+  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Smartphone_Use.jpg),
+  CC0. Photo d'illustration anonyme du dossier « Pirater le téléphone d'un particulier ».
 
 Les articles proposent des vignettes pour les guides liés et des liens de
 partage Facebook, X et LinkedIn utilisant son URL publique canonique. Pour
@@ -195,7 +198,23 @@ Un contenu long, documentaire, porte la mention « Dossier spécial » : surtitr
 fil d'Ariane de l'article, encart dédié au-dessus de « À la une » dans la rubrique
 (`see-also-card--special`) et mention « Dossier spécial » sur la carte de l'accueil.
 Le sommaire en tête d'article (`news-toc`), les schémas (`news-figure`) et les
-numéros de section (`news-num`) sont définis dans `assets/actualites.css`.
+numéros de section (`news-num`) sont définis dans `assets/actualites.css`, ainsi que
+les chiffres clés en tête de section (`news-stats`). Les dossiers déjà publiés :
+écoute des téléphones par les services de renseignement, et « Pirater le téléphone
+d'un particulier ».
+
+## Fiches pratiques
+
+Vingt fiches pas à pas (1 200 à 1 600 mots chacune) sont publiées à plat sous
+`/particuliers/<slug>/` (17 fiches) et `/pro/<slug>/` (3 fiches : rançongiciel en PME,
+fraude au président, kit de crise TPE). Elles utilisent le gabarit des articles
+(`news-layout`), la mention « Fiche pratique » (fil d'Ariane et `article:section`),
+une visuelle éditoriale du site (pas de photo à créditer), un bloc « Réponse rapide »,
+un sommaire, une FAQ (données structurées `FAQPage`), des sources officielles et des
+renvois vers les guides existants. Elles sont listées dans la section « Fiches
+pratiques » de la page `/guides/` (ancre `#fiches-pratiques`), le sitemap et la
+recherche. Règles de rédaction : aucun chiffre non sourcé, aucun exemple présenté
+comme réel, aucun lien d'affiliation, aucun nom de gestionnaire de mots de passe.
 
 ## Partage des articles sur Facebook
 
