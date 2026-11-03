@@ -189,7 +189,16 @@ de saison (Black Friday −70 % sur Premium 10 appareils) susceptibles de change
 
 La rubrique statique est accessible depuis `/actualites/`. Les pages utilisent
 le gabarit et les repères de menu/contenu du site pour rester éditables dans le backoffice.
-La mise en page commune et les cartes de l'accueil sont définies dans `assets/actualites.css`.
+La mise en page commune des articles est définie dans `assets/actualites.css`.
+
+La page d'accueil de la rubrique (`/actualites/`) a une mise en page « magazine »
+dans `assets/actualites-hub.css` : une mosaïque de trois « Unes » en pleine image
+(classes `nh-card`, la première est la grande), puis une grille « Dernières
+actualités » (`nh-item`) et deux tuiles vers les guides. Les cartes apparaissent
+en fondu au défilement (petit script en bas de page, désactivé si l'on a demandé
+moins d'animations). Pour une nouvelle actualité, copier une carte `nh-item` ;
+pour changer la Une, modifier les trois cartes `nh-card`. Une image sans
+fond neutre (logo) se traite comme celle de Vizio : bloc `nh-item__media--brand`.
 
 Pour ajouter un article, créer son dossier sous `actualites/`, puis mettre à jour
 la liste de la rubrique, le bloc « Toutes vos actus » et l'index de recherche dans

@@ -287,6 +287,7 @@ tbody tr:hover{background:#F6F8FA}
 <link rel="stylesheet" href="/assets/cookie-consent.css">
 <link rel="stylesheet" href="/assets/read-also.css?v=20261012-read-also-images">
 <link rel="stylesheet" href="/assets/actualites.css?v=20261030-dossier-special">
+<link rel="stylesheet" href="/assets/actualites-hub.css?v=20261103-hub">
 </head>
 <body class="news-page">
 <header class="site"><div class="wrap">
@@ -297,95 +298,105 @@ tbody tr:hover{background:#F6F8FA}
 <!-- CB-MNAV:DEBUT --><div class="mnav"><div class="mnav-section"><a class="mnav-top" href="/actualites/">Actualit&#xE9;s</a><div class="mnav-children"></div></div><div class="mnav-section"><a class="mnav-top" href="/guides/">Guides</a><div class="mnav-children"><a href="/particuliers/">Particuliers</a><a href="/pro/">Professionnels</a></div></div><div class="mnav-section"><a class="mnav-top" href="/offres/">Comparatifs</a><div class="mnav-children"><a href="/offres/vpn/">Comparatif VPN</a><a href="/offres/antivirus/">Comparatif Antivirus</a><a href="/offres/gestionnaires-mots-de-passe/">Comparatif gestionnaires de mots de passe</a><a href="/offres/sauvegardes-cloud/">Comparatif sauvegardes cloud</a></div></div><div class="mnav-section"><a class="mnav-top" href="/outils/">Ressources</a><div class="mnav-children"><a href="/outils/quiz-niveau-cyber/">Quiz : votre niveau cyber</a><a href="/outils/checklist-personnalisee/">Checklist personnalisée</a><a href="/outils/verificateur-mot-de-passe/">Vérificateur de mot de passe</a><a href="/outils/detecteur-arnaque/">Détecteur d'arnaque</a><a href="/outils/risque-sms/">V&#xE9;rifier un SMS suspect</a><a href="/outils/indice-usurpabilite/">Indice d'usurpabilité</a><a href="/lexique/">Lexique cyber</a></div></div></div><!-- CB-MNAV:FIN -->
 </header>
 <main>
-  <section class="pagehead news-hero">
+<script>if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('nh-js');</script>
+  <!-- CB-CONTENU:DEBUT -->
+  <section class="nh-hero">
     <div class="wrap">
       <div class="crumbs"><a href="/">Accueil</a> / Actualités</div>
-      <span class="news-eyebrow">Comprendre, puis agir</span>
-      <h1>Actualités</h1>
-      <p class="news-deck">Les dernières nouvelles sur la cybersécurité et la vie privée, expliquées simplement avec des conseils utiles.</p>
+      <div class="nh-head">
+        <div>
+          <span class="news-eyebrow">Comprendre, puis agir</span>
+          <h1>Actualités</h1>
+        </div>
+        <p class="nh-deck">Les dernières nouvelles sur la cybersécurité et la vie privée, expliquées simplement avec des conseils utiles.</p>
+      </div>
+      <div class="nh-mosaic">
+        <a class="nh-card nh-card--lead nh-reveal" href="/actualites/pirater-telephone-particulier/">
+          <img class="nh-card__img" src="/assets/img/actualite-pirater-telephone-particulier.jpg" width="1280" height="853" fetchpriority="high" decoding="async" alt="Une main tient un smartphone et touche l’écran, sur fond sombre et flou.">
+          <div class="nh-card__body">
+            <span class="nh-tag">Dossier spécial</span>
+            <span class="nh-meta">Grand public · <time datetime="2026-11-02">2 novembre 2026</time> · 9 min de lecture</span>
+            <h2>Pirater le téléphone d’un particulier : mission impossible ou jeu d’enfant ?</h2>
+            <p>Spyware d’État, faux SMS, stalkerware, SIM swapping : qui peut vraiment pirater votre téléphone, à quel prix, et comment s’en protéger.</p>
+            <span class="nh-cta">Lire le dossier <i aria-hidden="true">&rarr;</i></span>
+          </div>
+        </a>
+        <a class="nh-card nh-card--side nh-reveal" href="/actualites/cortege-application-manifestations-etudiantes/">
+          <img class="nh-card__img" src="/assets/img/actualite-cortege-lycee-louis-le-grand.jpg" width="1280" height="853" decoding="async" alt="Lycéenne tenant un mégaphone devant le lycée Louis-le-Grand, à Paris, lors du mouvement lycéen d’octobre 2026 ; les visages sont masqués.">
+          <div class="nh-card__body">
+            <span class="nh-tag nh-tag--blue">À la une</span>
+            <span class="nh-meta">Vie privée · <time datetime="2026-11-02">2 novembre 2026</time></span>
+            <h2>Un père développe une application pour protéger son fils dans les manifestations étudiantes</h2>
+            <span class="nh-cta">Lire le décryptage <i aria-hidden="true">&rarr;</i></span>
+          </div>
+        </a>
+        <a class="nh-card nh-card--side nh-reveal" href="/actualites/espionnage-telephones-services-renseignement/">
+          <img class="nh-card__img" src="/assets/img/dossier-espionnage-telephones-nsa.jpg" width="1280" height="853" decoding="async" alt="Siège de la National Security Agency, à Fort Meade, photographié de nuit.">
+          <div class="nh-card__body">
+            <span class="nh-tag">Dossier spécial</span>
+            <span class="nh-meta">Renseignement &amp; cyber · <time datetime="2026-10-30">30 octobre 2026</time> · 20 min de lecture</span>
+            <h2>Comment les services de renseignement écoutent les téléphones</h2>
+            <span class="nh-cta">Lire le dossier <i aria-hidden="true">&rarr;</i></span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
-  <div class="wrap news-archive">
-    <article class="page">
-      <!-- CB-CONTENU:DEBUT -->
-      <section class="see-also news-feed" aria-labelledby="special-title">
-        <h2 id="special-title">Dossiers spéciaux</h2>
-        <a class="see-also-card see-also-card--featured see-also-card--special" href="/actualites/pirater-telephone-particulier/">
-          <img class="see-also-card__image" src="/assets/img/actualite-pirater-telephone-particulier.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Une main tient un smartphone et touche l’écran, sur fond sombre et flou.">
-          <div class="see-also-card__body">
-            <span class="news-special-tag">Dossier spécial</span>
-            <span class="news-card-meta">Grand public · <time datetime="2026-11-02">2 novembre 2026</time> · 9 min de lecture</span>
-            <h3>Pirater le téléphone d’un particulier : mission impossible ou jeu d’enfant ?</h3>
-            <p>Spyware d’État, faux SMS, stalkerware, SIM swapping : qui peut vraiment pirater votre téléphone, à quel prix, et comment s’en protéger.</p>
-            <span class="see-also-card__link">Lire le dossier &rarr;</span>
-          </div>
-        </a>
-        <a class="see-also-card see-also-card--featured see-also-card--special" href="/actualites/espionnage-telephones-services-renseignement/">
-          <img class="see-also-card__image" src="/assets/img/dossier-espionnage-telephones-nsa.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Siège de la National Security Agency, à Fort Meade, photographié de nuit.">
-          <div class="see-also-card__body">
-            <span class="news-special-tag">Dossier spécial</span>
-            <span class="news-card-meta">Renseignement &amp; cyber · <time datetime="2026-10-30">30 octobre 2026</time> · 20 min de lecture</span>
-            <h3>Comment les services de renseignement écoutent les téléphones</h3>
-            <p>SS7, faux relais, câbles sous-marins, logiciels espions zero-click : les techniques documentées, ce qu’elles permettent réellement et ce qu’elles ne permettent pas.</p>
-            <span class="see-also-card__link">Lire le dossier &rarr;</span>
-          </div>
-        </a>
-      </section>
-      <section class="see-also news-feed" aria-labelledby="une-title">
-        <h2 id="une-title">À la une</h2>
-        <a class="see-also-card see-also-card--featured" href="/actualites/cortege-application-manifestations-etudiantes/">
-          <img class="see-also-card__image" src="/assets/img/actualite-cortege-lycee-louis-le-grand.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Lycéenne tenant un mégaphone devant le lycée Louis-le-Grand, à Paris, lors du mouvement lycéen d’octobre 2026 ; les visages sont masqués.">
-          <div class="see-also-card__body">
-            <span class="news-card-meta">Vie privée · Application · <time datetime="2026-11-02">2 novembre 2026</time></span>
-            <h3>Un père développe une application pour protéger son fils dans les manifestations étudiantes</h3>
-            <p>Neru, créateur de contenu de Montpellier, a lancé Cortège, une application web libre pour signaler en temps réel la situation aux abords des lycées et des cortèges.</p>
-            <span class="see-also-card__link">Lire le décryptage &rarr;</span>
-          </div>
-        </a>
-      </section>
-      <section class="see-also news-feed" aria-labelledby="dernieres-title">
-        <h2 id="dernieres-title">Dernières actualités</h2>
-        <div class="see-also-grid">
-          <a class="see-also-card" href="/actualites/chimeraz-donnees-partis-politiques/">
-            <img class="see-also-card__image" src="/assets/img/actualite-chimeraz-assemblee-nationale.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Façade de l’Assemblée nationale, à Paris.">
-            <span class="news-card-meta">Cybercriminalité - Fuite de données · <time datetime="2026-10-30">30 octobre 2026</time></span>
-            <h3>Un pirate met en vente et en ligne des données liées à trois partis politiques français</h3>
-            <p>Sous le pseudonyme Chimeraz, un acteur annonce des fichiers liés à Renaissance, à La France insoumise et au PCF. Les volumes avancés sont ceux du vendeur : rien n’est confirmé.</p>
-            <span class="see-also-card__link">Lire le décryptage &rarr;</span>
-          </a>
-          <a class="see-also-card" href="/actualites/hisense-whitearmor-rancongiciel/">
-            <img class="see-also-card__image" src="/assets/img/actualite-hisense-centre.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Centre de recherche et développement Hisense.">
-            <span class="news-card-meta">Cybercriminalité - Fuite de données · <time datetime="2026-10-26">26 octobre 2026</time></span>
-            <h3>Hisense visé par un rançongiciel : 19 Go de données revendiqués, 5 millions de dollars exigés</h3>
-            <p>WhiteArmor revendique des archives de garantie en Malaisie et à Singapour. L’exfiltration reste non confirmée et les montants de rançon rapportés divergent.</p>
-            <span class="see-also-card__link">Lire le décryptage &rarr;</span>
-          </a>
-          <a class="see-also-card" href="/actualites/kushner-iphone-espionnage/">
-            <img class="see-also-card__image see-also-card__image--portrait" src="/assets/img/actualite-kushner-photo.jpg" width="386" height="514" loading="lazy" decoding="async" alt="Jared Kushner, photographié en juin 2025.">
-            <span class="news-card-meta">Cybersécurité / Géopolitique · <time datetime="2026-10-26">26 octobre 2026</time></span>
-            <h3>Le téléphone de Jared Kushner espionné par les Russes, puis par les Néerlandais ? Ce qu&#x27;affirme un livre, ce qu&#x27;il dément</h3>
-            <p>Un livre affirme que le téléphone de Jared Kushner a été espionné. L’intéressé dément : retour sur les allégations, les réactions et les incertitudes.</p>
-            <span class="see-also-card__link">Lire le décryptage &rarr;</span>
-          </a>
-          <a class="see-also-card" href="/actualites/televiseurs-connectes-vizio-donnees-personnelles/">
-            <img class="see-also-card__image see-also-card__image--logo" src="/assets/img/actualite-vizio-logo.svg" width="890" height="200" loading="lazy" decoding="async" alt="Logo de Vizio">
-            <span class="news-card-meta">Vie privée · Objets connectés · <time datetime="2026-10-26">26 octobre 2026</time></span>
-            <h3>Télés connectées : l’affaire Vizio, ou pourquoi il faut vider son vieil écran avant de le céder</h3>
-            <p>Retour sur la sanction de 2017 et sur les bons gestes avant de revendre, donner ou recycler un téléviseur connecté.</p>
-            <span class="see-also-card__link">Lire le décryptage &rarr;</span>
-          </a>
-        </div>
-      </section>
-      <section class="news-more" aria-labelledby="guides-title">
-        <h2 id="guides-title">De l’actu aux bons réflexes</h2>
-        <div class="news-link-grid">
-          <a class="news-guide-link" href="/particuliers/appareils/"><small>Appareils &amp; connexion</small><strong>Protéger vos équipements</strong><span>Objets connectés, smartphones, Wi-Fi : tous les guides pour sécuriser votre environnement.</span></a>
-          <a class="news-guide-link" href="/particuliers/comptes/"><small>Comptes &amp; identité</small><strong>Garder la main sur vos données</strong><span>Vie privée, mots de passe et double authentification : les réglages qui comptent.</span></a>
-        </div>
-      </section>
-      <!-- CB-CONTENU:FIN -->
-    </article>
-  </div>
+  <section class="wrap nh-latest" aria-labelledby="dernieres-title">
+    <div class="nh-bar">
+      <h2 id="dernieres-title">Dernières actualités</h2>
+      <span class="nh-bar__line" aria-hidden="true"></span>
+    </div>
+    <div class="nh-grid">
+      <a class="nh-item nh-reveal" href="/actualites/chimeraz-donnees-partis-politiques/">
+        <span class="nh-item__media"><img src="/assets/img/actualite-chimeraz-assemblee-nationale.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Façade de l’Assemblée nationale, à Paris."><span class="nh-pill">Fuite de données</span></span>
+        <span class="nh-item__body">
+          <span class="nh-meta">Cybercriminalité · <time datetime="2026-10-30">30 octobre 2026</time></span>
+          <h3>Un pirate met en vente et en ligne des données liées à trois partis politiques français</h3>
+          <p>Sous le pseudonyme Chimeraz, un acteur annonce des fichiers liés à Renaissance, à La France insoumise et au PCF. Les volumes avancés sont ceux du vendeur : rien n’est confirmé.</p>
+          <span class="nh-cta">Lire le décryptage <i aria-hidden="true">&rarr;</i></span>
+        </span>
+      </a>
+      <a class="nh-item nh-reveal" href="/actualites/hisense-whitearmor-rancongiciel/">
+        <span class="nh-item__media"><img src="/assets/img/actualite-hisense-centre.jpg" width="1280" height="853" loading="lazy" decoding="async" alt="Centre de recherche et développement Hisense."><span class="nh-pill">Rançongiciel</span></span>
+        <span class="nh-item__body">
+          <span class="nh-meta">Cybercriminalité · <time datetime="2026-10-26">26 octobre 2026</time></span>
+          <h3>Hisense visé par un rançongiciel : 19 Go de données revendiqués, 5 millions de dollars exigés</h3>
+          <p>WhiteArmor revendique des archives de garantie en Malaisie et à Singapour. L’exfiltration reste non confirmée et les montants de rançon rapportés divergent.</p>
+          <span class="nh-cta">Lire le décryptage <i aria-hidden="true">&rarr;</i></span>
+        </span>
+      </a>
+      <a class="nh-item nh-reveal" href="/actualites/kushner-iphone-espionnage/">
+        <span class="nh-item__media"><img class="nh-portrait" src="/assets/img/actualite-kushner-photo.jpg" width="386" height="514" loading="lazy" decoding="async" alt="Jared Kushner, photographié en juin 2025."><span class="nh-pill">Géopolitique</span></span>
+        <span class="nh-item__body">
+          <span class="nh-meta">Cybersécurité · <time datetime="2026-10-26">26 octobre 2026</time></span>
+          <h3>Le téléphone de Jared Kushner espionné par les Russes, puis par les Néerlandais ? Ce qu&#x27;affirme un livre, ce qu&#x27;il dément</h3>
+          <p>Un livre affirme que le téléphone de Jared Kushner a été espionné. L’intéressé dément : retour sur les allégations, les réactions et les incertitudes.</p>
+          <span class="nh-cta">Lire le décryptage <i aria-hidden="true">&rarr;</i></span>
+        </span>
+      </a>
+      <a class="nh-item nh-reveal" href="/actualites/televiseurs-connectes-vizio-donnees-personnelles/">
+        <span class="nh-item__media nh-item__media--brand"><img class="nh-logo" src="/assets/img/actualite-vizio-logo.svg" width="890" height="200" loading="lazy" decoding="async" alt="Logo Vizio"><span class="nh-pill">Objets connectés</span></span>
+        <span class="nh-item__body">
+          <span class="nh-meta">Vie privée · <time datetime="2026-10-26">26 octobre 2026</time></span>
+          <h3>Télés connectées : l’affaire Vizio, ou pourquoi il faut vider son vieil écran avant de le céder</h3>
+          <p>Retour sur la sanction de 2017 et sur les bons gestes avant de revendre, donner ou recycler un téléviseur connecté.</p>
+          <span class="nh-cta">Lire le décryptage <i aria-hidden="true">&rarr;</i></span>
+        </span>
+      </a>
+    </div>
+  </section>
+  <section class="wrap nh-more" aria-labelledby="guides-title">
+    <div class="nh-bar">
+      <h2 id="guides-title">De l’actu aux bons réflexes</h2>
+      <span class="nh-bar__line" aria-hidden="true"></span>
+    </div>
+    <div class="nh-tiles">
+      <a class="nh-tile nh-tile--blue nh-reveal" href="/particuliers/appareils/"><small>Appareils &amp; connexion</small><strong>Protéger vos équipements</strong><span>Objets connectés, smartphones, Wi-Fi : tous les guides pour sécuriser votre environnement.</span><i aria-hidden="true">&rarr;</i></a>
+      <a class="nh-tile nh-tile--orange nh-reveal" href="/particuliers/comptes/"><small>Comptes &amp; identité</small><strong>Garder la main sur vos données</strong><span>Vie privée, mots de passe et double authentification : les réglages qui comptent.</span><i aria-hidden="true">&rarr;</i></a>
+    </div>
+  </section>
+  <!-- CB-CONTENU:FIN -->
   <div class="home-refresh">
   <section class="hsec best-sellers-section" id="best-sellers-top">
       <div class="wrap">
@@ -553,6 +564,15 @@ navItems.forEach(it=>{const a=it.querySelector(':scope>a');if(!a||!it.querySelec
 });
 document.addEventListener('click',e=>{if(!e.target.closest('nav.main'))navItems.forEach(x=>{x.classList.remove('open');const l=x.querySelector(':scope>a');if(l)l.setAttribute('aria-expanded','false')})});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')navItems.forEach(x=>x.classList.remove('open'))});
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.nh-reveal');
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(el){io.observe(el);});
+  setTimeout(function(){els.forEach(function(el){el.classList.add('is-in');});},4000);
+})();
 </script>
 <script src="/assets/cookie-consent.js"></script>
 <script src="/assets/top-protections.js?v=20261026-expand"></script>
