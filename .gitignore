@@ -6,3 +6,5 @@ scripts/facebook-posts.log.jsonl
 !.env.example
 !scripts/.env.facebook.example
 __pycache__/
+node_modules/
+package-lock.json

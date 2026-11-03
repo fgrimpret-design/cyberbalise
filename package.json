@@ -1,0 +1,13 @@
+{
+  "name": "cyberbalise-site",
+  "private": true,
+  "description": "Outils de test du site statique cyberbalise.fr (aucune dépendance à l'exécution).",
+  "scripts": {
+    "test": "node --test tests/detecteur/",
+    "test:baseline": "node tests/detecteur/run.mjs",
+    "test:dom": "node tests/detecteur/dom.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.0.0"
+  }
+}
