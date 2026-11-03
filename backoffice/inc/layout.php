@@ -16,7 +16,7 @@ function nav_items(): array {
 }
 
 function brand_svg(): string {
-    return '<svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2 L28 6.5 V15 c0 7.4-4.9 12.2-12 14.5 C8.9 27.2 4 22.4 4 15 V6.5 Z" fill="#E4572E"/><circle cx="16" cy="18.2" r="2.7" fill="#fff"/><path d="M11.6 13.4a6.3 6.3 0 0 1 8.8 0M8.9 10.6a10.2 10.2 0 0 1 14.2 0" stroke="#fff" stroke-width="2.3" fill="none" stroke-linecap="round"/><path d="M16 21v4.2" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/></svg>';
+    return '<svg width="26" height="26" viewBox="0 0 43 43" aria-hidden="true"><g fill="#E4572E"><path d="M0 0H13V7H8V36H13V43H0Z"/><path d="M43 0H30V7H35V36H30V43H43Z"/><circle cx="21.5" cy="21.5" r="8"/></g></svg>';
 }
 
 function icon(string $d, int $s = 18): string {

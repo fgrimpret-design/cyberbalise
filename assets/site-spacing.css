@@ -2,6 +2,44 @@ header.site .nav-item > a[href="/actualites/"]::after {
   content: none;
 }
 
+/* Logo officiel de l'en-tête (crochets autour de BALISE, CYBER en bleu du site) */
+header.site .logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+header.site .logo-text .logo-baseline {
+  margin-top: 0;
+}
+
+header.site .logo-img {
+  display: block;
+  width: 196px;
+  height: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  header.site .logo-img {
+    width: 152px;
+  }
+}
+
+@media (max-width: 360px) {
+  header.site .logo-img {
+    width: 130px;
+  }
+}
+
+@media (max-width: 340px) {
+  header.site .logo-text .logo-baseline {
+    white-space: normal;
+    line-height: 1.35;
+  }
+}
+
 /* Pictogramme Facebook de l'en-tête (toutes les pages) */
 header.site .hdr-fb {
   display: inline-flex;

@@ -131,6 +131,15 @@ Le lien affilié complet a été conservé à la demande du responsable du site 
 sa réponse 404 initiale. Vérifier son activation annoncée pour le 28 octobre 2026,
 puis mettre à jour les mentions d'attente et les conditions propres à cette offre.
 
+## Logo de l'en-tête
+
+Toutes les pages utilisent le logo officiel (crochets autour de BALISE, point
+orange) : `assets/img/logo-cyberbalise-header.png`, dérivé de
+`assets/img/logo-cyberbalise.png` avec « CYBER » en bleu du site (`#0c3e9b`) et
+« BALISE » en orange. Le style est dans `assets/site-spacing.css` (`.logo-img`).
+Le favicon (`favicon.svg`) et le logo du back-office (`brand_svg()` dans
+`backoffice/inc/layout.php`) reprennent le pictogramme crochets + point.
+
 ## Menu principal
 
 Le menu (bureau et mobile) est le même sur toutes les pages, entre les repères
