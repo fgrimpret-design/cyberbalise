@@ -326,11 +326,15 @@ tbody tr:hover{background:#F6F8FA}
 .sd-mode strong{font:700 .95rem var(--disp)}
 .sd-mode span{font-size:.8rem;color:var(--muted)}
 .sd-drophint{margin:12px 0 0;font-size:.82rem;color:var(--muted);text-align:center}
-.sd-demo{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:center;margin:16px 0 0;padding-top:16px;border-top:1px dashed var(--line);font-size:.88rem;color:var(--muted)}
-.sd-ghost{min-height:44px;padding:.5em 1.1em;border:1.5px solid var(--navy);border-radius:99px;background:transparent;color:var(--navy);font:700 .92rem var(--disp);cursor:pointer}
-.sd-ghost:hover{background:var(--navy);color:#fff}
-#sd-ex button{min-height:40px;border:1px solid var(--line);background:var(--bg);border-radius:99px;padding:.3em .85em;font:inherit;font-size:.84rem;cursor:pointer;color:var(--ink);margin:2px 4px 2px 0}
-#sd-ex button:hover{border-color:var(--teal)}
+.sd-demo{margin:18px 0 0;padding-top:16px;border-top:1px dashed var(--line)}
+.sd-demo-title{margin:0 0 10px;font-size:.95rem;line-height:1.5;color:var(--ink)}
+.sd-demo-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.sd-demo-list button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:64px;padding:10px 12px;border:1.5px solid var(--navy);border-radius:12px;background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:background .15s,color .15s}
+.sd-demo-list button strong{font:700 .92rem var(--disp);color:var(--navy)}
+.sd-demo-list button span{font-size:.78rem;line-height:1.3;color:var(--muted)}
+.sd-demo-list button:hover{background:var(--navy)}
+.sd-demo-list button:hover strong,.sd-demo-list button:hover span{color:#fff}
+@media (max-width:760px){.sd-demo-list{grid-template-columns:1fr 1fr}}
 .sd-label{display:block;font:700 1rem var(--disp);margin:0 0 4px}
 .sd-hint{margin:0 0 10px;font-size:.9rem;color:var(--muted);line-height:1.5}
 .sd textarea{width:100%;box-sizing:border-box;min-height:170px;font:inherit;font-size:1rem;line-height:1.5;padding:14px 16px;border:2px solid var(--teal);border-radius:14px;background:#fff;color:var(--ink);resize:vertical}
@@ -366,7 +370,41 @@ tbody tr:hover{background:#F6F8FA}
 .v1 .sd-meter i:nth-child(-n+1){background:var(--teal-d)}
 .v2 .sd-meter i:nth-child(-n+2){background:#8A5300}
 .v3 .sd-meter i:nth-child(-n+3){background:var(--orange-d)}
-.sd-demo-note{margin:0 0 14px;padding:8px 12px;border-radius:10px;background:var(--bg);font-size:.85rem;color:var(--muted)}
+.sd-ghost{min-height:44px;padding:.5em 1.1em;border:1.5px solid var(--navy);border-radius:99px;background:transparent;color:var(--navy);font:700 .92rem var(--disp);cursor:pointer}
+.sd-ghost:hover{background:var(--navy);color:#fff}
+.sd-extra{margin:14px 0 0;padding:4px 16px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg)}
+.sd-extra>summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font:700 .95rem var(--disp);color:var(--navy)}
+.sd-extra>summary em{font-weight:400;color:var(--muted);margin-left:6px}
+.sd-extra .sd-hint{margin:0 0 10px}
+.sd-extra-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sd-extra-grid .full{grid-column:1/-1}
+.sd-extra label{display:block;font:700 .88rem var(--disp);margin:0 0 4px}
+.sd-extra input[type=text]{width:100%;box-sizing:border-box;min-height:48px;padding:.55em .8em;border:2px solid var(--line);border-radius:12px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+.sd-extra input[type=text]:focus,.sd-extra textarea:focus{outline:3px solid var(--orange-d);outline-offset:2px;border-color:var(--teal)}
+.sd-extra small{display:block;margin-top:4px;font-size:.8rem;color:var(--muted)}
+.sd-extra code{font:.78rem var(--mono);background:#fff;border-radius:4px;padding:.05em .35em}
+.sd .sd-extra textarea#sd-foot{min-height:84px;border-color:var(--line)}
+.sd-scope{margin:0 0 16px}
+.sd-scope h3{margin:0 0 8px;font-size:1.05rem}
+.sd-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:0}
+.sd-tiles li{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.sd-tiles li b{font:700 .85rem var(--disp)}
+.sd-tiles .st{font-size:.82rem;font-weight:700}
+.sd-tiles small{font-size:.76rem;color:var(--muted);overflow-wrap:anywhere}
+.sd-tiles li.ok{border-color:#9FD3B5}.sd-tiles li.ok .st{color:#0B6B3A}
+.sd-tiles li.warn{border-color:var(--orange-d);background:var(--orange-soft)}.sd-tiles li.warn .st{color:#9B2C12}
+.sd-tiles li.none{border-style:dashed;background:var(--bg)}.sd-tiles li.none .st{color:var(--muted)}
+.sd-add{align-self:flex-start;margin-top:6px;min-height:36px;padding:.3em .9em;border:1.5px solid var(--navy);border-radius:99px;background:#fff;color:var(--navy);font:700 .8rem var(--disp);cursor:pointer}
+.sd-add:hover{background:var(--navy);color:#fff}
+.sd-scope-note{margin:8px 0 0;font-size:.82rem;color:var(--muted)}
+.sd-src{display:inline-block;margin:0 0 6px;padding:.1em .6em;border-radius:99px;background:var(--navy);color:#fff;font:700 .68rem var(--mono);letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:760px){.sd-tiles{grid-template-columns:1fr 1fr}.sd-extra-grid{grid-template-columns:1fr}}
+.sd-sample{margin:0 0 14px;padding:12px 16px;border:1px dashed var(--line);border-radius:12px;background:var(--bg)}
+.sd-sample figcaption,.sd-sample summary{font:700 .8rem var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:default}
+.sd-sample summary{cursor:pointer;text-transform:none;font-family:var(--disp);letter-spacing:0;font-size:.9rem;color:var(--teal-d);min-height:32px;display:flex;align-items:center}
+.sd-sample figcaption{text-transform:none;font:700 .92rem/1.4 var(--disp);letter-spacing:0;color:var(--ink)}
+.sd-sample-note{margin:10px 0 0;font-size:.9rem;font-weight:600;color:var(--ink)}
+.sd-sample blockquote{margin:8px 0 0;padding:0 0 0 12px;border-left:3px solid var(--orange-d);font-size:.98rem;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
 .sd-sigs{list-style:none;padding:0;margin:0 0 6px;display:grid;gap:10px}
 .sd-sig{background:#fff;border:1px solid var(--line);border-left:5px solid var(--orange-d);border-radius:12px;padding:13px 16px}
 .sd-sig.w2{border-left-color:#B8741A}
@@ -475,6 +513,26 @@ tbody tr:hover{background:#F6F8FA}
         <label class="sd-label" for="sd-in">Texte du message</label>
         <p class="sd-hint" id="sd-hint">Relisez et corrigez le texte si besoin : la lecture d'une image peut se tromper (chiffres, lettres, liens), surtout sur une capture floue ou petite.</p>
         <textarea id="sd-in" aria-describedby="sd-hint" placeholder="Collez ici le texte du SMS, de l'e-mail ou du message reçu…" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done"></textarea>
+        <details class="sd-extra" id="sd-extra" open>
+          <summary>Pour une analyse plus précise : expéditeur, objet, pied de page <em>(facultatif)</em></summary>
+          <p class="sd-hint">Ces trois éléments trahissent souvent un faux message. Si votre texte commence par « De : » ou « Objet : », ou se termine par un pied de page, l'outil les repère aussi tout seul.</p>
+          <div class="sd-extra-grid">
+            <div>
+              <label for="sd-from">Expéditeur</label>
+              <input id="sd-from" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Adresse e-mail, numéro ou nom affiché du SMS">
+              <small>Ex. : <code>service@ameli-secure.top</code> ou <code>07 58 21 90 44</code></small>
+            </div>
+            <div>
+              <label for="sd-subj">Objet de l'e-mail</label>
+              <input id="sd-subj" type="text" autocomplete="off" spellcheck="false" placeholder="Ligne « Objet » du message">
+              <small>Laissez vide pour un SMS.</small>
+            </div>
+            <div class="full">
+              <label for="sd-foot">Pied de page de l'e-mail</label>
+              <textarea id="sd-foot" rows="3" autocapitalize="off" spellcheck="false" placeholder="Bas du message : mentions légales, lien de désinscription, adresse, signature…"></textarea>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -486,8 +544,8 @@ tbody tr:hover{background:#F6F8FA}
     <p class="sd-cta-hint" id="sd-cta-hint">Fournissez d'abord un message avec l'une des trois options ci-dessus : le bouton s'activera ensuite.</p>
 
     <div class="sd-demo" id="sd-demo-row">
-      <button class="sd-ghost" id="sd-demo" type="button">Essayer avec un exemple</button>
-      <span>Autres exemples : <span id="sd-ex"></span></span>
+      <p class="sd-demo-title"><strong>Pas de message sous la main ?</strong> Testez l'outil avec un exemple : ce sont des messages fictifs écrits par CyberBalise (trois arnaques courantes et un message normal pour comparer).</p>
+      <div class="sd-demo-list" id="sd-ex"></div>
     </div>
 
     <p class="sd-ocr" id="sd-ocr" role="status" aria-live="polite"></p>
@@ -496,11 +554,12 @@ tbody tr:hover{background:#F6F8FA}
 
   <div class="sd-res" id="sd-res" hidden></div>
 </section>
-<div class="note"><p><strong>Comment ça marche.</strong> Importez une capture d'écran ou un fichier texte (.txt), ou collez le texte d'un message. Relisez le texte importé, puis lancez l'analyse. L'outil repère les signaux classiques d'une arnaque et vous dit quoi faire. L'analyse se fait <strong>dans votre navigateur</strong> : le fichier et le message ne sont pas envoyés à un serveur d'analyse. Pour lire une capture, le navigateur télécharge un module de reconnaissance de caractères depuis un serveur public, sans y envoyer votre image.</p></div>
+<div class="note"><p><strong>Comment ça marche.</strong> Importez une capture d'écran ou un fichier texte (.txt), ou collez le texte d'un message. Relisez le texte importé et, si vous l'avez, ajoutez l'expéditeur (adresse e-mail ou numéro du SMS), l'objet et le pied de page de l'e-mail : ces éléments trahissent souvent un faux message. Puis lancez l'analyse. L'outil repère les signaux classiques d'une arnaque et vous dit quoi faire. L'analyse se fait <strong>dans votre navigateur</strong> : le fichier et le message ne sont pas envoyés à un serveur d'analyse. Pour lire une capture, le navigateur télécharge un module de reconnaissance de caractères depuis un serveur public, sans y envoyer votre image.</p></div>
 
 <h2 id="limites">Ce que l'outil peut et ne peut pas faire</h2>
 <ul>
   <li><strong>Il repère des signaux</strong> fréquents dans les arnaques : urgence, menace, demande de code ou de paiement, lien suspect, usurpation d'un organisme connu, faux proche, chantage…</li>
+  <li><strong>Il examine aussi l'expéditeur, l'objet et le pied de page</strong> si vous les renseignez : adresse ou numéro d'expéditeur qui imite un organisme, objet alarmiste ou en majuscules, pied de page sans identité ni désinscription, liens piégés. Ce sont des indices, pas des preuves : un expéditeur usurpé de façon parfaite ne peut pas être détecté.</li>
   <li><strong>Il ne vérifie pas les liens en ligne</strong> et ne consulte aucune base de données : il ne peut pas garantir qu'un message est sans danger. Un message sans signal peut quand même être une arnaque.</li>
   <li><strong>La lecture des captures</strong> peut faire des erreurs sur les images floues ou petites : relisez le texte extrait avant l'analyse.</li>
   <li><strong>Dans le doute, la règle reste la même :</strong> n'agissez jamais depuis le message reçu. Ouvrez vous-même le site ou l'application de l'organisme, ou appelez-le au numéro habituel.</li>
@@ -602,14 +661,25 @@ tbody tr:hover{background:#F6F8FA}
   });
   fileInput.addEventListener('change', function(){ handle(this.files[0]); });
 
+  var EX_HINT = {'Faux colis':'SMS de faux colis, avec numéro d\'expéditeur', 'Faux conseiller':'Faux « service fraude » de la banque', 'Faux proche':'« Maman, c\'est mon nouveau numéro »', 'Faux e-mail impôts':'Faux remboursement : expéditeur, objet et pied de page', 'Message légitime':'Un vrai message, pour comparer'};
+  /* Expéditeur, objet et pied de page fictifs associés aux exemples (champs facultatifs de l'outil) */
+  var EX_EXTRA = {
+    'Faux colis': {from:'07 58 21 90 44'},
+    'Faux conseiller': {from:'+44 7700 900123'},
+    'Faux e-mail impôts': {from:'Direction Générale des Finances Publiques <remboursement@impots-gouv-fr.top>', subj:'URGENT : remboursement de 312,40 € en attente – dernier rappel !!', foot:'© 2019 Impôts — Ne pas répondre à ce message.\nPour vous désinscrire : https://bit.ly/3xYzAb'}
+  };
+  D.examples.splice(3, 0, ['Faux e-mail impôts', 'Bonjour,\nAprès un dernier calcul de votre situation fiscale, vous avez droit à un remboursement de 312,40 €. Pour le recevoir, confirmez vos coordonnées bancaires sur le lien ci-dessous, sous 48 h, sinon votre dossier sera clôturé.\nhttps://impots-gouv-fr.top/remboursement']);
+  var demoName = '';
   D.examples.forEach(function(ex){
-    var b = document.createElement('button'); b.type = 'button'; b.textContent = ex[0];
+    var b = document.createElement('button'); b.type = 'button';
+    b.innerHTML = '<strong>' + esc(ex[0]) + '</strong><span>' + esc(EX_HINT[ex[0]] || '') + '</span>';
     b.addEventListener('click', function(){ runExample(ex); });
     el('sd-ex').appendChild(b);
   });
-  el('sd-demo').addEventListener('click', function(){ runExample(D.examples[0]); });
   function runExample(ex){
-    reset(true); input.value = ex[1]; upd(); isDemo = true; started = true; track('outil_lance', 'demo');
+    reset(true); input.value = ex[1]; upd(); isDemo = true; demoName = ex[0]; started = true; track('outil_lance', 'demo');
+    var x = EX_EXTRA[ex[0]] || {};
+    el('sd-from').value = x.from || ''; el('sd-subj').value = x.subj || ''; el('sd-foot').value = x.foot || '';
     el('sd-busy').hidden = true; el('sd-edit').hidden = false; analyse();
   }
 
@@ -633,7 +703,195 @@ tbody tr:hover{background:#F6F8FA}
     });
     return out;
   }
-  function compute(text){
+    /* ===== Expéditeur, objet et pied de page (analyse facultative, 100 % locale) ===== */
+  var norm = function(s){ return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(); };
+  /* Domaines officiels des organismes les plus imités (liste non exhaustive : sert à repérer une usurpation, pas à certifier). */
+  var BRANDS = [
+    {n:'Ameli / Assurance Maladie', re:/\bameli\b|assurance maladie|carte vitale/, dom:['ameli.fr','assurance-maladie.fr']},
+    {n:'Impôts / DGFiP', re:/\bimpots?\b|dgfip|finances publiques|tresor public/, dom:['impots.gouv.fr','dgfip.finances.gouv.fr','finances.gouv.fr']},
+    {n:'CAF', re:/\bcaf\b|allocations familiales/, dom:['caf.fr']},
+    {n:'ANTS', re:/\bants\b|carte grise|permis de conduire/, dom:['ants.gouv.fr','interieur.gouv.fr']},
+    {n:'ANTAI / amendes', re:/\bantai\b|amende/, dom:['antai.gouv.fr']},
+    {n:'La Poste / Colissimo', re:/la poste|laposte|colissimo/, dom:['laposte.fr','colissimo.fr','laposte.net','lapostemobile.fr']},
+    {n:'Chronopost', re:/chronopost/, dom:['chronopost.fr']},
+    {n:'Mondial Relay', re:/mondial ?relay/, dom:['mondialrelay.fr']},
+    {n:'DHL', re:/\bdhl\b/, dom:['dhl.com','dhl.fr']},
+    {n:'UPS', re:/\bups\b/, dom:['ups.com']},
+    {n:'EDF', re:/\bedf\b/, dom:['edf.fr','edf.com']},
+    {n:'Engie', re:/\bengie\b/, dom:['engie.fr','engie.com']},
+    {n:'France Travail', re:/france travail|pole emploi|francetravail/, dom:['francetravail.fr','pole-emploi.fr']},
+    {n:'Mon Compte Formation', re:/compte formation|moncompteformation|\bcpf\b/, dom:['moncompteformation.gouv.fr','caissedesdepots.fr']},
+    {n:'Service-Public', re:/service[- ]public/, dom:['service-public.fr','gouv.fr']},
+    {n:'Amazon', re:/amazon/, dom:['amazon.fr','amazon.com','amazon.de','amazon.es','amazon.it','amazon.co.uk','amazonses.com']},
+    {n:'Netflix', re:/netflix/, dom:['netflix.com']},
+    {n:'PayPal', re:/paypal/, dom:['paypal.com','paypal.fr']},
+    {n:'Apple', re:/\bapple\b|icloud/, dom:['apple.com','icloud.com','email.apple.com']},
+    {n:'Microsoft', re:/microsoft|outlook\b|office ?365/, dom:['microsoft.com','microsoftonline.com','outlook.com','office.com']},
+    {n:'Google', re:/\bgoogle\b|gmail/, dom:['google.com','gmail.com','accounts.google.com']},
+    {n:'Crédit Agricole', re:/credit agricole|creditagricole/, dom:['credit-agricole.fr','ca-sa.fr']},
+    {n:'Société Générale', re:/societe generale|societegenerale/, dom:['societegenerale.fr','socgen.com']},
+    {n:'BNP Paribas', re:/bnp ?paribas|\bbnp\b/, dom:['bnpparibas.com','bnpparibas.net','bnpparibas.fr','bnpparibas.com.fr']},
+    {n:'LCL', re:/\blcl\b/, dom:['lcl.fr']},
+    {n:'Banque Populaire', re:/banque populaire|banquepopulaire/, dom:['banquepopulaire.fr']},
+    {n:'Caisse d\'Épargne', re:/caisse d.?epargne|caisse-epargne/, dom:['caisse-epargne.fr']},
+    {n:'La Banque Postale', re:/banque postale|labanquepostale/, dom:['labanquepostale.fr']},
+    {n:'Boursorama', re:/boursorama/, dom:['boursorama.fr','boursorama.com','boursobank.com']}
+  ];
+  var WEBMAIL = ['gmail.com','googlemail.com','outlook.com','outlook.fr','hotmail.com','hotmail.fr','live.com','live.fr','yahoo.com','yahoo.fr','msn.com','icloud.com','me.com','aol.com','free.fr','orange.fr','wanadoo.fr','sfr.fr','neuf.fr','laposte.net','bbox.fr','proton.me','protonmail.com','gmx.com','gmx.fr','mail.com','yandex.com','mail.ru'];
+  var brandsIn = function(s){ var n = norm(s); return BRANDS.filter(function(b){ return b.re.test(n); }); };
+  var isOfficial = function(dom, b){ return b.dom.some(function(d){ return dom === d || dom.endsWith('.' + d); }); };
+  var regDomain = function(d){ var p = d.split('.'); return /(^|\.)(gouv|co|com|org|net)\.[a-z]{2}$/.test(d) ? p.slice(-3).join('.') : p.slice(-2).join('.'); };
+  var FOOT_RE = /(se d[ée]sabonner|se d[ée]sinscrire|d[ée]sinscri|unsubscribe|mentions l[ée]gales|tous droits r[ée]serv[ée]s|all rights reserved|©|\bsiret\b|\brcs\b|ne pas r[ée]pondre|do not reply|vous recevez (ce|cet)|politique de confidentialit)/i;
+
+  function parseSender(s){
+    s = String(s || '').trim(); if(!s) return null;
+    var m = s.match(/^(.*?)<\s*([^<>\s]+@[^<>\s]+)\s*>\s*$/);
+    var addr = m ? m[2] : (s.match(/[^\s<>"']+@[^\s<>"']+\.[a-z]{2,}/i) || [''])[0];
+    if(addr){
+      var at = addr.lastIndexOf('@');
+      return {kind:'email', display:(m ? m[1] : s.replace(addr, '')).replace(/["'<>]/g, '').trim(), addr:addr.toLowerCase(), local:addr.slice(0, at).toLowerCase(), domain:addr.slice(at + 1).toLowerCase().replace(/[>.,;]+$/, '')};
+    }
+    var digits = s.replace(/[\s.\-()]/g, '');
+    if(/^(\+|00)?\d{4,15}$/.test(digits)){
+      var n = digits.replace(/^00/, '+'), intl = n.charAt(0) === '+', nat = n;
+      if(/^\+33\d{9}$/.test(n)) nat = '0' + n.slice(3);
+      return {kind:'phone', raw:s, num:n, nat:nat, intl:intl && !/^\+33/.test(n)};
+    }
+    return {kind:'name', name:s};
+  }
+
+  /* Sépare d'éventuels « De : » / « Objet : » collés en tête de message et le pied de page en fin de message. */
+  function prepare(text){
+    var lines = text.split(/\r?\n/), from = '', subj = '', start = 0;
+    for(var i = 0; i < Math.min(lines.length, 12); i++){
+      var l = lines[i], m;
+      if((m = l.match(/^\s*(?:de|from|exp[ée]diteur)\s*:\s*(.+)$/i)) && !from){ from = m[1].trim(); start = i + 1; }
+      else if((m = l.match(/^\s*(?:objet|subject|sujet)\s*:\s*(.+)$/i)) && !subj){ subj = m[1].trim(); start = i + 1; }
+      else if(/^\s*(?:à|a|to|date|envoy[ée]|cc)\s*:/i.test(l)){ start = i + 1; }
+      else if(l.trim() === '' && start === i){ start = i + 1; }
+      else break;
+    }
+    var body = lines.slice(start).join('\n').trim() || text;
+    var userFoot = el('sd-foot').value.trim(), foot = userFoot, auto = false;
+    if(!foot){
+      var bl = body.split('\n'), from_ = -1;
+      for(var j = Math.max(0, bl.length - 14); j < bl.length; j++){ if(FOOT_RE.test(bl[j])){ from_ = j; break; } }
+      if(from_ > 0){ foot = bl.slice(from_).join('\n').trim(); body = bl.slice(0, from_).join('\n').trim() || body; auto = true; }
+    }
+    var uf = el('sd-from').value.trim(), us = el('sd-subj').value.trim();
+    return {body:body, from:uf || from, subj:us || subj, foot:foot,
+            auto:{from:!uf && !!from, subj:!us && !!subj, foot:auto}};
+  }
+
+  function analyseExtras(ctx, found){
+    var items = [], ids = found.map(function(f){ return f.s.id; });
+    var has = function(i){ return ids.indexOf(i) >= 0; };
+    var add = function(src, id, label, w, e, hits, link){
+      items.push({src:src, s:{id:id, label:label, w:w, e:e, l:link || ['Phishing et hameçonnage', '/particuliers/menaces/phishing-hameconnage/']}, hits:hits || []});
+    };
+    var all = ctx.body + '\n' + ctx.subj + '\n' + ctx.foot;
+    var mentioned = brandsIn(all);
+    var orgClaim = mentioned.length > 0 || ['admin','colis','conseiller','remboursement','paiement','code','menace','support'].some(has);
+    var tiles = {from:{value:ctx.from, n:0}, subj:{value:ctx.subj, n:0}, foot:{value:ctx.foot, n:0}};
+    var count = function(src){ return items.filter(function(f){ return f.src === src; }).length; };
+
+    /* ---- Expéditeur ---- */
+    var sd = parseSender(ctx.from);
+    if(sd && sd.kind === 'email'){
+      var dom = sd.domain, flagged = [];
+      brandsIn(sd.display).forEach(function(b){
+        if(!isOfficial(dom, b)){ flagged.push(b.n); add('Expéditeur', 'exp_nom', 'Le nom affiché évoque ' + b.n + ', mais l\'adresse vient d\'ailleurs', 4,
+          'Le nom d\'un expéditeur s\'écrit librement : n\'importe qui peut afficher « ' + b.n + ' ». Seul le domaine après le @ compte : ici « ' + dom + ' », qui n\'est pas un domaine habituel de cet organisme.', [sd.addr]); }
+      });
+      var fold = dom.replace(/0/g, 'o').replace(/1/g, 'l').replace(/rn/g, 'm').replace(/vv/g, 'w');
+      brandsIn(dom.replace(/[.\-_]/g, ' ') + ' ' + fold.replace(/[.\-_]/g, ' ')).forEach(function(b){
+        if(!isOfficial(dom, b) && flagged.indexOf(b.n) < 0){ flagged.push(b.n); add('Expéditeur', 'exp_sosie', 'Domaine « sosie » qui imite ' + b.n, 4,
+          'Le domaine « ' + dom + ' » reprend le nom de l\'organisme sans être son adresse officielle (tirets, extension inhabituelle, lettres remplacées par des chiffres…). C\'est la technique du « domaine sosie ».', [dom]); }
+      });
+      if(!flagged.length && found.length){
+        var nm = mentioned.filter(function(b){ return !isOfficial(dom, b); })[0];
+        if(nm) add('Expéditeur', 'exp_incoherent', 'Le message se réclame de ' + nm.n + ' mais l\'expéditeur est un autre domaine', 3,
+          'Le texte parle de ' + nm.n + ', mais l\'adresse d\'envoi (« ' + dom + ' ») n\'est pas la sienne. Un vrai message d\'un organisme arrive de son propre domaine.', [sd.addr]);
+      }
+      if(WEBMAIL.indexOf(dom) >= 0 && found.length && (mentioned.length || orgClaim)){
+        add('Expéditeur', 'exp_webmail', 'Adresse de messagerie grand public pour un message « officiel »', 3,
+          'Un organisme, une banque ou un transporteur n\'écrit pas depuis une adresse gratuite (' + dom + '). Cette adresse peut être créée en une minute par n\'importe qui.', [sd.addr]);
+      }
+      if(/xn--/.test(dom) || /[^\x00-\x7F]/.test(dom)){
+        add('Expéditeur', 'exp_idn', 'Domaine avec caractères spéciaux (technique d\'homographe)', 3,
+          'Certains caractères d\'autres alphabets ressemblent à des lettres latines et permettent de fabriquer une adresse qui paraît identique à l\'officielle.', [dom]);
+      }
+      var lc = linkCheck(dom).reduce(function(a, k){ return a.concat(k.reasons); }, []).filter(function(r){ return r.indexOf('apparaît dans une adresse') < 0; });
+      if(lc.length) add('Expéditeur', 'exp_domaine', 'Domaine d\'expédition atypique', 2, 'Le domaine « ' + dom + ' » présente des caractéristiques courantes chez les expéditeurs frauduleux : ' + lc.join(' ; ') + '.', [dom]);
+      if(/\d{6,}/.test(sd.local) || sd.local.length > 28){
+        add('Expéditeur', 'exp_local', 'Adresse aléatoire ou générée automatiquement', 1,
+          'Une partie locale très longue ou pleine de chiffres (« ' + sd.local.slice(0, 30) + ' ») est typique des adresses jetables créées en masse.', [sd.addr]);
+      }
+    } else if(sd && sd.kind === 'phone'){
+      var nat = sd.nat;
+      if(/^089\d{7}$/.test(nat)){
+        add('Expéditeur', 'exp_surtaxe', 'Numéro surtaxé', 3, 'Les numéros en 089x sont facturés très cher à celui qui les rappelle. Ne rappelez pas.', [sd.raw]);
+      } else if(sd.intl){
+        add('Expéditeur', 'exp_etranger', 'Numéro étranger', orgClaim ? 3 : 2,
+          'Ce numéro commence par un indicatif étranger (' + sd.num.slice(0, 4) + '…). Les organismes français écrivent depuis des numéros français ou des numéros courts.', [sd.raw]);
+      } else if(/^0[67]\d{8}$/.test(nat) && orgClaim && !has('proche')){
+        add('Expéditeur', 'exp_mobile', 'Numéro de mobile ordinaire pour un message « officiel »', 3,
+          'Une administration, une banque ou un transporteur n\'envoie pas ses messages depuis un 06 ou un 07 : ce sont des numéros de particuliers, faciles à obtenir.', [sd.raw]);
+      } else if(/^\d{4,6}$/.test(sd.num)){
+        add('Expéditeur', 'exp_court', 'Numéro court : ne pas répondre sans vérifier', 1,
+          'Les numéros courts servent à des services légitimes mais aussi à des services payants. Ne répondez pas (même « STOP ») avant d\'avoir vérifié l\'émetteur.', [sd.raw]);
+      }
+    } else if(sd && sd.kind === 'name'){
+      add('Expéditeur', 'exp_alpha', 'Nom d\'expéditeur affiché : il peut être usurpé', 1,
+        'Un nom (« ' + sd.name + ' ») affiché à la place d\'un numéro n\'est pas une preuve : des escrocs peuvent l\'usurper, et leur faux SMS peut même s\'afficher dans la conversation d\'un vrai message.',
+        [sd.name], ['Arnaques par SMS et appels', '/particuliers/menaces/arnaques-sms-et-appels/']);
+    }
+    tiles.from.n = count('Expéditeur');
+
+    /* ---- Objet ---- */
+    var subj = ctx.subj;
+    if(subj){
+      SIG.forEach(function(x){
+        if(has(x.s.id)) return;
+        var hits = []; x.re.forEach(function(r){ r.lastIndex = 0; var m = r.exec(subj); if(m && hits.indexOf(m[0]) < 0) hits.push(m[0]); });
+        if(hits.length) add('Objet', 'objet_' + x.s.id, 'Objet : ' + x.s.label.charAt(0).toLowerCase() + x.s.label.slice(1), Math.min(x.s.w, 2), x.s.e, hits, x.s.l);
+      });
+      if(/^\s*(re|tr|fwd?|fw)\s*:/i.test(subj)) add('Objet', 'objet_re', 'Préfixe « RE : » ou « TR : » qui simule un échange en cours', 2,
+        'Les escrocs ajoutent « RE : » ou « TR : » pour faire croire à une conversation déjà engagée. Demandez-vous si vous avez vraiment échangé avec cet expéditeur.', [subj.match(/^\s*\w+\s*:/)[0].trim()]);
+      var letters = subj.replace(/[^A-Za-zÀ-ÿ]/g, '');
+      if(letters.length >= 12 && letters.replace(/[^A-ZÀ-Ý]/g, '').length / letters.length > 0.7)
+        add('Objet', 'objet_maj', 'Objet écrit en majuscules', 2, 'Écrire en majuscules est une façon de crier pour provoquer une réaction immédiate : les vrais organismes écrivent des objets sobres.', [subj.slice(0, 60)]);
+      if(/[!?]{2,}|!.*!/.test(subj)) add('Objet', 'objet_ponct', 'Ponctuation excessive', 1, 'Plusieurs points d\'exclamation ou d\'interrogation cherchent à dramatiser le message.', [subj.match(/[!?]{2,}|!/)[0]]);
+      if(/[\u26A0\u2757\u203C\u{1F6A8}\u{1F514}\u{1F4B0}\u{1F381}]/u.test(subj)) add('Objet', 'objet_emoji', 'Symboles d\'alerte dans l\'objet', 1, 'Les symboles d\'alerte (⚠, 🚨, 🔔, 💰…) sont rares dans les messages d\'organismes sérieux et fréquents dans l\'hameçonnage.', []);
+      if(/^\s*(important|urgent|document|facture|message|notification|information|nouveau message|avis)\s*[.!]*\s*$/i.test(subj)) add('Objet', 'objet_vague', 'Objet vague et générique', 1, 'Un objet très général (« Important », « Document »…) pousse à ouvrir le message sans savoir de quoi il s\'agit.', [subj]);
+    }
+    tiles.subj.n = count('Objet');
+
+    /* ---- Pied de page ---- */
+    var foot = ctx.foot;
+    if(foot){
+      var promo = /(offre|promo|remise|soldes?|bon plan|newsletter|-\s?\d{1,2} ?%)/i.test(all);
+      if(promo && !/(d[ée]sabonner|d[ée]sinscri|unsubscribe)/i.test(foot))
+        add('Pied de page', 'pied_desinsc', 'Message commercial sans lien de désinscription', 2, 'Un message promotionnel légitime doit permettre de se désinscrire facilement. Son absence est un signal d\'envoi en masse non conforme.', [], ['Vie privée et données personnelles', '/particuliers/comptes/vie-privee-et-donnees-personnelles/']);
+      if((promo || orgClaim) && !/(siret|siren|\brcs\b|capital|\bsas\b|\bsarl\b|mentions l[ée]gales|\b\d{5}\s+[A-Za-zÀ-ÿ\-]{3,})/i.test(foot))
+        add('Pied de page', 'pied_identite', 'Aucune identification de l\'entreprise ou de l\'organisme', 2, 'Un expéditeur sérieux indique qui il est (raison sociale, adresse, numéro d\'immatriculation ou mentions légales). Un pied de page sans identité précise est un signal d\'alerte.', [foot.split('\n')[0].slice(0, 80)]);
+      var yr = (foot.match(/©\s*(?:copyright\s*)?(20\d{2}|19\d{2})/i) || [])[1];
+      if(yr && +yr < new Date().getFullYear() - 1) add('Pied de page', 'pied_annee', 'Copyright ancien : modèle recopié ?', 1, 'Un « © ' + yr + ' » dans un message récent trahit souvent un modèle copié d\'un ancien message légitime.', ['© ' + yr]);
+      var fl = linkCheck(foot).reduce(function(a, k){ return a.concat(k.reasons.map(function(r){ return k.host + ' : ' + r; })); }, []);
+      if(fl.length) add('Pied de page', 'pied_liens', 'Lien suspect dans le pied de page', 3, 'Le lien « se désinscrire » ou « mentions légales » est souvent piégé : ' + fl.join(' ; ') + '.', fl.slice(0, 2));
+      else if(sd && sd.kind === 'email' && WEBMAIL.indexOf(sd.domain) < 0){
+        var fu = (foot.match(/https?:\/\/[^\s)>"']+/gi) || []).map(function(u){ return u.replace(/^https?:\/\//i, '').split(/[\/?#]/)[0].toLowerCase().replace(/^www\./, ''); });
+        var other = fu.filter(function(d){ return regDomain(d) !== regDomain(sd.domain); })[0];
+        if(other) add('Pied de page', 'pied_domaine', 'Le pied de page renvoie vers un autre site que l\'expéditeur', 2, 'Les liens du pied de page pointent vers « ' + other + ' » alors que le message vient de « ' + sd.domain + ' » : vérifiez que ce sont bien les mêmes organismes.', [other]);
+      }
+      if(/(appelez|contactez[- ]nous|joignable)[^\n]{0,40}(\+?\d[\d .]{8,}|0 ?8\d\d)/i.test(foot)) add('Pied de page', 'pied_tel', 'Numéro à appeler dans le pied de page', 2, 'Inviter à appeler un numéro est la méthode des faux supports et des faux conseillers : passez plutôt par le site officiel que vous tapez vous-même.', [(foot.match(/(\+?\d[\d .]{8,}|0 ?8\d\d[\d .]*)/) || [''])[0].trim()], ['Arnaques au faux support', '/particuliers/menaces/arnaques-au-faux-support/']);
+      if(/(service client|[ée]quipe (support|s[ée]curit[ée])|d[ée]partement s[ée]curit[ée]|service s[ée]curit[ée])\s*\.?\s*$/im.test(foot) && !/(siret|rcs|\bsas\b|\bsarl\b)/i.test(foot))
+        add('Pied de page', 'pied_signature', 'Signature générique sans nom d\'entreprise', 1, 'Une signature du type « Service client » ou « Équipe sécurité » sans raison sociale ne permet pas de savoir qui écrit.', []);
+    }
+    tiles.foot.n = count('Pied de page');
+    return {items:items, tiles:tiles};
+  }
+  function compute(text, ctx){
     var found = [], score = 0;
     SIG.forEach(function(x){
       var hits = [];
@@ -649,9 +907,19 @@ tbody tr:hover{background:#F6F8FA}
     if(has('proche') && has('paiement')) score += 3;
     if(has('president') && has('urgence')) score += 3;
     if(has('conseiller') && has('code')) score += 2;
+    var tiles = null;
+    if(ctx){
+      var ex = analyseExtras(ctx, found);
+      tiles = ex.tiles;
+      var hadText = found.length > 0;
+      ex.items.forEach(function(f){ found.push(f); score += f.s.w; });
+      ids = found.map(function(f){ return f.s.id; });
+      /* un expéditeur ou un lien de pied de page très suspect aggrave un message qui présente déjà des signaux */
+      if(hadText && ex.items.some(function(f){ return f.src === 'Expéditeur' && f.s.w >= 3; })) score += 2;
+    }
     var level = score >= 8 ? 3 : score >= 4 ? 2 : 1;
     if(level === 1 && found.some(function(f){ return f.s.w >= 4; })) level = 2;
-    return {found:found, links:links, score:score, level:level};
+    return {found:found, links:links, score:score, level:level, tiles:tiles};
   }
   var L = {
     3:{id:'arnaque_probable', badge:'Arnaque probable', icon:'⚠', t:'Très probablement une arnaque', p:'Plusieurs signaux typiques sont réunis. Ne cliquez pas, ne répondez pas, ne payez pas et ne communiquez aucun code.'},
@@ -728,14 +996,47 @@ tbody tr:hover{background:#F6F8FA}
     });
   }
 
+  function scopeHTML(ctx, r){
+    var T = r.tiles || {};
+    var tile = function(key, title, own, valueTxt, autoTxt, field){
+      var t = T[key] || {n:0, value:''}, state, status;
+      if(own !== undefined){ state = t.n ? 'warn' : 'ok'; status = t.n ? t.n + ' ' + (t.n > 1 ? 'signaux' : 'signal') : 'Aucun signal'; }
+      else if(!t.value){ state = 'none'; status = 'Non renseigné'; }
+      else { state = t.n ? 'warn' : 'ok'; status = t.n ? t.n + ' ' + (t.n > 1 ? 'signaux' : 'signal') : 'Aucun signal'; }
+      return '<li class="' + state + '"><b>' + title + '</b><span class="st">' + status + '</span>'
+        + (valueTxt ? '<small>' + esc(valueTxt.length > 46 ? valueTxt.slice(0, 44) + '…' : valueTxt) + (autoTxt ? ' · repéré automatiquement' : '') + '</small>' : '')
+        + (state === 'none' && field ? '<button type="button" class="sd-add" data-field="' + field + '">Ajouter</button>' : '') + '</li>';
+    };
+    var textN = r.found.filter(function(f){ return !f.src; }).length;
+    return '<section class="sd-scope sd-in" style="--i:1" aria-labelledby="sd-scope-t"><h3 id="sd-scope-t">Ce qui a été examiné</h3><ul class="sd-tiles">'
+      + '<li class="' + (textN ? 'warn' : 'ok') + '"><b>Texte du message</b><span class="st">' + (textN ? textN + ' ' + (textN > 1 ? 'signaux' : 'signal') : 'Aucun signal') + '</span></li>'
+      + tile('from', 'Expéditeur', undefined, ctx.from, ctx.auto.from, 'sd-from')
+      + tile('subj', 'Objet', undefined, ctx.subj, ctx.auto.subj, 'sd-subj')
+      + tile('foot', 'Pied de page', undefined, ctx.foot.split('\n')[0], ctx.auto.foot, 'sd-foot')
+      + '</ul><p class="sd-scope-note">L\'expéditeur, l\'objet et le pied de page sont facultatifs mais très révélateurs : un faux message se trahit souvent par son adresse d\'envoi. Rien n\'est envoyé hors de votre appareil.</p></section>';
+  }
+
+  function backToEdit(fieldId){
+    setStep(2); el('sd-busy').hidden = true; el('sd-edit').hidden = false;
+    el('sd-extra').open = true;
+    var f = el(fieldId); if(f) f.focus();
+  }
+
   function analyse(){
     var text = input.value.trim(); if(!text) return;
-    var r = compute(text), v = L[r.level], found = r.found, links = r.links, level = r.level, i = 0;
-    var isMail = /@|^\s*(objet|subject|de|from)\s*:/im.test(text);
-    var h = (isDemo ? '<p class="sd-demo-note sd-in">Exemple fictif : ce message a été écrit pour la démonstration.</p>' : '')
+    var ctx = prepare(text);
+    if(ctx.auto.from) el('sd-from').value = ctx.from;
+    if(ctx.auto.subj) el('sd-subj').value = ctx.subj;
+    if(ctx.auto.foot) el('sd-foot').value = ctx.foot;
+    var r = compute(ctx.body, ctx), v = L[r.level], found = r.found, links = r.links, level = r.level, i = 0;
+    var isMail = /@|^\s*(objet|subject|de|from)\s*:/im.test(text) || !!ctx.subj || /@/.test(ctx.from);
+    var sampleTxt = (ctx.from ? 'Expéditeur : ' + ctx.from + '\n' : '') + (ctx.subj ? 'Objet : ' + ctx.subj + '\n' : '') + ((ctx.from || ctx.subj) ? '\n' : '') + ctx.body + (ctx.foot ? '\n\n— Pied de page —\n' + ctx.foot : '');
+    var h = (isDemo
+        ? '<figure class="sd-sample sd-in"><figcaption>Exemple « ' + esc(demoName) + ' » : un message fictif écrit par CyberBalise, qui ne vient d\'aucun vrai expéditeur</figcaption><blockquote>' + esc(sampleTxt) + '</blockquote><p class="sd-sample-note">Voici ce que l\'outil dit de ce message :</p></figure>'
+        : '<details class="sd-sample sd-in"><summary>Voir le message analysé</summary><blockquote>' + esc(sampleTxt) + '</blockquote></details>')
       + '<div class="sd-verdict v' + level + ' sd-in" style="--i:0"><div class="sd-badge"><i aria-hidden="true">' + v.icon + '</i>' + v.badge + '<small>' + found.length + ' ' + (found.length > 1 ? 'signaux' : 'signal') + '</small></div>'
       + '<div><h3 id="sd-vt" tabindex="-1">' + v.t + '</h3><p>' + v.p + '</p><div class="sd-meter" aria-hidden="true"><i></i><i></i><i></i></div></div></div>'
-      + nlHTML();
+      + nlHTML() + scopeHTML(ctx, r);
     if(links.length){
       h += '<h3 class="sd-in" style="--i:3">Lien' + (links.length > 1 ? 's' : '') + ' à risque</h3><ul class="sd-sigs">' + links.map(function(k){
         return '<li class="sd-sig sd-in" style="--i:' + (3 + (++i)) + '"><b>' + esc(k.host) + '</b><details><summary>Pourquoi ce lien est suspect ?</summary><p>' + esc(k.reasons.join(' ; ')) + '.</p><a href="/particuliers/menaces/phishing-hameconnage/">→ Reconnaître un faux site</a></details></li>';
@@ -744,7 +1045,7 @@ tbody tr:hover{background:#F6F8FA}
     if(found.length){
       found.sort(function(a,b){ return b.s.w - a.s.w; });
       h += '<h3 class="sd-in" style="--i:3">Signaux repérés</h3><ul class="sd-sigs">' + found.map(function(f){
-        return '<li class="sd-sig sd-in' + (f.s.w <= 2 ? ' w2' : '') + '" style="--i:' + (3 + (++i)) + '"><b>' + esc(f.s.label) + '</b><div>' + f.hits.map(function(x){ return '<q>' + esc(x) + '</q>'; }).join('') + '</div>'
+        return '<li class="sd-sig sd-in' + (f.s.w <= 2 ? ' w2' : '') + '" style="--i:' + (3 + (++i)) + '">' + (f.src ? '<span class="sd-src">' + esc(f.src) + '</span>' : '') + '<b>' + esc(f.s.label) + '</b><div>' + f.hits.map(function(x){ return '<q>' + esc(x) + '</q>'; }).join('') + '</div>'
           + '<details><summary>Pourquoi ce signal est suspect ?</summary><p>' + esc(f.s.e) + '</p><a href="' + f.s.l[1] + '">→ ' + esc(f.s.l[0]) + '</a></details></li>';
       }).join('') + '</ul>';
     }
@@ -769,6 +1070,7 @@ tbody tr:hover{background:#F6F8FA}
 
     res.innerHTML = h; setStep(3);
     bindNl(); bindShare();
+    res.querySelectorAll('.sd-add').forEach(function(b){ b.addEventListener('click', function(){ backToEdit(b.dataset.field); }); });
     el('sd-again').addEventListener('click', function(){ reset(); focusStart(); });
     el('sd-live').textContent = 'Analyse terminée : ' + v.t + '. ' + found.length + ' ' + (found.length > 1 ? 'signaux repérés' : 'signal repéré') + '.';
     var t = el('sd-vt'); if(t) t.focus({preventScroll:true});
@@ -779,6 +1081,7 @@ tbody tr:hover{background:#F6F8FA}
   function reset(keepStep){
     importVersion++; started = false; isDemo = false;
     input.value = ''; upd(); fileInput.value = '';
+    ['sd-from', 'sd-subj', 'sd-foot'].forEach(function(id){ el(id).value = ''; });
     res.hidden = true; res.innerHTML = '';
     ['sd-prev', 'sd-prev-busy'].forEach(function(id){ var p = el(id); p.hidden = true; p.removeAttribute('src'); });
     if(previewUrl){ URL.revokeObjectURL(previewUrl); previewUrl = null; }

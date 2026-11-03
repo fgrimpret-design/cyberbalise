@@ -33,7 +33,14 @@ une probabilité de fraude. Un signal de poids au moins 4 impose le niveau 2.
 
 Parcours en trois étapes (Importer, Vérifier le texte, Verdict), avec mode démo,
 glisser-déposer, détail pédagogique de chaque signal et blocs d'actions selon le
-niveau. L'analyse reste 100 % dans le navigateur ; le module de lecture d'images
+niveau. Champs facultatifs « Expéditeur », « Objet » et « Pied de page » (repérés
+aussi automatiquement dans un texte collé qui commence par « De : » / « Objet : » ou
+se termine par des mentions légales) : domaine « sosie » ou nom affiché usurpé
+(liste d'organismes et de domaines officiels `BRANDS` en tête du bloc d'analyse),
+adresse de messagerie grand public, numéro mobile, étranger ou surtaxé, objet en
+majuscules ou simulant un échange (« RE : »), pied de page sans identité, sans
+désinscription, avec liens piégés ou copyright ancien. Ces signaux entrent dans le
+même barème que ceux du texte ; la liste `BRANDS` est à compléter au fil du temps. L'analyse reste 100 % dans le navigateur ; le module de lecture d'images
 (Tesseract.js) n'est chargé qu'à l'import d'une image.
 
 **Alerte hebdo (inscription après le verdict).** L'inscription passe par le script PHP
