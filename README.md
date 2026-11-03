@@ -31,11 +31,14 @@ Le résultat affiche le niveau sur une échelle de vigilance à trois niveaux,
 le score pondéré et ses seuils (0–3, 4–7, 8 et plus), sans le présenter comme
 une probabilité de fraude. Un signal de poids au moins 4 impose le niveau 2.
 
-Parcours en trois étapes (Importer, Vérifier le texte, Verdict), avec mode démo,
-glisser-déposer, détail pédagogique de chaque signal et blocs d'actions selon le
-niveau. Champs facultatifs « Expéditeur », « Objet » et « Pied de page » (repérés
-aussi automatiquement dans un texte collé qui commence par « De : » / « Objet : » ou
-se termine par des mentions légales) : domaine « sosie » ou nom affiché usurpé
+Parcours en trois étapes : 1) choix du type de message (SMS ou e-mail), 2) tous les
+champs à renseigner (expéditeur, objet et pied de page pour un e-mail, expéditeur
+pour un SMS, avec un bouton « Coller » pour chacun) et le texte du message, fourni
+par capture d'écran, fichier .txt ou copier-coller, puis le bouton « Analyser le
+message », 3) verdict. Mode démo, glisser-déposer, détail pédagogique de chaque signal
+et blocs d'actions selon le niveau. Pour un e-mail, l'objet et le pied de page sont
+aussi repérés automatiquement dans un texte collé qui commence par « De : » / « Objet : »
+ou se termine par des mentions légales : domaine « sosie » ou nom affiché usurpé
 (liste d'organismes et de domaines officiels `BRANDS` en tête du bloc d'analyse),
 adresse de messagerie grand public, numéro mobile, étranger ou surtaxé, objet en
 majuscules ou simulant un échange (« RE : »), pied de page sans identité, sans
@@ -43,7 +46,7 @@ désinscription, avec liens piégés ou copyright ancien. Ces signaux entrent da
 même barème que ceux du texte ; la liste `BRANDS` est à compléter au fil du temps. L'analyse reste 100 % dans le navigateur ; le module de lecture d'images
 (Tesseract.js) n'est chargé qu'à l'import d'une image.
 
-**Alerte hebdo (inscription après le verdict).** L'inscription passe par le script PHP
+**Newsletter CyberBalise (inscription après le verdict, un e-mail tous les 15 jours).** L'inscription passe par le script PHP
 du site `backoffice/newsletter.php` (double opt-in : e-mail de confirmation, lien de
 désinscription avec confirmation). Les adresses sont stockées dans la table
 `cr_newsletter` du back office ; la liste (compteurs, export CSV des adresses

@@ -1,5 +1,5 @@
 <?php
-/* Point public de la lettre « Alerte hebdo » : inscription (POST JSON), confirmation et désinscription (liens e-mail). */
+/* Point public de la newsletter CyberBalise : inscription (POST JSON), confirmation et désinscription (liens e-mail). */
 declare(strict_types=1);
 define('CR_NO_SESSION', true);
 require __DIR__ . '/inc/bootstrap.php';
@@ -21,18 +21,18 @@ $action = (string)($_GET['a'] ?? $_POST['a'] ?? '');
 /* ---- Liens reçus par e-mail ---- */
 if ($method === 'GET' && $action === 'confirm') {
     nl_confirm((string)($_GET['t'] ?? ''))
-        ? nl_page('Inscription confirmée', '<p>Merci ! Vous recevrez l\'Alerte hebdo de CyberBalise : les arnaques qui circulent cette semaine et le réflexe qui les bloque.</p><p>Vous pouvez vous désinscrire à tout moment grâce au lien présent dans chaque e-mail.</p>')
+        ? nl_page('Inscription confirmée', '<p>Merci ! Vous recevrez la newsletter de CyberBalise tous les 15 jours : actualités, guides et outils au meilleur prix.</p><p>Vous pouvez vous désinscrire à tout moment grâce au lien présent dans chaque e-mail.</p>')
         : nl_page('Lien invalide ou expiré', '<p>Ce lien de confirmation n\'est plus valable. Vous pouvez refaire une demande depuis le <a href="/outils/detecteur-arnaque/">détecteur d\'arnaque</a>.</p>', 410);
 }
 if ($action === 'unsub') {
     $t = (string)($_GET['t'] ?? $_POST['t'] ?? '');
     if ($method === 'POST') {
         nl_unsubscribe($t)
-            ? nl_page('Vous êtes désinscrit(e)', '<p>Votre adresse ne recevra plus l\'Alerte hebdo. Vous pouvez vous réinscrire à tout moment.</p>')
+            ? nl_page('Vous êtes désinscrit(e)', '<p>Votre adresse ne recevra plus la newsletter CyberBalise. Vous pouvez vous réinscrire à tout moment.</p>')
             : nl_page('Lien invalide', '<p>Ce lien de désinscription n\'est pas valable. Écrivez-nous via la <a href="/contact/">page Contact</a> et nous supprimerons votre adresse.</p>', 400);
     }
     // Une confirmation est demandée : un lien ouvert par un antivirus ou une messagerie ne désinscrit personne.
-    nl_page('Se désinscrire de l\'Alerte hebdo', '<p>Confirmez que vous ne souhaitez plus recevoir l\'Alerte hebdo de CyberBalise.</p><form method="post" action=""><input type="hidden" name="a" value="unsub"><input type="hidden" name="t" value="' . e($t) . '"><button class="btn" type="submit">Me désinscrire</button></form>');
+    nl_page('Se désinscrire de la newsletter CyberBalise', '<p>Confirmez que vous ne souhaitez plus recevoir la newsletter CyberBalise.</p><form method="post" action=""><input type="hidden" name="a" value="unsub"><input type="hidden" name="t" value="' . e($t) . '"><button class="btn" type="submit">Me désinscrire</button></form>');
 }
 
 /* ---- Inscription depuis le site ---- */

@@ -31,6 +31,18 @@ header.site .hdr-fb:focus-visible {
   outline-offset: 2px;
 }
 
+header.site .hdr-li {
+  margin-left: -10px;
+}
+
+header.site .hdr-li:hover {
+  box-shadow: 0 4px 12px rgba(10, 102, 194, .35);
+}
+
+header.site .hdr-li img {
+  border-radius: 6px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   header.site .hdr-fb { transition: none; }
 }
@@ -50,7 +62,12 @@ header.site .hdr-fb:focus-visible {
     margin-left: auto;
   }
 
-  header.site .hdr-fb + .burger {
+  header.site .hdr-fb + .hdr-li {
+    margin-left: -10px;
+  }
+
+  header.site .hdr-fb + .burger,
+  header.site .hdr-li + .burger {
     margin-left: 8px;
   }
 }

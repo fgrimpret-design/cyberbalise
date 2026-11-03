@@ -1,5 +1,5 @@
 <?php
-/* Abonnés à l'Alerte hebdo : suivi des inscriptions, export CSV des adresses confirmées, suppression. */
+/* Abonnés à la newsletter : suivi des inscriptions, export CSV des adresses confirmées, suppression. */
 declare(strict_types=1);
 require __DIR__ . '/inc/bootstrap.php';
 require_once __DIR__ . '/inc/layout.php';
@@ -12,7 +12,7 @@ if (($_GET['export'] ?? '') === 'csv') {
     $rows = q("SELECT email, confirmed_at, source FROM cr_newsletter WHERE status = 'confirmed' ORDER BY confirmed_at");
     log_action('Export abonnés', 'cr_newsletter', count($rows) . ' adresses');
     header('Content-Type: text/csv; charset=UTF-8');
-    header('Content-Disposition: attachment; filename="abonnes-alerte-hebdo-' . date('Y-m-d') . '.csv"');
+    header('Content-Disposition: attachment; filename="abonnes-newsletter-' . date('Y-m-d') . '.csv"');
     header('Cache-Control: no-store');
     echo "\xEF\xBB\xBF" . "email;date_confirmation;source\r\n";
     foreach ($rows as $r) echo $r['email'] . ';' . date('Y-m-d', (int)$r['confirmed_at']) . ';' . preg_replace('/[^a-z0-9_\-]/i', '', (string)$r['source']) . "\r\n";
@@ -34,7 +34,7 @@ $count = [];
 foreach (q('SELECT status, COUNT(*) n FROM cr_newsletter GROUP BY status') as $r) $count[$r['status']] = (int)$r['n'];
 $rows = q('SELECT * FROM cr_newsletter ORDER BY created_at DESC LIMIT 200');
 $labels = ['confirmed' => 'Confirmé', 'pending' => 'En attente de confirmation', 'unsubscribed' => 'Désinscrit'];
-layout_start('Abonnés à l\'Alerte hebdo', 'abonnes.php');
+layout_start('Abonnés à la newsletter', 'abonnes.php');
 ?>
 <div class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:16px">
   <?= kpi('Abonnés confirmés', fr_num($count['confirmed'] ?? 0)) ?>

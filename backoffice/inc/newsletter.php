@@ -1,5 +1,5 @@
 <?php
-/* Liste de diffusion « Alerte hebdo » : inscription avec double opt-in, désinscription, export.
+/* Liste de diffusion de la newsletter CyberBalise : inscription avec double opt-in, désinscription, export.
    Aucun service tiers : les adresses sont stockées dans la base du back office (cr_newsletter)
    et les e-mails de confirmation partent du serveur du site. */
 declare(strict_types=1);
@@ -49,11 +49,11 @@ function nl_send(string $to, string $subject, string $body): bool {
 
 function nl_send_confirmation(array $row): bool {
     $body = "Bonjour,\n\n"
-        . "Vous avez demandé à recevoir l'Alerte hebdo de CyberBalise : les arnaques qui circulent cette semaine et le réflexe qui les bloque.\n\n"
+        . "Vous avez demandé à recevoir la newsletter de CyberBalise : tous les 15 jours, les actualités, les guides et les outils au meilleur prix.\n\n"
         . "Pour confirmer votre inscription, cliquez sur ce lien :\n" . nl_link('confirm', $row['tok_confirm']) . "\n\n"
         . "Si vous n'êtes pas à l'origine de cette demande, ignorez simplement ce message : vous ne recevrez rien et l'adresse sera supprimée sous quelques jours.\n\n"
         . "CyberBalise — " . cfg('site_url') . "\n";
-    return nl_send($row['email'], "Confirmez votre inscription à l'Alerte hebdo CyberBalise", $body);
+    return nl_send($row['email'], "Confirmez votre inscription à la newsletter CyberBalise", $body);
 }
 
 /* Limite le nombre de demandes par visiteur et par heure. */
