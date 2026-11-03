@@ -21,6 +21,16 @@ return [
 
     'timezone' => 'Europe/Paris',
 
+    // Lettre « Alerte hebdo » (inscription depuis le détecteur d'arnaque, double opt-in).
+    // 'from' doit être une adresse de votre domaine (sinon les e-mails de confirmation risquent le spam).
+    // 'transport' : 'mail' en production ; 'log' pour tester en local (écrit dans data/newsletter-mails.log).
+    'newsletter' => [
+        'enabled'   => true,
+        'from'      => 'contact@cyberbalise.fr',
+        'from_name' => 'CyberBalise',
+        'transport' => 'mail',
+    ],
+
     // Autoriser l'édition du code source HTML des pages par les administrateurs.
     // Puissant mais sensible : activez la double authentification sur les comptes admin.
     'allow_code_edit' => true,

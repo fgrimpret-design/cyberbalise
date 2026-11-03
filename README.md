@@ -31,6 +31,36 @@ Le résultat affiche le niveau sur une échelle de vigilance à trois niveaux,
 le score pondéré et ses seuils (0–3, 4–7, 8 et plus), sans le présenter comme
 une probabilité de fraude. Un signal de poids au moins 4 impose le niveau 2.
 
+Parcours en trois étapes (Importer, Vérifier le texte, Verdict), avec mode démo,
+glisser-déposer, détail pédagogique de chaque signal et blocs d'actions selon le
+niveau. L'analyse reste 100 % dans le navigateur ; le module de lecture d'images
+(Tesseract.js) n'est chargé qu'à l'import d'une image.
+
+**Alerte hebdo (inscription après le verdict).** L'inscription passe par le script PHP
+du site `backoffice/newsletter.php` (double opt-in : e-mail de confirmation, lien de
+désinscription avec confirmation). Les adresses sont stockées dans la table
+`cr_newsletter` du back office ; la liste (compteurs, export CSV des adresses
+confirmées, suppression) est dans le back office, page **Abonnés** (administrateurs).
+Réglages dans `backoffice/config.php`, clé `newsletter` (expéditeur `from`, qui doit
+être une adresse du domaine ; `transport` `mail` en production, `log` pour tester en
+local sans envoyer). Les inscriptions non confirmées sont supprimées après 7 jours,
+une même adresse reçoit au plus un e-mail de confirmation toutes les 10 minutes et
+chaque visiteur est limité à 6 demandes par heure. Tout l'envoi passe côté page par
+`subscribeNewsletter(email)` et la constante `CB_NEWSLETTER` (en tête du script de
+`outils/detecteur-arnaque/index.html`) ; l'adaptateur `form` permet de basculer vers
+un service externe (Brevo…), et `?nl=preview` simule l'inscription sans rien envoyer.
+Seule l'adresse e-mail est transmise, jamais le message analysé. La politique de
+confidentialité décrit ce traitement. Envoyer la lettre elle-même se fait hors du site
+(export CSV vers un outil d'envoi) : chaque envoi doit contenir un lien de
+désinscription.
+
+**Événements de mesure.** `outil_lance` (valeur : `capture`, `fichier`, `texte` ou
+`demo`), `analyse_terminee` (valeur : `sain`, `douteux` ou `arnaque_probable`),
+`inscription_newsletter` et `partage_clic` (valeur : `whatsapp`, `lien` ou `natif`).
+Ils passent par `window.crTrack` (outil interne `backoffice/t.js`, chargé uniquement
+après consentement) et seraient aussi envoyés à GA4/GTM si `gtag` ou `dataLayer`
+existaient. Ils apparaissent dans la page Statistiques du back-office (événements).
+
 ## Top protections
 
 Le module partagé utilise `assets/top-protections.js` et `assets/site-spacing.css`.

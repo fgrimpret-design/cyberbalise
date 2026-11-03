@@ -2,6 +2,39 @@ header.site .nav-item > a[href="/actualites/"]::after {
   content: none;
 }
 
+/* Pictogramme Facebook de l'en-tête (toutes les pages) */
+header.site .hdr-fb {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 12px;
+  border-radius: 50%;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+header.site .hdr-fb img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+header.site .hdr-fb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, .35);
+}
+
+header.site .hdr-fb:focus-visible {
+  outline: 3px solid var(--orange-d, #C7451F);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.site .hdr-fb { transition: none; }
+}
+
 @media (max-width: 1040px) {
   header.site nav.main,
   header.site .btn-urgence {
@@ -11,6 +44,14 @@ header.site .nav-item > a[href="/actualites/"]::after {
   header.site .burger {
     display: block;
     margin-left: auto;
+  }
+
+  header.site .hdr-fb {
+    margin-left: auto;
+  }
+
+  header.site .hdr-fb + .burger {
+    margin-left: 8px;
   }
 }
 
