@@ -227,6 +227,7 @@
       if (age.ageJours < CFG.ageRecentJours) ajouter('DOMAINE_RECENT');
     }
 
+    if (resultat.officielPour.length) raisons = raisons.filter(function (c) { return c === 'USERINFO' || c === 'PORT_INHABITUEL'; });
     resultat.raisons = raisons;
     resultat.niveau = niveauDesRaisons(raisons);
     return resultat;
@@ -511,6 +512,21 @@
       else if (l.raisons.indexOf('SOUS_DOMAINE_TROMPEUR') >= 0 && unique('sous|' + l.hote)) incoh('LIEN_TROMPEUR', { domaine: l.hote }, l.url);
       else if (l.raisons.indexOf('MARQUE_TIERS') >= 0 && unique('tiers|' + l.hote)) incoh('LIEN_MARQUE_TIERS', { domaine: l.hote, marque: marque ? marque.nom : '' }, l.url);
     });
+    /* lien à indice faible ou net (hors incohérence critique, déjà comptée) : un signal, pas un verdict */
+    var risques = lienAnalyse.filter(function (l) { return l.niveau >= 1 && l.niveau < 3; });
+    if (risques.length) {
+      var lienNet = risques.some(function (l) { return l.niveau >= 2; });
+      var sl2 = R.SIGNAL_LIEN[lienNet ? 'net' : 'faible'];
+      var codesLien = [];
+      risques.forEach(function (l) { l.raisons.forEach(function (c) { if (codesLien.indexOf(c) < 0) codesLien.push(c); }); });
+      signaux.push({
+        id: 'lien_a_risque', categorie: 'manipulation', poids: sl2.poids, libelle: sl2.libelle,
+        extraits: risques.slice(0, CFG.maxExtraitsParRegle).map(function (l) { return l.hote; }),
+        positions: risques.filter(function (l) { return l.champ && l.debut != null; }).map(function (l) { return { champ: l.champ, debut: l.debut, fin: l.fin }; }),
+        explication: sl2.explication + codesLien.map(function (c) { return R.LIEN_RAISONS[c].libelle; }).join(' ; ') + '.',
+        action: 'Ne cliquez pas : tapez vous-même l\'adresse du site officiel.', fiche: fiche('phishing'), regle: 'lien_a_risque'
+      });
+    }
     /* lien qui ne mène pas à la marque dont le message se réclame */
     revendiquees.forEach(function (b) {
       lienAnalyse.forEach(function (l) {

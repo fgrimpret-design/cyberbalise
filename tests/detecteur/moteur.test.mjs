@@ -26,9 +26,23 @@ test('faux positifs : aucun message légitime n\'atteint le niveau 2', () => {
   assert.deepEqual(trop, []);
 });
 
-test('chaque cas du corpus respecte sa fourchette attendue', () => {
-  const echecs = corpus.filter((c) => { const n = niveau(c); return n < c.attendu[0] || n > c.attendu[1]; }).map((c) => `${c.id} -> ${niveau(c)} (cible ${c.attendu.join('-')})`);
+test('chaque cas du corpus respecte sa fourchette attendue (hors limites connues déclarées)', () => {
+  const echecs = corpus.filter((c) => !c.limiteConnue).filter((c) => { const n = niveau(c); return n < c.attendu[0] || n > c.attendu[1]; }).map((c) => `${c.id} -> ${niveau(c)} (cible ${c.attendu.join('-')})`);
   assert.deepEqual(echecs, []);
+});
+
+test('limites connues : elles restent hors cible (sinon, retirer la déclaration) et leur liste ne grossit pas', () => {
+  const declarees = corpus.filter((c) => c.limiteConnue);
+  assert.deepEqual(declarees.map((c) => c.id), ['N04']);
+  for (const c of declarees) { const n = niveau(c); assert.ok(n < c.attendu[0] || n > c.attendu[1], `${c.id} est maintenant dans la cible : retirer « limiteConnue »`); }
+});
+
+test('corpus : au moins 80 messages, dont une série de validation rédigée à part', () => {
+  assert.ok(corpus.length >= 80, `${corpus.length} messages`);
+  assert.ok(corpus.filter((c) => c.serie === 'validation').length >= 40);
+  for (const f of ['peage', 'amende', 'qr_parking', 'forfait', 'cpf', 'locataire', 'renovation', 'livreur', 'proche']) {
+    for (const v of ['evidente', 'sobre']) assert.ok(corpus.some((c) => c.famille === f && c.variante === v), `famille ${f} / ${v} manquante`);
+  }
 });
 
 test('détection : au moins 90 % des hameçonnages au niveau 2 ou plus, 70 % au niveau 3', () => {

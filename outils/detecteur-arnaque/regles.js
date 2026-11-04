@@ -255,18 +255,18 @@
       id: 'urgence', categorie: 'manipulation', poids: 2, portee: ['corps', 'objet'],
       libelle: 'Urgence ou délai très court',
       motifs: [
-        /\burgent(e|es|s)?\b/i, /\ben urgence\b/i, /\bimmediat(e|ement)?\b/i,
+        /\burgent(e|es|s)?\b/i, /\ben urgence\b/i, /\bimmediat(e|ement)?\b/i, /\bimmediately\b/i,
         /\bsous \d{1,2} ?(h|heures?|jours?)\b/i, /\bdans les \d{1,2} ?(h|heures?|jours?)\b/i,
         /\bavant (ce soir|demain|minuit|\d{1,2} ?h)\b/i, /\bdernier (rappel|avertissement|avis|delai)\b/i,
         /\bsans reponse de votre part\b/i, /\baujourd'hui (meme|avant)\b/i, /\bau plus vite\b/i,
-        /\bexpire(ra)? (aujourd'hui|ce soir|demain|bientot)\b/i, /\b(places?|offre) limitee?s?\b/i, /\bderniere chance\b/i,
+        /\bexpire(ra)? (aujourd'hui|ce soir|demain|bientot)\b/i, /\bexpir(ent|eront) (aujourd'hui|ce soir|demain|bientot)\b/i, /\b(places?|offre) limitee?s?\b/i, /\bderniere chance\b/i,
         /\b(final|last) (notice|warning|reminder)\b/i, /\bwithin \d{1,2} ?(hours?|hrs?|days?)\b/i,
         /\b(act|respond|reply) now\b/i, /\bexpires? (today|tonight|soon)\b/i
       ],
       explication: 'Créer l\'urgence empêche de réfléchir : c\'est le ressort numéro un des arnaques. Un vrai organisme laisse le temps de vérifier.',
       action: 'Prenez le temps de vérifier par un autre canal avant d\'agir.', fiche: 'phishing',
       tests: {
-        positifs: ['Régularisez sous 48 h', 'Dernier rappel avant poursuites', 'URGENT : action requise', 'Votre dossier doit être traité avant ce soir', 'Final notice: respond now', 'Offre limitée, places limitées'],
+        positifs: ['Régularisez sous 48 h', 'Dernier rappel avant poursuites', 'URGENT : action requise', 'Votre dossier doit être traité avant ce soir', 'Final notice: respond now', 'Offre limitée, places limitées', 'Vos droits expirent demain', 'Call us immediately'],
         negatifs: ['Votre colis sera livré demain entre 9h et 12h.', 'Le code expire dans 10 minutes.', 'À bientôt pour la suite du projet.']
       }
     },
@@ -278,12 +278,14 @@
         /\b(suspension|blocage|cloture|resiliation|desactivation) (de|du|d') ?(votre|vos|l'|la|le)\b/i,
         /\bevitez? (la |une |le |des )?(suspension|blocage|cloture|amende|poursuites|majoration)\b/i,
         /\brisque[zr]? (de )?(suspension|blocage|poursuites|perdre)\b/i,
-        /\b(faute|a defaut) de (paiement|reglement|reponse|regularisation)\b/i
+        /\b(faute|a defaut) de (paiement|reglement|reponse|regularisation)\b/i,
+        /\b(arrive|arrivent) a (expiration|echeance)\b/i,
+        /\bpour (conserver|garder|ne pas perdre|eviter de perdre) (votre|vos)\b/i
       ],
       explication: 'Faire peur (compte bloqué, ligne coupée, dossier clôturé) pousse à agir sans vérifier. Les vrais organismes ne menacent pas par message avec un lien à suivre.',
       action: 'Ne suivez pas le lien : ouvrez vous-même l\'application ou le site officiel.', fiche: 'sms',
       tests: {
-        positifs: ['Votre compte bancaire sera suspendu.', 'Votre forfait mobile sera résilié aujourd\'hui.', 'Évitez la suspension de votre accès.', 'Votre compte formation CPF est suspendu.'],
+        positifs: ['Votre compte bancaire sera suspendu.', 'Votre forfait mobile sera résilié aujourd\'hui.', 'Évitez la suspension de votre accès.', 'Votre compte formation CPF est suspendu.', 'Votre forfait arrive à expiration.', 'Renouvelez pour conserver votre ligne.'],
         negatifs: ['Votre compte a été créé avec succès.', 'Votre colis a été livré hier.', 'Le dossier sera examiné lundi.']
       }
     },
@@ -412,12 +414,15 @@
         /\bvirus (detecte|trouve|critique)\b/i,
         /\b(trojan|malware|spyware|ransomware|logiciel malveillant) (detecte|trouve)\b/i,
         /\bsupport (technique )?(microsoft|apple|windows|google|norton|mcafee)\b/i,
-        /\bn'(eteignez|eteindre|fermez|redemarrez) (pas|plus)\b/i
+        /\bn'(eteignez|eteindre|fermez|redemarrez) (pas|plus)\b/i,
+        /\b(virus|malware|trojan|spyware|ransomware)\b[^.\n]{0,25}\b(detected|found)\b/i,
+        /\bdetected (a |an )?(critical |serious |dangerous )?(virus|malware|threat|trojan)\b/i,
+        /\bdo not (restart|shut ?down|turn off|close)\b/i
       ],
       explication: 'Aucun éditeur ne vous alerte d\'un virus par une fenêtre ou un message avec un numéro à appeler : c\'est le scénario du faux support technique.',
       action: 'Ne rappelez pas le numéro. Fermez la page et lancez un antivirus de confiance.', fiche: 'support',
       tests: {
-        positifs: ['ALERTE : votre ordinateur est infecté par un virus.', 'Appelez le support Microsoft.', 'N\'éteignez pas votre ordinateur.'],
+        positifs: ['ALERTE : votre ordinateur est infecté par un virus.', 'Appelez le support Microsoft.', 'N\'éteignez pas votre ordinateur.', 'Defender detected a critical virus on your PC.', 'Do not restart your computer.'],
         negatifs: ['Votre téléphone est en charge.', 'Le support technique est ouvert du lundi au vendredi.']
       }
     },
@@ -430,12 +435,15 @@
         /\bj'ai (pris|obtenu) (le controle|l'acces|acces)\b/i,
         /\bvos contacts (recevront|vont recevoir)\b/i,
         /\b(diffus|envoy|publi)[a-z]*\b[^.\n]{0,40}\b(a tous vos contacts|a vos contacts|a votre famille|a vos amis|a vos collegues)\b/i,
-        /\b(your )?webcam\b[^.\n]{0,30}\b(recorded|hacked)\b/i, /\bcompromising (video|photos?|footage)\b/i
+        /\b(your )?webcam\b[^.\n]{0,30}\b(recorded|hacked)\b/i, /\bcompromising (video|photos?|footage)\b/i,
+        /\b(recorded|filmed|hacked|spied on)\b[^.\n]{0,25}\b(through|via|with|using) your (webcam|camera)\b/i,
+        /\bsend (the|this|that) (video|recording)\b[^.\n]{0,30}\b(contacts|family|friends)\b/i,
+        /\bi know your password\b|\bje connais votre mot de passe\b/i
       ],
       explication: 'Les e-mails de chantage (« je vous ai filmé via votre webcam ») sont presque toujours du bluff envoyé en masse. Ne payez pas et ne répondez pas.',
       action: 'Ne payez pas, ne répondez pas, changez vos mots de passe et signalez le message.', fiche: 'chantage',
       tests: {
-        positifs: ['J\'ai pris le contrôle de votre webcam.', 'Une vidéo compromettante de vous.', 'Vos contacts recevront cette vidéo.'],
+        positifs: ['J\'ai pris le contrôle de votre webcam.', 'Une vidéo compromettante de vous.', 'Vos contacts recevront cette vidéo.', 'I recorded you through your webcam.', 'I know your password.'],
         negatifs: ['La webcam de mon ordinateur fonctionne très bien.', 'Photos de vacances en pièce jointe.']
       }
     },
@@ -581,12 +589,13 @@
         /\b(a|pour) 1 ?(€|euros?)(?!\w)/i,
         /\b(gratuit|gratuite|gratuits|gratuites|sans reste a charge|sans frais)\b[^.\n]{0,30}\b(travaux|isolation|installation|dossier|renovation)\b/i,
         /\b(travaux|isolation|installation|renovation)\b[^.\n]{0,20}\b(gratuits?|gratuites?|sans reste a charge)\b/i,
-        /\bdossier\b[^.\n]{0,30}\b(pre-?valide|accepte|eligible|approuve)\b/i
+        /\bdossier\b[^.\n]{0,30}\b(pre-?valide|accepte|eligible|approuve)\b/i,
+        /\bvous etes eligibles? (a|aux|pour)\b[^.\n]{0,30}\b(aides?|prime|subvention|renovation)\b/i
       ],
-      explication: 'Les offres de travaux « à 1 € » ou « gratuits » et les dossiers « pré-validés » servent à récupérer vos coordonnées pour du démarchage frauduleux.',
+      explication: 'Les offres de travaux « à 1 € » ou « gratuits », les dossiers « pré-validés » et les « éligibilités » annoncées d\'office servent à récupérer vos coordonnées pour du démarchage frauduleux.',
       action: 'Ne rappelez pas : renseignez-vous sur le site officiel France Rénov\'.', fiche: 'sms',
       tests: {
-        positifs: ['Isolation de vos combles à 1 € !', 'Dossier MaPrimeRénov\' pré-validé.', 'Travaux gratuits pour tous.'],
+        positifs: ['Isolation de vos combles à 1 € !', 'Dossier MaPrimeRénov\' pré-validé.', 'Travaux gratuits pour tous.', 'Vous êtes éligible aux aides à la rénovation.'],
         negatifs: ['Un café à 1,20 € en terrasse.', 'Le dossier est incomplet.']
       }
     },
@@ -594,17 +603,36 @@
       id: 'arnaque_annonce', categorie: 'manipulation', poids: 4, portee: ['corps', 'objet'],
       libelle: 'Faux acheteur ou faux locataire (chèque, trop-perçu, étranger)',
       motifs: [
-        /\b(renvoy|rembours|retourn|restitu)[a-z]* (moi )?(la |le )?(difference|surplus|trop[- ]?percu|reste)\b/i,
+        /\b(renvoy|renverr|rembours|retourn|restitu)[a-z]* (moi )?(la |le )?(difference|surplus|trop[- ]?percu|reste)\b/i,
         /\b(cheque|mandat)\b[^.\n]{0,30}\b(depot de garantie|caution|difference)\b/i,
-        /\bje (suis|vis|travaille) a l'etranger\b/i,
         /\bdepot de garantie\b[^.\n]{0,30}\b(avance|envoy|vire)/i
       ],
       explication: 'Le faux acheteur ou locataire envoie un chèque trop élevé et demande de lui rembourser la différence, avant que le chèque ne soit rejeté.',
       action: 'N\'acceptez ni chèque ni mandat et ne remboursez jamais un trop-perçu avant encaissement définitif.', fiche: 'entre_particuliers',
       tests: {
-        positifs: ['Merci de me renvoyer la différence par virement.', 'Je suis à l\'étranger pour mon travail.', 'Un chèque de dépôt de garantie vous sera envoyé.'],
+        positifs: ['Merci de me renvoyer la différence par virement.', 'Vous me renverrez le surplus après encaissement.', 'Un chèque de dépôt de garantie vous sera envoyé.'],
         negatifs: ['La différence de prix est minime.', 'Nous habitons à Lyon.']
       }
+    },
+    {
+      id: 'etranger_pretexte', categorie: 'manipulation', poids: 2, portee: ['corps'],
+      libelle: 'Interlocuteur « à l\'étranger » (pretexte classique)',
+      motifs: [/\bje (suis|vis|travaille|serai) (actuellement |en ce moment |en mission )*a l'etranger\b/i, /\ben mission a l'etranger\b/i],
+      explication: 'Être « à l\'étranger » sert à justifier qu\'on ne peut pas se déplacer, payer autrement ou rencontrer la personne : c\'est le pretexte du faux acheteur et du faux locataire. Ce n\'est qu\'un indice faible.',
+      action: 'Ne concluez rien sans voir le bien ou le paiement encaissé de façon définitive.', fiche: 'entre_particuliers',
+      tests: { positifs: ['Je suis à l\'étranger pour mon travail.', 'Je suis actuellement à l\'étranger.', 'Je suis en mission à l\'étranger.'], negatifs: ['Nous habitons à Lyon.', 'Il voyage à l\'étranger cet été.'] }
+    },
+    {
+      id: 'emploi_miracle', categorie: 'manipulation', poids: 3, portee: ['corps', 'objet'],
+      libelle: 'Offre d\'emploi miracle',
+      motifs: [
+        /\b\d{2,4} ?(€|euros?) (par|\/) ?(jour|heure)\b/i, /\baucun (diplome|experience)s? (requis|necessaire|exige)/i,
+        /\b(gagnez|gagner) (jusqu'a )?\d[\d ]{1,5} ?(€|euros?)/i, /\bcontactez[- ]nous (sur|via) (whatsapp|telegram|signal)\b/i,
+        /\bwork from home\b[^.\n]{0,40}\b(earn|per day|per week)\b/i, /\bearn \$?\d[\d,]{1,6}\b[^.\n]{0,20}\b(per|a) (day|week|hour)\b/i
+      ],
+      explication: 'Les offres de travail à domicile très bien payées, sans diplôme, contactables seulement par messagerie privée, servent à recruter des « mules » ou à voler des données et de l\'argent.',
+      action: 'Ne communiquez ni pièce d\'identité ni coordonnées bancaires à un recruteur que vous ne pouvez pas vérifier.', fiche: 'sms',
+      tests: { positifs: ['250 € par jour en télétravail.', 'Aucun diplôme requis.', 'Contactez-nous sur WhatsApp.', 'Earn $300 per day from home.'], negatifs: ['Offre de stage non rémunéré de 3 mois.', 'Le loyer est de 600 € par mois.'] }
     },
     {
       id: 'seed_phrase', categorie: 'manipulation', poids: 5, portee: ['corps', 'objet'],
@@ -688,11 +716,11 @@
     {
       id: 'en_remote_support', categorie: 'manipulation', poids: 3, portee: ['corps', 'objet'],
       libelle: 'Appel à un faux support (anglais)',
-      motifs: [/\bcall (us|this number|our (support|helpline))\b/i, /\bcontact (microsoft|apple) support\b/i, /\byour (computer|device|pc) (is|has been) (infected|compromised|blocked)\b/i],
+      motifs: [/\bcall (us|this number|our (support|helpline))\b/i, /\bcontact (microsoft|apple) support\b/i, /\bcall (microsoft|apple|windows|google|norton|mcafee)( technical)?( support)?\b/i, /\byour (computer|device|pc) (is|has been) (infected|compromised|blocked)\b/i],
       explication: 'Aucun éditeur ne vous demande d\'appeler un numéro depuis une alerte non sollicitée.',
       action: 'Ne rappelez pas et n\'installez aucun logiciel de prise en main.', fiche: 'support',
       tests: {
-        positifs: ['Call this number now.', 'Contact Microsoft support.', 'Your computer is infected.'],
+        positifs: ['Call this number now.', 'Contact Microsoft support.', 'Your computer is infected.', 'Call Microsoft Support at +1 888 555 0199.'],
         negatifs: ['Call me when you arrive.', 'The device is charging.']
       }
     },
@@ -741,10 +769,10 @@
     {
       id: 'appel_numero', categorie: 'contexte', poids: 1, portee: ['corps'],
       libelle: 'Invite à appeler un numéro',
-      motifs: [/\b0[1-9]([ .]?\d{2}){4}\b/i, /\b(appelez|rappelez|telephonez|contactez)\b[^.\n]{0,30}\b(numero|au \d)/i, /\bcall (us|this number|our)\b/i],
+      motifs: [/\b0[1-9]([ .]?\d{2}){4}\b/i, /\b(appelez|rappelez|telephonez|contactez)\b[^.\n]{0,30}\b(numero|au \d)/i, /\bcall (us|this number|our)\b/i, /\bcall\b[^.\n]{0,40}\bat \+?\d[\d ()-]{6,}/i, /\+\d{1,3}[ -]?\(?\d{2,4}\)?[ -]?\d{3}[ -]?\d{3,4}\b/i],
       explication: 'Un numéro à rappeler peut être légitime, mais c\'est aussi la méthode des faux conseillers et des faux supports. Ne rappelez jamais le numéro d\'un message : cherchez-le vous-même.',
       action: 'Utilisez le numéro officiel figurant sur le site ou au dos de votre carte.', fiche: 'sms',
-      tests: { positifs: ['Appelez le 09 88 12 34 56.', 'Rappelez-nous au numéro indiqué.'], negatifs: ['Rendez-vous à 14 h.', 'Merci de votre visite.'] }
+      tests: { positifs: ['Appelez le 09 88 12 34 56.', 'Rappelez-nous au numéro indiqué.', 'Call Microsoft Support at +1 (888) 555 0199.'], negatifs: ['Rendez-vous à 14 h.', 'Merci de votre visite.'] }
     },
     {
       id: 'demande_argent', categorie: 'contexte', poids: 1, portee: ['corps'],
@@ -755,7 +783,9 @@
         /\b(fais|faites|envoie|envoyez)[- ]?moi\b[^.\n]{0,25}\b(virement|\d[\d ]{0,6} ?(€|euros?))/i,
         /\bbesoin (d'argent|de \d[\d ]{0,6} ?(€|euros?))/i,
         /\bvirement de \d[\d ]{0,6}[,.]?\d* ?(€|euros?)/i,
-        /\bme (virer|renvoyer|rembourser|envoyer)\b[^.\n]{0,20}\b(difference|surplus|reste|somme)\b/i
+        /\bme (virer|renvoyer|rembourser|envoyer)\b[^.\n]{0,20}\b(difference|surplus|reste|somme)\b/i,
+        /\bbesoin que (tu|vous) (paie|paies|payes|payiez|regles|regliez|avances|avanciez|envoies|envoyiez|vires|viriez)\b/i,
+        /\b(paie|paies|paye|payes)\b[^.\n]{0,25}\bpour moi\b/i
       ],
       explication: 'Une demande d\'argent entre proches est banale. Elle devient un signal quand elle suit « c\'est mon nouveau numéro » ou une urgence : vérifiez par un autre canal.',
       action: 'Ne faites aucun virement avant d\'avoir parlé à la personne, par téléphone ou en face à face.', fiche: 'sms',
@@ -796,7 +826,7 @@
     {
       id: 'theme_annonce', categorie: 'contexte', poids: 1, portee: ['corps'],
       libelle: 'Répond à une annonce',
-      motifs: [/\bvotre annonce\b/i, /\bannonce (leboncoin|seloger|vinted)\b/i, /\best[- ]il (toujours )?disponible\b/i],
+      motifs: [/\bvotre annonce\b/i, /\bannonce (leboncoin|seloger|vinted)\b/i, /\best[- ]il (toujours |encore )*disponible\b/i, /\bvotre (appartement|logement|studio|maison|bien|vehicule|voiture|velo)\b[^.\n]{0,40}\b(interess|disponible|a louer|a vendre)/i, /\bje suis interesse(e)? par votre\b/i],
       explication: 'Répondre à une annonce est banal, mais c\'est la porte d\'entrée des faux acheteurs et des faux locataires.',
       action: 'Ne faites ni virement ni envoi de colis avant d\'avoir encaissé définitivement un paiement.', fiche: 'entre_particuliers',
       tests: { positifs: ['Votre annonce m\'intéresse.', 'Est-il toujours disponible ?'], negatifs: ['Bonne journée.', 'Merci.'] }
@@ -956,7 +986,7 @@
       briques: [
         { id: 'alerte', libelle: 'Alerte de virus ou de piratage', indices: ['alerte_virus', 'en_remote_support'] },
         { id: 'appel', libelle: 'Numéro à appeler', indices: ['appel_numero'] },
-        { id: 'main', libelle: 'Prise en main à distance', indices: ['prise_en_main'] }
+        { id: 'main', libelle: 'Prise en main à distance ou consigne pressante', indices: ['prise_en_main', 'urgence'] }
       ],
       confirme: ['alerte', 'appel', 'main'], partiel: ['alerte', 'appel'] },
     { id: 'S10', libelle: 'Faux péage, fausse amende ou faux QR de parking', fiche: 'sms',
@@ -990,10 +1020,10 @@
       explication: 'Une réponse à votre annonce, un chèque ou un dépôt de garantie « trop élevé » et une demande de remboursement de la différence.',
       briques: [
         { id: 'annonce', libelle: 'Répond à une annonce', indices: ['theme_annonce'] },
-        { id: 'pretexte', libelle: 'Chèque, dépôt de garantie, étranger', indices: ['arnaque_annonce'] },
+        { id: 'pretexte', libelle: 'Chèque, dépôt de garantie, étranger', indices: ['arnaque_annonce', 'etranger_pretexte'] },
         { id: 'argent', libelle: 'Demande de rembourser une différence', indices: ['demande_argent', 'arnaque_annonce'] }
       ],
-      confirme: ['annonce', 'pretexte', 'argent'], partiel: ['pretexte'] },
+      confirme: ['annonce', 'pretexte', 'argent'], partiel: ['annonce', 'pretexte'] },
     { id: 'S14', libelle: 'Faux démarchage de rénovation énergétique', fiche: 'sms',
       explication: 'Des travaux « à 1 € » ou un dossier « pré-validé », avec un numéro à rappeler vite.',
       briques: [
@@ -1003,6 +1033,12 @@
       ],
       confirme: ['theme', 'appat', 'contact'], partiel: ['theme', 'appat'] }
   ];
+
+  /* Signal produit par le moteur pour les liens à risque (indice faible ou net, hors incohérence critique). */
+  var SIGNAL_LIEN = {
+    faible: { poids: 1, libelle: 'Lien vers une adresse à indice faible', explication: 'L\'adresse présente un indice courant chez les liens frauduleux, sans être une preuve : ' },
+    net: { poids: 4, libelle: 'Lien vers une adresse à risque', explication: 'L\'adresse présente plusieurs indices typiques des liens frauduleux : ' }
+  };
 
   /* Signaux propres au pied de page d'un e-mail (analyse faite par le moteur). */
   var SIGNAUX_PIED = {
@@ -1029,6 +1065,6 @@
     LIEN_RAISONS: LIEN_RAISONS, LIBELLES_NIVEAUX: LIBELLES_NIVEAUX, NIVEAUX_ANALYTIQUES: NIVEAUX_ANALYTIQUES,
     LIMITES: LIMITES, INCOHERENCES: INCOHERENCES, REGLES: REGLES, SCENARIOS: SCENARIOS,
     DOMAINES_NEUTRES: DOMAINES_NEUTRES, PREVENTION: PREVENTION,
-    SIGNAUX_PIED: SIGNAUX_PIED, SIGNAUX_EXPEDITEUR: SIGNAUX_EXPEDITEUR
+    SIGNAUX_PIED: SIGNAUX_PIED, SIGNAUX_EXPEDITEUR: SIGNAUX_EXPEDITEUR, SIGNAL_LIEN: SIGNAL_LIEN
   };
 });

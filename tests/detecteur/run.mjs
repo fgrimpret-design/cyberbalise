@@ -48,24 +48,53 @@ if (legacy) {
 
 const s = statistiques(corpus, niveaux);
 const comp = composition(corpus);
+const serie = (c) => c.serie || 'dev';
+const corpusDev = corpus.filter((c) => serie(c) === 'dev');
+const corpusVal = corpus.filter((c) => serie(c) === 'validation');
+const sDev = statistiques(corpusDev, niveaux);
+const sVal = statistiques(corpusVal, niveaux);
+
+/* Comparaison avec l'ancienne version sur le même corpus (uniquement pour le moteur actuel). */
+let ancien = null;
+if (!legacy) {
+  const { analyserLegacy } = await import('./legacy-dom.mjs');
+  const nv = {};
+  for (const c of corpus) nv[c.id] = analyserLegacy(c).niveau;
+  ancien = { tous: statistiques(corpus, nv), val: statistiques(corpusVal, nv) };
+}
+const cellule = (st, cle) => {
+  switch (cle) {
+    case 'conformes': return `${st.conformes} / ${st.total}`;
+    case 'fp': return `${st.fauxPositifs2.length} / ${st.legitimes} (${st.faussesAlertesPct} %)`;
+    case 'fp3': return `${st.fauxPositifs3.length} / ${st.legitimes}`;
+    case 'det2': return `${st.detection2} / ${st.hameconnages} (${st.detection2Pct} %)`;
+    case 'det3': return `${st.detection3} / ${st.hameconnages} (${st.detection3Pct} %)`;
+    default: return `${st.fauxNegatifs.length} / ${st.hameconnages} (${st.fauxNegatifsPct} %)`;
+  }
+};
+const LIGNES = [['conformes', 'Cas conformes à la cible'], ['fp', 'Faux positifs (légitimes ou prévention au niveau ≥ 2)'], ['fp3', 'dont au niveau 3'], ['det2', 'Détection (hameçonnages au niveau ≥ 2)'], ['det3', 'Détection forte (niveau 3)'], ['fn', 'Faux négatifs (hameçonnages au niveau ≤ 1)']];
 const lignes = [];
 lignes.push(`# ${enTete.titre}`, '', enTete.intro, '');
 lignes.push(`Date de mesure : ${new Date().toISOString().slice(0, 10)}. Échantillon : **${s.total} messages** (${Object.entries(comp).map(([k, v]) => `${k} : ${v}`).join(', ')}). Les messages sont fictifs ou paraphrasés ; l'échantillon est petit, les pourcentages sont donc indicatifs.`, '');
+lignes.push(`Le corpus compte deux séries : **développement** (${corpusDev.length} messages, écrits en même temps que les règles : leur score mesure la cohérence interne) et **validation** (${corpusVal.length} messages, rédigés ensuite et à part, sans consulter les règles : seule cette série donne une idée de la généralisation).`, '');
 lignes.push('## Synthèse', '');
-lignes.push('| Indicateur | Valeur |', '|---|---|');
-lignes.push(`| Cas conformes à la cible | ${s.conformes} / ${s.total} |`);
-lignes.push(`| Faux positifs (légitimes ou prévention au niveau ≥ 2) | ${s.fauxPositifs2.length} / ${s.legitimes} (${s.faussesAlertesPct} %) |`);
-lignes.push(`| dont au niveau 3 | ${s.fauxPositifs3.length} / ${s.legitimes} |`);
-lignes.push(`| Détection (hameçonnages au niveau ≥ 2) | ${s.detection2} / ${s.hameconnages} (${s.detection2Pct} %) |`);
-lignes.push(`| Détection forte (niveau 3) | ${s.detection3} / ${s.hameconnages} (${s.detection3Pct} %) |`);
-lignes.push(`| Faux négatifs (hameçonnages au niveau ≤ 1) | ${s.fauxNegatifs.length} / ${s.hameconnages} (${s.fauxNegatifsPct} %) |`, '');
+if (legacy) {
+  lignes.push('| Indicateur | Ensemble | Développement | Validation |', '|---|---|---|---|');
+  for (const [k, l] of LIGNES) lignes.push(`| ${l} | ${cellule(s, k)} | ${cellule(sDev, k)} | ${cellule(sVal, k)} |`);
+} else {
+  lignes.push('| Indicateur | Moteur 2.x : ensemble | Développement | Validation | Ancienne version : ensemble | Ancienne version : validation |', '|---|---|---|---|---|---|');
+  for (const [k, l] of LIGNES) lignes.push(`| ${l} | ${cellule(s, k)} | ${cellule(sDev, k)} | ${cellule(sVal, k)} | ${cellule(ancien.tous, k)} | ${cellule(ancien.val, k)} |`);
+}
+lignes.push('');
+const limites = corpus.filter((c) => c.limiteConnue);
+if (limites.length) lignes.push('Limites connues (déclarées, hors cible) : ' + limites.map((c) => `**${c.id}** : ${c.limiteConnue}`).join(' ') + '', '');
 lignes.push('## Détail par message', '');
-lignes.push('| Id | Catégorie | Message | Niveau mesuré | Cible | Conforme |', '|---|---|---|---|---|---|');
+lignes.push('| Id | Série | Catégorie | Message | Niveau mesuré | Cible | Conforme |', '|---|---|---|---|---|---|---|');
 for (const c of corpus) {
   const n = niveaux[c.id];
   const ok = n <= c.attendu[1] && (n >= c.attendu[0] || (n === 1 && c.attendu[0] === 0));
   const msg = tronquer((c.expediteur ? `[${c.expediteur}] ` : '') + (c.texte || (c.qr ? 'QR : ' + c.qr.join(' ') : '')), 60).replace(/\|/g, '\\|');
-  lignes.push(`| ${c.id} | ${c.categorie} | ${msg} | ${n} (${legacy ? titres[c.id] : nomNiveau(n)}) | ${attenduTexte(c.attendu)} | ${ok ? 'oui' : '**non**'} |`);
+  lignes.push(`| ${c.id} | ${serie(c)} | ${c.categorie} | ${msg} | ${n} (${legacy ? titres[c.id] : nomNiveau(n)}) | ${attenduTexte(c.attendu)} | ${ok ? 'oui' : '**non**'} |`);
 }
 lignes.push('');
 lignes.push('## Cas de non-régression de l\'annexe B du cahier des charges', '');
