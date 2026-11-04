@@ -171,6 +171,8 @@
     0:{badge:'Aucun signal détecté', note:'Ce n\'est pas une garantie', icon:'i', t:'Aucun signal détecté dans ce que vous avez saisi', p:'Cet outil ne peut ni vérifier le lien, ni authentifier l\'expéditeur : l\'absence de signal ne prouve pas que le message est sûr. Dans le doute, n\'agissez pas depuis le message.'}
   };
   function lcfirst(s){ return s.charAt(0).toLowerCase() + s.slice(1); }
+  var MOIS = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function dateFr(iso){ var p = String(iso).split('-'); return p.length === 3 ? (+p[2]) + ' ' + MOIS[+p[1] - 1] + ' ' + p[0] : iso; }
 
   /* Phrase en langage naturel qui justifie le niveau : ce sont les éléments repérés, pas un score. */
   function whyText(r){
@@ -480,6 +482,7 @@
     var again = h('button', {cls:'sd-ghost', type:'button', id:'sd-again', text:'Analyser un autre message'});
     again.addEventListener('click', function(){ reset(); focusStart(); });
     res.appendChild(h('div', {cls:'sd-again'}, [again]));
+    res.appendChild(h('p', {cls:'sd-ver', text:'Règles version ' + r.versionRegles + ', mises à jour le ' + dateFr(Rules.DATE_MAJ) + '. Méthode et résultats mesurés en bas de page.'}));
 
     setStep(3);
     bindNl(); bindShare();

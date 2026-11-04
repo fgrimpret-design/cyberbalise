@@ -82,7 +82,11 @@ non-régression, les faux positifs, la détection, la négation, les liens, les
 en-têtes, l'absence de requête réseau, les performances et le parcours complet de la
 page dans jsdom. `npm run test:baseline` exécute l'ancienne version
 (`tests/detecteur/legacy/`) et `node tests/detecteur/run.mjs` le moteur actuel :
-`tests/detecteur/BASELINE.md` et `BENCHMARK.md` sont des fichiers générés.
+`tests/detecteur/BASELINE.md` et `BENCHMARK.md` sont des fichiers générés. Le bloc
+« Méthode et résultats mesurés » de la page est lui aussi généré par
+`npm run benchmark` (aucun chiffre écrit à la main) : un test échoue tant qu'il
+n'est pas à jour après une modification des règles. Pensez à incrémenter `?v=` des
+trois scripts dans `index.html` à chaque modification (cache d'une heure chez IONOS).
 Hypothèses et écarts : `tests/detecteur/NOTES.md`. Les dossiers `tests/` et
 `node_modules/` ne sont pas déployés.
 

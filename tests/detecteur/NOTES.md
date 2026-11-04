@@ -65,3 +65,26 @@ Hypothèses, chemins adaptés et écarts par rapport au cahier des charges. Mis 
 - **Après corrections : 68 sur 69 (série de validation), 71 sur 71 (développement).** Ces corrections ayant été guidées par la série de validation, ce second chiffre est optimiste : une nouvelle série, rédigée sans avoir vu celle-ci, serait nécessaire pour une vraie mesure.
 - **Limite connue déclarée : N04** (« Votre dossier d'infraction nécessite une action. Consultez le détail ici : https://….top »). Le message est vague, sans marque ni menace : seul le lien en `.top` est repérable, d'où le niveau 1. Le monter ferait grimper les faux positifs. Le niveau attendu (2 ou 3) n'a pas été modifié pour faire passer le test ; un test garantit que la liste des limites connues ne grossit pas en silence.
 - **Comparaison avec l'ancienne version, même corpus** : voir `BENCHMARK.md` (colonnes « Ancienne version »). Sur la série de validation, l'ancienne version donne 64 % de faux positifs et 82 % de détection ; le moteur 2.x, 0 % et 95 %.
+
+## L6 : crédibilité
+
+- **Bloc « Méthode et résultats mesurés »** sur la page, généré par `node tests/detecteur/run.mjs` (`npm run benchmark`) entre les repères `MESURES:DEBUT` et `MESURES:FIN` de `index.html` : version des règles, date de mise à jour, taille de l'échantillon, taux de détection et de faux positifs (ensemble et série de validation). Un test compare les chiffres affichés aux mesures du moment : après toute modification des règles, la suite échoue tant que `npm run benchmark` n'a pas été relancé. Aucun chiffre n'est écrit à la main.
+- **Version des règles** affichée discrètement sous chaque résultat (« Règles version 2.0.0, mises à jour le 4 novembre 2026 ») et renvoyée par le moteur (`versionRegles`). À faire évoluer à la main dans `regles.js` (`VERSION`, `DATE_MAJ`).
+- **Vérifications finales** : parcours au clavier seul dans un vrai navigateur (4 appuis sur Tab de l'étape 2 au bouton « Analyser », focus sur le titre du verdict, annonce `aria-live`, aucun débordement horizontal) ; performances mesurées : 1,2 ms pour 5 000 caractères, 7,1 ms pour 50 000, 2 ms pour 20 Ko de « a. », 1,5 ms pour 20 Ko de tirets (limites : 50, 150 et 200 ms).
+
+## Écarts et points à valider
+
+- **Poids** : écart de poids : les trois fichiers pèsent 57 Ko en gzip (49 Ko en brotli) contre 21 Ko pour l'ancien script inline, soit **+35 Ko en gzip, au-dessus du budget de +25 Ko** fixé par le cahier des charges (hors OCR et QR). Le HTML de la page, lui, a perdu 19 Ko de gzip (le script en est sorti) : le surcoût net au premier chargement est d'environ +38 Ko, puis les fichiers sont mis en cache (`?v=`). Leviers possibles, non appliqués : minifier au déploiement (une étape `terser` dans le workflow : ce n'est pas un bundler), et sortir les textes d'explication des règles dans un second fichier chargé seulement au moment d'afficher un verdict.
+- **jsQR** : voir le lot L4 (57 Ko de gzip au lieu des « 8 Ko » annoncés, mis en repli de l'API native).
+- **Échantillon** : 140 messages écrits par la même équipe que les règles, dont 69 rédigés à part ; aucune donnée réelle. Ne pas citer ces taux comme une performance générale.
+- **Aucune requête vers un LLM, aucun backend, aucune base de phishing** : conformément à la section 11.
+
+### À valider par un humain (choix éditoriaux ou juridiques)
+
+1. **Formulations du verdict** : libellés des quatre niveaux, titres (« Très probablement une arnaque », « Aucun signal détecté dans ce que vous avez saisi »), textes d'explication des règles et des scénarios (`regles.js`, `ui.js`). Le ton prudent est volontaire ; le mot « probable » du niveau 3 reste une appréciation.
+2. **Mention de confidentialité à l'endroit du clic** : texte de la case « Vérifier l'âge des sites des liens » et paragraphes ajoutés à la politique de confidentialité (lecture des QR, RDAP, transferts).
+3. **Base légale de la requête RDAP** : la politique retient le consentement (la case, décochée par défaut). L'adresse IP de l'utilisateur est vue par `rdap.org` puis par le registre du domaine : à confirmer (mention de ces destinataires, durée de conservation côté tiers, éventuelle analyse d'impact).
+4. **jsQR depuis jsDelivr** : acceptable à votre sens malgré son poids (57 Ko) ? Sinon, retirer le repli et ne garder que `BarcodeDetector` (le QR ne serait alors lu que sur Chrome et Edge hors Windows).
+5. **Événements de mesure** : les valeurs de `analyse_terminee` changent (`aucun|faible|suspect|probable`) ; les tableaux de bord existants du back-office, s'ils filtrent sur les anciennes valeurs, sont à adapter. Nouvel événement `scenario_detecte`.
+6. **Incohérence « critique »** (écart au tableau d'agrégation) et **limite connue N04** : voir plus haut.
+7. **Liste des marques** (`MARQUES`) : non exhaustive, à compléter ; une marque absente de la liste n'est jamais protégée contre l'usurpation.

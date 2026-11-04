@@ -98,6 +98,32 @@ test('cliquet : un vrai message de marque authentifiée plafonne à 1', () => {
   assert.deepEqual(r.contexte.marqueAuthentifiee, ['Amazon']);
 });
 
+test('méthode : les chiffres affichés sur la page sont ceux des mesures actuelles (sinon : npm run benchmark)', async () => {
+  const fs = await import('node:fs');
+  const { statistiques } = await import('./lib.mjs');
+  const niveaux = {};
+  for (const c of corpus) niveaux[c.id] = niveau(c);
+  const tout = statistiques(corpus, niveaux);
+  const val = statistiques(corpus.filter((c) => c.serie === 'validation'), niveaux);
+  const html = fs.readFileSync(path.join(PAGE_OUTIL, 'index.html'), 'utf8');
+  const bloc = /<p class="sd-methode" ([^>]+)>/.exec(html);
+  assert.ok(bloc, 'bloc « Méthode » absent de la page');
+  const a = Object.fromEntries([...bloc[1].matchAll(/data-([a-z-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
+  assert.equal(a.version, R.VERSION);
+  assert.equal(Number(a.cas), corpus.length);
+  assert.equal(Number(a.validation), corpus.filter((c) => c.serie === 'validation').length);
+  assert.equal(Number(a.detection), Math.round(tout.detection2Pct));
+  assert.equal(Number(a['faux-positifs']), Math.round(tout.faussesAlertesPct));
+  assert.equal(Number(a['detection-validation']), Math.round(val.detection2Pct));
+  assert.equal(Number(a['faux-positifs-validation']), Math.round(val.faussesAlertesPct));
+});
+
+test('sortie : la version des règles est exposée', () => {
+  assert.match(R.VERSION, /^\d+\.\d+\.\d+$/);
+  assert.match(R.DATE_MAJ, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(niveau({ texte: 'Bonjour', type: 'sms' }) >= 0, true);
+});
+
 test('sortie : forme conforme au modèle d\'objet', () => {
   const r = M.analyser({ texte: 'Colissimo : réglez 1,99 € ici https://colissimo-suivi.top', type: 'sms' });
   for (const k of ['niveau', 'scenarios', 'incoherences', 'signaux', 'lienAnalyse', 'contexte', 'limites', 'versionRegles']) assert.ok(k in r, 'clé manquante : ' + k);

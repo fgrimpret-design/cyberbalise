@@ -108,3 +108,22 @@ lignes.push('_Fichier généré par `node tests/detecteur/run.mjs' + (legacy ? '
 const md = lignes.join('\n');
 console.log(md);
 if (ecrire) fs.writeFileSync(path.join(ICI, enTete.fichier), md, 'utf8');
+
+/* Bloc « Méthode » de la page : uniquement des chiffres produits par cette mesure. */
+if (!legacy && ecrire) {
+  const Regles = createRequire(import.meta.url)(path.join(PAGE_OUTIL, 'regles.js'));
+  const pc = (x) => Math.round(x);
+  const fr = (iso) => new Date(iso + 'T12:00:00Z').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const attrs = `data-version="${Regles.VERSION}" data-cas="${s.total}" data-validation="${corpusVal.length}" data-detection="${pc(s.detection2Pct)}" data-faux-positifs="${pc(s.faussesAlertesPct)}" data-detection-validation="${pc(sVal.detection2Pct)}" data-faux-positifs-validation="${pc(sVal.faussesAlertesPct)}"`;
+  const bloc = `<!-- MESURES:DEBUT -->
+<h2 id="methode">Méthode et résultats mesurés</h2>
+<p class="sd-methode" ${attrs}>Version des règles <strong>${Regles.VERSION}</strong>, mise à jour le ${fr(Regles.DATE_MAJ)}. L'outil a été éprouvé sur <strong>${s.total} messages fictifs</strong> : sur cet échantillon, ${pc(s.detection2Pct)}&nbsp;% des hameçonnages sont classés « Message suspect » ou « Arnaque probable », et ${pc(s.faussesAlertesPct)}&nbsp;% des ${s.legitimes} messages légitimes ou de prévention atteignent ce niveau (${s.fauxPositifs2.length} sur ${s.legitimes}). Sur les ${corpusVal.length} messages rédigés après les règles, sans les consulter : ${pc(sVal.detection2Pct)}&nbsp;% et ${pc(sVal.faussesAlertesPct)}&nbsp;%.</p>
+<p>Ces chiffres viennent d'un petit échantillon, écrit par l'équipe de CyberBalise : ils servent à repérer les régressions à chaque modification des règles, pas à promettre un résultat sur un message réel. Un message sans signal peut rester une arnaque.</p>
+<!-- MESURES:FIN -->`;
+  const page = path.join(PAGE_OUTIL, 'index.html');
+  const html = fs.readFileSync(page, 'utf8');
+  const a = html.indexOf('<!-- MESURES:DEBUT -->');
+  const b = html.indexOf('<!-- MESURES:FIN -->');
+  if (a < 0 || b < 0) throw new Error('repères MESURES absents de la page');
+  fs.writeFileSync(page, html.slice(0, a) + bloc + html.slice(b + '<!-- MESURES:FIN -->'.length), 'utf8');
+}
