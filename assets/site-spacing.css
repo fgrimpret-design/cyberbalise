@@ -1915,3 +1915,17 @@ body:not(.home-refresh) footer.site {
     padding: 30px 0 24px;
   }
 }
+
+@media (max-width: 760px) {
+  .tablewrap {
+    position: relative;
+  }
+
+  .page p, .page li, .page dd, .page td {
+    overflow-wrap: anywhere;
+  }
+
+  .lex dd a {
+    white-space: normal;
+  }
+}

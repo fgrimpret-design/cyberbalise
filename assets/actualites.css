@@ -114,7 +114,8 @@
 @media(max-width:1000px){.news-layout{grid-template-columns:minmax(0,1fr) 220px;gap:20px}.news-intro{gap:24px}}
 @media(max-width:760px){
   .news-page .news-hero{padding:22px 0 28px}
-  .news-intro,.news-layout{grid-template-columns:1fr}
+  .news-intro,.news-layout{grid-template-columns:minmax(0,1fr)}
+  .news-layout>*{min-width:0}
   .news-hero h1{font-size:clamp(1.85rem,7vw,2.5rem)}
   .news-hero .news-deck{font-size:1rem}
   .news-hero .crumbs{margin-bottom:18px}
