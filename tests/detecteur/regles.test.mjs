@@ -44,7 +44,7 @@ for (const regle of R.REGLES) {
 
 test('les scénarios ne référencent que des indices connus', () => {
   const connus = new Set(R.REGLES.map((r) => r.id).concat(['lien', 'qr', 'hote_non_officiel', 'manip']));
-  const cats = new Set(R.MARQUES.map((b) => 'marque:' + b.cat));
+  var cats = new Set(R.MARQUES.map((b) => 'marque:' + b.cat).concat(R.MARQUES.map((b) => 'marque:' + b.id)));
   for (const sc of R.SCENARIOS) {
     const ids = sc.briques.map((b) => b.id);
     assert.ok(sc.confirme.every((i) => ids.includes(i)), `${sc.id} : brique « confirme » inconnue`);

@@ -24,27 +24,59 @@ depuis le menu du backoffice et la rubrique Offres.
 
 ## Détecteur d'arnaque
 
-L'outil privilégie l'import local d'images PNG/JPG/WebP ou de fichiers texte
-`.txt` (10 Mo maximum). Les PDF et documents Office ne sont pas pris en charge.
-Après import, le texte est présenté pour relecture avant analyse manuelle.
-Le résultat affiche le niveau sur une échelle de vigilance à trois niveaux,
-le score pondéré et ses seuils (0–3, 4–7, 8 et plus), sans le présenter comme
-une probabilité de fraude. Un signal de poids au moins 4 impose le niveau 2.
+Le détecteur est une page statique, sans framework : l'analyse se fait **dans le
+navigateur**, le texte n'est jamais envoyé. Trois fichiers dans
+`outils/detecteur-arnaque/` :
 
-Parcours en trois étapes : 1) choix du type de message (SMS ou e-mail), 2) tous les
-champs à renseigner (expéditeur, objet et pied de page pour un e-mail, expéditeur
-pour un SMS, avec un bouton « Coller » pour chacun) et le texte du message, fourni
-par capture d'écran, fichier .txt ou copier-coller, puis le bouton « Analyser le
-message », 3) verdict. Mode démo, glisser-déposer, détail pédagogique de chaque signal
-et blocs d'actions selon le niveau. Pour un e-mail, l'objet et le pied de page sont
-aussi repérés automatiquement dans un texte collé qui commence par « De : » / « Objet : »
-ou se termine par des mentions légales : domaine « sosie » ou nom affiché usurpé
-(liste d'organismes et de domaines officiels `BRANDS` en tête du bloc d'analyse),
-adresse de messagerie grand public, numéro mobile, étranger ou surtaxé, objet en
-majuscules ou simulant un échange (« RE : »), pied de page sans identité, sans
-désinscription, avec liens piégés ou copyright ancien. Ces signaux entrent dans le
-même barème que ceux du texte ; la liste `BRANDS` est à compléter au fil du temps. L'analyse reste 100 % dans le navigateur ; le module de lecture d'images
-(Tesseract.js) n'est chargé qu'à l'import d'une image.
+- `regles.js` : données pures (règles de détection avec leurs tests, scénarios
+  d'arnaque, marques et domaines officiels, listes d'extensions à risque, réglages
+  et libellés). C'est le fichier à compléter au fil du temps ;
+- `moteur.js` : le calcul (liens, expéditeur, en-têtes, scénarios, niveau). Il ne
+  touche jamais au DOM et se charge aussi dans Node ;
+- `ui.js` : le parcours, l'import, l'OCR, le rendu du verdict, la newsletter.
+  Tout texte venant de l'utilisateur y est écrit par nœuds texte, jamais par
+  `innerHTML` (un test le vérifie).
+
+**Parcours** en trois étapes : 1) choix du type de message (SMS ou e-mail),
+2) champs à renseigner (expéditeur ; pour un e-mail, objet et pied de page) et
+texte du message, fourni par capture d'écran (lecture locale par Tesseract.js,
+chargé seulement à l'import d'une image), fichier `.txt` ou copier-coller,
+3) verdict. Un e-mail collé en entier, avec ses en-têtes (`From`, `Subject`,
+`Reply-To`, `Authentication-Results`, `Received-SPF`), est lu automatiquement.
+
+**Verdict à quatre niveaux, sans score** : 0 « Aucun signal détecté » (gris, jamais
+de coche verte ni de mot « sain »), 1 « Signaux faibles », 2 « Message suspect »,
+3 « Arnaque probable ». Le niveau vient de la nature des éléments repérés, pas de
+leur nombre : une **incohérence vérifiable** (lien ou domaine « sosie »,
+identifiant avant le `@`, expéditeur qui n'est pas celui de la marque citée,
+échec SPF/DKIM, adresse de réponse différente), un **scénario d'arnaque**
+reconnu (faux colis, faux conseiller, faux proche, hameçonnage de compte, faux
+remboursement, sextorsion, faux investissement, fraude au président, faux
+support, faux péage ou QR de parking, faux opérateur, faux CPF, faux acheteur,
+rénovation énergétique) ou des **signaux de manipulation**. Les **éléments de
+contexte** (colis, facture, banque, code, petit montant…) sont affichés mais ne
+comptent jamais : ils figurent dans beaucoup de vrais messages. Un message d'une
+marque dont l'adresse officielle est confirmée reste au niveau 1 au plus. Les
+messages de prévention (« ne communiquez jamais votre code ») ne sont pas signalés.
+L'outil ne donne jamais de pourcentage et ne promet jamais qu'un message est sûr ;
+un bloc « Ce que cet outil n'a pas pu vérifier » est toujours affiché.
+
+**Ajouter une règle** : ajouter un objet dans `REGLES` (`regles.js`) avec ses motifs
+**sans accents** (le moteur aplatit le texte à longueur constante), des quantificateurs
+bornés (`[^.\n]{0,40}`, jamais `.*`), et au moins un test positif et un test négatif :
+la suite de tests échoue sinon. **Ajouter une marque** : entrée dans `MARQUES`
+(domaines officiels dans `dom`). **Ajouter un scénario** : entrée dans `SCENARIOS`,
+chaque « brique » listant les règles qui la satisfont.
+
+**Tests** : `npm install` (une fois), puis `npm test` (équivalent de
+`node --test tests/detecteur/`). La suite vérifie les règles, les 20 cas de
+non-régression, les faux positifs, la détection, la négation, les liens, les
+en-têtes, l'absence de requête réseau, les performances et le parcours complet de la
+page dans jsdom. `npm run test:baseline` exécute l'ancienne version
+(`tests/detecteur/legacy/`) et `node tests/detecteur/run.mjs` le moteur actuel :
+`tests/detecteur/BASELINE.md` et `BENCHMARK.md` sont des fichiers générés.
+Hypothèses et écarts : `tests/detecteur/NOTES.md`. Les dossiers `tests/` et
+`node_modules/` ne sont pas déployés.
 
 **Newsletter CyberBalise (inscription après le verdict, un e-mail tous les 15 jours).** L'inscription passe par le script PHP
 du site `backoffice/newsletter.php` (double opt-in : e-mail de confirmation, lien de
@@ -56,8 +88,8 @@ Réglages dans `backoffice/config.php`, clé `newsletter` (expéditeur `from`, q
 local sans envoyer). Les inscriptions non confirmées sont supprimées après 7 jours,
 une même adresse reçoit au plus un e-mail de confirmation toutes les 10 minutes et
 chaque visiteur est limité à 6 demandes par heure. Tout l'envoi passe côté page par
-`subscribeNewsletter(email)` et la constante `CB_NEWSLETTER` (en tête du script de
-`outils/detecteur-arnaque/index.html`) ; l'adaptateur `form` permet de basculer vers
+`subscribeNewsletter(email)` et la constante `CB_NEWSLETTER` (en tête de
+`outils/detecteur-arnaque/ui.js`) ; l'adaptateur `form` permet de basculer vers
 un service externe (Brevo…), et `?nl=preview` simule l'inscription sans rien envoyer.
 Seule l'adresse e-mail est transmise, jamais le message analysé. La politique de
 confidentialité décrit ce traitement. Envoyer la lettre elle-même se fait hors du site
@@ -65,11 +97,14 @@ confidentialité décrit ce traitement. Envoyer la lettre elle-même se fait hor
 désinscription.
 
 **Événements de mesure.** `outil_lance` (valeur : `capture`, `fichier`, `texte` ou
-`demo`), `analyse_terminee` (valeur : `sain`, `douteux` ou `arnaque_probable`),
-`inscription_newsletter` et `partage_clic` (valeur : `whatsapp`, `lien` ou `natif`).
-Ils passent par `window.crTrack` (outil interne `backoffice/t.js`, chargé uniquement
-après consentement) et seraient aussi envoyés à GA4/GTM si `gtag` ou `dataLayer`
-existaient. Ils apparaissent dans la page Statistiques du back-office (événements).
+`demo`), `analyse_terminee` (valeur : `aucun`, `faible`, `suspect` ou `probable`),
+`scenario_detecte` (identifiant du scénario, par exemple `S1` : jamais le texte),
+`inscription_newsletter` et `partage_clic` (valeur : `whatsapp`, `lien`, `natif`
+ou `resume`). Avant le 4 novembre 2026, `analyse_terminee` valait `sain`, `douteux`
+ou `arnaque_probable`. Ils passent par `window.crTrack` (outil interne
+`backoffice/t.js`, chargé uniquement après consentement) et seraient aussi envoyés à
+GA4/GTM si `gtag` ou `dataLayer` existaient. Ils apparaissent dans la page
+Statistiques du back-office (événements).
 
 ## Top protections
 

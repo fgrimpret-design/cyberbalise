@@ -36,3 +36,13 @@ Hypothèses, chemins adaptés et écarts par rapport au cahier des charges. Mis 
 - **Domaines neutres** : `amazonaws.com`, `googleapis.com`… ne sont ni officiels ni « sosies » (sinon tout lien vers un hébergement de marque serait signalé).
 - **Tests** : `node --test tests/detecteur/` (ou `npm test`) exécute 190 tests : règles, annexe B, faux positifs, détection, négation, liens, en-têtes, réseau, performance, robustesse.
 - **Honnêteté du corpus** : les 71 messages ont été écrits en même temps que les règles ; leur score parfait mesure la cohérence interne, pas la généralisation. Le lot L5 ajoute un jeu de messages rédigés autrement, pour mesurer l'écart.
+
+## L3 : rendu
+
+- **La page n'est plus générée** par les scripts de la session (`assemble.py`…) : `outils/detecteur-arnaque/index.html` (HTML et CSS) et `ui.js` sont désormais la source. Le script inline de 60 Ko est remplacé par trois fichiers (`regles.js`, `moteur.js`, `ui.js`), servis en chemin absolu avec `?v=2.0.0` (à incrémenter à chaque modification pour contourner le cache d'une heure d'IONOS).
+- **Aucun `innerHTML` sur du texte utilisateur** : le rendu passe par une fonction `h()` (éléments et nœuds texte). Cinq `innerHTML` subsistent, tous sur du contenu statique du site (texte d'aide du champ expéditeur, liste « que faire », boutons de signalement, newsletter, partage) : un test refuse tout autre usage.
+- **Surlignage** : `<mark>` construits par nœuds texte à partir des positions fournies par le moteur ; un expéditeur incohérent est surligné en entier.
+- **Trois sections** dans l'ordre demandé (incohérences, manipulation, contexte), plus les scénarios reconnus et les liens examinés. Le nombre d'éléments n'est affiché nulle part.
+- **Bouton « Copier le résumé »** : verdict et trois raisons, sans le message ni les adresses (un test le vérifie). Nouvel événement `partage_clic` = `resume`.
+- **Mesure** : `scenario_detecte` (identifiant du scénario), jamais le texte.
+- **Limites du contrôle** : vérifié par jsdom (parcours, XSS, focus, aria-live, absence de réseau) et par captures Edge à 1100 px ; à 360 px, le navigateur de test ne signale aucun débordement horizontal, mais la page n'a pas été essayée sur un vrai téléphone. Pas de test de lecteur d'écran réel.

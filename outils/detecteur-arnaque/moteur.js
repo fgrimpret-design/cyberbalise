@@ -519,7 +519,7 @@
     if (lienAnalyse.some(function (l) { return l.origine === 'qr'; })) indices.qr = true;
     if (suspect || nonOfficiel) indices.hote_non_officiel = true;
     if (manipulation.length) indices.manip = true;
-    revendiquees.forEach(function (b) { indices['marque:' + b.cat] = true; });
+    revendiquees.forEach(function (b) { indices['marque:' + b.cat] = true; indices['marque:' + b.id] = true; });
 
     /* --- scénarios --- */
     var scenarios = [];

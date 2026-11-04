@@ -454,7 +454,7 @@
       id: 'remboursement_gain', categorie: 'manipulation', poids: 2, portee: ['corps', 'objet'],
       libelle: 'Remboursement, gain ou cadeau inattendu',
       motifs: [
-        /\bvous avez droit a un rembours/i,
+        /\bvous avez droit a un rembours[a-z]*/i,
         /\brembours[a-z]*\b[^.\n]{0,40}\b(en attente|disponible|vous (attend|revient|est du))\b/i,
         /\btrop[- ]?percu\b/i, /\bvous avez gagne\b/i,
         /\bfelicitations\b[^.\n]{0,60}\b(gagn|selectionn|tire au sort|lot|cadeau)/i,
@@ -974,7 +974,7 @@
     { id: 'S12', libelle: 'Faux conseiller CPF', fiche: 'phishing',
       explication: 'Votre compte formation serait suspendu ou vos droits expirés, avec un lien ou un numéro de « régularisation ».',
       briques: [
-        { id: 'cpf', libelle: 'Parle du compte formation', indices: ['theme_cpf', 'marque:admin'] },
+        { id: 'cpf', libelle: 'Parle du compte formation', indices: ['theme_cpf', 'marque:cpf'] },
         { id: 'pression', libelle: 'Menace, urgence ou vérification', indices: ['menace_blocage', 'urgence', 'verification_identite'] },
         { id: 'acces', libelle: 'Lien ou numéro à utiliser', indices: ['lien', 'appel_numero'] },
         { id: 'hote', libelle: 'Lien vers un site non officiel', indices: ['hote_non_officiel'] }
