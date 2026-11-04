@@ -15,6 +15,9 @@ RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 # 3. Catégorie supprimée
 Redirect gone /offres/formations/
 
+# 4. Outil supprimé : on renvoie vers le détecteur d'arnaque
+Redirect 301 /outils/risque-sms/ /outils/detecteur-arnaque/
+
 # 4. Page d'erreur
 ErrorDocument 404 /404.html
 
