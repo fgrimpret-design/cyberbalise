@@ -20,6 +20,16 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
+      - name: Préparer Node pour minifier le détecteur d'arnaque
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Minifier les scripts du détecteur d'arnaque (regles, moteur, ui)
+        run: |
+          npm install --no-save --no-audit --no-fund --ignore-scripts terser@5.51.2
+          node scripts/minify-detecteur.mjs --en-place
+
       - name: Nettoyage des fichiers non destinés au site
         run: |
           rm -rf .git .github scripts tests node_modules package.json package-lock.json backoffice/data/brouillons domaines.csv \

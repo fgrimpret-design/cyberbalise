@@ -88,7 +88,11 @@ page dans jsdom. `npm run test:baseline` exécute l'ancienne version
 n'est pas à jour après une modification des règles. Pensez à incrémenter `?v=` des
 trois scripts dans `index.html` à chaque modification (cache d'une heure chez IONOS).
 Hypothèses et écarts : `tests/detecteur/NOTES.md`. Les dossiers `tests/` et
-`node_modules/` ne sont pas déployés.
+`node_modules/` ne sont pas déployés. **Au déploiement**, le workflow minifie
+`regles.js`, `moteur.js` et `ui.js` (`scripts/minify-detecteur.mjs`, qui retire aussi
+les blocs `tests` des règles) : les sources du dépôt restent lisibles, et
+`npm test` vérifie que la version minifiée se comporte à l'identique. Pour voir ce
+qui sera servi : `node scripts/minify-detecteur.mjs <dossier de sortie>`.
 
 **Newsletter CyberBalise (inscription après le verdict, un e-mail tous les 15 jours).** L'inscription passe par le script PHP
 du site `backoffice/newsletter.php` (double opt-in : e-mail de confirmation, lien de

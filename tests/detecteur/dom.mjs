@@ -6,23 +6,26 @@ import { RACINE, PAGE_OUTIL } from './lib.mjs';
 
 const URL_PAGE = 'https://cyberbalise.fr/outils/detecteur-arnaque/';
 
-/* Sert les scripts du site depuis le dépôt (aucun accès réseau) ; refuse tout le reste. */
+/* Sert les scripts du site depuis le dépôt (aucun accès réseau) ; refuse tout le reste.
+   `dossierScripts` permet de servir à la place une version minifiée des trois scripts du détecteur. */
 class ChargeurLocal extends ResourceLoader {
+  constructor(dossierScripts) { super(); this.dossierScripts = dossierScripts || null; }
   fetch(url) {
     const u = new URL(url);
     if (u.origin !== 'https://cyberbalise.fr') return Promise.resolve(Buffer.from(''));
-    const fichier = path.join(RACINE, decodeURIComponent(u.pathname));
-    if (!fichier.startsWith(RACINE) || !fs.existsSync(fichier) || fs.statSync(fichier).isDirectory()) return Promise.resolve(Buffer.from(''));
+    const m = /^\/outils\/detecteur-arnaque\/(regles|moteur|ui)\.js$/.exec(u.pathname);
+    const fichier = m && this.dossierScripts ? path.join(this.dossierScripts, m[1] + '.js') : path.join(RACINE, decodeURIComponent(u.pathname));
+    if (!fichier.startsWith(this.dossierScripts && m ? this.dossierScripts : RACINE) || !fs.existsSync(fichier) || fs.statSync(fichier).isDirectory()) return Promise.resolve(Buffer.from(''));
     return Promise.resolve(fs.readFileSync(fichier));
   }
 }
 
-export async function ouvrirPage({ page = path.join(PAGE_OUTIL, 'index.html'), bloquerReseau = true } = {}) {
+export async function ouvrirPage({ page = path.join(PAGE_OUTIL, 'index.html'), bloquerReseau = true, dossierScripts = null } = {}) {
   const html = fs.readFileSync(page, 'utf8');
   const appelsReseau = [];
   const dom = new JSDOM(html, {
     runScripts: 'dangerously',
-    resources: new ChargeurLocal(),
+    resources: new ChargeurLocal(dossierScripts),
     pretendToBeVisual: true,
     url: URL_PAGE,
     beforeParse(w) {
