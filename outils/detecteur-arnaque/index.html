@@ -355,20 +355,22 @@ tbody tr:hover{background:#F6F8FA}
 .sd-in{animation:sdIn .4s ease both;animation-delay:calc(var(--i,0)*80ms)}
 @keyframes sdIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .sd-verdict{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;border-radius:18px;padding:20px 22px;margin:0 0 16px}
-.sd-verdict.v3{background:var(--orange-soft);border:2px solid var(--orange-d)}
-.sd-verdict.v2{background:#FFF4E0;border:2px solid #B8741A}
-.sd-verdict.v1{background:var(--teal-soft);border:2px solid var(--teal)}
-.sd-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:104px;padding:12px 10px;border-radius:16px;color:#fff;text-align:center;font:800 1rem/1.15 var(--disp)}
+.sd-verdict.v3{background:#FDECEA;border:2px solid #B3261E}
+.sd-verdict.v2{background:#FFF0E0;border:2px solid #C2570C}
+.sd-verdict.v1{background:#FFF8D6;border:2px solid #B58B00}
+.sd-verdict.v0{background:#F1F3F5;border:2px solid #8793A0}
+.sd-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:104px;max-width:150px;padding:12px 10px;border-radius:16px;color:#fff;text-align:center;font:800 1rem/1.15 var(--disp)}
 .sd-badge i{font-style:normal;font-size:1.6rem;line-height:1}
-.sd-badge small{font:500 .64rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
-.v3 .sd-badge{background:var(--orange-d)}.v2 .sd-badge{background:#8A5300}.v1 .sd-badge{background:var(--teal-d)}
+.sd-badge small{font:500 .64rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.v3 .sd-badge{background:#B3261E}.v2 .sd-badge{background:#A04A00}.v1 .sd-badge{background:#7A5C00}.v0 .sd-badge{background:#4F5B67}
 .sd-verdict h3{border:0;padding:0;margin:0 0 .25em;font-size:1.3rem}
 .sd-verdict p{margin:0;font-size:.97rem}
+.sd-verdict p.sd-why{margin-top:.5em;font-weight:600}
 .sd-meter{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:12px}
 .sd-meter i{height:8px;border-radius:99px;background:rgba(19,34,50,.14)}
-.v1 .sd-meter i:nth-child(-n+1){background:var(--teal-d)}
-.v2 .sd-meter i:nth-child(-n+2){background:#8A5300}
-.v3 .sd-meter i:nth-child(-n+3){background:var(--orange-d)}
+.v1 .sd-meter i:nth-child(-n+1){background:#7A5C00}
+.v2 .sd-meter i:nth-child(-n+2){background:#A04A00}
+.v3 .sd-meter i:nth-child(-n+3){background:#B3261E}
 .sd-ghost{min-height:44px;padding:.5em 1.1em;border:1.5px solid var(--navy);border-radius:99px;background:transparent;color:var(--navy);font:700 .92rem var(--disp);cursor:pointer}
 .sd-ghost:hover{background:var(--navy);color:#fff}
 .sd-extra{margin:14px 0 0;padding:4px 16px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg)}
@@ -390,7 +392,7 @@ tbody tr:hover{background:#F6F8FA}
 .sd-tiles li b{font:700 .85rem var(--disp)}
 .sd-tiles .st{font-size:.82rem;font-weight:700}
 .sd-tiles small{font-size:.76rem;color:var(--muted);overflow-wrap:anywhere}
-.sd-tiles li.ok{border-color:#9FD3B5}.sd-tiles li.ok .st{color:#0B6B3A}
+.sd-tiles li.ok{border-color:var(--line)}.sd-tiles li.ok .st{color:var(--muted)}
 .sd-tiles li.warn{border-color:var(--orange-d);background:var(--orange-soft)}.sd-tiles li.warn .st{color:#9B2C12}
 .sd-tiles li.none{border-style:dashed;background:var(--bg)}.sd-tiles li.none .st{color:var(--muted)}
 .sd-add{align-self:flex-start;margin-top:6px;min-height:36px;padding:.3em .9em;border:1.5px solid var(--navy);border-radius:99px;background:#fff;color:var(--navy);font:700 .8rem var(--disp);cursor:pointer}
@@ -430,10 +432,15 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
 .sd-sig a{font-size:.88rem;font-weight:600}
 .sd-more{margin:18px 0 0;padding:4px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
 .sd-more p{font-size:.9rem}
-.sd-more ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:8px 0}
+.sd-more ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:8px 0}
 .sd-more li{padding:8px 10px;border:2px solid var(--line);border-radius:8px;font-size:.85rem;background:#fff}
 .sd-more li[aria-current="step"]{border-color:var(--ink);font-weight:700}
 .sd-help{margin:22px 0 0;padding:20px;border:1.5px solid var(--navy);border-radius:16px;background:#fff}
+.sd-limits{margin:18px 0 0;padding:16px 20px;border:1.5px dashed #8793A0;border-radius:14px;background:#F7F8FA}
+.sd-limits h3{margin:0 0 .4em;font-size:1.05rem}
+.sd-limits ul{margin:.3em 0 0;padding-left:1.2em}.sd-limits li{margin:.35em 0;font-size:.93rem;line-height:1.5}
+.sd-nl{margin-top:18px}
+@media (max-width:560px){.sd-more ol{grid-template-columns:1fr 1fr}}
 .sd-help h3{margin:0 0 .4em;font-size:1.2rem}
 .sd-help ol{margin:.4em 0 14px;padding-left:1.2em}.sd-help li{margin:.4em 0}
 .sd-pills{display:flex;flex-wrap:wrap;gap:8px}
@@ -981,10 +988,19 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
     return {found:found, links:links, score:score, level:level, tiles:tiles};
   }
   var L = {
-    3:{id:'arnaque_probable', badge:'Arnaque probable', icon:'⚠', t:'Très probablement une arnaque', p:'Plusieurs signaux typiques sont réunis. Ne cliquez pas, ne répondez pas, ne payez pas et ne communiquez aucun code.'},
-    2:{id:'douteux', badge:'Douteux', icon:'?', t:'Message suspect : prudence', p:'Certains signaux sont fréquents dans les arnaques. Vérifiez par vous-même, sans utiliser le lien ni le numéro du message.'},
-    1:{id:'sain', badge:'Plutôt sain', icon:'✓', t:'Peu de signaux d\'arnaque détectés', p:'Les signaux repérés ne suffisent pas à atteindre un niveau supérieur. Cela ne garantit pas que le message est sûr : restez prudent si quelque chose vous semble inhabituel.'}
+    3:{id:'probable', badge:'Arnaque probable', note:'', icon:'✖', t:'Très probablement une arnaque', p:'Plusieurs éléments typiques des arnaques sont réunis. Ne cliquez pas, ne répondez pas, ne payez pas et ne communiquez aucun code.'},
+    2:{id:'suspect', badge:'Message suspect', note:'', icon:'⚠', t:'Message suspect : prudence', p:'Certains éléments sont fréquents dans les arnaques. Vérifiez par vous-même, sans utiliser le lien ni le numéro du message.'},
+    1:{id:'faible', badge:'Signaux faibles', note:'', icon:'!', t:'Quelques éléments à vérifier', p:'Un élément isolé ne suffit pas à conclure. Vérifiez par vous-même avant d\'agir : cela ne garantit pas que le message est sûr.'},
+    0:{id:'aucun', badge:'Aucun signal détecté', note:'Ce n\'est pas une garantie', icon:'i', t:'Aucun signal détecté dans ce que vous avez saisi', p:'Cet outil ne peut ni vérifier le lien, ni authentifier l\'expéditeur : l\'absence de signal ne prouve pas que le message est sûr. Dans le doute, n\'agissez pas depuis le message.'}
   };
+  /* Phrase en langage naturel qui justifie le niveau : ce sont les éléments repérés, pas un score. */
+  function whyText(level, found, links){
+    var parts = found.slice().sort(function(a, b){ return b.s.w - a.s.w; }).slice(0, 3).map(function(f){ var l = f.s.label; return l.charAt(0).toLowerCase() + l.slice(1); });
+    if(links.length) parts.unshift('un lien vers une adresse à risque (' + links[0].host + ')');
+    parts = parts.slice(0, 3);
+    if(!parts.length) return 'Aucun des signaux courants (urgence, menace, demande de code ou de paiement, lien douteux, expéditeur incohérent) n\'a été repéré.';
+    return 'Ce verdict repose sur : ' + parts.join(' ; ') + '.';
+  }
 
   /* ===== Modules du verdict ===== */
   var nlDismissed = false;
@@ -1059,9 +1075,9 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
     var T = r.tiles || {};
     var tile = function(key, title, own, valueTxt, autoTxt, field){
       var t = T[key] || {n:0, value:''}, state, status;
-      if(own !== undefined){ state = t.n ? 'warn' : 'ok'; status = t.n ? t.n + ' ' + (t.n > 1 ? 'signaux' : 'signal') : 'Aucun signal'; }
+      if(own !== undefined){ state = t.n ? 'warn' : 'ok'; status = t.n ? 'Éléments repérés' : 'Rien repéré'; }
       else if(!t.value){ state = 'none'; status = 'Non renseigné'; }
-      else { state = t.n ? 'warn' : 'ok'; status = t.n ? t.n + ' ' + (t.n > 1 ? 'signaux' : 'signal') : 'Aucun signal'; }
+      else { state = t.n ? 'warn' : 'ok'; status = t.n ? 'Éléments repérés' : 'Rien repéré'; }
       return '<li class="' + state + '"><b>' + title + '</b><span class="st">' + status + '</span>'
         + (valueTxt ? '<small>' + esc(valueTxt.length > 46 ? valueTxt.slice(0, 44) + '…' : valueTxt) + (autoTxt ? ' · repéré automatiquement' : '') + '</small>' : '')
         + (state === 'none' && field ? '<button type="button" class="sd-add" data-field="' + field + '">Ajouter</button>' : '') + '</li>';
@@ -1069,7 +1085,7 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
     var textN = r.found.filter(function(f){ return !f.src; }).length;
     var mail = ctx.type === 'email';
     return '<section class="sd-scope sd-in" style="--i:1" aria-labelledby="sd-scope-t"><h3 id="sd-scope-t">Ce qui a été examiné</h3><ul class="sd-tiles' + (mail ? '' : ' two') + '">'
-      + '<li class="' + (textN ? 'warn' : 'ok') + '"><b>Texte du message</b><span class="st">' + (textN ? textN + ' ' + (textN > 1 ? 'signaux' : 'signal') : 'Aucun signal') + '</span></li>'
+      + '<li class="' + (textN ? 'warn' : 'ok') + '"><b>Texte du message</b><span class="st">' + (textN ? 'Éléments repérés' : 'Rien repéré') + '</span></li>'
       + tile('from', mail ? 'Expéditeur' : 'Expéditeur du SMS', undefined, ctx.from, ctx.auto.from, 'sd-from')
       + (mail ? tile('subj', 'Objet', undefined, ctx.subj, ctx.auto.subj, 'sd-subj') + tile('foot', 'Pied de page', undefined, ctx.foot.split('\n')[0], ctx.auto.foot, 'sd-foot') : '')
       + '</ul><p class="sd-scope-note">' + (mail ? 'L\'expéditeur, l\'objet et le pied de page sont facultatifs mais très révélateurs : un faux message se trahit souvent par son adresse d\'envoi.' : 'Le numéro ou le nom d\'expéditeur est facultatif mais révélateur : un faux SMS vient souvent d\'un numéro de mobile ordinaire ou étranger.') + ' Rien n\'est envoyé hors de votre appareil.</p></section>';
@@ -1087,15 +1103,16 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
     if(ctx.auto.from) el('sd-from').value = ctx.from;
     if(ctx.auto.subj) el('sd-subj').value = ctx.subj;
     if(ctx.auto.foot) el('sd-foot').value = ctx.foot;
-    var r = compute(ctx.body, ctx), v = L[r.level], found = r.found, links = r.links, level = r.level, i = 0;
+    var r = compute(ctx.body, ctx), found = r.found, links = r.links, i = 0;
+    var level = (r.level === 1 && !found.length && !links.length) ? 0 : r.level, v = L[level];
     var isMail = ctx.type === 'email' || /@|^\s*(objet|subject|de|from)\s*:/im.test(text) || !!ctx.subj || /@/.test(ctx.from);
     var sampleTxt = (ctx.from ? 'Expéditeur : ' + ctx.from + '\n' : '') + (ctx.subj ? 'Objet : ' + ctx.subj + '\n' : '') + ((ctx.from || ctx.subj) ? '\n' : '') + ctx.body + (ctx.foot ? '\n\n— Pied de page —\n' + ctx.foot : '');
     var h = (isDemo
         ? '<figure class="sd-sample sd-in"><figcaption>Exemple « ' + esc(demoName) + ' » : un message fictif écrit par CyberBalise, qui ne vient d\'aucun vrai expéditeur</figcaption><blockquote>' + esc(sampleTxt) + '</blockquote><p class="sd-sample-note">Voici ce que l\'outil dit de ce message :</p></figure>'
         : '<details class="sd-sample sd-in"><summary>Voir le message analysé</summary><blockquote>' + esc(sampleTxt) + '</blockquote></details>')
-      + '<div class="sd-verdict v' + level + ' sd-in" style="--i:0"><div class="sd-badge"><i aria-hidden="true">' + v.icon + '</i>' + v.badge + '<small>' + found.length + ' ' + (found.length > 1 ? 'signaux' : 'signal') + '</small></div>'
-      + '<div><h3 id="sd-vt" tabindex="-1">' + v.t + '</h3><p>' + v.p + '</p><div class="sd-meter" aria-hidden="true"><i></i><i></i><i></i></div></div></div>'
-      + nlHTML() + scopeHTML(ctx, r);
+      + '<div class="sd-verdict v' + level + ' sd-in" style="--i:0"><div class="sd-badge"><i aria-hidden="true">' + v.icon + '</i>' + v.badge + (v.note ? '<small>' + v.note + '</small>' : '') + '</div>'
+      + '<div><h3 id="sd-vt" tabindex="-1">' + v.t + '</h3><p>' + v.p + '</p><p class="sd-why">' + esc(whyText(level, found, links)) + '</p><div class="sd-meter" aria-hidden="true"><i></i><i></i><i></i></div></div></div>'
+      + scopeHTML(ctx, r);
     if(links.length){
       h += '<h3 class="sd-in" style="--i:3">Lien' + (links.length > 1 ? 's' : '') + ' à risque</h3><ul class="sd-sigs">' + links.map(function(k){
         return '<li class="sd-sig sd-in" style="--i:' + (3 + (++i)) + '"><b>' + esc(k.host) + '</b><details><summary>Pourquoi ce lien est suspect ?</summary><p>' + esc(k.reasons.join(' ; ')) + '.</p><a href="/particuliers/menaces/phishing-hameconnage/">→ Reconnaître un faux site</a></details></li>';
@@ -1108,10 +1125,15 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
           + '<details><summary>Pourquoi ce signal est suspect ?</summary><p>' + esc(f.s.e) + '</p><a href="' + f.s.l[1] + '">→ ' + esc(f.s.l[0]) + '</a></details></li>';
       }).join('') + '</ul>';
     }
-    h += '<details class="sd-more"><summary>Comment lire ce niveau ?</summary><section class="sd-scale" aria-label="Échelle de vigilance"><p><strong>Niveau ' + level + ' sur 3 : ' + ['faible', 'modéré', 'élevé'][level-1] + '</strong></p><ol>'
-      + ['1 · Faible', '2 · Modéré', '3 · Élevé'].map(function(label, index){
-        return '<li' + (index + 1 === level ? ' aria-current="step"' : '') + '>' + label + (index + 1 === level ? ' — votre résultat' : '') + '</li>';
-      }).join('') + '</ol><p>Échelle indicative, pas une probabilité de fraude. Score pondéré : <strong>' + r.score + ' points</strong>. Faible : 0 à 3 points ; modéré : 4 à 7 ; élevé : 8 ou plus. Un signal de poids 4 ou plus impose au minimum le niveau modéré. Le nombre de signaux n’est pas le score.</p><p>Un niveau faible ne garantit jamais qu’un message est sûr.</p></section></details>';
+    h += '<details class="sd-more"><summary>Comment lire ce niveau ?</summary><section class="sd-scale" aria-label="Échelle de vigilance"><p><strong>' + v.badge + '</strong></p><ol>'
+      + ['Aucun signal', 'Signaux faibles', 'Suspect', 'Arnaque probable'].map(function(label, index){
+        return '<li' + (index === level ? ' aria-current="step"' : '') + '>' + label + (index === level ? ' — votre résultat' : '') + '</li>';
+      }).join('') + '</ol><p>Échelle indicative, ce n\'est pas une probabilité de fraude. Le niveau dépend de la nature des éléments repérés (expéditeur ou lien incohérent, scénario d\'arnaque connu), pas de leur nombre.</p><p>« Aucun signal détecté » ne signifie jamais que le message est sûr.</p></section></details>';
+    h += '<section class="sd-limits sd-in" style="--i:' + (4 + i) + '" aria-labelledby="sd-lim-t"><h3 id="sd-lim-t">Ce que cet outil n\'a pas pu vérifier</h3><ul>'
+      + '<li><strong>L\'âge et la réputation du site</strong> derrière un lien : un site créé il y a deux jours est un signal fort, que cet outil ne peut pas mesurer.</li>'
+      + '<li><strong>Le contenu de la page de destination</strong> : seul le texte du lien est examiné, jamais la page elle-même.</li>'
+      + '<li><strong>Que le message vienne vraiment de l\'expéditeur affiché</strong> : un nom, un numéro ou une adresse peuvent être usurpés.</li>'
+      + '<li><strong>Les contrôles techniques de l\'e-mail</strong> (SPF, DKIM) lorsque vous n\'avez pas collé les en-têtes complets.</li></ul></section>';
 
     var P = {
       sms: '<a class="sd-pill' + (isMail ? '' : ' first') + '" href="https://www.33700.fr/" target="_blank" rel="noopener noreferrer">Signaler un SMS : 33700</a>',
@@ -1123,7 +1145,8 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
       ? '<li><strong>Ne cliquez sur aucun lien</strong> et ne rappelez pas le numéro indiqué.</li><li><strong>Vérifiez par vous-même</strong> : ouvrez l\'application ou le site officiel, ou appelez l\'organisme au numéro habituel.</li><li><strong>Signalez</strong> le message : SMS au 33700, e-mail sur Signal Spam, et 17Cyber si vous avez un doute — <a href="/particuliers/victime/signaler-un-probleme/">voir la fiche</a>.</li><li><strong>Vous avez déjà cliqué, payé ou donné un code ?</strong> Appelez votre banque pour faire opposition et suivez <a href="/particuliers/victime/">nos fiches réflexes</a>.</li>'
       : '<li>En cas de doute, vérifiez auprès de l\'expéditeur par un autre moyen que ce message.</li><li>Ne communiquez jamais un code, un mot de passe ou vos coordonnées bancaires en réponse à un message.</li>';
     var pills = level === 3 ? P.bank + (isMail ? P.mail + P.sms : P.sms + P.mail) + P.c17 : level === 2 ? (isMail ? P.mail + P.sms : P.sms + P.mail) + P.c17 + P.bank : (isMail ? P.mail + P.sms : P.sms + P.mail);
-    h += '<section class="sd-help sd-in" style="--i:' + (4 + i) + '" aria-labelledby="sd-todo-t"><h3 id="sd-todo-t">Que faire maintenant ?</h3><ol>' + todo + '</ol><div class="sd-pills">' + pills + '</div></section>';
+    h += '<section class="sd-help sd-in" style="--i:' + (5 + i) + '" aria-labelledby="sd-todo-t"><h3 id="sd-todo-t">Que faire maintenant ?</h3><ol>' + todo + '</ol><div class="sd-pills">' + pills + '</div></section>';
+    if(level < 3) h += nlHTML();
     h += shareHTML();
     h += '<div class="sd-again"><button class="sd-ghost" type="button" id="sd-again">Analyser un autre message</button></div>';
 
@@ -1131,7 +1154,7 @@ fieldset.sd-extra{min-width:0;margin:14px 0 0;padding:10px 16px 14px;border:1.5p
     bindNl(); bindShare();
     res.querySelectorAll('.sd-add').forEach(function(b){ b.addEventListener('click', function(){ backToEdit(b.dataset.field); }); });
     el('sd-again').addEventListener('click', function(){ reset(); focusStart(); });
-    el('sd-live').textContent = 'Analyse terminée : ' + v.t + '. ' + found.length + ' ' + (found.length > 1 ? 'signaux repérés' : 'signal repéré') + '.';
+    el('sd-live').textContent = 'Analyse terminée : ' + v.badge + '. ' + v.t + '.';
     var t = el('sd-vt'); if(t) t.focus({preventScroll:true});
     track('analyse_terminee', v.id);
   }
