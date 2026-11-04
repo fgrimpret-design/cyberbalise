@@ -45,3 +45,12 @@ jobs:
           local_path: ./*
           remote_path: /Newpublic
           sftp_only: true
+
+      - name: Supprimer du serveur les pages retirees du depot
+        env:
+          SFTP_HOST: ${{ secrets.IONOS_SFTP_HOST }}
+          SFTP_USER: ${{ secrets.IONOS_SFTP_USER }}
+          SFTP_PASS: ${{ secrets.IONOS_SFTP_PASSWORD }}
+        run: |
+          sudo apt-get install -y lftp > /dev/null
+          lftp -u "$SFTP_USER","$SFTP_PASS" "sftp://$SFTP_HOST:22" -e "set sftp:auto-confirm yes; set cmd:fail-exit no; rm -f /Newpublic/outils/risque-sms/index.html; rmdir /Newpublic/outils/risque-sms; bye"
