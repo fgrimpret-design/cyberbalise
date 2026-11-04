@@ -4,6 +4,7 @@
   var storageKey = 'cyberbalise_cookie_consent_v1';
   var consentLifetime = 180 * 24 * 60 * 60 * 1000;
   var impactUrl = 'https://utt.impactcdn.com/P-A7968179-ba51-44bd-8582-e6f556d001341.js';
+  var gaId = 'G-C4ZQS2T81X';
   var consent = readConsent();
   var banner = document.createElement('section');
   var analyticsToggle;
@@ -28,7 +29,7 @@
     '</div>' +
     '<div class="cb-cookie-settings" id="cb-cookie-settings" hidden>' +
       '<label class="cb-cookie-required"><input type="checkbox" checked disabled> <span><strong>Choix nécessaires</strong><br>Enregistrement de vos préférences pour retenir votre décision.</span></label>' +
-      '<label><input type="checkbox" data-cookie-toggle="analytics"> <span><strong>Mesure d’audience</strong><br>Outil interne de statistiques, activé uniquement avec votre accord.</span></label>' +
+      '<label><input type="checkbox" data-cookie-toggle="analytics"> <span><strong>Mesure d’audience</strong><br>Statistiques de fréquentation (outil interne et Google Analytics), activées uniquement avec votre accord.</span></label>' +
       '<label><input type="checkbox" data-cookie-toggle="affiliate"> <span><strong>Suivi des liens affiliés</strong><br>Script Impact pour transformer les liens partenaires et mesurer les impressions.</span></label>' +
       '<button type="button" data-cookie-action="save">Enregistrer mes choix</button>' +
     '</div>' +
@@ -133,7 +134,47 @@
     applyConsent(next);
   }
 
+  function loadGoogleAnalytics() {
+    if (window.cbGaLoaded) return;
+    window.cbGaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', gaId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+    gaScript.setAttribute('data-cb-consent', 'google-analytics');
+    gaScript.onerror = function () {
+      console.error('CyberBalise: impossible de charger Google Analytics.');
+    };
+    document.head.appendChild(gaScript);
+  }
+
+  function clearGoogleAnalyticsCookies() {
+    var host = window.location.hostname;
+    var domains = ['', host, '.' + host, '.' + host.replace(/^www\./, '')];
+    document.cookie.split(';').forEach(function (cookie) {
+      var name = cookie.split('=')[0].trim();
+      if (name !== '_ga' && name.indexOf('_ga_') !== 0 && name !== '_gid') return;
+      domains.forEach(function (domain) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' +
+          (domain ? '; domain=' + domain : '');
+      });
+    });
+  }
+
   function applyConsent(saved) {
+    if (saved.analytics) {
+      loadGoogleAnalytics();
+    } else {
+      window['ga-disable-' + gaId] = true;
+      clearGoogleAnalyticsCookies();
+    }
+
     if (saved.analytics && !document.querySelector('[data-cb-consent="analytics"]')) {
       var analyticsScript = document.createElement('script');
       analyticsScript.src = '/backoffice/t.js';
