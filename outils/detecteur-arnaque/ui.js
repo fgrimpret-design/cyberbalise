@@ -113,7 +113,7 @@
   /* ===== Étape 1 : choix du type de message ===== */
   var fileInput = el('sd-file');
   function pick(accept){ fileInput.accept = accept; fileInput.value = ''; fileInput.click(); }
-  var IMG_ACCEPT = 'image/png,image/jpeg,image/webp', TXT_ACCEPT = '.txt,text/plain';
+  var IMG_ACCEPT = 'image/png,image/jpeg,image/webp', TXT_ACCEPT = '.txt,.eml,text/plain,message/rfc822';
   function focusStart(){ var b = document.querySelector('.sd-mode'); if(b) b.focus({preventScroll:true}); }
   function chooseType(t){
     reset(true, true); setType(t, true); setStep(2);
@@ -257,6 +257,7 @@
     if(l.officielPour.length) kids.push(h('p', {cls:'sd-link-ok', text: 'Adresse officielle connue de : ' + l.officielPour.map(function(id){ return Rules.MARQUES.filter(function(b){ return b.id === id; })[0].nom; }).join(', ') + '. Cela ne garantit pas que la page n\'a pas été piratée.'}));
     else if(!raisons.length) kids.push(h('p', {cls:'sd-link-ok', text: 'Rien d\'anormal dans l\'adresse elle-même. Cela ne dit rien du contenu de la page : cet outil ne l\'ouvre jamais.'}));
     if(raisons.length) kids.push(h('details', {open: l.niveau >= 2}, [h('summary', {text:'Pourquoi cette adresse est suspecte ?'}), h('ul', null, raisons.map(function(rs){ return h('li', null, [h('strong', {text: rs.libelle + '. '}), document.createTextNode(rs.explication)]); })), h('a', {href: Rules.FICHES.phishing.url, text: '→ Reconnaître un faux site'})]));
+    if(typeof l.ageJours === 'number') kids.splice(2, 0, h('p', {cls:'sd-link-ok', text:'Domaine enregistré depuis ' + ageLabel(l.ageJours) + ' (date lue auprès du service RDAP, à votre demande).'}));
     return appear(h('li', {cls:'sd-sig' + (l.niveau >= 2 ? '' : l.niveau === 1 ? ' w2' : ' sd-ctx')}, kids));
   }
 
@@ -387,7 +388,18 @@
     if(au.expediteur) el('sd-from').value = r.contexte.expediteur || '';
     if(au.objet) el('sd-subj').value = r.affichage.objet;
     if(au.pied) el('sd-foot').value = r.affichage.piedDePage;
-    render(r);
+    var doms = el('sd-rdap').checked ? domainesAVerifier(r) : [];
+    if(!doms.length){ render(r); return; }
+    /* vérification facultative : on attend au plus quelques secondes, puis on affiche le verdict une seule fois */
+    var version = importVersion;
+    go.disabled = true; msg('Vérification de l\'âge des domaines auprès de rdap.org (facultatif)…');
+    Promise.all(doms.map(function(d){ return rdapAge(d).then(function(v){ return [d, v]; }); })).then(function(pairs){
+      if(version !== importVersion) return;
+      var map = {}; pairs.forEach(function(p){ if(p[1]) map[p[0]] = p[1]; });
+      msg(''); upd();
+      var r2 = Object.keys(map).length ? Engine.analyser(Object.assign({}, entree, {domaines: map})) : r;
+      render(r2);
+    });
   }
 
   function render(r){
@@ -483,6 +495,8 @@
     input.value = ''; upd(); fileInput.value = '';
     if(!keepFields){ ['sd-from', 'sd-subj', 'sd-foot'].forEach(function(id){ el(id).value = ''; }); typeManual = false; setType('sms', false); }
     res.hidden = true; res.textContent = '';
+    setQr([]);
+    if(!keepFields) el('sd-rdap').checked = false;
     ['sd-prev', 'sd-prev-busy'].forEach(function(id){ var p = el(id); p.hidden = true; p.removeAttribute('src'); });
     if(previewUrl){ URL.revokeObjectURL(previewUrl); previewUrl = null; }
     el('sd-busy').hidden = true; el('sd-edit').hidden = false; msg('');
@@ -505,34 +519,118 @@
     var b = el('sd-bar'); b.setAttribute('aria-valuenow', Math.round(pct)); el('sd-barfill').style.width = pct + '%';
     if(text) el('sd-busymsg').textContent = text;
   }
+
+  /* ===== Codes QR : lecture locale de l'image. API native du navigateur si elle existe ; sinon petite
+         bibliothèque libre (jsQR), téléchargée seulement à l'import d'une image, avec empreinte d'intégrité.
+         L'image n'est jamais envoyée ; le contenu du code QR n'est jamais ouvert. ===== */
+  var JSQR_URL = 'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js';
+  var JSQR_SRI = 'sha384-b5Ya4Bq3qCyz39m2ISh+4DxjAIljdeFwK/BsXLuj9gugaNwAcj/ia15fxNZL9Nlx';
+  var jsqrLoading = null;
+  function loadJsQR(){
+    if(window.jsQR) return Promise.resolve();
+    if(jsqrLoading) return jsqrLoading;
+    jsqrLoading = new Promise(function(ok, ko){
+      var s = document.createElement('script'); s.src = JSQR_URL; s.integrity = JSQR_SRI; s.crossOrigin = 'anonymous';
+      s.onload = ok; s.onerror = function(){ jsqrLoading = null; s.remove(); ko(new Error('load')); }; document.head.appendChild(s);
+    });
+    return jsqrLoading;
+  }
+  function imageToCanvas(file){
+    return new Promise(function(ok, ko){
+      var u = URL.createObjectURL(file), img = new Image();
+      img.onload = function(){
+        var sc = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight, 1));
+        var c = document.createElement('canvas'); c.width = Math.max(1, Math.round(img.naturalWidth * sc)); c.height = Math.max(1, Math.round(img.naturalHeight * sc));
+        c.getContext('2d', {willReadFrequently:true}).drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(u); ok(c);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(u); ko(new Error('image')); };
+      img.src = u;
+    });
+  }
+  function decodeQR(file){
+    return imageToCanvas(file).then(function(c){
+      if(window.BarcodeDetector){
+        return new window.BarcodeDetector({formats:['qr_code']}).detect(c).then(function(codes){ return codes.map(function(x){ return x.rawValue; }).filter(Boolean); }).catch(function(){ return []; });
+      }
+      return loadJsQR().then(function(){
+        var d = c.getContext('2d').getImageData(0, 0, c.width, c.height);
+        var code = window.jsQR(d.data, c.width, c.height, {inversionAttempts:'attemptBoth'});
+        return code && code.data ? [code.data] : [];
+      }).catch(function(){ return []; });
+    });
+  }
+  /* Affiche le contenu lu ; seules les adresses sont analysées. */
+  function setQr(list){
+    var box = el('sd-qrbox'); box.textContent = '';
+    qrUrls = (list || []).filter(function(u){ return /^(https?:\/\/|www\.)/i.test(u); }).slice(0, 3);
+    if(!(list || []).length){ box.hidden = true; return; }
+    box.hidden = false;
+    box.appendChild(h('b', {text:'Code QR détecté dans l\'image'}));
+    list.slice(0, 3).forEach(function(u){ box.appendChild(h('code', {text: u})); });
+    box.appendChild(h('small', {text: qrUrls.length ? 'Cette adresse sera analysée avec le message. Elle n\'est jamais ouverte par cet outil.' : 'Ce contenu n\'est pas une adresse web : il n\'est pas analysé.'}));
+  }
+
+  /* ===== Âge des domaines (facultatif, sur case cochée) : seul le nom de domaine est envoyé à rdap.org ===== */
+  var RDAP_BASE = 'https://rdap.org/domain/', MAX_RDAP = 3, rdapCache = {};
+  function rdapAge(domaine){
+    if(Object.prototype.hasOwnProperty.call(rdapCache, domaine)) return Promise.resolve(rdapCache[domaine]);
+    var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctrl) ctrl.abort(); }, 4000);
+    return fetch(RDAP_BASE + encodeURIComponent(domaine), { method:'GET', credentials:'omit', referrerPolicy:'no-referrer', cache:'no-store', headers:{'Accept':'application/rdap+json, application/json'}, signal: ctrl ? ctrl.signal : undefined })
+      .then(function(r){ if(!r.ok) throw new Error('rdap_' + r.status); return r.json(); })
+      .then(function(j){
+        var ev = (j.events || []).filter(function(e){ return e.eventAction === 'registration'; })[0];
+        var t = ev && Date.parse(ev.eventDate);
+        return t && t <= Date.now() ? { ageJours: Math.floor((Date.now() - t) / 864e5) } : null;
+      })
+      .catch(function(){ return null; })   /* dégradation silencieuse : CORS, réseau, domaine inconnu */
+      .then(function(v){ clearTimeout(timer); rdapCache[domaine] = v; return v; });
+  }
+  function domainesAVerifier(r){
+    var out = [];
+    r.lienAnalyse.forEach(function(l){
+      if(!l.domaine || l.officielPour.length || /^\d{1,3}(\.\d{1,3}){3}$/.test(l.hote) || out.indexOf(l.domaine) >= 0) return;
+      out.push(l.domaine);
+    });
+    return out.slice(0, MAX_RDAP);
+  }
+  function ageLabel(j){ return j < 1 ? 'moins d\'un jour' : j < 60 ? j + ' jour' + (j > 1 ? 's' : '') : j < 730 ? Math.round(j / 30) + ' mois' : Math.round(j / 365) + ' ans'; }
   function handle(file){
     if(!file) return;
-    var isText = file.type === 'text/plain' || /\.txt$/i.test(file.name);
+    var isEml = /\.eml$/i.test(file.name) || file.type === 'message/rfc822';
+    var isText = isEml || file.type === 'text/plain' || /\.txt$/i.test(file.name);
     var isImage = /^(image\/png|image\/jpeg|image\/webp)$/.test(file.type);
-    if(!isText && !isImage){ msg('Format non pris en charge. Choisissez une image PNG, JPG, WebP ou un fichier .txt.', true); return; }
+    if(!isText && !isImage){ msg('Format non pris en charge. Choisissez une image PNG, JPG, WebP, un fichier .txt ou un e-mail .eml.', true); return; }
     if(file.size > 10 * 1024 * 1024){ msg('Fichier trop volumineux : la limite est de 10 Mo.', true); return; }
     reset(true, true);
     var version = importVersion;
-    started = true; track('outil_lance', isText ? 'fichier' : 'capture');
+    started = true; track('outil_lance', isEml ? 'eml' : isText ? 'fichier' : 'capture');
     setStep(2);
-    el('sd-busy').hidden = false; el('sd-edit').hidden = true; bar(4, isText ? 'Lecture du fichier texte…' : 'Préparation de la lecture…');
-    var reading;
-    if(isText){ reading = file.text(); }
+    el('sd-busy').hidden = false; el('sd-edit').hidden = true; bar(4, isText ? 'Lecture du fichier…' : 'Préparation de la lecture…');
+    var reading, qrReading = Promise.resolve([]);
+    if(isText){ reading = file.text().then(function(raw){ return isEml ? Engine.nettoyerEml(raw) : raw; }); }
     else {
       previewUrl = URL.createObjectURL(file);
       ['sd-prev', 'sd-prev-busy'].forEach(function(id){ var p = el(id); p.src = previewUrl; p.hidden = false; });
+      qrReading = decodeQR(file).catch(function(){ return []; });
       reading = loadTess().then(function(){
         bar(18, 'Lecture du texte…');
         return Tesseract.recognize(file, 'fra', { logger: function(m){ if(version === importVersion && m.status === 'recognizing text'){ var p = Math.round(m.progress * 100); bar(18 + p * 0.82, 'Lecture du texte… ' + p + ' %'); } } });
-      }).then(function(r){ return r.data.text || ''; });
+      }).then(function(r){ return r.data.text || ''; }).catch(function(error){ console.error('CyberBalise : lecture du texte impossible.', error); return qrReading.then(function(q){ if(q.length) return ''; throw error; }); });
     }
-    reading.then(function(text){
+    Promise.all([reading, qrReading]).then(function(res2){
       if(version !== importVersion) return;
+      var text = res2[0], qr = res2[1];
       var t = text.trim();
       el('sd-busy').hidden = true; el('sd-edit').hidden = false;
-      if(!t){ msg('Aucun texte lisible trouvé. Essayez une capture plus nette, un fichier texte, ou collez le texte ci-dessus.', true); input.focus(); return; }
-      input.value = t; upd(); guessType(t);
-      msg('Texte importé. Relisez-le et corrigez-le si nécessaire, puis cliquez sur « Analyser le message ».');
+      setQr(qr);
+      /* une image qui ne contient qu'un code QR donne un « texte » parasite à l'OCR : on l'écarte */
+      if(qrUrls.length && (t.match(/[A-Za-zÀ-ÿ]/g) || []).length < 12) t = '';
+      if(!t && !qrUrls.length){ msg('Aucun texte lisible trouvé. Essayez une capture plus nette, un fichier texte, ou collez le texte ci-dessus.', true); input.focus(); return; }
+      if(isEml) setType('email', true);
+      input.value = t; upd(); if(t) guessType(t);
+      msg(qrUrls.length && !t ? 'Un code QR a été lu dans l\'image : il sera analysé. Vous pouvez ajouter le texte du message si vous l\'avez.' : 'Texte importé. Relisez-le et corrigez-le si nécessaire, puis cliquez sur « Analyser le message ».');
       input.classList.add('sd-edit-flash'); setTimeout(function(){ input.classList.remove('sd-edit-flash'); }, 1500);
       input.focus({preventScroll:true});
     }).catch(function(error){

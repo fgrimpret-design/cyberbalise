@@ -41,8 +41,16 @@ navigateur**, le texte n'est jamais envoyé. Trois fichiers dans
 2) champs à renseigner (expéditeur ; pour un e-mail, objet et pied de page) et
 texte du message, fourni par capture d'écran (lecture locale par Tesseract.js,
 chargé seulement à l'import d'une image), fichier `.txt` ou copier-coller,
-3) verdict. Un e-mail collé en entier, avec ses en-têtes (`From`, `Subject`,
-`Reply-To`, `Authentication-Results`, `Received-SPF`), est lu automatiquement.
+3) verdict. Un e-mail collé en entier ou importé en `.eml` (avec ses en-têtes `From`,
+`Subject`, `Reply-To`, `Return-Path`, `Authentication-Results`, `Received-SPF`) est
+décodé (mots encodés, quoted-printable, base64, HTML, multipart) et lu
+automatiquement. Un **code QR** présent dans une image est lu localement
+(`BarcodeDetector` du navigateur ; à défaut, jsQR 1.4.0 chargé à la demande depuis
+jsDelivr avec empreinte d'intégrité, à mettre à jour dans `ui.js` si la version
+change : un test compare l'empreinte au fichier épinglé) et son adresse est analysée
+sans être ouverte. Une case **décochée par défaut** permet de vérifier l'âge des sites
+des liens : seuls les noms de domaine (3 au plus, hors marques connues) sont envoyés
+à `https://rdap.org/domain/<domaine>` ; échec ou CORS refusé = aucun message d'erreur.
 
 **Verdict à quatre niveaux, sans score** : 0 « Aucun signal détecté » (gris, jamais
 de coche verte ni de mot « sain »), 1 « Signaux faibles », 2 « Message suspect »,

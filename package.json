@@ -4,10 +4,13 @@
   "description": "Outils de test du site statique cyberbalise.fr (aucune dépendance à l'exécution).",
   "scripts": {
     "test": "node --test tests/detecteur/",
-    "test:baseline": "node tests/detecteur/run.mjs",
-    "test:dom": "node tests/detecteur/dom.mjs"
+    "test:baseline": "node tests/detecteur/run.mjs --legacy",
+    "benchmark": "node tests/detecteur/run.mjs"
   },
   "devDependencies": {
-    "jsdom": "^26.0.0"
+    "jsdom": "^26.0.0",
+    "jsqr": "1.4.0",
+    "pngjs": "^7.0.0",
+    "qrcode": "^1.5.4"
   }
 }

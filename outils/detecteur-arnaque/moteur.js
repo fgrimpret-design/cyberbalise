@@ -185,7 +185,7 @@
     return max;
   }
 
-  function analyserLien(brut, origine) {
+  function analyserLien(brut, origine, ages) {
     var u = String(brut).trim().replace(/^hxxp/i, 'http');
     var m = /^(?:([a-z][a-z0-9+.-]*):\/\/)?(?:([^\/?#@\s]*)@)?(\[[^\]]+\]|[^\/?#:\s]+)(?::(\d{1,5}))?([\/?#][^\s]*)?$/i.exec(u);
     var resultat = { url: String(brut), hote: '', domaine: '', raisons: [], niveau: 0, officielPour: [], marquesTierces: [], origine: origine || 'texte' };
@@ -221,6 +221,11 @@
 
     if (R.TLD_RISQUES.indexOf(tld) >= 0 && !neutre) ajouter('TLD_RISQUE');
     if ((etiquette.match(/-/g) || []).length >= CFG.tiretsExcessifs) ajouter('TIRETS_MULTIPLES');
+    var age = ages && ages[resultat.domaine];
+    if (age && typeof age.ageJours === 'number') {
+      resultat.ageJours = age.ageJours;
+      if (age.ageJours < CFG.ageRecentJours) ajouter('DOMAINE_RECENT');
+    }
 
     resultat.raisons = raisons;
     resultat.niveau = niveauDesRaisons(raisons);
@@ -255,7 +260,7 @@
   /* ------------------------------------------------------------------
    * Préparation : séparation des en-têtes, du corps et du pied de page
    * ------------------------------------------------------------------ */
-  var NOMS_ENTETES = /^(from|de|exp[ée]diteur|subject|objet|sujet|to|[àa]|cc|bcc|date|envoy[ée]|received|return-path|reply-to|authentication-results|received-spf|dkim-signature|message-id|mime-version|delivered-to|content-type|content-transfer-encoding|arc-[a-z-]+|x-[a-z0-9-]+)$/i;
+  var NOMS_ENTETES = /^(from|de|exp[ée]diteur|subject|objet|sujet|to|[àa]|cc|bcc|date|envoy[ée]|received|return-path|reply-to|authentication-results|received-spf|dkim-signature|message-id|mime-version|delivered-to|content-[a-z-]+|arc-[a-z-]+|x-[a-z0-9-]+)$/i;
   var RE_PIED = /(se d[ée]sabonner|se d[ée]sinscrire|d[ée]sinscri|unsubscribe|mentions l[ée]gales|tous droits r[ée]serv[ée]s|all rights reserved|©|\bsiret\b|\brcs\b|ne pas r[ée]pondre|do not reply|vous recevez (ce|cet)|politique de confidentialit)/i;
 
   function lireEntetes(lignes) {
@@ -281,7 +286,91 @@
     var lire = function (nom) { var m = new RegExp('\\b' + nom + '\\s*=\\s*(pass|fail|softfail|neutral|none|temperror|permerror)', 'i').exec(ar); return m ? m[1].toLowerCase() : null; };
     var spf = lire('spf');
     if (!spf) { var r = /^\s*(pass|fail|softfail|neutral|none|temperror|permerror)\b/i.exec(entetes['received-spf'] || ''); if (r) spf = r[1].toLowerCase(); }
-    return { spf: spf, dkim: lire('dkim'), dmarc: lire('dmarc') };
+    var dk = (/\bd=([^;\s]+)/i.exec(entetes['dkim-signature'] || '') || [])[1] || '';
+    return { spf: spf, dkim: lire('dkim'), dmarc: lire('dmarc'), dkimDomaine: dk.toLowerCase() };
+  }
+
+  /* ------------------------------------------------------------------
+   * Messages bruts (.eml ou « afficher l'original ») : mots encodés, quoted-printable, base64, HTML
+   * ------------------------------------------------------------------ */
+  function octetsVersTexte(octets, charset) {
+    try { return new TextDecoder((charset || 'utf-8').toLowerCase()).decode(octets); }
+    catch (e) {
+      /* repli sans TextDecoder : latin-1 puis tentative UTF-8 */
+      var s = '';
+      for (var i = 0; i < octets.length; i++) s += String.fromCharCode(octets[i]);
+      if (!charset || /utf-?8/i.test(charset)) { try { return decodeURIComponent(escape(s)); } catch (e2) { return s; } }
+      return s;
+    }
+  }
+  function decoderQP(s, charset) {
+    var plat = String(s).replace(/=\r?\n/g, '');
+    var octets = [];
+    for (var i = 0; i < plat.length; i++) {
+      var c = plat.charAt(i);
+      if (c === '=' && /^[0-9a-fA-F]{2}$/.test(plat.substr(i + 1, 2))) { octets.push(parseInt(plat.substr(i + 1, 2), 16)); i += 2; }
+      else octets.push(plat.charCodeAt(i) & 0xff);
+    }
+    return octetsVersTexte(new Uint8Array(octets), charset);
+  }
+  function decoderB64(s, charset) {
+    var bin;
+    try { bin = atob(String(s).replace(/[^A-Za-z0-9+/=]/g, '')); } catch (e) { return ''; }
+    var octets = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) octets[i] = bin.charCodeAt(i);
+    return octetsVersTexte(octets, charset);
+  }
+  function decoderMots(s) {
+    return String(s || '').replace(/(\?=)\s+(=\?)/g, '$1$2').replace(/=\?([\w-]+)\?([bBqQ])\?([^?]{0,500})\?=/g, function (m, cs, enc, txt) {
+      return enc.toLowerCase() === 'b' ? decoderB64(txt, cs) : decoderQP(txt.replace(/_/g, ' '), cs);
+    });
+  }
+  /* HTML -> texte : les adresses des liens sont conservées entre parenthèses, car le texte affiché peut mentir. */
+  function htmlVersTexte(html) {
+    var t = String(html)
+      .replace(/<(script|style)\b[\s\S]{0,60000}?<\/\1>/gi, ' ')
+      .replace(/<a\b[^>]{0,500}?href\s*=\s*["']([^"']{1,2000})["'][^>]{0,500}>([\s\S]{0,2000}?)<\/a>/gi, function (m, href, inner) {
+        var txt = inner.replace(/<[^>]{0,500}>/g, '').trim();
+        return txt && txt !== href ? txt + ' (' + href + ') ' : href + ' ';
+      })
+      .replace(/<br\s*\/?>|<\/(p|div|tr|li|h[1-6]|table)>/gi, '\n')
+      .replace(/<[^>]{0,2000}>/g, '')
+      .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+      .replace(/&#(\d{1,6});/g, function (m, n) { try { return String.fromCodePoint(+n); } catch (e) { return ' '; } });
+    return t.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
+  function decoderPartie(corps, cte, charset) {
+    cte = String(cte || '').toLowerCase().trim();
+    if (cte === 'quoted-printable') return decoderQP(corps, charset);
+    if (cte === 'base64') return decoderB64(corps, charset);
+    return corps;
+  }
+  /* Retourne le texte lisible d'un message MIME (partie text/plain de préférence, sinon text/html). */
+  function corpsMime(apresEntetes, h, profondeur) {
+    var ctype = h['content-type'] || '';
+    var cs = (/charset\s*=\s*"?([\w-]+)/i.exec(ctype) || [])[1];
+    if (/^\s*multipart\//i.test(ctype)) {
+      var bm = /boundary\s*=\s*"?([^";\s]+)"?/i.exec(ctype);
+      if (!bm || (profondeur || 0) >= 4) return '';
+      var parts = apresEntetes.split('--' + bm[1]);
+      var meilleur = { plain: '', html: '' };
+      for (var i = 1; i < parts.length; i++) {
+        var seg = parts[i].replace(/^\r?\n/, '');
+        if (/^--/.test(seg)) break;
+        var l = seg.split(/\r?\n/);
+        var sub = lireEntetes(l);
+        var sh = sub ? sub.entetes : {};
+        var body = sub ? l.slice(sub.suite).join('\n') : seg;
+        var ct = sh['content-type'] || 'text/plain';
+        if (/\battachment\b/i.test(sh['content-disposition'] || '')) continue;
+        if (/^\s*multipart\//i.test(ct)) { var interne = corpsMime(body, sh, (profondeur || 0) + 1); if (interne && !meilleur.plain) meilleur.plain = interne; continue; }
+        if (/^\s*text\/plain/i.test(ct) && !meilleur.plain) meilleur.plain = corpsMime(body, sh, (profondeur || 0) + 1);
+        else if (/^\s*text\/html/i.test(ct) && !meilleur.html) meilleur.html = corpsMime(body, sh, (profondeur || 0) + 1);
+      }
+      return meilleur.plain || meilleur.html;
+    }
+    var decode = decoderPartie(apresEntetes, h['content-transfer-encoding'], cs);
+    return /^\s*text\/html/i.test(ctype) ? htmlVersTexte(decode) : decode;
   }
 
   function preparer(entree) {
@@ -301,8 +390,11 @@
     var corps = texte;
     if (lu) {
       var h = lu.entetes;
+      ['from', 'de', 'subject', 'objet', 'sujet', 'reply-to', 'return-path'].forEach(function (k) { if (h[k]) h[k] = decoderMots(h[k]); });
       prep.entetes = h;
-      corps = lignes.slice(lu.suite).join('\n').replace(/^\s*\n/, '');
+      var suite = lignes.slice(lu.suite).join('\n');
+      var mime = /multipart\/|quoted-printable|base64|text\/html/i.test((h['content-type'] || '') + ' ' + (h['content-transfer-encoding'] || ''));
+      corps = mime ? (corpsMime(suite, h, 0) || suite) : suite.replace(/^\s*\n/, '');
       if (!prep.expediteur && (h.from || h['de'] || h['expéditeur'] || h['expediteur'])) { prep.expediteur = (h.from || h['de'] || h['expéditeur'] || h['expediteur']).slice(0, 300); prep.auto.expediteur = true; }
       if (!prep.objet && (h.subject || h.objet || h.sujet)) { prep.objet = (h.subject || h.objet || h.sujet).slice(0, 300); prep.auto.objet = true; }
       prep.replyTo = h['reply-to'] || '';
@@ -351,7 +443,7 @@
       liensBruts.push({ brut: String(u), champ: null, origine: 'qr' });
     });
     var lienAnalyse = liensBruts.map(function (l) {
-      var a = analyserLien(l.brut, l.origine);
+      var a = analyserLien(l.brut, l.origine, entree.domaines);
       a.champ = l.champ; a.debut = l.debut; a.fin = l.fin;
       return a;
     }).filter(function (a) { return a.hote; });
@@ -494,6 +586,12 @@
       var officielReply = revendiquees.some(function (b) { return estOfficiel(dReply, b); });
       if (!officielReply) incoh('REPONSE_DIVERGENTE', { domaine: dReply }, prep.replyTo, 'expediteur');
     }
+    var dRetour = domaineReponse(prep.returnPath);
+    if (dFrom && dRetour && domaineEnregistrable(dFrom) !== domaineEnregistrable(dRetour)) {
+      var spfValide = prep.auth && prep.auth.spf === 'pass';
+      var spfEchec = prep.auth && /^(fail|softfail|permerror)$/.test(prep.auth.spf || '');
+      if (!spfValide && (spfEchec || analyserLien(dRetour).niveau >= 1) && unique('retour|' + dRetour)) incoh('RETOUR_DIVERGENT', { domaine: dRetour }, prep.returnPath, 'expediteur');
+    }
 
     /* --- pied de page --- */
     if (prep.pied) {
@@ -510,6 +608,10 @@
     }
 
     /* --- indices (features) disponibles pour les scénarios --- */
+    lienAnalyse.forEach(function (l) {
+      var manipPresente = signaux.some(function (s) { return s.categorie === 'manipulation'; });
+      if (typeof l.ageJours === 'number' && l.ageJours < CFG.ageRecentJours && (revendiquees.length || manipPresente) && unique('recent|' + l.domaine)) incoh('DOMAINE_RECENT', { domaine: l.domaine, jours: l.ageJours }, l.domaine);
+    });
     var manipulation = signaux.filter(function (s) { return s.categorie === 'manipulation'; });
     var indices = {};
     signaux.forEach(function (s) { indices[s.id] = true; });
@@ -581,7 +683,8 @@
     if (authentifiees.length && points === 0 && !incoherences.length && niveau > CFG.plafondMarqueAuthentifiee) { niveau = CFG.plafondMarqueAuthentifiee; cliquet = true; }
 
     /* --- limites --- */
-    var limites = [R.LIMITES.age_domaine, R.LIMITES.page_destination, R.LIMITES.authenticite_expediteur];
+    var ageVerifie = lienAnalyse.some(function (l) { return typeof l.ageJours === 'number'; });
+    var limites = [ageVerifie ? R.LIMITES.reputation : R.LIMITES.age_domaine, R.LIMITES.page_destination, R.LIMITES.authenticite_expediteur];
     if (prep.type === 'email' && !prep.auth) limites.push(R.LIMITES.controles_email);
     if (!exp) limites.push(R.LIMITES.expediteur_absent);
     if (prep.tronque) limites.push(R.LIMITES.texte_tronque);
@@ -617,8 +720,22 @@
     };
   }
 
+  /* Version lisible d'un .eml ou d'un message brut : en-têtes utiles conservés (dont l'authentification), corps décodé. */
+  function nettoyerEml(brut) {
+    var texte = String(brut || '');
+    var prep = preparer({ texte: texte, type: 'email' });
+    if (!prep.entetes) return texte;
+    var h = prep.entetes, lignes = [];
+    var ajouter = function (nom, v) { if (v) lignes.push(nom + ': ' + v); };
+    ajouter('From', prep.expediteur); ajouter('Reply-To', prep.replyTo); ajouter('Return-Path', prep.returnPath); ajouter('Subject', prep.objet); ajouter('Date', h.date);
+    ajouter('Authentication-Results', h['authentication-results']); ajouter('Received-SPF', h['received-spf']);
+    if (h['dkim-signature']) ajouter('DKIM-Signature', h['dkim-signature'].slice(0, 160));
+    return lignes.join('\n') + '\n\n' + (prep.corps + (prep.pied ? '\n\n' + prep.pied : '')).trim();
+  }
+
   return {
     VERSION: R.VERSION, analyser: analyser, analyserLien: analyserLien, extraireLiens: extraireLiens, parseSender: parseSender,
-    preparer: preparer, aplatir: aplatir, testerRegle: testerRegle, domaineEnregistrable: domaineEnregistrable
+    preparer: preparer, aplatir: aplatir, testerRegle: testerRegle, domaineEnregistrable: domaineEnregistrable, nettoyerEml: nettoyerEml,
+    decoderMots: decoderMots, htmlVersTexte: htmlVersTexte
   };
 });

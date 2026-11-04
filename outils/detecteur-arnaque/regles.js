@@ -44,6 +44,8 @@
     portsUsuels: [80, 443],
     // Nombre minimal de tirets dans un nom de domaine pour le juger « à rallonge ».
     tiretsExcessifs: 2,
+    // Un domaine enregistré depuis moins de ce nombre de jours est dit « récent » (vérification RDAP facultative).
+    ageRecentJours: 30,
     // Longueur minimale d'un mot-clé de marque pour le chercher à l'intérieur d'un nom de domaine.
     longueurMinMotMarque: 5,
     // Un message de cette longueur ou moins est « court » : une marque citée n'importe où est alors réputée revendiquée.
@@ -204,6 +206,7 @@
     IP_BRUTE: { niveau: 2, libelle: 'Adresse IP au lieu d\'un nom de site', explication: 'Les organismes sérieux utilisent un nom de site, pas une suite de chiffres.' },
     PUNYCODE: { niveau: 2, libelle: 'Adresse avec caractères spéciaux (technique d\'homographe)', explication: 'Des caractères d\'autres alphabets, ressemblant à des lettres latines, permettent de fabriquer une adresse qui paraît identique à l\'officielle.' },
     MARQUE_TIERS: { niveau: 3, libelle: 'Le nom d\'une marque apparaît dans une adresse qui n\'est pas la sienne', explication: 'Cette adresse reprend le nom de l\'organisme (parfois avec un chiffre à la place d\'une lettre) sans être son adresse officielle : c\'est la technique du « domaine sosie ».' },
+    DOMAINE_RECENT: { niveau: 2, libelle: 'Domaine enregistré depuis moins de 30 jours', explication: 'Les faux sites sont presque toujours très récents : un site créé il y a quelques jours qui réclame un paiement ou une connexion est un signal fort. Cette date a été lue auprès du service public RDAP, à votre demande.' },
     SOUS_DOMAINE_TROMPEUR: { niveau: 3, libelle: 'L\'adresse officielle est placée devant un autre domaine', explication: 'Seule la dernière partie d\'une adresse compte : dans « amazon.fr.secure-login.top », le site réel est « secure-login.top », pas Amazon.' },
     USERINFO: { niveau: 3, libelle: 'Faux identifiant placé devant l\'adresse (avant le « @ »)', explication: 'Dans « https://amazon.fr@evil.top », ce qui précède le « @ » est ignoré : le site réel est « evil.top ».' }
   };
@@ -215,6 +218,7 @@
   var LIMITES = {
     age_domaine: 'L\'âge et la réputation du site derrière chaque lien : un site créé il y a quelques jours est un signal fort, qu\'une analyse du texte seul ne peut pas mesurer.',
     page_destination: 'Le contenu de la page de destination : seul le texte de l\'adresse est examiné, jamais la page elle-même.',
+    reputation: 'La réputation des sites derrière les liens (listes de blocage, signalements) : cet outil ne consulte aucune liste. Seul l\'âge des domaines a été vérifié, à votre demande.',
     authenticite_expediteur: 'Que le message vienne vraiment de l\'expéditeur affiché : un nom, un numéro ou une adresse peuvent être usurpés.',
     controles_email: 'Les contrôles techniques de l\'e-mail (SPF, DKIM, DMARC), faute d\'en-têtes complets : collez le message brut pour qu\'ils soient lus.',
     expediteur_absent: 'L\'expéditeur, non renseigné : un numéro ou une adresse incohérents sont parmi les indices les plus fiables.',
@@ -235,6 +239,8 @@
     NUMERO_ETRANGER_OFFICIEL: { force: 'forte', libelle: 'Numéro étranger pour un message « officiel »', explication: 'Ce numéro commence par un indicatif étranger ({numero}). Les organismes français écrivent depuis des numéros français ou des numéros courts.', fiche: 'sms' },
     AUTHENTIFICATION_ECHEC: { force: 'forte', libelle: 'Les contrôles techniques de l\'e-mail ont échoué', explication: 'Les en-têtes indiquent un échec de vérification ({controles}) : l\'expéditeur n\'est pas authentifié pour ce domaine.', fiche: 'phishing' },
     REPONSE_DIVERGENTE: { force: 'forte', libelle: 'L\'adresse de réponse diffère de l\'adresse d\'envoi', explication: 'Les réponses partiraient vers « {domaine} », un autre domaine que l\'expéditeur affiché : technique courante pour récupérer vos réponses.', fiche: 'phishing' },
+    RETOUR_DIVERGENT: { force: 'forte', libelle: 'Le chemin de retour de l\'e-mail diffère de l\'expéditeur affiché', explication: 'L\'adresse technique d\'envoi (Return-Path) pointe vers « {domaine} », un domaine sans rapport avec l\'expéditeur affiché, et la vérification SPF ne la valide pas.', fiche: 'phishing' },
+    DOMAINE_RECENT: { force: 'forte', libelle: 'Le site derrière le lien est très récent', explication: 'Le domaine « {domaine} » a été enregistré il y a {jours} jour(s) seulement. Les faux sites sont presque toujours récents.', fiche: 'phishing' },
     IDN_EXPEDITEUR: { force: 'forte', libelle: 'Domaine d\'expédition avec caractères spéciaux (homographe)', explication: 'Certains caractères d\'autres alphabets ressemblent à des lettres latines et permettent de fabriquer une adresse qui paraît identique à l\'officielle.', fiche: 'phishing' }
   };
 
