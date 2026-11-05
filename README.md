@@ -298,6 +298,10 @@ Photos intégrées :
   [source](https://commons.wikimedia.org/wiki/File:Telegram_app_icon_on_smartphone_screen_(perspective_render)_(49896396508).jpg),
   [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/), image recadrée et redimensionnée.
   Photo d'illustration de la tribune « Macron sur Telegram : vous êtes sérieux ? ».
+- Rayon de surgelés d'un supermarché Dia : Pierre Rudloff,
+  [source](https://commons.wikimedia.org/wiki/File:Dia_int%C3%A9rieur.JPG),
+  domaine public, image recadrée et redimensionnée.
+  Photo d'illustration de l'article sur les frigos de supermarchés piratés.
 
 Les articles proposent des vignettes pour les guides liés et des liens de
 partage Facebook, X et LinkedIn utilisant son URL publique canonique. Pour
