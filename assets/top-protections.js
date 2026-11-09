@@ -1,8 +1,62 @@
+const addBitdefenderCard = panel => {
+  if (panel.id !== 'panel-antivirus') return;
+  const grid = panel.querySelector('.best-sellers-grid');
+  const affiliateUrl = 'https://bitdefender.f9tmep.net/c/7824654/827481/4466';
+  if (!grid || [...grid.querySelectorAll('.best-seller-card')].some(card => card.href === affiliateUrl)) return;
+
+  const card = document.createElement('a');
+  card.href = affiliateUrl;
+  card.target = '_blank';
+  card.rel = 'sponsored noopener';
+  card.className = 'best-seller-card';
+
+  const header = document.createElement('div');
+  header.className = 'seller-card-header';
+  const label = document.createElement('span');
+  label.className = 'product-label';
+  label.textContent = 'Antivirus';
+  const logo = document.createElement('img');
+  logo.className = 'seller-card-brand-logo';
+  logo.src = '/assets/img/provider-logos/bitdefender.png';
+  logo.width = 190;
+  logo.height = 28;
+  logo.loading = 'lazy';
+  logo.decoding = 'async';
+  logo.alt = 'Bitdefender';
+  header.append(label, logo);
+  card.append(header);
+
+  const feature = document.createElement('p');
+  feature.className = 'seller-feature';
+  feature.textContent = '-50 % sur les formules';
+  card.append(feature);
+
+  const features = document.createElement('ul');
+  features.className = 'seller-features';
+  [
+    'Dès 25 € la première année (3 appareils)',
+    'Jusqu’à 5 appareils · Windows, macOS, Android et iOS',
+    'VPN illimité avec Premium Security'
+  ].forEach(text => {
+    const item = document.createElement('li');
+    item.textContent = text;
+    features.append(item);
+  });
+  card.append(features);
+
+  const cta = document.createElement('span');
+  cta.className = 'seller-card-cta';
+  cta.textContent = 'En savoir plus →';
+  card.append(cta);
+  grid.append(card);
+};
+
 document.querySelectorAll('.best-sellers-section').forEach(section => {
   const tabs = [...section.querySelectorAll('.home-category-tab')];
   const panels = [...section.querySelectorAll('.home-category-panel')];
 
   panels.forEach(panel => {
+    addBitdefenderCard(panel);
     const grid = panel.querySelector('.best-sellers-grid');
     const cards = [...panel.querySelectorAll('.best-seller-card')];
     if (!grid || cards.length <= 3) return;
