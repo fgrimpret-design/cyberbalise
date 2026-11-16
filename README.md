@@ -302,6 +302,10 @@ Photos intégrées :
   [source](https://commons.wikimedia.org/wiki/File:Dia_int%C3%A9rieur.JPG),
   domaine public, image recadrée et redimensionnée.
   Photo d'illustration de l'article sur les frigos de supermarchés piratés.
+- Exercice de cyberopérations Balikatan 2026 (Manille, 23 avril 2026) : Seaman Donald Freeman, U.S. Navy,
+  [source](https://commons.wikimedia.org/wiki/File:Balikatan_2026_-_French_armed_forces_participate_in_Cyber_Operations_Exercise_8-9.jpg),
+  domaine public (photographie officielle du gouvernement américain), image redimensionnée.
+  Photo d'illustration du dossier « La France est-elle une puissance cyber ? » ; elle montre des militaires du régiment cyber français et canadiens, sans lien avec une allégation du dossier.
 
 Les articles proposent des vignettes pour les guides liés et des liens de
 partage Facebook, X et LinkedIn utilisant son URL publique canonique. Pour
