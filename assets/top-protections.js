@@ -18,7 +18,8 @@ const CB_AFFILIATE_RULES = [
   { host: 'plrvq.com', param: 'subid' },
   { host: 'www.dpbolvw.net', param: 'sid', stale: ['comparatif-vpn'], keep: () => location.pathname === '/offres/vpn/' },
   { host: 'www.jdoqocy.com', test: u => /click-101904907-15554461$/.test(u.pathname), param: 'sid' },
-  { host: 'bitdefender.f9tmep.net', param: 'subId1' }
+  { host: 'bitdefender.f9tmep.net', param: 'subId1' },
+  { host: 'wbbsv.com', param: 'subid' }
 ];
 
 function cbPatchAffiliateLinks() {
@@ -48,57 +49,88 @@ function cbPatchAffiliateLinks() {
 cbRemoveDiscontinuedCards();
 cbPatchAffiliateLinks();
 
-const addBitdefenderCard = panel => {
-  if (panel.id !== 'panel-antivirus') return;
-  const grid = panel.querySelector('.best-sellers-grid');
-  const affiliateUrl = 'https://bitdefender.f9tmep.net/c/7824654/827481/4466';
-  if (!grid || [...grid.querySelectorAll('.best-seller-card')].some(card => card.href.startsWith(affiliateUrl))) return;
+const CB_PARTNER_CARDS = [
+  {
+    panel: 'panel-antivirus',
+    url: 'https://bitdefender.f9tmep.net/c/7824654/827481/4466',
+    param: '?subId1=',
+    label: 'Antivirus',
+    logo: '/assets/img/provider-logos/bitdefender.png',
+    width: 190,
+    height: 28,
+    name: 'Bitdefender',
+    feature: '-50 % sur les formules',
+    features: [
+      'Dès 25 € la première année (3 appareils)',
+      'Jusqu’à 5 appareils · Windows, macOS, Android et iOS',
+      'VPN illimité avec Premium Security'
+    ]
+  },
+  {
+    panel: 'panel-passwords',
+    url: 'https://wbbsv.com/g/0m2otdnpmp7c685e2c99d35fce75bd/?ulp=https%3A%2F%2Fwww.lastpass.com%2Ffr%2Fproducts%2Fpremium-password-manager',
+    param: '&subid=',
+    label: 'Gestionnaire MDP',
+    logo: '/assets/img/provider-logos/lastpass-logo.svg',
+    width: 128,
+    height: 44,
+    name: 'LastPass',
+    feature: 'Essai gratuit de 30 jours',
+    features: [
+      'Premium : 2,90 € par mois, facturé annuellement',
+      'Families : 3,90 € par mois pour 6 comptes',
+      'Formule Free sur un seul type d’appareil'
+    ]
+  }
+];
 
-  const card = document.createElement('a');
-  card.href = affiliateUrl + '?subId1=' + cbPageSlug();
-  card.target = '_blank';
-  card.rel = 'sponsored noopener';
-  card.className = 'best-seller-card';
+const addPartnerCards = panel => {
+  CB_PARTNER_CARDS.filter(cfg => cfg.panel === panel.id).forEach(cfg => {
+    const grid = panel.querySelector('.best-sellers-grid');
+    if (!grid || [...grid.querySelectorAll('.best-seller-card')].some(card => card.href.startsWith(cfg.url))) return;
 
-  const header = document.createElement('div');
-  header.className = 'seller-card-header';
-  const label = document.createElement('span');
-  label.className = 'product-label';
-  label.textContent = 'Antivirus';
-  const logo = document.createElement('img');
-  logo.className = 'seller-card-brand-logo';
-  logo.src = '/assets/img/provider-logos/bitdefender.png';
-  logo.width = 190;
-  logo.height = 28;
-  logo.loading = 'lazy';
-  logo.decoding = 'async';
-  logo.alt = 'Bitdefender';
-  header.append(label, logo);
-  card.append(header);
+    const card = document.createElement('a');
+    card.href = cfg.url + cfg.param + cbPageSlug();
+    card.target = '_blank';
+    card.rel = 'sponsored noopener';
+    card.className = 'best-seller-card';
 
-  const feature = document.createElement('p');
-  feature.className = 'seller-feature';
-  feature.textContent = '-50 % sur les formules';
-  card.append(feature);
+    const header = document.createElement('div');
+    header.className = 'seller-card-header';
+    const label = document.createElement('span');
+    label.className = 'product-label';
+    label.textContent = cfg.label;
+    const logo = document.createElement('img');
+    logo.className = 'seller-card-brand-logo';
+    logo.src = cfg.logo;
+    logo.width = cfg.width;
+    logo.height = cfg.height;
+    logo.loading = 'lazy';
+    logo.decoding = 'async';
+    logo.alt = cfg.name;
+    header.append(label, logo);
+    card.append(header);
 
-  const features = document.createElement('ul');
-  features.className = 'seller-features';
-  [
-    'Dès 25 € la première année (3 appareils)',
-    'Jusqu’à 5 appareils · Windows, macOS, Android et iOS',
-    'VPN illimité avec Premium Security'
-  ].forEach(text => {
-    const item = document.createElement('li');
-    item.textContent = text;
-    features.append(item);
+    const feature = document.createElement('p');
+    feature.className = 'seller-feature';
+    feature.textContent = cfg.feature;
+    card.append(feature);
+
+    const features = document.createElement('ul');
+    features.className = 'seller-features';
+    cfg.features.forEach(text => {
+      const item = document.createElement('li');
+      item.textContent = text;
+      features.append(item);
+    });
+    card.append(features);
+
+    const cta = document.createElement('span');
+    cta.className = 'seller-card-cta';
+    cta.textContent = 'En savoir plus →';
+    card.append(cta);
+    grid.append(card);
   });
-  card.append(features);
-
-  const cta = document.createElement('span');
-  cta.className = 'seller-card-cta';
-  cta.textContent = 'En savoir plus →';
-  card.append(cta);
-  grid.append(card);
 };
 
 document.querySelectorAll('.best-sellers-section').forEach(section => {
@@ -106,7 +138,7 @@ document.querySelectorAll('.best-sellers-section').forEach(section => {
   const panels = [...section.querySelectorAll('.home-category-panel')];
 
   panels.forEach(panel => {
-    addBitdefenderCard(panel);
+    addPartnerCards(panel);
     const grid = panel.querySelector('.best-sellers-grid');
     const cards = [...panel.querySelectorAll('.best-seller-card')];
     if (!grid || cards.length <= 3) return;
