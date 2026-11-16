@@ -133,12 +133,27 @@ const addPartnerCards = panel => {
   });
 };
 
+const CB_CARD_ORDER = { 'panel-antivirus': ['Bitdefender', 'Surfshark', 'Panda', 'Malwarebytes', 'Intego'] };
+
+const sortPanelCards = panel => {
+  const order = CB_CARD_ORDER[panel.id];
+  const grid = panel.querySelector('.best-sellers-grid');
+  if (!order || !grid) return;
+  const rank = card => {
+    const alt = (card.querySelector('img') || {}).alt || '';
+    const index = order.findIndex(name => alt.startsWith(name));
+    return index < 0 ? order.length : index;
+  };
+  [...grid.querySelectorAll('.best-seller-card')].sort((a, b) => rank(a) - rank(b)).forEach(card => grid.append(card));
+};
+
 document.querySelectorAll('.best-sellers-section').forEach(section => {
   const tabs = [...section.querySelectorAll('.home-category-tab')];
   const panels = [...section.querySelectorAll('.home-category-panel')];
 
   panels.forEach(panel => {
     addPartnerCards(panel);
+    sortPanelCards(panel);
     const grid = panel.querySelector('.best-sellers-grid');
     const cards = [...panel.querySelectorAll('.best-seller-card')];
     if (!grid || cards.length <= 3) return;
