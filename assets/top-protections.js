@@ -1,11 +1,61 @@
+/* Hygiène des liens affiliés : s'applique à toutes les pages qui chargent ce script. */
+function cbPageSlug() {
+  const path = location.pathname.replace(/^\/+|\/+$/g, '').replace(/\/+/g, '-');
+  return (path || 'home').toLowerCase().replace(/[^a-z0-9-]/g, '-').slice(0, 40).replace(/-+$/, '');
+}
+
+function cbRemoveDiscontinuedCards() {
+  document.querySelectorAll('a.best-seller-card').forEach(card => {
+    if (/privadovpn\.com|stickypassword\.com/.test(card.href)) card.remove();
+  });
+}
+
+const CB_INTEGO_CLICK_URL = 'https://www.tkqlhce.com/click-101904907-15733644?sid=intego-antivirus';
+const CB_AFFILIATE_RULES = [
+  { host: 'click.linksynergy.com', test: u => u.searchParams.get('offerid') === '2065364.2', param: 'subid', stale: ['0'] },
+  { host: 'grfpr.com', param: 'subid' },
+  { host: 'ntzgd.com', param: 'subid' },
+  { host: 'plrvq.com', param: 'subid' },
+  { host: 'www.dpbolvw.net', param: 'sid', stale: ['comparatif-vpn'], keep: () => location.pathname === '/offres/vpn/' },
+  { host: 'www.jdoqocy.com', test: u => /click-101904907-15554461$/.test(u.pathname), param: 'sid' },
+  { host: 'bitdefender.f9tmep.net', param: 'subId1' }
+];
+
+function cbPatchAffiliateLinks() {
+  const slug = cbPageSlug();
+  document.querySelectorAll('a[href^="http"]').forEach(a => {
+    let url;
+    try { url = new URL(a.href); } catch (e) { return; }
+
+    if (url.hostname === 'www.intego.com' && url.pathname === '/fr/products/intego-one-mac' && url.searchParams.get('utm_source') === 'CJ') {
+      a.href = CB_INTEGO_CLICK_URL;
+      return;
+    }
+
+    const rule = CB_AFFILIATE_RULES.find(r => r.host === url.hostname && (!r.test || r.test(url)));
+    if (!rule) return;
+    const current = url.searchParams.get(rule.param);
+    const missing = current === null || current === '';
+    const stale = rule.stale && rule.stale.includes(current) && !(rule.keep && rule.keep());
+    if (missing || stale) {
+      url.searchParams.set(rule.param, slug);
+      a.href = url.toString();
+    }
+    ['sponsored', 'noopener'].forEach(token => { if (!a.relList.contains(token)) a.relList.add(token); });
+  });
+}
+
+cbRemoveDiscontinuedCards();
+cbPatchAffiliateLinks();
+
 const addBitdefenderCard = panel => {
   if (panel.id !== 'panel-antivirus') return;
   const grid = panel.querySelector('.best-sellers-grid');
   const affiliateUrl = 'https://bitdefender.f9tmep.net/c/7824654/827481/4466';
-  if (!grid || [...grid.querySelectorAll('.best-seller-card')].some(card => card.href === affiliateUrl)) return;
+  if (!grid || [...grid.querySelectorAll('.best-seller-card')].some(card => card.href.startsWith(affiliateUrl))) return;
 
   const card = document.createElement('a');
-  card.href = affiliateUrl;
+  card.href = affiliateUrl + '?subId1=' + cbPageSlug();
   card.target = '_blank';
   card.rel = 'sponsored noopener';
   card.className = 'best-seller-card';

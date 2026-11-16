@@ -18,6 +18,10 @@ Redirect gone /offres/formations/
 # 4. Outil supprimé : on renvoie vers le détecteur d'arnaque
 Redirect 301 /outils/risque-sms/ /outils/detecteur-arnaque/
 
+# 4. Fiches partenaires retirées : on renvoie vers les comparatifs correspondants
+Redirect 301 /offres/vpn/privado-vpn/ /offres/vpn/
+Redirect 301 /offres/gestionnaires-mots-de-passe/sticky-password/ /offres/gestionnaires-mots-de-passe/
+
 # 4. Page d'erreur
 ErrorDocument 404 /404.html
 
@@ -42,6 +46,12 @@ Options -Indexes
   ExpiresByType image/svg+xml "access plus 1 month"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+# Scripts et styles partagés modifiables : revalidation fréquente (le ?v= n'est pas changé sur ~150 pages)
+<IfModule mod_headers.c>
+  <FilesMatch "^(top-protections\.js|offres-landing\.js|offres-landing\.css)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
 </IfModule>
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml text/csv
