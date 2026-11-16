@@ -288,7 +288,7 @@ tbody tr:hover{background:#F6F8FA}
   .mq-track{animation:none}
   .acard{transition:none}
 }
-</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261104-mobile"><link rel="stylesheet" href="/assets/trustpilot.css?v=20261031-trustpilot"><link rel="stylesheet" href="/assets/vpn-landing.css?v=20261116">
+</style><link rel="stylesheet" href="/assets/site-spacing.css?v=20261104-mobile"><link rel="stylesheet" href="/assets/trustpilot.css?v=20261031-trustpilot"><link rel="stylesheet" href="/assets/offres-landing.css?v=20261116">
 <style>
 .vpn-comparator-section .vpn-price{color:#1769F5}
 .vpn-card-logo.vpn-card-logo--wide{height:34px;width:auto;max-width:100%;object-fit:contain;object-position:left center}
@@ -427,10 +427,10 @@ tbody tr:hover{background:#F6F8FA}
       </div>
       <div>
         <div class="lp-q-options" role="group" aria-label="Votre priorité">
-          <button type="button" data-pick="privado">Le prix le plus bas possible</button>
-          <button type="button" data-pick="surfshark">Un VPN et un antivirus dans le même abonnement</button>
-          <button type="button" data-pick="nord">La marque la plus connue</button>
-          <button type="button" data-pick="hideme">Tester gratuitement, sans mauvaise surprise ensuite</button>
+          <button type="button" data-name="Privado VPN — dès 1,32 € par mois" data-text="−87 % + 3 mois offerts sur 24 mois, 10 connexions, offre gratuite de 10 Go par mois pour tester." data-url="https://privadovpn.com/getprivadovpn/#a_aid=cyberbalise">Le prix le plus bas possible</button>
+          <button type="button" data-name="Surfshark One — 2,49 € par mois" data-text="VPN à appareils illimités avec antivirus et alerte fuites de données (67,23 € HT les 27 premiers mois)." data-url="https://www.jdoqocy.com/click-101904907-15554461">Un VPN et un antivirus dans le même abonnement</button>
+          <button type="button" data-name="NordVPN — dès 3,49 € par mois" data-text="−78 % + 3 mois offerts (au lieu de 11,59 €), 10 appareils simultanés, garantie 30 jours." data-url="https://www.dpbolvw.net/click-101904907-12814529?sid=comparatif-vpn">La marque la plus connue</button>
+          <button type="button" data-name="hide.me VPN — dès 2,69 € par mois" data-text="Offre gratuite pour tester, prix identique au renouvellement, 10 appareils en payant, garantie 30 jours." data-url="https://hide.me/fr/?friend=cyberbalise">Tester gratuitement, sans mauvaise surprise ensuite</button>
         </div>
         <div class="lp-q-result" id="lp-q-result" aria-live="polite">
           <strong id="lp-q-name"></strong>
@@ -524,32 +524,7 @@ tbody tr:hover{background:#F6F8FA}
 </section>
 <div class="lp-sticky" id="lp-sticky"><span>VPN jusqu’à −88 %</span><a class="lp-btn" href="#offres">Voir les offres →</a></div>
 </div>
-<script>
-(function(){
-  var picks={
-    privado:{n:'Privado VPN — dès 1,32 € par mois',t:'−87 % + 3 mois offerts sur 24 mois, 10 connexions, offre gratuite de 10 Go par mois pour tester.',u:'https://privadovpn.com/getprivadovpn/#a_aid=cyberbalise'},
-    surfshark:{n:'Surfshark One — 2,49 € par mois',t:'VPN à appareils illimités avec antivirus et alerte fuites de données (67,23 € HT les 27 premiers mois).',u:'https://www.jdoqocy.com/click-101904907-15554461'},
-    nord:{n:'NordVPN — dès 3,49 € par mois',t:'−78 % + 3 mois offerts (au lieu de 11,59 €), 10 appareils simultanés, garantie 30 jours.',u:'https://www.dpbolvw.net/click-101904907-12814529?sid=comparatif-vpn'},
-    hideme:{n:'hide.me VPN — dès 2,69 € par mois',t:'Offre gratuite pour tester, prix identique au renouvellement, 10 appareils en payant, garantie 30 jours.',u:'https://hide.me/fr/?friend=cyberbalise'}
-  };
-  var res=document.getElementById('lp-q-result');
-  var buttons=document.querySelectorAll('.lp-q-options button');
-  buttons.forEach(function(b){b.addEventListener('click',function(){
-    buttons.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
-    var p=picks[b.dataset.pick];
-    document.getElementById('lp-q-name').textContent=p.n;
-    document.getElementById('lp-q-text').textContent=p.t;
-    document.getElementById('lp-q-link').href=p.u;
-    res.classList.add('show');
-  });});
-  var bar=document.getElementById('lp-sticky'),art=document.querySelector('article.page');
-  function sync(){
-    if(!bar||!art)return;
-    bar.classList.toggle('on',window.scrollY>600&&art.getBoundingClientRect().top>window.innerHeight*0.6);
-  }
-  window.addEventListener('scroll',sync,{passive:true});sync();
-})();
-</script>
+<script src="/assets/offres-landing.js?v=20261116" defer></script>
 <div class="wrap"><article class="page"><!-- CB-CONTENU:DEBUT --><h2 id="comparatif-vpn-ce-qui-compte-vraiment">Neuf VPN passés au crible : ce qui compte vraiment et les pièges de tarification</h2>
 <p class="caption">Guide comparatif — mis à jour le 28 octobre 2026 · Lecture estimée : 10 minutes</p>
 <div class="note"><p>Caractéristiques et tarifs relevés sur les sites officiels : le 1er octobre 2026 pour NordVPN et Proton VPN, le 21 octobre 2026 pour PureVPN, hide.me VPN, Privado VPN et FastestVPN, le 22 octobre 2026 pour Turbo VPN et Surfshark. Les offres promotionnelles affichées sur les cartes (réductions, prix par mois) ont été relevées le 21 octobre 2026 (22 octobre pour Turbo VPN et Surfshark) sur les pages d’offres de chaque éditeur, accessibles via nos liens partenaires. Les prix promotionnels varient selon la formule, la devise et la période, et peuvent changer. Vérifiez le montant total, la durée et le renouvellement sur le site officiel avant de payer. Les prix affichés en dollars par certains éditeurs sont convertis en euros au taux de référence de la BCE du 22 octobre 2026 (1 € = 1,1205 $) et arrondis.</p></div>

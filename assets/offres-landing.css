@@ -103,6 +103,11 @@
 .lp-guarantee p{color:#C9D7E4;margin:0}
 
 .lp-sticky{display:none}
+.lp-brandrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.lp-brandrow img{width:32px;height:32px;margin:0;object-fit:contain}
+.lp-brandrow b{font:800 1.3rem 'Archivo',system-ui,sans-serif;color:var(--lp-navy);letter-spacing:-.02em}
+.lp-offer .lp-brandrow{margin:0}
+.lp-offer .lp-brandrow b{font-size:1.1rem}
 
 @media(max-width:960px){
   .lp-hero-grid{grid-template-columns:1fr}
