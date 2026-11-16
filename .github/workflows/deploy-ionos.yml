@@ -53,4 +53,4 @@ jobs:
           SFTP_PASS: ${{ secrets.IONOS_SFTP_PASSWORD }}
         run: |
           sudo apt-get install -y lftp > /dev/null
-          lftp -u "$SFTP_USER","$SFTP_PASS" "sftp://$SFTP_HOST:22" -e "set sftp:auto-confirm yes; set cmd:fail-exit no; rm -f /Newpublic/outils/risque-sms/index.html; rmdir /Newpublic/outils/risque-sms; bye"
+          lftp -u "$SFTP_USER","$SFTP_PASS" "sftp://$SFTP_HOST:22" -e "set sftp:auto-confirm yes; set cmd:fail-exit no; rm -f /Newpublic/outils/risque-sms/index.html; rmdir /Newpublic/outils/risque-sms; rm -f /Newpublic/offres/vpn/privado-vpn/index.html; rmdir /Newpublic/offres/vpn/privado-vpn; rm -f /Newpublic/offres/gestionnaires-mots-de-passe/sticky-password/index.html; rmdir /Newpublic/offres/gestionnaires-mots-de-passe/sticky-password; bye"
