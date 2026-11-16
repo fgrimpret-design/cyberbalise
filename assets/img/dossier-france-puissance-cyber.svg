@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="853" viewBox="0 0 1280 853" role="img" aria-label="Illustration : une balise émet un signal en cercles concentriques sur fond bleu nuit.">
+  <defs>
+    <radialGradient id="glow" cx="75%" cy="30%" r="60%">
+      <stop offset="0" stop-color="#E4572E" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#E4572E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="853" fill="#16344E"/>
+  <rect width="1280" height="853" fill="url(#glow)"/>
+  <g fill="none" stroke="#E4572E" stroke-width="3">
+    <circle cx="640" cy="330" r="110" opacity=".6"/>
+    <circle cx="640" cy="330" r="220" opacity=".42"/>
+    <circle cx="640" cy="330" r="340" opacity=".28"/>
+    <circle cx="640" cy="330" r="470" opacity=".16"/>
+  </g>
+  <g stroke="#F7F4EE" stroke-width="8" opacity=".9" stroke-linecap="round">
+    <line x1="640" y1="352" x2="640" y2="760"/>
+    <line x1="540" y1="760" x2="740" y2="760"/>
+  </g>
+  <circle cx="640" cy="330" r="22" fill="#E4572E"/>
+</svg>

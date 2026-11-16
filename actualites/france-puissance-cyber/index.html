@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La France est-elle une puissance cyber ? — Dossier CyberBalise</title>
+<meta name="description" content="Quatre milliards d'euros, 3 500 cybercombattants, une doctrine offensive, mais des fuites de données en série et NIS 2 toujours pas votée : radiographie de la puissance cyber française.">
+<meta property="og:title" content="La France est-elle une puissance cyber ?">
+<meta property="og:description" content="Radiographie d'une ambition de « premier rang » : moyens, doctrine, industrie, angles morts.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CyberBalise">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://cyberbalise.fr/actualites/france-puissance-cyber/">
+<meta property="article:published_time" content="2026-11-10">
+<meta name="theme-color" content="#16344E">
+<link rel="canonical" href="https://cyberbalise.fr/actualites/france-puissance-cyber/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/cookie-consent.css">
+<style>
+  :root{
+    --navy:#16344E;
+    --navy-deep:#0E2437;
+    --ink:#1B2A38;
+    --paper:#FAF8F4;
+    --paper-2:#F2EEE6;
+    --teal:#0B545C;
+    --orange:#E4572E;
+    --orange-soft:#F5A085;
+    --rule:#D9D2C6;
+    --muted:#5E6B75;
+    --disp:'Archivo',system-ui,-apple-system,sans-serif;
+    --body:'Source Serif 4',Georgia,serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --measure:44rem;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:1.1875rem;line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:hover{color:var(--orange)}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  img,svg{max-width:100%}
+
+  /* ---------- progress ---------- */
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--orange);z-index:60}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    border-bottom:1px solid var(--rule);background:var(--paper);
+    padding:.85rem 0;position:relative;z-index:5;
+  }
+  .masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{
+    font-family:var(--disp);font-weight:800;letter-spacing:.14em;
+    font-size:.82rem;text-transform:uppercase;color:var(--navy);text-decoration:none;white-space:nowrap;
+  }
+  .brand .bracket{color:var(--orange);font-weight:700}
+  .masthead .label{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .wrap{width:100%;max-width:74rem;margin:0 auto;padding:0 1.4rem}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--navy);color:#F7F4EE;position:relative;overflow:hidden}
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 80% at 88% 10%, rgba(228,87,46,.16), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,.16), transparent 40%);
+  }
+  .hero .wrap{position:relative;z-index:2;padding-top:3.2rem;padding-bottom:3rem}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:2rem;align-items:end}
+  .kicker{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--orange-soft);margin:0 0 1.4rem;display:flex;align-items:center;gap:.7rem;
+  }
+  .kicker::before{content:"";width:2.1rem;height:1px;background:var(--orange-soft);display:block}
+  h1{
+    font-family:var(--disp);font-weight:800;font-size:clamp(2.5rem,6.2vw,4.6rem);
+    line-height:.98;letter-spacing:-.025em;margin:0 0 1.4rem;text-wrap:balance;color:#FFFDF8;
+  }
+  h1 em{font-style:normal;color:var(--orange-soft)}
+  .standfirst{
+    font-family:var(--body);font-weight:300;font-size:clamp(1.08rem,2.1vw,1.36rem);
+    line-height:1.5;color:#DCE3E9;max-width:38rem;margin:0 0 1.9rem;
+  }
+  .byline{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    color:#A9B8C4;display:flex;flex-wrap:wrap;gap:.45rem 1.2rem;margin:0;
+  }
+  .byline span{display:inline-flex;align-items:center;gap:.45rem}
+  .byline .dot{width:4px;height:4px;background:var(--orange);border-radius:50%;display:inline-block}
+  .beacon{opacity:.9;align-self:end;justify-self:end}
+  .beacon .ring{fill:none;stroke:var(--orange);stroke-width:1.1;opacity:.55}
+  .beacon .ring:nth-child(2){opacity:.4}
+  .beacon .ring:nth-child(3){opacity:.26}
+  .beacon .mast{stroke:#F7F4EE;stroke-width:2;opacity:.85}
+  .beacon .tip{fill:var(--orange)}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr}.beacon{display:none}}
+
+  /* ---------- article shell ---------- */
+  main{padding:0 0 5rem}
+  .col{max-width:var(--measure);margin:0 auto;padding:0 1.4rem}
+  .wide{max-width:60rem;margin:0 auto;padding:0 1.4rem}
+
+  .docnote{
+    border:1px solid var(--rule);border-left:3px solid var(--teal);
+    background:#FFFDF9;padding:1rem 1.15rem;margin:2.2rem auto 0;max-width:var(--measure);
+    font-family:var(--disp);font-size:.85rem;line-height:1.55;color:var(--muted);
+  }
+  .docnote strong{color:var(--navy);font-weight:600}
+
+  /* ---------- essential ---------- */
+  .essential{background:var(--navy-deep);color:#EDE9E1;margin:2.6rem 0 0}
+  .essential .inner{max-width:var(--measure);margin:0 auto;padding:2rem 1.4rem 2.1rem}
+  .essential .tag{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--orange-soft);margin:0 0 1.2rem;display:flex;align-items:center;gap:.6rem;
+  }
+  .essential .tag::after{content:"";flex:1;height:1px;background:rgba(245,160,133,.3)}
+  .essential ul{margin:0;padding:0;list-style:none;display:grid;gap:1.15rem}
+  .essential li{display:grid;grid-template-columns:1.9rem 1fr;gap:.7rem;font-size:1.03rem;line-height:1.55}
+  .essential .n{font-family:var(--mono);font-size:.78rem;color:var(--orange-soft);padding-top:.22rem}
+  .essential b{color:#FFFDF8;font-weight:600}
+  .essential li span{color:#C9D3DB}
+
+  /* ---------- toc ---------- */
+  .toc{max-width:var(--measure);margin:2.8rem auto 0;padding:0 1.4rem}
+  .toc h2{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 1rem;font-weight:500;
+  }
+  .toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:2.4rem;border-top:1px solid var(--rule)}
+  .toc li{break-inside:avoid;border-bottom:1px solid var(--rule)}
+  .toc a{display:flex;gap:.7rem;padding:.58rem 0;text-decoration:none;color:var(--ink);font-family:var(--disp);font-size:.92rem;line-height:1.35}
+  .toc a:hover{color:var(--orange)}
+  .toc .num{font-family:var(--mono);font-size:.74rem;color:var(--orange);padding-top:.15rem}
+  @media(max-width:640px){.toc ol{columns:1}}
+
+  /* ---------- sections ---------- */
+  .section{padding-top:3.4rem}
+  .section .num{
+    font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;color:var(--orange);
+    display:block;margin-bottom:.7rem;
+  }
+  h2.sec{
+    font-family:var(--disp);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.2rem);
+    line-height:1.12;letter-spacing:-.015em;margin:0 0 1.2rem;color:var(--navy);text-wrap:balance;
+  }
+  h3{
+    font-family:var(--disp);font-weight:600;font-size:1.12rem;line-height:1.3;
+    margin:2rem 0 .6rem;color:var(--navy);letter-spacing:-.005em;
+  }
+  p{margin:0 0 1.15rem}
+  .lede{font-size:1.3rem;line-height:1.5;color:#25323E;font-weight:300}
+  .dropcap::first-letter{
+    float:left;font-family:var(--disp);font-weight:800;font-size:4.1rem;line-height:.78;
+    padding:.32rem .55rem 0 0;color:var(--orange);
+  }
+  sup.fn{font-family:var(--mono);font-size:.62rem;line-height:0;vertical-align:super}
+  sup.fn a{text-decoration:none;color:var(--orange);font-weight:500}
+
+  .pull{
+    border-top:2px solid var(--navy);border-bottom:1px solid var(--rule);
+    margin:2.4rem 0;padding:1.3rem 0 1.1rem;
+    font-family:var(--body);font-style:italic;font-weight:300;font-size:1.42rem;line-height:1.4;color:var(--navy);
+  }
+  .pull cite{display:block;margin-top:.8rem;font-family:var(--mono);font-style:normal;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- tables ---------- */
+  .tablewrap{overflow-x:auto;margin:1.6rem 0;border:1px solid var(--rule);background:#FFFDF9}
+  table{border-collapse:collapse;width:100%;font-family:var(--disp);font-size:.84rem;line-height:1.45}
+  caption{
+    caption-side:top;text-align:left;padding:.8rem .9rem .55rem;font-family:var(--mono);
+    font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  }
+  th,td{padding:.62rem .9rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+  thead th{font-weight:600;color:var(--navy);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--paper-2)}
+  tbody tr:last-child td{border-bottom:0}
+  td.num,th.num{font-family:var(--mono);font-size:.8rem;white-space:nowrap}
+
+  /* ---------- figures ---------- */
+  figure{margin:2.4rem 0}
+  figcaption{
+    font-family:var(--disp);font-size:.78rem;line-height:1.5;color:var(--muted);
+    margin-top:.8rem;padding-top:.6rem;border-top:1px solid var(--rule);
+  }
+  figcaption b{color:var(--navy);font-weight:600}
+  .figlabel{font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.9rem}
+
+  .chart{background:#FFFDF9;border:1px solid var(--rule);padding:1.4rem 1.3rem 1.1rem}
+  .bar-row{display:grid;grid-template-columns:9rem 1fr 7.6rem;gap:1rem;align-items:center;margin-bottom:1rem}
+  .bar-name{font-family:var(--disp);font-size:.8rem;color:var(--navy);line-height:1.25}
+  .bar-name small{display:block;font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.04em}
+  .bar-track{position:relative;height:2.1rem;background:var(--paper-2)}
+  .bar-fill{height:100%;background:var(--navy);width:0;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .bar-fill.us{background:var(--orange)}
+  .bar-val{font-family:var(--mono);font-size:.72rem;color:var(--navy);white-space:nowrap}
+  .axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:.5rem;margin-top:.3rem}
+
+  .sector{display:grid;grid-template-columns:13rem 1fr 3.2rem;gap:.8rem;align-items:center;margin-bottom:.7rem}
+  .sector .lab{font-family:var(--disp);font-size:.79rem;line-height:1.25;color:var(--ink)}
+  .sector .trk{height:.85rem;background:var(--paper-2)}
+  .sector .fil{height:100%;background:var(--teal);width:0;transition:width .9s ease}
+  .sector .pc{font-family:var(--mono);font-size:.76rem;color:var(--navy);text-align:right}
+  @media(max-width:600px){.sector{grid-template-columns:8.5rem 1fr 2.8rem}}
+
+  /* ---------- timeline ---------- */
+  .timeline{margin:2rem 0;border-left:2px solid var(--navy);padding-left:1.3rem}
+  .tl{position:relative;padding:.55rem 0}
+  .tl::before{content:"";position:absolute;left:-1.72rem;top:1.05rem;width:9px;height:9px;background:var(--paper);border:2px solid var(--orange);border-radius:50%}
+  .tl .y{font-family:var(--mono);font-size:.72rem;color:var(--orange);letter-spacing:.06em}
+  .tl .t{font-family:var(--disp);font-size:.92rem;line-height:1.45;color:var(--ink)}
+  .tl .t b{color:var(--navy);font-weight:600}
+
+  /* ---------- callout ---------- */
+  .callout{background:var(--paper-2);border-left:3px solid var(--orange);padding:1.15rem 1.25rem;margin:2rem 0;font-size:1rem;line-height:1.6}
+  .callout .h{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:.45rem}
+  .callout p:last-child{margin-bottom:0}
+
+  /* ---------- comparatif ---------- */
+  .compare{margin:2.8rem 0;border:1px solid var(--rule);background:#FFFDF9}
+  .compare-head{
+    background:var(--navy);color:#EDE9E1;padding:1.05rem 1.25rem;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1rem;
+  }
+  .compare-head .t{font-family:var(--disp);font-weight:700;font-size:1.02rem;letter-spacing:-.005em}
+  .compare-head .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-soft)}
+  .compare .scroll{overflow-x:auto}
+  .compare table{min-width:40rem;font-size:.79rem}
+  .compare caption{display:none}
+  .compare thead th{
+    background:var(--paper-2);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);padding:.7rem .8rem;border-bottom:1px solid var(--rule);
+  }
+  .compare thead th .mono{display:block;font-family:var(--mono);color:var(--orange);font-size:.72rem;letter-spacing:.1em;margin-bottom:.15rem}
+  .compare thead th.fr{background:#F7E7DF;color:var(--navy)}
+  .compare tbody th{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--navy);font-weight:500;width:8.6rem;background:#FFFDF9;
+  }
+  .compare td{font-size:.8rem;line-height:1.5;padding:.7rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  .compare td.fr{background:rgba(228,87,46,.055)}
+  .compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:0}
+  .compare .note{
+    padding:.85rem 1.15rem 1rem;border-top:1px solid var(--rule);
+    font-family:var(--disp);font-size:.72rem;line-height:1.55;color:var(--muted);
+  }
+  .compare .note b{color:var(--navy);font-weight:600}
+  .compare .note a{color:var(--teal)}
+  .compare .drop{
+    display:block;font-family:var(--body);font-size:1rem;line-height:1.55;color:var(--ink);
+    padding:1.15rem 1.25rem 0;border-top:1px solid var(--rule);margin-top:0;
+  }
+
+  @media(max-width:640px){
+    .compare .scroll{overflow:visible}
+    .compare table{min-width:0;width:100%}
+    .compare thead{display:none}
+    .compare tbody tr{display:block;border-bottom:1px solid var(--rule);padding:.35rem 0}
+    .compare tbody tr:last-child{border-bottom:0}
+    .compare tbody th{display:block;width:auto;background:transparent;border:0;padding:.55rem .9rem .1rem}
+    .compare tbody td{display:block;border:0;padding:.2rem .9rem .45rem;font-size:.84rem}
+    .compare td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem}
+    .compare td.fr{background:rgba(228,87,46,.05)}
+  }
+
+  /* ---------- verdict ---------- */
+  .verdict{background:var(--navy);color:#EDE9E1;padding:2.6rem 0 2.8rem;margin-top:3.6rem}
+  .verdict .col{max-width:var(--measure)}
+  .verdict .eyebrow{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-soft);margin:0 0 .8rem}
+  .verdict h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.3rem);line-height:1.1;margin:0 0 1.1rem;color:#FFFDF8}
+  .verdict p{color:#CBD5DD}
+  .verdict b{color:#FFFDF8}
+  .score{display:grid;grid-template-columns:9.6rem 1fr 2.2rem;gap:.9rem;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .score:last-of-type{border-bottom:0}
+  .score .k{font-family:var(--disp);font-size:.84rem;color:#E7EDF2}
+  .meter{display:flex;gap:3px;height:1.15rem}
+  .meter i{flex:1;background:rgba(255,255,255,.14)}
+  .meter i.on{background:var(--orange)}
+  .score .v{font-family:var(--mono);font-size:.8rem;color:var(--orange-soft);text-align:right}
+  .global{
+    display:flex;align-items:baseline;gap:.8rem;margin-top:1.6rem;padding-top:1.3rem;
+    border-top:1px solid rgba(255,255,255,.2);
+  }
+  .global .big{font-family:var(--disp);font-weight:800;font-size:3.2rem;line-height:1;color:var(--orange-soft)}
+  .global .txt{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#A9B8C4;line-height:1.6}
+
+  /* ---------- sources ---------- */
+  .sources{margin-top:3.4rem;padding-top:1.6rem;border-top:2px solid var(--navy)}
+  .sources h2{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin:0 0 1rem}
+  .sources ol{margin:0;padding-left:1.4rem;font-family:var(--disp);font-size:.78rem;line-height:1.55;color:var(--muted)}
+  .sources li{margin-bottom:.55rem}
+  .sources a{color:var(--teal);word-break:break-word}
+  .method{font-size:.9rem;color:var(--muted);margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--rule)}
+
+  footer.site{background:var(--navy-deep);color:#9FB0BD;padding:1.8rem 0}
+  footer.site .wrap{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+  footer.site a{color:#DCE3E9;text-decoration:none}
+  footer.site a:hover{color:var(--orange-soft)}
+
+  @media(max-width:640px){
+    body{font-size:1.09rem}
+    .hero .wrap{padding-top:2.2rem;padding-bottom:2.2rem}
+    .bar-row{grid-template-columns:1fr;gap:.35rem}
+    .bar-val{position:static;transform:none;display:block;padding:.3rem 0 0}
+    .score{grid-template-columns:7.4rem 1fr 1.8rem;gap:.6rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="https://cyberbalise.fr/"><span class="bracket">[</span> CyberBalise <span class="bracket">]</span></a>
+    <span class="label"><a href="/actualites/" style="color:inherit;text-decoration:none">← Actualités</a> · Dossier spécial</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">La France, État cyber</p>
+        <h1>La France est-elle une puissance <em>cyber</em>&nbsp;?</h1>
+        <p class="standfirst">Quatre milliards d'euros, environ 3&nbsp;500 cybercombattants, une doctrine offensive assumée — et, la même année, des fuites de données en série, une loi NIS&nbsp;2 toujours pas votée et un cloud largement américain. Radiographie d'une ambition de «&nbsp;premier rang&nbsp;».</p>
+        <p class="byline">
+          <span>Par la rédaction</span>
+          <span><i class="dot"></i>10 novembre 2026</span>
+          <span><i class="dot"></i>Lecture 15 min</span>
+        </p>
+      </div>
+      <svg class="beacon" width="200" height="220" viewBox="0 0 200 220" role="img" aria-label="Schéma d'une balise émettant un signal">
+        <line class="mast" x1="100" y1="70" x2="100" y2="210"/>
+        <line class="mast" x1="70" y1="210" x2="130" y2="210"/>
+        <circle class="tip" cx="100" cy="64" r="5"/>
+        <circle class="ring" cx="100" cy="64" r="26"/>
+        <circle class="ring" cx="100" cy="64" r="52"/>
+        <circle class="ring" cx="100" cy="64" r="80"/>
+        <line class="ring" x1="150" y1="64" x2="196" y2="64" stroke-dasharray="2 4"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="docnote">
+  <strong>Un dossier documenté.</strong> Sources publiques&nbsp;: ANSSI, ministère des Armées, Sénat, SGDSN, ministère de l'Europe et des Affaires étrangères, presse spécialisée (liste complète en fin d'article). Les capacités classifiées ne sont pas documentables&nbsp;: nous signalons chaque fois ce qui relève de l'estimation. Aucun chiffre n'est extrapolé sans mention.
+</div>
+
+<section class="essential" aria-labelledby="essentiel">
+  <div class="inner">
+    <p class="tag" id="essentiel">L'essentiel</p>
+    <ul>
+      <li><span class="n">01</span><span><b>Oui, c'est une puissance.</b> La France est l'un des rares États à aligner protection civile, armée cyber, renseignement, doctrine offensive, régulation et industrie. En 2020, le classement du Belfer Center (Harvard) la plaçait <b>6<sup>e</sup> mondiale</b> — et <b>2<sup>e</sup> sur le volet défensif</b>.</span></li>
+      <li><span class="n">02</span><span><b>Mais une puissance de second rideau.</b> 4&nbsp;milliards d'euros programmés sur sept ans, soit environ <b>570&nbsp;millions par an</b>. Les États-Unis raisonnent, eux, en dizaines de milliards de dollars annuels. Moins de 1&nbsp;% de la loi de programmation militaire.</span></li>
+      <li><span class="n">03</span><span><b>Et un État vulnérable.</b> 1&nbsp;366 incidents traités par l'ANSSI en 2025, des fuites de données en série, <b>deux ans de retard</b> sur la transposition de NIS&nbsp;2 et une dépendance au cloud américain que personne n'a réellement tranchée.</span></li>
+    </ul>
+  </div>
+</section>
+
+<nav class="toc" aria-label="Sommaire">
+  <h2>Sommaire</h2>
+  <ol>
+    <li><a href="#mesurer"><span class="num">1</span> Mesurer la puissance&nbsp;: cinq étages, pas un classement</a></li>
+    <li><a href="#architecture"><span class="num">2</span> L'architecture&nbsp;: l'État cyber le plus complet d'Europe</a></li>
+    <li><a href="#argent"><span class="num">3</span> L'argent&nbsp;: 4 milliards, et un vertige</a></li>
+    <li><a href="#defense"><span class="num">4</span> La défense&nbsp;: solide sur les noyaux, débordée sur la masse</a></li>
+    <li><a href="#offensive"><span class="num">5</span> L'offensive&nbsp;: attribuer est déjà une arme</a></li>
+    <li><a href="#industrie"><span class="num">6</span> L'industrie&nbsp;: des champions, pas encore de géant</a></li>
+    <li><a href="#angles"><span class="num">7</span> Les quatre angles morts</a></li>
+    <li><a href="#influence"><span class="num">8</span> Le rayonnement&nbsp;: une puissance normative</a></li>
+    <li><a href="#verdict"><span class="num">9</span> Le verdict</a></li>
+    <li><a href="#vous"><span class="num">10</span> Ce que ça change pour vous</a></li>
+  </ol>
+</nav>
+
+<main>
+  <article>
+
+    <section class="section col" id="mesurer">
+      <span class="num">01 — Le cadre</span>
+      <h2 class="sec">Mesurer la puissance&nbsp;: cinq étages, pas un classement</h2>
+
+      <p class="lede">«&nbsp;Puissance cyber&nbsp;» ne veut rien dire tant qu'on ne précise pas de quoi on parle. Un pays peut être excellent pour protéger ses hôpitaux et incapable de riposter, ou l'inverse.</p>
+
+      <p class="dropcap">Il n'existe pas d'indice de référence, contrairement aux dépenses militaires ou au PIB. L'Union internationale des télécommunications classe désormais les États par groupes, sans les hiérarchiser. Le National Cyber Security Index mesure des politiques publiques, pas des capacités. Et le seul exercice sérieux de comparaison globale — l'étude de 85 pages du Belfer Center, à Harvard, publiée en 2020 — commence par prévenir&nbsp;: il ne voit que ce qui est public, donc il sous-estime structurellement les États les plus secrets.<sup class="fn"><a href="#s9">9</a></sup></p>
+
+      <p>Nous avons donc retenu cinq étages, qui correspondent à cinq métiers réellement distincts. Un État n'est puissant que s'il en cumule plusieurs&nbsp;:</p>
+
+      <div class="tablewrap">
+        <table>
+          <caption>Les cinq étages de la puissance cyber</caption>
+          <thead>
+            <tr><th>Étage</th><th>Ce que ça veut dire</th><th>Qui, en France</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>Protéger</b></td><td>Empêcher la compromission des systèmes critiques, encaisser et se remettre</td><td>ANSSI, CSIRT, opérateurs</td></tr>
+            <tr><td><b>Renseigner</b></td><td>Voir l'adversaire avant qu'il agisse, attribuer ses attaques</td><td>DGSE, DGSI, C4</td></tr>
+            <tr><td><b>Frapper</b></td><td>Opérer dans les réseaux adverses, neutraliser, dissuader</td><td>COMCYBER, DGSE</td></tr>
+            <tr><td><b>Produire</b></td><td>Disposer d'une industrie et de technologies non dépendantes</td><td>Thales, Orange Cyberdefense, éditeurs</td></tr>
+            <tr><td><b>Normer</b></td><td>Imposer des règles, des coalitions, des sanctions</td><td>Quai d'Orsay, SGDSN, UE, ONU</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>C'est cette grille qui rend le verdict français intéressant&nbsp;: le pays est fort sur trois étages, moyen sur un, faible sur le dernier. Et c'est le dernier — la souveraineté technologique — qui décide de la résistance dans la durée.</p>
+    </section>
+
+    <section class="section col" id="architecture">
+      <span class="num">02 — L'architecture</span>
+      <h2 class="sec">L'architecture&nbsp;: l'État cyber le plus complet d'Europe</h2>
+
+      <p>Sur le papier, la France a fait ce que très peu de pays ont fait&nbsp;: construire une chaîne complète, civile et militaire, avec des doctrines séparées et une coordination politique. Ce n'est pas un détail&nbsp;: la plupart des États ont soit une agence de protection, soit une armée cyber, rarement les deux avec un centre d'arbitrage commun.</p>
+
+      <div class="timeline" role="list">
+        <div class="tl" role="listitem"><div class="y">2009</div><div class="t"><b>Création de l'ANSSI</b>, après les attaques massives contre des administrations et des entreprises françaises.</div></div>
+        <div class="tl" role="listitem"><div class="y">2017</div><div class="t"><b>Naissance du COMCYBER</b>, le commandement militaire de la cyberdéfense, rattaché à l'état-major des armées.</div></div>
+        <div class="tl" role="listitem"><div class="y">2019</div><div class="t"><b>Doctrine offensive rendue publique</b>&nbsp;: la lutte informatique offensive (LIO) devient un moyen d'action assumé des armées.</div></div>
+        <div class="tl" role="listitem"><div class="y">2021</div><div class="t"><b>Création de VIGINUM</b>, chargé de détecter les ingérences numériques étrangères — le volet «&nbsp;influence&nbsp;».</div></div>
+        <div class="tl" role="listitem"><div class="y">2025</div><div class="t"><b>Revue nationale stratégique</b>&nbsp;: le cyberespace est décrit comme un espace de «&nbsp;compétition, contestation et parfois affrontement désinhibé&nbsp;».</div></div>
+        <div class="tl" role="listitem"><div class="y">2026</div><div class="t"><b>Stratégie nationale de cybersécurité 2026-2030</b>, dévoilée le 29 janvier&nbsp;: cinq piliers, quatorze objectifs, l'ambition d'une «&nbsp;Nation cyber de premier rang&nbsp;».</div></div>
+      </div>
+
+      <p>La stratégie 2026-2030 est le document à lire si l'on veut comprendre l'ambition française. Elle ne se contente pas de promettre plus de moyens&nbsp;: elle fixe cinq piliers — former le plus grand vivier de talents d'Europe, renforcer la résilience du pays, entraver l'expansion de la menace, garder la maîtrise des «&nbsp;fondements numériques&nbsp;», et porter la stabilité du cyberespace à l'international.<sup class="fn"><a href="#s5">5</a> <a href="#s6">6</a></sup></p>
+
+      <p>Le choix institutionnel français mérite d'être souligné&nbsp;: Paris sépare strictement les missions défensives et offensives, et interdit au COMCYBER d'opérer sur le territoire national. C'est une garantie démocratique — et une contrainte opérationnelle. Les Américains, eux, ont fusionné les deux dans un même commandement, avec des effets de synergie que la France assume de ne pas avoir.</p>
+    </section>
+
+    <section class="section col" id="argent">
+      <span class="num">03 — Les moyens</span>
+      <h2 class="sec">L'argent&nbsp;: 4 milliards, et un vertige</h2>
+
+      <p>Le chiffre est répété partout&nbsp;: la loi de programmation militaire 2024-2030 consacre <b>4 milliards d'euros</b> au cyber, contre 1,6 milliard pour la précédente. Un triplement, présenté comme «&nbsp;sans précédent&nbsp;».<sup class="fn"><a href="#s4">4</a></sup></p>
+
+      <p>Il faut le lire autrement&nbsp;: 4 milliards sur sept ans, cela fait <b>environ 570 millions d'euros par an</b>. Rapporté aux 413 milliards de la LPM, le cyber représente <b>moins de 1&nbsp;%</b> de l'effort militaire français. Et le Sénat, qui a auditionné le directeur fédéral de la cybersécurité américain, a posé la comparaison qui fâche&nbsp;: les États-Unis ont augmenté leurs moyens fédéraux de cybersécurité de 5 milliards de dollars <i>en une seule année</i>, pour un ordre de grandeur d'environ 45 milliards annuels.<sup class="fn"><a href="#s3">3</a></sup></p>
+
+      <figure class="wide">
+        <span class="figlabel">Figure 1 — L'écart de moyens</span>
+        <div class="chart">
+          <div class="bar-row">
+            <div class="bar-name">France<small>cyber militaire, 2024-2030</small></div>
+            <div class="bar-track"><div class="bar-fill fr" style="width:1.4%;min-width:5px"></div></div>
+            <span class="bar-val" style="color:#E4572E">≈ 0,57 Md€ / an</span>
+          </div>
+          <div class="bar-row">
+            <div class="bar-name">États-Unis<small>moyens fédéraux, ordre de grandeur</small></div>
+            <div class="bar-track"><div class="bar-fill us" style="width:100%"></div></div>
+            <span class="bar-val">≈ 45 Md$ / an</span>
+          </div>
+          <div class="axis"><span>0</span><span>échelle linéaire — la barre française représente 1,4&nbsp;% de la barre américaine</span></div>
+        </div>
+        <figcaption><b>À lire avec précaution.</b> Les périmètres ne sont pas identiques&nbsp;: les 4&nbsp;Md€ français couvrent le seul ministère des Armées sur sept ans&nbsp;; les 45&nbsp;Md$ américains sont un ordre de grandeur des moyens fédéraux civils et militaires sur un an. La comparaison vaut par l'ordre de grandeur, pas au centime. <i>Sources&nbsp;: ministère des Armées, Sénat.</i></figcaption>
+      </figure>
+
+      <p>Le volet civil est encore plus modeste. En 2023, l'ensemble des moyens de cybersécurité rattachés aux services du Premier ministre — ANSSI, opérateur des systèmes classifiés, VIGINUM — pesait environ <b>120 millions d'euros</b>, dont 75 pour la seule ANSSI. Dans le même temps, la directive NIS&nbsp;2 allait faire passer son périmètre de protection de quelques centaines d'opérateurs critiques à <b>7&nbsp;000 à 14&nbsp;000 entités</b>.<sup class="fn"><a href="#s3">3</a></sup> L'agence est passée de 660 postes en 2023 à un objectif de 800 en 2027. Personne, dans l'administration, ne prétend que le compte y est.</p>
+
+      <div class="pull">
+        «&nbsp;Quatre milliards sur sept ans, c'est une ambition. Quarante-cinq milliards par an, c'est une hégémonie. Entre les deux, il y a un mot&nbsp;: le rang.&nbsp;»
+        <cite>Analyse CyberBalise</cite>
+      </div>
+    </section>
+
+    <section class="section col" id="defense">
+      <span class="num">04 — La défense</span>
+      <h2 class="sec">La défense&nbsp;: solide sur les noyaux, débordée sur la masse</h2>
+
+      <p>Les chiffres publiés par l'ANSSI en 2026 pour l'année 2025 dessinent une France attaquée en permanence, mais qui tient. L'agence a traité <b>3&nbsp;586 événements de sécurité</b>, dont 2&nbsp;209 signalements et <b>1&nbsp;366 incidents</b>. La baisse par rapport à 2024 s'explique largement par le pic des Jeux olympiques et paralympiques, qui avait gonflé les signalements entre mai et août 2024.<sup class="fn"><a href="#s1">1</a></sup></p>
+
+      <figure class="wide">
+        <span class="figlabel">Figure 2 — Qui est visé</span>
+        <div class="chart">
+          <div class="sector"><div class="lab">Éducation et recherche</div><div class="trk"><div class="fil" style="width:34%"></div></div><div class="pc">34&nbsp;%</div></div>
+          <div class="sector"><div class="lab">Ministères et collectivités</div><div class="trk"><div class="fil" style="width:24%"></div></div><div class="pc">24&nbsp;%</div></div>
+          <div class="sector"><div class="lab">Santé</div><div class="trk"><div class="fil" style="width:10%"></div></div><div class="pc">10&nbsp;%</div></div>
+          <div class="sector"><div class="lab">Télécommunications</div><div class="trk"><div class="fil" style="width:9%"></div></div><div class="pc">9&nbsp;%</div></div>
+        </div>
+        <figcaption><b>Part des incidents traités par l'ANSSI en 2025.</b> Les quatre secteurs les plus visés&nbsp;; le reste se répartit sur les autres activités. <i>Source&nbsp;: ANSSI, Panorama de la cybermenace 2025.</i></figcaption>
+      </figure>
+
+      <p>Le diagnostic de l'agence est net&nbsp;: les modes opératoires qui ciblent les intérêts français sont <b>liés à la Russie et à la Chine</b>, principalement pour de l'espionnage ou du pré-positionnement — c'est-à-dire pour préparer, aujourd'hui, des attaques de demain. Le ciblage des infrastructures critiques, télécoms et énergie en tête, avec des <b>tentatives de sabotage</b>, reste «&nbsp;très prisé&nbsp;» de ces acteurs.<sup class="fn"><a href="#s1">1</a></sup></p>
+
+      <p>C'est là que la France est bonne&nbsp;: sur les noyaux durs — réseaux de l'État, opérateurs d'importance vitale, défense, diplomatie —, la protection et la réponse à incident tiennent le choc. Les attaques russes documentées contre des ministères ou des ambassades sont détectées, contenues, parfois rendues publiques. Un pays sans capacité cyber ne raconte pas ces histoires&nbsp;: il les subit en silence.</p>
+
+      <p>Mais la même année révèle l'autre face. Sur 460 événements signalés comme des fuites de données potentielles, <b>42&nbsp;% seulement</b> ont pu être confirmés comme des fuites avérées. Autrement dit&nbsp;: une masse d'incidents, beaucoup de bruit, et un coût de réponse qui pèse sur les victimes bien plus que le préjudice direct pour les attaquants. L'ANSSI décrit aussi un <b>brouillard</b> entre cybercriminels et acteurs étatiques, qui partagent désormais des capacités et brouillent les pistes d'attribution.<sup class="fn"><a href="#s1">1</a></sup></p>
+
+      <div class="callout">
+        <span class="h">Le paradoxe français</span>
+        <p>L'État protège bien ce qui est critique et régalien. Il ne peut pas protéger 35&nbsp;000 communes, des milliers d'établissements de santé et des centaines de milliers de PME. Or c'est précisément là que les attaques atterrissent&nbsp;: 34&nbsp;% des incidents dans l'éducation et la recherche, 24&nbsp;% dans les ministères et collectivités.</p>
+      </div>
+    </section>
+
+    <section class="section col" id="offensive">
+      <span class="num">05 — L'offensive</span>
+      <h2 class="sec">L'offensive&nbsp;: attribuer est déjà une arme</h2>
+
+      <p>La France assume depuis 2019 de mener des opérations offensives dans le cyberespace. La doctrine de <b>lutte informatique offensive</b> (LIO) a été rendue publique en partie cette année-là&nbsp;: elle reconnaît aux armées la capacité d'agir dans les réseaux adverses, encadre ces opérations par le droit international et exclut, par principe, les opérations du COMCYBER sur le territoire national.<sup class="fn"><a href="#s3">3</a></sup> Un manuel de droit international applicable aux opérations cyber, publié la même année par le ministère des Armées, précise le cadre&nbsp;: proportionnalité, distinction, responsabilité de l'État.</p>
+
+      <p>Sur le terrain, la France communique surtout sur ce qu'elle <i>voit</i>, rarement sur ce qu'elle <i>fait</i>. C'est un choix doctrinal&nbsp;: l'ambiguïté protège l'efficacité. Mais il rend la capacité française difficile à évaluer — et c'est précisément là que le bât blesse.</p>
+
+      <h3>Le tournant de 2025&nbsp;: nommer l'adversaire</h3>
+
+      <p>Le 29 avril 2025, pour la première fois, Paris attribue officiellement des cyberattaques à la Russie. Le communiqué du Quai d'Orsay est explicite&nbsp;: le mode opératoire <b>APT28</b>, rattaché au renseignement militaire russe (GRU), a ciblé ou compromis «&nbsp;une dizaine d'entités françaises&nbsp;» depuis 2021 — services publics, entreprises privées, et une organisation sportive liée aux Jeux olympiques et paralympiques de 2024. Le texte rappelle aussi les précédents&nbsp;: le sabotage de TV5Monde en 2015, la tentative de déstabilisation du scrutin présidentiel de 2017.<sup class="fn"><a href="#s7">7</a></sup></p>
+
+      <p>L'exercice est répété pour un autre service russe. Le centre de coordination des crises cyber (C4), qui réunit ANSSI, COMCYBER, DGA, DGSE et DGSI, documente l'usage du mode opératoire <b>Turla</b> par le 16<sup>e</sup> centre du FSB depuis 2010&nbsp;: comptes de messagerie du ministère des Armées compromis depuis 2017, réseau de l'ambassade de France à Moscou en 2018, entité du secteur de la justice en 2019, système d'information d'une entreprise de technologies avancées en 2025. Le communiqué identifie même l'unité militaire russe «&nbsp;particulièrement chargée du ciblage de la France&nbsp;».<sup class="fn"><a href="#s8">8</a></sup></p>
+
+      <div class="callout">
+        <span class="h">Pourquoi c'est important</span>
+        <p>Attribuer publiquement, c'est déjà agir&nbsp;: cela ouvre la voie aux sanctions européennes, expose l'adversaire, rassure les alliés et transforme une agression technique en coût diplomatique. La France a fait de l'attribution une capacité en soi — avec un C4 conçu pour croiser les regards civil, militaire et renseignement.</p>
+      </div>
+
+      <p>Reste la question que personne, à Paris, ne tranche publiquement&nbsp;: la France sait-elle <i>frapper</i> aussi bien qu'elle <i>désigne</i>&nbsp;? Le classement de Harvard la plaçait 10<sup>e</sup> mondiale sur l'offensif, contre 2<sup>e</sup> sur le défensif.<sup class="fn"><a href="#s9">9</a></sup> Ce résultat date de 2020 et ne mesure que le visible. Mais il dit quelque chose de vrai&nbsp;: la France est une puissance de défense et de renseignement avant d'être une puissance de frappe. Elle revendique moins qu'elle n'attribue.</p>
+    </section>
+
+    <section class="section col" id="industrie">
+      <span class="num">06 — L'industrie</span>
+      <h2 class="sec">L'industrie&nbsp;: des champions, pas encore de géant</h2>
+
+      <p>C'est l'atout que l'on sous-estime. La France dispose d'une filière cyber complète, du conseil à l'éditeur de logiciels, en passant par l'intégration et les services managés. Selon l'Alliance pour la confiance numérique, les services de cybersécurité représentaient en 2024 près de <b>5 milliards d'euros</b>, <b>29&nbsp;271 emplois</b> et <b>717 entreprises</b>.<sup class="fn"><a href="#s15">15</a></sup></p>
+
+      <p>Le poids lourd est <b>Orange Cyberdefense</b>, avec près d'un milliard d'euros de chiffre d'affaires (977 millions, en croissance de 14&nbsp;%) et une présence dans toute l'Europe.<sup class="fn"><a href="#s14">14</a></sup> Autour&nbsp;: Thales, Airbus Protect, Eviden (ex-Atos), Sopra Steria, Capgemini pour l'intégration&nbsp;; et une génération d'éditeurs purement français — HarfangLab sur la détection, Filigran et son OpenCTI sur le renseignement sur la menace, YesWeHack sur le bug bounty, Stormshield et Wallix sur la protection réseau.</p>
+
+      <p>L'écosystème territorial existe aussi. Le pôle d'excellence cyber de Rennes, cofondé en 2014 par le ministère des Armées et la Région Bretagne, représente selon la Région <b>3&nbsp;280 emplois directs</b>, un millier d'étudiants formés par an et 880 cybercombattants.<sup class="fn"><a href="#s3">3</a></sup> Le Campus Cyber, à La Défense, et le FIC de Lille — le plus grand rassemblement européen du secteur — donnent à la France une centralité que peu de pays possèdent.</p>
+
+      <p>Les faiblesses sont classiques, et têtues. La filière est <b>fragmentée</b>&nbsp;: beaucoup de PME excellentes, peu de champions capables de peser face aux américains Palo Alto, CrowdStrike ou Microsoft. La croissance se finance mal, et plusieurs pépites ont été rachetées par des fonds étrangers. Et l'écosystème reste dépendant des briques technologiques américaines — processeurs, clouds, hyperviseurs — sur lesquelles il construit ses propres produits.</p>
+
+      <div class="pull">
+        «&nbsp;La France exporte des produits de sécurité. Elle n'exporte pas encore de standard.&nbsp;»
+        <cite>Analyse CyberBalise</cite>
+      </div>
+    </section>
+
+    <section class="section col" id="angles">
+      <span class="num">07 — Les failles</span>
+      <h2 class="sec">Les quatre angles morts</h2>
+
+      <p>C'est ici que l'ambition se heurte au réel. Quatre dossiers, tous documentés, empêchent la France de revendiquer le «&nbsp;premier rang&nbsp;» qu'elle s'est fixé.</p>
+
+      <h3>1. Le cloud&nbsp;: la dépendance qu'on n'a pas voulu voir</h3>
+
+      <p>L'essentiel du cloud consommé en France est fourni par Amazon, Microsoft et Google. La certification <b>SecNumCloud</b> de l'ANSSI offre une alternative exigeante, mais elle coûte cher&nbsp;: le surcoût est estimé entre <b>25 et 40&nbsp;%</b>.<sup class="fn"><a href="#s13">13</a></sup> Et le compromis dit du «&nbsp;cloud de confiance&nbsp;» — des offres portées par des acteurs français mais adossées à des technologies américaines, comme Thales avec Google ou Microsoft avec Capgemini et Orange — a été vertement critiqué. Le Sénat, dans son rapport préparatoire à la LPM, parle d'un véritable <b>«&nbsp;angle mort&nbsp;»</b>.<sup class="fn"><a href="#s3">3</a></sup></p>
+
+      <p>Le paradoxe est cruel&nbsp;: la France est l'un des pays qui théorisent le plus la souveraineté numérique, et l'un de ceux dont les données stratégiques reposent le plus sur des infrastructures soumises au droit américain.</p>
+
+      <h3>2. NIS&nbsp;2&nbsp;: deux ans de retard, et un périmètre qui explose</h3>
+
+      <p>La directive européenne NIS&nbsp;2 devait être transposée avant le <b>17 octobre 2024</b>. La France ne l'a pas fait. Le projet de loi est arrivé à l'Assemblée nationale le <b>9 novembre 2026</b> — après plusieurs reports.<sup class="fn"><a href="#s10">10</a></sup> En attendant, l'ANSSI a publié dès mars 2026 son référentiel national, le <b>ReCyF</b>&nbsp;: 20 objectifs de sécurité pour les entités essentielles, 15 pour les importantes.<sup class="fn"><a href="#s11">11</a><a href="#s12">12</a></sup></p>
+
+      <p>L'enjeu est massif&nbsp;: le périmètre passe de quelques centaines d'opérateurs critiques à <b>7&nbsp;000 à 14&nbsp;000 entités</b>, avec des coûts de mise en conformité estimés de 100&nbsp;000 à 200&nbsp;000&nbsp;€ pour une entité importante, et de 450&nbsp;000 à 880&nbsp;000&nbsp;€ pour une entité essentielle.<sup class="fn"><a href="#s11">11</a></sup> Un retard législatif qui devient un retard de protection.</p>
+
+      <h3>3. Les talents&nbsp;: 1&nbsp;100 postes vides</h3>
+
+      <p>La France forme bien, mais pas assez. En 2023, sur 4&nbsp;600 postes ouverts au ministère des Armées, <b>3&nbsp;502 seulement étaient pourvus</b> — un déficit de près de 1&nbsp;100 cybercombattants. La LPM ajoute 953 emplois pour viser 5&nbsp;553 postes en 2030, dans un marché où le privé paie mieux et recrute plus vite.<sup class="fn"><a href="#s3">3</a></sup> La stratégie 2026-2030 en fait son premier pilier&nbsp;: «&nbsp;faire de la France le plus grand vivier de talents cyber d'Europe&nbsp;».<sup class="fn"><a href="#s6">6</a></sup> L'objectif est juste&nbsp;; il se heurte à une réalité démographique.</p>
+
+      <h3>4. Le terrain&nbsp;: collectivités, hôpitaux, écoles</h3>
+
+      <p>Les chiffres de l'ANSSI le disent sans détour&nbsp;: les cibles ne sont plus seulement les serveurs de l'État, mais les lycées, les mairies, les hôpitaux de proximité. Des entités sans RSSI, sans budget, sans astreinte. La puissance d'un État se mesure aussi à sa capacité à protéger les siens là où ils vivent — et c'est là que le compte n'y est pas.</p>
+    </section>
+
+    <div class="compare wide" role="group" aria-labelledby="cmp-title">
+      <div class="compare-head">
+        <span class="t" id="cmp-title">Comparatif — trois modèles européens</span>
+        <span class="k">Section 07 · annexe</span>
+      </div>
+      <div class="scroll">
+        <table>
+          <caption>Comparaison France, Royaume-Uni, Allemagne</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Critère</span><span style="font-family:var(--mono);font-size:.62rem;letter-spacing:.09em">Critère</span></th>
+              <th scope="col" class="fr"><span class="mono">FR</span>France</th>
+              <th scope="col"><span class="mono">UK</span>Royaume-Uni</th>
+              <th scope="col"><span class="mono">DE</span>Allemagne</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Autorité civile</th>
+              <td class="fr" data-label="France">ANSSI, créée en 2009</td>
+              <td data-label="Royaume-Uni">NCSC, créé en 2016</td>
+              <td data-label="Allemagne">BSI, créé en 1991</td>
+            </tr>
+            <tr>
+              <th scope="row">Réglementation NIS&nbsp;2</th>
+              <td class="fr" data-label="France"><b>En retard.</b> Projet de loi examiné à l'Assemblée depuis le 9 novembre 2026</td>
+              <td data-label="Royaume-Uni"><b>En retard.</b> NIS Regulations 2018 toujours en vigueur&nbsp;; le <i>Cyber Security and Resilience Bill</i> n'est pas voté</td>
+              <td data-label="Allemagne"><b>En vigueur.</b> Loi de transposition appliquée depuis le 6 décembre 2025</td>
+            </tr>
+            <tr>
+              <th scope="row">Entités concernées</th>
+              <td class="fr" data-label="France">7&nbsp;000 à 14&nbsp;000 (estimation)</td>
+              <td data-label="Royaume-Uni">Périmètre élargi en attente du vote</td>
+              <td data-label="Allemagne">≈ 29&nbsp;500, contre ≈ 4&nbsp;500 auparavant</td>
+            </tr>
+            <tr>
+              <th scope="row">Effectifs cyber militaires</th>
+              <td class="fr" data-label="France">≈ 3&nbsp;500 cybercombattants&nbsp;; cible 5&nbsp;553 en 2030</td>
+              <td data-label="Royaume-Uni">NCF (2020) et nouveau Cyber &amp; Electromagnetic Command&nbsp;; effectifs non publiés</td>
+              <td data-label="Allemagne">≈ 14&nbsp;500 au CIR, militaires et civils</td>
+            </tr>
+            <tr>
+              <th scope="row">Effort budgétaire</th>
+              <td class="fr" data-label="France">4&nbsp;Md€ sur 2024-2030, soit ≈ 570&nbsp;M€/an</td>
+              <td data-label="Royaume-Uni">Non consolidé publiquement&nbsp;; 2,5&nbsp;% du PIB visés pour la défense</td>
+              <td data-label="Allemagne">Non consolidé publiquement</td>
+            </tr>
+            <tr>
+              <th scope="row">Doctrine offensive</th>
+              <td class="fr" data-label="France">LIO assumée depuis 2019, attributions publiques régulières</td>
+              <td data-label="Royaume-Uni">NCF, fusion renseignement-armée, orientée perturbation</td>
+              <td data-label="Allemagne">Effets dans les systèmes étrangers assumés, montée en puissance d'ici 2029</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="drop">À la lecture de ce tableau, la France n'est ni première ni dernière&nbsp;: elle est <b>en avance sur le Royaume-Uni</b> en matière de réglementation — Londres n'a toujours pas remplacé ses règles de 2018 —, mais <b>en retard sur l'Allemagne</b>, qui applique NIS&nbsp;2 depuis décembre 2025. Sur les effectifs, la comparaison brute trompe&nbsp;: le CIR allemand englobe la géoinformation, le renseignement d'origine électromagnétique et la guerre électronique, là où le COMCYBER ne compte que des cybercombattants. Là où la France se distingue réellement, c'est sur la <b>doctrine</b>&nbsp;: elle est la seule des trois à publier un cadre offensif et à pratiquer l'attribution publique de façon récurrente.</p>
+      <p class="note"><b>Périmètres non superposables.</b> Effectifs et budgets recouvrent des périmètres différents selon les pays&nbsp;; les cases « non consolidé » signalent l'absence de chiffre public fiable, pas une absence de moyens. <i>Sources&nbsp;: ANSSI, Sénat, Bundeswehr, BSI, GOV.UK, Parlement britannique.</i></p>
+    </div>
+
+    <section class="section col" id="influence">
+      <span class="num">08 — Le rayonnement</span>
+      <h2 class="sec">Le rayonnement&nbsp;: une puissance normative</h2>
+
+      <p>Il existe un étage où la France pèse bien plus que son budget&nbsp;: les règles. Le <b>Paris Call for Trust and Security in Cyberspace</b>, lancé en 2018, a rassemblé États, entreprises et organisations autour de principes de comportement responsable. Ses cybercombattants s'entraînent chaque année au Locked Shields, l'exercice du centre d'excellence cyber de l'OTAN (CCDCoE), et Paris pousse, avec l'Allemagne, une autonomie numérique européenne.</p>
+
+      <p>Cette diplomatie a une traduction concrète&nbsp;: les attributions publiques de 2025 et 2026 ont été coordonnées avec l'Union européenne, qui a sanctionné les responsables. La France ne se contente pas de dénoncer&nbsp;; elle fabrique le cadre juridique et politique dans lequel la dénonciation devient un coût pour l'attaquant. C'est une forme de puissance réelle, mais lente, et qui suppose que les alliés suivent.</p>
+
+      <p>Le revers&nbsp;: dans un monde où la dissuasion se joue sur la démonstration de capacités, une puissance qui excelle dans les normes et reste discrète sur ses opérations apparaît plus fragile qu'elle ne l'est. La France souffre d'un déficit de récit — et donc de crédibilité perceptible.</p>
+    </section>
+
+  </article>
+
+  <section class="verdict" id="verdict">
+    <div class="col">
+      <p class="eyebrow">09 — Le verdict</p>
+      <h2>Puissance de premier rang européen,<br>deuxième rideau mondial</h2>
+      <p>Voici notre notation, éditoriale et assumée comme telle. Elle ne prétend pas à la science&nbsp;: elle agrège les éléments publics examinés dans ce dossier.</p>
+
+      <div class="score"><div class="k">Protection, défense</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="v">8/10</div></div>
+      <div class="score"><div class="k">Renseignement, attribution</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><div class="v">7,5/10</div></div>
+      <div class="score"><div class="k">Offensive (LIO)</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="v">6/10</div></div>
+      <div class="score"><div class="k">Industrie, écosystème</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="v">6/10</div></div>
+      <div class="score"><div class="k">Souveraineté technologique</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="v">4/10</div></div>
+      <div class="score"><div class="k">Influence, normes</div><div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><div class="v">7/10</div></div>
+
+      <div class="global">
+        <span class="big">6,5</span>
+        <span class="txt">Note globale / 10<br>Puissance réelle, dépendance non résolue</span>
+      </div>
+
+      <p style="margin-top:1.6rem">La France est <b>une vraie puissance cyber</b>&nbsp;: elle protège ses noyaux critiques, attribue les attaques, sanctionne, forme, produit et fixe des règles. Elle est, avec le Royaume-Uni, l'un des deux piliers européens. Mais elle n'est pas dans la cour des États-Unis, de la Chine, d'Israël ou de la Russie en matière de capacité démontrée — et elle reste vulnérable par sa dépendance aux infrastructures numériques américaines.</p>
+
+      <p>Autrement dit&nbsp;: <b>une puissance de défense et de normes, pas encore une puissance de rupture.</b> Le «&nbsp;premier rang&nbsp;» proclamé en 2026 est un objectif crédible à l'échelle européenne. À l'échelle mondiale, il reste une ambition.</p>
+    </div>
+  </section>
+
+  <section class="section col" id="vous">
+    <span class="num">10 — Pour vous</span>
+    <h2 class="sec">Ce que ça change pour vous</h2>
+
+    <h3>Si vous dirigez une PME</h3>
+    <p>La puissance de l'État ne vous protégera pas individuellement. NIS&nbsp;2 arrive, avec son périmètre élargi et ses coûts&nbsp;: anticipez la cartographie de vos systèmes et l'analyse de risque dès maintenant, sans attendre la loi. Les dix mesures à coût nul ou faible restent le meilleur rapport protection/prix — notre guide <a href="https://cyberbalise.fr/pro/fondamentaux/mesures-essentielles/">Les mesures essentielles</a> les classe par efficacité.</p>
+
+    <h3>Si vous êtes une collectivité ou un établissement public</h3>
+    <p>Vous êtes, statistiquement, au cœur de la cible&nbsp;: 24&nbsp;% des incidents traités par l'ANSSI. Les CSIRT régionaux et les services mutualisés existent&nbsp;; les exercices de crise aussi. Le vrai levier n'est pas technologique, il est organisationnel&nbsp;: savoir qui appelle qui, à 3&nbsp;heures du matin, quand le réseau est chiffré.</p>
+
+    <h3>Si vous êtes un particulier</h3>
+    <p>Vous ne serez jamais la cible d'APT28. Vous serez la cible de l'écosystème qui gravite autour&nbsp;: hameçonnage, faux conseiller, rançongiciel sur un PC familial. La puissance cyber française ne change rien à votre risque quotidien&nbsp;; vos réflexes, si. En cas de doute, <a href="https://cyberbalise.fr/outils/detecteur-arnaque/">notre détecteur d'arnaque</a> et notre guide sur le <a href="https://cyberbalise.fr/particuliers/menaces/phishing-hameconnage/">hameçonnage</a> couvrent les scénarios les plus fréquents.</p>
+
+    <div class="callout">
+      <span class="h">Ce que nous ne pouvons pas vérifier</span>
+      <p>Les capacités offensives réelles de la France sont classifiées&nbsp;: aucun rapport public ne permet de mesurer ce que le COMCYBER ou la DGSE sont capables de faire dans un réseau adverse. Les classements internationaux reposent sur des données déclaratives et datent, pour le plus complet, de 2020. Enfin, les périmètres budgétaires (cyber militaire, cyber civil, sécurité numérique) ne sont pas superposables&nbsp;: toute comparaison internationale doit être lue comme un ordre de grandeur.</p>
+    </div>
+
+    <div class="sources">
+      <h2>Sources</h2>
+      <ol>
+        <li id="s1">ANSSI, <a href="https://cyber.gouv.fr/actualites/panorama-de-la-cybermenace-2025/">Panorama de la cybermenace 2025</a>, 2026.</li>
+        <li id="s2">ANSSI, <a href="https://cyber.gouv.fr/actualites/publication-du-rapport-dactivite-2025-de-lanssi/">Rapport d'activité 2025</a>, mai 2026.</li>
+        <li id="s3">Sénat, <a href="https://www.senat.fr/rap/r22-638/r22-638-syn.pdf">Rapport d'information n°&nbsp;638 (2022-2023) sur la coordination de la cyberdéfense</a>.</li>
+        <li id="s4">Ministère des Armées, <a href="https://www.defense.gouv.fr/actualites/objectifs-lpm-2024-2030-maitriser-nouveaux-espaces-conflictualite">Objectifs LPM 2024-2030&nbsp;: maîtriser les nouveaux espaces de conflictualité</a>.</li>
+        <li id="s5">ANSSI, <a href="https://cyber.gouv.fr/nous-connaitre/lagence/strategie/">Stratégie nationale de cybersécurité 2026-2030</a>.</li>
+        <li id="s6">Ministère de l'Économie, <a href="https://www.economie.gouv.fr/actualites/cybersecurite-la-strategie-nationale-2026-2030-devoilee">«&nbsp;Cybersécurité&nbsp;: la Stratégie nationale 2026-2030 dévoilée&nbsp;»</a>, 29 janvier 2026.</li>
+        <li id="s7">Ministère de l'Europe et des Affaires étrangères, <a href="https://www.diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/russie-attribution-de-cyberattaques-contre-la-france-au-service-de-renseignement-militaire-russe">attribution des cyberattaques APT28 au GRU</a>, 29 avril 2025.</li>
+        <li id="s8">ANSSI / C4, <a href="https://cyber.gouv.fr/actualites/ciblage-et-compromission-dentites-francaises-par-le-fsb/">Ciblage et compromission d'entités françaises par le FSB (Turla)</a>, 2026.</li>
+        <li id="s9">Belfer Center (Harvard), <em>National Cyber Power Index 2020</em>, synthèse dans <a href="https://www.challenges.fr/entreprise/defense/la-france-6eme-puissance-cyber-mondiale_728980">Challenges</a>.</li>
+        <li id="s10">L'Usine Digitale, <a href="https://www.usine-digitale.fr/cybersecurite/nis-2-arrive-enfin-a-lassemblee-le-gouvernement-veut-supprimer-larticle-anti-portes-derobees.OY6EMQI7CVG2XGQ3QKUKYM72TU.html">«&nbsp;NIS&nbsp;2 arrive enfin à l'Assemblée&nbsp;»</a>, 9 novembre 2026.</li>
+        <li id="s11">SPAC Alliance, <a href="https://spac-alliance.org/fr/actu/etat-de-la-transposition-nis-2-en-france/">État de la transposition de NIS&nbsp;2 en France</a>, septembre 2026.</li>
+        <li id="s12">ANSSI, <a href="https://cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/directives-nis-nis2-et-dispositif-saiv/directive-nis-2/">La directive NIS&nbsp;2 et le référentiel ReCyF</a>.</li>
+        <li id="s13">Challenges, <a href="https://www.challenges.fr/entreprise/tech-numerique/le-marche-du-cloud-est-domine-par-amazon-microsoft-et-google-alerte-sur-la-dependance-francaise-aux-geants-americains_629641">«&nbsp;Le marché du cloud est dominé par Amazon, Microsoft et Google&nbsp;»</a>.</li>
+        <li id="s14">Orange Cyberdefense, <a href="https://www.orangecyberdefense.com/global/news/orange-cyberdefense/orange-cyberdefense-launches-its-new-recruiting-season">résultats et campagne de recrutement</a>.</li>
+        <li id="s16">GOV.UK, <a href="https://www.gov.uk/government/news/uk-to-deliver-pioneering-battlefield-system-and-bolster-cyber-warfare-capabilities-under-strategic-defence-review">«&nbsp;UK to deliver pioneering battlefield system and bolster cyber warfare capabilities&nbsp;»</a> (Strategic Defence Review), 2025.</li>
+        <li id="s17">Bundeswehr, <a href="https://www.bundeswehr.de/en/organization/the-cyber-and-information-domain-service">Cyber and Information Domain Service</a>, 2026.</li>
+        <li id="s18">Reed Smith, <a href="https://www.reedsmith.com/our-insights/blogs/technology-law-dispatch/102lxfr/finally-germany-enacts-its-nis2-law/">«&nbsp;Germany's NIS-2 Implementation Law enters into force&nbsp;»</a>, décembre 2025.</li>
+        <li id="s19">UK Parliament, <a href="https://bills.parliament.uk/bills/4035">Cyber Security and Resilience (Network and Information Systems) Bill</a>, état au 9 novembre 2026.</li>
+        <li id="s15">CSB School, <a href="https://www.csb.school/marche-cybersecurite-2026-chiffres-tendances-opportunites/">Marché de la cybersécurité 2026</a>, d'après les données de l'Alliance pour la confiance numérique (2024).</li>
+      </ol>
+      <p class="method"><b>Méthode.</b> Dossier arrêté au 10 novembre 2026. Les chiffres budgétaires et d'effectifs proviennent des documents officiels cités&nbsp;; les comparaisons internationales sont signalées comme des ordres de grandeur. La notation finale est une appréciation éditoriale de CyberBalise, pas une mesure statistique.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>CyberBalise — la cybersécurité, sans jargon</span>
+    <span><a href="/a-propos/">À propos</a> · <a href="/contact/">Contact</a> · <a href="/mentions-legales/">Mentions légales</a></span>
+    <span>Dossier publié le 10 novembre 2026</span>
+  </div>
+</footer>
+
+<script>
+  // reading progress
+  const bar = document.getElementById('progress');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? (h.scrollTop / max * 100) + '%' : '0';
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+</script>
+<script src="/assets/cookie-consent.js" defer></script>
+</body>
+</html>
