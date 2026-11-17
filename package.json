@@ -4,6 +4,7 @@
   "description": "Outils de test du site statique cyberbalise.fr (aucune dépendance à l'exécution).",
   "scripts": {
     "test": "node --test tests/detecteur/",
+    "test:footer": "node --test tests/site/footer.test.mjs",
     "test:baseline": "node tests/detecteur/run.mjs --legacy",
     "benchmark": "node tests/detecteur/run.mjs"
   },
